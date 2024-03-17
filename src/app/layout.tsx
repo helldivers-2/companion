@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
 
 import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/nav";
+import Navbar from "@/components/nav";
 import Footer from "@/components/footer";
 
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import "./globals.css";
+
+const BodyFont = localFont({
+  src: "../components/fonts/spacegrotesk.ttf",
+});
 
 export const metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
@@ -31,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={GeistSans.className}>
+    <html lang="en" className={BodyFont.className}>
       <Analytics />
       <body className="antialiased ">
         <ThemeProvider
@@ -41,7 +44,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="container my-20">{children}</main>
+          <main className="container flex flex-col px-4 py-12 md:min-h-screen md:px-8 md:py-20">
+            {children}
+          </main>
           <Footer />
           <TailwindIndicator />
         </ThemeProvider>

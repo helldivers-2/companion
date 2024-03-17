@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import PlanetsTable from "@/components/planetsTable";
+import { DataTableDemo } from "./events/data-table";
 
 import {
   Card,
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Card className="bg-muted">
+    <Card className="border border-primary bg-muted">
       <CardHeader>
         <CardTitle>Galaxy Status</CardTitle>
       </CardHeader>
@@ -37,15 +39,15 @@ export default function Home() {
             <p>Card Content</p>
           </CardContent>
         </Card>
-        <Card className="aspect-square">
+        <Card>
           <CardHeader>
-            <CardTitle>Current Players</CardTitle>
+            <CardTitle>Current Events</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <DataTableDemo />
           </CardContent>
         </Card>
-        <Card className="aspect-square">
+        <Card className="aspect-video">
           <CardHeader>
             <CardTitle>Galaxy Map</CardTitle>
           </CardHeader>
@@ -53,6 +55,7 @@ export default function Home() {
             <p>Card Content</p>
           </CardContent>
         </Card>
+        <PlanetsTable />
       </CardContent>
     </Card>
   );

@@ -1,90 +1,96 @@
 "use client";
 
 import * as React from "react";
-
-import { ThemeToggle } from "@/components/theme-toggle";
 import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-export function Navbar() {
+import {
+  LuInfo,
+  LuNewspaper,
+  LuShoppingBasket,
+  LuRocket,
+} from "react-icons/lu";
+
+import { ThemeToggle } from "./theme-toggle";
+
+export default function Navbar() {
   return (
-    <nav className="container sticky top-0 py-6 sm:grid sm:grid-cols-3 sm:items-center sm:justify-between">
-      <Link href="/">
-        <div className="mx-auto mb-4 max-w-min rounded border border-primary bg-muted p-2 sm:mx-0 sm:mb-0">
-          <h1 className="font-bold">Helldivers.info</h1>
+    <header className="sticky left-0 top-0 z-10">
+      <div className="mx-4 pt-4">
+        <div className="w-full rounded-lg bg-background">
+          <nav className="h-fit rounded-lg border border-primary bg-[#facc15] bg-opacity-20">
+            <div className="m-2 block items-center justify-between md:flex">
+              <div className="flex items-center justify-between">
+                <Link href="/">
+                  <span className="flex text-xl font-bold">
+                    HELLDIVERS.info
+                  </span>
+                </Link>
+                <div className="block md:hidden">
+                  <ThemeToggle />
+                </div>
+              </div>
+              <NavigationMenu className="mt-4 w-full md:mt-0">
+                <NavigationMenuList className="grid grid-cols-2 gap-2 md:flex md:gap-0">
+                  <NavigationMenuItem>
+                    <Link href="/" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuRocket className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">Status</span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/shop" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuShoppingBasket className="mr-1 size-6 md:size-4" />
+                        <span className="text-center text-xs">Item Shop</span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/news" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuNewspaper className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">News</span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/faq" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuInfo className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">FAQ</span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem></NavigationMenuItem>
+                  <NavigationMenuItem className="hidden md:block">
+                    <ThemeToggle />
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+          </nav>
         </div>
-      </Link>
-      <NavigationMenu className="mx-auto">
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Status
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/shop" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                Item Shop
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/news" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                News
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/faq" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                FAQ
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-      <div className="ml-auto hidden sm:block">
-        <ThemeToggle />
       </div>
-    </nav>
+    </header>
   );
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className,
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  );
-});
-ListItem.displayName = "ListItem";

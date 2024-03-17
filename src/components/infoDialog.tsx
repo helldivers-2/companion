@@ -19,10 +19,7 @@ export function InfoDialog({ title, children }: InfoDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button
-          className="text-sm text-muted-foreground underline"
-          variant="link"
-        >
+        <Button className="p-0 text-sm text-muted-foreground" variant="link">
           {title}
         </Button>
       </DialogTrigger>

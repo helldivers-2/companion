@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 
 export default function NewsPage() {
   return (
-    <Card className="bg-muted">
+    <Card className="border border-primary bg-muted">
       <CardHeader>
         <div className="flex items-center justify-between">
           <CardTitle>News</CardTitle> <Button>Source</Button>

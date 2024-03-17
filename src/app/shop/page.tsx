@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ShopPage() {
   return (
-    <Card className="bg-muted">
+    <Card className="border border-primary bg-muted">
       <CardHeader>
         <CardTitle>Shop</CardTitle>
         <CardDescription>Updates in:</CardDescription>
