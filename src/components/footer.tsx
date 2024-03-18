@@ -70,6 +70,14 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
+                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
+                      href="/items"
+                    >
+                      all Items
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
                       href="/faq"
                     >
@@ -86,16 +94,281 @@ export default function Component() {
               <nav className="mt-4 ">
                 <ul>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
-                    <InfoDialog title="Privacy Policy">...</InfoDialog>
+                    <InfoDialog title="Privacy Policy">
+                      <p>
+                        At helldivers.info, we recognize the importance of your
+                        privacy and are committed to protecting it. This Privacy
+                        Policy outlines the types of personal information we
+                        collect, how it is used, and your choices regarding your
+                        data.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Information We Collect:</h2>
+                      <p>
+                        When you visit helldivers.info, we may collect certain
+                        information automatically, including your IP address,
+                        browser type, operating system, and browsing behavior.
+                        Additionally, if you choose to interact with our
+                        website&apos;s real-time API data, we may collect
+                        information about your interactions with the API.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Use of Information:</h2>
+                      <p>
+                        The information we collect is used to improve the
+                        functionality and user experience of helldivers.info. We
+                        may use your IP address to diagnose problems with our
+                        server, administer our website, and analyze trends. Any
+                        personal information collected through interactions with
+                        the real-time API data will be used solely for the
+                        purpose of providing the requested information.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Data Sharing:</h2>
+                      <p>
+                        We do not sell, trade, or otherwise transfer your
+                        personal information to outside parties unless we have
+                        obtained your consent or are required to do so by law.
+                        However, non-personally identifiable information may be
+                        provided to trusted third parties for the purpose of
+                        analytics, advertising, or other business purposes.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Cookies:</h2>
+                      <p>
+                        helldivers.info may use cookies to enhance your browsing
+                        experience. Cookies are small text files stored on your
+                        computer that help us analyze web traffic and customize
+                        content based on your preferences. You can choose to
+                        accept or decline cookies through your browser settings,
+                        although this may affect your ability to fully utilize
+                        our website&apos;s features.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Third-Party Links:</h2>
+                      <p>
+                        Our website may contain links to third-party websites.
+                        These sites have their own privacy policies, which you
+                        should review when visiting them. We are not responsible
+                        for the privacy practices or content of third-party
+                        sites.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Data Security:</h2>
+                      <p>
+                        We take reasonable measures to protect the security of
+                        your personal information and prevent unauthorized
+                        access, disclosure, alteration, or destruction. However,
+                        no method of transmission over the internet or
+                        electronic storage is 100% secure, and we cannot
+                        guarantee absolute security.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Children&apos;s Privacy:</h2>
+                      <p>
+                        helldivers.info is not directed towards children under
+                        the age of 13, and we do not knowingly collect personal
+                        information from anyone under this age. If you believe
+                        that we have inadvertently collected information from a
+                        child under 13, please contact us immediately, and we
+                        will take appropriate steps to remove the information.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Changes to This Policy:</h2>
+                      <p>
+                        We reserve the right to update or modify this Privacy
+                        Policy at any time without prior notice. Any changes
+                        will be effective immediately upon posting to this page.
+                        We encourage you to review this Privacy Policy
+                        periodically for any updates.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Contact Us:</h2>
+                      <p>
+                        If you have any questions or concerns about this Privacy
+                        Policy or the practices of helldivers.info, please
+                        contact us at{" "}
+                        <a
+                          className="underline"
+                          href="mailto:contact@helldivers.info"
+                        >
+                          contact@helldivers.info
+                        </a>
+                        .
+                      </p>
+                      <br />
+                      <p>
+                        By using helldivers.info, you consent to the terms of
+                        this Privacy Policy.
+                      </p>
+                    </InfoDialog>
                   </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
-                    <InfoDialog title="About">...</InfoDialog>
+                    <InfoDialog title="About">
+                      <p>
+                        Welcome to helldivers.info, your go-to source for
+                        real-time API data for the game Helldivers!
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Our Mission</h2>
+                      <p>
+                        At helldivers.info, our mission is to provide players of
+                        Helldivers with up-to-date information and statistics
+                        directly from the game&apos;s API. Whether you&apos;re
+                        looking to track your progress, compare your stats with
+                        friends, or stay informed about the latest in-game
+                        events, our website has you covered.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">What We Offer</h2>
+                      <p>
+                        Through our platform, you can access a wide range of
+                        real-time data, including:
+                      </p>
+                      <ul>
+                        <li>Player profiles and statistics</li>
+                        <li>Leaderboards and rankings</li>
+                        <li>Current in-game events and challenges</li>
+                        <li>Weapon and equipment stats</li>
+                        <li>And much more!</li>
+                      </ul>
+                      <br />
+                      <h2 className="font-bold">Why Choose Us?</h2>
+                      <p>
+                        With helldivers.info, you can trust that you&apos;re
+                        getting accurate and reliable information straight from
+                        the source. Our team is dedicated to maintaining the
+                        integrity of the data we provide and ensuring that our
+                        platform remains user-friendly and accessible to all
+                        players.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Contact Us</h2>
+                      <p>
+                        If you have any questions, feedback, or suggestions for
+                        improvement, we&apos;d love to hear from you! Please
+                        don&apos;t hesitate to reach out to us at{" "}
+                        <a
+                          className="underline"
+                          href="mailto:contact@helldivers.info"
+                        >
+                          contact@helldivers.info
+                        </a>
+                        .
+                      </p>
+                      <br />
+                      <p>
+                        Thank you for choosing helldivers.info as your trusted
+                        resource for Helldivers API data. Happy gaming!
+                      </p>
+                      <br />
+                      <p>
+                        Sincerely,
+                        <br />
+                        The helldivers.info Team
+                      </p>
+                    </InfoDialog>
                   </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
-                    <InfoDialog title="Credits">...</InfoDialog>
+                    <InfoDialog title="Credits">
+                      <p>
+                        We would like to extend our sincere appreciation to the
+                        following individuals, organizations, and packages for
+                        their contributions to helldivers.info:
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Contributors:</h2>
+                      <ul>
+                        <li>
+                          <a
+                            className="underline"
+                            href="https://github.com/shadcn/ui"
+                          >
+                            shadcn/ui
+                          </a>{" "}
+                          - For providing the UI framework used in our website
+                        </li>
+                        <li>
+                          <a
+                            className="underline"
+                            href="https://github.com/dealloc/helldivers2-api"
+                          >
+                            Helldivers Api
+                          </a>{" "}
+                          - For the invaluable real-time API data for the game
+                          Helldivers
+                        </li>
+                        <li>
+                          <a className="underline" href="https://helldivers.io">
+                            Helldivers.io
+                          </a>{" "}
+                          - For their support and resources related to the
+                          Helldivers community
+                        </li>
+                        {/*<!-- Add other packages or contributors here -->*/}
+                      </ul>
+                      <br />
+                      <p>
+                        We are grateful for the hard work and dedication of
+                        these individuals and organizations, which have greatly
+                        contributed to the success and functionality of
+                        helldivers.info.
+                      </p>
+                      <br />
+                      <p>
+                        If you believe you should be credited or have any
+                        inquiries regarding credits, please contact us at{" "}
+                        <a
+                          className="underline"
+                          href="mailto:contact@helldivers.info"
+                        >
+                          contact@helldivers.info
+                        </a>
+                        .
+                      </p>
+                      <br />
+                      <p>Thank you for your contributions and support!</p>
+                      <br />
+                      <p>
+                        Sincerely,
+                        <br />
+                        The helldivers.info Team
+                      </p>
+                    </InfoDialog>
                   </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
-                    <InfoDialog title="Contact">...</InfoDialog>
+                    <InfoDialog title="Contact">
+                      <p>
+                        If you have any questions, concerns, or feedback
+                        regarding helldivers.info or the real-time API data
+                        displayed on our website, please don&apos;t hesitate to
+                        get in touch with us. We value your input and are here
+                        to assist you.
+                      </p>
+                      <br />
+                      <h2 className="font-bold">Contact Details:</h2>
+                      <p>
+                        Email:{" "}
+                        <a
+                          className="underline"
+                          href="mailto:contact@helldivers.info"
+                        >
+                          contact@helldivers.info
+                        </a>
+                      </p>
+                      <br />
+                      <p>
+                        Thank you for visiting helldivers.info. Feel free to
+                        reach out to us via email, and we will respond to your
+                        inquiry as promptly as possible.
+                      </p>
+                      <br />
+                      <p>
+                        Sincerely,
+                        <br />
+                        The helldivers.info Team
+                      </p>
+                    </InfoDialog>
                   </li>
                 </ul>
               </nav>
@@ -110,7 +383,7 @@ export default function Component() {
                     <a
                       target="_blank"
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="#"
+                      href="https://infogrid-prod.vercel.app"
                     >
                       Infogrid
                     </a>
@@ -119,7 +392,7 @@ export default function Component() {
                     <a
                       target="_blank"
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="#"
+                      href="https://glifico.vercel.app"
                     >
                       Glifico
                     </a>
@@ -135,9 +408,9 @@ export default function Component() {
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://steamcommunity.com/app/394510"
+                  href="https://discord.com/invite/Dm5JBDGUMF"
                 >
-                  <FaSteam className="size-6" />
+                  <FaDiscord className="size-6" />
                 </a>
                 <a
                   target="_blank"
@@ -145,6 +418,13 @@ export default function Component() {
                   href="https://www.reddit.com/r/Helldivers/"
                 >
                   <FaReddit className="size-6" />
+                </a>
+                <a
+                  target="_blank"
+                  className="block py-2 text-muted-foreground transition hover:text-foreground"
+                  href="https://steamcommunity.com/app/394510"
+                >
+                  <FaSteam className="size-6" />
                 </a>
                 <a
                   target="_blank"
@@ -159,13 +439,6 @@ export default function Component() {
                   href="https://twitter.com/helldivers2"
                 >
                   <FaTwitter className="size-6" />
-                </a>
-                <a
-                  target="_blank"
-                  className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://discord.com/invite/Dm5JBDGUMF"
-                >
-                  <FaDiscord className="size-6" />
                 </a>
               </nav>
               <h5 className="  text-sm font-semibold uppercase  tracking-wide">
@@ -189,9 +462,9 @@ export default function Component() {
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://twitter.com/arrowheadgs"
+                  href="https://www.youtube.com/user/ArrowheadGameStudios"
                 >
-                  <FaTwitter className="size-6" />
+                  <FaYoutube className="size-6" />
                 </a>
                 <a
                   target="_blank"
@@ -203,9 +476,9 @@ export default function Component() {
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://www.youtube.com/user/ArrowheadGameStudios"
+                  href="https://twitter.com/arrowheadgs"
                 >
-                  <FaYoutube className="size-6" />
+                  <FaTwitter className="size-6" />
                 </a>
               </nav>
             </div>

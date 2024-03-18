@@ -35,7 +35,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={BodyFont.className}>
-      <Analytics />
       <body className="antialiased ">
         <ThemeProvider
           attribute="class"
@@ -48,8 +47,9 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <TailwindIndicator />
         </ThemeProvider>
+        <TailwindIndicator />
+        <Analytics />
       </body>
     </html>
   );

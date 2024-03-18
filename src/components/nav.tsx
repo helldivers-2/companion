@@ -18,6 +18,7 @@ import {
   LuNewspaper,
   LuShoppingBasket,
   LuRocket,
+  LuBox,
 } from "react-icons/lu";
 
 import { ThemeToggle } from "./theme-toggle";
@@ -68,6 +69,16 @@ export default function Navbar() {
                       >
                         <LuNewspaper className="mr-1 size-6 md:size-4" />
                         <span className=" text-center text-xs ">News</span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <Link href="/items" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuBox className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">all Items</span>
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>

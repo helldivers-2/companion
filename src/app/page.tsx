@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import PlanetsTable from "@/components/planetsTable";
-import { DataTableDemo } from "./events/data-table";
+import DataTablePlanets from "./events/data-table";
+import MessagesList from "@/components/currentMessages";
 
 import {
   Card,
@@ -23,31 +23,15 @@ export default function Home() {
         <CardTitle>Galaxy Status</CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <Card className="aspect-video">
+        <Card>
           <CardHeader>
-            <CardTitle>Major Order</CardTitle>
+            <CardTitle>Current Targets</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
-          </CardContent>
-        </Card>
-        <Card className="aspect-video">
-          <CardHeader>
-            <CardTitle>Recent News</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>Card Content</p>
+            <DataTablePlanets />
           </CardContent>
         </Card>
         <Card>
-          <CardHeader>
-            <CardTitle>Current Events</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <DataTableDemo />
-          </CardContent>
-        </Card>
-        <Card className="aspect-video">
           <CardHeader>
             <CardTitle>Galaxy Map</CardTitle>
           </CardHeader>
@@ -55,7 +39,22 @@ export default function Home() {
             <p>Card Content</p>
           </CardContent>
         </Card>
-        <PlanetsTable />
+        <Card>
+          <CardHeader>
+            <CardTitle>Major Orders</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <MessagesList />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent News</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p>Card Content</p>
+          </CardContent>
+        </Card>
       </CardContent>
     </Card>
   );

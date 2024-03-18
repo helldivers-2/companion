@@ -1,5 +1,8 @@
-import { DataTableDemo } from "./data-table";
+import DataTablePlanets from "./data-table";
 
 export default async function DemoPage() {
-  return <DataTableDemo />;
+  return <DataTablePlanets />;
+}
+{
+  /* Data Table mit Pagination und Sortieroption! */
 }
