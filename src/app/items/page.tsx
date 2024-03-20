@@ -9,24 +9,17 @@ import { DataTable } from "./components/data-table";
 
 import { taskSchema } from "./data/schema";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import Container from "@/components/containerCard";
 
 export const metadata: Metadata = {
-  title: "Tasks",
-  description: "A task and issue tracker build using Tanstack Table.",
+  title: "all Items",
+  description: "-",
 };
 
 // Simulate a database read for tasks.
 async function getTasks() {
   const data = await fs.readFile(
-    path.join(process.cwd(), "/src/app/items/data/tasks.json"),
+    path.join(process.cwd(), "/src/app/items/data/items2.json"),
   );
 
   const tasks = JSON.parse(data.toString());
@@ -34,17 +27,12 @@ async function getTasks() {
   return z.array(taskSchema).parse(tasks);
 }
 
-export default async function TaskPage() {
+export default async function AllItemsPage() {
   const tasks = await getTasks();
 
   return (
-    <Card className="border border-primary bg-muted">
-      <CardHeader>
-        <CardTitle>all items</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <DataTable data={tasks} columns={columns} />
-      </CardContent>
-    </Card>
+    <Container title="all items">
+      <DataTable data={tasks} columns={columns} />
+    </Container>
   );
 }

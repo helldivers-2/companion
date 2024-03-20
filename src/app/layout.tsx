@@ -43,7 +43,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="container flex flex-col px-4 py-12 md:min-h-screen md:px-8 md:py-20">
+          <main className="container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
             {children}
           </main>
           <Footer />

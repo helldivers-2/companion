@@ -2,15 +2,29 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Badge } from "@/components/ui/badge";
+import { LuInfo } from "react-icons/lu";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
-import { types, priorities, statuses } from "../data/data";
+import { Badge } from "@/components/ui/badge";
+import { types, passives } from "../data/data";
+
 import { Task } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
-export const columns: ColumnDef<Task>[] = [
-  {
+import { GiDwarfHelmet } from "react-icons/gi";
+import { FaH, FaL, FaM, FaS, FaA } from "react-icons/fa6";
+
+import { MdEngineering, MdMedicalServices } from "react-icons/md";
+import { GiAbdominalArmor } from "react-icons/gi";
+import { MdElectricalServices } from "react-icons/md";
+
+{
+  /*{
     accessorKey: "image",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Image" />
@@ -18,39 +32,121 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => <div className="w-[80px]">{row.getValue("image")}</div>,
     enableSorting: false,
     enableHiding: false,
-  },
+  }, */
+}
+
+export const columns: ColumnDef<Task>[] = [
   {
-    accessorKey: "id",
+    accessorKey: "name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
+    cell: ({ row }) => <div className="w-[80px]">{row.getValue("name")}</div>,
     enableHiding: false,
   },
   {
     accessorKey: "type",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Type" />
+      <div className="flex items-center">
+        <DataTableColumnHeader column={column} title="Type" />
+        <Popover>
+          <PopoverTrigger>
+            <LuInfo />
+          </PopoverTrigger>
+          <PopoverContent className="w-48">
+            <span className="flex items-baseline">
+              <FaH />
+              eavy Armor
+            </span>
+            <span className="flex items-baseline">
+              <FaM />
+              edium Armor
+            </span>
+            <span className="flex items-baseline">
+              <FaL />
+              ight Armor
+            </span>
+            <span className="flex items-baseline">
+              <GiDwarfHelmet className="mr-1" /> Helmet
+            </span>
+          </PopoverContent>
+        </Popover>
+      </div>
     ),
     cell: ({ row }) => {
-      const type = types.find((type) => type.value === row.original.label);
+      const type = types.find((type) => type.value === row.getValue("type"));
+
+      if (!type) {
+        return null;
+      }
 
       return (
-        <div className="flex space-x-2">
-          {type && <Badge variant="outline">{type.label}</Badge>}
-        </div>
+        <>
+          {type.icon && <type.icon className=" size-6 text-muted-foreground" />}
+        </>
       );
     },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+    enableHiding: false,
   },
   {
-    accessorKey: "description",
+    accessorKey: "passive",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Description" />
+      <div className="flex items-center">
+        <DataTableColumnHeader column={column} title="Passive" />
+        <Popover>
+          <PopoverTrigger>
+            <LuInfo />
+          </PopoverTrigger>
+          <PopoverContent className="w-48">
+            <span>
+              <FaS />
+              Buff 1
+            </span>
+            <span>
+              <FaA />
+              Buff 2
+            </span>
+            <span>
+              <MdEngineering />
+              Buff 3
+            </span>
+            <span>
+              <MdMedicalServices />
+              Buff 4
+            </span>
+            <span>
+              <GiAbdominalArmor />
+              Buff 5
+            </span>
+            <span>
+              <MdElectricalServices /> Buff 6
+            </span>
+          </PopoverContent>
+        </Popover>
+      </div>
     ),
-    cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("description")}</div>
-    ),
-    enableSorting: false,
+    cell: ({ row }) => {
+      const type = passives.find(
+        (type) => type.value === row.getValue("passive"),
+      );
+
+      if (!type) {
+        return null;
+      }
+
+      return (
+        <>
+          {type.icon && <type.icon className=" size-6 text-muted-foreground" />}
+        </>
+      );
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id));
+    },
+    enableHiding: false,
   },
   {
     accessorKey: "armorrating",
@@ -76,16 +172,6 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => (
       <div className="w-[80px]">{row.getValue("staminaregen")}</div>
     ),
-  },
-  {
-    accessorKey: "passive",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Passive" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("passive")}</div>
-    ),
-    enableSorting: false,
   },
   {
     id: "actions",

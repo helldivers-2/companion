@@ -27,7 +27,11 @@ const MessagesList = () => {
   }, []);
 
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion
+      type="single"
+      collapsible
+      className="w-full rounded bg-background"
+    >
       {messages.length === 0 ? (
         <p className="py-4 font-medium">Currently no orders</p>
       ) : (

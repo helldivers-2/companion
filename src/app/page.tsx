@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DataTablePlanets from "./events/data-table";
+import TargetsTableComponent from "./events/data-table-component";
 import MessagesList from "@/components/currentMessages";
 
 import {
@@ -22,13 +22,13 @@ export default function Home() {
       <CardHeader>
         <CardTitle>Galaxy Status</CardTitle>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Current Targets</CardTitle>
           </CardHeader>
           <CardContent>
-            <DataTablePlanets />
+            <TargetsTableComponent />
           </CardContent>
         </Card>
         <Card>
@@ -52,7 +52,7 @@ export default function Home() {
             <CardTitle>Recent News</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <p>Newest Blog entry (visit overview to see all button)</p>
           </CardContent>
         </Card>
       </CardContent>

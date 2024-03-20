@@ -52,7 +52,7 @@ export default function Navbar() {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                  <NavigationMenuItem>
+                  {/*<NavigationMenuItem>
                     <Link href="/shop" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
@@ -61,7 +61,7 @@ export default function Navbar() {
                         <span className="text-center text-xs">Item Shop</span>
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>
+                  </NavigationMenuItem>*/}
                   <NavigationMenuItem>
                     <Link href="/news" legacyBehavior passHref>
                       <NavigationMenuLink

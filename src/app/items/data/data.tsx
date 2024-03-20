@@ -1,92 +1,62 @@
-import {
-  ArrowDownIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
-  CheckCircledIcon,
-  CircleIcon,
-  CrossCircledIcon,
-  QuestionMarkCircledIcon,
-  StopwatchIcon,
-} from "@radix-ui/react-icons";
+import { GiDwarfHelmet } from "react-icons/gi";
+import { FaH, FaL, FaM, FaS, FaA } from "react-icons/fa6";
+
+import { MdEngineering, MdMedicalServices } from "react-icons/md";
+import { GiAbdominalArmor } from "react-icons/gi";
+import { MdElectricalServices } from "react-icons/md";
 
 export const types = [
   {
-    value: "bug",
-    label: "Bug",
+    value: "Heavy Armor",
+    label: "Heavy Armor",
+    icon: FaH,
   },
   {
-    value: "feature",
-    label: "Feature",
+    value: "Medium Armor",
+    label: "Medium Armor",
+    icon: FaM,
   },
   {
-    value: "documentation",
-    label: "Documentation",
-  },
-];
-
-{
-  /*
-{
-  value: "Heavy Armor",
-  label: "Heavy Armor",
-},
-{
-  value: "Medium Armor",
-  label: "Medium Armor",
-},
-{
-  value: "Light Armor",
-  label: "Light Armor",
-},
-{
-  value: "Helm",
-  label: "Helm",
-},
-*/
-}
-
-export const statuses = [
-  {
-    value: "backlog",
-    label: "Backlog",
-    icon: QuestionMarkCircledIcon,
+    value: "Light Armor",
+    label: "Light Armor",
+    icon: FaL,
   },
   {
-    value: "todo",
-    label: "Todo",
-    icon: CircleIcon,
-  },
-  {
-    value: "in progress",
-    label: "In Progress",
-    icon: StopwatchIcon,
-  },
-  {
-    value: "done",
-    label: "Done",
-    icon: CheckCircledIcon,
-  },
-  {
-    value: "canceled",
-    label: "Canceled",
-    icon: CrossCircledIcon,
+    value: "Helm",
+    label: "Helm",
+    icon: GiDwarfHelmet,
   },
 ];
 
-export const priorities = [
+export const passives = [
   {
-    label: "Low",
-    value: "low",
-    icon: ArrowDownIcon,
+    value: "ENGINEERING KIT",
+    label: "Heavy Armor",
+    icon: MdEngineering,
   },
   {
-    label: "Medium",
-    value: "medium",
-    icon: ArrowRightIcon,
+    value: "STANDARD ISSUE",
+    label: "Medium Armor",
+    icon: FaS,
   },
   {
-    label: "High",
-    value: "high",
-    icon: ArrowUpIcon,
+    value: "MED-KIT",
+    label: "Light Armor",
+    icon: MdMedicalServices,
+  },
+  {
+    value: "SERVO-ASSISTED",
+    label: "Helm",
+    icon: FaA,
+  },
+  {
+    value: "FORTIFIED",
+    label: "Helm",
+    icon: GiAbdominalArmor,
+  },
+  {
+    value: "ELECTRICAL CONDUIT",
+    label: "Helm",
+    icon: MdElectricalServices,
   },
 ];
