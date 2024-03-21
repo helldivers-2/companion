@@ -37,11 +37,27 @@ import { MdElectricalServices } from "react-icons/md";
 
 export const columns: ColumnDef<Task>[] = [
   {
+    accessorKey: "image",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Image" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[80px]">
+        <img
+          className="max-h-20 w-[80px] object-cover"
+          alt={row.getValue("image")}
+          src={`/items/${row.getValue("image")}`}
+        />
+      </div>
+    ), //{row.getValue("image")}</div>,
+    enableHiding: false,
+  },
+  {
     accessorKey: "name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("name")}</div>,
+    cell: ({ row }) => <div className="w-[150px]">{row.getValue("name")}</div>,
     enableHiding: false,
   },
   {
@@ -139,7 +155,7 @@ export const columns: ColumnDef<Task>[] = [
 
       return (
         <>
-          {type.icon && <type.icon className=" size-6 text-muted-foreground" />}
+          {type.icon && <type.icon className="size-6 text-muted-foreground" />}
         </>
       );
     },
@@ -154,7 +170,7 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Armor Rating" />
     ),
     cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("armorrating")}</div>
+      <div className="w-[80px] text-center">{row.getValue("armorrating")}</div>
     ),
   },
   {
@@ -162,7 +178,9 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Speed" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("speed")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[80px] text-center">{row.getValue("speed")}</div>
+    ),
   },
   {
     accessorKey: "staminaregen",
@@ -170,11 +188,19 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Stamina Regen" />
     ),
     cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("staminaregen")}</div>
+      <div className="w-[80px] text-center">{row.getValue("staminaregen")}</div>
     ),
   },
   {
-    id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    accessorKey: "cost",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Cost" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[80px] text-center">
+        {row.getValue("cost") !== undefined ? row.getValue("cost") : "-"}
+      </div>
+    ),
+    enableHiding: false,
   },
 ];

@@ -7,11 +7,11 @@ export const taskSchema = z.object({
   name: z.string(),
   type: z.string(),
   description: z.string(),
-  armorrating: z.string(),
-  speed: z.string(),
-  staminaregen: z.string(),
+  armorrating: z.number(),
+  speed: z.number(),
+  staminaregen: z.number(),
   passive: z.string(),
-  passivedesc: z.string()
+  cost: z.number().optional(),
 })
 
 export type Task = z.infer<typeof taskSchema>
