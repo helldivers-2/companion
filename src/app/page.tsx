@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import TargetsTableComponent from "./events/data-table-component";
 import MessagesList from "@/components/currentMessages";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import Container from "@/components/containerCard";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: "Status - Helldivers Info",
@@ -17,15 +14,21 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("@/components/map"), {
+        loading: () => <p>(pulsing animated square)</p>,
+        ssr: false,
+      }),
+    [],
+  );
+
   return (
-    <Card className="border border-primary bg-muted">
-      <CardHeader>
-        <CardTitle>Galaxy Status</CardTitle>
-      </CardHeader>
-      <CardContent className="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <Container title="Galaxy Status">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Current Targets</CardTitle>
+            <CardTitle>Targets</CardTitle>
           </CardHeader>
           <CardContent>
             <TargetsTableComponent />
@@ -33,13 +36,13 @@ export default function Home() {
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Galaxy Map</CardTitle>
+            <CardTitle>Map</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <Map />
           </CardContent>
         </Card>
-        <Card>
+        {/*<Card>
           <CardHeader>
             <CardTitle>Major Orders</CardTitle>
           </CardHeader>
@@ -54,8 +57,8 @@ export default function Home() {
           <CardContent>
             <p>Newest Blog entry (visit overview to see all button)</p>
           </CardContent>
-        </Card>
-      </CardContent>
-    </Card>
+        </Card>*/}
+      </div>
+    </Container>
   );
 }

@@ -61,7 +61,7 @@ export default function Navbar() {
                         <span className="text-center text-xs">Item Shop</span>
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>*/}
+                  </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Link href="/news" legacyBehavior passHref>
                       <NavigationMenuLink
@@ -71,7 +71,7 @@ export default function Navbar() {
                         <span className=" text-center text-xs ">News</span>
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>
+                  </NavigationMenuItem>*/}
                   <NavigationMenuItem>
                     <Link href="/items" legacyBehavior passHref>
                       <NavigationMenuLink

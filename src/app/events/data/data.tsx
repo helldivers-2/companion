@@ -3,8 +3,8 @@ import { IoIosMan } from "react-icons/io";
 
 export const species = [
   {
-    value: "Human",
-    label: "Human",
+    value: "Humans",
+    label: "Humans",
     icon: IoIosMan,
   },
   {

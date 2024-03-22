@@ -43,7 +43,9 @@ const TargetsTableComponent = () => {
           }),
         );
         const filteredPlanets = flattenedPlanets.filter(
-          (planet: { players: number }) => planet.players > 5000,
+          (planet: { players: number; liberation: number }) => {
+            return planet.players > 5000 && planet.liberation !== 100;
+          },
         );
         setPlanets(filteredPlanets);
       } catch (error) {
@@ -72,7 +74,7 @@ const TargetsTableComponent = () => {
         {calculateTotalPlayers()} People on {planets.length} planets
         <a href="https://github.com/dealloc/helldivers2-api">Source</a>
       </div>
-      <DataTable data={planets} columns={columns} />{" "}
+      <DataTable data={planets} columns={columns} />
     </>
   );
 };

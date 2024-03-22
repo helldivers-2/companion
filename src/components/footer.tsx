@@ -55,22 +55,6 @@ export default function Component() {
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/shop"
-                    >
-                      Item Shop
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground transition hover:text-foreground"
-                      href="/news"
-                    >
-                      News
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
                       href="/items"
                     >
                       all Items
@@ -82,6 +66,38 @@ export default function Component() {
                       href="/faq"
                     >
                       FAQ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
+                      href="/shop"
+                    >
+                      Item Shop (available soon)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
+                      href="/map"
+                    >
+                      Map (available soon)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/news"
+                    >
+                      News (available soon)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/messages"
+                    >
+                      Major Orders (available soon)
                     </Link>
                   </li>
                 </ul>

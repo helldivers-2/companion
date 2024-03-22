@@ -14,14 +14,13 @@ export const metadata: Metadata = {
   description: "-",
 };
 
+import Container from "@/components/containerCard";
+
 export default function ShopPage() {
   return (
-    <Card className="border border-primary bg-muted">
-      <CardHeader>
-        <CardTitle>Shop</CardTitle>
-        <CardDescription>Updates in:</CardDescription>
-      </CardHeader>
-      <CardContent className="grid grid-cols-3 grid-rows-2 gap-4">
+    <Container title="Shop">
+      <CardDescription>Updates in:</CardDescription>
+      <div className="grid grid-cols-3 grid-rows-2 gap-4">
         <Card className="row-span-2 aspect-square">
           <CardHeader>
             <CardTitle>1</CardTitle>
@@ -54,7 +53,7 @@ export default function ShopPage() {
             <p>Card Content</p>
           </CardContent>
         </Card>
-      </CardContent>
-    </Card>
+      </div>
+    </Container>
   );
 }
