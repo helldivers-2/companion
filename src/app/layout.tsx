@@ -15,7 +15,7 @@ const BodyFont = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
+  metadataBase: new URL(`https://helldivers.vercel.app/`),
   title: {
     default: "Helldivers Info",
     template: "%s | Helldivers Info",
@@ -25,6 +25,25 @@ export const metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Helldivers.info",
+    description: "Relevant information for the democratic game Helldivers 2.",
+    url: "https://helldivers.vercel.app/",
+    siteName: "Helldivers.info",
+    locale: "en_US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

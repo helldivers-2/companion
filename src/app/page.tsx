@@ -11,7 +11,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Status - Helldivers Info",
-  description: "-",
 };
 
 export default function Home() {

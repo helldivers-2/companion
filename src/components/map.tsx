@@ -120,7 +120,8 @@ export default function MyMap() {
             <p>Name: {planet.planet.name}</p>
             <p>Players: {planet.players}</p>
             <p>
-              Liberation: <Progress value={planet.liberation} />
+              {Math.round(planet.liberation)}% Liberation
+              <Progress value={planet.liberation} />
             </p>
           </Popup>
         </CircleMarker>
@@ -137,7 +138,6 @@ export default function MyMap() {
       minZoom={7}
       boxZoom={false}
       doubleClickZoom={false}
-      dragging={false}
       keyboard={false}
       scrollWheelZoom={false}
       touchZoom={false}
@@ -150,15 +150,4 @@ export default function MyMap() {
       {renderPlanetMarkers()}
     </MapContainer>
   );
-}
-
-{
-  /*      maxZoom={9}
-      minZoom={7}
-      boxZoom={false}
-      doubleClickZoom={false}
-      dragging={false}
-      keyboard={false}
-      scrollWheelZoom={false}
-      touchZoom={false} */
 }

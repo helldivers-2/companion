@@ -13,8 +13,5 @@ const TargetsPage = () => {
     </Container>
   );
 };
-{
-  /* Data Table mit Pagination und Sortieroption! */
-}
 
 export default TargetsPage;

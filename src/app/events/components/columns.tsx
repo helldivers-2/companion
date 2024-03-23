@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 
 import { species } from "../data/data";
 import { Target } from "../data/schema";
@@ -28,14 +29,17 @@ export const columns: ColumnDef<Target>[] = [
     ),
     enableHiding: false,
   },
-
   {
     accessorKey: "liberation",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Liberation" />
     ),
     cell: ({ row }) => (
-      <Progress className="w-[80px]" value={row.getValue("liberation")} />
+      <div className="flex w-[100px] items-center">
+        <Badge className="mr-1">
+          {Math.round(row.getValue("liberation"))}%
+        </Badge>
+      </div>
     ),
   },
   {

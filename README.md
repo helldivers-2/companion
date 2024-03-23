@@ -31,6 +31,6 @@ If you encounter any issues while using the Helldivers.info website or have sugg
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for your own purposes, but please attribute the original authors and include the license file when distributing your changes.
+This project is licensed under the [Unlicense license](LICENSE). Feel free to use and modify the code for your own purposes, but please attribute the original authors and include the license file when distributing your changes.
 
 Thank you for visiting Helldivers.info and supporting the Helldivers community!
