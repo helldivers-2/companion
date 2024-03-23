@@ -56,10 +56,6 @@ const TargetsTableComponent = () => {
     fetchPlanets();
   }, []);
 
-  const formatLiberation = (liberation: number) => {
-    return liberation.toFixed(1); // Rounds to one decimal place
-  };
-
   const calculateTotalPlayers = () => {
     let totalPlayers = 0;
     planets.forEach((planet) => {

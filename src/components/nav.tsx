@@ -25,7 +25,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 export default function Navbar() {
   return (
-    <header className="sticky left-0 top-0 z-10">
+    <header className="sticky left-0 top-0 z-[1500]">
       <div className="mx-4 pt-4">
         <div className="w-full rounded-lg bg-background">
           <nav className="h-fit rounded-lg border border-primary bg-[#facc15] bg-opacity-20">

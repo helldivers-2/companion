@@ -71,17 +71,17 @@ export default function Component() {
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/shop"
+                      href="/map"
                     >
-                      Item Shop (available soon)
+                      Map
                     </Link>
                   </li>
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/map"
+                      href="/shop"
                     >
-                      Map (available soon)
+                      Item Shop (available soon)
                     </Link>
                   </li>
                   <li>

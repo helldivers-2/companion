@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Container from "@/components/containerCard";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Status - Helldivers Info",
@@ -17,7 +18,7 @@ export default function Home() {
   const Map = useMemo(
     () =>
       dynamic(() => import("@/components/map"), {
-        loading: () => <p>(pulsing animated square)</p>,
+        loading: () => <Skeleton className="aspect-video rounded-lg border" />,
         ssr: false,
       }),
     [],

@@ -4,12 +4,13 @@ import React from "react";
 import Container from "@/components/containerCard";
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function MapPage() {
   const Map = useMemo(
     () =>
       dynamic(() => import("@/components/map"), {
-        loading: () => <p>(pulsing animated square)</p>,
+        loading: () => <Skeleton className="aspect-video rounded-lg border" />,
         ssr: false,
       }),
     [],

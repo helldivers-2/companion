@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Helldivers.info
 
-## Getting Started
+Welcome to the Helldivers.info repository! This Next.js website provides comprehensive information for the game Helldivers 2 through APIs and ways. Below you'll find an overview of the features and pages available on this site.
 
-First, run the development server:
+## Features and Pages
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Current Targets:** Join the fight to defend Super Earth.
+- **Galaxy Map:** Plan your deployments.
+- **All Items Database:** Comprehensive item database.
+- **FAQ:** Find answers to common questions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### available soon:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Item Shop:** Explore the latest items available.
+- **News:** Stay updated with game announcements.
+- **Major Orders:** Participate in ongoing battles.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contributing
 
-## Learn More
+We welcome contributions from the Helldivers community to help improve and expand the content available on this website. If you'd like to contribute, please follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and ensure they adhere to our coding standards.
+4. Test your changes thoroughly.
+5. Submit a pull request detailing the changes you've made.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Feedback and Support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you encounter any issues while using the Helldivers.info website or have suggestions for improvements, please don't hesitate to open an issue on this repository. We appreciate your feedback and are committed to providing a great user experience for all Helldivers players.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is licensed under the [MIT License](LICENSE). Feel free to use and modify the code for your own purposes, but please attribute the original authors and include the license file when distributing your changes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for visiting Helldivers.info and supporting the Helldivers community!
