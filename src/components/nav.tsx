@@ -61,16 +61,6 @@ export default function Navbar() {
                         <span className="text-center text-xs">Item Shop</span>
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/news" legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        <LuNewspaper className="mr-1 size-6 md:size-4" />
-                        <span className=" text-center text-xs ">News</span>
-                      </NavigationMenuLink>
-                    </Link>
                   </NavigationMenuItem>*/}
                   <NavigationMenuItem>
                     <Link href="/items" legacyBehavior passHref>

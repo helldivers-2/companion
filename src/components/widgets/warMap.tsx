@@ -10,9 +10,8 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
-import axios from "axios";
-
-import { Progress } from "./ui/progress";
+import { fetchPlanetsData } from "@/lib/axiosPlanetsData"; // Import the fetchPlanetsData function
+import { Progress } from "../ui/progress";
 
 interface Planet {
   players: number;
@@ -31,46 +30,11 @@ export default function MyMap() {
   const [planets, setPlanets] = useState<Planet[]>([]);
 
   useEffect(() => {
-    const fetchPlanetsData = async () => {
-      try {
-        const response = await axios.get(
-          "https://helldivers-2.fly.dev/api/801/status",
-        );
-
-        const flattenedPlanets = response.data.planet_status.map(
-          ({
-            players,
-            liberation,
-            planet,
-          }: {
-            players: number;
-            liberation: number;
-            planet: {
-              position: { x: number; y: number };
-              name: string;
-              initial_owner: string;
-            };
-          }) => ({
-            players,
-            liberation,
-            planet: {
-              name: planet.name,
-              initial_owner: planet.initial_owner,
-              position: { x: planet.position.x, y: planet.position.y },
-            },
-          }),
-        );
-        const filteredPlanets = flattenedPlanets.filter(
-          (planet: { players: number; liberation: number }) => {
-            return planet.players > 2000 && planet.liberation !== 100;
-          },
-        );
-        setPlanets(filteredPlanets);
-      } catch (error) {
-        console.error("Error fetching planets:", error);
-      }
+    const fetchData = async () => {
+      const planetsData = await fetchPlanetsData(); // Call the fetchPlanetsData function
+      setPlanets(planetsData);
     };
-    fetchPlanetsData();
+    fetchData();
   }, []);
 
   // Define the angle offset in degrees
@@ -111,7 +75,7 @@ export default function MyMap() {
             newX / -100, // Divide by 100 if necessary
             newY / 100, // Divide by 100 if necessary
           ]}
-          radius={5}
+          radius={7.5}
           fillColor={fillColor}
           color={color}
           weight={1}
@@ -131,7 +95,7 @@ export default function MyMap() {
 
   return (
     <MapContainer
-      className="aspect-video rounded-lg border"
+      className="aspect-square rounded-lg border md:aspect-video"
       center={[0, 0]}
       zoom={8}
       maxZoom={9}
@@ -146,6 +110,7 @@ export default function MyMap() {
       <ImageOverlay
         url="/sectormap.webp"
         bounds={new LatLngBounds([-1, -1], [1, 1])}
+        opacity={0.5}
       />
       {renderPlanetMarkers()}
     </MapContainer>

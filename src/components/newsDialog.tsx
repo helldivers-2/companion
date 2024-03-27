@@ -15,15 +15,13 @@ interface InfoDialogProps {
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-export function InfoDialog({ title, children }: InfoDialogProps) {
+export function NewsDialog({ title, children }: InfoDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="p-0 text-base text-muted-foreground" variant="link">
-          {title}
-        </Button>
+        <Button variant="outline">{title}</Button>
       </DialogTrigger>
-      <DialogContent className="z-[1500] h-[66vmin] sm:max-w-[425px] lg:max-w-screen-md">
+      <DialogContent className="z-[1500] h-[80vmax] max-w-[425px] md:h-[66vmin] lg:max-w-screen-md">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

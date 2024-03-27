@@ -20,16 +20,6 @@ export const columns: ColumnDef<Target>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "players",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Player Count" />
-    ),
-    cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("players")}</div>
-    ),
-    enableHiding: false,
-  },
-  {
     accessorKey: "liberation",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Liberation" />
@@ -41,6 +31,16 @@ export const columns: ColumnDef<Target>[] = [
         </Badge>
       </div>
     ),
+  },
+  {
+    accessorKey: "players",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Player Count" />
+    ),
+    cell: ({ row }) => (
+      <div className="w-[80px]">{row.getValue("players")}</div>
+    ),
+    enableHiding: false,
   },
   {
     accessorKey: "initial_owner",

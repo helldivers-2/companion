@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import TargetsTableComponent from "./events/data-table-component";
-import MessagesList from "@/components/currentMessages";
 import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
 import Container from "@/components/containerCard";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+
+import TargetsTableComponent from "./events/data-table-component";
+import MajorOrder from "@/components/widgets/latestOrder";
+import StatsWidget from "@/components/widgets/globalStats";
+import PatchNotes from "@/components/widgets/patchNotes";
 
 export const metadata: Metadata = {
   title: "Status - Helldivers Info",
@@ -16,7 +18,7 @@ export const metadata: Metadata = {
 export default function Home() {
   const Map = useMemo(
     () =>
-      dynamic(() => import("@/components/map"), {
+      dynamic(() => import("@/components/widgets/warMap"), {
         loading: () => <Skeleton className="aspect-video rounded-lg border" />,
         ssr: false,
       }),
@@ -26,6 +28,14 @@ export default function Home() {
   return (
     <Container title="Galaxy Status">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <Card className="col-span-1 md:col-span-2">
+          <CardHeader>
+            <CardTitle>latest Major Order</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <MajorOrder />
+          </CardContent>
+        </Card>
         <Card>
           <CardHeader>
             <CardTitle>Targets</CardTitle>
@@ -42,22 +52,22 @@ export default function Home() {
             <Map />
           </CardContent>
         </Card>
-        {/*<Card>
+        <Card>
           <CardHeader>
-            <CardTitle>Major Orders</CardTitle>
+            <CardTitle>recent Updates</CardTitle>
           </CardHeader>
           <CardContent>
-            <MessagesList />
+            <PatchNotes />
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Recent News</CardTitle>
+            <CardTitle>Galaxy Stats</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Newest Blog entry (visit overview to see all button)</p>
+            <StatsWidget />
           </CardContent>
-        </Card>*/}
+        </Card>
       </div>
     </Container>
   );

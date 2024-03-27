@@ -71,33 +71,9 @@ export default function Component() {
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/map"
-                    >
-                      Map
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
                       href="/shop"
                     >
                       Item Shop (available soon)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground transition hover:text-foreground"
-                      href="/news"
-                    >
-                      News (available soon)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground transition hover:text-foreground"
-                      href="/messages"
-                    >
-                      Major Orders (available soon)
                     </Link>
                   </li>
                 </ul>
@@ -105,10 +81,19 @@ export default function Component() {
             </div>
             <div>
               <h5 className="  text-sm font-semibold uppercase  tracking-wide">
-                Legal Stuff
+                Resources
               </h5>
               <nav className="mt-4 ">
                 <ul>
+                  <li>
+                    <a
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="https://github.com/Mixhi1845/helldivers.info"
+                      target="_blank"
+                    >
+                      Github Source Code
+                    </a>
+                  </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
                     <InfoDialog title="Privacy Policy">
                       <p>
