@@ -226,48 +226,59 @@ export default function Component() {
                         Through our platform, you can access a wide range of
                         real-time data, including:
                       </p>
-                      <ul>
-                        <li>Player profiles and statistics</li>
-                        <li>Leaderboards and rankings</li>
-                        <li>Current in-game events and challenges</li>
-                        <li>Weapon and equipment stats</li>
-                        <li>And much more!</li>
-                      </ul>
+
+                      <li>Player profiles and statistics</li>
+                      <li>Leaderboards and rankings</li>
+                      <li>Current in-game events and challenges</li>
+                      <li>Weapon and equipment stats</li>
+                      <li>And much more!</li>
+
                       <br />
-                      <h2 className="font-bold">Why Choose Us?</h2>
-                      <p>
-                        With helldivers.info, you can trust that you&apos;re
-                        getting accurate and reliable information straight from
-                        the source. Our team is dedicated to maintaining the
-                        integrity of the data we provide and ensuring that our
-                        platform remains user-friendly and accessible to all
-                        players.
-                      </p>
-                      <br />
-                      <h2 className="font-bold">Contact Us</h2>
-                      <p>
-                        If you have any questions, feedback, or suggestions for
-                        improvement, we&apos;d love to hear from you! Please
-                        don&apos;t hesitate to reach out to us at{" "}
-                        <a
-                          className="underline"
-                          href="mailto:contact@helldivers.info"
-                        >
-                          contact@helldivers.info
-                        </a>
-                        .
-                      </p>
-                      <br />
-                      <p>
-                        Thank you for choosing helldivers.info as your trusted
-                        resource for Helldivers API data. Happy gaming!
-                      </p>
-                      <br />
-                      <p>
-                        Sincerely,
-                        <br />
-                        The helldivers.info Team
-                      </p>
+                      <div className="grid grid-cols-1 md:grid-cols-2">
+                        <div>
+                          <h2 className="font-bold">Why Choose Us?</h2>
+                          <p>
+                            With helldivers.info, you can trust that you&apos;re
+                            getting accurate and reliable information straight
+                            from the source. Our team is dedicated to
+                            maintaining the integrity of the data we provide and
+                            ensuring that our platform remains user-friendly and
+                            accessible to all players.
+                          </p>
+                          <br />
+                          <h2 className="font-bold">Contact Us</h2>
+                          <p>
+                            If you have any questions, feedback, or suggestions
+                            for improvement, we&apos;d love to hear from you!
+                            Please don&apos;t hesitate to reach out to us at{" "}
+                            <a
+                              className="underline"
+                              href="mailto:contact@helldivers.info"
+                            >
+                              contact@helldivers.info
+                            </a>
+                            .
+                          </p>
+                          <br />
+                          <p>
+                            Thank you for choosing helldivers.info as your
+                            trusted resource for Helldivers API data. Happy
+                            gaming!
+                          </p>
+                          <br />
+                          <p>
+                            Sincerely,
+                            <br />
+                            The helldivers.info Team
+                          </p>
+                        </div>
+
+                        <img
+                          className="w-full rounded-lg border"
+                          src="/helldivers.webp"
+                          alt="fan-made poster"
+                        />
+                      </div>
                     </InfoDialog>
                   </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">

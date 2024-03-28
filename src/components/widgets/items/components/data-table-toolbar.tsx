@@ -5,7 +5,7 @@ import { Table } from "@tanstack/react-table";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DataTableViewOptions } from "@/app/items/components/data-table-view-options";
+import { DataTableViewOptions } from "@/components/widgets/items/components/data-table-view-options";
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>;

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import dynamic from "next/dynamic";
 
 import Container from "@/components/containerCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import TargetsTableComponent from "./events/data-table-component";
+import TargetsTableComponent from "@/components/widgets/targets/currentTargets";
 import MajorOrder from "@/components/widgets/latestOrder";
 import StatsWidget from "@/components/widgets/globalStats";
 import PatchNotes from "@/components/widgets/patchNotes";
@@ -19,7 +19,9 @@ export default function Home() {
   const Map = useMemo(
     () =>
       dynamic(() => import("@/components/widgets/warMap"), {
-        loading: () => <Skeleton className="aspect-video rounded-lg border" />,
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
+        ),
         ssr: false,
       }),
     [],
@@ -33,7 +35,13 @@ export default function Home() {
             <CardTitle>latest Major Order</CardTitle>
           </CardHeader>
           <CardContent>
-            <MajorOrder />
+            <Suspense
+              fallback={
+                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted  md:aspect-auto md:h-[144px]" />
+              }
+            >
+              <MajorOrder />
+            </Suspense>
           </CardContent>
         </Card>
         <Card>
@@ -49,7 +57,9 @@ export default function Home() {
             <CardTitle>Map</CardTitle>
           </CardHeader>
           <CardContent>
-            <Map />
+            <Suspense fallback={<Skeleton className="" />}>
+              <Map />
+            </Suspense>
           </CardContent>
         </Card>
         <Card>
@@ -57,7 +67,13 @@ export default function Home() {
             <CardTitle>recent Updates</CardTitle>
           </CardHeader>
           <CardContent>
-            <PatchNotes />
+            <Suspense
+              fallback={
+                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
+              }
+            >
+              <PatchNotes />
+            </Suspense>
           </CardContent>
         </Card>
         <Card>
@@ -65,7 +81,13 @@ export default function Home() {
             <CardTitle>Galaxy Stats</CardTitle>
           </CardHeader>
           <CardContent>
-            <StatsWidget />
+            <Suspense
+              fallback={
+                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
+              }
+            >
+              <StatsWidget />
+            </Suspense>
           </CardContent>
         </Card>
       </div>

@@ -57,12 +57,12 @@ export default function MyMap() {
       let fillColor = "gray";
       let color = "gray";
 
-      if (planet.liberation < 10) {
+      if (planet.liberation < 30) {
         fillColor = "red";
-        color = "yellow";
+        color = "";
       } else if (planet.liberation < 100) {
         fillColor = "red";
-        color = "red";
+        color = "yellow";
       } else {
         fillColor = "green";
         color = "green";
