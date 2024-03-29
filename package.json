@@ -30,6 +30,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
+    "cookies-next": "^4.1.1",
     "geist": "^1.2.2",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.358.0",

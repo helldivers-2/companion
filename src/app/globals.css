@@ -11,6 +11,41 @@ html {
   min-width: 360px;
 }
 
+.website {
+  display: block;
+}
+
+.pwa {
+  display: none;
+}
+
+/* Media query to show/hide the content based on standalone mode */
+@media (display-mode: standalone) {
+  .website {
+    display: none; /* Hide the content when in standalone mode */
+  }
+
+  .layoutchildren {
+    margin-bottom: 0rem;
+  }
+
+  .pwa {
+    display: block;
+  }
+
+  @media (max-width: 630px) {
+    .layoutchildren {
+      margin-bottom: 5rem;
+    }
+  }
+}
+
+@media not all and (display-mode: standalone) {
+  .pwa {
+    display: none;
+  }
+}
+
 .prose .anchor {
   @apply invisible absolute no-underline;
 

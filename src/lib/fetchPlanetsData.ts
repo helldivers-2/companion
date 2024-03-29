@@ -18,6 +18,11 @@ export async function officialStatsAPI(){
   return res.json()
 }
 
+export async function officialLeaderboardAPI(){
+  const res = await fetch("https://api.live.prod.thehelldiversgame.com/api/LeaderBoard/HotF/v2/Player/801")
+  return res.json()
+}
+
 export async function steamNewsAPI(){
   const res = await fetch("https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=553850&count=100")
   return res.json()

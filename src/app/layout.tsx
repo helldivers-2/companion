@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -69,7 +68,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
+          <main className="layoutchildren container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
             {children}
           </main>
           <AppDownload />

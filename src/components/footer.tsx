@@ -19,7 +19,7 @@ import {
 
 export default function Component() {
   return (
-    <div>
+    <div className="website">
       <Separator />
       <footer className="py-8 ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,6 +66,14 @@ export default function Component() {
                       href="/faq"
                     >
                       FAQ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/leaderboard"
+                    >
+                      Leaderboard
                     </Link>
                   </li>
                   <li>

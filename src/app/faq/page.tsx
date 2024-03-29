@@ -12,7 +12,6 @@ import Container from "@/components/containerCard";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "-",
 };
 
 export default function FAQPage() {
