@@ -7,9 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function LeaderboardPage() {
-  return (
-    <Container title="Leaderboard">
-      <Leaderboard />
-    </Container>
-  );
+  return <Leaderboard />;
 }

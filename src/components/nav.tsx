@@ -51,9 +51,7 @@ export default function Navbar() {
                     className="mr-2 size-6"
                     alt="Logo"
                   />
-                  <span className="flex text-xl font-bold">
-                    HELLDIVERS Info
-                  </span>
+                  <span className="flex text-xl font-bold">Hellbud</span>
                 </Link>
                 <div className="website block md:hidden">
                   <ThemeToggle />

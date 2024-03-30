@@ -21,7 +21,8 @@ export const metadata = {
     default: "Helldivers Info",
     template: "%s | Helldivers Info",
   },
-  description: "Relevant information for the democratic game Helldivers 2.",
+  description:
+    "Dive into Hellbud, your comprehensive companion for Helldivers 2. Explore current targets, plan deployments on the galaxy map, and access a vast item database and see the item shop. Stay updated with patch notes, participate in major orders, and engage with the community.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/icons/favicon-16x16.png",

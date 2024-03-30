@@ -25,7 +25,7 @@ export default async function MajorOrder() {
   return (
     <div className="w-full bg-background">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        <div className="col-span-1  rounded-r-lg border p-4 md:col-span-2">
+        <div className="col-span-1 rounded-lg border p-4 md:col-span-2">
           <p>
             <span className="font-bold text-primary">
               {order.warSeason.assignment.setting.overrideBrief}

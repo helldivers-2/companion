@@ -1,6 +1,8 @@
-# Hellbud - Helldivers Companion
+# Hellbud - a Helldivers 2 Companion
 
-Welcome to the Hellbud repository! This Next.js website provides comprehensive information for the game Helldivers 2 through APIs and ways. Below you'll find an overview of the features and pages available on this site.
+Welcome to the Hellbud repository! This Next.js website provides comprehensive information for the game Helldivers 2 through APIs. Below you'll find an overview of the features and pages available on this site.
+
+<img src="https://github.com/helldivers-2/companion/blob/master/public/mockup.webp?raw=true" alt="Hero Section Image of the Repo. Hellbud - Helldivers 2 Companion" width="1000" height="667">
 
 ## Features and Pages
 

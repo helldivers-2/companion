@@ -42,7 +42,7 @@ export default async function Leaderboard() {
   const scores = await officialLeaderboardAPI();
 
   return (
-    <Card className="w-full">
+    <Card className="w-full border border-primary bg-muted">
       <CardHeader className="flex flex-col gap-1.5 md:flex-row md:items-center md:gap-4">
         <div className="grid gap-1.5">
           <CardTitle>Leaderboard</CardTitle>
@@ -52,11 +52,11 @@ export default async function Leaderboard() {
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="p-0">
-        <div className="overflow-hidden rounded-lg border">
+      <CardContent className=" p-0">
+        <div className="overflow-hidden rounded-lg border border-background">
           <Table className="w-full">
             <TableHeader>
-              <TableRow className="dark:bg-gray-850 bg-muted">
+              <TableRow className="">
                 <TableHead className="w-12">Rank</TableHead>
                 <TableHead>Player</TableHead>
                 <TableHead className="w-24">Experience</TableHead>
@@ -65,7 +65,7 @@ export default async function Leaderboard() {
             </TableHeader>
             <TableBody className="divide-y">
               {scores.entries.map((score: Score, index: number) => (
-                <TableRow key={index} className="font-medium">
+                <TableRow key={index} className="bg-background font-medium">
                   <TableCell>{score.rank}</TableCell>
                   <TableCell>{score.name}</TableCell>
                   <TableCell className="text-muted-foreground">
