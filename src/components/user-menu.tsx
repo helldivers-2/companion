@@ -24,9 +24,12 @@ export const UserMenu: React.FC<ContainerCardProps> = ({ children }) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-fit">
-          <DropdownMenuItem>
-            <Link href="/leaderboard">Leaderboard</Link>
-          </DropdownMenuItem>
+          <Link href="/faq">
+            <DropdownMenuItem>FAQ</DropdownMenuItem>
+          </Link>
+          <Link href="/leaderboard">
+            <DropdownMenuItem>Leaderboard</DropdownMenuItem>
+          </Link>
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Resources</DropdownMenuSubTrigger>

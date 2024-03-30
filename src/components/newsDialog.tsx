@@ -21,7 +21,7 @@ export function NewsDialog({ title, children }: InfoDialogProps) {
       <DialogTrigger asChild>
         <Button variant="outline">{title}</Button>
       </DialogTrigger>
-      <DialogContent className="z-[1500] h-[80vmax] max-w-[425px] md:h-[66vmin] lg:max-w-screen-md">
+      <DialogContent className="h-[80vmax] max-w-[425px] md:h-[66vmin] lg:max-w-screen-md">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

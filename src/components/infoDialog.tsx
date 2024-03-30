@@ -23,7 +23,7 @@ export function InfoDialog({ title, children }: InfoDialogProps) {
           {title}
         </Button>
       </DialogTrigger>
-      <DialogContent className="z-[1500] h-[80vmax] sm:max-w-[425px] md:h-[66vmin] lg:max-w-screen-md">
+      <DialogContent className="h-[80vmax] sm:max-w-[425px] md:h-[66vmin] lg:max-w-screen-md">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>

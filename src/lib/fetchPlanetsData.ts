@@ -1,5 +1,5 @@
 export async function omnediaAllInOneAPI(){
-  const res = await fetch("https://helldivers-b.omnedia.com/api/current-war-season", { cache: 'no-store' })
+  const res = await fetch("https://helldivers-b.omnedia.com/api/current-war-season", { cache: 'no-cache' })
   return res.json()
 }{/* caching temporarily disabled */}
 

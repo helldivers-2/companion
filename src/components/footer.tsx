@@ -309,6 +309,13 @@ export default function Component() {
                           - For providing the UI framework used in our website
                         </li>
                         <li>
+                          <a className="underline" href="https://giscus.app/">
+                            giscus
+                          </a>{" "}
+                          - For providing the Comment feature used in our
+                          website
+                        </li>
+                        <li>
                           <a
                             className="underline"
                             href="https://github.com/dealloc/helldivers2-api"

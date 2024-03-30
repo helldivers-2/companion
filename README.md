@@ -1,19 +1,21 @@
-# Helldivers.info
+# Hellbud - Helldivers Companion
 
-Welcome to the Helldivers.info repository! This Next.js website provides comprehensive information for the game Helldivers 2 through APIs and ways. Below you'll find an overview of the features and pages available on this site.
+Welcome to the Hellbud repository! This Next.js website provides comprehensive information for the game Helldivers 2 through APIs and ways. Below you'll find an overview of the features and pages available on this site.
 
 ## Features and Pages
 
-- **Current Targets:** Join the fight to defend Super Earth.
+- **Current Targets:** See current planets to liberate.
 - **Galaxy Map:** Plan your deployments.
 - **All Items Database:** Comprehensive item database.
 - **FAQ:** Find answers to common questions.
+- **Patch Notes:** Stay updated with game updates.
+- **Major Orders:** Participate in ongoing battles.
+- **Leaderboard:** See the best Stratagem Hero hackers.
+- **Comments:** Start discussions with fellow Helldivers.
 
 ### available soon:
 
 - **Item Shop:** Explore the latest items available.
-- **News:** Stay updated with game announcements.
-- **Major Orders:** Participate in ongoing battles.
 
 ## Contributing
 
@@ -27,10 +29,10 @@ We welcome contributions from the Helldivers community to help improve and expan
 
 ## Feedback and Support
 
-If you encounter any issues while using the Helldivers.info website or have suggestions for improvements, please don't hesitate to open an issue on this repository. We appreciate your feedback and are committed to providing a great user experience for all Helldivers players.
+If you encounter any issues while using the Hellbud website or have suggestions for improvements, please don't hesitate to open an issue on this repository. We appreciate your feedback and are committed to providing a great user experience for all Helldivers players.
 
 ## License
 
 This project is licensed under the [Unlicense license](LICENSE). Feel free to use and modify the code for your own purposes, but please attribute the original authors and include the license file when distributing your changes.
 
-Thank you for visiting Helldivers.info and supporting the Helldivers community!
+Thank you for visiting Hellbud and supporting the Helldivers community!

@@ -120,22 +120,26 @@ export default function Navbar() {
                               <div className="block md:flex">
                                 <LuRocket className="mx-auto size-6 md:mr-1 md:size-4" />
                                 <span className="text-center text-xs">
-                                  Start
+                                  Status
                                 </span>
                               </div>
                             </NavigationMenuLinkPWA>
                           </Link>
                         </NavigationMenuItemPWA>
-                        {/*<NavigationMenuItem>
-                          <Link href="/shop" legacyBehavior passHref>
-                            <NavigationMenuLink
+                        <NavigationMenuItemPWA>
+                          <Link href="#" legacyBehavior passHref>
+                            <NavigationMenuLinkPWA
                               className={navigationMenuTriggerStylePWA()}
                             >
-                              <LuShoppingBasket className="mr-1 size-6 md:size-4" />
-                                <span className="text-center text-xs">Item Shop</span>
-                                                          </NavigationMenuLink>
+                              <div className="block md:flex">
+                                <LuShoppingBasket className="mx-auto size-6 text-muted-foreground md:mr-1 md:size-4" />
+                                <span className="text-center text-xs text-muted-foreground">
+                                  Item Shop
+                                </span>
+                              </div>
+                            </NavigationMenuLinkPWA>
                           </Link>
-                        </NavigationMenuItem>*/}
+                        </NavigationMenuItemPWA>
                         <NavigationMenuItemPWA>
                           <Link href="/items" legacyBehavior passHref>
                             <NavigationMenuLinkPWA
@@ -146,18 +150,6 @@ export default function Navbar() {
                                 <span className="text-center text-xs">
                                   all Items
                                 </span>
-                              </div>
-                            </NavigationMenuLinkPWA>
-                          </Link>
-                        </NavigationMenuItemPWA>
-                        <NavigationMenuItemPWA>
-                          <Link href="/faq" legacyBehavior passHref>
-                            <NavigationMenuLinkPWA
-                              className={navigationMenuTriggerStylePWA()}
-                            >
-                              <div className="block md:flex">
-                                <LuInfo className="mx-auto size-6 md:mr-1 md:size-4" />
-                                <span className="text-center text-xs">FAQ</span>
                               </div>
                             </NavigationMenuLinkPWA>
                           </Link>

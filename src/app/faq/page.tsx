@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import Container from "@/components/containerCard";
 import {
   Card,
   CardContent,
@@ -8,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Container from "@/components/containerCard";
+import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
   title: "FAQ",
@@ -179,6 +180,7 @@ export default function FAQPage() {
           </Card>
         </div>
       </Container>
+      <Comments keyword="FAQ" reactions="0" />
     </>
   );
 }

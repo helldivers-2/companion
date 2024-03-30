@@ -10,6 +10,7 @@ import TargetsTableComponent from "@/components/widgets/targets/currentTargets";
 import MajorOrder from "@/components/widgets/latestOrder";
 import StatsWidget from "@/components/widgets/globalStats";
 import PatchNotes from "@/components/widgets/patchNotes";
+import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
   title: "Status - Helldivers Info",
@@ -28,69 +29,70 @@ export default function Home() {
   );
 
   return (
-    <Container title="Galaxy Status">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <Card className="col-span-1 md:col-span-2">
-          <CardHeader>
-            <CardTitle>latest Major Order</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Suspense
-              fallback={
-                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted  md:aspect-auto md:h-[144px]" />
-              }
-            >
-              <MajorOrder />
-            </Suspense>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Targets</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <TargetsTableComponent />
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Map</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Suspense fallback={<Skeleton className="" />}>
+    <>
+      <Container title="Galaxy Status">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Card className="col-span-1 md:col-span-2">
+            <CardHeader>
+              <CardTitle>latest Major Order</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Suspense
+                fallback={
+                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted  md:aspect-auto md:h-[144px]" />
+                }
+              >
+                <MajorOrder />
+              </Suspense>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Targets</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <TargetsTableComponent />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Map</CardTitle>
+            </CardHeader>
+            <CardContent>
               <Map />
-            </Suspense>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>recent Updates</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Suspense
-              fallback={
-                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
-              }
-            >
-              <PatchNotes />
-            </Suspense>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader>
-            <CardTitle>Galaxy Stats</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Suspense
-              fallback={
-                <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
-              }
-            >
-              <StatsWidget />
-            </Suspense>
-          </CardContent>
-        </Card>
-      </div>
-    </Container>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>recent Updates</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Suspense
+                fallback={
+                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
+                }
+              >
+                <PatchNotes />
+              </Suspense>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Galaxy Stats</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Suspense
+                fallback={
+                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
+                }
+              >
+                <StatsWidget />
+              </Suspense>
+            </CardContent>
+          </Card>
+        </div>
+      </Container>
+      <Comments keyword="Status" reactions="0" />
+    </>
   );
 }
