@@ -1,4 +1,4 @@
-name: (main) push to external repo
+name: (master) push to external repo
 
 on:
 
@@ -6,7 +6,7 @@ on:
 
     branches:
 
-      - main
+      - master
 
 jobs:
 
@@ -32,6 +32,6 @@ jobs:
 
           external_repository: Mixhi1845/companion-vercel
 
-          publish_branch: main
+          publish_branch: master
 
           allow_empty_commit: true
