@@ -59,14 +59,15 @@ export default function AppDownload() {
   return shouldShowDialog ? (
     <div className="website fixed bottom-4 left-4 z-[1500]">
       <Dialog>
-        <DialogTrigger>
-          <Button className=" flex md:hidden" variant="outline" size="icon">
-            <LuDownload />
-          </Button>
-          <Button className="hidden md:flex" variant="outline">
-            <LuDownload className="mr-2" /> get the Webapp
+        <DialogTrigger asChild className="flex items-center">
+          <Button variant="outline">
+            <>
+              <LuDownload />
+              <span className="ml-2 hidden md:block">get the Webapp</span>
+            </>
           </Button>
         </DialogTrigger>
+
         <DialogContent>
           <DialogHeader>
             <DialogTitle>get the Webapp</DialogTitle>

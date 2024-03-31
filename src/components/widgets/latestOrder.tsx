@@ -18,7 +18,7 @@ export default async function MajorOrder() {
     const days = Math.floor(milliseconds / (24 * 60 * 60 * 1000)); // Convert milliseconds to days
     timeLeft = `${days} days`;
   } else {
-    const hours = milliseconds / (1000 * 60 * 60); // Convert milliseconds to hours
+    const hours = Math.floor(milliseconds / (60 * 60 * 1000)); // Convert milliseconds to hours
     timeLeft = `${hours} hours`;
   }
 
