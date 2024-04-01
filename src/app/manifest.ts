@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Helldivers Companion',
-    short_name: 'Helldivers',
+    short_name: 'Companion',
     description: 'Stay updated on the Helldivers 2 war.',
     categories: ['games', 'news', 'technology'],
     start_url: '/',

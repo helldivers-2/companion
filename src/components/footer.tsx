@@ -62,6 +62,14 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
+                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
+                      href="/stratagems"
+                    >
+                      all Stratagems
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
                       href="/faq"
                     >
@@ -301,6 +309,15 @@ export default function Component() {
                           </a>{" "}
                           - For providing the Comment feature used in our
                           website
+                        </li>
+                        <li>
+                          <a
+                            className="underline"
+                            href="https://github.com/nvigneux/Helldivers-2-Stratagems-icons-svg"
+                          >
+                            Helldivers 2 Stratagems SVG
+                          </a>{" "}
+                          - For providing the SVG icons of the Game
                         </li>
                         <li>
                           <a
