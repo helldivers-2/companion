@@ -5,11 +5,6 @@ import dynamic from "next/dynamic";
 import Container from "@/components/containerCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-
-import TargetsTableComponent from "@/components/widgets/targets/currentTargets";
-import MajorOrder from "@/components/widgets/latestOrder";
-import StatsWidget from "@/components/widgets/globalStats";
-import PatchNotes from "@/components/widgets/patchNotes";
 import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
@@ -28,6 +23,47 @@ export default function Home() {
     [],
   );
 
+  const MajorOrder = useMemo(
+    () =>
+      dynamic(() => import("@/components/widgets/latestOrder"), {
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[268px]" />
+        ),
+        ssr: true,
+      }),
+    [],
+  );
+  const TargetsTableComponent = useMemo(
+    () =>
+      dynamic(() => import("@/components/widgets/targets/currentTargets"), {
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
+        ),
+        ssr: true,
+      }),
+    [],
+  );
+  const PatchNotes = useMemo(
+    () =>
+      dynamic(() => import("@/components/widgets/patchNotes"), {
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
+        ),
+        ssr: true,
+      }),
+    [],
+  );
+  const StatsWidget = useMemo(
+    () =>
+      dynamic(() => import("@/components/widgets/globalStats"), {
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
+        ),
+        ssr: true,
+      }),
+    [],
+  );
+
   return (
     <>
       <Container title="Galaxy Status">
@@ -37,13 +73,7 @@ export default function Home() {
               <CardTitle>latest Major Order</CardTitle>
             </CardHeader>
             <CardContent>
-              <Suspense
-                fallback={
-                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted  md:aspect-auto md:h-[144px]" />
-                }
-              >
-                <MajorOrder />
-              </Suspense>
+              <MajorOrder />
             </CardContent>
           </Card>
           <Card>
@@ -67,13 +97,7 @@ export default function Home() {
               <CardTitle>recent Updates</CardTitle>
             </CardHeader>
             <CardContent>
-              <Suspense
-                fallback={
-                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
-                }
-              >
-                <PatchNotes />
-              </Suspense>
+              <PatchNotes />
             </CardContent>
           </Card>
           <Card>
@@ -81,13 +105,7 @@ export default function Home() {
               <CardTitle>Galaxy Stats</CardTitle>
             </CardHeader>
             <CardContent>
-              <Suspense
-                fallback={
-                  <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[440px]" />
-                }
-              >
-                <StatsWidget />
-              </Suspense>
+              <StatsWidget />
             </CardContent>
           </Card>
         </div>

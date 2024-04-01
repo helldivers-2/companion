@@ -25,7 +25,7 @@ export default function Component() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div>
             <h5 className="  text-sm font-semibold uppercase  tracking-wide">
-              helldivers.info
+              Helldivers Companion
             </h5>
             <p className="mt-4   text-sm  text-muted-foreground">
               A project by{" "}
@@ -96,7 +96,7 @@ export default function Component() {
                   <li>
                     <a
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
-                      href="https://github.com/Mixhi1845/helldivers.info"
+                      href="https://github.com/helldivers-2/companion"
                       target="_blank"
                     >
                       Github Source Code
@@ -105,32 +105,32 @@ export default function Component() {
                   <li className="block text-muted-foreground  transition hover:text-foreground">
                     <InfoDialog title="Privacy Policy">
                       <p>
-                        At helldivers.info, we recognize the importance of your
-                        privacy and are committed to protecting it. This Privacy
-                        Policy outlines the types of personal information we
-                        collect, how it is used, and your choices regarding your
-                        data.
+                        We recognize the importance of your privacy and are
+                        committed to protecting it. This Privacy Policy outlines
+                        the types of personal information we collect, how it is
+                        used, and your choices regarding your data.
                       </p>
                       <br />
                       <h2 className="font-bold">Information We Collect:</h2>
                       <p>
-                        When you visit helldivers.info, we may collect certain
-                        information automatically, including your IP address,
-                        browser type, operating system, and browsing behavior.
-                        Additionally, if you choose to interact with our
-                        website&apos;s real-time API data, we may collect
+                        When you visit helldiverscompanion.app, we may collect
+                        certain information automatically, including your IP
+                        address, browser type, operating system, and browsing
+                        behavior. Additionally, if you choose to interact with
+                        our website&apos;s real-time API data, we may collect
                         information about your interactions with the API.
                       </p>
                       <br />
                       <h2 className="font-bold">Use of Information:</h2>
                       <p>
                         The information we collect is used to improve the
-                        functionality and user experience of helldivers.info. We
-                        may use your IP address to diagnose problems with our
-                        server, administer our website, and analyze trends. Any
-                        personal information collected through interactions with
-                        the real-time API data will be used solely for the
-                        purpose of providing the requested information.
+                        functionality and user experience of
+                        helldiverscompanion.app. We may use your IP address to
+                        diagnose problems with our server, administer our
+                        website, and analyze trends. Any personal information
+                        collected through interactions with the real-time API
+                        data will be used solely for the purpose of providing
+                        the requested information.
                       </p>
                       <br />
                       <h2 className="font-bold">Data Sharing:</h2>
@@ -145,13 +145,13 @@ export default function Component() {
                       <br />
                       <h2 className="font-bold">Cookies:</h2>
                       <p>
-                        helldivers.info may use cookies to enhance your browsing
-                        experience. Cookies are small text files stored on your
-                        computer that help us analyze web traffic and customize
-                        content based on your preferences. You can choose to
-                        accept or decline cookies through your browser settings,
-                        although this may affect your ability to fully utilize
-                        our website&apos;s features.
+                        helldiverscompanion.app may use cookies to enhance your
+                        browsing experience. Cookies are small text files stored
+                        on your computer that help us analyze web traffic and
+                        customize content based on your preferences. You can
+                        choose to accept or decline cookies through your browser
+                        settings, although this may affect your ability to fully
+                        utilize our website&apos;s features.
                       </p>
                       <br />
                       <h2 className="font-bold">Third-Party Links:</h2>
@@ -175,12 +175,13 @@ export default function Component() {
                       <br />
                       <h2 className="font-bold">Children&apos;s Privacy:</h2>
                       <p>
-                        helldivers.info is not directed towards children under
-                        the age of 13, and we do not knowingly collect personal
-                        information from anyone under this age. If you believe
-                        that we have inadvertently collected information from a
-                        child under 13, please contact us immediately, and we
-                        will take appropriate steps to remove the information.
+                        helldiverscompanion.app is not directed towards children
+                        under the age of 13, and we do not knowingly collect
+                        personal information from anyone under this age. If you
+                        believe that we have inadvertently collected information
+                        from a child under 13, please contact us immediately,
+                        and we will take appropriate steps to remove the
+                        information.
                       </p>
                       <br />
                       <h2 className="font-bold">Changes to This Policy:</h2>
@@ -195,38 +196,31 @@ export default function Component() {
                       <h2 className="font-bold">Contact Us:</h2>
                       <p>
                         If you have any questions or concerns about this Privacy
-                        Policy or the practices of helldivers.info, please
-                        contact us at{" "}
-                        <a
-                          className="underline"
-                          href="mailto:contact@helldivers.info"
-                        >
-                          contact@helldivers.info
-                        </a>
-                        .
+                        Policy or the practices of helldiverscompanion.app,
+                        please contact us.
                       </p>
                       <br />
                       <p>
-                        By using helldivers.info, you consent to the terms of
-                        this Privacy Policy.
+                        By using helldiverscompanion.app, you consent to the
+                        terms of this Privacy Policy.
                       </p>
                     </InfoDialog>
                   </li>
                   <li className="block text-muted-foreground  transition hover:text-foreground">
                     <InfoDialog title="About">
                       <p>
-                        Welcome to helldivers.info, your go-to source for
-                        real-time API data for the game Helldivers!
+                        Welcome to helldiverscompanion.app, your go-to source
+                        for real-time API data for the game Helldivers!
                       </p>
                       <br />
                       <h2 className="font-bold">Our Mission</h2>
                       <p>
-                        At helldivers.info, our mission is to provide players of
-                        Helldivers with up-to-date information and statistics
-                        directly from the game&apos;s API. Whether you&apos;re
-                        looking to track your progress, compare your stats with
-                        friends, or stay informed about the latest in-game
-                        events, our website has you covered.
+                        At helldiverscompanion.app, our mission is to provide
+                        players of Helldivers with up-to-date information and
+                        statistics directly from the game&apos;s API. Whether
+                        you&apos;re looking to track your progress, compare your
+                        stats with friends, or stay informed about the latest
+                        in-game events, our website has you covered.
                       </p>
                       <br />
                       <h2 className="font-bold">What We Offer</h2>
@@ -246,38 +240,31 @@ export default function Component() {
                         <div>
                           <h2 className="font-bold">Why Choose Us?</h2>
                           <p>
-                            With helldivers.info, you can trust that you&apos;re
-                            getting accurate and reliable information straight
-                            from the source. Our team is dedicated to
-                            maintaining the integrity of the data we provide and
-                            ensuring that our platform remains user-friendly and
-                            accessible to all players.
+                            With helldiverscompanion.app, you can trust that
+                            you&apos;re getting accurate and reliable
+                            information straight from the source. Our team is
+                            dedicated to maintaining the integrity of the data
+                            we provide and ensuring that our platform remains
+                            user-friendly and accessible to all players.
                           </p>
                           <br />
                           <h2 className="font-bold">Contact Us</h2>
                           <p>
                             If you have any questions, feedback, or suggestions
                             for improvement, we&apos;d love to hear from you!
-                            Please don&apos;t hesitate to reach out to us at{" "}
-                            <a
-                              className="underline"
-                              href="mailto:contact@helldivers.info"
-                            >
-                              contact@helldivers.info
-                            </a>
-                            .
+                            Please don&apos;t hesitate to reach out to us.
                           </p>
                           <br />
                           <p>
-                            Thank you for choosing helldivers.info as your
-                            trusted resource for Helldivers API data. Happy
+                            Thank you for choosing helldiverscompanion.app as
+                            your trusted resource for Helldivers API data. Happy
                             gaming!
                           </p>
                           <br />
                           <p>
                             Sincerely,
                             <br />
-                            The helldivers.info Team
+                            The helldiverscompanion.app Team
                           </p>
                         </div>
 
@@ -294,7 +281,7 @@ export default function Component() {
                       <p>
                         We would like to extend our sincere appreciation to the
                         following individuals, organizations, and packages for
-                        their contributions to helldivers.info:
+                        their contributions to helldiverscompanion.app:
                       </p>
                       <br />
                       <h2 className="font-bold">Contributors:</h2>
@@ -339,19 +326,12 @@ export default function Component() {
                         We are grateful for the hard work and dedication of
                         these individuals and organizations, which have greatly
                         contributed to the success and functionality of
-                        helldivers.info.
+                        helldiverscompanion.app.
                       </p>
                       <br />
                       <p>
                         If you believe you should be credited or have any
-                        inquiries regarding credits, please contact us at{" "}
-                        <a
-                          className="underline"
-                          href="mailto:contact@helldivers.info"
-                        >
-                          contact@helldivers.info
-                        </a>
-                        .
+                        inquiries regarding credits, please contact us.
                       </p>
                       <br />
                       <p>Thank you for your contributions and support!</p>
@@ -359,7 +339,7 @@ export default function Component() {
                       <p>
                         Sincerely,
                         <br />
-                        The helldivers.info Team
+                        The helldiverscompanion.app Team
                       </p>
                     </InfoDialog>
                   </li>
@@ -367,33 +347,24 @@ export default function Component() {
                     <InfoDialog title="Contact">
                       <p>
                         If you have any questions, concerns, or feedback
-                        regarding helldivers.info or the real-time API data
-                        displayed on our website, please don&apos;t hesitate to
-                        get in touch with us. We value your input and are here
-                        to assist you.
+                        regarding helldiverscompanion.app or the real-time API
+                        data displayed on our website, please don&apos;t
+                        hesitate to get in touch with us. We value your input
+                        and are here to assist you.
                       </p>
                       <br />
                       <h2 className="font-bold">Contact Details:</h2>
                       <p>
                         Email:{" "}
-                        <a
-                          className="underline"
-                          href="mailto:contact@helldivers.info"
-                        >
-                          contact@helldivers.info
+                        <a className="underline" href="mailto:#">
+                          -
                         </a>
                       </p>
                       <br />
                       <p>
-                        Thank you for visiting helldivers.info. Feel free to
-                        reach out to us via email, and we will respond to your
-                        inquiry as promptly as possible.
-                      </p>
-                      <br />
-                      <p>
-                        Sincerely,
-                        <br />
-                        The helldivers.info Team
+                        Thank you for visiting helldiverscompanion.app. Feel
+                        free to reach out to us via email, and we will respond
+                        to your inquiry as promptly as possible.
                       </p>
                     </InfoDialog>
                   </li>

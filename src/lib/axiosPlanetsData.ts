@@ -42,12 +42,8 @@ export async function fetchPlanetsData(): Promise<Planet[]> {
         },
       })
     );
-    const filteredPlanets = flattenedPlanets.filter(
-      (planet: { players: number; liberation: number }) => {
-        return planet.players > 2000 && planet.liberation !== 100;
-      }
-    );
-    return filteredPlanets;
+
+    return flattenedPlanets;
   } catch (error) {
     console.error("Error fetching planets:", error);
     return []; // Return empty array in case of error

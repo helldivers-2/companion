@@ -7,6 +7,8 @@ import {
   TileLayer,
   ImageOverlay,
   Popup,
+  LayersControl,
+  FeatureGroup,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
@@ -37,11 +39,41 @@ export default function MyMap() {
     fetchData();
   }, []);
 
+  const allPlanets = planets;
+
+  const activePlanets = planets.filter(
+    (planet: { players: number; liberation: number }) => {
+      return planet.players > 2000 && planet.liberation !== 100;
+    },
+  );
+
+  const liberatedPlanets = planets.filter(
+    (planet: { players: number; liberation: number }) => {
+      return planet.liberation === 100;
+    },
+  );
+
+  {
+    /*Planets we never were on
+    const unseenPlanets = planets.filter(
+    (planet: { players: number; liberation: number }) => {
+      return planet.liberation === 0;
+    },
+  );
+
+   Planet on which the major order happens
+    const majorPlanets = planets.filter(
+    (planet: { players: number; liberation: number }) => {
+      return planet.liberation === 100;
+    },
+  );*/
+  }
+
   // Define the angle offset in degrees
   const angleOffsetDegrees = 90; // Adjust as needed
 
-  const renderPlanetMarkers = (): JSX.Element[] => {
-    return planets.map((planet, index) => {
+  const renderPlanetMarkers = (filteredPlanets: Planet[]): JSX.Element[] => {
+    return filteredPlanets.map((planet, index) => {
       // Calculate new coordinates with angle offset
       const newX =
         planet.planet.position.x *
@@ -75,7 +107,7 @@ export default function MyMap() {
             newX / -100, // Divide by 100 if necessary
             newY / 100, // Divide by 100 if necessary
           ]}
-          radius={7.5}
+          radius={5}
           fillColor={fillColor}
           color={color}
           weight={1}
@@ -97,7 +129,7 @@ export default function MyMap() {
     <MapContainer
       className="aspect-square rounded-lg border md:aspect-video"
       center={[0, 0]}
-      zoom={8}
+      zoom={7}
       maxZoom={9}
       minZoom={7}
       boxZoom={false}
@@ -112,7 +144,17 @@ export default function MyMap() {
         bounds={new LatLngBounds([-1, -1], [1, 1])}
         opacity={0.5}
       />
-      {renderPlanetMarkers()}
+      <LayersControl position="bottomleft">
+        <LayersControl.Overlay name="all Planets">
+          <FeatureGroup>{renderPlanetMarkers(allPlanets)}</FeatureGroup>
+        </LayersControl.Overlay>
+        <LayersControl.Overlay checked name="active Planets">
+          <FeatureGroup>{renderPlanetMarkers(activePlanets)} </FeatureGroup>
+        </LayersControl.Overlay>
+        <LayersControl.Overlay name="inactive Planets">
+          <FeatureGroup>{renderPlanetMarkers(liberatedPlanets)} </FeatureGroup>
+        </LayersControl.Overlay>
+      </LayersControl>
     </MapContainer>
   );
 }

@@ -25,7 +25,7 @@ html {
     display: none; /* Hide the content when in standalone mode */
   }
 
-  .layoutchildren {
+  .pwachildren {
     margin-bottom: 0rem;
   }
 
@@ -34,7 +34,7 @@ html {
   }
 
   @media (max-width: 630px) {
-    .layoutchildren {
+    .pwachildren {
       margin-bottom: 5rem;
     }
   }

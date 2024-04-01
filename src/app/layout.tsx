@@ -16,28 +16,28 @@ const BodyFont = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL(`https://helldivers.vercel.app/`),
+  metadataBase: new URL(`https://helldiverscompanion.app/`),
   title: {
-    default: "Helldivers Info",
-    template: "%s | Helldivers Info",
+    default: "Helldivers Companion",
+    template: "%s | Helldivers Companion",
   },
   description:
-    "Dive into Hellbud, your comprehensive companion for Helldivers 2. Explore current targets, plan deployments on the galaxy map, and access a vast item database and see the item shop. Stay updated with patch notes, participate in major orders, and engage with the community.",
+    "Dive into your comprehensive companion for Helldivers 2. Explore current targets, plan deployments on the galaxy map, and access a vast item database and see the item shop. Stay updated with patch notes, participate in major orders, and engage with the community.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/icons/favicon-16x16.png",
     apple: "/icons/apple-touch-icon.png",
     android: "/icons/android-chrome-192x192.png",
   },
-  manifest: "https://helldivers.vercel.app/manifest.json",
+  manifest: "https://helldiverscompanion.app/manifest.json",
   authors: [
     { name: "Michael Wagner", url: "https://michaelwagner.vercel.app" },
   ],
   openGraph: {
-    title: "Helldivers.info",
+    title: "Helldivers Companion",
     description: "Relevant information for the democratic game Helldivers 2.",
-    url: "https://helldivers.vercel.app/",
-    siteName: "Helldivers.info",
+    url: "https://helldiverscompanion.app/",
+    siteName: "Helldivers Companion",
     locale: "en_US",
     type: "website",
   },
@@ -69,7 +69,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Navbar />
-          <main className="layoutchildren container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
+          <main className="pwachildren container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
             {children}
           </main>
           <AppDownload />

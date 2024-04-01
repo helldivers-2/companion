@@ -47,10 +47,12 @@ export default function Navbar() {
                     src={logo}
                     width={128}
                     height={128}
-                    className="mr-2 size-6"
+                    className="mr-2 size-6 rounded bg-foreground p-1 dark:bg-transparent dark:p-0"
                     alt="Logo"
                   />
-                  <span className="flex text-xl font-bold">Hellbud</span>
+                  <span className="flex text-xl font-bold">
+                    Helldivers Companion
+                  </span>
                 </Link>
                 <div className="website block md:hidden">
                   <ThemeToggle />

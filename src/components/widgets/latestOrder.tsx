@@ -19,7 +19,11 @@ export default async function MajorOrder() {
     timeLeft = `${days} days`;
   } else {
     const hours = Math.floor(milliseconds / (60 * 60 * 1000)); // Convert milliseconds to hours
-    timeLeft = `${hours} hours`;
+    if (hours <= 1) {
+      timeLeft = `less than 1 hour`;
+    } else {
+      timeLeft = `${hours} hours`;
+    }
   }
 
   return (

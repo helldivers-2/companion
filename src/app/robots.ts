@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
             disallow: '/items/',
         },
       ],
-      sitemap: 'https://helldivers.vercel.app/sitemap.xml',
-      host: 'https://helldivers.vercel.app',
+      sitemap: 'https://helldiverscompanion.app/sitemap.xml',
+      host: 'https://helldiverscompanion.app',
     };
   }
