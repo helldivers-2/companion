@@ -1,5 +1,18 @@
-import { steamNewsAPI } from "@/lib/fetchPlanetsData";
+"use client";
+
+import { useState, useEffect } from "react";
 import { NewsDialog } from "@/components/newsDialog";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { getPatchNotes } from "@/components/widgets/util/getPatchNotes";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Item {
   date: number;
@@ -8,52 +21,29 @@ interface Item {
   feedname: string;
 }
 
-interface TextParserProps {
-  text: string;
-}
+export default function PatchNotes() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
+  const [patchNotes, setPatchNotes] = useState<Item[]>([]);
 
-const TextParser: React.FC<TextParserProps> = ({ text }) => {
-  const parsedText = parseTextToHtml(text);
+  // Fetch patch notes data on component mount
+  useEffect(() => {
+    getPatchNotes().then(setPatchNotes);
+  }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: parsedText }} />;
-};
-
-const parseTextToHtml = (text: string): string => {
-  // Implement parsing logic to handle any combination of text formatting
-  // For example, you can replace [img] with <img>, [list] with <ul>, etc.
-  // Here's a simple example for demonstration purposes:
-
-  return text
-    .replace(/\[img\](.*?)\[\/img\]/g, "")
-    .replace(/\[previewyoutube=(.*?);full\]\[\/previewyoutube\]/g, "")
-    .replace(
-      /\[h2\](.*?)\[\/h2\]/g,
-      "<br/><br/><h2><u><strong>$1</strong></u></h2><br/>",
-    )
-    .replace(/\[b\](.*?)\[\/b\]/g, "<br/><br/><strong>$1</strong><br/>")
-    .replace(/\[list\]/g, "")
-    .replace(/\[\/list\]/g, "")
-    .replace(/\[\*\]/g, "<li>")
-    .replace(/\[i\](.*?)\[\/i\]/g, "<i>$1</i>");
-};
-
-export default async function PatchNotes() {
-  const posts = await steamNewsAPI();
-
-  // Filter out items with feedname equal to "steam_community_announcements"
-  const communityAnnouncements = posts.appnews.newsitems.filter(
-    (item: Item) => item.feedname === "steam_community_announcements",
-  );
-
-  // Slice the array to only include the first four announcements
-  const firstFourAnnouncements = communityAnnouncements.slice(0, 4);
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = patchNotes.slice(firstPostIndex, lastPostIndex);
 
   return (
     <main className="flex-1">
       <div className="space-y-2">
-        {firstFourAnnouncements.map((item: Item, index: number) => {
-          // Move the date formatting inside the map function
-          const formattedDate = new Date(item.date * 1000).toLocaleDateString();
+        {currentPosts.map((item: Item, index: number) => {
+          const formattedDate = new Date(item.date).toLocaleString(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
 
           return (
             <div
@@ -64,20 +54,77 @@ export default async function PatchNotes() {
                 <h3 className="font-medium">{item.title}</h3>
               </div>
               <div className="flex items-center space-x-4">
-                <time
-                  className="hidden text-muted-foreground md:flex"
-                  dateTime={item.date.toString()}
-                >
+                <div className="hidden text-muted-foreground md:flex">
                   {formattedDate}
-                </time>
+                </div>
                 <NewsDialog title="Read More">
-                  <TextParser text={item.contents} />
+                  <div className="prose list-inside list-disc">
+                    <Markdown remarkPlugins={[remarkGfm]}>
+                      {item.contents}
+                    </Markdown>
+                  </div>
                 </NewsDialog>
               </div>
             </div>
           );
         })}
       </div>
+      <PaginationSection
+        totalPosts={patchNotes.length}
+        postsPerPage={postsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
     </main>
+  );
+}
+function PaginationSection({
+  totalPosts,
+  postsPerPage,
+  currentPage,
+  setCurrentPage,
+}: {
+  totalPosts: number;
+  postsPerPage: number;
+  currentPage: number;
+  setCurrentPage: (page: number) => void;
+}) {
+  const pageNumbers = Math.ceil(totalPosts / postsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < pageNumbers) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  return (
+    <>
+      <Pagination className="mt-4">
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious onClick={handlePrevPage} />
+          </PaginationItem>
+          {Array.from({ length: pageNumbers }).map((_, index) => (
+            <PaginationItem
+              key={index}
+              className={currentPage === index + 1 ? "rounded-md" : ""}
+            >
+              <PaginationLink onClick={() => setCurrentPage(index + 1)}>
+                {index + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            <PaginationNext onClick={handleNextPage} />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </>
   );
 }

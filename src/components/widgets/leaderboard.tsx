@@ -13,7 +13,7 @@ import {
   TableBody,
   Table,
 } from "@/components/ui/table";
-import { officialLeaderboardAPI } from "@/lib/fetchPlanetsData";
+import { API } from "@/components/widgets/util/getApiData";
 
 interface Score {
   rank: number[];
@@ -39,7 +39,7 @@ function formatNumber(num: number[]) {
 }
 
 export default async function Leaderboard() {
-  const scores = await officialLeaderboardAPI();
+  const scores = await API();
 
   return (
     <Card className="w-full border border-primary bg-muted">
@@ -48,7 +48,10 @@ export default async function Leaderboard() {
           <CardTitle>Leaderboard</CardTitle>
           <CardDescription>
             Top 10 players from{" "}
-            <span className="text-primary">{scores.totalRecords}</span> Players
+            <span className="text-primary">
+              {scores.leaderboard.totalRecords}
+            </span>{" "}
+            Players
           </CardDescription>
         </div>
       </CardHeader>
@@ -64,7 +67,7 @@ export default async function Leaderboard() {
               </TableRow>
             </TableHeader>
             <TableBody className="divide-y">
-              {scores.entries.map((score: Score, index: number) => (
+              {scores.leaderboard.entries.map((score: Score, index: number) => (
                 <TableRow key={index} className="bg-background font-medium">
                   <TableCell>{score.rank}</TableCell>
                   <TableCell>{score.name}</TableCell>

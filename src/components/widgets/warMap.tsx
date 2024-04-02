@@ -12,7 +12,7 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
-import { fetchPlanetsData } from "@/lib/axiosPlanetsData"; // Import the fetchPlanetsData function
+import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Import the fetchPlanetsData function
 import { Progress } from "../ui/progress";
 
 interface Planet {
@@ -86,18 +86,21 @@ export default function MyMap() {
         planet.planet.position.y *
           Math.cos(angleOffsetDegrees * (Math.PI / 180));
 
-      let fillColor = "gray";
-      let color = "gray";
+      let fillColor = "";
+      let fillOpacity = 0;
+      let color = "";
+      let radius = 5;
 
-      if (planet.liberation < 30) {
-        fillColor = "red";
-        color = "";
-      } else if (planet.liberation < 100) {
-        fillColor = "red";
-        color = "yellow";
+      if (planet.liberation < 100) {
+        fillColor = "";
+        fillOpacity = 0.6;
+        color = "red";
+        radius = 6;
       } else {
-        fillColor = "green";
+        fillColor = "";
+        fillOpacity = 0.4;
         color = "green";
+        radius = 4;
       }
 
       return (
@@ -107,8 +110,9 @@ export default function MyMap() {
             newX / -100, // Divide by 100 if necessary
             newY / 100, // Divide by 100 if necessary
           ]}
-          radius={5}
+          radius={radius}
           fillColor={fillColor}
+          fillOpacity={fillOpacity}
           color={color}
           weight={1}
         >
@@ -129,9 +133,10 @@ export default function MyMap() {
     <MapContainer
       className="aspect-square rounded-lg border md:aspect-video"
       center={[0, 0]}
-      zoom={7}
+      zoom={window.innerWidth < 768 ? 7 : 8}
       maxZoom={9}
       minZoom={7}
+      maxBounds={new LatLngBounds([-1.5, -1.5], [1.5, 1.5])}
       boxZoom={false}
       doubleClickZoom={false}
       keyboard={false}

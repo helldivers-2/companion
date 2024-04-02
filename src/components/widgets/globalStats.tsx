@@ -1,5 +1,4 @@
-import { officialStatsAPI } from "@/lib/fetchPlanetsData";
-import { omnediaAllInOneAPI } from "@/lib/fetchPlanetsData";
+import { API } from "@/components/widgets/util/getApiData";
 
 function formatNumber(num: number) {
   // Nine Zeroes for Billions
@@ -24,22 +23,35 @@ const convertToHours = (missionTime: number) => {
 };
 
 export default async function StatsWidget() {
-  const stats = await officialStatsAPI();
-  const playercount = await omnediaAllInOneAPI();
+  const stats = await API();
 
-  const missionTimeHours = convertToHours(stats.galaxy_stats.missionTime);
+  const calculateTotalPlayers = (stats: any): number => {
+    let totalPlayers = 0;
+
+    // Iterate through each planet
+    stats.status.planetStatus.forEach((planet: any) => {
+      totalPlayers += planet.players;
+    });
+
+    return totalPlayers;
+  };
+
+  const missionTimeHours = convertToHours(
+    stats.planetStats.galaxy_stats.missionTime,
+  );
   const formattedMissionTimeHours = formatNumber(missionTimeHours);
+
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(playercount.warSeason.activePlayers)}
+          {formatNumber(calculateTotalPlayers(stats))}
         </h3>
         <p className="text-sm text-primary">patriots currently active</p>
       </div>
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(stats.galaxy_stats.missionsWon)}
+          {formatNumber(stats.planetStats.galaxy_stats.missionsWon)}
         </h3>
         <p className="text-sm text-primary">lawfull Victories</p>
       </div>
@@ -48,34 +60,38 @@ export default async function StatsWidget() {
         <p className="text-sm text-primary">Time invested</p>
       </div>
       <div className="rounded-lg border p-4">
-        <h3 className="text-xl">{formatNumber(stats.galaxy_stats.bugKills)}</h3>
+        <h3 className="text-xl">
+          {formatNumber(stats.planetStats.galaxy_stats.bugKills)}
+        </h3>
         <p className="text-sm text-primary">pesty bugs killed</p>
       </div>
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(stats.galaxy_stats.automatonKills)}
+          {formatNumber(stats.planetStats.galaxy_stats.automatonKills)}
         </h3>
         <p className="text-sm text-primary">Robots annihilated</p>
       </div>
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(stats.galaxy_stats.bulletsFired)}
+          {formatNumber(stats.planetStats.galaxy_stats.bulletsFired)}
         </h3>
         <p className="text-sm text-primary">Ammunition shot</p>
       </div>
       <div className="rounded-lg border p-4">
-        <h3 className="text-xl">{formatNumber(stats.galaxy_stats.deaths)}</h3>
+        <h3 className="text-xl">
+          {formatNumber(stats.planetStats.galaxy_stats.deaths)}
+        </h3>
         <p className="text-sm text-primary">fallen Souldiers</p>
       </div>
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(stats.galaxy_stats.friendlies)}
+          {formatNumber(stats.planetStats.galaxy_stats.friendlies)}
         </h3>
         <p className="text-sm text-primary">collateral friend kills</p>
       </div>
       <div className="rounded-lg border p-4">
         <h3 className="text-xl">
-          {formatNumber(stats.planets_stats[16].missionsLost)}
+          {formatNumber(stats.planetStats.galaxy_stats.missionsLost)}
         </h3>
         <p className="text-sm text-primary">attemptes to liberate the Creek</p>
       </div>

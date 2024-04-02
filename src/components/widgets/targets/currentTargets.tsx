@@ -1,12 +1,12 @@
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
 
-import { omnediaAllInOneAPI } from "@/lib/fetchPlanetsData";
+import { statusAPI } from "@/components/widgets/util/getApiData";
 
 export default async function TargetsTable() {
-  const targets = await omnediaAllInOneAPI();
+  const targets = await statusAPI();
 
-  const flattenedPlanets = targets.warSeason.activePlanets.map(
+  const flattenedPlanets = targets.planet_status.map(
     ({
       planet,
       players,

@@ -1,4 +1,4 @@
-import axios from "axios";
+import { statusAPI } from "./getApiData";
 
 interface Planet {
   players: number;
@@ -15,11 +15,9 @@ interface Planet {
 
 export async function fetchPlanetsData(): Promise<Planet[]> {
   try {
-    const response = await axios.get(
-      "https://helldivers-2.fly.dev/api/801/status"
-    );
+    const targets = await statusAPI();
 
-    const flattenedPlanets = response.data.planet_status.map(
+    const flattenedPlanets = targets.planet_status.map(
       ({
         players,
         liberation,
