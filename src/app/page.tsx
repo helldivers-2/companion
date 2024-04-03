@@ -8,7 +8,21 @@ import { Skeleton } from "@/components/ui/skeleton";
 import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
-  title: "Status - Helldivers Info",
+  title: "Helldivers 2 Galaxy Status Hub",
+  description:
+    "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
+  keywords:
+    "Helldivers 2, Galactic War, attack targets, major orders, maps, patch notes, dispatches, galaxy stats, information hub",
+  openGraph: {
+    title: "Helldivers 2 Galaxy Status Hub",
+    description:
+      "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
+  },
+  twitter: {
+    title: "Helldivers 2 Galaxy Status Hub",
+    description:
+      "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
+  },
 };
 
 export default function Home() {
@@ -63,6 +77,16 @@ export default function Home() {
       }),
     [],
   );
+  const News = useMemo(
+    () =>
+      dynamic(() => import("@/components/widgets/newsFeed"), {
+        loading: () => (
+          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
+        ),
+        ssr: false,
+      }),
+    [],
+  );
 
   return (
     <>
@@ -90,6 +114,14 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <Map />
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>Dispatches</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <News />
             </CardContent>
           </Card>
           <Card>

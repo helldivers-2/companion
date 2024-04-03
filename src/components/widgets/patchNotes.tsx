@@ -48,7 +48,7 @@ export default function PatchNotes() {
           return (
             <div
               key={index}
-              className="flex h-[4.125rem] items-center justify-between rounded-md border p-3"
+              className="flex items-center justify-between rounded-md border p-4"
             >
               <div className="flex items-center space-x-4">
                 <h3 className="font-medium">{item.title}</h3>

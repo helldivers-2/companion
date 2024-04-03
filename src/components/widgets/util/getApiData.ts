@@ -8,6 +8,11 @@ export async function statusAPI(){
   return res.json()
 }
 
+export async function stratagemsAPI(){
+  const res = await fetch("https://api-hellhub-collective.koyeb.app/api/stratagems?limit=59")
+  return res.json()
+}
+
 {/*
   Api Options:
   https://helldivers-2.fly.dev/api/swaggerui

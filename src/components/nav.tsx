@@ -91,6 +91,18 @@ export default function Navbar() {
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
+                    <Link href="/stratagems" legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <LuBox className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">
+                          all Stratagems
+                        </span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
                     <Link href="/faq" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
@@ -134,20 +146,6 @@ export default function Navbar() {
                                 <LuShoppingBasket className="mx-auto size-6 text-muted-foreground md:mr-1 md:size-4" />
                                 <span className="text-center text-xs text-muted-foreground">
                                   Item Shop
-                                </span>
-                              </div>
-                            </NavigationMenuLinkPWA>
-                          </Link>
-                        </NavigationMenuItemPWA>
-                        <NavigationMenuItemPWA>
-                          <Link href="/items" legacyBehavior passHref>
-                            <NavigationMenuLinkPWA
-                              className={navigationMenuTriggerStylePWA()}
-                            >
-                              <div className="block md:flex">
-                                <LuBox className="mx-auto size-6 md:mr-1 md:size-4" />
-                                <span className="text-center text-xs">
-                                  all Items
                                 </span>
                               </div>
                             </NavigationMenuLinkPWA>

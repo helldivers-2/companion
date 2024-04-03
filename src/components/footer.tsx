@@ -29,10 +29,7 @@ export default function Component() {
             </h5>
             <p className="mt-4   text-sm  text-muted-foreground">
               A project by{" "}
-              <Link
-                className="underline"
-                href="https://michaelwagner.vercel.app"
-              >
+              <Link className="underline" href="https://michaelwagner.cc">
                 Michael Wagner.
               </Link>
             </p>
@@ -322,7 +319,7 @@ export default function Component() {
                         <li>
                           <a
                             className="underline"
-                            href="https://github.com/dealloc/helldivers2-api"
+                            href="https://github.com/helldivers-2/api"
                           >
                             Helldivers Api
                           </a>{" "}
@@ -398,7 +395,7 @@ export default function Component() {
                     <a
                       target="_blank"
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="https://infogrid-prod.vercel.app"
+                      href="https://infogrid.michaelwagner.cc"
                     >
                       Infogrid
                     </a>
@@ -407,7 +404,7 @@ export default function Component() {
                     <a
                       target="_blank"
                       className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="https://glifico.vercel.app"
+                      href="https://glifico.michaelwagner.cc"
                     >
                       Glifico
                     </a>
@@ -423,7 +420,7 @@ export default function Component() {
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://discord.com/invite/Dm5JBDGUMF"
+                  href="https://discord.gg/helldivers"
                 >
                   <FaDiscord className="size-6" />
                 </a>
@@ -437,7 +434,7 @@ export default function Component() {
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
-                  href="https://steamcommunity.com/app/394510"
+                  href="https://steamcommunity.com/app/553850"
                 >
                   <FaSteam className="size-6" />
                 </a>

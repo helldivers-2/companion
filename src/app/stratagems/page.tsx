@@ -1,31 +1,33 @@
-import React from "react";
-import getSvgs from "@/lib/getSVGs";
+import { Metadata } from "next";
+import Container from "@/components/containerCard";
+import AllStratagemsTable from "@/components/widgets/stratagems/allStratagems";
+import Comments from "@/components/giscusComponent";
 
-const svgData = getSvgs();
-
-const MyComponent: React.FC = () => {
-  return (
-    <div>
-      {Object.entries(svgData).map(([categoryPath, { folderName, files }]) => (
-        <div key={categoryPath}>
-          <h2 className="mb-4 text-2xl font-bold">{folderName}</h2>
-          <div className="grid grid-cols-8 gap-4">
-            {files.map(({ name, path }) => {
-              const SVGComponent = React.lazy(() => import(`/public/${path}`));
-              return (
-                <div key={path} className="rounded border p-4 hover:bg-muted">
-                  <React.Suspense fallback={<div>Loading...</div>}>
-                    <SVGComponent className="h-auto w-full" />
-                  </React.Suspense>
-                  <p className="mt-2 text-center">{name}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Helldivers 2 Stratagem Database",
+  description:
+    "Explore a comprehensive database of all stratagems (abilities) in Helldivers 2. Search, sort, and filter stratagems by name, cooldown, category, and more using our responsive table.",
+  keywords:
+    "Helldivers 2, stratagems, abilities, database, cooldown, categories, search, sort, filter",
+  openGraph: {
+    title: "Helldivers 2 Stratagem Database",
+    description:
+      "Explore a comprehensive database of all stratagems (abilities) in Helldivers 2. Search, sort, and filter stratagems by name, cooldown, category, and more using our responsive table.",
+  },
+  twitter: {
+    title: "Helldivers 2 Stratagem Database",
+    description:
+      "Explore a comprehensive database of all stratagems (abilities) in Helldivers 2. Search, sort, and filter stratagems by name, cooldown, category, and more using our responsive table.",
+  },
 };
 
-export default MyComponent;
+export default function ItemsPage() {
+  return (
+    <>
+      <Container title="all Stratagems">
+        <AllStratagemsTable />
+      </Container>
+      <Comments keyword="Stratagems" reactions="0" />
+    </>
+  );
+}

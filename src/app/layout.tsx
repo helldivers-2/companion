@@ -22,7 +22,7 @@ export const metadata = {
     template: "%s | Helldivers Companion",
   },
   description:
-    "Dive into your comprehensive companion for Helldivers 2. Explore current targets, plan deployments on the galaxy map, and access a vast item database and see the item shop. Stay updated with patch notes, participate in major orders, and engage with the community.",
+    "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/icons/favicon-16x16.png",
@@ -30,16 +30,47 @@ export const metadata = {
     android: "/icons/android-chrome-192x192.png",
   },
   manifest: "https://helldiverscompanion.app/manifest.json",
-  authors: [
-    { name: "Michael Wagner", url: "https://michaelwagner.vercel.app" },
+  authors: [{ name: "Michael Wagner", url: "https://michaelwagner.cc" }],
+  keywords: [
+    "Helldivers 2",
+    "Galactic War",
+    "attack targets",
+    "major orders",
+    "maps",
+    "patch notes",
+    "dispatches",
+    "galaxy stats",
+    "information hub",
   ],
   openGraph: {
     title: "Helldivers Companion",
-    description: "Relevant information for the democratic game Helldivers 2.",
+    description:
+      "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
     url: "https://helldiverscompanion.app/",
     siteName: "Helldivers Companion",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://helldiverscompanion.app/opengraph-image.jpg",
+        width: 800,
+        height: 600,
+        alt: "Helldivers Companion Thumbnail",
+      },
+    ],
+  },
+  twitter: {
+    title: "Helldivers 2 Galactic War Hub",
+    description:
+      "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
+    images: [
+      {
+        url: "https://helldiverscompanion.app/opengraph-image.jpg",
+        width: 800,
+        height: 600,
+        alt: "Helldivers Companion Thumbnail",
+      },
+    ],
   },
   robots: {
     index: true,

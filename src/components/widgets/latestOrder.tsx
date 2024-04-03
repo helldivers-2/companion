@@ -34,8 +34,8 @@ export default async function majorOrder() {
 
   return (
     <div className="w-full bg-background">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        <div className="col-span-1 rounded-lg border p-4 md:col-span-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="col-span-1 rounded-lg border p-4 lg:col-span-2">
           <p>
             <span className="font-bold text-primary">
               {order.majorOrder[0].setting.overrideBrief}
@@ -73,7 +73,7 @@ export default async function majorOrder() {
             },
           )}
         </div>
-        <div className="grid  grid-cols-2 gap-4">
+        <div className="col-span-1 grid grid-cols-2 gap-4 md:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-center rounded-lg border p-4">
             <div className="block">
               <h3 className="text-xl font-semibold leading-none tracking-tight">

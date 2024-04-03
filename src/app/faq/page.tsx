@@ -12,7 +12,21 @@ import {
 import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Helldivers War Status FAQ",
+  description:
+    "Learn about the Galactic War status, how planet liberation works, and system requirements for Helldivers 2.",
+  keywords:
+    "Helldivers 2, Galactic War, planet liberation, system requirements, FAQ",
+  openGraph: {
+    title: "Helldivers War Status FAQ",
+    description:
+      "Learn about the Galactic War status, how planet liberation works, and system requirements for Helldivers 2.",
+  },
+  twitter: {
+    title: "Helldivers War Status FAQ",
+    description:
+      "Learn about the Galactic War status, how planet liberation works, and system requirements for Helldivers 2.",
+  },
 };
 
 export default function FAQPage() {
@@ -56,9 +70,9 @@ export default function FAQPage() {
               its liberation status as well as the rate of liberation.
             </p>
           </div>
-          <h1 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
+          <h3 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
             How does the math behind Liberation work?
-          </h1>
+          </h3>
           <div className="prose prose-neutral dark:prose-invert">
             <ul className="list-outside list-disc pl-4">
               <li>
@@ -84,22 +98,22 @@ export default function FAQPage() {
             </ul>
           </div>
           <div className="prose prose-neutral dark:prose-invert">
-            <h1 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
+            <h3 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
               Does abandoning an operation negatively impact the %?
-            </h1>
+            </h3>
             <p>No, it does not.</p>
-            <h1 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
+            <h3 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
               Why do all the planets seem to reset their status everyday?
-            </h1>
+            </h3>
             <p>
               Bugs and bots DO NOT sleep, they are constantly pushing back (hp
               regen). So overnight, when Americans (the biggest player base) are
               sleeping, the bugs and bots take back a lot of the planet. See the
               2nd bullet in how Liberation math works.
             </p>
-            <h1 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
+            <h3 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
               What is the deal with &quot;Other Planets&quot;?
-            </h1>
+            </h3>
             <p>
               This is people who are playing the game as an individual, and are
               having very little impact to the galactic war. They are dealing
@@ -107,9 +121,9 @@ export default function FAQPage() {
               at full health. NOTE - the game master can account for this, so
               they aren&apos;t negatively impacting the userbase.
             </p>
-            <h1 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
+            <h3 className="mb-4 mt-8 text-2xl font-medium tracking-tighter">
               What are supply lines/connections on the map?
-            </h1>
+            </h3>
             <p>
               Check out{" "}
               <a

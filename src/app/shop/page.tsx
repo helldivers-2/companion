@@ -11,7 +11,20 @@ import {
 import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
-  title: "Shop",
+  title: "Daily Item Shop",
+  description:
+    "Check out the latest daily item shop for [Game Name]. Browse through the available items, including images, cost, and type.",
+  keywords: "[Game Name], daily item shop, items, cost, type, images",
+  openGraph: {
+    title: "Daily Item Shop",
+    description:
+      "Check out the latest daily item shop for [Game Name]. Browse through the available items, including images, cost, and type.",
+  },
+  twitter: {
+    title: "Daily Item Shop",
+    description:
+      "Check out the latest daily item shop for [Game Name]. Browse through the available items, including images, cost, and type.",
+  },
 };
 
 import Container from "@/components/containerCard";
