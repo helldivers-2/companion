@@ -21,9 +21,46 @@ function getDateStringForThisWeek(date: any) {
 
   return `${dayOfWeek}`;
 }
+
 export default async function newsFeeds() {
-  const news = await API();
+  let news;
+
+  try {
+    news = await API();
+  } catch (error) {
+    console.error("Error fetching news:", error);
+    return (
+      <div className="text-center text-muted-foreground">
+        <p>Oops! There seems to be a temporary issue with this feed.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
+  if (
+    !news ||
+    !news.newsFeed ||
+    !Array.isArray(news.newsFeed) ||
+    news.newsFeed.length === 0
+  ) {
+    return (
+      <div className="text-center text-muted-foreground">
+        <p>Oops! There seems to be a temporary issue with this feed.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
   const lastFourNews = news.newsFeed.slice(-6); // Extracting the last four news items
+
+  if (lastFourNews.length === 0) {
+    return (
+      <div className="text-center text-muted-foreground">
+        <p>Oops! There seems to be a temporary issue with this feed.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -41,7 +78,9 @@ export default async function newsFeeds() {
             <AccordionItem value={`item-${newses.id}`}>
               <AccordionTrigger>
                 <div className="flex">
-                  <Badge>{getDateStringForThisWeek(publishedDate)}</Badge>
+                  <Badge variant="outline">
+                    {getDateStringForThisWeek(publishedDate)}
+                  </Badge>
                   <div className="px-4">{triggerText}</div>
                 </div>
               </AccordionTrigger>

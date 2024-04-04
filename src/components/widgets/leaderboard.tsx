@@ -39,7 +39,30 @@ function formatNumber(num: number[]) {
 }
 
 export default async function Leaderboard() {
-  const scores = await API();
+  let scores;
+
+  try {
+    scores = await API();
+  } catch (error) {
+    console.error("Error fetching scores:", error);
+    return (
+      <div className="text-center text-muted-foreground">
+        <p>Oops! There seems to be a temporary issue with the leaderboard.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
+  if (!scores || !scores.leaderboard || !scores.leaderboard.data) {
+    return (
+      <div className="text-center text-muted-foreground">
+        <p>Oops! There seems to be a temporary issue with the leaderboard.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
+  const leaderboardData = scores.leaderboard;
 
   return (
     <Card className="w-full border border-primary bg-muted">
@@ -48,9 +71,7 @@ export default async function Leaderboard() {
           <CardTitle>Leaderboard</CardTitle>
           <CardDescription>
             Top 10 players from{" "}
-            <span className="text-primary">
-              {scores.leaderboard.totalRecords}
-            </span>{" "}
+            <span className="text-primary">{leaderboardData.totalRecords}</span>{" "}
             Players
           </CardDescription>
         </div>
@@ -67,7 +88,7 @@ export default async function Leaderboard() {
               </TableRow>
             </TableHeader>
             <TableBody className="divide-y">
-              {scores.leaderboard.entries.map((score: Score, index: number) => (
+              {leaderboardData.entries.map((score: Score, index: number) => (
                 <TableRow key={index} className="bg-background font-medium">
                   <TableCell>{score.rank}</TableCell>
                   <TableCell>{score.name}</TableCell>

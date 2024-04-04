@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Suspense, useMemo } from "react";
+import { Suspense, useMemo, lazy } from "react";
 import dynamic from "next/dynamic";
 
 import Container from "@/components/containerCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import Comments from "@/components/giscusComponent";
+
+// Lazy load the Comments component
+const Comments = lazy(() => import("@/components/giscusComponent"));
 
 export const metadata: Metadata = {
   title: "Helldivers 2 Galaxy Status Hub",
@@ -142,7 +144,10 @@ export default function Home() {
           </Card>
         </div>
       </Container>
-      <Comments keyword="Status" reactions="0" />
+      {/* Lazy load the Comments component */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Comments keyword="Status" reactions="0" />
+      </Suspense>
     </>
   );
 }

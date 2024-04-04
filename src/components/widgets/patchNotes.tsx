@@ -58,7 +58,7 @@ export default function PatchNotes() {
                   {formattedDate}
                 </div>
                 <NewsDialog title="Read More">
-                  <div className="prose list-inside list-disc">
+                  <div className="prose patchnotes">
                     <Markdown remarkPlugins={[remarkGfm]}>
                       {item.contents}
                     </Markdown>

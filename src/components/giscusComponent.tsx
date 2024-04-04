@@ -49,7 +49,7 @@ export default function Comments({ keyword, reactions }: InfoDialogProps) {
             <IoChatbubblesOutline className="mr-2 size-4" /> Comment on this
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="z-[2000]">
+        <DrawerContent className="z-[2000] max-h-[75vmax]  min-h-[75vmax]">
           <div className="p-4">
             <ScrollArea className="size-full">
               <Giscus

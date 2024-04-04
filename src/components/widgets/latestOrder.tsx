@@ -60,7 +60,6 @@ export default async function majorOrder() {
                   key={index}
                   className={`flex items-center justify-center rounded-lg bg-muted p-4 text-xl leading-none text-primary ${borderClassName}`}
                 >
-                  {/* TODO: wenn liberation 100 ist -> border border-primary*/}
                   <div className="block">
                     <p>{planet.planet.name}</p>
                     <Progress

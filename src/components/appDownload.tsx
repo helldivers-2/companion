@@ -13,6 +13,7 @@ import { Button } from "./ui/button";
 import { LuDownload } from "react-icons/lu";
 import { setCookie, getCookie } from "cookies-next";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 type BrowserType =
   | "chrome"
@@ -68,7 +69,7 @@ export default function AppDownload() {
           </Button>
         </DialogTrigger>
 
-        <DialogContent>
+        <DialogContent className="max-h-[66vmax]">
           <DialogHeader>
             <DialogTitle>get the Webapp</DialogTitle>
           </DialogHeader>
@@ -81,7 +82,9 @@ export default function AppDownload() {
                 Desktop
               </TabsTrigger>
             </TabsList>
-            <div className="prose">{getHow(userBrowser)}</div>{" "}
+            <ScrollArea className="size-full max-h-[50vmax]">
+              <div className="prose">{getHow(userBrowser)}</div>
+            </ScrollArea>
           </Tabs>
           <DialogFooter>
             <Button onClick={handleHide}>Don&apos;t ask again</Button>
