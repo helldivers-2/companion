@@ -16,7 +16,7 @@ const BodyFont = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL(`https://helldiverscompanion.app/`),
+  metadataBase: new URL(`https://www.helldiverscompanion.app/`),
   title: {
     default: "Helldivers Companion",
     template: "%s | Helldivers Companion",
@@ -29,7 +29,7 @@ export const metadata = {
     apple: "/icons/apple-touch-icon.png",
     android: "/icons/android-chrome-192x192.png",
   },
-  manifest: "https://helldiverscompanion.app/manifest.json",
+  manifest: "https://www.helldiverscompanion.app/manifest.json",
   authors: [{ name: "Michael Wagner", url: "https://michaelwagner.cc" }],
   keywords: [
     "Helldivers 2",
@@ -46,13 +46,13 @@ export const metadata = {
     title: "Helldivers Companion",
     description:
       "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
-    url: "https://helldiverscompanion.app/",
+    url: "https://www.helldiverscompanion.app/",
     siteName: "Helldivers Companion",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "https://helldiverscompanion.app/opengraph-image.jpg",
+        url: "https://www.helldiverscompanion.app/opengraph-image.jpg",
         width: 800,
         height: 600,
         alt: "Helldivers Companion Thumbnail",
@@ -65,7 +65,7 @@ export const metadata = {
       "Stay up-to-date with the latest Helldivers 2 information. Check current attack targets, major orders, maps, patch notes, dispatches, and galaxy stats. Your one-stop hub for all things Helldivers 2.",
     images: [
       {
-        url: "https://helldiverscompanion.app/opengraph-image.jpg",
+        url: "https://www.helldiverscompanion.app/opengraph-image.jpg",
         width: 800,
         height: 600,
         alt: "Helldivers Companion Thumbnail",

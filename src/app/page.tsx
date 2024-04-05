@@ -38,7 +38,6 @@ export default function Home() {
       }),
     [],
   );
-
   const MajorOrder = useMemo(
     () =>
       dynamic(() => import("@/components/widgets/latestOrder"), {
@@ -59,36 +58,6 @@ export default function Home() {
       }),
     [],
   );
-  const PatchNotes = useMemo(
-    () =>
-      dynamic(() => import("@/components/widgets/patchNotes"), {
-        loading: () => (
-          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
-        ),
-        ssr: true,
-      }),
-    [],
-  );
-  const StatsWidget = useMemo(
-    () =>
-      dynamic(() => import("@/components/widgets/globalStats"), {
-        loading: () => (
-          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
-        ),
-        ssr: true,
-      }),
-    [],
-  );
-  const News = useMemo(
-    () =>
-      dynamic(() => import("@/components/widgets/newsFeed"), {
-        loading: () => (
-          <Skeleton className="aspect-square w-full animate-pulse rounded-lg bg-muted md:aspect-auto md:h-[450px]" />
-        ),
-        ssr: false,
-      }),
-    [],
-  );
 
   return (
     <>
@@ -104,14 +73,6 @@ export default function Home() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Targets</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <TargetsTableComponent />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
               <CardTitle>Map</CardTitle>
             </CardHeader>
             <CardContent>
@@ -120,31 +81,14 @@ export default function Home() {
           </Card>
           <Card>
             <CardHeader>
-              <CardTitle>Dispatches</CardTitle>
+              <CardTitle>Targets</CardTitle>
             </CardHeader>
             <CardContent>
-              <News />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>recent Updates</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <PatchNotes />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Galaxy Stats</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <StatsWidget />
+              <TargetsTableComponent />
             </CardContent>
           </Card>
         </div>
       </Container>
-      {/* Lazy load the Comments component */}
       <Suspense fallback={<div>Loading...</div>}>
         <Comments keyword="Status" reactions="0" />
       </Suspense>

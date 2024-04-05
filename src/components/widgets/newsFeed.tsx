@@ -51,7 +51,7 @@ export default async function newsFeeds() {
     );
   }
 
-  const lastFourNews = news.newsFeed.slice(-6); // Extracting the last four news items
+  const lastFourNews = news.newsFeed.slice(-3);
 
   if (lastFourNews.length === 0) {
     return (
@@ -63,7 +63,7 @@ export default async function newsFeeds() {
   }
 
   return (
-    <>
+    <div className="min-h-[150px] rounded-xl bg-background p-4">
       {lastFourNews.map((newses: News, index: number) => {
         const publishedDate = new Date(newses.published * 1000);
         const regex = /<i=3>(.*?)<\/i>/;
@@ -91,6 +91,6 @@ export default async function newsFeeds() {
           </Accordion>
         );
       })}
-    </>
+    </div>
   );
 }

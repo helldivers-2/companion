@@ -76,6 +76,22 @@ export default function Component() {
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/news"
+                    >
+                      News
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/stats"
+                    >
+                      Galaxy Stats
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
                       href="/leaderboard"
                     >
                       Leaderboard

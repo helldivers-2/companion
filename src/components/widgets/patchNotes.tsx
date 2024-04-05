@@ -23,7 +23,7 @@ interface Item {
 
 export default function PatchNotes() {
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 4;
+  const postsPerPage = 7;
   const [patchNotes, setPatchNotes] = useState<Item[]>([]);
 
   // Fetch patch notes data on component mount
@@ -36,7 +36,7 @@ export default function PatchNotes() {
   const currentPosts = patchNotes.slice(firstPostIndex, lastPostIndex);
 
   return (
-    <main className="flex-1">
+    <main className="min-h-[600px] flex-1 rounded-xl bg-background p-4">
       <div className="space-y-2">
         {currentPosts.map((item: Item, index: number) => {
           const formattedDate = new Date(item.date).toLocaleString(undefined, {

@@ -1,6 +1,6 @@
 export default async function sitemap() {
-  let routes = ['', '/items', '/faq', '/shop', '/leaderboard', '/stratagems'].map((route) => ({
-    url: `https://helldiverscompanion.app${route}`,
+  let routes = ['', '/items', '/faq', '/shop', '/leaderboard', '/stratagems', '/stats', '/news'].map((route) => ({
+    url: `https://www.helldiverscompanion.app${route}`,
     lastModified: new Date().toISOString().split('T')[0],
   }));
 

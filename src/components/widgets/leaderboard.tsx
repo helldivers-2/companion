@@ -53,15 +53,6 @@ export default async function Leaderboard() {
     );
   }
 
-  if (!scores || !scores.leaderboard || !scores.leaderboard.data) {
-    return (
-      <div className="text-center text-muted-foreground">
-        <p>Oops! There seems to be a temporary issue with the leaderboard.</p>
-        <p>Please try again later.</p>
-      </div>
-    );
-  }
-
   const leaderboardData = scores.leaderboard;
 
   return (

@@ -24,28 +24,30 @@ export const UserMenu: React.FC<ContainerCardProps> = ({ children }) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-fit">
-          <Link href="/items">
-            <DropdownMenuItem>all Items</DropdownMenuItem>
-          </Link>
-          <Link href="/stratagems">
-            <DropdownMenuItem>all Stratagems</DropdownMenuItem>
-          </Link>
-          <Link href="/faq">
-            <DropdownMenuItem>FAQ</DropdownMenuItem>
+          <Link href="/stats">
+            <DropdownMenuItem>Galaxy Stats</DropdownMenuItem>
           </Link>
           <Link href="/leaderboard">
             <DropdownMenuItem>Leaderboard</DropdownMenuItem>
           </Link>
-          <DropdownMenuSeparator />
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Resources</DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>
+              <span className="sr-only">see Item Tables</span>
+              <p>Item Tables</p>
+            </DropdownMenuSubTrigger>
             <DropdownMenuSubContent>
-              <DropdownMenuItem>Privacy Policy</DropdownMenuItem>
-              <DropdownMenuItem>Credits</DropdownMenuItem>
-              <DropdownMenuItem>Contact</DropdownMenuItem>
-              <DropdownMenuItem>About</DropdownMenuItem>
+              <Link href="/items">
+                <DropdownMenuItem>all Items</DropdownMenuItem>
+              </Link>
+              <Link href="/stratagems">
+                <DropdownMenuItem>all Stratagems</DropdownMenuItem>
+              </Link>
             </DropdownMenuSubContent>
-          </DropdownMenuSub>
+          </DropdownMenuSub>{" "}
+          <Link href="/faq">
+            <DropdownMenuItem>FAQ</DropdownMenuItem>
+          </Link>
+          <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <span className="sr-only">Toggle theme</span>

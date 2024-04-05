@@ -1,4 +1,6 @@
 import { API } from "@/components/widgets/util/getApiData";
+import { StatCard } from "@/components/statCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 function formatNumber(num: number) {
   // Nine Zeroes for Billions
@@ -25,6 +27,8 @@ const convertToHours = (missionTime: number) => {
 export default async function StatsWidget() {
   const stats = await API();
 
+  const galaxy_stats = stats.planetStats.galaxy_stats;
+
   const calculateTotalPlayers = (stats: any): number => {
     let totalPlayers = 0;
 
@@ -36,72 +40,62 @@ export default async function StatsWidget() {
     return totalPlayers;
   };
 
-  const missionTimeHours = convertToHours(
-    stats.planetStats.galaxy_stats.missionTime,
-  );
+  const missionTimeHours = convertToHours(galaxy_stats.missionTime);
   const formattedMissionTimeHours = formatNumber(missionTimeHours);
 
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(calculateTotalPlayers(stats))}
-        </h3>
-        <p className="text-sm text-primary">patriots currently active</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.missionsWon)}
-        </h3>
-        <p className="text-sm text-primary">lawfull Victories</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">{formattedMissionTimeHours} hours</h3>
-        <p className="text-sm text-primary">Time invested</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.bugKills)}
-        </h3>
-        <p className="text-sm text-primary">pesty bugs killed</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.automatonKills)}
-        </h3>
-        <p className="text-sm text-primary">Robots annihilated</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.bulletsFired)}
-        </h3>
-        <p className="text-sm text-primary">Ammunition shot</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.deaths)}
-        </h3>
-        <p className="text-sm text-primary">fallen Souldiers</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.friendlies)}
-        </h3>
-        <p className="text-sm text-primary">collateral friend kills</p>
-      </div>
-      <div className="rounded-lg border p-4">
-        <h3 className="text-xl">
-          {formatNumber(stats.planetStats.galaxy_stats.missionsLost)}
-        </h3>
-        <p className="text-sm text-primary">attemptes to liberate the Creek</p>
-      </div>
+    <div className="grid grid-cols-1 gap-4">
+      <Card className="col-span-1 md:col-span-2">
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <StatCard title="patriots currently active">
+              {formatNumber(calculateTotalPlayers(stats))}
+            </StatCard>
+            <StatCard title="lawfull Victories">
+              {formatNumber(galaxy_stats.missionsWon)}
+            </StatCard>
+            <StatCard title="Time invested">
+              {formattedMissionTimeHours} hours
+            </StatCard>
+            <StatCard title="pesty bugs killed">
+              {formatNumber(galaxy_stats.bugKills)}
+            </StatCard>
+            <StatCard title="Robots annihilated">
+              {formatNumber(galaxy_stats.automatonKills)}
+            </StatCard>
+            <StatCard title="Illuminates killed?!">
+              {formatNumber(galaxy_stats.illuminateKills)}
+            </StatCard>
+            <StatCard title="Ammunition shot">
+              {formatNumber(galaxy_stats.bulletsFired)}
+            </StatCard>
+            <StatCard title="fallen Souldiers">
+              {formatNumber(galaxy_stats.deaths)}
+            </StatCard>
+            <StatCard title="collateral friend kills">
+              {formatNumber(galaxy_stats.friendlies)}
+            </StatCard>
+            <StatCard title="missions lost :(">
+              {formatNumber(galaxy_stats.missionsLost)}
+            </StatCard>
+          </div>
+        </CardContent>
+      </Card>
+      <Card className="col-span-1 md:col-span-2">
+        <CardHeader>
+          <CardTitle>Averages</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            <StatCard title="patriots currently active">
+              {formatNumber(galaxy_stats.revives)}
+            </StatCard>
+            <StatCard title="patriots currently active">
+              {formatNumber(galaxy_stats.missionSuccessRate)}
+            </StatCard>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
-}
-{
-  /*      <div className="mx-2 flex justify-between text-muted-foreground">
-        {targets.warSeason.activePlayers} People on {filteredPlanets.length}{" "}
-        planets
-        <a href="https://github.com/dealloc/helldivers2-api">Source</a>
-      </div> */
 }

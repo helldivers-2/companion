@@ -40,7 +40,7 @@ export default function ShopPage() {
               <CardTitle>1</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>-</p>
             </CardContent>
           </Card>
           <Card className="row-auto">
@@ -48,7 +48,7 @@ export default function ShopPage() {
               <CardTitle>2</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>-</p>
             </CardContent>
           </Card>
           <Card className="col-start-2 row-auto row-start-2">
@@ -56,7 +56,7 @@ export default function ShopPage() {
               <CardTitle>3</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>-</p>
             </CardContent>
           </Card>
           <Card className="col-start-3 row-span-2 row-start-1 aspect-square">
@@ -64,7 +64,7 @@ export default function ShopPage() {
               <CardTitle>4</CardTitle>
             </CardHeader>
             <CardContent>
-              <p>Card Content</p>
+              <p>-</p>
             </CardContent>
           </Card>
         </div>

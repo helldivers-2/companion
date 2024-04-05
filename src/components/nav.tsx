@@ -3,12 +3,15 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 import {
   NavigationMenu,
+  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
@@ -26,12 +29,26 @@ import {
   LuRocket,
   LuBox,
   LuMoreHorizontal,
+  LuNewspaper,
 } from "react-icons/lu";
 
 import { UserMenu } from "./user-menu";
 
 import logo from "@/app/favicon.ico";
 import { ThemeToggle } from "./theme-toggle";
+
+const components: { title: string; href: string; description: string }[] = [
+  {
+    title: "all Items",
+    href: "/items",
+    description: "All 167 items in the game organized into categories.",
+  },
+  {
+    title: "all Stratagems",
+    href: "/stratagems",
+    description: "All Stratagems in the game.",
+  },
+];
 
 export default function Navbar() {
   return (
@@ -81,26 +98,33 @@ export default function Navbar() {
                     </Link>
                   </NavigationMenuItem>*/}
                   <NavigationMenuItem>
-                    <Link href="/items" legacyBehavior passHref>
+                    <Link href="/news" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
                       >
-                        <LuBox className="mr-1 size-6 md:size-4" />
-                        <span className=" text-center text-xs ">all Items</span>
+                        <LuNewspaper className="mr-1 size-6 md:size-4" />
+                        <span className=" text-center text-xs ">News</span>
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <Link href="/stratagems" legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        <LuBox className="mr-1 size-6 md:size-4" />
-                        <span className=" text-center text-xs ">
-                          all Stratagems
-                        </span>
-                      </NavigationMenuLink>
-                    </Link>
+                    <NavigationMenuTrigger>
+                      <LuBox className="mr-1 size-6 md:size-4" />
+                      <span className="text-center text-xs ">Item Tables</span>
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[320px] gap-3 p-4 md:w-[440px] md:grid-cols-2">
+                        {components.map((component) => (
+                          <ListItem
+                            key={component.title}
+                            title={component.title}
+                            href={component.href}
+                          >
+                            {component.description}
+                          </ListItem>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Link href="/faq" legacyBehavior passHref>
@@ -112,7 +136,6 @@ export default function Navbar() {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                  <NavigationMenuItem></NavigationMenuItem>
                   <NavigationMenuItem className="hidden md:block">
                     <ThemeToggle />
                   </NavigationMenuItem>
@@ -132,6 +155,20 @@ export default function Navbar() {
                                 <LuRocket className="mx-auto size-6 md:mr-1 md:size-4" />
                                 <span className="text-center text-xs">
                                   Status
+                                </span>
+                              </div>
+                            </NavigationMenuLinkPWA>
+                          </Link>
+                        </NavigationMenuItemPWA>
+                        <NavigationMenuItemPWA>
+                          <Link href="/news" legacyBehavior passHref>
+                            <NavigationMenuLinkPWA
+                              className={navigationMenuTriggerStylePWA()}
+                            >
+                              <div className="block md:flex">
+                                <LuNewspaper className="mx-auto size-6 md:mr-1 md:size-4" />
+                                <span className="text-center text-xs">
+                                  News
                                 </span>
                               </div>
                             </NavigationMenuLinkPWA>
@@ -177,3 +214,29 @@ export default function Navbar() {
     </header>
   );
 }
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className,
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
