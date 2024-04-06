@@ -1,7 +1,10 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
+
 import Container from "@/components/containerCard";
 import AllStratagemsTable from "@/components/widgets/stratagems/allStratagems";
-import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
   title: "Helldivers 2 Stratagem Database",
@@ -22,6 +25,17 @@ export const metadata: Metadata = {
 };
 
 export default function ItemsPage() {
+  const Comments = useMemo(
+    () =>
+      dynamic(() => import("@/components/giscusComponent"), {
+        loading: () => (
+          <Skeleton className="h-10 w-full animate-pulse rounded-lg bg-muted px-4 py-2" />
+        ),
+        ssr: false,
+      }),
+    [],
+  );
+
   return (
     <>
       <Container title="all Stratagems">

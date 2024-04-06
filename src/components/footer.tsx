@@ -439,6 +439,7 @@ export default function Component() {
                   href="https://discord.gg/helldivers"
                 >
                   <FaDiscord className="size-6" />
+                  <span className="sr-only">Discord</span>
                 </a>
                 <a
                   target="_blank"
@@ -446,6 +447,7 @@ export default function Component() {
                   href="https://www.reddit.com/r/Helldivers/"
                 >
                   <FaReddit className="size-6" />
+                  <span className="sr-only">Reddit</span>
                 </a>
                 <a
                   target="_blank"
@@ -453,6 +455,7 @@ export default function Component() {
                   href="https://steamcommunity.com/app/553850"
                 >
                   <FaSteam className="size-6" />
+                  <span className="sr-only">Steam</span>
                 </a>
                 <a
                   target="_blank"
@@ -460,6 +463,7 @@ export default function Component() {
                   href="https://www.facebook.com/groups/helldiverscommunity/"
                 >
                   <FaFacebook className="size-6" />
+                  <span className="sr-only">Facebook</span>
                 </a>
                 <a
                   target="_blank"
@@ -467,6 +471,7 @@ export default function Component() {
                   href="https://twitter.com/helldivers2"
                 >
                   <FaTwitter className="size-6" />
+                  <span className="sr-only">Twitter</span>
                 </a>
               </nav>
               <h5 className="  text-sm font-semibold uppercase  tracking-wide">
@@ -479,6 +484,7 @@ export default function Component() {
                   href="https://www.arrowheadgamestudios.com/"
                 >
                   <FaHouse className="size-6" />
+                  <span className="sr-only">Arrowhead Studios Website</span>
                 </a>
                 <a
                   target="_blank"
@@ -486,6 +492,7 @@ export default function Component() {
                   href="https://instagram.com/arrowheadgamestudios/"
                 >
                   <FaInstagram className="size-6" />
+                  <span className="sr-only">Instagram</span>
                 </a>
                 <a
                   target="_blank"
@@ -493,6 +500,7 @@ export default function Component() {
                   href="https://www.youtube.com/user/ArrowheadGameStudios"
                 >
                   <FaYoutube className="size-6" />
+                  <span className="sr-only">YouTube</span>
                 </a>
                 <a
                   target="_blank"
@@ -500,6 +508,7 @@ export default function Component() {
                   href="https://www.facebook.com/ArrowheadGS"
                 >
                   <FaFacebook className="size-6" />
+                  <span className="sr-only">Facebook</span>
                 </a>
                 <a
                   target="_blank"
@@ -507,6 +516,7 @@ export default function Component() {
                   href="https://twitter.com/arrowheadgs"
                 >
                   <FaTwitter className="size-6" />
+                  <span className="sr-only">Twitter</span>
                 </a>
               </nav>
             </div>

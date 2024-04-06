@@ -4,7 +4,7 @@ export async function API() {
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
       "Accept-Language": "en-US"
     },
-    next: { revalidate: 900 }
+    next: { revalidate: 300 }
   });
   return res.json();
 }
@@ -15,7 +15,7 @@ export async function statusAPI(){
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
       "Accept-Language": "en-US"
     },
-    next: { revalidate: 900 }
+    next: { revalidate: 300 }
   });
   return res.json()
 }
@@ -26,7 +26,7 @@ export async function stratagemsAPI(){
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
       "Accept-Language": "en-US"
     },
-    next: { revalidate: 900 }
+    next: { revalidate: 300 }
   });
   return res.json()
 }

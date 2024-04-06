@@ -10,17 +10,20 @@ import {
   LayersControl,
   FeatureGroup,
 } from "react-leaflet";
+//Polyline
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
-import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Import the fetchPlanetsData function
+import { fetchStatusData } from "@/components/widgets/util/getWarMap";
 import { Progress } from "../ui/progress";
 
-interface Planet {
+interface Status {
   players: number;
   liberation: number;
   planet: {
     name: string;
+    index: number;
     initial_owner: string;
+    waypoints: number;
     position: {
       x: number;
       y: number;
@@ -29,11 +32,11 @@ interface Planet {
 }
 
 export default function MyMap() {
-  const [planets, setPlanets] = useState<Planet[]>([]);
+  const [planets, setPlanets] = useState<Status[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const planetsData = await fetchPlanetsData(); // Call the fetchPlanetsData function
+      const planetsData = await fetchStatusData();
       setPlanets(planetsData);
     };
     fetchData();
@@ -54,25 +57,20 @@ export default function MyMap() {
   );
 
   {
-    /*Planets we never were on
-    const unseenPlanets = planets.filter(
-    (planet: { players: number; liberation: number }) => {
-      return planet.liberation === 0;
-    },
-  );
-
-   Planet on which the major order happens
-    const majorPlanets = planets.filter(
-    (planet: { players: number; liberation: number }) => {
-      return planet.liberation === 100;
-    },
-  );*/
+    /*
+      Planet on which the major order happens
+        const majorPlanets = planets.filter(
+        (planet: { players: number; liberation: number }) => {
+          return planet.liberation === 100;
+        },
+      );
+    */
   }
 
   // Define the angle offset in degrees
   const angleOffsetDegrees = 90; // Adjust as needed
 
-  const renderPlanetMarkers = (filteredPlanets: Planet[]): JSX.Element[] => {
+  const renderPlanetMarkers = (filteredPlanets: Status[]): JSX.Element[] => {
     return filteredPlanets.map((planet, index) => {
       // Calculate new coordinates with angle offset
       const newX =
@@ -106,10 +104,7 @@ export default function MyMap() {
       return (
         <CircleMarker
           key={index}
-          center={[
-            newX / -100, // Divide by 100 if necessary
-            newY / 100, // Divide by 100 if necessary
-          ]}
+          center={[newX / -100, newY / 100]}
           radius={radius}
           fillColor={fillColor}
           fillOpacity={fillOpacity}

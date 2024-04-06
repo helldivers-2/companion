@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
-import { Suspense, useMemo, lazy } from "react";
+import { useMemo } from "react";
 import dynamic from "next/dynamic";
 
 import Container from "@/components/containerCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-
-// Lazy load the Comments component
-const Comments = lazy(() => import("@/components/giscusComponent"));
+import FAQ from "@/components/widgets/faq";
 
 export const metadata: Metadata = {
   title: "Helldivers 2 Galaxy Status Hub",
@@ -38,6 +36,17 @@ export default function Home() {
       }),
     [],
   );
+  const Comments = useMemo(
+    () =>
+      dynamic(() => import("@/components/giscusComponent"), {
+        loading: () => (
+          <Skeleton className="h-10 w-full animate-pulse rounded-lg bg-muted px-4 py-2" />
+        ),
+        ssr: false,
+      }),
+    [],
+  );
+
   const MajorOrder = useMemo(
     () =>
       dynamic(() => import("@/components/widgets/latestOrder"), {
@@ -89,9 +98,10 @@ export default function Home() {
           </Card>
         </div>
       </Container>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Comments keyword="Status" reactions="0" />
-      </Suspense>
+      <div className="mt-10">
+        <FAQ />
+      </div>
+      <Comments keyword="Status" reactions="0" />
     </>
   );
 }

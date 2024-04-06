@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
 import { species } from "../data/data";
@@ -15,7 +14,9 @@ export const columns: ColumnDef<Target>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
-    cell: ({ row }) => <div className="w-[80px]">{row.getValue("name")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[40px] md:w-[80px]">{row.getValue("name")}</div>
+    ),
     enableSorting: false,
     enableHiding: false,
   },
@@ -25,7 +26,7 @@ export const columns: ColumnDef<Target>[] = [
       <DataTableColumnHeader column={column} title="Liberation" />
     ),
     cell: ({ row }) => (
-      <div className="flex w-[100px] items-center">
+      <div className="flex w-[40px] items-center md:w-[80px]">
         <Badge className="mr-1">
           {Math.round(row.getValue("liberation"))}%
         </Badge>
@@ -38,9 +39,10 @@ export const columns: ColumnDef<Target>[] = [
       <DataTableColumnHeader column={column} title="Player Count" />
     ),
     cell: ({ row }) => (
-      <div className="w-[80px]">{row.getValue("players")}</div>
+      <div className="w-[40px] md:w-[80px]">{row.getValue("players")}</div>
     ),
     enableHiding: false,
+    enableSorting: false,
   },
   {
     accessorKey: "initial_owner",
@@ -58,16 +60,17 @@ export const columns: ColumnDef<Target>[] = [
       }
 
       return (
-        <div className="flex w-[100px] items-center">
+        <div className="flex w-[40px] items-center md:w-[100px]">
           {initial_owner.icon && (
             <initial_owner.icon className="mr-2 h-4 w-4 text-muted-foreground" />
           )}
-          <span>{initial_owner.label}</span>
+          <span className="hidden md:block">{initial_owner.label}</span>
         </div>
       );
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
     },
+    enableSorting: false,
   },
 ];

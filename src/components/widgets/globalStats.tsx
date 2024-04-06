@@ -2,7 +2,7 @@ import { API } from "@/components/widgets/util/getApiData";
 import { StatCard } from "@/components/statCard";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-function formatNumber(num: number) {
+export function formatNumber(num: number) {
   // Nine Zeroes for Billions
   return Math.abs(Number(num)) >= 1.0e12
     ? (Math.abs(Number(num)) / 1.0e12).toFixed(1) + " Tr"
@@ -87,10 +87,10 @@ export default async function StatsWidget() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            <StatCard title="patriots currently active">
+            <StatCard title="average reinforces">
               {formatNumber(galaxy_stats.revives)}
             </StatCard>
-            <StatCard title="patriots currently active">
+            <StatCard title="average mission success">
               {formatNumber(galaxy_stats.missionSuccessRate)}
             </StatCard>
           </div>

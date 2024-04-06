@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { useMemo } from "react";
+import dynamic from "next/dynamic";
+import { Skeleton } from "@/components/ui/skeleton";
 
+import Container from "@/components/containerCard";
 import {
   Card,
   CardContent,
@@ -8,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Comments from "@/components/giscusComponent";
 
 export const metadata: Metadata = {
   title: "Daily Item Shop",
@@ -27,9 +30,18 @@ export const metadata: Metadata = {
   },
 };
 
-import Container from "@/components/containerCard";
-
 export default function ShopPage() {
+  const Comments = useMemo(
+    () =>
+      dynamic(() => import("@/components/giscusComponent"), {
+        loading: () => (
+          <Skeleton className="h-10 w-full animate-pulse rounded-lg bg-muted px-4 py-2" />
+        ),
+        ssr: false,
+      }),
+    [],
+  );
+
   return (
     <>
       <Container title="Shop">

@@ -41,7 +41,11 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Name" />
     ),
-    cell: ({ row }) => <div className="w-[150px]">{row.getValue("name")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[40px] md:w-[80px] lg:w-[150px]">
+        {row.getValue("name")}
+      </div>
+    ),
   },
   {
     accessorKey: "codename",
@@ -49,7 +53,7 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Codename" />
     ),
     cell: ({ row }) => (
-      <div className="w-[150px]">{row.getValue("codename")}</div>
+      <div className="w-[40px] md:w-[80px]">{row.getValue("codename")}</div>
     ),
   },
   {
@@ -57,7 +61,9 @@ export const columns: ColumnDef<Task>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Uses" />
     ),
-    cell: ({ row }) => <div className="w-[150px]">{row.getValue("uses")}</div>,
+    cell: ({ row }) => (
+      <div className="w-[40px] md:w-[80px]">{row.getValue("uses")}</div>
+    ),
   },
   {
     accessorKey: "activation",
@@ -65,7 +71,7 @@ export const columns: ColumnDef<Task>[] = [
       <DataTableColumnHeader column={column} title="Activations" />
     ),
     cell: ({ row }) => (
-      <div className="w-[150px]">{row.getValue("activation")}</div>
+      <div className="w-[40px] md:w-[80px]">{row.getValue("activation")}</div>
     ),
   },
   {
@@ -76,7 +82,7 @@ export const columns: ColumnDef<Task>[] = [
     cell: ({ row }) => {
       const cooldownInSeconds = row.getValue("cooldown") as number;
       const cooldownInMinutes = convertSecondsToMinutes(cooldownInSeconds);
-      return <div className="w-\[150px\]">{cooldownInMinutes}</div>;
+      return <div className="w-[40px] md:w-[80px]">{cooldownInMinutes}</div>;
     },
   },
   {

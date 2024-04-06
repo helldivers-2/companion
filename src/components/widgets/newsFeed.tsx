@@ -63,7 +63,7 @@ export default async function newsFeeds() {
   }
 
   return (
-    <div className="min-h-[150px] rounded-xl bg-background p-4">
+    <div>
       {lastFourNews.map((newses: News, index: number) => {
         const publishedDate = new Date(newses.published * 1000);
         const regex = /<i=3>(.*?)<\/i>/;

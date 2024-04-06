@@ -36,7 +36,7 @@ export default function PatchNotes() {
   const currentPosts = patchNotes.slice(firstPostIndex, lastPostIndex);
 
   return (
-    <main className="min-h-[600px] flex-1 rounded-xl bg-background p-4">
+    <main className="flex-1">
       <div className="space-y-2">
         {currentPosts.map((item: Item, index: number) => {
           const formattedDate = new Date(item.date).toLocaleString(undefined, {
