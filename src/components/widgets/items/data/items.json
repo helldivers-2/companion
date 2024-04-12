@@ -379,7 +379,7 @@
   },
   {
     "image": "chest-26.webp",
-    "name": "EX-16 Prototype 16 (Medium Armor)",
+    "name": "EX-16 Prototype 16",
     "type": "Medium Armor",
     "description": "As the electric arc generates a strong magnetic field, wearers should avoid use while in vicinity of stapled paperwork.",
     "armorrating": 100,
@@ -399,7 +399,7 @@
   },
   {
     "image": "chest-27.webp",
-    "name": "FS-34 Exterminator (Medium Armor)",
+    "name": "FS-34 Exterminator",
     "type": "Medium Armor",
     "description": "Features a patented non-stick coating, which makes scraping viscera off after a long day of battle less taxing.",
     "armorrating": 100,
@@ -421,7 +421,7 @@
   },
   {
     "image": "chest-28.webp",
-    "name": "DP-40 Hero of the Federation (Medium Armor)",
+    "name": "DP-40 Hero of the Federation",
     "type": "Medium Armor",
     "description": "Though originally intended solely for ceremonial use, its inspirational energy proved equally useful on the battlefield.",
     "armorrating": 100,
@@ -432,7 +432,7 @@
   },
   {
     "image": "chest-29.webp",
-    "name": "TR-9 Cavalier of Democracy (Medium Armor)",
+    "name": "TR-9 Cavalier of Democracy",
     "type": "Medium Armor", 
     "description": "Bearers of this armor ride no equine mount, but are nonetheless borne to battle atop the trusty steed of Liberty.",
     "armorrating": 100,
@@ -463,7 +463,7 @@
   },
   {
     "image": "chest-30.webp",
-    "name": "DP-11 Champion of the People (Medium Armor)",
+    "name": "DP-11 Champion of the People",
     "type": "Medium Armor",
     "description": "The three stripes on the pauldrons stand for the three principles of Super Earth: Liberty, Democracy, and Prosperity.",
     "armorrating": 100,
@@ -483,7 +483,7 @@
   },
   {
     "image": "chest-31.webp",
-    "name": "CM-14 Physician (Medium Armor)",
+    "name": "CM-14 Physician",
     "type": "Medium Armor",
     "description": "The distinctive red, white, and green of the Intergalactic Medical Corps signal to all Helldivers that help is at hand.",
     "armorrating": 100,
@@ -503,7 +503,7 @@
   },
   {
     "image": "chest-32.webp",
-    "name": "TR-117 Alpha Commander (Medium Armor)",
+    "name": "TR-117 Alpha Commander",
     "type": "Medium Armor",
     "description": "For warriors who are so strong and confident that they don't need any reassurance whatsoever.",
     "armorrating": 100,
@@ -523,7 +523,7 @@
   },
   {
     "image": "chest-58.webp",
-    "name": "B-27 Fortified Commando (Heavy Armor)",
+    "name": "B-27 Fortified Commando",
     "type": "Heavy Armor",
     "description": "This armor set first appeared in the music video for the summer anthem 'Our Love is Like Liberty (Indestructible)'.",
     "armorrating": 200,
@@ -545,7 +545,7 @@
   },
   {
     "image": "chest-6.webp",
-    "name": "EX-00 Prototype X (Light Armor)",
+    "name": "EX-00 Prototype X",
     "type": "Light Armor",
     "description": "The end result of several billion Super Credits and 12 years of reseach into creating \"the Soldier of Tomorrow.\"",
     "armorrating": 50,
@@ -565,7 +565,7 @@
   },
   {
     "image": "chest-33.webp",
-    "name": "CE-81 Juggernaut (Medium Armor)",
+    "name": "CE-81 Juggernaut",
     "type": "Medium Armor",
     "description": "One of the most durable engineer armors available, each set is quality tested by an impact with a full-grown Charger.",
     "armorrating": 100,
@@ -587,7 +587,7 @@
   },
   {
     "image": "chest-8.webp",
-    "name": "SC-37 Legionnaire (Light Armor)",
+    "name": "SC-37 Legionnaire",
     "type": "Light Armor",
     "description": "This armor is based on the antique uniforms of the 'Super Earth Legion', a less patriotic precursor to the Helldivers.",
     "armorrating": 50,
@@ -609,7 +609,7 @@
   },
   {
     "image": "chest-34.webp",
-    "name": "CM-06 Combat Medic (Medium Armor)",
+    "name": "CM-06 Combat Medic",
     "type": "Medium Armor",
     "description": "This armor was designed by PFC Rodney A. Carmichael, the first Helldiver to use a stim on an ally instead of himself.",
     "armorrating": 100,
@@ -631,7 +631,7 @@
   },
   {
     "image": "chest-10.webp",
-    "name": "B-08 Light Gunner (Light Armor)",
+    "name": "B-08 Light Gunner",
     "type": "Light Armor",
     "description": "Compact and flexible, this kevlar armor adds minimal mass, making it a common choice for Helldiver fitness tests.",
     "armorrating": 100,
@@ -653,7 +653,7 @@
   },
   {
     "image": "chest-35.webp",
-    "name": "DP-53 Savior of the Free (Medium Armor)", 
+    "name": "DP-53 Savior of the Free", 
     "type": "Medium Armor",
     "description": "A faithful replica of the armor worn at The Battle of Liberty Peak. Honor their legacy, and wear it with pride.",
     "armorrating": 100,
@@ -673,7 +673,7 @@
   },
   {
     "image": "chest-11.webp",
-    "name": "SC-30 Trailblazer Scout (Light Armor)",
+    "name": "SC-30 Trailblazer Scout",
     "type": "Light Armor",
     "description": "The patented fabric absorbs visible, infrared, and ultraviolet radiation, to prevent detection by all known species.",
     "armorrating": 50,
@@ -1085,7 +1085,7 @@
   },
   {
     "image": "chest-46.webp",
-    "name": "B-01 Tactical (Medium Armor)",
+    "name": "B-01 Tactical",
     "type": "Medium Armor",
     "description": "This armor is the Super Earth Standard Issue, made from the same titanium alloy as the Destroyer's hull.",
     "armorrating": 150,
@@ -1095,7 +1095,7 @@
   },
   {
     "image": "chest-47.webp",
-    "name": "B-01 Tactical (Medium Armor)",
+    "name": "B-01 Tactical",
     "type": "Medium Armor",
     "description": "This armor is the Super Earth Standard Issue, made from the same titanium alloy as the Destroyer's hull.",
     "armorrating": 100,
@@ -1105,7 +1105,7 @@
   },
   {
     "image": "chest-48.webp",
-    "name": "B-01 Tactical (Medium Armor)",
+    "name": "B-01 Tactical",
     "type": "Medium Armor",
     "description": "This armor is the Super Earth Standard Issue, made from the same titanium alloy as the Destroyer's hull.",
     "armorrating": 100,
@@ -1116,7 +1116,7 @@
   },
   {
     "image": "chest-49.webp",
-    "name": "TR-40 Gold Eagle (Medium Armor)",
+    "name": "TR-40 Gold Eagle",
     "type": "Medium Armor",
     "description": "This high-visibility armor allows it's bearer to be easily seen through smoke, fog, and spewing viscera.",
     "armorrating": 150,
@@ -1301,7 +1301,7 @@
   },
   {
     "image": "chest-50.webp", 
-    "name": "SA-04 Combat Technician (Medium Armor)",
+    "name": "SA-04 Combat Technician",
     "type": "Medium Armor",
     "description": "Due to the enhanced strength caused by this armor, caution is advised when using door handles or embracing colleagues.",
     "armorrating": 100,
@@ -1323,7 +1323,7 @@
   },
   {
     "image": "chest-63.webp",
-    "name": "FS-23 Battle Master (Heavy Armor)", 
+    "name": "FS-23 Battle Master", 
     "type": "Heavy Armor",
     "description": "This aim-stabilizing armor found surprising secondary market success among alien birdwatching enthusiasts.",
     "armorrating": 150,
@@ -1345,7 +1345,7 @@
   },
   {
     "image": "chest-64.webp",
-    "name": "TR-62 Knight (Heavy Armor)",
+    "name": "TR-62 Knight",
     "type": "Heavy Armor",
     "description": "Crafted to deliver Justice to the darkest crevices of the galaxy.",
     "armorrating": 150,
@@ -1365,7 +1365,7 @@
   },
   {
     "image": "chest-65.webp",
-    "name": "CW-36 Winter Warrior (Heavy Armor)",
+    "name": "CW-36 Winter Warrior",
     "type": "Heavy Armor",
     "description": "Offering camouflage in snowy environments, surplus sets of this armor are used by nature photographers and keen hunters alike.",
     "armorrating": 200,

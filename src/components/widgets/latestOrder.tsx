@@ -18,7 +18,7 @@ export default async function majorOrder() {
   let timeLeft;
   if (milliseconds >= 24 * 60 * 60 * 1000) {
     // Check if the duration is over 24 hours
-    const days = Math.floor(milliseconds / (24 * 60 * 60 * 1000)); // Convert milliseconds to days
+    const days = Math.round(milliseconds / (24 * 60 * 60 * 1000)); // Convert milliseconds to days
     if (days <= 1) {
       timeLeft = `1 day`;
     } else {
@@ -55,7 +55,9 @@ export default async function majorOrder() {
           </p>
           <p className="mt-4">{order.majorOrder[0].setting.taskDescription}</p>
         </div>
-        <div className="grid grid-cols-2 gap-4 ">
+        <div
+          className={`grid ${order.majorOrder[0].setting.tasks.length <= 2 ? "grid-cols-1" : order.majorOrder[0].setting.tasks.length <= 4 ? "grid-cols-2" : "grid-cols-3"} gap-4`}
+        >
           {order.majorOrder[0].setting.tasks.map(
             (task: Task, index: number) => {
               const planetNumber = task.values[2];
@@ -105,7 +107,7 @@ export default async function majorOrder() {
               <p className="text-sm text-primary">Medals</p>
             </div>
           </div>
-          <div className="col-span-2 flex items-center justify-center rounded-lg border p-4 md:col-span-1">
+          <div className="col-span-2 flex items-center justify-center rounded-lg border p-4">
             <div className="block">
               <h3 className="text-xl font-semibold leading-none tracking-tight">
                 {formatNumber(calculateTotalPlayers(order))}

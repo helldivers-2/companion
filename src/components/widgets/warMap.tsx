@@ -10,10 +10,9 @@ import {
   LayersControl,
   FeatureGroup,
 } from "react-leaflet";
-//Polyline
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
-import { fetchStatusData } from "@/components/widgets/util/getWarMap";
+import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Import the fetchPlanetsData function
 import { Progress } from "../ui/progress";
 
 interface Status {
@@ -21,9 +20,7 @@ interface Status {
   liberation: number;
   planet: {
     name: string;
-    index: number;
     initial_owner: string;
-    waypoints: number;
     position: {
       x: number;
       y: number;
@@ -36,7 +33,7 @@ export default function MyMap() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const planetsData = await fetchStatusData();
+      const planetsData = await fetchPlanetsData(); // Call the fetchPlanetsData function
       setPlanets(planetsData);
     };
     fetchData();

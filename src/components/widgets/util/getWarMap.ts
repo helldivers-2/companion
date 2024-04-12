@@ -1,13 +1,11 @@
-import { statusAPI } from "@/components/widgets/util/getApiData";
+import axios from "axios";
 
 interface Planet {
   players: number;
   liberation: number;
   planet: {
     name: string;
-    index: number;
     initial_owner: string;
-    waypoints: number;
     position: {
       x: number;
       y: number;
@@ -15,11 +13,13 @@ interface Planet {
   };
 }
 
-export async function fetchStatusData(): Promise<Planet[]> {
+export async function fetchPlanetsData(): Promise<Planet[]> {
   try {
-    const targets = await statusAPI();
+    const response = await axios.get(
+      "https://helldivers-2.fly.dev/api/801/status"
+    );
 
-    const flattenedPlanets = targets.planet_status.map(
+    const flattenedPlanets = response.data.planet_status.map(
       ({
         players,
         liberation,
@@ -28,27 +28,21 @@ export async function fetchStatusData(): Promise<Planet[]> {
         players: number;
         liberation: number;
         planet: {
-          name: string;
-          index: number;
           position: { x: number; y: number };
-          waypoints: number
-        initial_owner: string;
-};
+          name: string;
+          initial_owner: string;
+        };
       }) => ({
-        name: planet.name,
-        index: planet.index,
         players,
         liberation,
-        initial_owner: planet.initial_owner,
         planet: {
           name: planet.name,
           initial_owner: planet.initial_owner,
           position: { x: planet.position.x, y: planet.position.y },
-          waypoints: planet.waypoints
         },
-      }),
+      })
     );
-
+    
     return flattenedPlanets;
   } catch (error) {
     console.error("Error fetching planets:", error);
