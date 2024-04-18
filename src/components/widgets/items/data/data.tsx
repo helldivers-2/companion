@@ -8,18 +8,27 @@ import { MdElectricalServices } from "react-icons/md";
 export const types = [
   {
     value: "Heavy Armor",
-    label: "Heavy Armor",
     icon: FaH,
   },
   {
     value: "Medium Armor",
-    label: "Medium Armor",
     icon: FaM,
   },
   {
     value: "Light Armor",
-    label: "Light Armor",
     icon: FaL,
+  },
+  {
+    value: "Heavy",
+    label: "Heavy Armor",
+  },
+  {
+    value: "Medium",
+    label: "Medium Armor",
+  },
+  {
+    value: "Light",
+    label: "Light Armor",
   },
   {
     value: "Helm",
@@ -31,32 +40,50 @@ export const types = [
 export const passives = [
   {
     value: "ENGINEERING KIT",
-    label: "Heavy Armor",
     icon: MdEngineering,
   },
   {
     value: "STANDARD ISSUE",
-    label: "Medium Armor",
     icon: FaS,
   },
   {
     value: "MED-KIT",
-    label: "Light Armor",
     icon: MdMedicalServices,
   },
   {
     value: "SERVO-ASSISTED",
-    label: "Helm",
     icon: FaA,
   },
   {
     value: "FORTIFIED",
-    label: "Helm",
     icon: GiAbdominalArmor,
   },
   {
     value: "ELECTRICAL CONDUIT",
-    label: "Helm",
     icon: MdElectricalServices,
+  },
+  {
+    value: "Engineering Kit",
+    label: "Engineering Kit",
+  },
+  {
+    value: "Standard Issue",
+    label: "Standard Issue",
+  },
+  {
+    value: "Med-Kit",
+    label: "Med-Kit",
+  },
+  {
+    value: "Servo-Assisted",
+    label: "Servo-Assisted",
+  },
+  {
+    value: "Fortified",
+    label: "Fortified",
+  },
+  {
+    value: "Electrical Conduit",
+    label: "Electrical Conduit",
   },
 ];

@@ -14,10 +14,7 @@ Welcome to the fan-made Helldivers 2 Companion repository! This Next.js website 
 - **Major Orders:** Participate in ongoing battles.
 - **Leaderboard:** See the best Stratagem Hero hackers.
 - **Comments:** Start discussions with fellow Helldivers.
-
-### available soon:
-
-- **Item Shop:** Explore the latest items available.
+- **Item Shop:**
 
 ## Contributing
 

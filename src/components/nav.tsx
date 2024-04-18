@@ -87,7 +87,7 @@ export default function Navbar() {
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
-                  {/*<NavigationMenuItem>
+                  <NavigationMenuItem>
                     <Link href="/shop" legacyBehavior passHref>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
@@ -96,7 +96,7 @@ export default function Navbar() {
                         <span className="text-center text-xs">Item Shop</span>
                       </NavigationMenuLink>
                     </Link>
-                  </NavigationMenuItem>*/}
+                  </NavigationMenuItem>
                   <NavigationMenuItem>
                     <Link href="/news" legacyBehavior passHref>
                       <NavigationMenuLink
@@ -175,13 +175,13 @@ export default function Navbar() {
                           </Link>
                         </NavigationMenuItemPWA>
                         <NavigationMenuItemPWA>
-                          <Link href="#" legacyBehavior passHref>
+                          <Link href="/shop" legacyBehavior passHref>
                             <NavigationMenuLinkPWA
                               className={navigationMenuTriggerStylePWA()}
                             >
                               <div className="block md:flex">
-                                <LuShoppingBasket className="mx-auto size-6 text-muted-foreground md:mr-1 md:size-4" />
-                                <span className="text-center text-xs text-muted-foreground">
+                                <LuShoppingBasket className="mx-auto size-6 md:mr-1 md:size-4" />
+                                <span className="text-center text-xs">
                                   Item Shop
                                 </span>
                               </div>

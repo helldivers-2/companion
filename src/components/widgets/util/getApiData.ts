@@ -1,5 +1,5 @@
 export async function API() {
-  const res = await fetch("https://api.diveharder.com/all", {
+  const res = await fetch("https://api.diveharder.com/v1/all", {
     headers: {
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
       "Accept-Language": "en-US"

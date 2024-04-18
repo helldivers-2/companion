@@ -22,21 +22,22 @@ export default async function majorOrder() {
   }
 
   const unixTimestamp = order.major_order[0].expiresIn;
-  const milliseconds = unixTimestamp * 1000; // UNIX timestamps are in seconds, so convert to milliseconds
+  const milliseconds = unixTimestamp * 1000;
 
   let timeLeft;
+
   if (milliseconds >= 24 * 60 * 60 * 1000) {
     // Check if the duration is over 24 hours
-    const days = Math.round(milliseconds / (24 * 60 * 60 * 1000)); // Convert milliseconds to days
+    const days = Math.round(milliseconds / (24 * 60 * 60 * 1000));
     if (days <= 1) {
-      timeLeft = `1 day`;
+      timeLeft = "1 day";
     } else {
       timeLeft = `${days} days`;
     }
   } else {
-    const hours = Math.floor(milliseconds / (60 * 60 * 1000)); // Convert milliseconds to hours
+    const hours = Math.floor(milliseconds / (60 * 60 * 1000));
     if (hours <= 1) {
-      timeLeft = `less than 1 hour`;
+      timeLeft = "less than 1 hour";
     } else {
       timeLeft = `${hours} hours`;
     }
@@ -65,7 +66,13 @@ export default async function majorOrder() {
           <p className="mt-4">{order.major_order[0].setting.taskDescription}</p>
         </div>
         <div
-          className={`grid ${order.major_order[0].setting.tasks.length <= 2 ? "grid-cols-1" : order.major_order[0].setting.tasks.length <= 4 ? "grid-cols-2" : "grid-cols-3"} gap-4`}
+          className={`grid ${
+            order.major_order[0].setting.tasks.length <= 2
+              ? "grid-cols-1"
+              : order.major_order[0].setting.tasks.length <= 4
+                ? "grid-cols-2"
+                : "grid-cols-3"
+          } gap-4`}
         >
           {order.major_order[0].setting.tasks.map(
             (task: Task, index: number) => {
@@ -74,7 +81,7 @@ export default async function majorOrder() {
 
               let borderClassName = "";
 
-              if (planet.liberation === 100) {
+              if (planet && planet.liberation === 100) {
                 borderClassName += "border border-primary";
               }
 
@@ -84,15 +91,21 @@ export default async function majorOrder() {
                   className={`flex items-center justify-center rounded-lg bg-muted p-4 text-xl leading-none text-primary ${borderClassName}`}
                 >
                   <div className="block">
-                    <p id="title" role="progressbar">
-                      {planet.planet.name}
-                    </p>
-                    <Progress
-                      value={planet.liberation}
-                      className="mt-1 h-2 w-full bg-background"
-                      role="progressbar"
-                      aria-labelledby="title"
-                    />
+                    {planet ? (
+                      <>
+                        <p id="title" role="progressbar">
+                          {planet.planet.name}
+                        </p>
+                        <Progress
+                          value={planet.liberation}
+                          className="mt-1 h-2 w-full bg-background"
+                          role="progressbar"
+                          aria-labelledby="title"
+                        />
+                      </>
+                    ) : (
+                      `Kill ${formatNumber(task.values[2])} Enemies`
+                    )}
                   </div>
                 </div>
               );
