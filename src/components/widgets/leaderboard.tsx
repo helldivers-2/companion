@@ -53,7 +53,7 @@ export default async function Leaderboard() {
     );
   }
 
-  const leaderboardData = scores.leaderboard;
+  const leaderboardData = scores.player_leaderboard;
 
   return (
     <Card className="w-full border border-primary bg-muted">

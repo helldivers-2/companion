@@ -27,7 +27,7 @@ const convertToHours = (missionTime: number) => {
 export default async function StatsWidget() {
   const stats = await API();
 
-  const galaxy_stats = stats.planetStats.galaxy_stats;
+  const galaxy_stats = stats.planet_stats.galaxy_stats;
 
   const calculateTotalPlayers = (stats: any): number => {
     let totalPlayers = 0;
@@ -46,6 +46,9 @@ export default async function StatsWidget() {
   return (
     <div className="grid grid-cols-1 gap-4">
       <Card className="col-span-1 md:col-span-2">
+        <CardHeader>
+          <CardTitle>Counts</CardTitle>
+        </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             <StatCard title="patriots currently active">

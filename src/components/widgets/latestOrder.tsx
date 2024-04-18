@@ -4,15 +4,24 @@ import { Progress } from "../ui/progress";
 import { formatNumber } from "@/components/widgets/globalStats";
 
 interface Task {
-  // Define the properties of the 'task' object
-  values: number[]; // Adjust this type based on the actual structure of 'values'
+  values: number[];
 }
 
 export default async function majorOrder() {
   const order = await API();
   const status = await statusAPI();
 
-  const unixTimestamp = order.majorOrder[0].expiresIn;
+  if (order.major_order.length === 0) {
+    return (
+      <div className="w-full rounded-lg border">
+        <p className="p-4 font-bold text-muted-foreground">
+          Currently no major order
+        </p>
+      </div>
+    );
+  }
+
+  const unixTimestamp = order.major_order[0].expiresIn;
   const milliseconds = unixTimestamp * 1000; // UNIX timestamps are in seconds, so convert to milliseconds
 
   let timeLeft;
@@ -50,15 +59,15 @@ export default async function majorOrder() {
         <div className="col-span-1 rounded-lg border p-4 lg:col-span-2">
           <p>
             <span className="font-bold text-primary">
-              {order.majorOrder[0].setting.overrideBrief}
+              {order.major_order[0].setting.overrideBrief}
             </span>
           </p>
-          <p className="mt-4">{order.majorOrder[0].setting.taskDescription}</p>
+          <p className="mt-4">{order.major_order[0].setting.taskDescription}</p>
         </div>
         <div
-          className={`grid ${order.majorOrder[0].setting.tasks.length <= 2 ? "grid-cols-1" : order.majorOrder[0].setting.tasks.length <= 4 ? "grid-cols-2" : "grid-cols-3"} gap-4`}
+          className={`grid ${order.major_order[0].setting.tasks.length <= 2 ? "grid-cols-1" : order.major_order[0].setting.tasks.length <= 4 ? "grid-cols-2" : "grid-cols-3"} gap-4`}
         >
-          {order.majorOrder[0].setting.tasks.map(
+          {order.major_order[0].setting.tasks.map(
             (task: Task, index: number) => {
               const planetNumber = task.values[2];
               const planet = status.planet_status[planetNumber];
@@ -102,7 +111,7 @@ export default async function majorOrder() {
           <div className="flex items-center justify-center rounded-lg border p-4">
             <div className="block">
               <h3 className="text-xl font-semibold leading-none tracking-tight">
-                {order.majorOrder[0].setting.reward.amount}
+                {order.major_order[0].setting.reward.amount}
               </h3>
               <p className="text-sm text-primary">Medals</p>
             </div>

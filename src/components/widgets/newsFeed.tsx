@@ -39,9 +39,9 @@ export default async function newsFeeds() {
 
   if (
     !news ||
-    !news.newsFeed ||
-    !Array.isArray(news.newsFeed) ||
-    news.newsFeed.length === 0
+    !news.news_feed ||
+    !Array.isArray(news.news_feed) ||
+    news.news_feed.length === 0
   ) {
     return (
       <div className="text-center text-muted-foreground">
@@ -51,7 +51,7 @@ export default async function newsFeeds() {
     );
   }
 
-  const lastFourNews = news.newsFeed.slice(-3);
+  const lastFourNews = news.news_feed.slice(-4);
 
   if (lastFourNews.length === 0) {
     return (
@@ -71,7 +71,7 @@ export default async function newsFeeds() {
         const triggerText = match ? `${match[1]}` : "NEW DISPATCH";
         const markdown = newses.message
           .replace(regex, "")
-          .replace(/<i=3>(.*?)<\/i>/g, "$1");
+          .replace(/<i=1>(.*?)<\/i>/g, "$1");
 
         return (
           <Accordion key={index} type="single" collapsible>

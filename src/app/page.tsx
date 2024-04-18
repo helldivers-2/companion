@@ -98,7 +98,7 @@ export default function Home() {
           </Card>
         </div>
       </Container>
-      <div className="mt-10">
+      <div className="website mt-10">
         <FAQ />
       </div>
       <Comments keyword="Status" reactions="0" />
