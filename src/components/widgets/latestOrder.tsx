@@ -77,11 +77,11 @@ export default async function majorOrder() {
           {order.major_order[0].setting.tasks.map(
             (task: Task, index: number) => {
               const planetNumber = task.values[2];
-              const planet = status.planet_status[planetNumber];
+              const planet = status[planetNumber];
 
               let borderClassName = "";
 
-              if (planet && planet.liberation === 100) {
+              if (planet && planet.health / 10000 === 100) {
                 borderClassName += "border border-primary";
               }
 
@@ -94,10 +94,10 @@ export default async function majorOrder() {
                     {planet ? (
                       <>
                         <p id="title" role="progressbar">
-                          {planet.planet.name}
+                          {planet.name}
                         </p>
                         <Progress
-                          value={planet.liberation}
+                          value={planet.health / 10000}
                           className="mt-1 h-2 w-full bg-background"
                           role="progressbar"
                           aria-labelledby="title"

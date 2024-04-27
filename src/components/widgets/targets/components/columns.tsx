@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { species } from "../data/data";
 import { Target } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
+import { formatNumber } from "@/components/widgets/globalStats";
 
 export const columns: ColumnDef<Target>[] = [
   {
@@ -15,44 +16,43 @@ export const columns: ColumnDef<Target>[] = [
       <DataTableColumnHeader column={column} title="Name" />
     ),
     cell: ({ row }) => (
-      <div className="w-[40px] md:w-[80px]">{row.getValue("name")}</div>
+      <div className="w-[60px] md:w-[80px]">{row.getValue("name")}</div>
     ),
     enableSorting: false,
     enableHiding: false,
   },
   {
-    accessorKey: "liberation",
+    accessorKey: "health",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Liberation" />
     ),
     cell: ({ row }) => (
       <div className="flex w-[40px] items-center md:w-[80px]">
-        <Badge className="mr-1">
-          {Math.round(row.getValue("liberation"))}%
-        </Badge>
+        <Badge className="mr-1">{Math.round(row.getValue("health"))}%</Badge>
       </div>
     ),
   },
   {
-    accessorKey: "players",
+    accessorKey: "playerCount",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Player Count" />
     ),
     cell: ({ row }) => (
-      <div className="w-[40px] md:w-[80px]">{row.getValue("players")}</div>
+      <div className="w-[40px] md:w-[80px]">
+        {formatNumber(row.getValue("playerCount"))}
+      </div>
     ),
     enableHiding: false,
     enableSorting: false,
   },
   {
-    accessorKey: "initial_owner",
+    accessorKey: "initialOwner",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Owner" />
     ),
     cell: ({ row }) => {
       const initial_owner = species.find(
-        (initial_owner) =>
-          initial_owner.value === row.getValue("initial_owner"),
+        (initial_owner) => initial_owner.value === row.getValue("initialOwner"),
       );
 
       if (!initial_owner) {

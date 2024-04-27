@@ -14,17 +14,16 @@ import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
 import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Import the fetchPlanetsData function
 import { Progress } from "../ui/progress";
+import { formatNumber } from "@/components/widgets/globalStats";
 
 interface Status {
-  players: number;
-  liberation: number;
-  planet: {
-    name: string;
-    initial_owner: string;
-    position: {
-      x: number;
-      y: number;
-    };
+  playerCount: number;
+  health: number;
+  name: string;
+  initialOwner: string;
+  position: {
+    x: number;
+    y: number;
   };
 }
 
@@ -42,16 +41,14 @@ export default function MyMap() {
   const allPlanets = planets;
 
   const activePlanets = planets.filter(
-    (planet: { players: number; liberation: number }) => {
-      return planet.players > 2000 && planet.liberation !== 100;
+    (planet: { playerCount: number }, health: number) => {
+      return planet.playerCount > 500 && health != 100;
     },
   );
 
-  const liberatedPlanets = planets.filter(
-    (planet: { players: number; liberation: number }) => {
-      return planet.liberation === 100;
-    },
-  );
+  const liberatedPlanets = planets.filter((planet: Status) => {
+    return planet.health === 100;
+  });
 
   {
     /*
@@ -71,22 +68,18 @@ export default function MyMap() {
     return filteredPlanets.map((planet, index) => {
       // Calculate new coordinates with angle offset
       const newX =
-        planet.planet.position.x *
-          Math.cos(angleOffsetDegrees * (Math.PI / 180)) -
-        planet.planet.position.y *
-          Math.sin(angleOffsetDegrees * (Math.PI / 180));
+        planet.position.x * Math.cos(angleOffsetDegrees * (Math.PI / 180)) -
+        planet.position.y * Math.sin(angleOffsetDegrees * (Math.PI / -180));
       const newY =
-        planet.planet.position.x *
-          Math.sin(angleOffsetDegrees * (Math.PI / 180)) +
-        planet.planet.position.y *
-          Math.cos(angleOffsetDegrees * (Math.PI / 180));
+        planet.position.x * Math.sin(angleOffsetDegrees * (Math.PI / 180)) +
+        planet.position.y * Math.cos(angleOffsetDegrees * (Math.PI / -180));
 
       let fillColor = "";
       let fillOpacity = 0;
       let color = "";
       let radius = 5;
 
-      if (planet.liberation < 100) {
+      if (planet.health < 100) {
         fillColor = "";
         fillOpacity = 0.6;
         color = "red";
@@ -101,7 +94,7 @@ export default function MyMap() {
       return (
         <CircleMarker
           key={index}
-          center={[newX / -100, newY / 100]}
+          center={[newX, newY]}
           radius={radius}
           fillColor={fillColor}
           fillOpacity={fillOpacity}
@@ -109,11 +102,11 @@ export default function MyMap() {
           weight={1}
         >
           <Popup>
-            <p>Name: {planet.planet.name}</p>
-            <p>Players: {planet.players}</p>
+            <p>Name: {planet.name}</p>
+            <p>Players: {formatNumber(planet.playerCount)}</p>
             <p>
-              {Math.round(planet.liberation)}% Liberation
-              <Progress value={planet.liberation} />
+              {Math.round(planet.health)}% Liberation
+              <Progress value={planet.health} />
             </p>
           </Popup>
         </CircleMarker>
@@ -128,7 +121,11 @@ export default function MyMap() {
       zoom={window.innerWidth < 768 ? 7 : 8}
       maxZoom={9}
       minZoom={7}
-      maxBounds={new LatLngBounds([-1.5, -1.5], [1.5, 1.5])}
+      maxBounds={
+        window.innerWidth < 768
+          ? new LatLngBounds([-2, -2], [2, 2])
+          : new LatLngBounds([-1.5, -1.5], [1.5, 1.5])
+      }
       boxZoom={false}
       doubleClickZoom={false}
       keyboard={false}

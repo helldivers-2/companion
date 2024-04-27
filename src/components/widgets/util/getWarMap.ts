@@ -1,46 +1,45 @@
 import axios from "axios";
 
 interface Planet {
-  players: number;
-  liberation: number;
-  planet: {
-    name: string;
-    initial_owner: string;
-    position: {
-      x: number;
-      y: number;
-    };
+  playerCount: number;
+  health: number;
+  name: string;
+  initialOwner: string;
+  position: {
+    x: number;
+    y: number;
   };
 }
 
 export async function fetchPlanetsData(): Promise<Planet[]> {
   try {
     const response = await axios.get(
-      "https://helldivers-2.fly.dev/api/801/status"
+      "https://api.helldivers2.dev/api/v1/planets"
     );
 
-    const flattenedPlanets = response.data.planet_status.map(
+    const flattenedPlanets = response.data.map(
       ({
+        name,
         players,
-        liberation,
-        planet,
+        health,
+        initialOwner,
+        statistics,
+        position
       }: {
+        statistics: { playerCount: string };
+        name: string;
         players: number;
-        liberation: number;
-        planet: {
-          position: { x: number; y: number };
-          name: string;
-          initial_owner: string;
-        };
+        health: number;
+        initialOwner: string;
+        position: { x: number; y: number };
       }) => ({
+        name,
         players,
-        liberation,
-        planet: {
-          name: planet.name,
-          initial_owner: planet.initial_owner,
-          position: { x: planet.position.x, y: planet.position.y },
-        },
-      })
+        health: health / 10000,
+        initialOwner,
+        playerCount: statistics.playerCount,
+        position: { x: position.x, y: position.y }
+      }),
     );
     
     return flattenedPlanets;

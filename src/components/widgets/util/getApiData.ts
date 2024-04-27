@@ -10,7 +10,7 @@ export async function API() {
 }
 
 export async function statusAPI(){
-  const res = await fetch("https://helldivers-2.fly.dev/api/801/status",{
+  const res = await fetch("https://api.helldivers2.dev/api/v1/planets",{
     headers: {
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
       "Accept-Language": "en-US"

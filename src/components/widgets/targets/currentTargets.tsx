@@ -1,35 +1,44 @@
 import { columns } from "./components/columns";
 import { DataTable } from "./components/data-table";
-
 import { statusAPI } from "@/components/widgets/util/getApiData";
+
+interface Planet {
+  playerCount: number;
+  health: number;
+  name: string;
+  initialOwner: string;
+  position: {
+    x: number;
+    y: number;
+  };
+}
 
 export default async function TargetsTable() {
   const targets = await statusAPI();
 
-  const flattenedPlanets = targets.planet_status.map(
+  const flattenedPlanets = targets.map(
     ({
-      planet,
-      players,
-      liberation,
-      initial_owner,
+      name,
+      health,
+      initialOwner,
+      statistics,
     }: {
-      planet: { name: string; initial_owner: string };
+      statistics: { playerCount: string };
+      name: string;
       players: number;
-      liberation: number;
-      initial_owner: string;
+      health: number;
+      initialOwner: string;
     }) => ({
-      name: planet.name,
-      players,
-      liberation,
-      initial_owner: planet.initial_owner,
+      name,
+      health: health / 10000,
+      initialOwner,
+      playerCount: statistics.playerCount,
     }),
   );
 
-  const filteredPlanets = flattenedPlanets.filter(
-    (planet: { players: number; liberation: number }) => {
-      return planet.players > 500 && planet.liberation !== 100;
-    },
-  );
+  const filteredPlanets = flattenedPlanets.filter((planet: Planet) => {
+    return planet.playerCount > 500 && planet.health !== 100;
+  });
 
   return <DataTable data={filteredPlanets} columns={columns} />;
 }
