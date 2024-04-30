@@ -2,7 +2,9 @@ export async function API() {
   const res = await fetch("https://api.diveharder.com/v1/all", {
     headers: {
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
-      "Accept-Language": "en-US"
+      "Accept-Language": "en-US",
+      "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
+      "X-Super-Contact": "@.mixhi"
     },
     next: { revalidate: 300 }
   });
@@ -13,7 +15,9 @@ export async function statusAPI(){
   const res = await fetch("https://api.helldivers2.dev/api/v1/planets",{
     headers: {
       "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
-      "Accept-Language": "en-US"
+      "Accept-Language": "en-US",
+      "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
+      "X-Super-Contact": "@.mixhi"
     },
     next: { revalidate: 300 }
   });
