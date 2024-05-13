@@ -11,6 +11,7 @@ interface Planet {
     x: number;
     y: number;
   };
+  event: any;
 }
 
 export default async function TargetsTable() {
@@ -36,9 +37,15 @@ export default async function TargetsTable() {
     }),
   );
 
-  const filteredPlanets = flattenedPlanets.filter((planet: Planet) => {
-    return planet.playerCount > 500 && planet.health !== 100;
+  const eventPlanets = flattenedPlanets.filter((planet: Planet) => {
+    return planet.event === null;
   });
 
-  return <DataTable data={filteredPlanets} columns={columns} />;
+  const activePlanets = flattenedPlanets.filter((planet: Planet) => {
+    return planet.health !== 100;
+  });
+
+  const filtered = [...eventPlanets, ...activePlanets];
+
+  return <DataTable data={filtered} columns={columns} />;
 }

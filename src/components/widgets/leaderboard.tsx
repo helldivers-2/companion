@@ -60,11 +60,6 @@ export default async function Leaderboard() {
       <CardHeader className="flex flex-col gap-1.5 md:flex-row md:items-center md:gap-4">
         <div className="grid gap-1.5">
           <CardTitle>Leaderboard</CardTitle>
-          <CardDescription>
-            Top 10 players from{" "}
-            <span className="text-primary">{leaderboardData.totalRecords}</span>{" "}
-            Players
-          </CardDescription>
         </div>
       </CardHeader>
       <CardContent className=" p-0">
@@ -79,7 +74,7 @@ export default async function Leaderboard() {
               </TableRow>
             </TableHeader>
             <TableBody className="divide-y">
-              {leaderboardData.entries.map((score: Score, index: number) => (
+              {leaderboardData.map((score: Score, index: number) => (
                 <TableRow key={index} className="bg-background font-medium">
                   <TableCell>{score.rank}</TableCell>
                   <TableCell>{score.name}</TableCell>

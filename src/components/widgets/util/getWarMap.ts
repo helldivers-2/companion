@@ -9,12 +9,13 @@ interface Planet {
     x: number;
     y: number;
   };
+  event: any;
 }
 
 export async function fetchPlanetsData(): Promise<Planet[]> {
   try {
     const response = await axios.get(
-      "https://api.helldivers2.dev/api/v1/planets"
+      "https://api.helldivers2.dev/api/v1/planets",
     );
 
     const flattenedPlanets = response.data.map(
@@ -24,7 +25,7 @@ export async function fetchPlanetsData(): Promise<Planet[]> {
         health,
         initialOwner,
         statistics,
-        position
+        position,
       }: {
         statistics: { playerCount: string };
         name: string;
@@ -38,10 +39,10 @@ export async function fetchPlanetsData(): Promise<Planet[]> {
         health: health / 10000,
         initialOwner,
         playerCount: statistics.playerCount,
-        position: { x: position.x, y: position.y }
+        position: { x: position.x, y: position.y },
       }),
     );
-    
+
     return flattenedPlanets;
   } catch (error) {
     console.error("Error fetching planets:", error);

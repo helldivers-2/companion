@@ -25,6 +25,7 @@ interface Status {
     x: number;
     y: number;
   };
+  event: any;
 }
 
 export default function MyMap() {
@@ -40,26 +41,19 @@ export default function MyMap() {
 
   const allPlanets = planets;
 
-  const activePlanets = planets.filter(
-    (planet: { playerCount: number }, health: number) => {
-      return planet.playerCount > 500 && health != 100;
-    },
-  );
+  const eventPlanets = planets.filter((planet: Status) => {
+    return planet.event === null;
+  });
+
+  const activePlanets = planets.filter((planet: Status) => {
+    return planet.health !== 100;
+  });
+
+  const active = [...eventPlanets, ...activePlanets];
 
   const liberatedPlanets = planets.filter((planet: Status) => {
     return planet.health === 100;
   });
-
-  {
-    /*
-      Planet on which the major order happens
-        const majorPlanets = planets.filter(
-        (planet: { players: number; liberation: number }) => {
-          return planet.liberation === 100;
-        },
-      );
-    */
-  }
 
   // Define the angle offset in degrees
   const angleOffsetDegrees = 90; // Adjust as needed
@@ -87,8 +81,15 @@ export default function MyMap() {
       } else {
         fillColor = "";
         fillOpacity = 0.4;
-        color = "green";
+        color = "yellow";
         radius = 4;
+      }
+
+      if (planet.event === null) {
+        fillColor = "red";
+        fillOpacity = 1;
+        color = "yellow";
+        radius = 6;
       }
 
       return (
@@ -143,7 +144,7 @@ export default function MyMap() {
           <FeatureGroup>{renderPlanetMarkers(allPlanets)}</FeatureGroup>
         </LayersControl.Overlay>
         <LayersControl.Overlay checked name="active Planets">
-          <FeatureGroup>{renderPlanetMarkers(activePlanets)} </FeatureGroup>
+          <FeatureGroup>{renderPlanetMarkers(active)} </FeatureGroup>
         </LayersControl.Overlay>
         <LayersControl.Overlay name="inactive Planets">
           <FeatureGroup>{renderPlanetMarkers(liberatedPlanets)} </FeatureGroup>
