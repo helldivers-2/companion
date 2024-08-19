@@ -15,13 +15,6 @@ interface News {
   message: string;
 }
 
-function getDateStringForThisWeek(date: any) {
-  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dayOfWeek = daysOfWeek[date.getDay()];
-
-  return `${dayOfWeek}`;
-}
-
 export default async function newsFeeds() {
   let news;
 
@@ -78,9 +71,6 @@ export default async function newsFeeds() {
             <AccordionItem value={`item-${newses.id}`}>
               <AccordionTrigger>
                 <div className="flex">
-                  <Badge variant="outline">
-                    {getDateStringForThisWeek(publishedDate)}
-                  </Badge>
                   <div className="px-4">{triggerText}</div>
                 </div>
               </AccordionTrigger>

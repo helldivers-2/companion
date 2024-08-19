@@ -21,29 +21,29 @@ export default function Component() {
   return (
     <div className="website">
       <Separator />
-      <footer className="py-8 ">
+      <footer className="py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div>
-            <h5 className="  text-sm font-semibold uppercase  tracking-wide">
+            <h5 className="text-sm font-semibold uppercase tracking-wide">
               Helldivers Companion
             </h5>
-            <p className="mt-4   text-sm  text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">
               A project by{" "}
               <Link className="underline" href="https://michaelwagner.cc">
                 Michael Wagner.
               </Link>
             </p>
           </div>
-          <div className="mt-8  grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-8 md:grid-cols-4">
             <div>
-              <h5 className="  text-sm font-semibold uppercase  tracking-wide">
+              <h5 className="text-sm font-semibold uppercase tracking-wide">
                 Site Navigation
               </h5>
-              <nav className="mt-4 ">
+              <nav className="mt-4">
                 <ul>
                   <li>
                     <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
                       href="/"
                     >
                       Status
@@ -51,26 +51,10 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/items"
-                    >
-                      all Items
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/stratagems"
-                    >
-                      all Stratagems
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
-                      href="/faq"
+                      href="/shop"
                     >
-                      FAQ
+                      Item Shop
                     </Link>
                   </li>
                   <li>
@@ -81,6 +65,23 @@ export default function Component() {
                       News
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/faq"
+                    >
+                      FAQ
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div>
+              <h5 className="text-sm font-semibold uppercase tracking-wide">
+                Tables
+              </h5>
+              <nav className="mt-4">
+                <ul>
                   <li>
                     <Link
                       className="block py-2 text-muted-foreground transition hover:text-foreground"
@@ -99,20 +100,28 @@ export default function Component() {
                   </li>
                   <li>
                     <Link
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="/shop"
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/items"
                     >
-                      Item Shop (available soon)
+                      all Items
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="block py-2 text-muted-foreground transition hover:text-foreground"
+                      href="/stratagems"
+                    >
+                      all Stratagems
                     </Link>
                   </li>
                 </ul>
               </nav>
             </div>
             <div>
-              <h5 className="  text-sm font-semibold uppercase  tracking-wide">
+              <h5 className="text-sm font-semibold uppercase tracking-wide">
                 Resources
               </h5>
-              <nav className="mt-4 ">
+              <nav className="mt-4">
                 <ul>
                   <li>
                     <a
@@ -123,7 +132,7 @@ export default function Component() {
                       Github Source Code
                     </a>
                   </li>
-                  <li className="block text-muted-foreground  transition hover:text-foreground">
+                  <li className="block text-muted-foreground transition hover:text-foreground">
                     <InfoDialog title="Privacy Policy">
                       <p>
                         We recognize the importance of your privacy and are
@@ -227,7 +236,7 @@ export default function Component() {
                       </p>
                     </InfoDialog>
                   </li>
-                  <li className="block text-muted-foreground  transition hover:text-foreground">
+                  <li className="block text-muted-foreground transition hover:text-foreground">
                     <InfoDialog title="About">
                       <p>
                         Welcome to helldiverscompanion.app, your go-to source
@@ -297,7 +306,7 @@ export default function Component() {
                       </div>
                     </InfoDialog>
                   </li>
-                  <li className="block text-muted-foreground  transition hover:text-foreground">
+                  <li className="block text-muted-foreground transition hover:text-foreground">
                     <InfoDialog title="Credits">
                       <p>
                         We would like to extend our sincere appreciation to the
@@ -373,63 +382,11 @@ export default function Component() {
                       </p>
                     </InfoDialog>
                   </li>
-                  <li className="block text-muted-foreground  transition hover:text-foreground">
-                    <InfoDialog title="Contact">
-                      <p>
-                        If you have any questions, concerns, or feedback
-                        regarding helldiverscompanion.app or the real-time API
-                        data displayed on our website, please don&apos;t
-                        hesitate to get in touch with us. We value your input
-                        and are here to assist you.
-                      </p>
-                      <br />
-                      <h2 className="font-bold">Contact Details:</h2>
-                      <p>
-                        Email:{" "}
-                        <a className="underline" href="mailto:#">
-                          -
-                        </a>
-                      </p>
-                      <br />
-                      <p>
-                        Thank you for visiting helldiverscompanion.app. Feel
-                        free to reach out to us via email, and we will respond
-                        to your inquiry as promptly as possible.
-                      </p>
-                    </InfoDialog>
-                  </li>
                 </ul>
               </nav>
             </div>
             <div>
-              <h5 className="  text-sm font-semibold uppercase  tracking-wide">
-                My Other Sites
-              </h5>
-              <nav className="mt-4 ">
-                <ul>
-                  <li>
-                    <a
-                      target="_blank"
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="https://infogrid.michaelwagner.cc"
-                    >
-                      Infogrid
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      target="_blank"
-                      className="block py-2 text-muted-foreground  transition hover:text-foreground"
-                      href="https://glifico.michaelwagner.cc"
-                    >
-                      Glifico
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div>
-              <h5 className="text-sm font-semibold uppercase  tracking-wide">
+              <h5 className="text-sm font-semibold uppercase tracking-wide">
                 Fan Communities
               </h5>
               <nav className="mb-8 mt-4 grid grid-cols-5 gap-1 sm:w-2/3 md:w-full lg:w-2/3">
@@ -474,10 +431,10 @@ export default function Component() {
                   <span className="sr-only">Twitter</span>
                 </a>
               </nav>
-              <h5 className="  text-sm font-semibold uppercase  tracking-wide">
+              <h5 className="text-sm font-semibold uppercase tracking-wide">
                 Arrowhead Accounts
               </h5>
-              <nav className="mt-4 grid  grid-cols-5 gap-1 sm:w-2/3 md:w-full lg:w-2/3">
+              <nav className="mt-4 grid grid-cols-5 gap-1 sm:w-2/3 md:w-full lg:w-2/3">
                 <a
                   target="_blank"
                   className="block py-2 text-muted-foreground transition hover:text-foreground"
@@ -524,12 +481,12 @@ export default function Component() {
         </div>
       </footer>
       <Separator />
-      <p className="mt-8 text-center   text-sm  text-muted-foreground">
+      <p className="mt-8 text-center text-sm text-muted-foreground">
         This site is fan-made and not affiliated with the Arrowhead Game Studios
         in any way.
       </p>
       <div className="container mt-4">
-        <p className="my-4 text-center   text-sm  text-muted-foreground">
+        <p className="my-4 text-center text-sm text-muted-foreground">
           © 2024 Michael Wagner
         </p>
       </div>
