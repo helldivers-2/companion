@@ -5,6 +5,7 @@ export async function API() {
       "Accept-Language": "en-US",
       "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
       "X-Super-Contact": "@.mixhi",
+      cache: "no-store",
     },
   });
   return res.json();
@@ -20,6 +21,7 @@ export async function statusAPI() {
       "Accept-Language": "en-US",
       "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
       "X-Super-Contact": "@.mixhi",
+      cache: "no-store",
     },
   });
   return res.json();
@@ -32,6 +34,7 @@ export async function stratagemsAPI() {
       headers: {
         "User-Agent": "Helldivers 2 Companion - helldiverscompanion.app",
         "Accept-Language": "en-US",
+        cache: "no-store",
       },
     },
   );
