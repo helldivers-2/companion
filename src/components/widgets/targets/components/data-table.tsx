@@ -61,8 +61,8 @@ export function DataTable<TData, TValue>({
     initialState: {
       sorting: [
         {
-          id: "health",
-          desc: true, // sort by name in descending order by default
+          id: "liberation",
+          desc: false, // sort by name in descending order by default
         },
       ],
     },

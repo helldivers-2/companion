@@ -1,51 +1,65 @@
-import { columns } from "./components/columns";
+"use client";
+
+import { useState, useEffect } from "react";
 import { DataTable } from "./components/data-table";
-import { statusAPI } from "@/components/widgets/util/getApiData";
+import { columns } from "./components/columns";
+import { fetchPlanetsData } from "../util/getWarMap";
 
 interface Planet {
+  name: string;
   playerCount: number;
   health: number;
-  name: string;
+  maxHealth: number;
   initialOwner: string;
+  event: any;
   position: {
     x: number;
     y: number;
   };
-  event: any;
+  liberationPercentage: number;
 }
 
-export default async function TargetsTable() {
-  const targets = await statusAPI();
+// Transform Planet type into the format expected by DataTable
+const transformPlanetData = (planets: Planet[]) => {
+  return planets.map((planet) => ({
+    players: planet.playerCount,
+    liberation: planet.liberationPercentage,
+    name: planet.name,
+    initial_owner: planet.initialOwner,
+  }));
+};
 
-  const flattenedPlanets = targets.map(
-    ({
-      name,
-      health,
-      initialOwner,
-      statistics,
-    }: {
-      statistics: { playerCount: string };
-      name: string;
-      players: number;
-      health: number;
-      initialOwner: string;
-    }) => ({
-      name,
-      health: health / 10000,
-      initialOwner,
-      playerCount: statistics.playerCount,
-    }),
+export default function TargetsTable() {
+  const [planets, setPlanets] = useState<Planet[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const planetsData = await fetchPlanetsData();
+        setPlanets(planetsData);
+      } catch (err) {
+        setError("Failed to fetch data");
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  // Filter planets that have players, an active event, or liberation between 0% and 99%
+  const eventPlanets = planets.filter((planet) => planet.event !== null);
+
+  const activePlanets = planets.filter(
+    (planet) => planet.health < planet.maxHealth,
   );
 
-  const eventPlanets = flattenedPlanets.filter((planet: Planet) => {
-    return planet.event === null;
-  });
+  const active = [...eventPlanets, ...activePlanets];
 
-  const activePlanets = flattenedPlanets.filter((planet: Planet) => {
-    return planet.health !== 100;
-  });
+  // Transform data to fit DataTable requirements
+  const transformedData = transformPlanetData(active);
 
-  const filtered = [...eventPlanets, ...activePlanets];
-
-  return <DataTable data={filtered} columns={columns} />;
+  return <DataTable data={transformedData} columns={columns} />;
 }

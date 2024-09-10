@@ -3,6 +3,7 @@ import axios from "axios";
 interface Planet {
   playerCount: number;
   health: number;
+  maxHealth: number;
   name: string;
   initialOwner: string;
   position: {
@@ -10,6 +11,7 @@ interface Planet {
     y: number;
   };
   event: any;
+  liberationPercentage: number;
 }
 
 export async function fetchPlanetsData(): Promise<Planet[]> {
@@ -23,22 +25,29 @@ export async function fetchPlanetsData(): Promise<Planet[]> {
         name,
         players,
         health,
+        maxHealth,
         initialOwner,
+        event,
         statistics,
         position,
       }: {
-        statistics: { playerCount: string };
         name: string;
         players: number;
         health: number;
+        maxHealth: number;
         initialOwner: string;
+        event: any;
         position: { x: number; y: number };
+        statistics: { playerCount: number };
       }) => ({
         name,
         players,
-        health: health / 10000,
+        health,
+        maxHealth,
         initialOwner,
         playerCount: statistics.playerCount,
+        event,
+        liberationPercentage: (health / maxHealth) * 100, // Calculate liberation percentage
         position: { x: position.x, y: position.y },
       }),
     );

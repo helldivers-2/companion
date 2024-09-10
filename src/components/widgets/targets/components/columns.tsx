@@ -22,37 +22,40 @@ export const columns: ColumnDef<Target>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "health",
+    accessorKey: "liberation",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Liberation" />
     ),
     cell: ({ row }) => (
       <div className="flex w-[40px] items-center md:w-[80px]">
-        <Badge className="mr-1">{Math.round(row.getValue("health"))}%</Badge>
+        <Badge className="mr-1">
+          {Math.round(row.getValue("liberation"))}%
+        </Badge>
       </div>
     ),
   },
   {
-    accessorKey: "playerCount",
+    accessorKey: "players",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Player Count" />
     ),
     cell: ({ row }) => (
       <div className="w-[40px] md:w-[80px]">
-        {formatNumber(row.getValue("playerCount"))}
+        {formatNumber(row.getValue("players"))}
       </div>
     ),
     enableHiding: false,
     enableSorting: false,
   },
   {
-    accessorKey: "initialOwner",
+    accessorKey: "initial_owner",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Owner" />
     ),
     cell: ({ row }) => {
       const initial_owner = species.find(
-        (initial_owner) => initial_owner.value === row.getValue("initialOwner"),
+        (initial_owner) =>
+          initial_owner.value === row.getValue("initial_owner"),
       );
 
       if (!initial_owner) {

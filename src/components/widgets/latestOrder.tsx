@@ -63,7 +63,7 @@ export default async function majorOrder() {
               {order.major_order[0].setting.overrideBrief}
             </span>
           </p>
-          <p className="mt-4">{order.major_order[0].setting.taskDescription}</p>
+          {/*<p className="mt-4">{order.major_order[0].setting.taskDescription}</p>*/}
         </div>
         <div
           className={`grid ${

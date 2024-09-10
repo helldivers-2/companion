@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MapContainer,
   CircleMarker,
@@ -12,24 +12,27 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBounds } from "leaflet";
-import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Import the fetchPlanetsData function
+import { fetchPlanetsData } from "@/components/widgets/util/getWarMap"; // Ensure this function is correctly implemented
 import { Progress } from "../ui/progress";
 import { formatNumber } from "@/components/widgets/globalStats";
 
 interface Status {
   playerCount: number;
   health: number;
+  maxHealth: number;
   name: string;
   initialOwner: string;
   position: {
     x: number;
     y: number;
   };
-  event: any;
+  event: any; // Adjust type if necessary
+  liberationPercentage: number;
 }
 
 export default function MyMap() {
   const [planets, setPlanets] = useState<Status[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,28 +42,30 @@ export default function MyMap() {
     fetchData();
   }, []);
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   const allPlanets = planets;
 
-  const eventPlanets = planets.filter((planet: Status) => {
-    return planet.event === null;
-  });
+  const eventPlanets = planets.filter(
+    (planet: Status) => planet.event !== null,
+  );
 
-  const activePlanets = planets.filter((planet: Status) => {
-    return planet.health !== 100;
-  });
+  const activePlanets = planets.filter(
+    (planet: Status) => planet.health < planet.maxHealth,
+  );
 
   const active = [...eventPlanets, ...activePlanets];
 
-  const liberatedPlanets = planets.filter((planet: Status) => {
-    return planet.health === 100;
-  });
+  const liberatedPlanets = planets.filter(
+    (planet: Status) => planet.health === planet.maxHealth,
+  );
 
-  // Define the angle offset in degrees
-  const angleOffsetDegrees = 90; // Adjust as needed
+  const angleOffsetDegrees = 90;
 
   const renderPlanetMarkers = (filteredPlanets: Status[]): JSX.Element[] => {
     return filteredPlanets.map((planet, index) => {
-      // Calculate new coordinates with angle offset
       const newX =
         planet.position.x * Math.cos(angleOffsetDegrees * (Math.PI / 180)) -
         planet.position.y * Math.sin(angleOffsetDegrees * (Math.PI / -180));
@@ -73,22 +78,22 @@ export default function MyMap() {
       let color = "";
       let radius = 5;
 
-      if (planet.health < 100) {
-        fillColor = "";
+      if (planet.health < planet.maxHealth) {
+        fillColor = "red";
         fillOpacity = 0.6;
         color = "red";
         radius = 6;
       } else {
-        fillColor = "";
+        fillColor = "yellow";
         fillOpacity = 0.4;
         color = "yellow";
         radius = 4;
       }
 
-      if (planet.event === null) {
+      if (planet.event !== null) {
         fillColor = "red";
         fillOpacity = 1;
-        color = "yellow";
+        color = "red";
         radius = 6;
       }
 
@@ -106,8 +111,8 @@ export default function MyMap() {
             <p>Name: {planet.name}</p>
             <p>Players: {formatNumber(planet.playerCount)}</p>
             <p>
-              {Math.round(planet.health)}% Liberation
-              <Progress value={planet.health} />
+              {Math.round(planet.liberationPercentage)}% Liberation
+              <Progress value={planet.liberationPercentage} />
             </p>
           </Popup>
         </CircleMarker>
@@ -140,14 +145,14 @@ export default function MyMap() {
         opacity={0.5}
       />
       <LayersControl position="bottomleft">
-        <LayersControl.Overlay name="all Planets">
+        <LayersControl.Overlay name="All Planets">
           <FeatureGroup>{renderPlanetMarkers(allPlanets)}</FeatureGroup>
         </LayersControl.Overlay>
-        <LayersControl.Overlay checked name="active Planets">
-          <FeatureGroup>{renderPlanetMarkers(active)} </FeatureGroup>
+        <LayersControl.Overlay checked name="Active Planets">
+          <FeatureGroup>{renderPlanetMarkers(active)}</FeatureGroup>
         </LayersControl.Overlay>
-        <LayersControl.Overlay name="inactive Planets">
-          <FeatureGroup>{renderPlanetMarkers(liberatedPlanets)} </FeatureGroup>
+        <LayersControl.Overlay name="Inactive Planets">
+          <FeatureGroup>{renderPlanetMarkers(liberatedPlanets)}</FeatureGroup>
         </LayersControl.Overlay>
       </LayersControl>
     </MapContainer>
