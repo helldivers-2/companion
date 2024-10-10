@@ -7,14 +7,9 @@ export default async function ItemShop() {
   const shop = await API();
 
   return (
-    <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2">
       {shop.store_rotation.items.map((item: any, index: number) => (
-        <Card
-          key={index}
-          className={`${index === 0 ? "row-span-2" : "row-auto"} ${
-            index === 3 ? "md:col-start-3 md:row-span-2 md:row-start-1" : ""
-          }`}
-        >
+        <Card key={index}>
           <CardHeader>
             <CardTitle>
               {item.name}

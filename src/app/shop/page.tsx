@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { Skeleton } from "@/components/ui/skeleton";
 
 import Container from "@/components/containerCard";
-import { CardDescription } from "@/components/ui/card";
 import ItemShop from "@/components/widgets/itemShop";
 
 export const metadata: Metadata = {
@@ -39,7 +38,6 @@ export default function ShopPage() {
   return (
     <>
       <Container title="Shop">
-        <CardDescription>Updates in:</CardDescription>
         <ItemShop />
       </Container>
       <Comments keyword="Shop" reactions="1" />

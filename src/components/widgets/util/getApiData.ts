@@ -8,6 +8,7 @@ export async function API() {
       "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
       "X-Super-Contact": "@.mixhi",
     },
+    next: { revalidate: 3600 },
   });
   return res.json();
 }
@@ -23,6 +24,7 @@ export async function statusAPI() {
       "X-Super-Client": "Helldivers 2 Companion - helldiverscompanion.app",
       "X-Super-Contact": "@.mixhi",
     },
+    next: { revalidate: 3600 },
   });
   return res.json();
 }

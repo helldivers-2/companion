@@ -1,13 +1,7 @@
 import { API } from "@/components/widgets/util/getApiData";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface News {
   id: number;
@@ -44,7 +38,7 @@ export default async function newsFeeds() {
     );
   }
 
-  const lastFourNews = news.news_feed.slice(-4);
+  const lastFourNews = news.news_feed.slice(-3);
 
   if (lastFourNews.length === 0) {
     return (
@@ -56,9 +50,8 @@ export default async function newsFeeds() {
   }
 
   return (
-    <div>
+    <div className="grid gap-4">
       {lastFourNews.map((newses: News, index: number) => {
-        const publishedDate = new Date(newses.published * 1000);
         const regex = /<i=3>(.*?)<\/i>/;
         const match = newses.message.match(regex);
         const triggerText = match ? `${match[1]}` : "NEW DISPATCH";
@@ -67,18 +60,16 @@ export default async function newsFeeds() {
           .replace(/<i=1>(.*?)<\/i>/g, "$1");
 
         return (
-          <Accordion key={index} type="single" collapsible>
-            <AccordionItem value={`item-${newses.id}`}>
-              <AccordionTrigger>
-                <div className="flex">
-                  <div className="px-4">{triggerText}</div>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
+          <div key={index}>
+            <Card key={newses.id}>
+              <CardHeader className="pb-0 md:pb-0">
+                <CardTitle className="leading-none">{triggerText}</CardTitle>
+              </CardHeader>
+              <CardContent>
                 <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </CardContent>
+            </Card>
+          </div>
         );
       })}
     </div>

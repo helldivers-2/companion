@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FAQPage() {
+export default function StatsPage() {
   const StatsWidget = useMemo(
     () =>
       dynamic(() => import("@/components/widgets/globalStats"), {

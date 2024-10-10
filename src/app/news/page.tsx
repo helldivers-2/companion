@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FAQPage() {
+export default function NewsPage() {
   const Comments = useMemo(
     () =>
       dynamic(() => import("@/components/giscusComponent"), {
@@ -71,7 +71,7 @@ export default function FAQPage() {
     <>
       <Container title="News">
         <div className="grid gap-4 lg:grid-cols-2">
-          <Card className="col-start-1">
+          <Card>
             <CardHeader>
               <CardTitle>Dispatches</CardTitle>
             </CardHeader>
@@ -79,7 +79,7 @@ export default function FAQPage() {
               <News />
             </CardContent>
           </Card>
-          <Card className="col-start-1">
+          <Card>
             <CardHeader>
               <CardTitle>Patch Notes</CardTitle>
             </CardHeader>
@@ -87,7 +87,7 @@ export default function FAQPage() {
               <PatchNotes />
             </CardContent>
           </Card>
-          <Card className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <Card>
             <CardHeader>
               <CardTitle>Info about the Game</CardTitle>
             </CardHeader>
