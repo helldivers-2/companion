@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "@/app/globals.css";
@@ -13,11 +14,10 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Helldivers Companion",
-    template: "%s | Helldivers Companion",
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
   },
-  description:
-    "Your essential companion for Helldivers 2 - track missions, view galactic war progress and access stratagems, weapons and planetary data to maximize your democratic efficiency.",
+  description: siteConfig.description,
 };
 
 export default function RootLayout({
