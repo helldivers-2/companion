@@ -23,27 +23,10 @@ export const UserMenu: React.FC<ContainerCardProps> = ({ children }) => {
     <div className="flex items-center justify-between">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
-        <DropdownMenuContent align="start" className="w-fit">
+        <DropdownMenuContent align="start" className="z-[5000] w-fit">
           <Link href="/stats">
             <DropdownMenuItem>Galaxy Stats</DropdownMenuItem>
           </Link>
-          <Link href="/leaderboard">
-            <DropdownMenuItem>Leaderboard</DropdownMenuItem>
-          </Link>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <span className="sr-only">see Item Tables</span>
-              <p>Item Tables</p>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuSubContent>
-              <Link href="/items">
-                <DropdownMenuItem>all Items</DropdownMenuItem>
-              </Link>
-              <Link href="/stratagems">
-                <DropdownMenuItem>all Stratagems</DropdownMenuItem>
-              </Link>
-            </DropdownMenuSubContent>
-          </DropdownMenuSub>{" "}
           <Link href="/faq">
             <DropdownMenuItem>FAQ</DropdownMenuItem>
           </Link>
