@@ -18,11 +18,9 @@ import {
   Rocket,
   Newspaper,
   ChartColumnBig,
-  MoreHorizontal,
   type LucideIcon,
 } from "lucide-react";
 
-import { UserMenu } from "@/components/user-menu";
 import logo from "@/app/icon0.svg";
 
 interface NavigationItem {
@@ -30,7 +28,6 @@ interface NavigationItem {
   href: string;
   description?: string;
   icon: LucideIcon;
-  showInPWA?: boolean;
 }
 
 const NAVIGATION_ITEMS: NavigationItem[] = [
@@ -38,25 +35,21 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Status",
     href: "/",
     icon: Rocket,
-    showInPWA: true,
   },
   {
     title: "News",
     href: "/news",
     icon: Newspaper,
-    showInPWA: true,
   },
   {
     title: "Statistics",
     href: "/statistics",
     icon: ChartColumnBig,
-    showInPWA: false,
   },
   {
     title: "FAQ",
     href: "/faq",
     icon: Info,
-    showInPWA: false,
   },
 ] as const;
 
@@ -91,7 +84,9 @@ const NavigationLink = React.memo<{
       <NavigationMenuLink
         className={cn(
           navigationMenuTriggerStyle(),
-          isMobile ? "data-[active=true]:focus:bg-transparent data-[active=true]:hover:bg-transparent bg-transparent hover:bg-transparent" : "",
+          isMobile
+            ? "bg-transparent hover:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
+            : "",
         )}
         href={href}
       >
@@ -125,22 +120,13 @@ const MobileNavigation = React.memo(() => (
     <div className="rounded-t-xl bg-background">
       <div className="h-20 w-full items-center border-t border-primary bg-[#facc15] p-4 transition">
         <NavigationMenu variant="pwa">
-          <NavigationMenuList variant="pwa" className="grid-">
-            {NAVIGATION_ITEMS.filter((item) => item.showInPWA).map((item) => (
+          <NavigationMenuList
+            variant="pwa"
+            className="flex w-full justify-between"
+          >
+            {NAVIGATION_ITEMS.map((item) => (
               <NavigationLink key={item.href} item={item} variant="mobile" />
             ))}
-            <NavigationMenuItem>
-              <UserMenu>
-                <NavigationMenuLink
-                  className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-transparent",
-                  )}
-                >
-                  <MoreHorizontal className="mx-auto size-6 md:mr-1 md:size-4" />
-                </NavigationMenuLink>
-              </UserMenu>
-            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
       </div>
