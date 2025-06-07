@@ -10,8 +10,20 @@ import {
   SiInstagram,
   SiYoutube,
   SiGithub,
+  SiFandom,
 } from "@icons-pack/react-simple-icons";
-import { House } from "lucide-react";
+import {
+  Component,
+  MessageSquareText,
+  ChevronsLeftRightEllipsis,
+  Building2,
+} from "lucide-react";
+
+interface CreditLink {
+  href: string;
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+}
 
 interface SocialLink {
   href: string;
@@ -19,29 +31,24 @@ interface SocialLink {
   label: string;
 }
 
-interface CreditLink {
-  href: string;
-  label: string;
-  description: string;
-}
-
 const CREDITS: CreditLink[] = [
   {
     href: "https://github.com/shadcn/ui",
+    icon: Component,
     label: "shadcn/ui",
-    description: "UI Framework",
   },
   {
     href: "https://giscus.app/",
+    icon: MessageSquareText,
     label: "giscus",
-    description: "Comment Feature",
   },
   {
     href: "https://github.com/helldivers-2/api",
-    label: "Helldivers API",
-    description: "Game API",
+    icon: ChevronsLeftRightEllipsis,
+    label: "Helldivers 2 API",
   },
 ];
+//       "Game API - ONLY THIS API! - SOCIAL FANDOM LINK? DO NOT COMMIT",
 
 const FAN_COMMUNITIES: SocialLink[] = [
   {
@@ -59,14 +66,19 @@ const FAN_COMMUNITIES: SocialLink[] = [
     icon: SiSteam,
     label: "Steam",
   },
+  {
+    href: "https://helldivers.fandom.com/",
+    icon: SiFandom,
+    label: "Fandom",
+  },
+  {
+    href: "https://github.com/helldivers-2",
+    icon: SiGithub,
+    label: "Helldivers 2 Github Organisation",
+  },
 ];
 
 const ARROWHEAD_LINKS: SocialLink[] = [
-  {
-    href: "https://www.arrowheadgamestudios.com/",
-    icon: House,
-    label: "Arrowhead Studios Website",
-  },
   {
     href: "https://instagram.com/arrowheadgamestudios/",
     icon: SiInstagram,
@@ -78,11 +90,26 @@ const ARROWHEAD_LINKS: SocialLink[] = [
     label: "YouTube",
   },
   {
-    href: "https://github.com/helldivers-2",
-    icon: SiGithub,
-    label: "Helldivers 2 Github Organisation",
+    href: "https://www.arrowheadgamestudios.com/",
+    icon: Building2,
+    label: "Arrowhead Studios Website",
   },
 ];
+
+const CreditsList = ({ credits }: { credits: CreditLink[] }) => (
+  <div className="space-y-1">
+    {credits.map(({ href, icon: Icon, label }) => (
+      <a
+        className="flex gap-2 items-center transition-all hover:underline"
+        href={href}
+        key={href}
+      >
+        <Icon className="mt-0.5 size-4 text-muted-foreground" />
+        {label}
+      </a>
+    ))}
+  </div>
+);
 
 const SocialNav = ({
   links,
@@ -92,10 +119,10 @@ const SocialNav = ({
   title: string;
 }) => (
   <div>
-    <h5 className="mb-4 text-sm font-semibold tracking-wide uppercase">
+    <h5 className="text-sm font-semibold tracking-wide uppercase">
       {title}
     </h5>
-    <nav className="flex gap-2 sm:w-2/3 md:w-full lg:w-2/3">
+    <nav className="flex gap-4">
       {links.map(({ href, icon: Icon, label }) => (
         <a
           key={href}
@@ -111,20 +138,6 @@ const SocialNav = ({
       ))}
     </nav>
   </div>
-);
-
-const CreditsList = ({ credits }: { credits: CreditLink[] }) => (
-  <ul className="space-y-1">
-    {credits.map(({ href, label, description }) => (
-      <li key={href}>
-        <a className="underline transition-all hover:no-underline" href={href}>
-          {label}
-        </a>
-        {" - "}
-        <span className="text-muted-foreground">{description}</span>
-      </li>
-    ))}
-  </ul>
 );
 
 const ProjectInfo = () => (
@@ -145,15 +158,12 @@ const ProjectInfo = () => (
 );
 
 const AboutSection = () => (
-  <div>
+  <div className="space-y-4">
     <p className="leading-relaxed text-muted-foreground">
       Welcome to the Helldivers Companion Fan Project, a source for real-time
       API data for the game Helldivers 2!
     </p>
-    <div className="mt-6">
-      <h6 className="mb-3 text-sm font-medium">Built with:</h6>
-      <CreditsList credits={CREDITS} />
-    </div>
+    <CreditsList credits={CREDITS} />
   </div>
 );
 
@@ -169,13 +179,13 @@ export default function Footer() {
     <div className="website">
       <Separator />
       <footer className="py-8">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto space-y-8 px-4 lg:px-8">
           <ProjectInfo />
 
-          <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
             <AboutSection />
 
-            <div className="space-y-8">
+            <div className="space-y-4">
               <SocialNav links={FAN_COMMUNITIES} title="Fan Communities" />
               <SocialNav links={ARROWHEAD_LINKS} title="Arrowhead Accounts" />
             </div>
