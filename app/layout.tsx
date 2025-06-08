@@ -40,7 +40,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="pwachildren container flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
+          <main className="pwachildren container mx-auto flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
             {children}
           </main>
           <Footer />
