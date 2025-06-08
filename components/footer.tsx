@@ -48,7 +48,6 @@ const CREDITS: CreditLink[] = [
     label: "Helldivers 2 API",
   },
 ];
-//       "Game API - ONLY THIS API! - SOCIAL FANDOM LINK? DO NOT COMMIT",
 
 const FAN_COMMUNITIES: SocialLink[] = [
   {
@@ -100,11 +99,11 @@ const CreditsList = ({ credits }: { credits: CreditLink[] }) => (
   <div className="space-y-1">
     {credits.map(({ href, icon: Icon, label }) => (
       <a
-        className="flex gap-2 items-center transition-all hover:underline"
+        className="flex items-center gap-2 transition-all hover:underline"
         href={href}
         key={href}
       >
-        <Icon className="mt-0.5 size-4 text-muted-foreground" />
+        <Icon className="mt-0.5 size-4 text-icon" />
         {label}
       </a>
     ))}
@@ -119,9 +118,7 @@ const SocialNav = ({
   title: string;
 }) => (
   <div>
-    <h5 className="text-sm font-semibold tracking-wide uppercase">
-      {title}
-    </h5>
+    <h5 className="text-sm font-semibold tracking-wide uppercase">{title}</h5>
     <nav className="flex gap-4">
       {links.map(({ href, icon: Icon, label }) => (
         <a
@@ -132,7 +129,7 @@ const SocialNav = ({
           className="block py-2 text-muted-foreground transition hover:text-foreground"
           aria-label={label}
         >
-          <Icon className="size-6" />
+          <Icon className="size-6 text-icon" />
           <span className="sr-only">{label}</span>
         </a>
       ))}

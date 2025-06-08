@@ -94,6 +94,7 @@ const NavigationLink = React.memo<{
           <Icon
             className={cn(
               isMobile ? "mx-auto size-6 md:mr-1 md:size-4" : "mr-2 size-4",
+              "text-icon",
             )}
           />
           <span className="text-center text-xs">{title}</span>
@@ -118,7 +119,7 @@ DesktopNavigation.displayName = "DesktopNavigation";
 const MobileNavigation = React.memo(() => (
   <div className="pwa fixed right-0 bottom-0 z-50 w-full">
     <div className="rounded-t-xl bg-background">
-      <div className="h-20 w-full items-center border-t border-primary bg-[#facc15] p-4 transition">
+      <div className="h-20 w-full items-center border-t-2 bg-muted p-4 transition">
         <NavigationMenu variant="pwa">
           <NavigationMenuList
             variant="pwa"
@@ -151,7 +152,7 @@ const Header = React.memo(() => (
     <div className="mx-4 pt-4">
       <div className="w-full rounded-lg bg-background">
         <nav
-          className="bg-opacity-20 h-fit rounded-lg border border-primary bg-[#facc15]"
+          className="h-fit rounded-lg border-2"
           role="navigation"
           aria-label="Main navigation"
         >
