@@ -1,4 +1,4 @@
-import { StatisticsAPI } from "@/lib/get";
+import { getAPI } from "@/lib/get";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";
@@ -21,7 +21,7 @@ const convertToHours = (missionTime: number) => {
 };
 
 export default async function Statistics() {
-  const data = await StatisticsAPI();
+  const data = await getAPI({ url: "https://api.helldivers2.dev/api/v1/war" });
   const stats = data.statistics;
 
   const formattedMissionTimeHours = formatNumber(
