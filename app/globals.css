@@ -134,14 +134,13 @@
   display: none;
 }
 
-/* Media query to show/hide the content based on standalone mode */
+.pwachildren {
+  margin-bottom: 0;
+}
+
 @media (display-mode: standalone) {
   .website {
-    display: none; /* Hide the content when in standalone mode */
-  }
-
-  .pwachildren {
-    margin-bottom: 0rem;
+    display: none;
   }
 
   .pwa {
@@ -152,11 +151,5 @@
     .pwachildren {
       margin-bottom: 5rem;
     }
-  }
-}
-
-@media not all and (display-mode: standalone) {
-  .pwa {
-    display: none;
   }
 }
