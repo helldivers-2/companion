@@ -1,32 +1,12 @@
 import { getAPI } from "@/lib/get";
+import millify from "millify";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";
 
-export function formatNumber(num: number) {
-  return Math.abs(Number(num)) >= 1.0e12
-    ? (Math.abs(Number(num)) / 1.0e12).toFixed(1) + " Tr"
-    : Math.abs(Number(num)) >= 1.0e9
-      ? (Math.abs(Number(num)) / 1.0e9).toFixed(1) + " B"
-      : Math.abs(Number(num)) >= 1.0e6
-        ? (Math.abs(Number(num)) / 1.0e6).toFixed(1) + " M"
-        : Math.abs(Number(num)) >= 1.0e3
-          ? (Math.abs(Number(num)) / 1.0e3).toFixed(1) + "k"
-          : Math.abs(Number(num));
-}
-
-const convertToHours = (missionTime: number) => {
-  const hours = missionTime / 3600; // 1 hour = 3600 seconds
-  return hours;
-};
-
 export default async function Statistics() {
-  const data = await getAPI({ url: "https://api.helldivers2.dev/api/v1/war" });
-  const stats = data.statistics;
-
-  const formattedMissionTimeHours = formatNumber(
-    convertToHours(stats.missionTime),
-  );
+  const war = await getAPI({ url: "/v1/war" });
+  const stats = war.statistics;
 
   return (
     <div className="grid grid-cols-1 gap-4">
@@ -37,36 +17,36 @@ export default async function Statistics() {
         <CardContent>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             <StatisticsCard title="Patriots in Game">
-              {formatNumber(stats.playerCount)}
+              {millify(stats.playerCount)}
             </StatisticsCard>
             <StatisticsCard
-              title={`Lawful Victories - Ø ${formatNumber(stats.missionSuccessRate)}%`}
+              title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}
             >
-              {formatNumber(stats.missionsWon)}
+              {millify(stats.missionsWon)}
             </StatisticsCard>
-            <StatisticsCard title="Time Invested">
-              {formattedMissionTimeHours} hours
+            <StatisticsCard title="Total Time Invested">
+              {millify(stats.missionTime / 60 / 60 / 24 / 365 / 100)} centuries
             </StatisticsCard>
             <StatisticsCard title="Pesty Bugs Killed">
-              {formatNumber(stats.terminidKills)}
+              {millify(stats.terminidKills)}
             </StatisticsCard>
             <StatisticsCard title="Robots Annihilated">
-              {formatNumber(stats.automatonKills)}
+              {millify(stats.automatonKills)}
             </StatisticsCard>
             <StatisticsCard title="Illuminates Killed">
-              {formatNumber(stats.illuminateKills)}
+              {millify(stats.illuminateKills)}
             </StatisticsCard>
             <StatisticsCard title="Ammunition Shot">
-              {formatNumber(stats.bulletsFired)}
+              {millify(stats.bulletsFired)}
             </StatisticsCard>
             <StatisticsCard title="Fallen Souldiers">
-              {formatNumber(stats.deaths)}
+              {millify(stats.deaths)}
             </StatisticsCard>
             <StatisticsCard title="Collateral Friend Kills">
-              {formatNumber(stats.friendlies)}
+              {millify(stats.friendlies)}
             </StatisticsCard>
             <StatisticsCard title="Missions Lost :(">
-              {formatNumber(stats.missionsLost)}
+              {millify(stats.missionsLost)}
             </StatisticsCard>
           </div>
         </CardContent>
