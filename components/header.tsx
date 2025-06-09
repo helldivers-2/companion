@@ -1,9 +1,14 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
+import {
+  type LucideIcon,
+  Info,
+  Rocket,
+  Newspaper,
+  ChartColumnBig,
+} from "lucide-react";
 
 import {
   NavigationMenu,
@@ -12,15 +17,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-
-import {
-  Info,
-  Rocket,
-  Newspaper,
-  ChartColumnBig,
-  type LucideIcon,
-} from "lucide-react";
-
+import { cn } from "@/lib/utils";
 import logo from "@/app/icon0.svg";
 
 interface NavigationItem {
@@ -53,115 +50,79 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
   },
 ] as const;
 
-const Logo = React.memo(() => (
-  <Link
-    className="flex items-center"
-    href="/"
-    aria-label="Helldivers Companion Home"
-  >
-    <Image
-      priority
-      src={logo}
-      width={128}
-      height={128}
-      className="mr-2 size-6"
-      alt="Helldivers Companion Logo"
-    />
-    <span className="flex text-xl font-bold">Helldivers Companion</span>
-  </Link>
-));
-Logo.displayName = "Logo";
+const LOGO_CONFIG = {
+  src: logo,
+  width: 128,
+  height: 128,
+  alt: "Helldivers Companion Logo",
+  ariaLabel: "Helldivers Companion Home",
+} as const;
 
-const NavigationLink = React.memo<{
-  item: NavigationItem;
-  variant?: "desktop" | "mobile";
-}>(({ item, variant = "desktop" }) => {
+const STYLES = {
+  header:
+    "fixed bottom-0 left-0 z-[1500] flex w-full justify-center p-6 sm:top-0 sm:bottom-auto",
+  navigationMenu:
+    "bg-opacity-30 rounded-full border px-1 py-1 backdrop-blur-lg backdrop-filter",
+  navigationLink: "rounded-full bg-transparent",
+  logoContainer: "hidden sm:inline-flex",
+  logo: "size-6",
+  navItemContainer: "block items-center sm:flex",
+  navIcon: "mx-auto size-6 pt-2 text-icon sm:mr-2 sm:size-4 sm:pt-0",
+  navTitle: "text-center text-xs",
+} as const;
+
+function LogoItem() {
+  return (
+    <NavigationMenuItem className={STYLES.logoContainer}>
+      <Link
+        className={cn(navigationMenuTriggerStyle(), STYLES.navigationLink)}
+        href="/"
+        aria-label={LOGO_CONFIG.ariaLabel}
+      >
+        <Image
+          priority
+          src={LOGO_CONFIG.src}
+          width={LOGO_CONFIG.width}
+          height={LOGO_CONFIG.height}
+          className={STYLES.logo}
+          alt={LOGO_CONFIG.alt}
+        />
+      </Link>
+    </NavigationMenuItem>
+  );
+}
+
+function NavigationItem({ item }: { item: NavigationItem }) {
   const { title, href, icon: Icon } = item;
-  const isMobile = variant === "mobile";
 
   return (
-    <NavigationMenuItem>
+    <NavigationMenuItem key={href}>
       <NavigationMenuLink
-        className={cn(
-          navigationMenuTriggerStyle(),
-          isMobile
-            ? "bg-transparent hover:bg-transparent data-[active=true]:hover:bg-transparent data-[active=true]:focus:bg-transparent"
-            : "",
-        )}
+        className={cn(navigationMenuTriggerStyle(), STYLES.navigationLink)}
         href={href}
       >
-        <div className={isMobile ? "block md:flex" : "flex items-center"}>
-          <Icon
-            className={cn(
-              isMobile ? "mx-auto size-6 md:mr-1 md:size-4" : "mr-2 size-4",
-              "text-icon",
-            )}
-          />
-          <span className="text-center text-xs">{title}</span>
+        <div className={STYLES.navItemContainer}>
+          <Icon className={STYLES.navIcon} />
+          <span className={STYLES.navTitle}>{title}</span>
         </div>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
-});
-NavigationLink.displayName = "NavigationLink";
+}
 
-const DesktopNavigation = React.memo(() => (
-  <NavigationMenu className="website mt-4 md:mt-0">
-    <NavigationMenuList className="grid grid-cols-2 gap-2 md:flex">
-      {NAVIGATION_ITEMS.map((item) => (
-        <NavigationLink key={item.href} item={item} variant="desktop" />
-      ))}
-    </NavigationMenuList>
-  </NavigationMenu>
-));
-DesktopNavigation.displayName = "DesktopNavigation";
-
-const MobileNavigation = React.memo(() => (
-  <div className="pwa fixed right-0 bottom-0 z-50 w-full">
-    <div className="rounded-t-xl bg-background">
-      <div className="h-20 w-full items-center border-t-2 bg-muted p-4 transition">
-        <NavigationMenu variant="pwa">
-          <NavigationMenuList
-            variant="pwa"
-            className="flex w-full justify-between"
-          >
+export function Header() {
+  return (
+    <header className={STYLES.header}>
+      <div>
+        <NavigationMenu viewport={false} className={STYLES.navigationMenu}>
+          <NavigationMenuList>
+            <LogoItem />
             {NAVIGATION_ITEMS.map((item) => (
-              <NavigationLink key={item.href} item={item} variant="mobile" />
+              <NavigationItem key={item.href} item={item} />
             ))}
           </NavigationMenuList>
         </NavigationMenu>
       </div>
-    </div>
-  </div>
-));
-MobileNavigation.displayName = "MobileNavigation";
-
-const HeaderContent = React.memo(() => (
-  <div className="m-2 block items-center justify-between md:flex">
-    <div className="flex w-full items-center justify-between md:block">
-      <Logo />
-    </div>
-    <DesktopNavigation />
-    <MobileNavigation />
-  </div>
-));
-HeaderContent.displayName = "HeaderContent";
-
-const Header = React.memo(() => (
-  <header className="sticky top-0 left-0 z-[1500]">
-    <div className="mx-4 pt-4">
-      <div className="w-full rounded-lg bg-background">
-        <nav
-          className="h-fit rounded-lg border-2"
-          role="navigation"
-          aria-label="Main navigation"
-        >
-          <HeaderContent />
-        </nav>
-      </div>
-    </div>
-  </header>
-));
-Header.displayName = "Header";
-
-export default Header;
+    </header>
+  );
+}

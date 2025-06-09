@@ -4,7 +4,7 @@ import { Space_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import "@/app/globals.css";
 
-import Header from "@/components/header";
+import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 
 const spaceGrotesk = Space_Grotesk({
@@ -40,7 +40,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="pwachildren container mx-auto flex flex-col px-4 py-12 md:min-h-screen md:py-20 2xl:px-8">
+          <main className="pwachildren container mx-auto flex flex-col p-4 sm:py-12">
             {children}
           </main>
           <Footer />
