@@ -9,10 +9,10 @@ const Container = ({
   children: ReactNode;
 }) => {
   return (
-    <Card className="border-2 bg-muted">
+    <Card className="border bg-muted">
       <CardHeader>
         <CardTitle>
-          <h1 className="text-center text-4xl font-semibold tracking-tight text-balance">
+          <h1 className="text-center text-4xl font-semibold tracking-tight text-balance mt-4">
             {title}
           </h1>
         </CardTitle>
