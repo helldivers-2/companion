@@ -126,6 +126,10 @@
   }
 }
 
+.border {
+  @apply border-black/20 shadow-[inset_1px_1px_0px_rgba(0,0,0,0.3),inset_-1px_-1px_0px_rgba(0,0,0,0.1)] dark:border-white/20 dark:shadow-[inset_1px_1px_0px_rgba(255,255,255,0.3),inset_-1px_-1px_0px_rgba(255,255,255,0.1)];
+}
+
 .website {
   display: block;
 }

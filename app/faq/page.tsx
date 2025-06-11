@@ -15,7 +15,7 @@ export default function FAQPage() {
       <div className="grid gap-8">
         <Container title="Frequently Asked Questions">
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-lg bg-background p-4">
+            <div className="rounded-lg border bg-background p-4">
               <div>
                 <p>
                   In Helldivers 2, Super Earth is in a Galactic War with the
@@ -81,7 +81,7 @@ export default function FAQPage() {
                 </ul>
               </div>
             </div>
-            <div className="rounded-lg bg-background p-4">
+            <div className="rounded-lg border bg-background p-4">
               <div>
                 <h3 className="mb-4 text-2xl font-medium tracking-tighter">
                   Does abandoning an operation negatively impact the %?

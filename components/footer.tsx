@@ -173,7 +173,7 @@ const DisclaimerSection = () => (
 
 export default function Footer() {
   return (
-    <div className="website">
+    <div className="website py-4">
       <Separator />
       <footer className="py-8">
         <div className="container mx-auto space-y-8 px-4 lg:px-8">
