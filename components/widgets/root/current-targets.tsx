@@ -1,4 +1,10 @@
-import { getAPI } from "@/lib/get";
+import {
+  getFactionIcon,
+  getLiberation,
+  getCampaignStats,
+} from "@/lib/get-campaigns";
+import millify from "millify";
+
 import {
   Table,
   TableBody,
@@ -7,67 +13,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Bug, Bot, PersonStanding } from "lucide-react";
-import millify from "millify";
-
-export const species = [
-  {
-    value: "Humans",
-    label: "Humans",
-    icon: "/factions/Super_Earth.webp",
-  },
-  {
-    value: "Terminids",
-    label: "Terminids",
-    icon: "/factions/Terminids.webp",
-  },
-  {
-    value: "Automaton",
-    label: "Automaton",
-    icon: "/factions/Automaton.webp",
-  },
-  {
-    value: "Illuminate",
-    label: "Illuminate",
-    icon: "/factions/Illuminate.webp",
-  },
-];
-
-const getFactionIcon = (faction: string): string | null => {
-  const factionData = species.find((s) => s.value === faction);
-  return factionData ? factionData.icon : null;
-};
-
-const getLiberation = (health: number, maxHealth: number) => {
-  const liberation = (health / maxHealth) * 100;
-  return Math.max(0, Math.min(100, liberation)).toFixed(2);
-};
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
 
 export default async function CurrentTargets() {
-  const campaigns = await getAPI({
-    url: "/v1/campaigns",
-  });
-
-  const activePlanets = campaigns
-    .filter(
-      (campaign: any) => campaign.planet.health < campaign.planet.maxHealth,
-    )
-    .sort((a: any, b: any) => {
-      const liberationA = getLiberation(a.planet.health, a.planet.maxHealth);
-      const liberationB = getLiberation(b.planet.health, b.planet.maxHealth);
-      return parseFloat(liberationA) - parseFloat(liberationB);
-    });
-  const liberatedPlanets = campaigns.filter(
-    (campaign: any) => campaign.planet.health === campaign.planet.maxHealth,
-  );
-
-  const totalPlayerCount = liberatedPlanets.reduce(
-    (sum: number, campaign: any) => {
-      const playerCount = campaign.planet.statistics?.playerCount || 0;
-      return sum + playerCount;
-    },
-    0,
-  );
+  const { activePlanets, totalPlayerCount } = await getCampaignStats();
 
   return (
     <Table>
@@ -76,38 +26,45 @@ export default async function CurrentTargets() {
           <TableHead className="w-[100px]">Planet</TableHead>
           <TableHead className="text-right">Players</TableHead>
           <TableHead>Liberation</TableHead>
-          <TableHead></TableHead>
+          <TableHead className="hidden lg:table-cell"></TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {activePlanets.map((campaign: any, index: number) => {
           const planet = campaign.planet;
-          const liberation = getLiberation(planet.health, planet.maxHealth);
           const playerCount = planet.statistics?.playerCount || 0;
+
+          const campaignLiberation = getLiberation(
+            planet.health,
+            planet.maxHealth,
+          );
+          const eventLiberation = planet.event
+            ? getLiberation(planet.event.health, planet.event.maxHealth, true)
+            : null;
+          const liberation = planet.event
+            ? eventLiberation
+            : campaignLiberation;
 
           return (
             <TableRow key={campaign.id || index}>
               <TableCell className="flex gap-2 font-medium">
                 <img
                   src={
-                    getFactionIcon(planet.currentOwner) || "/web-app-manifest-192x192.png"
+                    getFactionIcon(campaign.faction) ||
+                    "/web-app-manifest-192x192.png"
                   }
                   alt="Faction Icon"
-                  className="h-5 w-5"
+                  className="h-5"
                 />
                 {planet.name}
+                {planet.event ? <Badge variant="outline">Event</Badge> : null}
               </TableCell>
               <TableCell className="text-right">
                 {millify(playerCount)}
               </TableCell>
-              <TableCell>
+              <TableCell className="hidden lg:table-cell">
                 <div className="flex items-center space-x-2">
-                  <div className="h-2 flex-1 rounded-full bg-muted">
-                    <div
-                      className="h-2 rounded-full bg-blue-600 transition-all duration-300"
-                      style={{ width: `${liberation}%` }}
-                    />
-                  </div>
+                  <Progress value={Number(liberation)} />
                 </div>
               </TableCell>
               <TableCell>
@@ -123,14 +80,9 @@ export default async function CurrentTargets() {
           <TableCell className="text-right">
             {millify(totalPlayerCount)}
           </TableCell>
-          <TableCell>
+          <TableCell className="hidden lg:table-cell">
             <div className="flex items-center space-x-2">
-              <div className="h-2 flex-1 rounded-full bg-muted">
-                <div
-                  className="h-2 rounded-full bg-blue-600 transition-all duration-300"
-                  style={{ width: `100%` }}
-                />
-              </div>
+              <Progress value={100} />
             </div>
           </TableCell>
           <TableCell>
