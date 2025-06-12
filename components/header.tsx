@@ -23,8 +23,8 @@ import logo from "@/app/icon0.svg";
 interface NavigationItem {
   title: string;
   href: string;
-  description?: string;
   icon: LucideIcon;
+  roundedClass?: string;
 }
 
 const NAVIGATION_ITEMS: NavigationItem[] = [
@@ -32,21 +32,25 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Status",
     href: "/",
     icon: Rocket,
+    roundedClass: "rounded-xl rounded-l-full",
   },
   {
     title: "News",
     href: "/news",
     icon: Newspaper,
+    roundedClass: "rounded-xl",
   },
   {
     title: "Statistics",
     href: "/statistics",
     icon: ChartColumnBig,
+    roundedClass: "rounded-xl",
   },
   {
     title: "FAQ",
     href: "/faq",
     icon: Info,
+    roundedClass: "rounded-xl rounded-r-full",
   },
 ] as const;
 
@@ -62,7 +66,7 @@ const STYLES = {
   header:
     "fixed bottom-0 left-0 z-[1500] flex w-full justify-center p-6 sm:top-0 sm:bottom-auto",
   navigationMenu: "glass-ui p-1",
-  navigationLink: "rounded-full bg-transparent",
+  navigationLink: "bg-transparent hover:bg-transparent focus:bg-transparent",
   logoContainer: "hidden sm:inline-flex",
   logo: "size-6",
   navItemContainer: "block items-center sm:flex",
@@ -92,12 +96,16 @@ function LogoItem() {
 }
 
 function NavigationItem({ item }: { item: NavigationItem }) {
-  const { title, href, icon: Icon } = item;
+  const { title, href, icon: Icon, roundedClass } = item;
 
   return (
     <NavigationMenuItem key={href}>
       <NavigationMenuLink
-        className={cn(navigationMenuTriggerStyle(), STYLES.navigationLink)}
+        className={cn(
+          navigationMenuTriggerStyle(),
+          STYLES.navigationLink,
+          roundedClass,
+        )}
         href={href}
       >
         <div className={STYLES.navItemContainer}>
@@ -112,10 +120,17 @@ function NavigationItem({ item }: { item: NavigationItem }) {
 export function Header() {
   return (
     <header className={STYLES.header}>
-      <div>
-        <NavigationMenu viewport={false} className={STYLES.navigationMenu}>
+      <div className="inline-flex gap-2">
+        <NavigationMenu
+          viewport={false}
+          className={cn(STYLES.navigationMenu, "hidden sm:inline-block")}
+        >
           <NavigationMenuList>
             <LogoItem />
+          </NavigationMenuList>
+        </NavigationMenu>
+        <NavigationMenu viewport={false} className={STYLES.navigationMenu}>
+          <NavigationMenuList>
             {NAVIGATION_ITEMS.map((item) => (
               <NavigationItem key={item.href} item={item} />
             ))}
