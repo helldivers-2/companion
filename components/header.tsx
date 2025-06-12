@@ -61,8 +61,7 @@ const LOGO_CONFIG = {
 const STYLES = {
   header:
     "fixed bottom-0 left-0 z-[1500] flex w-full justify-center p-6 sm:top-0 sm:bottom-auto",
-  navigationMenu:
-    "bg-opacity-30 rounded-full border px-1 py-1 backdrop-blur-lg backdrop-filter",
+  navigationMenu: "glass-ui p-1",
   navigationLink: "rounded-full bg-transparent",
   logoContainer: "hidden sm:inline-flex",
   logo: "size-6",
