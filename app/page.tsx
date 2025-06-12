@@ -1,40 +1,45 @@
 import Container from "@/components/container";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DashboardCard } from "@/components/dashboard-card";
 
 import MajorOrder from "@/components/widgets/root/major-order";
-import Map from "@/components/widgets/root/map";
-import CurrentTargets from "@/components/widgets/root/current-targets";
+import CampaignTable from "@/components/widgets/root/campaign-table";
+import Dispatches from "@/components/widgets/root/dispatches";
+import CampaignMap from "@/components/widgets/root/campaign-map-client";
 import Comments from "@/components/comments";
+
+const dashboardCards = [
+  {
+    title: "Major Order",
+    component: MajorOrder,
+    key: "order",
+  },
+  {
+    title: "Campaigns",
+    component: CampaignTable,
+    key: "campaigns",
+  },
+  {
+    title: "Dispatches",
+    component: Dispatches,
+    key: "dispatches",
+  },
+  {
+    title: "Map",
+    component: CampaignMap,
+    key: "map",
+  },
+];
 
 export default function Home() {
   return (
     <>
-      <Container title="Galaxy Status">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Card className="col-span-1 md:col-span-2">
-            <CardHeader>
-              <CardTitle>latest Major Order</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <MajorOrder />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Map</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Map />
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle>Targets</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CurrentTargets />
-            </CardContent>
-          </Card>
+      <Container>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {dashboardCards.map(({ title, component: Component, key }) => (
+            <DashboardCard key={key} title={title}>
+              <Component />
+            </DashboardCard>
+          ))}
         </div>
       </Container>
 

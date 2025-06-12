@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Container title="Galaxy Stats">
+    <Container>
       <Statistics />
     </Container>
   );
