@@ -1,4 +1,5 @@
 import { getAPI } from "@/lib/get";
+import { Assignment, StatusInfo } from "@/types/assignments";
 import { formatDistanceToNow } from "date-fns";
 
 import { Progress } from "@/components/ui/progress";
@@ -12,7 +13,7 @@ const getProgressPercentage = (progress: number[]): number => {
   return (completed / progress.length) * 100;
 };
 
-const getStatusInfo = (expiration: string, progress: number[]): any => {
+const getStatusInfo = (expiration: string, progress: number[]): StatusInfo => {
   const timeLeft = new Date(expiration).getTime() - new Date().getTime();
   const progressPercent = getProgressPercentage(progress);
 
@@ -42,7 +43,7 @@ const getRewardTypeLabel = (type: number): string => {
 };
 
 export default async function MajorOrder() {
-  const assignments = await getAPI({
+  const assignments: Assignment[] = await getAPI({
     url: "/v1/assignments",
   });
 
@@ -58,7 +59,7 @@ export default async function MajorOrder() {
         </div>
       ) : (
         <div>
-          {assignments.map((assignment: any) => {
+          {assignments.map((assignment: Assignment) => {
             const progressPercent = getProgressPercentage(assignment.progress);
             const timeRemaining = formatDistanceToNow(
               new Date(assignment.expiration),
@@ -118,7 +119,10 @@ export default async function MajorOrder() {
                     <Progress value={progressPercent} className="h-3" />
                     <div className="flex justify-between text-xs">
                       <span>
-                        {assignment.progress.filter((p: any) => p === 1).length}{" "}
+                        {
+                          assignment.progress.filter((p: number) => p === 1)
+                            .length
+                        }{" "}
                         of {assignment.progress.length} objectives completed
                       </span>
                       {progressPercent === 100 && (

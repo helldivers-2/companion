@@ -24,7 +24,7 @@ export default async function WikipediaText() {
       procedurally generated missions where players must accomplish a series of
       objectives. At the start of each mission, players can choose their
       loadouts (sets of weapons, equipment, and gear) and deployment positions.
-      They can also use the game's stratagem mechanic to enhance their options,
+      They can also use the game&apos;s stratagem mechanic to enhance their options,
       catering to the map layout or their individual playstyle. For example, the
       player may choose stratagems that focus on providing additional firepower
       or mobility, or give themselves supportive abilities such as calling in
@@ -46,7 +46,7 @@ export default async function WikipediaText() {
       <br />
       The game keeps many of the mechanics common to the genre, like Fog of War
       and a map that shows any enemies the player(s) can currently see. The
-      enemy will patrol their territory, impeding the player's attempt to
+      enemy will patrol their territory, impeding the player&apos;s attempt to
       complete the given objectives. Enemy units that come in contact with the
       player(s) will try to raise an alarm, which will result in continuous
       waves of enemy reinforcements for as long as the alarm remains active. The

@@ -3,6 +3,7 @@ import {
   getLiberation,
   getCampaignStats,
 } from "@/lib/get-campaigns";
+import type { Campaign, CampaignStats } from "@/types/campaigns";
 import millify from "millify";
 
 import {
@@ -17,7 +18,8 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
 export default async function CampaignTable() {
-  const { activePlanets, totalPlayerCount } = await getCampaignStats();
+  const { activePlanets, totalPlayerCount }: CampaignStats =
+    await getCampaignStats();
 
   return (
     <Table>
@@ -32,10 +34,9 @@ export default async function CampaignTable() {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {activePlanets.map((campaign: any, index: number) => {
+        {activePlanets.map((campaign: Campaign, index: number) => {
           const planet = campaign.planet;
           const playerCount = planet.statistics?.playerCount || 0;
-
           const campaignLiberation = getLiberation(
             planet.health,
             planet.maxHealth,
