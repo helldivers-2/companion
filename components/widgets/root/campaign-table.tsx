@@ -16,7 +16,7 @@ import {
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 
-export default async function CurrentTargets() {
+export default async function CampaignTable() {
   const { activePlanets, totalPlayerCount } = await getCampaignStats();
 
   return (
@@ -24,7 +24,9 @@ export default async function CurrentTargets() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Planet</TableHead>
-          <TableHead className="text-right">Players</TableHead>
+          <TableHead className="text-right text-muted-foreground">
+            Players
+          </TableHead>
           <TableHead>Liberation</TableHead>
           <TableHead className="hidden lg:table-cell"></TableHead>
         </TableRow>
@@ -59,7 +61,7 @@ export default async function CurrentTargets() {
                 {planet.name}
                 {planet.event ? <Badge variant="outline">Event</Badge> : null}
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell className="text-right text-muted-foreground">
                 {millify(playerCount)}
               </TableCell>
               <TableCell className="hidden lg:table-cell">
@@ -77,7 +79,7 @@ export default async function CurrentTargets() {
         })}
         <TableRow>
           <TableCell className="font-medium">other Planets</TableCell>
-          <TableCell className="text-right">
+          <TableCell className="text-right text-muted-foreground">
             {millify(totalPlayerCount)}
           </TableCell>
           <TableCell className="hidden lg:table-cell">

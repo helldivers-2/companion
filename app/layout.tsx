@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { siteConfig } from "@/config/site";
-import { Space_Grotesk } from "next/font/google";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 import "@/app/globals.css";
 
 import { Header } from "@/components/header";
 import Footer from "@/components/footer";
 
+import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Space_Grotesk } from "next/font/google";
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
   subsets: ["latin"],
@@ -45,6 +47,8 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
