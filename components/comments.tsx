@@ -21,10 +21,9 @@ import { MessagesSquare } from "lucide-react";
 
 interface InfoDialogProps {
   keyword: string;
-  reactions: BooleanString;
 }
 
-export default function Comments({ keyword, reactions }: InfoDialogProps) {
+export default function Comments({ keyword }: InfoDialogProps) {
   return (
     <div className="mt-10">
       <Sheet>
@@ -37,16 +36,7 @@ export default function Comments({ keyword, reactions }: InfoDialogProps) {
           <SheetTitle className="p-4">Comments</SheetTitle>
 
           <ScrollArea className="size-full p-4">
-            <Giscus
-              id="comments"
-              repo="helldivers-2/companion"
-              repoId="N/A"
-              category="Comments"
-              categoryId="N/A"
-              mapping="specific"
-              term={keyword}
-              reactionsEnabled={reactions}
-            />
+            <GiscusData term={keyword} />
           </ScrollArea>
         </SheetContent>
       </Sheet>
@@ -60,15 +50,7 @@ export default function Comments({ keyword, reactions }: InfoDialogProps) {
           <DrawerTitle className="p-4">Comments</DrawerTitle>
           
           <ScrollArea className="size-full">
-            <Giscus
-              id="comments"
-              repo="helldivers-2/companion"
-              repoId="N/A"
-              category="Comments"
-              categoryId="N/A"
-              mapping="specific"
-              term={keyword}
-              reactionsEnabled={reactions}
+            <GiscusData term={keyword}
             />
           </ScrollArea>
         </DrawerContent>
@@ -76,3 +58,23 @@ export default function Comments({ keyword, reactions }: InfoDialogProps) {
     </div>
   );
 }
+
+const GiscusData = ({ term, theme = "preferred_color_scheme" } : { term: string }) => {
+  return (
+    <Giscus
+      repo="helldivers-2/companion"
+      repoId="R_kgDOLhSEpQ"
+      category="Comments"
+      categoryId="DIC_kwDOLhSEpc4CeV8r"
+      mapping="specific"
+      term={term}
+      strict={0}
+      reactionsEnabled={0}
+      emitMetadata={0}
+      inputPosition="top"
+      theme={theme}
+      lang="en"
+      loading="lazy"
+    />
+  );
+};

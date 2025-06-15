@@ -92,11 +92,11 @@ export default async function PatchNotes() {
                 index === 0 ? "ring-2 ring-yellow-500/20" : ""
               }`}
             >
-              <CardHeader className="pb-4">
+              <CardHeader>
                 <div className="flex items-start justify-between gap-4">
-                  <div className="min-w-0 flex-1">
+                  <div className="flex-1">
                     <div className="mb-2 flex items-center gap-3">
-                      <h3 className="truncate text-lg font-semibold">
+                      <h3 className="text-ellipsis text-lg font-semibold">
                         {note.title}
                       </h3>
                       {isRecent && (
@@ -108,11 +108,11 @@ export default async function PatchNotes() {
 
                     <div className="flex items-center gap-4 text-sm text-muted-foreground">
                       <div className="flex items-center gap-1.5">
-                        <User className="h-4 w-4" />
+                        <User className="size-4" />
                         <span>{note.author}</span>
                       </div>
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="size-4" />
                         <time dateTime={note.publishedAt}>
                           {formatDistanceToNow(publishedDate, {
                             addSuffix: true,
@@ -141,25 +141,25 @@ export default async function PatchNotes() {
                 </div>
               </CardHeader>
 
-              <CardContent className="pt-0">
-                <div className="prose prose-slate max-w-none">
-                  <p className="mb-4 leading-relaxed">
-                    {extractSummary(note.content)}
-                  </p>
+              <CardContent>
+                <p className="mb-4 leading-relaxed">
+                  {extractSummary(note.content)}
+                </p>
 
-                  <details className="group/details">
-                    <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
-                      <ChevronRight className="h-4 w-4 transition-transform group-open/details:rotate-90" />
-                      Read more
-                    </summary>
+                <details className="group/details">
+                  <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
+                    <ChevronRight className="h-4 w-4 transition-transform group-open/details:rotate-90" />
+                    Read more
+                  </summary>
 
-                    <div className="mt-4 rounded-lg border border-slate-200/50 bg-slate-50/50 p-4">
+                  <Card>
+                    <CardContent>
                       <pre className="font-sans text-sm leading-relaxed whitespace-pre-wrap">
                         {parseContent(note.content)}
                       </pre>
-                    </div>
-                  </details>
-                </div>
+                    </CardContent>
+                  </Card>
+                </details>
               </CardContent>
             </Card>
           );

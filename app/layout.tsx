@@ -33,7 +33,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Companion" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} font-[family-name:var(--font-space-grotesk)] antialiased`}
+        className={`${spaceGrotesk.variable} font-[family-name:var(--font-space-grotesk)] antialiased h-lvh`}
       >
         <ThemeProvider
           attribute="class"
