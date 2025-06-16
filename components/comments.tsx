@@ -1,6 +1,6 @@
 "use client";
 
-import Giscus, { BooleanString } from "@giscus/react";
+import Giscus from "@giscus/react";
 
 import {
   Drawer,

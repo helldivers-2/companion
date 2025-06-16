@@ -4,6 +4,7 @@ import {
   getCampaignStats,
 } from "@/lib/get-campaigns";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
+import Image from "next/image"
 import millify from "millify";
 
 import {
@@ -51,12 +52,12 @@ export default async function CampaignTable() {
           return (
             <TableRow key={campaign.id || index}>
               <TableCell className="flex gap-2 font-medium">
-                <img
+                <Image
                   src={
                     getFactionIcon(campaign.faction) ||
                     "/web-app-manifest-192x192.png"
                   }
-                  alt="Faction Icon"
+                  alt={`${campaign.faction} Icon`}
                   className="h-5"
                 />
                 {planet.name}
