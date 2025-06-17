@@ -68,9 +68,9 @@ const GiscusData = ({ term } : { term: string }) => {
       categoryId="DIC_kwDOLhSEpc4CeV8r"
       mapping="specific"
       term={term}
-      strict={0}
-      reactionsEnabled={0}
-      emitMetadata={0}
+      strict="0"
+      reactionsEnabled="0"
+      emitMetadata="0"
       inputPosition="top"
       theme="preferred_color_scheme"
       lang="en"
