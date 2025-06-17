@@ -59,7 +59,7 @@ export default function Comments({ keyword }: InfoDialogProps) {
   );
 }
 
-const GiscusData = ({ term, theme = "preferred_color_scheme" } : { term: string }) => {
+const GiscusData = ({ term } : { term: string }) => {
   return (
     <Giscus
       repo="helldivers-2/companion"
@@ -72,7 +72,7 @@ const GiscusData = ({ term, theme = "preferred_color_scheme" } : { term: string 
       reactionsEnabled={0}
       emitMetadata={0}
       inputPosition="top"
-      theme={theme}
+      theme="preferred_color_scheme"
       lang="en"
       loading="lazy"
     />
