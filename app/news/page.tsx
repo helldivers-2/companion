@@ -1,4 +1,4 @@
-import type Metadata from "next"
+import type { Metadata } from "next"
 import Container from "@/components/container";
 import { DashboardCard } from "@/components/dashboard-card";
 
