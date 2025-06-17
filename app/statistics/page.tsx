@@ -8,9 +8,9 @@ export const metadata: Metadata = {
     "The Current Galaxy War Statistics Like Player Count and Mission Counts.",
 };
 
-export default function Page() {
+export default function StatisticsPage() {
   return (
-    <Container>
+    <Container discussion="Statistics">
       <Statistics />
     </Container>
   );

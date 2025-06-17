@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Comments from "@/components/comments";
 import Container from "@/components/container";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
@@ -11,9 +11,8 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <>
       <div className="grid gap-8">
-        <Container title="Frequently Asked Questions">
+        <Container title="Frequently Asked Questions" discussion="FAQ" lgSplit>
           <div className="grid gap-8 md:grid-cols-2">
             <div className="rounded-lg border bg-background p-4">
               <div>
@@ -190,7 +189,5 @@ export default function FAQPage() {
           </div>
         </Container>
       </div>
-      <Comments keyword="FAQ" reactions="0" />
-    </>
   );
 }

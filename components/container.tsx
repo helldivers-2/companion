@@ -1,14 +1,23 @@
 import { ReactNode } from "react";
+
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import Comments from "@/components/comments";
 
 const Container = ({
   title,
+  discussion,
   children,
+  lgSplit = false,
 }: {
   title?: string;
+  discussion?: string;
   children: ReactNode;
+  lgSplit?: boolean;
 }) => {
+  const lgSplitClass = lgSplit ? "grid gap-4 lg:grid-cols-2" : "";
+
   return (
+    <>
     <Card className="bg-muted">
       {title ? (
         <CardHeader>
@@ -19,8 +28,13 @@ const Container = ({
           </CardTitle>
         </CardHeader>
       ): null}
-      <CardContent>{children}</CardContent>
+      <CardContent className={lgSplitClass}>{children}</CardContent>
     </Card>
+    
+    {discussion ? (
+      <Comments keyword={discussion} />
+    ): null }
+    </>
   );
 };
 

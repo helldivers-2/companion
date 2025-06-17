@@ -1,9 +1,14 @@
+import type Metadata from "next"
 import Container from "@/components/container";
+import { DashboardCard } from "@/components/dashboard-card";
 
 import PatchNotes from "@/components/widgets/news/newsfeed";
 import WikipediaText from "@/components/widgets/news/wiki";
-import Comments from "@/components/comments";
-import { DashboardCard } from "@/components/dashboard-card";
+
+export const metadata: Metadata = {
+  title: "News",
+  description: "Current News Feed Published by Arrowhead Studios.",
+}
 
 const dashboardCards = [
   {
@@ -18,19 +23,14 @@ const dashboardCards = [
   },
 ];
 
-export default function Page() {
+export default function NewsPage() {
   return (
-    <>
-      <Container>
-        <div className="grid gap-4 lg:grid-cols-2">
-          {dashboardCards.map(({ title, component: Component, key }) => (
-            <DashboardCard key={key} title={title}>
-              <Component />
-            </DashboardCard>
-          ))}
-        </div>
-      </Container>
-      <Comments keyword="Status" reactions="0" />
-    </>
+    <Container discussion="News" lgSplit>
+      {dashboardCards.map(({ title, component: Component, key }) => (
+        <DashboardCard key={key} title={title}>
+          <Component />
+        </DashboardCard>
+      ))}
+    </Container>
   );
 }
