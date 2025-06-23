@@ -138,26 +138,8 @@
   display: block;
 }
 
-.pwa {
-  display: none;
-}
-
-.pwachildren {
-  margin-bottom: 0;
-}
-
 @media (display-mode: standalone) {
   .website {
     display: none;
-  }
-
-  .pwa {
-    display: block;
-  }
-
-  @media (max-width: 630px) {
-    .pwachildren {
-      margin-bottom: 5rem;
-    }
   }
 }
