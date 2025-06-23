@@ -165,7 +165,7 @@ const AboutSection = () => (
 );
 
 const DisclaimerSection = () => (
-  <p className="my-8 text-center text-sm text-muted-foreground">
+  <p className="py-8 text-center text-sm text-muted-foreground">
     This site is fan-made and not affiliated with Arrowhead Game Studios in any
     way.
   </p>
@@ -173,7 +173,7 @@ const DisclaimerSection = () => (
 
 export default function Footer() {
   return (
-    <div className="website py-4">
+    <div className="website">
       <Separator />
       <footer className="py-8">
         <div className="container mx-auto space-y-8 px-4 lg:px-8">

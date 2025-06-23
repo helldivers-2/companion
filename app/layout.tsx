@@ -33,7 +33,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Companion" />
       </head>
       <body
-        className={`${spaceGrotesk.variable} font-[family-name:var(--font-space-grotesk)] antialiased h-lvh`}
+        className={`${spaceGrotesk.variable} h-lvh font-[family-name:var(--font-space-grotesk)] antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -42,10 +42,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="pwachildren container mx-auto flex flex-col p-2 sm:px-4 sm:py-12">
+          <main className="container mx-auto flex flex-col px-2 pt-2 sm:px-4 sm:pt-12">
             {children}
           </main>
           <Footer />
+          <div className="pb-24 sm:pb-0" />
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />

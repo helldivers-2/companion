@@ -4,7 +4,7 @@ import {
   getCampaignStats,
 } from "@/lib/get-campaigns";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
-import Image from "next/image"
+import Image from "next/image";
 import millify from "millify";
 
 import {
@@ -57,6 +57,8 @@ export default async function CampaignTable() {
                     getFactionIcon(campaign.faction) ||
                     "/web-app-manifest-192x192.png"
                   }
+                  height={20}
+                  width={20}
                   alt={`${campaign.faction} Icon`}
                   className="h-5"
                 />

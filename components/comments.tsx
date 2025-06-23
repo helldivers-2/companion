@@ -25,7 +25,7 @@ interface InfoDialogProps {
 
 export default function Comments({ keyword }: InfoDialogProps) {
   return (
-    <div className="mt-10">
+    <div className="my-4 sm:my-8">
       <Sheet>
         <SheetTrigger asChild className="hidden w-full sm:flex">
           <Button variant="outline">
@@ -48,10 +48,9 @@ export default function Comments({ keyword }: InfoDialogProps) {
         </DrawerTrigger>
         <DrawerContent className="z-[2000] max-h-[75vmax] min-h-[75vmax] p-4">
           <DrawerTitle className="p-4">Comments</DrawerTitle>
-          
+
           <ScrollArea className="size-full">
-            <GiscusData term={keyword}
-            />
+            <GiscusData term={keyword} />
           </ScrollArea>
         </DrawerContent>
       </Drawer>
@@ -59,7 +58,7 @@ export default function Comments({ keyword }: InfoDialogProps) {
   );
 }
 
-const GiscusData = ({ term } : { term: string }) => {
+const GiscusData = ({ term }: { term: string }) => {
   return (
     <Giscus
       repo="helldivers-2/companion"
