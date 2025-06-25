@@ -3,8 +3,13 @@ export interface Species {
   icon: string;
 }
 
+export interface PlanetPosition {
+  x: number;
+  y: number;
+}
+
 export interface PlanetStatistics {
-  playerCount?: number;
+  playerCount: number;
 }
 
 export interface PlanetEvent {
@@ -14,9 +19,10 @@ export interface PlanetEvent {
 
 export interface Planet {
   name: string;
+  position: PlanetPosition;
   health: number;
   maxHealth: number;
-  statistics?: PlanetStatistics;
+  statistics: PlanetStatistics;
   event?: PlanetEvent | null;
 }
 
