@@ -105,8 +105,10 @@ const useCampaignData = () => {
 
 const useResponsiveSettings = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
 
@@ -116,6 +118,7 @@ const useResponsiveSettings = () => {
 
   return {
     isMobile,
+    isClient,
     zoom: isMobile ? 7 : 8,
     bounds: getMapBounds(isMobile),
   };
@@ -300,7 +303,15 @@ const PlanetLayer = ({
 
 export default function CampaignMap() {
   const { activePlanets, liberatedPlanets, isLoading } = useCampaignData();
-  const { zoom, bounds } = useResponsiveSettings();
+  const { zoom, bounds, isClient } = useResponsiveSettings();
+
+  if (!isClient) {
+    return (
+      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+        <div className="text-muted-foreground">Initializing map...</div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
