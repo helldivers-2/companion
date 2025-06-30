@@ -12,7 +12,7 @@ export const species: Species[] = [
   },
   {
     value: "Automaton",
-    icon: "/factions/Automaton.webp",
+    icon: "/factions/Automatons.webp",
   },
   {
     value: "Illuminate",
@@ -39,6 +39,10 @@ export const getCampaignStats = async (): Promise<CampaignStats> => {
   const campaigns: Campaign[] = await getAPI({
     url: "/v1/campaigns",
   });
+
+  if (!Array.isArray(campaigns)) {
+    throw new Error("Invalid campaign data received from API");
+  }
 
   const campaignPlanets = campaigns.filter(
     (campaign: Campaign) =>

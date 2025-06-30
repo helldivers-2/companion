@@ -82,25 +82,57 @@ const useCampaignData = () => {
   const [activePlanets, setActivePlanets] = useState<Campaign[]>([]);
   const [liberatedPlanets, setLiberatedPlanets] = useState<Campaign[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+
+  const retry = () => {
+    setRetryCount(0);
+    setIsLoading(true);
+    setError(null);
+  };
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
+
         const { activePlanets, liberatedPlanets }: CampaignStats =
           await getCampaignStats();
-        setActivePlanets(activePlanets);
-        setLiberatedPlanets(liberatedPlanets);
+
+        if (isMounted) {
+          setActivePlanets(activePlanets);
+          setLiberatedPlanets(liberatedPlanets);
+          setRetryCount(0);
+          setIsLoading(false);
+        }
       } catch (error) {
         console.error("Failed to fetch campaign data:", error);
-      } finally {
-        setIsLoading(false);
+
+        if (isMounted) {
+          setError(String(error));
+          setIsLoading(false);
+        }
       }
     };
 
     fetchData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  return { activePlanets, liberatedPlanets, isLoading };
+  return {
+    activePlanets,
+    liberatedPlanets,
+    isLoading,
+    error,
+    retryCount,
+    retry,
+  };
 };
 
 const useResponsiveSettings = () => {
@@ -302,8 +334,24 @@ const PlanetLayer = ({
 );
 
 export default function CampaignMap() {
-  const { activePlanets, liberatedPlanets, isLoading } = useCampaignData();
+  const {
+    activePlanets,
+    liberatedPlanets,
+    isLoading,
+    error,
+    retryCount,
+    retry,
+  } = useCampaignData();
   const { zoom, bounds, isClient } = useResponsiveSettings();
+
+  console.log("CampaignMap render state:", {
+    isLoading,
+    error,
+    retryCount,
+    activePlanetsLength: activePlanets.length,
+    liberatedPlanetsLength: liberatedPlanets.length,
+    isClient,
+  });
 
   if (!isClient) {
     return (
@@ -316,7 +364,49 @@ export default function CampaignMap() {
   if (isLoading) {
     return (
       <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
-        <div className="text-muted-foreground">Loading campaign data...</div>
+        <div className="text-center">
+          <div className="mb-2 text-muted-foreground">
+            Loading campaign data...
+          </div>
+          {retryCount > 0 && (
+            <div className="text-sm text-orange-500">
+              Retrying... (Attempt {retryCount}/3)
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+        <div className="text-center">
+          <div className="mb-2 text-red-500">Failed to load campaign data</div>
+          <div className="mb-4 text-sm text-muted-foreground">{error}</div>
+          <button
+            onClick={retry}
+            className="rounded bg-blue-500 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-600"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (activePlanets.length === 0 && liberatedPlanets.length === 0) {
+    return (
+      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+        <div className="text-center">
+          <div className="mb-2 text-muted-foreground">
+            No campaign data available
+          </div>
+          <div className="text-sm text-muted-foreground">
+            There are currently no active campaigns or liberated planets to
+            display.
+          </div>
+        </div>
       </div>
     );
   }
@@ -342,12 +432,20 @@ export default function CampaignMap() {
         opacity={0.5}
       />
       <LayersControl position="bottomleft">
-        <PlanetLayer
-          planets={activePlanets}
-          name="Active Campaigns"
-          checked={true}
-        />
-        <PlanetLayer planets={liberatedPlanets} name="Liberated Planets" />
+        {activePlanets.length > 0 && (
+          <PlanetLayer
+            planets={activePlanets}
+            name="Active Campaigns"
+            checked={true}
+          />
+        )}
+        {liberatedPlanets.length > 0 && (
+          <PlanetLayer
+            planets={liberatedPlanets}
+            name="Liberated Planets"
+            checked={activePlanets.length === 0}
+          />
+        )}
       </LayersControl>
     </MapContainer>
   );
