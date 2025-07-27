@@ -1,12 +1,20 @@
 import { siteConfig } from "@/config/site";
 
-export async function getAPI({ url }: { url: string }) {
+export async function getAPI({
+  url,
+  revalidate = 3600,
+  timeout = 10000,
+}: {
+  url: string;
+  revalidate?: number | false;
+  timeout?: number;
+}) {
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
 
     const res = await fetch(`https://api.helldivers2.dev/api${url}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate },
       headers: {
         "X-Super-Client": siteConfig.x_super.client,
         "X-Super-Contact": siteConfig.x_super.contact,
@@ -17,7 +25,7 @@ export async function getAPI({ url }: { url: string }) {
     clearTimeout(timeoutId);
 
     if (!res.ok) {
-      throw new Error(`Failed to fetch data: ${res.status} ${res.statusText}`);
+      throw new Error(`HTTP ${res.status}: ${res.statusText}`);
     }
 
     const data = await res.json();
@@ -25,10 +33,25 @@ export async function getAPI({ url }: { url: string }) {
   } catch (error) {
     if (error instanceof Error) {
       if (error.name === "AbortError") {
-        throw new Error("Request timed out");
+        throw new Error(`Request timed out after ${timeout}ms`);
+      }
+      if (error.message.startsWith("HTTP")) {
+        throw error;
       }
       throw new Error(`API Error: ${error.message}`);
     }
-    throw new Error(`API Error: ${String(error)}`);
+    throw new Error(`Unexpected error: ${String(error)}`);
   }
 }
+
+export const REVALIDATION_TIMES = {
+  NEWSFEED: 300, // 5 minutes
+
+  DISPATCHES: 600, // 10 minutes
+
+  MAJOR_ORDER: 900, // 15 minutes
+
+  STATISTICS: 1800, // 30 minutes
+
+  GET_CAMPAIGNS: 3600, // 1 hour
+} as const;

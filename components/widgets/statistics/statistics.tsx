@@ -1,11 +1,14 @@
-import { getAPI } from "@/lib/get";
+import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
 import millify from "millify";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";
 
 export default async function Statistics() {
-  const war = await getAPI({ url: "/v1/war" });
+  const war = await getAPI({
+    url: "/v1/war",
+    revalidate: REVALIDATION_TIMES.STATISTICS,
+  });
   const stats = war.statistics;
 
   return (

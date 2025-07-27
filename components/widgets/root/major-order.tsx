@@ -1,4 +1,4 @@
-import { getAPI } from "@/lib/get";
+import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
 import { Assignment, StatusInfo } from "@/types/assignments";
 import { formatDistanceToNow } from "date-fns";
 
@@ -45,6 +45,7 @@ const getRewardTypeLabel = (type: number): string => {
 export default async function MajorOrder() {
   const assignments: Assignment[] = await getAPI({
     url: "/v1/assignments",
+    revalidate: REVALIDATION_TIMES.MAJOR_ORDER,
   });
 
   return (

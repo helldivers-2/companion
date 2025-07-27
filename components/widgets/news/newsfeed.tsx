@@ -1,4 +1,4 @@
-import { getAPI } from "@/lib/get";
+import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -62,6 +62,7 @@ function extractSummary(content: string, maxLength: number = 200): string {
 export default async function PatchNotes() {
   const steam = (await getAPI({
     url: "/v1/steam",
+    revalidate: REVALIDATION_TIMES.NEWSFEED,
   })) as PatchNote[];
 
   const sortedNotes = steam
@@ -96,7 +97,7 @@ export default async function PatchNotes() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="mb-2 flex items-center gap-3">
-                      <h3 className="text-ellipsis text-lg font-semibold">
+                      <h3 className="text-lg font-semibold text-ellipsis">
                         {note.title}
                       </h3>
                       {isRecent && (

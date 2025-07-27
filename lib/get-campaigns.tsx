@@ -1,4 +1,4 @@
-import { getAPI } from "@/lib/get";
+import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
 import type { Species, Campaign, CampaignStats } from "@/types/campaigns";
 
 export const species: Species[] = [
@@ -38,6 +38,7 @@ export const getLiberation = (
 export const getCampaignStats = async (): Promise<CampaignStats> => {
   const campaigns: Campaign[] = await getAPI({
     url: "/v1/campaigns",
+    revalidate: REVALIDATION_TIMES.GET_CAMPAIGNS,
   });
 
   if (!Array.isArray(campaigns)) {

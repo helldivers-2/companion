@@ -1,4 +1,4 @@
-import { getAPI } from "@/lib/get";
+import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
@@ -70,6 +70,7 @@ function getDispatchTypeInfo(message: string) {
 export default async function Dispatches() {
   const dispatches: Dispatch[] = await getAPI({
     url: "/v2/dispatches",
+    revalidate: REVALIDATION_TIMES.DISPATCHES,
   });
 
   return (
