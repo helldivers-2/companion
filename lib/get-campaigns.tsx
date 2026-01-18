@@ -30,9 +30,43 @@ export const getLiberation = (
   maxHealth: number,
   inverse: boolean = false,
 ): string => {
-  const liberation = (health / maxHealth) * 100;
-  const result = inverse ? 100 - liberation : liberation;
+  // health = enemy control remaining
+  // liberation = 100 - (health / maxHealth) * 100
+  const healthPercent = (health / maxHealth) * 100;
+  const result = inverse ? healthPercent : 100 - healthPercent;
   return Math.max(0, Math.min(100, result)).toFixed(2);
+};
+
+export const getLiberationRate = (
+  regenPerSecond: number,
+  maxHealth: number,
+): number => {
+  // Returns hourly rate of change (negative = losing ground)
+  // regenPerSecond is enemy regeneration, so it's negative for liberation
+  const hourlyRegen = regenPerSecond * 3600;
+  const ratePercent = (hourlyRegen / maxHealth) * 100;
+  return -ratePercent; // Negate: positive regen = negative liberation rate
+};
+
+export const getStatus = (
+  rate: number,
+): { text: string; color: string } => {
+  if (rate > 0.5) return { text: "Gaining Ground", color: "text-green-500" };
+  if (rate < -0.5) return { text: "Losing Ground", color: "text-red-500" };
+  return { text: "Stalemate", color: "text-yellow-500" };
+};
+
+export const getTimeToLiberation = (
+  liberation: number,
+  ratePerHour: number,
+): string | null => {
+  if (ratePerHour <= 0) return null; // Not making progress
+  const hoursRemaining = (100 - liberation) / ratePerHour;
+  const minutes = Math.round(hoursRemaining * 60);
+  if (minutes < 60) return `${minutes}m`;
+  const hours = Math.floor(minutes / 60);
+  const remainingMins = minutes % 60;
+  return `${hours}h ${remainingMins}m`;
 };
 
 export const getCampaignStats = async (): Promise<CampaignStats> => {
@@ -60,10 +94,10 @@ export const getCampaignStats = async (): Promise<CampaignStats> => {
   const activePlanets = [...campaignPlanets, ...eventPlanets].sort(
     (a: Campaign, b: Campaign) => {
       const aLiberation = a.planet.event
-        ? getLiberation(a.planet.event.health, a.planet.event.maxHealth, true)
+        ? getLiberation(a.planet.event.health, a.planet.event.maxHealth)
         : getLiberation(a.planet.health, a.planet.maxHealth);
       const bLiberation = b.planet.event
-        ? getLiberation(b.planet.event.health, b.planet.event.maxHealth, true)
+        ? getLiberation(b.planet.event.health, b.planet.event.maxHealth)
         : getLiberation(b.planet.health, b.planet.maxHealth);
       return Number(aLiberation) - Number(bLiberation);
     },

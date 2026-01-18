@@ -7,7 +7,7 @@ interface InfoDialogProps {
 
 export function StatisticsCard({ title, children }: InfoDialogProps) {
   return (
-    <div className="rounded-lg border p-4">
+    <div className="rounded-none border p-4">
       <h3 className="text-xl">{children}</h3>
       <p className="text-sm text-primary">{title}</p>
     </div>

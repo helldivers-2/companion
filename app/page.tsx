@@ -6,6 +6,7 @@ import MajorOrder from "@/components/widgets/root/major-order";
 import CampaignTable from "@/components/widgets/root/campaign-table";
 import Dispatches from "@/components/widgets/root/dispatches";
 import CampaignMap from "@/components/widgets/root/campaign-map-client";
+import SpaceStation from "@/components/widgets/root/space-station";
 
 export const metadata: Metadata = {
   title: "Statistics",
@@ -17,6 +18,11 @@ const dashboardCards = [
     title: "Major Order",
     component: MajorOrder,
     key: "order",
+  },
+  {
+    title: "Space Station",
+    component: SpaceStation,
+    key: "space-station",
   },
   {
     title: "Campaigns",

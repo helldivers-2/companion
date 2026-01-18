@@ -13,11 +13,8 @@ interface Dispatch {
 
 function parseContent(content: string): string {
   return content
-    .replace(/<i=1>(.*?)<\/i>/g, "")
-    .replace(/<i=3>(.*?)<\/i>/g, "")
-    .replace(/<span(.*?)>/g, "")
-    .replace(/<\/span>/g, "")
-
+    .replace(/<i=\d+>(.*?)<\/i>/g, "$1") // v1 format: keep content
+    .replace(/<span[^>]*data-ah="[^"]*"[^>]*>(.*?)<\/span>/g, "$1") // v2 format: keep content
     .trim();
 }
 

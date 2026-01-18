@@ -42,7 +42,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="container mx-auto flex flex-col px-2 pt-2 sm:px-4 sm:pt-12">
+          <main className="container mx-auto flex flex-col sm:px-4 sm:pt-12">
             {children}
           </main>
           <Footer />

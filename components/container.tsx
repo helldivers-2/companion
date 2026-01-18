@@ -25,13 +25,13 @@ const Container = ({
         {title ? (
           <CardHeader>
             <CardTitle>
-              <h1 className="mt-4 text-center text-4xl font-semibold tracking-tight text-balance">
+              <h1 className="mt-4 text-center text-3xl font-semibold tracking-tight text-balance">
                 {title}
               </h1>
             </CardTitle>
           </CardHeader>
         ) : null}
-        <CardContent className={cn(title ? "" : "lg:mt-3", lgSplitClass)}>
+        <CardContent className={cn(title ? "" : "sm:mt-4", lgSplitClass)}>
           {children}
         </CardContent>
       </Card>
