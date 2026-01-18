@@ -4,10 +4,12 @@ export async function getAPI({
   url,
   revalidate = 3600,
   timeout = 10000,
+  fallback = [],
 }: {
   url: string;
   revalidate?: number | false;
   timeout?: number;
+  fallback?: unknown;
 }) {
   try {
     const controller = new AbortController();
@@ -25,22 +27,17 @@ export async function getAPI({
     clearTimeout(timeoutId);
 
     if (!res.ok) {
-      throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+      console.error(`API ${url} returned HTTP ${res.status}: ${res.statusText}`);
+      return fallback;
     }
 
     const data = await res.json();
     return data;
   } catch (error) {
-    if (error instanceof Error) {
-      if (error.name === "AbortError") {
-        throw new Error(`Request timed out after ${timeout}ms`);
-      }
-      if (error.message.startsWith("HTTP")) {
-        throw error;
-      }
-      throw new Error(`API Error: ${error.message}`);
-    }
-    throw new Error(`Unexpected error: ${String(error)}`);
+    const message =
+      error instanceof Error ? error.message : String(error);
+    console.error(`API ${url} failed: ${message}`);
+    return fallback;
   }
 }
 

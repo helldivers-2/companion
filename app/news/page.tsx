@@ -5,6 +5,8 @@ import { DashboardCard } from "@/components/dashboard-card";
 import PatchNotes from "@/components/widgets/news/newsfeed";
 import WikipediaText from "@/components/widgets/news/wiki";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "News",
   description: "Current News Feed Published by Arrowhead Studios.",
