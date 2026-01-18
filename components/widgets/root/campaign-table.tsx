@@ -1,6 +1,9 @@
 import {
   getFactionIcon,
   getLiberation,
+  getLiberationRate,
+  getStatus,
+  getTimeToLiberation,
   getCampaignStats,
 } from "@/lib/get-campaigns";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
@@ -32,22 +35,35 @@ export default async function CampaignTable() {
           </TableHead>
           <TableHead>Liberation</TableHead>
           <TableHead className="hidden lg:table-cell"></TableHead>
+          <TableHead className="hidden md:table-cell text-right">Rate</TableHead>
+          <TableHead className="hidden md:table-cell">Status</TableHead>
+          <TableHead className="hidden lg:table-cell text-right">ETA</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {activePlanets.map((campaign: Campaign, index: number) => {
           const planet = campaign.planet;
           const playerCount = planet.statistics?.playerCount || 0;
-          const campaignLiberation = getLiberation(
-            planet.health,
-            planet.maxHealth,
+          const totalPlayerCount = activePlanets.reduce(
+            (sum, c) => sum + (c.planet.statistics?.playerCount || 0),
+            0,
           );
-          const eventLiberation = planet.event
-            ? getLiberation(planet.event.health, planet.event.maxHealth, true)
-            : null;
+          const playerPercent =
+            totalPlayerCount > 0
+              ? Math.round((playerCount / totalPlayerCount) * 100)
+              : 0;
+
           const liberation = planet.event
-            ? eventLiberation
-            : campaignLiberation;
+            ? getLiberation(planet.event.health, planet.event.maxHealth)
+            : getLiberation(planet.health, planet.maxHealth);
+
+          const maxHealth = planet.event
+            ? planet.event.maxHealth
+            : planet.maxHealth;
+          const regenPerSecond = planet.regenPerSecond || 0;
+          const rate = getLiberationRate(regenPerSecond, maxHealth);
+          const status = getStatus(rate);
+          const eta = getTimeToLiberation(Number(liberation), rate);
 
           return (
             <TableRow key={campaign.id || index}>
@@ -66,7 +82,7 @@ export default async function CampaignTable() {
                 {planet.event ? <Badge variant="outline">Event</Badge> : null}
               </TableCell>
               <TableCell className="text-right text-muted-foreground">
-                {millify(playerCount)}
+                {millify(playerCount)} ({playerPercent}%)
               </TableCell>
               <TableCell className="hidden lg:table-cell">
                 <div className="flex items-center space-x-2">
@@ -78,11 +94,27 @@ export default async function CampaignTable() {
                   <span className="font-mono text-sm">{liberation}%</span>
                 </div>
               </TableCell>
+              <TableCell className="hidden md:table-cell text-right">
+                <span className="font-mono text-sm">
+                  {rate >= 0 ? "+" : ""}
+                  {rate.toFixed(2)}%/hr
+                </span>
+              </TableCell>
+              <TableCell className="hidden md:table-cell">
+                <Badge variant="outline" className={status.color}>
+                  {status.text}
+                </Badge>
+              </TableCell>
+              <TableCell className="hidden lg:table-cell text-right">
+                <span className="font-mono text-sm text-muted-foreground">
+                  {eta || "—"}
+                </span>
+              </TableCell>
             </TableRow>
           );
         })}
         <TableRow>
-          <TableCell className="font-medium">other Planets</TableCell>
+          <TableCell className="font-medium">Other Planets</TableCell>
           <TableCell className="text-right text-muted-foreground">
             {millify(totalPlayerCount)}
           </TableCell>
@@ -95,6 +127,17 @@ export default async function CampaignTable() {
             <div className="flex items-center space-x-2">
               <span className="font-mono text-sm">100%</span>
             </div>
+          </TableCell>
+          <TableCell className="hidden md:table-cell text-right">
+            <span className="font-mono text-sm text-muted-foreground">—</span>
+          </TableCell>
+          <TableCell className="hidden md:table-cell">
+            <Badge variant="outline" className="text-green-500">
+              Liberated
+            </Badge>
+          </TableCell>
+          <TableCell className="hidden lg:table-cell text-right">
+            <span className="font-mono text-sm text-muted-foreground">—</span>
           </TableCell>
         </TableRow>
       </TableBody>

@@ -171,7 +171,7 @@ const PlanetPopup = ({ campaign }: { campaign: Campaign }) => {
           {planet.name}
           {planet.event && <Badge variant="outline">Event</Badge>}
         </h3>
-        <div className="flex size-6 flex-shrink-0 items-center justify-center rounded-lg bg-muted">
+        <div className="flex size-6 flex-shrink-0 items-center justify-center rounded-none bg-muted">
           <Image
             src={
               getFactionIcon(campaign.faction) ||
@@ -355,7 +355,7 @@ export default function CampaignMap() {
 
   if (!isClient) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-muted-foreground">Initializing map...</div>
       </div>
     );
@@ -363,7 +363,7 @@ export default function CampaignMap() {
 
   if (isLoading) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-center">
           <div className="mb-2 text-muted-foreground">
             Loading campaign data...
@@ -380,7 +380,7 @@ export default function CampaignMap() {
 
   if (error) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-center">
           <div className="mb-2 text-red-500">Failed to load campaign data</div>
           <div className="mb-4 text-sm text-muted-foreground">{error}</div>
@@ -397,7 +397,7 @@ export default function CampaignMap() {
 
   if (activePlanets.length === 0 && liberatedPlanets.length === 0) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-lg border md:aspect-video">
+      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-center">
           <div className="mb-2 text-muted-foreground">
             No campaign data available
@@ -413,7 +413,7 @@ export default function CampaignMap() {
 
   return (
     <MapContainer
-      className="aspect-square rounded-lg border md:aspect-video"
+      className="aspect-square rounded-none border md:aspect-video"
       center={[0, 0]}
       zoom={zoom}
       maxZoom={9}

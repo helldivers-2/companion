@@ -71,7 +71,7 @@ const systemRequirements = {
 
 function LiberationMechanics() {
   return (
-    <div className="rounded-lg border bg-background p-4">
+    <div className="rounded-none border bg-background p-4">
       <div className="space-y-4">
         <p>
           In Helldivers 2, Super Earth is in a Galactic War with the Automatons
@@ -144,7 +144,7 @@ function LiberationMechanics() {
 
 function FAQSection() {
   return (
-    <div className="space-y-6 rounded-lg border bg-background p-4">
+    <div className="space-y-6 rounded-none border bg-background p-4">
       {faqItems.map((item, index) => (
         <div key={index}>
           <h3 className="mb-4 text-2xl font-medium tracking-tighter">
