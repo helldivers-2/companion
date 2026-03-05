@@ -7,25 +7,11 @@ import { Badge } from "@/components/ui/badge";
 
 import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
 
-const getProgressPercentage = (progress: number[]): number => {
-  if (!progress || progress.length === 0) return 0;
-  const completed = progress.filter((p) => p === 1).length;
-  return (completed / progress.length) * 100;
-};
-
-const getStatusInfo = (expiration: string, progress: number[]): StatusInfo => {
+const getStatusInfo = (expiration: string, progressPercent: number): StatusInfo => {
   const timeLeft = new Date(expiration).getTime() - new Date().getTime();
-  const progressPercent = getProgressPercentage(progress);
-
-  if (timeLeft <= 0) {
-    return { text: "EXPIRED", color: "bg-red-500" };
-  }
-  if (progressPercent === 100) {
-    return { text: "COMPLETED", color: "bg-green-500" };
-  }
-  if (timeLeft < 24 * 60 * 60 * 1000) {
-    return { text: "URGENT", color: "bg-orange-500" };
-  }
+  if (timeLeft <= 0) return { text: "EXPIRED", color: "bg-red-500" };
+  if (progressPercent === 100) return { text: "COMPLETED", color: "bg-green-500" };
+  if (timeLeft < 24 * 60 * 60 * 1000) return { text: "URGENT", color: "bg-orange-500" };
   return { text: "ACTIVE", color: "bg-blue-500" };
 };
 
@@ -61,17 +47,17 @@ export default async function MajorOrder() {
       ) : (
         <div>
           {assignments.map((assignment: Assignment) => {
-            const progressPercent = getProgressPercentage(assignment.progress);
+            const completedCount = assignment.progress.filter((p) => p === 1).length;
+            const progressPercent = assignment.progress.length > 0
+              ? (completedCount / assignment.progress.length) * 100
+              : 0;
             const timeRemaining = formatDistanceToNow(
               new Date(assignment.expiration),
               {
                 addSuffix: true,
               },
             );
-            const statusInfo = getStatusInfo(
-              assignment.expiration,
-              assignment.progress,
-            );
+            const statusInfo = getStatusInfo(assignment.expiration, progressPercent);
             const briefing = assignment.briefing;
 
             return (
@@ -120,11 +106,7 @@ export default async function MajorOrder() {
                     <Progress value={progressPercent} className="h-3" />
                     <div className="flex justify-between text-xs">
                       <span>
-                        {
-                          assignment.progress.filter((p: number) => p === 1)
-                            .length
-                        }{" "}
-                        of {assignment.progress.length} objectives completed
+                        {completedCount} of {assignment.progress.length} objectives completed
                       </span>
                       {progressPercent === 100 && (
                         <span className="flex items-center gap-1 font-medium text-green-600">

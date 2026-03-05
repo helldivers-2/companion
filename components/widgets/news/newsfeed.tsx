@@ -35,13 +35,13 @@ function parseContent(content: string): string {
     .replace(/\[img.*?\[\/img\]/g, "")
     .replace(/\[preview.*?\[\/previewyoutube\]/g, "")
     .replace(/\[url.*?\[\/url\]/g, "")
+    .replace(/\[[^\]]*\]/g, "")
     .replace(/\n{3,}/g, "\n\n")
     .trim();
 }
 
-function extractSummary(content: string, maxLength: number = 200): string {
-  const parsed = parseContent(content);
-  const lines = parsed.split("\n").filter((line) => line.trim().length > 0);
+function extractSummary(parsedContent: string, maxLength: number = 200): string {
+  const lines = parsedContent.split("\n").filter((line) => line.trim().length > 0);
 
   let summary = "";
   for (const line of lines) {
@@ -85,6 +85,7 @@ export default async function PatchNotes() {
           const publishedDate = new Date(note.publishedAt);
           const isRecent =
             Date.now() - publishedDate.getTime() < 7 * 24 * 60 * 60 * 1000;
+          const parsedContent = parseContent(note.content);
 
           return (
             <Card
@@ -144,7 +145,7 @@ export default async function PatchNotes() {
 
               <CardContent>
                 <p className="mb-4 leading-relaxed">
-                  {extractSummary(note.content)}
+                  {extractSummary(parsedContent)}
                 </p>
 
                 <details className="group/details">
@@ -156,7 +157,7 @@ export default async function PatchNotes() {
                   <Card>
                     <CardContent>
                       <pre className="font-sans text-sm leading-relaxed whitespace-pre-wrap">
-                        {parseContent(note.content)}
+                        {parsedContent}
                       </pre>
                     </CardContent>
                   </Card>

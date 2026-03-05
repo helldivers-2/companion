@@ -83,13 +83,8 @@ const useCampaignData = () => {
   const [liberatedPlanets, setLiberatedPlanets] = useState<Campaign[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [retryCount, setRetryCount] = useState(0);
-
-  const retry = () => {
-    setRetryCount(0);
-    setIsLoading(true);
-    setError(null);
-  };
+  const [retryTrigger, setRetryTrigger] = useState(0);
+  const retry = () => setRetryTrigger((n) => n + 1);
 
   useEffect(() => {
     let isMounted = true;
@@ -105,7 +100,6 @@ const useCampaignData = () => {
         if (isMounted) {
           setActivePlanets(activePlanets);
           setLiberatedPlanets(liberatedPlanets);
-          setRetryCount(0);
           setIsLoading(false);
         }
       } catch (error) {
@@ -123,14 +117,13 @@ const useCampaignData = () => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [retryTrigger]);
 
   return {
     activePlanets,
     liberatedPlanets,
     isLoading,
     error,
-    retryCount,
     retry,
   };
 };
@@ -156,13 +149,8 @@ const useResponsiveSettings = () => {
   };
 };
 
-const PlanetPopup = ({ campaign }: { campaign: Campaign }) => {
+const PlanetPopup = ({ campaign, liberation }: { campaign: Campaign; liberation: string }) => {
   const { planet } = campaign;
-  const campaignLiberation = getLiberation(planet.health, planet.maxHealth);
-  const eventLiberation = planet.event
-    ? getLiberation(planet.event.health, planet.event.maxHealth, true)
-    : null;
-  const liberation = planet.event ? eventLiberation : campaignLiberation;
 
   return (
     <Popup>
@@ -271,7 +259,7 @@ const PlanetMarker = ({ campaign, index }: PlanetMarkerProps) => {
         priority: "low",
       };
     }
-  }, [planet, markerData.liberation]);
+  }, [planet.event, planet.health, planet.maxHealth, markerData.liberation]);
 
   const progressRadius = markerProperties.radius + 3;
   const circumference = 2 * Math.PI * progressRadius;
@@ -290,7 +278,7 @@ const PlanetMarker = ({ campaign, index }: PlanetMarkerProps) => {
         interactive={true}
         className="cursor-pointer transition-all duration-200"
       >
-        <PlanetPopup campaign={campaign} />
+        <PlanetPopup campaign={campaign} liberation={markerData.liberation as string} />
       </CircleMarker>
 
       {markerProperties.status !== MARKER_STATUS.LIBERATED && (
@@ -339,19 +327,9 @@ export default function CampaignMap() {
     liberatedPlanets,
     isLoading,
     error,
-    retryCount,
     retry,
   } = useCampaignData();
   const { zoom, bounds, isClient } = useResponsiveSettings();
-
-  console.log("CampaignMap render state:", {
-    isLoading,
-    error,
-    retryCount,
-    activePlanetsLength: activePlanets.length,
-    liberatedPlanetsLength: liberatedPlanets.length,
-    isClient,
-  });
 
   if (!isClient) {
     return (
@@ -368,11 +346,6 @@ export default function CampaignMap() {
           <div className="mb-2 text-muted-foreground">
             Loading campaign data...
           </div>
-          {retryCount > 0 && (
-            <div className="text-sm text-orange-500">
-              Retrying... (Attempt {retryCount}/3)
-            </div>
-          )}
         </div>
       </div>
     );

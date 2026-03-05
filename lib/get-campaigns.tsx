@@ -1,5 +1,5 @@
 import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
-import type { Species, Campaign, CampaignStats } from "@/types/campaigns";
+import type { Species, Campaign, CampaignStats, Planet } from "@/types/campaigns";
 
 export const species: Species[] = [
   {
@@ -24,6 +24,13 @@ export const getFactionIcon = (faction: string): string | null => {
   const factionData = species.find((s) => s.value === faction);
   return factionData ? factionData.icon : null;
 };
+
+export const getEffectiveHealth = (
+  planet: Planet,
+): { health: number; maxHealth: number } => ({
+  health: planet.event?.health ?? planet.health,
+  maxHealth: planet.event?.maxHealth ?? planet.maxHealth,
+});
 
 export const getLiberation = (
   health: number,
@@ -93,13 +100,9 @@ export const getCampaignStats = async (): Promise<CampaignStats> => {
 
   const activePlanets = [...campaignPlanets, ...eventPlanets].sort(
     (a: Campaign, b: Campaign) => {
-      const aLiberation = a.planet.event
-        ? getLiberation(a.planet.event.health, a.planet.event.maxHealth)
-        : getLiberation(a.planet.health, a.planet.maxHealth);
-      const bLiberation = b.planet.event
-        ? getLiberation(b.planet.event.health, b.planet.event.maxHealth)
-        : getLiberation(b.planet.health, b.planet.maxHealth);
-      return Number(aLiberation) - Number(bLiberation);
+      const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
+      const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
+      return bH / bMH - aH / aMH;
     },
   );
 

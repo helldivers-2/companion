@@ -5,6 +5,7 @@ import {
   getStatus,
   getTimeToLiberation,
   getCampaignStats,
+  getEffectiveHealth,
 } from "@/lib/get-campaigns";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
 import Image from "next/image";
@@ -25,6 +26,11 @@ export default async function CampaignTable() {
   const { activePlanets, totalPlayerCount }: CampaignStats =
     await getCampaignStats();
 
+  const activeTotalPlayerCount = activePlanets.reduce(
+    (sum, c) => sum + (c.planet.statistics?.playerCount || 0),
+    0,
+  );
+
   return (
     <Table>
       <TableHeader>
@@ -44,22 +50,13 @@ export default async function CampaignTable() {
         {activePlanets.map((campaign: Campaign, index: number) => {
           const planet = campaign.planet;
           const playerCount = planet.statistics?.playerCount || 0;
-          const totalPlayerCount = activePlanets.reduce(
-            (sum, c) => sum + (c.planet.statistics?.playerCount || 0),
-            0,
-          );
           const playerPercent =
-            totalPlayerCount > 0
-              ? Math.round((playerCount / totalPlayerCount) * 100)
+            activeTotalPlayerCount > 0
+              ? Math.round((playerCount / activeTotalPlayerCount) * 100)
               : 0;
 
-          const liberation = planet.event
-            ? getLiberation(planet.event.health, planet.event.maxHealth)
-            : getLiberation(planet.health, planet.maxHealth);
-
-          const maxHealth = planet.event
-            ? planet.event.maxHealth
-            : planet.maxHealth;
+          const { health, maxHealth } = getEffectiveHealth(planet);
+          const liberation = getLiberation(health, maxHealth);
           const regenPerSecond = planet.regenPerSecond || 0;
           const rate = getLiberationRate(regenPerSecond, maxHealth);
           const status = getStatus(rate);

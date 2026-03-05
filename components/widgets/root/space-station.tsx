@@ -3,6 +3,7 @@ import type { SpaceStation, TacticalAction, Cost } from "@/types/space-station";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { stripHtmlTags } from "@/lib/utils";
 
 async function getSpaceStations(): Promise<SpaceStation[]> {
   try {
@@ -35,10 +36,6 @@ function formatTimeRemaining(endTime: string): string {
   return `${hours}h ${minutes}m`;
 }
 
-function stripHtmlTags(html: string): string {
-  return html.replace(/<[^>]*>/g, '');
-}
-
 function CostProgress({ cost }: { cost: Cost }) {
   const progress = (cost.currentValue / cost.targetValue) * 100;
   const ratePerHour = cost.deltaPerSecond * 3600;
@@ -62,15 +59,15 @@ function CostProgress({ cost }: { cost: Cost }) {
   );
 }
 
-function TacticalActionCard({ action }: { action: TacticalAction }) {
-  const statusLabels: Record<number, { text: string; color: string }> = {
-    0: { text: "Inactive", color: "text-muted-foreground" },
-    1: { text: "Active", color: "text-green-500" },
-    2: { text: "Completed", color: "text-blue-500" },
-    3: { text: "Failed", color: "text-red-500" },
-  };
+const STATUS_LABELS: Record<number, { text: string; color: string }> = {
+  0: { text: "Inactive", color: "text-muted-foreground" },
+  1: { text: "Active", color: "text-green-500" },
+  2: { text: "Completed", color: "text-blue-500" },
+  3: { text: "Failed", color: "text-red-500" },
+};
 
-  const status = statusLabels[action.status] || statusLabels[0];
+function TacticalActionCard({ action }: { action: TacticalAction }) {
+  const status = STATUS_LABELS[action.status] ?? STATUS_LABELS[0];
 
   return (
     <div className="border p-4 space-y-3">
@@ -120,35 +117,36 @@ export default async function SpaceStation() {
 
   return (
     <div className="space-y-6">
-      {stations.map((station) => (
-        <div key={station.id32} className="space-y-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <div className="text-sm text-muted-foreground">Election ends</div>
-              <div className="font-mono">
-                {formatTimeRemaining(station.electionEnd)}
+      {stations.map((station) => {
+        const mostRelevantAction = station.tacticalActions.reduce((best, current) => {
+          const bestVotes = best.costs[0]?.currentValue ?? 0;
+          const currentVotes = current.costs[0]?.currentValue ?? 0;
+          return currentVotes > bestVotes ? current : best;
+        }, station.tacticalActions[0]);
+
+        return (
+          <div key={station.id32} className="space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm text-muted-foreground">Election ends</div>
+                <div className="font-mono">
+                  {formatTimeRemaining(station.electionEnd)}
+                </div>
               </div>
             </div>
-          </div>
 
-          {station.tacticalActions.length > 0 ? (
-            <div className="space-y-3">
-              {(() => {
-                const mostRelevantAction = station.tacticalActions.reduce((best, current) => {
-                  const bestVotes = best.costs[0]?.currentValue ?? 0;
-                  const currentVotes = current.costs[0]?.currentValue ?? 0;
-                  return currentVotes > bestVotes ? current : best;
-                }, station.tacticalActions[0]);
-                return <TacticalActionCard key={mostRelevantAction.id32} action={mostRelevantAction} />;
-              })()}
-            </div>
-          ) : (
-            <div className="text-sm text-muted-foreground">
-              No active tactical actions
-            </div>
-          )}
-        </div>
-      ))}
+            {station.tacticalActions.length > 0 ? (
+              <div className="space-y-3">
+                <TacticalActionCard key={mostRelevantAction.id32} action={mostRelevantAction} />
+              </div>
+            ) : (
+              <div className="text-sm text-muted-foreground">
+                No active tactical actions
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
