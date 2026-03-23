@@ -11,28 +11,24 @@ export const metadata: Metadata = {
 
 const faqItems = [
   {
-    question: "Does abandoning an operation negatively impact the %?",
-    answer: "No, it does not.",
-  },
-  {
-    question: "Why do all the planets seem to reset their status everyday?",
+    question: "Does abandoning an operation negatively impact liberation?",
     answer:
-      "Bugs and bots DO NOT sleep, they are constantly pushing back (hp regen). So overnight, when Americans (the biggest player base) are sleeping, the bugs and bots take back a lot of the planet. See the 2nd bullet in how Liberation math works.",
+      "No. Abandoning an operation has no negative effect on a planet's liberation progress. Only completed missions deal damage to the planet's health pool.",
   },
   {
-    question: 'What is the deal with "Other Planets"?',
+    question: "Why do planets seem to lose progress overnight?",
     answer:
-      "This is people who are playing the game as an individual, and are having very little impact to the galactic war. They are dealing less damage than the planet regens health, so it's constantly at full health. NOTE - the game master can account for this, so they aren't negatively impacting the userbase.",
+      "Every planet regenerates health constantly, usually between 1.5% and 4.5% per hour. When the largest player base (North America) is asleep, fewer missions are completed but regeneration continues. The result is a visible dip in liberation by morning. Defense campaigns are the exception, they run on a fixed timer with no regeneration.",
   },
   {
-    question: "What are supply lines/connections on the map?",
-    answer: {
-      text: "Check out this great guide on Reddit.",
-      link: {
-        url: "https://reddit.com/r/Helldivers/comments/1b5u34s/galaxy_war_102_supply_lines_what_happens_to/",
-        text: "this great guide",
-      },
-    },
+    question: 'What does "Other Planets" mean on the dashboard?',
+    answer:
+      "This refers to players running missions on planets that aren't part of an active campaign. Their damage is real but typically too low to overcome the planet's health regeneration, so those planets stay at full health. The game master can account for this activity, so it doesn't hurt the war effort.",
+  },
+  {
+    question: "What are supply lines on the galactic map?",
+    answer:
+      "Supply lines are connections between planets that determine which planets can be attacked next. Liberating a planet opens supply lines to its neighbors. Losing a planet can cut off access to others. The game master can also open or close supply lines manually to shape the war.",
   },
 ];
 
@@ -74,68 +70,50 @@ function LiberationMechanics() {
     <div className="rounded-none border bg-background p-4">
       <div className="space-y-4">
         <p>
-          In Helldivers 2, Super Earth is in a Galactic War with the Automatons
-          (robots) and the Terminids (bugs). During gameplay, you can choose to
-          either attack the robots or the bugs. There are roughly 8-12 planets
-          at any given time that you are allowed to play on, with the ultimate
-          goal of liberating the planets and restoring democracy.
+          In Helldivers 2, Super Earth fights a Galactic War against the
+          Automatons (robots), the Terminids (bugs), and the Illuminate. During
+          gameplay you choose which front to fight on. Active campaigns rotate
+          over time, driven by a game master at Arrowhead who shapes the war in
+          real time.
         </p>
 
         <p>
-          The Galactic War status is global among all Helldivers players, and
-          each and every Helldiver player victory contributes to liberating
-          planets.
+          The Galactic War is shared across all players. Every completed mission
+          chips away at a planet&apos;s health pool, pushing it toward
+          liberation. This site tracks that progress, active campaigns,
+          liberation percentages, and estimated completion times.
         </p>
 
         <p>
-          This site shows all of the planets that you can play on at any given
-          time, whether to Liberate or Defend the planet from an attack. In
-          addition, it shows the current Liberation progress as well as an
-          estimated time for the planet to be complete
-        </p>
-
-        <p>
-          On the top of the site is a brief overview of the main movers in the
-          Galactic War
-        </p>
-
-        <p>If you click on a planet in the table, you can see the history.</p>
-
-        <p>
-          On the map, there are pins for each active planet that includes its
-          liberation status as well as the rate of liberation.
+          On the dashboard, each planet card shows its current liberation
+          status. The map displays pins for active planets with their liberation
+          rate.
         </p>
       </div>
 
       <h3 className="mt-8 mb-4 text-2xl font-medium tracking-tighter">
-        How does the math behind Liberation work?
+        How does liberation math work?
       </h3>
 
       <ul className="list-outside list-disc space-y-2 pl-4">
         <li>
-          Each planet has an internal max HP. When attacking, the planet has
-          1000000. When defending, this varies from 600k-~2mil.
+          Each planet has an internal max HP. Attacking planets have a fixed
+          pool of 1,000,000. Defense campaigns vary from roughly 600k to over 2
+          million.
         </li>
         <li>
-          Each planet regens HP, usually ranging from 1.5% to 4.5% per hour, but
-          has been seen as high as 20% per hour. The game master can change
-          these values at any time. NOTE - defense campaign doesn&apos;t regen
-          hp, it is purely timer based
+          Planets regenerate HP constantly, usually 1.5% to 4.5% per hour,
+          though the game master can push this as high as 20%. Defense campaigns
+          are timer-based and do not regenerate.
         </li>
         <li>
-          Each Operation a Helldiver completes deals damage to the planet.
+          Each completed operation deals damage to the planet. More players on a
+          planet means faster liberation.
         </li>
         <li>
-          The automatons can also drop a giant nuke on planets to deplete some
-          liberation. This can be seen on planets such as{" "}
-          <a
-            href="/Planets/tien-kwan"
-            className="text-blue-600 underline hover:text-blue-800"
-          >
-            Tien Kwan
-          </a>
-          . These drastic dips in liberation have been 1-2%, occuring as much as
-          5-10 times to keep Super Earth at bay.
+          Enemy factions can also launch attacks that drain liberation progress.
+          These show up as sudden dips of 1–2%, sometimes occurring multiple
+          times in succession to stall Super Earth&apos;s advance.
         </li>
       </ul>
     </div>
@@ -147,37 +125,26 @@ function FAQSection() {
     <div className="space-y-6 rounded-none border bg-background p-4">
       {faqItems.map((item, index) => (
         <div key={index}>
-          <h3 className="mb-4 text-2xl font-medium tracking-tighter">
+          <h3 className="mb-2 text-2xl font-medium tracking-tighter">
             {item.question}
           </h3>
-          {typeof item.answer === "string" ? (
-            <p>{item.answer}</p>
-          ) : (
-            <p>
-              Check out{" "}
-              <a
-                className="text-blue-600 underline hover:text-blue-800"
-                href={item.answer.link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {item.answer.link.text}
-              </a>{" "}
-              on Reddit.
-            </p>
-          )}
+          <p className="text-muted-foreground">{item.answer}</p>
         </div>
       ))}
 
       <div className="border-t pt-4">
-        <a
-          className="text-sm text-muted-foreground underline hover:text-primary"
-          href="https://helldivers.io"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Source
-        </a>
+        <p className="text-sm text-muted-foreground">
+          Answers compiled from{" "}
+          <a
+            className="underline hover:text-primary"
+            href="https://helldivers.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            helldivers.io
+          </a>{" "}
+          and community sources.
+        </p>
       </div>
     </div>
   );
@@ -219,7 +186,7 @@ function SystemRequirementsCard({
             {(requirements as RecommendedSystemRequirements).additionalNotes}
           </p>
         )}
-        <p>{requirements.notes}</p>
+        <p className="text-muted-foreground">{requirements.notes}</p>
       </CardContent>
     </Card>
   );
@@ -235,10 +202,10 @@ export default function FAQPage() {
         </div>
       </Container>
 
-      <Container
-        title="What are the best specifications for the game Helldivers 2?"
-        discussion="FAQ"
-      >
+      <Container title="PC System Requirements" discussion="FAQ">
+        <p className="mb-4 text-center text-sm text-muted-foreground">
+          Per Steam store listing. Also available on PlayStation 5.
+        </p>
         <div className="grid gap-6 md:grid-cols-2">
           <SystemRequirementsCard
             title="MINIMUM"

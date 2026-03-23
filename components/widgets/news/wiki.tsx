@@ -1,65 +1,66 @@
 export default async function WikipediaText() {
   return (
-    <p>
-      Helldivers 2 is a 2024 cooperative third-person shooter game developed by
-      Arrowhead Game Studios and published by Sony Interactive Entertainment for
-      the PlayStation 5 and Windows. The game is the direct sequel to Helldivers
-      (2015). Set in the 22nd century, the story follows the Helldivers, a force
-      of shock troops dispatched to combat various threats to humanity and to
-      spread managed democracy.
-      <br />
-      <br />
-      Helldivers 2 was released on 8 February 2024 and was a critical and
-      commercial success, having sold in excess of 15 million copies. Considered
-      among the best video games of 2024, it was nominated for and won a number
-      of awards.
-      <br />
-      <br />
-      <span className="text-xl font-semibold">Gameplay</span>
-      <br />
-      In Helldivers, the player needs to coordinate their actions during chaotic
-      combat to complete objectives and avoid friendly fire casualties.[6] The
-      game pits the players against three different enemy species and tasks them
-      with ensuring the survival of Super Earth. Players engage with
-      procedurally generated missions where players must accomplish a series of
-      objectives. At the start of each mission, players can choose their
-      loadouts (sets of weapons, equipment, and gear) and deployment positions.
-      They can also use the game&apos;s stratagem mechanic to enhance their options,
-      catering to the map layout or their individual playstyle. For example, the
-      player may choose stratagems that focus on providing additional firepower
-      or mobility, or give themselves supportive abilities such as calling in
-      precise airstrikes.
-      <br />
-      <br />
-      The game has a single difficulty option, though the player can then choose
-      a hard or easy planet for their missions. This changed over the course of
-      development.
-      <br />
-      <br />
-      In each mission, the player must fight or sneak through enemy-controlled
-      territory to complete the given objectives, then escape via a dropship. It
-      is possible to fail some of the given objectives without immediately
-      losing. It often benefits the player to avoid direct combat if possible,
-      as the enemy has infinite reinforcements, and there are no in-game rewards
-      for simply killing enemies.
-      <br />
-      <br />
-      The game keeps many of the mechanics common to the genre, like Fog of War
-      and a map that shows any enemies the player(s) can currently see. The
-      enemy will patrol their territory, impeding the player&apos;s attempt to
-      complete the given objectives. Enemy units that come in contact with the
-      player(s) will try to raise an alarm, which will result in continuous
-      waves of enemy reinforcements for as long as the alarm remains active. The
-      player can prevent an alarm by avoiding enemy patrols if possible, and can
-      cancel one by defeating all units currently aware of the player or by
-      fleeing the area.
-      <br />
-      <br />
-      Once all mission objectives are successfully completed or failed, the
-      player is then required to call in a dropship and escape with all their
-      remaining units. This takes 90 seconds and draws enemy attention to the
-      landing zone, resulting in heavy fighting. Entering the dropship completes
-      the mission.
-    </p>
+    <div className="space-y-4">
+      <p>
+        Helldivers 2 is a cooperative third-person shooter developed by
+        Arrowhead Game Studios and published by Sony Interactive Entertainment
+        for PlayStation 5 and Windows. Released on 8 February 2024, it is the
+        sequel to Helldivers (2015).
+      </p>
+
+      <p>
+        Set in the 22nd century, players take the role of Helldivers, elite
+        soldiers dispatched to spread managed democracy across the galaxy. The
+        game was a critical and commercial hit, winning multiple awards and
+        becoming one of the best-selling titles of 2024.
+      </p>
+
+      <h3 className="pt-2 text-xl font-semibold">Gameplay</h3>
+
+      <p>
+        Up to four players drop onto hostile planets to complete objectives
+        while fighting three enemy factions. Before each mission, players pick
+        their loadout and stratagems, orbital abilities like airstrikes, supply
+        drops, and vehicle deployments called in via directional input
+        sequences.
+      </p>
+
+      <p>
+        Missions span 10 difficulty levels. Players fight or sneak through enemy
+        territory, complete objectives, then call in an extraction shuttle and
+        survive 90 seconds of heavy combat to escape. Enemies have unlimited
+        reinforcements, so avoiding unnecessary fights is often the smarter
+        play.
+      </p>
+
+      <h3 className="pt-2 text-xl font-semibold">The Galactic War</h3>
+
+      <p>
+        All players share a single persistent war. Every completed mission deals
+        damage to a planet&apos;s health pool, pushing it toward liberation.
+        Enemy factions push back constantly, regenerating planet health when
+        player activity drops. A game master at Arrowhead adjusts the war in
+        real time, creating dynamic campaigns and escalating threats.
+      </p>
+
+      <p>
+        This companion site tracks the current state of that war, active
+        campaigns, liberation progress, major orders, and estimated completion
+        times.
+      </p>
+
+      <p className="text-sm text-muted-foreground">
+        Based on information from{" "}
+        <a
+          href="https://en.wikipedia.org/wiki/Helldivers_2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline hover:text-foreground"
+        >
+          Wikipedia
+        </a>{" "}
+        (CC BY-SA 4.0) and in-game sources.
+      </p>
+    </div>
   );
 }

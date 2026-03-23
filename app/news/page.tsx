@@ -19,7 +19,7 @@ const dashboardCards = [
     key: "steam",
   },
   {
-    title: "Info about the Game",
+    title: "About Helldivers 2",
     component: WikipediaText,
     key: "wiki",
   },
