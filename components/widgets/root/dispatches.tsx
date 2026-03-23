@@ -1,5 +1,4 @@
 import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
@@ -72,52 +71,47 @@ export default async function Dispatches() {
 
   return (
     <div className="space-y-3">
-      {dispatches.slice(0, 1).map((dispatch) => {
+      {dispatches.slice(0, 5).map((dispatch) => {
         const publishedDate = new Date(dispatch.published);
         const typeInfo = getDispatchTypeInfo(dispatch.message);
         const Icon = typeInfo.icon;
 
         return (
-          <Card
+          <div
             key={dispatch.id}
-            className="transition-all duration-200 hover:shadow-md"
+            className="border-b border-border pb-3 last:border-0 last:pb-0"
           >
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <Badge
-                  variant="secondary"
-                  className={`${typeInfo.color} border-0 font-medium`}
-                >
-                  <Icon className="mr-1.5 h-3 w-3" />
-                  {typeInfo.label}
-                </Badge>
+            <div className="flex items-center justify-between mb-1.5">
+              <Badge
+                variant="secondary"
+                className={`${typeInfo.color} border-0 font-medium`}
+              >
+                <Icon className="mr-1.5 h-3 w-3" />
+                {typeInfo.label}
+              </Badge>
 
-                <div className="flex items-center text-sm text-muted-foreground">
-                  <Clock className="mr-1 h-3 w-3" />
-                  <time dateTime={dispatch.published}>
-                    {formatDistanceToNow(publishedDate, {
-                      addSuffix: true,
-                    })}
-                  </time>
-                </div>
+              <div className="flex items-center text-xs text-muted-foreground">
+                <Clock className="mr-1 h-3 w-3" />
+                <time dateTime={dispatch.published}>
+                  {formatDistanceToNow(publishedDate, {
+                    addSuffix: true,
+                  })}
+                </time>
               </div>
-            </CardHeader>
+            </div>
 
-            <CardContent>
-              <div className="text-sm leading-relaxed">
-                {parseContent(dispatch.message)}
-              </div>
-            </CardContent>
-          </Card>
+            <div className="text-sm leading-relaxed">
+              {parseContent(dispatch.message)}
+            </div>
+          </div>
         );
       })}
 
-      {/* Empty state */}
       {dispatches.length === 0 && (
-        <div className="py-12 text-center">
-          <Clock className="mx-auto mb-4 h-12 w-12" />
-          <h3 className="mb-2 text-lg font-medium">No dispatches available</h3>
-          <p>Check back later for updates from High Command</p>
+        <div className="py-8 text-center">
+          <Clock className="mx-auto mb-3 h-10 w-10" />
+          <h3 className="mb-1 text-base font-medium">No dispatches available</h3>
+          <p className="text-sm text-muted-foreground">Check back later for updates from High Command</p>
         </div>
       )}
     </div>

@@ -1,5 +1,5 @@
 import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
-import millify from "millify";
+import { millify } from "@/lib/utils";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";

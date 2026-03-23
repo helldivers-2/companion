@@ -97,7 +97,9 @@ function TacticalActionCard({ action }: { action: TacticalAction }) {
 
       {action.statusExpire && (
         <div className="text-xs text-muted-foreground">
-          Expires: {formatTimeRemaining(action.statusExpire)}
+          {new Date(action.statusExpire) <= new Date()
+            ? "Expired"
+            : `Expires in ${formatTimeRemaining(action.statusExpire)}`}
         </div>
       )}
     </div>
@@ -124,14 +126,20 @@ export default async function SpaceStation() {
           return currentVotes > bestVotes ? current : best;
         }, station.tacticalActions[0]);
 
+        const electionEnded = new Date(station.electionEnd) <= new Date();
+
         return (
           <div key={station.id32} className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Election ends</div>
-                <div className="font-mono">
-                  {formatTimeRemaining(station.electionEnd)}
+                <div className="text-sm text-muted-foreground">
+                  {electionEnded ? "Election ended" : "Election ends"}
                 </div>
+                {!electionEnded && (
+                  <div className="font-mono">
+                    {formatTimeRemaining(station.electionEnd)}
+                  </div>
+                )}
               </div>
             </div>
 

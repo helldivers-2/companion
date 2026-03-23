@@ -12,17 +12,30 @@ export async function getAPI({
   fallback?: unknown;
 }) {
   try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), timeout);
-
-    const res = await fetch(`https://api.helldivers2.dev/api${url}`, {
+    const fetchOptions = {
       next: { revalidate },
       headers: {
         "X-Super-Client": siteConfig.x_super.client,
         "X-Super-Contact": siteConfig.x_super.contact,
       },
-      signal: controller.signal,
-    });
+    };
+    const apiUrl = `https://api.helldivers2.dev/api${url}`;
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    let res = await fetch(apiUrl, { ...fetchOptions, signal: controller.signal });
+
+    // Retry once on rate limit with a fresh timeout
+    if (res.status === 429) {
+      clearTimeout(timeoutId);
+      const retryAfter = Number(res.headers.get("retry-after")) || 2;
+      await new Promise((r) => setTimeout(r, retryAfter * 1000));
+      const retryController = new AbortController();
+      const retryTimeoutId = setTimeout(() => retryController.abort(), timeout);
+      res = await fetch(apiUrl, { ...fetchOptions, signal: retryController.signal });
+      clearTimeout(retryTimeoutId);
+    }
 
     clearTimeout(timeoutId);
 

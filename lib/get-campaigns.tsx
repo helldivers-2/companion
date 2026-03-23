@@ -76,6 +76,16 @@ export const getTimeToLiberation = (
   return `${hours}h ${remainingMins}m`;
 };
 
+export const getPlanetStats = (planet: Planet) => {
+  const { health, maxHealth } = getEffectiveHealth(planet);
+  const liberation = getLiberation(health, maxHealth);
+  const regenPerSecond = planet.regenPerSecond || 0;
+  const rate = getLiberationRate(regenPerSecond, maxHealth);
+  const status = getStatus(rate);
+  const eta = getTimeToLiberation(Number(liberation), rate);
+  return { liberation, rate, status, eta };
+};
+
 export const getCampaignStats = async (): Promise<CampaignStats> => {
   const campaigns: Campaign[] = await getAPI({
     url: "/v1/campaigns",

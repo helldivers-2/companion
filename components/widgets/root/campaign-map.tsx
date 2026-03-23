@@ -6,10 +6,12 @@ import {
   getCampaignStats,
 } from "@/lib/get-campaigns";
 import { useEffect, useState, useMemo } from "react";
-import millify from "millify";
+import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
+import PlanetDetail from "@/components/planet-detail";
+import { useMediaQuery } from "@/lib/use-media-query";
 
 import {
   MapContainer,
@@ -76,6 +78,7 @@ interface MarkerProperties {
 interface PlanetMarkerProps {
   campaign: Campaign;
   index: number;
+  onPlanetClick?: (campaign: Campaign) => void;
 }
 
 const useCampaignData = () => {
@@ -129,20 +132,14 @@ const useCampaignData = () => {
 };
 
 const useResponsiveSettings = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 767px)");
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   return {
-    isMobile,
     isClient,
     zoom: isMobile ? 7 : 8,
     bounds: getMapBounds(isMobile),
@@ -205,7 +202,7 @@ const PlanetPopup = ({ campaign, liberation }: { campaign: Campaign; liberation:
   );
 };
 
-const PlanetMarker = ({ campaign, index }: PlanetMarkerProps) => {
+const PlanetMarker = ({ campaign, index, onPlanetClick }: PlanetMarkerProps) => {
   const { planet } = campaign;
 
   const markerData = useMemo(() => {
@@ -277,6 +274,9 @@ const PlanetMarker = ({ campaign, index }: PlanetMarkerProps) => {
         weight={markerProperties.weight}
         interactive={true}
         className="cursor-pointer transition-all duration-200"
+        eventHandlers={{
+          dblclick: () => onPlanetClick?.(campaign),
+        }}
       >
         <PlanetPopup campaign={campaign} liberation={markerData.liberation as string} />
       </CircleMarker>
@@ -303,10 +303,12 @@ const PlanetLayer = ({
   planets,
   name,
   checked = false,
+  onPlanetClick,
 }: {
   planets: Campaign[];
   name: string;
   checked?: boolean;
+  onPlanetClick?: (campaign: Campaign) => void;
 }) => (
   <LayersControl.Overlay checked={checked} name={name}>
     <FeatureGroup>
@@ -315,6 +317,7 @@ const PlanetLayer = ({
           key={`${campaign.planet.name}-${index}`}
           campaign={campaign}
           index={index}
+          onPlanetClick={onPlanetClick}
         />
       ))}
     </FeatureGroup>
@@ -330,6 +333,13 @@ export default function CampaignMap() {
     retry,
   } = useCampaignData();
   const { zoom, bounds, isClient } = useResponsiveSettings();
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+  const [detailOpen, setDetailOpen] = useState(false);
+
+  const handlePlanetClick = (campaign: Campaign) => {
+    setSelectedCampaign(campaign);
+    setDetailOpen(true);
+  };
 
   if (!isClient) {
     return (
@@ -385,6 +395,7 @@ export default function CampaignMap() {
   }
 
   return (
+    <>
     <MapContainer
       className="aspect-square rounded-none border md:aspect-video"
       center={[0, 0]}
@@ -410,6 +421,7 @@ export default function CampaignMap() {
             planets={activePlanets}
             name="Active Campaigns"
             checked={true}
+            onPlanetClick={handlePlanetClick}
           />
         )}
         {liberatedPlanets.length > 0 && (
@@ -417,9 +429,17 @@ export default function CampaignMap() {
             planets={liberatedPlanets}
             name="Liberated Planets"
             checked={activePlanets.length === 0}
+            onPlanetClick={handlePlanetClick}
           />
         )}
       </LayersControl>
     </MapContainer>
+
+    <PlanetDetail
+      campaign={selectedCampaign}
+      open={detailOpen}
+      onOpenChange={setDetailOpen}
+    />
+    </>
   );
 }

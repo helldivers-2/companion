@@ -80,7 +80,7 @@
 }
 
 .dark {
-  --background: oklch(0.147 0.004 49.25);
+  --background: oklch(0.216 0.006 56.043);
   --foreground: oklch(0.985 0.001 106.423);
   --card: oklch(0.216 0.006 56.043);
   --card-foreground: oklch(0.985 0.001 106.423);
@@ -123,7 +123,7 @@
 }
 
 .glass-ui {
-  @apply border [border-color:rgba(209,213,219,0.3)] [background-color:rgba(255,255,255,0.5)] backdrop-blur-lg backdrop-saturate-180 backdrop-filter dark:[border-color:rgba(255,255,255,0.125)] dark:[background-color:rgba(17,25,40,0.5)];
+  @apply border [border-color:rgba(214,211,205,0.4)] [background-color:rgba(245,241,235,0.65)] backdrop-blur-xl backdrop-saturate-180 backdrop-filter dark:[border-color:rgba(255,255,255,0.1)] dark:[background-color:rgba(28,24,20,0.65)];
 }
 
 .border {
