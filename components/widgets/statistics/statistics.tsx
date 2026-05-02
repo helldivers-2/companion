@@ -8,8 +8,24 @@ export default async function Statistics() {
   const war = await getAPI({
     url: "/v1/war",
     revalidate: REVALIDATION_TIMES.STATISTICS,
+    fallback: null,
   });
-  const stats = war.statistics;
+  const stats = war?.statistics;
+
+  if (!stats) {
+    return (
+      <div className="grid grid-cols-1 gap-4">
+        <Card className="col-span-1 md:col-span-2">
+          <CardHeader>
+            <CardTitle>Counts</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-muted-foreground">Statistics temporarily unavailable.</p>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 gap-4">

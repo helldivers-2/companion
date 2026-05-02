@@ -37,6 +37,7 @@ export const getLiberation = (
   maxHealth: number,
   inverse: boolean = false,
 ): string => {
+  if (maxHealth === 0) return "0.00";
   // health = enemy control remaining
   // liberation = 100 - (health / maxHealth) * 100
   const healthPercent = (health / maxHealth) * 100;
@@ -48,6 +49,7 @@ export const getLiberationRate = (
   regenPerSecond: number,
   maxHealth: number,
 ): number => {
+  if (maxHealth === 0) return 0;
   // Returns hourly rate of change (negative = losing ground)
   // regenPerSecond is enemy regeneration, so it's negative for liberation
   const hourlyRegen = regenPerSecond * 3600;
@@ -122,7 +124,7 @@ export const getCampaignStats = async (): Promise<CampaignStats> => {
       campaign.planet.event === null,
   );
 
-  const totalPlayerCount = liberatedPlanets.reduce(
+  const liberatedPlayerCount = liberatedPlanets.reduce(
     (sum: number, campaign: Campaign) => {
       const playerCount = campaign.planet.statistics?.playerCount || 0;
       return sum + playerCount;
@@ -130,5 +132,5 @@ export const getCampaignStats = async (): Promise<CampaignStats> => {
     0,
   );
 
-  return { campaigns, activePlanets, liberatedPlanets, totalPlayerCount };
+  return { campaigns, activePlanets, liberatedPlanets, liberatedPlayerCount };
 };

@@ -6,12 +6,12 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import MajorOrder from "@/components/widgets/root/major-order";
 import CampaignTable from "@/components/widgets/root/campaign-table";
 import Dispatches from "@/components/widgets/root/dispatches";
-import CampaignMap from "@/components/widgets/root/campaign-map-client";
+import CampaignMap from "@/components/widgets/root/campaign-map-server";
 import SpaceStation from "@/components/widgets/root/space-station";
 import WarSummary from "@/components/widgets/root/war-summary";
 
 export const metadata: Metadata = {
-  title: "Statistics",
+  title: "War Status",
   description: "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
 }
 

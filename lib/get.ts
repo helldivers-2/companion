@@ -24,20 +24,25 @@ export async function getAPI({
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
 
-    let res = await fetch(apiUrl, { ...fetchOptions, signal: controller.signal });
+    let res: Response;
+    try {
+      res = await fetch(apiUrl, { ...fetchOptions, signal: controller.signal });
+    } finally {
+      clearTimeout(timeoutId);
+    }
 
     // Retry once on rate limit with a fresh timeout
     if (res.status === 429) {
-      clearTimeout(timeoutId);
       const retryAfter = Number(res.headers.get("retry-after")) || 2;
       await new Promise((r) => setTimeout(r, retryAfter * 1000));
       const retryController = new AbortController();
       const retryTimeoutId = setTimeout(() => retryController.abort(), timeout);
-      res = await fetch(apiUrl, { ...fetchOptions, signal: retryController.signal });
-      clearTimeout(retryTimeoutId);
+      try {
+        res = await fetch(apiUrl, { ...fetchOptions, signal: retryController.signal });
+      } finally {
+        clearTimeout(retryTimeoutId);
+      }
     }
-
-    clearTimeout(timeoutId);
 
     if (!res.ok) {
       console.error(`API ${url} returned HTTP ${res.status}: ${res.statusText}`);

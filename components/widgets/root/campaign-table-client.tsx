@@ -25,12 +25,12 @@ import PlanetDetail from "@/components/planet-detail";
 
 interface CampaignTableClientProps {
   activePlanets: Campaign[];
-  totalPlayerCount: number;
+  liberatedPlayerCount: number;
 }
 
 export default function CampaignTableClient({
   activePlanets,
-  totalPlayerCount,
+  liberatedPlayerCount,
 }: CampaignTableClientProps) {
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(
     null,
@@ -116,7 +116,7 @@ export default function CampaignTableClient({
 
             return (
               <TableRow
-                key={campaign.id || index}
+                key={campaign.id ?? index}
                 className="cursor-pointer"
                 onClick={() => handleRowClick(campaign)}
               >
@@ -169,9 +169,9 @@ export default function CampaignTableClient({
             );
           })}
           <TableRow>
-            <TableCell className="font-medium">Other Planets</TableCell>
+            <TableCell className="font-medium">Liberated Planets</TableCell>
             <TableCell className="text-right text-muted-foreground">
-              {millify(totalPlayerCount)}
+              {millify(liberatedPlayerCount)}
             </TableCell>
             <TableCell className="hidden lg:table-cell">
               <div className="flex items-center space-x-2">

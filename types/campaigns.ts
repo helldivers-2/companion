@@ -47,5 +47,5 @@ export interface CampaignStats {
   campaigns: Campaign[];
   activePlanets: Campaign[];
   liberatedPlanets: Campaign[];
-  totalPlayerCount: number;
+  liberatedPlayerCount: number;
 }

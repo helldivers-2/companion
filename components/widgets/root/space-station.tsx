@@ -132,6 +132,7 @@ export default async function SpaceStation() {
           <div key={station.id32} className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
+                <h3 className="font-semibold">{station.planet.name}</h3>
                 <div className="text-sm text-muted-foreground">
                   {electionEnded ? "Election ended" : "Election ends"}
                 </div>

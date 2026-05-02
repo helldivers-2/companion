@@ -1,15 +1,11 @@
 "use client";
 
-import {
-  getFactionIcon,
-  getLiberation,
-  getCampaignStats,
-} from "@/lib/get-campaigns";
-import { useEffect, useState, useMemo } from "react";
+import { getFactionIcon, getLiberation } from "@/lib/get-campaigns";
+import { useState, useMemo, useEffect } from "react";
 import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import type { Campaign, CampaignStats } from "@/types/campaigns";
+import type { Campaign } from "@/types/campaigns";
 import PlanetDetail from "@/components/planet-detail";
 import { useMediaQuery } from "@/lib/use-media-query";
 
@@ -81,56 +77,6 @@ interface PlanetMarkerProps {
   onPlanetClick?: (campaign: Campaign) => void;
 }
 
-const useCampaignData = () => {
-  const [activePlanets, setActivePlanets] = useState<Campaign[]>([]);
-  const [liberatedPlanets, setLiberatedPlanets] = useState<Campaign[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [retryTrigger, setRetryTrigger] = useState(0);
-  const retry = () => setRetryTrigger((n) => n + 1);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        setError(null);
-
-        const { activePlanets, liberatedPlanets }: CampaignStats =
-          await getCampaignStats();
-
-        if (isMounted) {
-          setActivePlanets(activePlanets);
-          setLiberatedPlanets(liberatedPlanets);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Failed to fetch campaign data:", error);
-
-        if (isMounted) {
-          setError(String(error));
-          setIsLoading(false);
-        }
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [retryTrigger]);
-
-  return {
-    activePlanets,
-    liberatedPlanets,
-    isLoading,
-    error,
-    retry,
-  };
-};
-
 const useResponsiveSettings = () => {
   const isMobile = useMediaQuery("(max-width: 767px)");
   const [isClient, setIsClient] = useState(false);
@@ -146,7 +92,13 @@ const useResponsiveSettings = () => {
   };
 };
 
-const PlanetPopup = ({ campaign, liberation }: { campaign: Campaign; liberation: string }) => {
+const PlanetPopup = ({
+  campaign,
+  liberation,
+}: {
+  campaign: Campaign;
+  liberation: string;
+}) => {
   const { planet } = campaign;
 
   return (
@@ -183,7 +135,7 @@ const PlanetPopup = ({ campaign, liberation }: { campaign: Campaign; liberation:
         <div className="space-y-1">
           <div className="flex items-center justify-between gap-4">
             <span className="text-sm font-medium text-muted-foreground">
-              Liberation
+              {planet.event ? "Event Health" : "Liberation"}
             </span>
             <span className="text-sm font-semibold text-icon">
               {liberation}%
@@ -202,7 +154,11 @@ const PlanetPopup = ({ campaign, liberation }: { campaign: Campaign; liberation:
   );
 };
 
-const PlanetMarker = ({ campaign, index, onPlanetClick }: PlanetMarkerProps) => {
+const PlanetMarker = ({
+  campaign,
+  index,
+  onPlanetClick,
+}: PlanetMarkerProps) => {
   const { planet } = campaign;
 
   const markerData = useMemo(() => {
@@ -275,10 +231,13 @@ const PlanetMarker = ({ campaign, index, onPlanetClick }: PlanetMarkerProps) => 
         interactive={true}
         className="cursor-pointer transition-all duration-200"
         eventHandlers={{
-          dblclick: () => onPlanetClick?.(campaign),
+          click: () => onPlanetClick?.(campaign),
         }}
       >
-        <PlanetPopup campaign={campaign} liberation={markerData.liberation as string} />
+        <PlanetPopup
+          campaign={campaign}
+          liberation={markerData.liberation as string}
+        />
       </CircleMarker>
 
       {markerProperties.status !== MARKER_STATUS.LIBERATED && (
@@ -324,16 +283,21 @@ const PlanetLayer = ({
   </LayersControl.Overlay>
 );
 
-export default function CampaignMap() {
-  const {
-    activePlanets,
-    liberatedPlanets,
-    isLoading,
-    error,
-    retry,
-  } = useCampaignData();
+interface CampaignMapProps {
+  activePlanets: Campaign[];
+  liberatedPlanets: Campaign[];
+  error?: string | null;
+}
+
+export default function CampaignMap({
+  activePlanets,
+  liberatedPlanets,
+  error,
+}: CampaignMapProps) {
   const { zoom, bounds, isClient } = useResponsiveSettings();
-  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(null);
+  const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(
+    null,
+  );
   const [detailOpen, setDetailOpen] = useState(false);
 
   const handlePlanetClick = (campaign: Campaign) => {
@@ -349,30 +313,12 @@ export default function CampaignMap() {
     );
   }
 
-  if (isLoading) {
-    return (
-      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
-        <div className="text-center">
-          <div className="mb-2 text-muted-foreground">
-            Loading campaign data...
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-center">
           <div className="mb-2 text-red-500">Failed to load campaign data</div>
           <div className="mb-4 text-sm text-muted-foreground">{error}</div>
-          <button
-            onClick={retry}
-            className="rounded bg-blue-500 px-4 py-2 text-sm text-white transition-colors hover:bg-blue-600"
-          >
-            Retry
-          </button>
         </div>
       </div>
     );
@@ -396,50 +342,50 @@ export default function CampaignMap() {
 
   return (
     <>
-    <MapContainer
-      className="aspect-square rounded-none border md:aspect-video"
-      center={[0, 0]}
-      zoom={zoom}
-      maxZoom={9}
-      minZoom={7}
-      maxBounds={bounds}
-      boxZoom={false}
-      doubleClickZoom={false}
-      keyboard={false}
-      scrollWheelZoom={false}
-      touchZoom={false}
-    >
-      <TileLayer url="/tile.webp" />
-      <ImageOverlay
-        url="/sectormap.webp"
-        bounds={new LatLngBounds([-1, -1], [1, 1])}
-        opacity={0.5}
-      />
-      <LayersControl position="bottomleft">
-        {activePlanets.length > 0 && (
-          <PlanetLayer
-            planets={activePlanets}
-            name="Active Campaigns"
-            checked={true}
-            onPlanetClick={handlePlanetClick}
-          />
-        )}
-        {liberatedPlanets.length > 0 && (
-          <PlanetLayer
-            planets={liberatedPlanets}
-            name="Liberated Planets"
-            checked={activePlanets.length === 0}
-            onPlanetClick={handlePlanetClick}
-          />
-        )}
-      </LayersControl>
-    </MapContainer>
+      <MapContainer
+        className="aspect-square rounded-none border md:aspect-video"
+        center={[0, 0]}
+        zoom={zoom}
+        maxZoom={9}
+        minZoom={7}
+        maxBounds={bounds}
+        boxZoom={false}
+        doubleClickZoom={false}
+        keyboard={false}
+        scrollWheelZoom={false}
+        touchZoom={false}
+      >
+        <TileLayer url="/tile.webp" />
+        <ImageOverlay
+          url="/sectormap.webp"
+          bounds={new LatLngBounds([-1, -1], [1, 1])}
+          opacity={0.5}
+        />
+        <LayersControl position="bottomleft">
+          {activePlanets.length > 0 && (
+            <PlanetLayer
+              planets={activePlanets}
+              name="Active Campaigns"
+              checked={true}
+              onPlanetClick={handlePlanetClick}
+            />
+          )}
+          {liberatedPlanets.length > 0 && (
+            <PlanetLayer
+              planets={liberatedPlanets}
+              name="Liberated Planets"
+              checked={activePlanets.length === 0}
+              onPlanetClick={handlePlanetClick}
+            />
+          )}
+        </LayersControl>
+      </MapContainer>
 
-    <PlanetDetail
-      campaign={selectedCampaign}
-      open={detailOpen}
-      onOpenChange={setDetailOpen}
-    />
+      <PlanetDetail
+        campaign={selectedCampaign}
+        open={detailOpen}
+        onOpenChange={setDetailOpen}
+      />
     </>
   );
 }
