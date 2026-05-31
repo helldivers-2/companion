@@ -1,18 +1,12 @@
-import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
+import { getWarStats } from "@/lib/data/war";
 import { millify } from "@/lib/utils";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";
 
 export default async function Statistics() {
-  const war = await getAPI({
-    url: "/v1/war",
-    revalidate: REVALIDATION_TIMES.STATISTICS,
-    fallback: null,
-  });
-  const stats = war?.statistics;
+  const stats = await getWarStats();
 
-  if (!stats) {
+  if (stats.playerCount === 0) {
     return (
       <div className="grid grid-cols-1 gap-4">
         <Card className="col-span-1 md:col-span-2">
@@ -38,9 +32,7 @@ export default async function Statistics() {
             <StatisticsCard title="Patriots in Game">
               {millify(stats.playerCount)}
             </StatisticsCard>
-            <StatisticsCard
-              title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}
-            >
+            <StatisticsCard title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}>
               {millify(stats.missionsWon)}
             </StatisticsCard>
             <StatisticsCard title="Total Time Invested">
@@ -58,7 +50,7 @@ export default async function Statistics() {
             <StatisticsCard title="Ammunition Shot">
               {millify(stats.bulletsFired)}
             </StatisticsCard>
-            <StatisticsCard title="Fallen Souldiers">
+            <StatisticsCard title="Fallen Soldiers">
               {millify(stats.deaths)}
             </StatisticsCard>
             <StatisticsCard title="Collateral Friend Kills">
