@@ -31,14 +31,19 @@ The header nav items change from page links to anchor links:
 | Statistics → `/statistics` | Statistics → `#statistics` |
 | FAQ → `/faq` | FAQ → `#faq` |
 
-- Each nav item uses a standard `<a href="#id">`.
-- The logo still links to `/`.
+- Each nav item uses a standard **plain `<a href="#id">` tag**, not Next.js `<Link>`. This prevents the client-side router from intercepting anchor navigation and ensures reliable hash-based scrolling.
+- The logo still links to `/` via Next.js `<Link>`.
 - Active state logic is omitted for minimalism. Can be added later via IntersectionObserver if desired.
 - The `Header` component remains a client component; no architecture change.
+- **Redirect safety:** Next.js `permanentRedirect('/#news')` sets the HTTP `Location: /#news` header correctly. The browser follows the 308 and applies the hash after navigation. No loop occurs because the redirect targets `/`, not `/news`.
 
-## Visual Separation
+## Visual Separation & Spacing
 
-Each merged section is already wrapped in its own `Container` component (which renders a `<Card>` with an optional title). This provides natural visual separation. No additional separators (borders, spacers) are needed beyond the existing `Container` card boundaries.
+Each merged section is already wrapped in its own `Container` component (which renders a `<Card>` with an optional title). This provides natural visual separation.
+
+**Vertical spacing:** In `app/page.tsx`, the sequential `<Container>` components (Status, News, Statistics, FAQ) must be wrapped in a parent element with explicit vertical spacing, e.g. a `<div className="space-y-8">` or similar Tailwind utility, to prevent the cards from sitting flush against each other.
+
+**Smooth scrolling:** Add `scroll-behavior: smooth` to `globals.css` (targeting `html`) so anchor navigation feels professional rather than jarring. This requires zero JS overhead.
 
 ## URL Handling & Redirects
 
@@ -62,6 +67,8 @@ The page content from the three removed pages is extracted into reusable compone
 - `components/widgets/merged/statistics-section.tsx` — wraps `Statistics` in a `Container`
 - `components/widgets/merged/faq-section.tsx` — moves the content from `app/faq/page.tsx` (LiberationMechanics, FAQSection, SystemRequirementsCard, FAQPage logic)
 
+**ID placement:** The `id` attribute (`#news`, `#statistics`, `#faq`) must be placed on the outermost HTML element returned by each section component (e.g., the `<section>` or `<Container>` wrapper), not inside child widgets, to ensure scrolling lands at the correct vertical position.
+
 ## Data Flow
 
 No changes. All widgets are async Server Components that fetch their own data via the existing data layer. No new APIs, no new data dependencies.
@@ -74,10 +81,12 @@ No changes. Existing widget-level error handling (returning `null` on API failur
 
 No test suite is configured in this project. Manual verification checklist:
 - [ ] Home page loads with all four sections visible
-- [ ] Navigation anchor links scroll to correct sections
+- [ ] Navigation anchor links scroll smoothly to correct sections
 - [ ] `/news`, `/statistics`, `/faq` redirect to `/#news`, `/#statistics`, `/#faq`
 - [ ] No Giscus comments are rendered anywhere
 - [ ] Widgets still fetch and display data correctly
+- [ ] Sections have comfortable vertical spacing between cards
+- [ ] Nav anchor links use plain `<a>`, not `<Link>`
 
 ## Out of Scope
 
