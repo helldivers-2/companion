@@ -36,19 +36,19 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
   },
   {
     title: "News",
-    href: "/news",
+    href: "#news",
     icon: Newspaper,
     roundedClass: "rounded-xl",
   },
   {
     title: "Statistics",
-    href: "/statistics",
+    href: "#statistics",
     icon: ChartColumnBig,
     roundedClass: "rounded-xl",
   },
   {
     title: "FAQ",
-    href: "/faq",
+    href: "#faq",
     icon: Info,
     roundedClass: "rounded-xl rounded-r-full",
   },
