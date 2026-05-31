@@ -1,3 +1,16 @@
+export interface RewardDto {
+  type: number;
+  amount: number;
+}
+
+export interface AssignmentDto {
+  id: string | number;
+  briefing: string;
+  expiration: string;
+  progress: number[];
+  rewards?: RewardDto[];
+}
+
 export interface Reward {
   type: number;
   amount: number;

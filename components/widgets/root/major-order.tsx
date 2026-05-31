@@ -1,38 +1,13 @@
-import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
-import { Assignment, StatusInfo } from "@/types/assignments";
+import { getAssignments } from "@/lib/data/assignments";
+import { getStatusInfo, getRewardTypeLabel } from "@/lib/transformers/assignments";
+import type { Assignment } from "@/types/assignments";
 import { formatDistanceToNow } from "date-fns";
-
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-
 import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
 
-const getStatusInfo = (expiration: string, progressPercent: number): StatusInfo => {
-  const timeLeft = new Date(expiration).getTime() - new Date().getTime();
-  if (timeLeft <= 0) return { text: "EXPIRED", color: "bg-red-500" };
-  if (progressPercent === 100) return { text: "COMPLETED", color: "bg-green-500" };
-  if (timeLeft < 24 * 60 * 60 * 1000) return { text: "URGENT", color: "bg-orange-500" };
-  return { text: "ACTIVE", color: "bg-blue-500" };
-};
-
-const REWARD_TYPES: Record<number, string> = {
-  1: "Medals",
-  2: "Super Credits",
-  3: "Samples",
-  4: "Requisition",
-} as const;
-
-type RewardType = keyof typeof REWARD_TYPES;
-
-const getRewardTypeLabel = (type: number): string => {
-  return REWARD_TYPES[type as RewardType] || "Unknown Reward";
-};
-
 export default async function MajorOrder() {
-  const assignments: Assignment[] = await getAPI({
-    url: "/v1/assignments",
-    revalidate: REVALIDATION_TIMES.MAJOR_ORDER,
-  });
+  const assignments = await getAssignments();
 
   return (
     <>
@@ -53,9 +28,7 @@ export default async function MajorOrder() {
               : 0;
             const timeRemaining = formatDistanceToNow(
               new Date(assignment.expiration),
-              {
-                addSuffix: true,
-              },
+              { addSuffix: true },
             );
             const statusInfo = getStatusInfo(assignment.expiration, progressPercent);
             const briefing = assignment.briefing;
