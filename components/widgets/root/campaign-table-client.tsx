@@ -6,7 +6,7 @@ import {
   getFactionIcon,
   getPlanetStats,
   species,
-} from "@/lib/get-campaigns";
+} from "@/lib/transformers/campaigns";
 import Image from "next/image";
 import { millify } from "@/lib/utils";
 

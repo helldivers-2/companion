@@ -1,9 +1,9 @@
-import { getCampaignStats } from "@/lib/get-campaigns";
+import { getCampaignData } from "@/lib/data/campaigns";
 import CampaignMap from "@/components/widgets/root/campaign-map-dynamic";
 
 export default async function CampaignMapServer() {
   try {
-    const { activePlanets, liberatedPlanets } = await getCampaignStats();
+    const { activePlanets, liberatedPlanets } = await getCampaignData();
     return (
       <CampaignMap
         activePlanets={activePlanets}

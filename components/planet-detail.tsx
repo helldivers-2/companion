@@ -5,7 +5,7 @@ import {
   getLiberation,
   getPlanetStats,
   getFactionIcon,
-} from "@/lib/get-campaigns";
+} from "@/lib/transformers/campaigns";
 import Image from "next/image";
 import { millify } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";

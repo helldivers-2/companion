@@ -1,6 +1,6 @@
 "use client";
 
-import { getFactionIcon, getLiberation } from "@/lib/get-campaigns";
+import { getFactionIcon, getLiberation } from "@/lib/transformers/campaigns";
 import { useState, useMemo, useEffect } from "react";
 import { millify } from "@/lib/utils";
 import Image from "next/image";

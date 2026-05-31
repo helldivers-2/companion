@@ -1,21 +1,9 @@
-import { getAPI, REVALIDATION_TIMES } from "@/lib/get";
+import { getSpaceStations } from "@/lib/data/space-station";
 import type { SpaceStation, TacticalAction, Cost } from "@/types/space-station";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { stripHtmlTags } from "@/lib/utils";
-
-async function getSpaceStations(): Promise<SpaceStation[]> {
-  try {
-    const stations: SpaceStation[] = await getAPI({
-      url: "/v2/space-stations",
-      revalidate: REVALIDATION_TIMES.GET_CAMPAIGNS,
-    });
-    return Array.isArray(stations) ? stations : [];
-  } catch {
-    return [];
-  }
-}
 
 function formatTimeRemaining(endTime: string): string {
   const end = new Date(endTime);
@@ -120,11 +108,13 @@ export default async function SpaceStation() {
   return (
     <div className="space-y-6">
       {stations.map((station) => {
-        const mostRelevantAction = station.tacticalActions.reduce((best, current) => {
-          const bestVotes = best.costs[0]?.currentValue ?? 0;
-          const currentVotes = current.costs[0]?.currentValue ?? 0;
-          return currentVotes > bestVotes ? current : best;
-        }, station.tacticalActions[0]);
+        const mostRelevantAction = station.tacticalActions.length > 0
+          ? station.tacticalActions.reduce((best, current) => {
+              const bestVotes = best.costs[0]?.currentValue ?? 0;
+              const currentVotes = current.costs[0]?.currentValue ?? 0;
+              return currentVotes > bestVotes ? current : best;
+            })
+          : null;
 
         const electionEnded = new Date(station.electionEnd) <= new Date();
 
@@ -144,7 +134,7 @@ export default async function SpaceStation() {
               </div>
             </div>
 
-            {station.tacticalActions.length > 0 ? (
+            {mostRelevantAction ? (
               <div className="space-y-3">
                 <TacticalActionCard key={mostRelevantAction.id32} action={mostRelevantAction} />
               </div>

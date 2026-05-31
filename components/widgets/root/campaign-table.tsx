@@ -1,11 +1,11 @@
-import { getCampaignStats } from "@/lib/get-campaigns";
+import { getCampaignData } from "@/lib/data/campaigns";
 import type { CampaignStats } from "@/types/campaigns";
 import CampaignTableClient from "@/components/widgets/root/campaign-table-client";
 
 export default async function CampaignTable() {
   try {
     const { activePlanets, liberatedPlayerCount }: CampaignStats =
-      await getCampaignStats();
+      await getCampaignData();
 
     return (
       <CampaignTableClient
