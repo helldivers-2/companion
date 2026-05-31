@@ -112,7 +112,7 @@ function LiberationMechanics() {
   );
 }
 
-function FAQSection() {
+function FAQItems() {
   return (
     <div className="space-y-6 rounded-none border bg-background p-4">
       {faqItems.map((item, index) => (
@@ -184,13 +184,13 @@ function SystemRequirementsCard({
   );
 }
 
-export default function FAQSectionComponent() {
+export default function FAQSection() {
   return (
     <section id="faq">
       <Container title="Frequently Asked Questions" className="mb-4 lg:mb-8">
         <div className="grid gap-8 md:grid-cols-2">
           <LiberationMechanics />
-          <FAQSection />
+          <FAQItems />
         </div>
       </Container>
 
