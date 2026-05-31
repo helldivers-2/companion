@@ -24,9 +24,9 @@ describe("getAssignments", () => {
     expect(result[0].briefing).toBe("Test");
   });
 
-  it("returns empty array on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchAssignments).mockRejectedValue(new Error("fail"));
     const result = await getAssignments();
-    expect(result).toEqual([]);
+    expect(result).toBeNull();
   });
 });

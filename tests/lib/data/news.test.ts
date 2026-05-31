@@ -24,9 +24,9 @@ describe("getPatchNotes", () => {
     expect(result[0].title).toBe("Patch");
   });
 
-  it("returns empty array on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchPatchNotes).mockRejectedValue(new Error("fail"));
     const result = await getPatchNotes();
-    expect(result).toEqual([]);
+    expect(result).toBeNull();
   });
 });

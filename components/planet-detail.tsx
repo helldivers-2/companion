@@ -37,7 +37,7 @@ interface PlanetDetailProps {
 function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
   const { planet } = campaign;
   const { liberation, rate, status, eta } = getPlanetStats(planet);
-  const factionIcon = getFactionIcon(campaign.faction);
+  const factionIcon = getFactionIcon(campaign.planet.currentOwner);
 
   return (
     <div className="space-y-4 p-4">
@@ -47,7 +47,7 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
             src={factionIcon}
             height={28}
             width={28}
-            alt={`${campaign.faction} Icon`}
+            alt={`${campaign.planet.currentOwner} Icon`}
           />
         )}
         <div>

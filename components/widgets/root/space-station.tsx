@@ -25,7 +25,8 @@ function formatTimeRemaining(endTime: string): string {
 }
 
 function CostProgress({ cost }: { cost: Cost }) {
-  const progress = (cost.currentValue / cost.targetValue) * 100;
+  const progress =
+    cost.targetValue === 0 ? 0 : (cost.currentValue / cost.targetValue) * 100;
   const ratePerHour = cost.deltaPerSecond * 3600;
 
   return (
@@ -96,6 +97,14 @@ function TacticalActionCard({ action }: { action: TacticalAction }) {
 
 export default async function SpaceStation() {
   const stations = await getSpaceStations();
+
+  if (stations === null) {
+    return (
+      <div className="text-muted-foreground text-sm p-4 text-center">
+        Unable to load space station data. Please try again later.
+      </div>
+    );
+  }
 
   if (stations.length === 0) {
     return (

@@ -24,9 +24,9 @@ describe("getDispatches", () => {
     expect(result[0].message).toBe("Hello");
   });
 
-  it("returns empty array on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchDispatches).mockRejectedValue(new Error("fail"));
     const result = await getDispatches();
-    expect(result).toEqual([]);
+    expect(result).toBeNull();
   });
 });

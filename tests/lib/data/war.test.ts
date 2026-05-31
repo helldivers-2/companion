@@ -36,9 +36,9 @@ describe("getWarStats", () => {
     expect(result.playerCount).toBe(1000);
   });
 
-  it("returns zeros on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchWarStats).mockRejectedValue(new Error("fail"));
     const result = await getWarStats();
-    expect(result.playerCount).toBe(0);
+    expect(result).toBeNull();
   });
 });

@@ -6,7 +6,7 @@ import { StatisticsCard } from "@/components/widgets/statistics/statistics-card"
 export default async function Statistics() {
   const stats = await getWarStats();
 
-  if (stats.playerCount === 0) {
+  if (stats === null || stats.playerCount === 0) {
     return (
       <div className="grid grid-cols-1 gap-4">
         <Card className="col-span-1 md:col-span-2">

@@ -7,6 +7,16 @@ import { formatDistanceToNow } from "date-fns";
 export default async function Dispatches() {
   const dispatches = await getDispatches();
 
+  if (dispatches === null) {
+    return (
+      <div className="py-8 text-center">
+        <Clock className="mx-auto mb-3 h-10 w-10" />
+        <h3 className="mb-1 text-base font-medium">Unable to Load Dispatches</h3>
+        <p className="text-sm text-muted-foreground">Failed to retrieve updates from High Command. Please try again later.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-3">
       {dispatches.slice(0, 5).map((dispatch) => {

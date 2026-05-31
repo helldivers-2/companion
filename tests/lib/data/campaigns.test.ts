@@ -39,10 +39,9 @@ describe("getCampaignData", () => {
     expect(result.activePlanets).toHaveLength(1);
   });
 
-  it("returns empty stats on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchCampaigns).mockRejectedValue(new Error("fail"));
     const result = await getCampaignData();
-    expect(result.activePlanets).toHaveLength(0);
-    expect(result.liberatedPlayerCount).toBe(0);
+    expect(result).toBeNull();
   });
 });

@@ -6,18 +6,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Calendar, User, ChevronRight } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
-
-interface PatchNote {
-  id: string;
-  title: string;
-  url: string;
-  author: string;
-  content: string;
-  publishedAt: string;
-}
+import type { PatchNote } from "@/types/news";
 
 interface PatchNotesListProps {
-  notes: PatchNote[];
+  notes: PatchNote[] | null;
 }
 
 function parseContent(content: string): string {
@@ -72,14 +64,20 @@ const INITIAL_COUNT = 3;
 export default function PatchNotesList({ notes }: PatchNotesListProps) {
   const [showAll, setShowAll] = useState(false);
 
-  if (notes.length === 0) {
+  if (notes === null || notes.length === 0) {
     return (
       <div className="py-12 text-center">
         <div className="mb-2">
           <Calendar className="mx-auto h-12 w-12 text-muted-foreground" />
         </div>
-        <h3 className="mb-1 text-lg font-medium">No newsfeed items found</h3>
-        <p className="text-muted-foreground">Check back later for updates</p>
+        <h3 className="mb-1 text-lg font-medium">
+          {notes === null ? "Unable to Load Newsfeed" : "No newsfeed items found"}
+        </h3>
+        <p className="text-muted-foreground">
+          {notes === null
+            ? "Failed to retrieve patch notes. Please try again later."
+            : "Check back later for updates"}
+        </p>
       </div>
     );
   }

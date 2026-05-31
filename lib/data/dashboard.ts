@@ -9,12 +9,16 @@ export interface DashboardData {
   liberatedCount: number;
 }
 
-async function _getDashboardStats(): Promise<DashboardData> {
+async function _getDashboardStats(): Promise<DashboardData | null> {
   try {
     const [warStats, campaignStats] = await Promise.all([
       getWarStats(),
       getCampaignData(),
     ]);
+
+    if (!warStats || !campaignStats) {
+      return null;
+    }
 
     return {
       playerCount: warStats.playerCount,
@@ -26,12 +30,7 @@ async function _getDashboardStats(): Promise<DashboardData> {
     };
   } catch (error) {
     console.error("getDashboardStats failed:", error);
-    return {
-      playerCount: 0,
-      activeCount: 0,
-      eventCount: 0,
-      liberatedCount: 0,
-    };
+    return null;
   }
 }
 

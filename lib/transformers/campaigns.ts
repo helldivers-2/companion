@@ -44,6 +44,10 @@ export function mapCampaignDto(dto: CampaignDto): Campaign {
   };
 }
 
+function isApproximatelyEqual(a: number, b: number, epsilon = 0.01): boolean {
+  return Math.abs(a - b) < epsilon;
+}
+
 export function getEffectiveHealth(
   planet: Planet,
 ): { health: number; maxHealth: number } {
@@ -108,6 +112,7 @@ export function getPlanetStats(planet: Planet) {
 export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
   const campaignPlanets = campaigns.filter(
     (campaign) =>
+      !isApproximatelyEqual(campaign.planet.health, campaign.planet.maxHealth) &&
       campaign.planet.health < campaign.planet.maxHealth &&
       campaign.planet.event == null,
   );
@@ -115,6 +120,10 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
   const eventPlanets = campaigns.filter(
     (campaign) =>
       campaign.planet.event != null &&
+      !isApproximatelyEqual(
+        campaign.planet.event.health,
+        campaign.planet.event.maxHealth,
+      ) &&
       campaign.planet.event.health < campaign.planet.event.maxHealth,
   );
 
@@ -128,7 +137,10 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
 
   const liberatedPlanets = campaigns.filter(
     (campaign) =>
-      campaign.planet.health === campaign.planet.maxHealth &&
+      isApproximatelyEqual(
+        campaign.planet.health,
+        campaign.planet.maxHealth,
+      ) &&
       campaign.planet.event === null,
   );
 

@@ -111,12 +111,12 @@ const PlanetPopup = ({
         <div className="flex size-6 flex-shrink-0 items-center justify-center rounded-none bg-muted">
           <Image
             src={
-              getFactionIcon(campaign.faction) ||
+              getFactionIcon(campaign.planet.currentOwner) ||
               "/web-app-manifest-192x192.png"
             }
             height={20}
             width={20}
-            alt={`${campaign.faction} Icon`}
+            alt={`${campaign.planet.currentOwner} Icon`}
             className="size-4"
           />
         </div>

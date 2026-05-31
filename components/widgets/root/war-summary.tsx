@@ -6,6 +6,16 @@ import { Card, CardContent } from "@/components/ui/card";
 export default async function WarSummary() {
   const stats = await getDashboardStats();
 
+  if (stats === null) {
+    return (
+      <Card>
+        <CardContent className="flex flex-wrap items-center justify-between gap-3">
+          <span className="text-sm text-muted-foreground">War status temporarily unavailable.</span>
+        </CardContent>
+      </Card>
+    );
+  }
+
   const items = [
     { icon: Users, label: "Players", value: millify(stats.playerCount) },
     { icon: Swords, label: "Active", value: String(stats.activeCount) },

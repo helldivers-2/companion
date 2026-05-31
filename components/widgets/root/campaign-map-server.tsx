@@ -3,7 +3,19 @@ import CampaignMap from "@/components/widgets/root/campaign-map-dynamic";
 
 export default async function CampaignMapServer() {
   try {
-    const { activePlanets, liberatedPlanets } = await getCampaignData();
+    const data = await getCampaignData();
+
+    if (data === null) {
+      return (
+        <CampaignMap
+          activePlanets={[]}
+          liberatedPlanets={[]}
+          error="Failed to load campaign data. Please try again later."
+        />
+      );
+    }
+
+    const { activePlanets, liberatedPlanets } = data;
     return (
       <CampaignMap
         activePlanets={activePlanets}

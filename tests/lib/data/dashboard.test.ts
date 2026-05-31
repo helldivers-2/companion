@@ -63,12 +63,11 @@ describe("getDashboardStats", () => {
     expect(result.activeCount).toBe(1);
   });
 
-  it("returns zeros on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(getCampaignData).mockRejectedValue(new Error("fail"));
     vi.mocked(getWarStats).mockRejectedValue(new Error("fail"));
 
     const result = await getDashboardStats();
-    expect(result.playerCount).toBe(0);
-    expect(result.activeCount).toBe(0);
+    expect(result).toBeNull();
   });
 });

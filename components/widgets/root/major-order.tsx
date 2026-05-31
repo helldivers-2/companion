@@ -9,6 +9,18 @@ import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
 export default async function MajorOrder() {
   const assignments = await getAssignments();
 
+  if (assignments === null) {
+    return (
+      <div className="py-12 text-center">
+        <Target className="mx-auto mb-4 h-16 w-16 text-icon" />
+        <h3 className="mb-2 text-xl font-semibold">Unable to Load Major Orders</h3>
+        <p className="text-muted-foreground">
+          Failed to retrieve orders from Super Earth Command. Please try again later.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       {assignments.length === 0 ? (

@@ -42,9 +42,9 @@ describe("getSpaceStations", () => {
     expect(result[0].id32).toBe(1);
   });
 
-  it("returns empty array on failure", async () => {
+  it("returns null on failure", async () => {
     vi.mocked(fetchSpaceStations).mockRejectedValue(new Error("fail"));
     const result = await getSpaceStations();
-    expect(result).toEqual([]);
+    expect(result).toBeNull();
   });
 });

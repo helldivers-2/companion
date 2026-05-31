@@ -38,10 +38,10 @@ export default function CampaignTableClient({
   const [detailOpen, setDetailOpen] = useState(false);
   const [factionFilter, setFactionFilter] = useState<string | null>(null);
 
-  const factions = [...new Set(activePlanets.map((c) => c.faction))];
+  const factions = [...new Set(activePlanets.map((c) => c.planet.currentOwner))];
 
   const filtered = factionFilter
-    ? activePlanets.filter((c) => c.faction === factionFilter)
+    ? activePlanets.filter((c) => c.planet.currentOwner === factionFilter)
     : activePlanets;
 
   const filteredPlayerCount = filtered.reduce(
@@ -123,12 +123,12 @@ export default function CampaignTableClient({
                 <TableCell className="flex gap-2 font-medium">
                   <Image
                     src={
-                      getFactionIcon(campaign.faction) ||
+                      getFactionIcon(campaign.planet.currentOwner) ||
                       "/web-app-manifest-192x192.png"
                     }
                     height={20}
                     width={20}
-                    alt={`${campaign.faction} Icon`}
+                    alt={`${campaign.planet.currentOwner} Icon`}
                     className="h-5"
                   />
                   {planet.name}
