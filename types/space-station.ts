@@ -1,11 +1,35 @@
-import type { Planet } from "./campaigns";
+import type { PlanetDto, Planet } from "./campaigns";
 
-export interface SpaceStation {
+export interface CostDto {
+  id: string;
+  targetValue: number;
+  currentValue: number;
+  deltaPerSecond: number;
+}
+
+export interface TacticalActionDto {
   id32: number;
-  planet: Planet;
+  name: string;
+  description: string;
+  strategicDescription: string;
+  status: number;
+  statusExpire: string;
+  costs: CostDto[];
+}
+
+export interface SpaceStationDto {
+  id32: number;
+  planet: PlanetDto;
   electionEnd: string;
   flags: number;
-  tacticalActions: TacticalAction[];
+  tacticalActions: TacticalActionDto[];
+}
+
+export interface Cost {
+  id: string;
+  targetValue: number;
+  currentValue: number;
+  deltaPerSecond: number;
 }
 
 export interface TacticalAction {
@@ -18,9 +42,10 @@ export interface TacticalAction {
   costs: Cost[];
 }
 
-export interface Cost {
-  id: string;
-  targetValue: number;
-  currentValue: number;
-  deltaPerSecond: number;
+export interface SpaceStation {
+  id32: number;
+  planet: Planet;
+  electionEnd: string;
+  flags: number;
+  tacticalActions: TacticalAction[];
 }
