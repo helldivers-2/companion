@@ -8,7 +8,9 @@ vi.mock("@/lib/api/client", () => ({
 
 describe("fetchDispatches", () => {
   it("returns DTOs on success", async () => {
-    const mock = [{ id: 1, published: "2026-01-01", type: 0, message: "Hello" }];
+    const mock = [
+      { id: 1, published: "2026-01-01", type: 0, message: "Hello" },
+    ];
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchDispatches();
@@ -20,11 +22,16 @@ describe("fetchDispatches", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchDispatches()).rejects.toThrow("Failed to fetch dispatches");
+    await expect(fetchDispatches()).rejects.toThrow(
+      "Failed to fetch dispatches",
+    );
   });
 
   it("throws on invalid shape", async () => {
-    vi.mocked(getAPI).mockResolvedValue({ success: true, data: { notAnArray: true } });
+    vi.mocked(getAPI).mockResolvedValue({
+      success: true,
+      data: { notAnArray: true },
+    });
     await expect(fetchDispatches()).rejects.toThrow("Invalid dispatches data");
   });
 });

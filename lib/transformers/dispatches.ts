@@ -26,7 +26,8 @@ export function getDispatchTypeInfo(message: string): DispatchTypeInfo {
       type: "success",
       label: "Victory",
       icon: CheckCircle,
-      color: "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
+      color:
+        "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
     };
   } else if (upperMessage.includes("MAJOR ORDER FAILED")) {
     return {
@@ -40,7 +41,8 @@ export function getDispatchTypeInfo(message: string): DispatchTypeInfo {
       type: "urgent",
       label: "New Order",
       icon: AlertTriangle,
-      color: "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400",
+      color:
+        "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400",
     };
   } else if (
     upperMessage.includes("SABOTAGED") ||

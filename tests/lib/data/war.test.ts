@@ -33,6 +33,7 @@ describe("getWarStats", () => {
     });
 
     const result = await getWarStats();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result.playerCount).toBe(1000);
   });
 

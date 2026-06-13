@@ -8,7 +8,16 @@ vi.mock("@/lib/api/client", () => ({
 
 describe("fetchPatchNotes", () => {
   it("returns DTOs on success", async () => {
-    const mock = [{ id: "1", title: "Patch", url: "http://example.com", author: "Dev", content: "Fixes", publishedAt: "2026-01-01" }];
+    const mock = [
+      {
+        id: "1",
+        title: "Patch",
+        url: "http://example.com",
+        author: "Dev",
+        content: "Fixes",
+        publishedAt: "2026-01-01",
+      },
+    ];
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchPatchNotes();
@@ -20,7 +29,9 @@ describe("fetchPatchNotes", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchPatchNotes()).rejects.toThrow("Failed to fetch patch notes");
+    await expect(fetchPatchNotes()).rejects.toThrow(
+      "Failed to fetch patch notes",
+    );
   });
 
   it("throws on invalid shape", async () => {

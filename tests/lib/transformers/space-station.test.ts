@@ -26,7 +26,9 @@ describe("mapSpaceStationDto", () => {
           strategicDescription: "Strat",
           status: 1,
           statusExpire: "2026-01-01",
-          costs: [{ id: "c1", targetValue: 100, currentValue: 50, deltaPerSecond: 0 }],
+          costs: [
+            { id: "c1", targetValue: 100, currentValue: 50, deltaPerSecond: 0 },
+          ],
         },
       ],
     };

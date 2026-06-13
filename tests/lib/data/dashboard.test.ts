@@ -59,6 +59,7 @@ describe("getDashboardStats", () => {
     });
 
     const result = await getDashboardStats();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result.playerCount).toBe(1000);
     expect(result.activeCount).toBe(1);
   });

@@ -39,7 +39,10 @@ export async function getAPI<T>({
       const retryController = new AbortController();
       const retryTimeoutId = setTimeout(() => retryController.abort(), timeout);
       try {
-        res = await fetch(apiUrl, { ...fetchOptions, signal: retryController.signal });
+        res = await fetch(apiUrl, {
+          ...fetchOptions,
+          signal: retryController.signal,
+        });
       } finally {
         clearTimeout(retryTimeoutId);
       }

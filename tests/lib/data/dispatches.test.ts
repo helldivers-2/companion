@@ -16,10 +16,13 @@ vi.mock("@/lib/services/dispatches", () => ({
 
 describe("getDispatches", () => {
   it("returns mapped dispatches", async () => {
-    const mock = [{ id: 1, published: "2026-01-01", type: 0, message: "Hello" }];
+    const mock = [
+      { id: 1, published: "2026-01-01", type: 0, message: "Hello" },
+    ];
     vi.mocked(fetchDispatches).mockResolvedValue(mock);
 
     const result = await getDispatches();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result).toHaveLength(1);
     expect(result[0].message).toBe("Hello");
   });

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -63,6 +64,7 @@ const INITIAL_COUNT = 3;
 
 export default function PatchNotesList({ notes }: PatchNotesListProps) {
   const [showAll, setShowAll] = useState(false);
+  const [now] = useState(() => Date.now());
 
   if (notes === null || notes.length === 0) {
     return (
@@ -71,7 +73,9 @@ export default function PatchNotesList({ notes }: PatchNotesListProps) {
           <Calendar className="mx-auto h-12 w-12 text-muted-foreground" />
         </div>
         <h3 className="mb-1 text-lg font-medium">
-          {notes === null ? "Unable to Load Newsfeed" : "No newsfeed items found"}
+          {notes === null
+            ? "Unable to Load Newsfeed"
+            : "No newsfeed items found"}
         </h3>
         <p className="text-muted-foreground">
           {notes === null
@@ -92,7 +96,7 @@ export default function PatchNotesList({ notes }: PatchNotesListProps) {
         {notes.map((note, index) => {
           const publishedDate = new Date(note.publishedAt);
           const isRecent =
-            Date.now() - publishedDate.getTime() < 7 * 24 * 60 * 60 * 1000;
+            now - publishedDate.getTime() < 7 * 24 * 60 * 60 * 1000;
           const parsedContent = parseContent(note.content);
           const isOlder = index >= INITIAL_COUNT;
 

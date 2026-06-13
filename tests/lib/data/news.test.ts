@@ -16,10 +16,20 @@ vi.mock("@/lib/services/news", () => ({
 
 describe("getPatchNotes", () => {
   it("returns mapped patch notes", async () => {
-    const mock = [{ id: "1", title: "Patch", url: "http://example.com", author: "Dev", content: "Fixes", publishedAt: "2026-01-01" }];
+    const mock = [
+      {
+        id: "1",
+        title: "Patch",
+        url: "http://example.com",
+        author: "Dev",
+        content: "Fixes",
+        publishedAt: "2026-01-01",
+      },
+    ];
     vi.mocked(fetchPatchNotes).mockResolvedValue(mock);
 
     const result = await getPatchNotes();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result).toHaveLength(1);
     expect(result[0].title).toBe("Patch");
   });

@@ -54,6 +54,7 @@ types/
 ## Layer Responsibilities
 
 ### `lib/api/client.ts`
+
 - Wraps `fetch` to `https://api.helldivers2.dev/api`
 - Injects `X-Super-Client` and `X-Super-Contact` headers from `config/site.ts`
 - Handles `AbortController` timeout
@@ -62,10 +63,12 @@ types/
 - **No domain knowledge. Only HTTP mechanics. No `fallback` swallowing.**
 
 ### `lib/api/endpoints.ts`
+
 - Exports URL path constants and their associated `revalidate` values
 - Centralizes cache policy decisions so services don't hard-code numbers
 
 ### `lib/services/`
+
 - One file per domain concept (campaigns, assignments, dispatches, space-station)
 - Each function calls `getAPI` from `lib/api/client.ts` with the correct URL and revalidation time
 - Receives Result from client. On `success: false`, throws descriptive error.
@@ -73,6 +76,7 @@ types/
 - **Returns raw DTOs only.** Never calls transformers.
 
 ### `lib/transformers/`
+
 - Pure functions: input in, output out. No side effects, no fetch calls.
 - Contains **DTO-to-Application mapping functions** (e.g., `mapCampaignDto()`) and pure computation functions.
 - `campaigns.ts`: `mapCampaignDto()`, `mapPlanetDto()`, `getEffectiveHealth()`, `getLiberation()`, `getLiberationRate()`, `getStatus()`, `getTimeToLiberation()`, `getPlanetStats()`, `getCampaignStats()`
@@ -81,6 +85,7 @@ types/
 - Trivial to unit test.
 
 ### `lib/data/`
+
 - Composed queries for specific UI needs.
 - Every exported function is wrapped in React's `cache()` to deduplicate requests across the same RSC render pass.
 - Imports services (for fetching) and transformers (for mapping and computation).
@@ -88,6 +93,7 @@ types/
 - This is what pages/widgets import directly.
 
 ### `types/`
+
 - Each domain file contains **both** DTOs (raw API shapes, prefixed with `Dto` or kept in a nested namespace) and clean application types.
 - No more inline interfaces inside widgets.
 - DTOs are what the upstream API returns. Application types are what transformers produce and components consume.
@@ -125,6 +131,7 @@ Widget (RSC)
 Migrate **one domain at a time** so the app never breaks. Deploy after each domain.
 
 ### Phase 1: Dispatches (simplest domain)
+
 1. Set up Vitest configuration (`vitest.config.ts`, test script in `package.json`).
 2. Create `types/dispatches.ts` with DTO + app types. Move inline `Dispatch` from widget.
 3. Create `lib/api/client.ts` with Result type and `lib/api/endpoints.ts`.
@@ -136,6 +143,7 @@ Migrate **one domain at a time** so the app never breaks. Deploy after each doma
 9. Run `pnpm build`, verify, commit, deploy.
 
 ### Phase 2: Assignments
+
 10. Create `types/assignments.ts` with DTOs + app types.
 11. Create `lib/services/assignments.ts`.
 12. Create `lib/transformers/assignments.ts`.
@@ -145,6 +153,7 @@ Migrate **one domain at a time** so the app never breaks. Deploy after each doma
 16. Run `pnpm build`, verify, commit, deploy.
 
 ### Phase 3: Campaigns / War Stats (most complex)
+
 17. Create `types/campaigns.ts` and `types/war.ts` with DTOs + app types.
 18. Create `lib/services/campaigns.ts`.
 19. Create `lib/transformers/campaigns.ts` (extract from `lib/get-campaigns.tsx`).
@@ -154,6 +163,7 @@ Migrate **one domain at a time** so the app never breaks. Deploy after each doma
 23. Run `pnpm build`, verify, commit, deploy.
 
 ### Phase 4: Cleanup
+
 24. Delete `lib/get.ts` and `lib/get-campaigns.tsx`.
 25. Verify `pnpm build` passes with zero references to old files.
 

@@ -10,7 +10,9 @@ export default async function WarSummary() {
     return (
       <Card>
         <CardContent className="flex flex-wrap items-center justify-between gap-3">
-          <span className="text-sm text-muted-foreground">War status temporarily unavailable.</span>
+          <span className="text-sm text-muted-foreground">
+            War status temporarily unavailable.
+          </span>
         </CardContent>
       </Card>
     );

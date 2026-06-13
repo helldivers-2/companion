@@ -12,23 +12,24 @@
 
 ## File Structure
 
-| File | Action | Responsibility |
-|------|--------|----------------|
-| `app/globals.css` | Modify | Add `scroll-behavior: smooth` to `html` |
-| `components/widgets/merged/news-section.tsx` | Create | Renders News page content (Steam Newsfeed + Wikipedia) with `#news` id |
-| `components/widgets/merged/statistics-section.tsx` | Create | Renders Statistics widget with `#statistics` id |
-| `components/widgets/merged/faq-section.tsx` | Create | Renders FAQ page content (mechanics, FAQ, system requirements) with `#faq` id |
-| `app/page.tsx` | Modify | Import and render all sections with vertical spacing; remove `discussion` prop |
-| `components/header.tsx` | Modify | Update `NAVIGATION_ITEMS` hrefs to anchor links |
-| `app/news/page.tsx` | Modify | Replace with `permanentRedirect('/#news')` |
-| `app/statistics/page.tsx` | Modify | Replace with `permanentRedirect('/#statistics')` |
-| `app/faq/page.tsx` | Modify | Replace with `permanentRedirect('/#faq')` |
+| File                                               | Action | Responsibility                                                                 |
+| -------------------------------------------------- | ------ | ------------------------------------------------------------------------------ |
+| `app/globals.css`                                  | Modify | Add `scroll-behavior: smooth` to `html`                                        |
+| `components/widgets/merged/news-section.tsx`       | Create | Renders News page content (Steam Newsfeed + Wikipedia) with `#news` id         |
+| `components/widgets/merged/statistics-section.tsx` | Create | Renders Statistics widget with `#statistics` id                                |
+| `components/widgets/merged/faq-section.tsx`        | Create | Renders FAQ page content (mechanics, FAQ, system requirements) with `#faq` id  |
+| `app/page.tsx`                                     | Modify | Import and render all sections with vertical spacing; remove `discussion` prop |
+| `components/header.tsx`                            | Modify | Update `NAVIGATION_ITEMS` hrefs to anchor links                                |
+| `app/news/page.tsx`                                | Modify | Replace with `permanentRedirect('/#news')`                                     |
+| `app/statistics/page.tsx`                          | Modify | Replace with `permanentRedirect('/#statistics')`                               |
+| `app/faq/page.tsx`                                 | Modify | Replace with `permanentRedirect('/#faq')`                                      |
 
 ---
 
 ### Task 1: Add Smooth Scrolling
 
 **Files:**
+
 - Modify: `app/globals.css`
 
 Add `scroll-behavior: smooth` to the `html` element so anchor navigation feels professional.
@@ -63,6 +64,7 @@ git commit -m "feat: add smooth scroll for anchor navigation"
 ### Task 2: Create News Section Component
 
 **Files:**
+
 - Create: `components/widgets/merged/news-section.tsx`
 
 Extracts the News page layout into a reusable Server Component with `id="news"` on the outer wrapper.
@@ -115,6 +117,7 @@ git commit -m "feat: add news section component for merged home page"
 ### Task 3: Create Statistics Section Component
 
 **Files:**
+
 - Create: `components/widgets/merged/statistics-section.tsx`
 
 Extracts the Statistics page layout with `id="statistics"` on the outer wrapper.
@@ -148,6 +151,7 @@ git commit -m "feat: add statistics section component for merged home page"
 ### Task 4: Create FAQ Section Component
 
 **Files:**
+
 - Create: `components/widgets/merged/faq-section.tsx`
 
 Moves all FAQ page content (mechanics, FAQ, system requirements) into one component with `id="faq"` on the outer wrapper.
@@ -383,6 +387,7 @@ git commit -m "feat: add FAQ section component for merged home page"
 ### Task 5: Merge Sections into Home Page
 
 **Files:**
+
 - Modify: `app/page.tsx`
 
 Replaces the current single-section home page with a vertically stacked layout containing Status, News, Statistics, and FAQ. Removes the `discussion` prop to eliminate Giscus comments.
@@ -390,7 +395,7 @@ Replaces the current single-section home page with a vertically stacked layout c
 - [ ] **Step 1: Rewrite `app/page.tsx`**
 
 ```tsx
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 import Container from "@/components/container";
 import { DashboardCard } from "@/components/dashboard-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -408,8 +413,9 @@ import FAQSection from "@/components/widgets/merged/faq-section";
 
 export const metadata: Metadata = {
   title: "War Status",
-  description: "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
-}
+  description:
+    "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
+};
 
 export default function StatusPage() {
   return (
@@ -439,13 +445,13 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-2 self-start">
+            <div className="self-start lg:col-span-2">
               <DashboardCard title="Map">
                 <CampaignMap />
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-1 self-start">
+            <div className="self-start lg:col-span-1">
               <DashboardCard title="Dispatches">
                 <ScrollArea className="lg:h-[500px]">
                   <Dispatches />
@@ -476,6 +482,7 @@ git commit -m "feat: merge news, statistics, and FAQ sections into home page"
 ### Task 6: Update Header Navigation to Anchor Links
 
 **Files:**
+
 - Modify: `components/header.tsx`
 
 Updates `NAVIGATION_ITEMS` hrefs to use anchor links. The `NavigationMenuLink` from Radix UI already renders a plain `<a>` tag, so no component-level changes are needed beyond updating the `href` values.
@@ -525,6 +532,7 @@ git commit -m "feat: convert nav links to anchor links for merged sections"
 ### Task 7: Replace Old Pages with Redirects
 
 **Files:**
+
 - Modify: `app/news/page.tsx`
 - Modify: `app/statistics/page.tsx`
 - Modify: `app/faq/page.tsx`
@@ -606,6 +614,7 @@ git status
 - [ ] **Type consistency:** All component names, file paths, and prop names match between tasks.
 
 **Spec coverage mapping:**
+
 - Anchor nav links → Task 6
 - Smooth scrolling → Task 1
 - Vertical spacing → Task 5 (`space-y-8` wrapper)

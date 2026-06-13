@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { mapDispatchDto, parseContent, getDispatchTypeInfo } from "@/lib/transformers/dispatches";
+import {
+  mapDispatchDto,
+  parseContent,
+  getDispatchTypeInfo,
+} from "@/lib/transformers/dispatches";
 
 describe("mapDispatchDto", () => {
   it("maps identical fields", () => {

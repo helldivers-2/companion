@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 import Container from "@/components/container";
 import { DashboardCard } from "@/components/dashboard-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -16,8 +16,9 @@ import FAQSection from "@/components/widgets/merged/faq-section";
 
 export const metadata: Metadata = {
   title: "War Status",
-  description: "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
-}
+  description:
+    "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
+};
 
 export default function StatusPage() {
   return (
@@ -47,13 +48,13 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-2 self-start">
+            <div className="self-start lg:col-span-2">
               <DashboardCard title="Map">
                 <CampaignMap />
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-1 self-start">
+            <div className="self-start lg:col-span-1">
               <DashboardCard title="Dispatches">
                 <ScrollArea className="lg:h-[500px]">
                   <Dispatches />

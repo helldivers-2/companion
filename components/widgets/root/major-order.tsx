@@ -1,5 +1,8 @@
 import { getAssignments } from "@/lib/data/assignments";
-import { getStatusInfo, getRewardTypeLabel } from "@/lib/transformers/assignments";
+import {
+  getStatusInfo,
+  getRewardTypeLabel,
+} from "@/lib/transformers/assignments";
 import type { Assignment } from "@/types/assignments";
 import { formatDistanceToNow } from "date-fns";
 import { Progress } from "@/components/ui/progress";
@@ -13,9 +16,12 @@ export default async function MajorOrder() {
     return (
       <div className="py-12 text-center">
         <Target className="mx-auto mb-4 h-16 w-16 text-icon" />
-        <h3 className="mb-2 text-xl font-semibold">Unable to Load Major Orders</h3>
+        <h3 className="mb-2 text-xl font-semibold">
+          Unable to Load Major Orders
+        </h3>
         <p className="text-muted-foreground">
-          Failed to retrieve orders from Super Earth Command. Please try again later.
+          Failed to retrieve orders from Super Earth Command. Please try again
+          later.
         </p>
       </div>
     );
@@ -34,15 +40,21 @@ export default async function MajorOrder() {
       ) : (
         <div>
           {assignments.map((assignment: Assignment) => {
-            const completedCount = assignment.progress.filter((p) => p === 1).length;
-            const progressPercent = assignment.progress.length > 0
-              ? (completedCount / assignment.progress.length) * 100
-              : 0;
+            const completedCount = assignment.progress.filter(
+              (p) => p === 1,
+            ).length;
+            const progressPercent =
+              assignment.progress.length > 0
+                ? (completedCount / assignment.progress.length) * 100
+                : 0;
             const timeRemaining = formatDistanceToNow(
               new Date(assignment.expiration),
               { addSuffix: true },
             );
-            const statusInfo = getStatusInfo(assignment.expiration, progressPercent);
+            const statusInfo = getStatusInfo(
+              assignment.expiration,
+              progressPercent,
+            );
             const briefing = assignment.briefing;
 
             return (
@@ -91,7 +103,8 @@ export default async function MajorOrder() {
                     <Progress value={progressPercent} className="h-3" />
                     <div className="flex justify-between text-xs">
                       <span>
-                        {completedCount} of {assignment.progress.length} objectives completed
+                        {completedCount} of {assignment.progress.length}{" "}
+                        objectives completed
                       </span>
                       {progressPercent === 100 && (
                         <span className="flex items-center gap-1 font-medium text-green-600">

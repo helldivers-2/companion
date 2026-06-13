@@ -39,7 +39,7 @@ function CostProgress({ cost }: { cost: Cost }) {
       </div>
       <Progress value={progress} />
       {ratePerHour !== 0 && (
-        <div className="text-xs text-muted-foreground text-right">
+        <div className="text-right text-xs text-muted-foreground">
           {ratePerHour >= 0 ? "+" : ""}
           {ratePerHour.toFixed(1)}/hr
         </div>
@@ -59,7 +59,7 @@ function TacticalActionCard({ action }: { action: TacticalAction }) {
   const status = STATUS_LABELS[action.status] ?? STATUS_LABELS[0];
 
   return (
-    <div className="border p-4 space-y-3">
+    <div className="space-y-3 border p-4">
       <div className="flex items-start justify-between gap-2">
         <div>
           <h4 className="font-medium">{action.name}</h4>
@@ -71,7 +71,7 @@ function TacticalActionCard({ action }: { action: TacticalAction }) {
       </div>
 
       {action.strategicDescription && (
-        <p className="text-sm italic text-muted-foreground">
+        <p className="text-sm text-muted-foreground italic">
           {stripHtmlTags(action.strategicDescription)}
         </p>
       )}
@@ -100,7 +100,7 @@ export default async function SpaceStation() {
 
   if (stations === null) {
     return (
-      <div className="text-muted-foreground text-sm p-4 text-center">
+      <div className="p-4 text-center text-sm text-muted-foreground">
         Unable to load space station data. Please try again later.
       </div>
     );
@@ -108,7 +108,7 @@ export default async function SpaceStation() {
 
   if (stations.length === 0) {
     return (
-      <div className="text-muted-foreground text-sm p-4 text-center">
+      <div className="p-4 text-center text-sm text-muted-foreground">
         No active space stations
       </div>
     );
@@ -117,13 +117,14 @@ export default async function SpaceStation() {
   return (
     <div className="space-y-6">
       {stations.map((station) => {
-        const mostRelevantAction = station.tacticalActions.length > 0
-          ? station.tacticalActions.reduce((best, current) => {
-              const bestVotes = best.costs[0]?.currentValue ?? 0;
-              const currentVotes = current.costs[0]?.currentValue ?? 0;
-              return currentVotes > bestVotes ? current : best;
-            })
-          : null;
+        const mostRelevantAction =
+          station.tacticalActions.length > 0
+            ? station.tacticalActions.reduce((best, current) => {
+                const bestVotes = best.costs[0]?.currentValue ?? 0;
+                const currentVotes = current.costs[0]?.currentValue ?? 0;
+                return currentVotes > bestVotes ? current : best;
+              })
+            : null;
 
         const electionEnded = new Date(station.electionEnd) <= new Date();
 
@@ -145,7 +146,10 @@ export default async function SpaceStation() {
 
             {mostRelevantAction ? (
               <div className="space-y-3">
-                <TacticalActionCard key={mostRelevantAction.id32} action={mostRelevantAction} />
+                <TacticalActionCard
+                  key={mostRelevantAction.id32}
+                  action={mostRelevantAction}
+                />
               </div>
             ) : (
               <div className="text-sm text-muted-foreground">

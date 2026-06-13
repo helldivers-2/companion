@@ -1,4 +1,8 @@
-import type { AssignmentDto, Assignment, StatusInfo } from "@/types/assignments";
+import type {
+  AssignmentDto,
+  Assignment,
+  StatusInfo,
+} from "@/types/assignments";
 
 export function mapAssignmentDto(dto: AssignmentDto): Assignment {
   return {
@@ -25,10 +29,15 @@ export function getRewardTypeLabel(type: number): string {
   return REWARD_TYPES[type as RewardType] || "Unknown Reward";
 }
 
-export function getStatusInfo(expiration: string, progressPercent: number): StatusInfo {
+export function getStatusInfo(
+  expiration: string,
+  progressPercent: number,
+): StatusInfo {
   const timeLeft = new Date(expiration).getTime() - new Date().getTime();
   if (timeLeft <= 0) return { text: "EXPIRED", color: "bg-red-500" };
-  if (progressPercent === 100) return { text: "COMPLETED", color: "bg-green-500" };
-  if (timeLeft < 24 * 60 * 60 * 1000) return { text: "URGENT", color: "bg-orange-500" };
+  if (progressPercent === 100)
+    return { text: "COMPLETED", color: "bg-green-500" };
+  if (timeLeft < 24 * 60 * 60 * 1000)
+    return { text: "URGENT", color: "bg-orange-500" };
   return { text: "ACTIVE", color: "bg-blue-500" };
 }

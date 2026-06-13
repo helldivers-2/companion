@@ -1,5 +1,8 @@
 import { getDispatches } from "@/lib/data/dispatches";
-import { parseContent, getDispatchTypeInfo } from "@/lib/transformers/dispatches";
+import {
+  parseContent,
+  getDispatchTypeInfo,
+} from "@/lib/transformers/dispatches";
 import { Badge } from "@/components/ui/badge";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
@@ -11,8 +14,12 @@ export default async function Dispatches() {
     return (
       <div className="py-8 text-center">
         <Clock className="mx-auto mb-3 h-10 w-10" />
-        <h3 className="mb-1 text-base font-medium">Unable to Load Dispatches</h3>
-        <p className="text-sm text-muted-foreground">Failed to retrieve updates from High Command. Please try again later.</p>
+        <h3 className="mb-1 text-base font-medium">
+          Unable to Load Dispatches
+        </h3>
+        <p className="text-sm text-muted-foreground">
+          Failed to retrieve updates from High Command. Please try again later.
+        </p>
       </div>
     );
   }
@@ -29,7 +36,7 @@ export default async function Dispatches() {
             key={dispatch.id}
             className="border-b border-border pb-3 last:border-0 last:pb-0"
           >
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="mb-1.5 flex items-center justify-between">
               <Badge
                 variant="secondary"
                 className={`${typeInfo.color} border-0 font-medium`}
@@ -58,8 +65,12 @@ export default async function Dispatches() {
       {dispatches.length === 0 && (
         <div className="py-8 text-center">
           <Clock className="mx-auto mb-3 h-10 w-10" />
-          <h3 className="mb-1 text-base font-medium">No dispatches available</h3>
-          <p className="text-sm text-muted-foreground">Check back later for updates from High Command</p>
+          <h3 className="mb-1 text-base font-medium">
+            No dispatches available
+          </h3>
+          <p className="text-sm text-muted-foreground">
+            Check back later for updates from High Command
+          </p>
         </div>
       )}
     </div>

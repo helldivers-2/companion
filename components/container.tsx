@@ -25,9 +25,9 @@ const Container = ({
         {title ? (
           <CardHeader>
             <CardTitle>
-              <h1 className="mt-4 text-center text-3xl font-semibold tracking-tight text-balance">
+              <h2 className="mt-4 text-center text-3xl font-semibold tracking-tight text-balance">
                 {title}
-              </h1>
+              </h2>
             </CardTitle>
           </CardHeader>
         ) : null}

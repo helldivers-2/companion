@@ -48,9 +48,10 @@ function isApproximatelyEqual(a: number, b: number, epsilon = 0.01): boolean {
   return Math.abs(a - b) < epsilon;
 }
 
-export function getEffectiveHealth(
-  planet: Planet,
-): { health: number; maxHealth: number } {
+export function getEffectiveHealth(planet: Planet): {
+  health: number;
+  maxHealth: number;
+} {
   return {
     health: planet.event?.health ?? planet.health,
     maxHealth: planet.event?.maxHealth ?? planet.maxHealth,
@@ -78,9 +79,7 @@ export function getLiberationRate(
   return -ratePercent;
 }
 
-export function getStatus(
-  rate: number,
-): { text: string; color: string } {
+export function getStatus(rate: number): { text: string; color: string } {
   if (rate > 0.5) return { text: "Gaining Ground", color: "text-green-500" };
   if (rate < -0.5) return { text: "Losing Ground", color: "text-red-500" };
   return { text: "Stalemate", color: "text-yellow-500" };
@@ -112,7 +111,10 @@ export function getPlanetStats(planet: Planet) {
 export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
   const campaignPlanets = campaigns.filter(
     (campaign) =>
-      !isApproximatelyEqual(campaign.planet.health, campaign.planet.maxHealth) &&
+      !isApproximatelyEqual(
+        campaign.planet.health,
+        campaign.planet.maxHealth,
+      ) &&
       campaign.planet.health < campaign.planet.maxHealth &&
       campaign.planet.event == null,
   );
@@ -127,30 +129,22 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
       campaign.planet.event.health < campaign.planet.event.maxHealth,
   );
 
-  const activePlanets = [...campaignPlanets, ...eventPlanets].sort(
-    (a, b) => {
-      const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
-      const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
-      return bH / bMH - aH / aMH;
-    },
-  );
+  const activePlanets = [...campaignPlanets, ...eventPlanets].sort((a, b) => {
+    const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
+    const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
+    return bH / bMH - aH / aMH;
+  });
 
   const liberatedPlanets = campaigns.filter(
     (campaign) =>
-      isApproximatelyEqual(
-        campaign.planet.health,
-        campaign.planet.maxHealth,
-      ) &&
+      isApproximatelyEqual(campaign.planet.health, campaign.planet.maxHealth) &&
       campaign.planet.event === null,
   );
 
-  const liberatedPlayerCount = liberatedPlanets.reduce(
-    (sum, campaign) => {
-      const playerCount = campaign.planet.statistics?.playerCount || 0;
-      return sum + playerCount;
-    },
-    0,
-  );
+  const liberatedPlayerCount = liberatedPlanets.reduce((sum, campaign) => {
+    const playerCount = campaign.planet.statistics?.playerCount || 0;
+    return sum + playerCount;
+  }, 0);
 
   return { campaigns, activePlanets, liberatedPlanets, liberatedPlayerCount };
 }

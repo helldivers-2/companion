@@ -36,6 +36,7 @@ describe("getCampaignData", () => {
     vi.mocked(fetchCampaigns).mockResolvedValue(mock);
 
     const result = await getCampaignData();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result.activePlanets).toHaveLength(1);
   });
 

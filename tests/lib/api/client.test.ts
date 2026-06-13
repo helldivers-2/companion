@@ -39,7 +39,9 @@ describe("getAPI", () => {
     fetchMock
       .mockResolvedValueOnce({
         status: 429,
-        headers: { get: (name: string) => (name === "retry-after" ? "1" : null) },
+        headers: {
+          get: (name: string) => (name === "retry-after" ? "1" : null),
+        },
       } as unknown as Response)
       .mockResolvedValueOnce({
         ok: true,

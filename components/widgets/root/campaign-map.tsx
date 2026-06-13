@@ -1,7 +1,7 @@
 "use client";
 
 import { getFactionIcon, getLiberation } from "@/lib/transformers/campaigns";
-import { useState, useMemo, useEffect } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -73,17 +73,16 @@ interface MarkerProperties {
 
 interface PlanetMarkerProps {
   campaign: Campaign;
-  index: number;
   onPlanetClick?: (campaign: Campaign) => void;
 }
 
 const useResponsiveSettings = () => {
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   return {
     isClient,
@@ -154,11 +153,7 @@ const PlanetPopup = ({
   );
 };
 
-const PlanetMarker = ({
-  campaign,
-  index,
-  onPlanetClick,
-}: PlanetMarkerProps) => {
+const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
   const { planet } = campaign;
 
   const markerData = useMemo(() => {
@@ -220,7 +215,7 @@ const PlanetMarker = ({
   const dashArray = `${(liberationPercentage / 100) * circumference} ${circumference - (liberationPercentage / 100) * circumference}`;
 
   return (
-    <div key={index}>
+    <div>
       <CircleMarker
         center={markerData.coordinates}
         radius={markerProperties.radius}
@@ -275,7 +270,6 @@ const PlanetLayer = ({
         <PlanetMarker
           key={`${campaign.planet.name}-${index}`}
           campaign={campaign}
-          index={index}
           onPlanetClick={onPlanetClick}
         />
       ))}
@@ -283,7 +277,7 @@ const PlanetLayer = ({
   </LayersControl.Overlay>
 );
 
-interface CampaignMapProps {
+export interface CampaignMapProps {
   activePlanets: Campaign[];
   liberatedPlanets: Campaign[];
   error?: string | null;

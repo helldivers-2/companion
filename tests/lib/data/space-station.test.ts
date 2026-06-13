@@ -38,6 +38,7 @@ describe("getSpaceStations", () => {
     vi.mocked(fetchSpaceStations).mockResolvedValue(mock);
 
     const result = await getSpaceStations();
+    if (result === null) throw new Error("Expected result to be defined");
     expect(result).toHaveLength(1);
     expect(result[0].id32).toBe(1);
   });

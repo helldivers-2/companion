@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { mapAssignmentDto, getRewardTypeLabel, getStatusInfo } from "@/lib/transformers/assignments";
+import {
+  mapAssignmentDto,
+  getRewardTypeLabel,
+  getStatusInfo,
+} from "@/lib/transformers/assignments";
 
 describe("mapAssignmentDto", () => {
   it("maps fields correctly", () => {

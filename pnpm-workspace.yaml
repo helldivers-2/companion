@@ -2,7 +2,7 @@ allowBuilds:
   sharp: true
   unrs-resolver: true
 onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - '@vercel/speed-insights'
+  - "@tailwindcss/oxide"
+  - "@vercel/speed-insights"
   - sharp
   - unrs-resolver

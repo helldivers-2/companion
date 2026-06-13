@@ -6,7 +6,7 @@ import { StatisticsCard } from "@/components/widgets/statistics/statistics-card"
 export default async function Statistics() {
   const stats = await getWarStats();
 
-  if (stats === null || stats.playerCount === 0) {
+  if (stats === null) {
     return (
       <div className="grid grid-cols-1 gap-4">
         <Card className="col-span-1 md:col-span-2">
@@ -14,7 +14,9 @@ export default async function Statistics() {
             <CardTitle>Counts</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">Statistics temporarily unavailable.</p>
+            <p className="text-muted-foreground">
+              Statistics temporarily unavailable.
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -32,7 +34,9 @@ export default async function Statistics() {
             <StatisticsCard title="Patriots in Game">
               {millify(stats.playerCount)}
             </StatisticsCard>
-            <StatisticsCard title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}>
+            <StatisticsCard
+              title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}
+            >
               {millify(stats.missionsWon)}
             </StatisticsCard>
             <StatisticsCard title="Total Time Invested">

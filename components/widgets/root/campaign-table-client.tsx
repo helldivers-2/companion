@@ -38,7 +38,9 @@ export default function CampaignTableClient({
   const [detailOpen, setDetailOpen] = useState(false);
   const [factionFilter, setFactionFilter] = useState<string | null>(null);
 
-  const factions = [...new Set(activePlanets.map((c) => c.planet.currentOwner))];
+  const factions = [
+    ...new Set(activePlanets.map((c) => c.planet.currentOwner)),
+  ];
 
   const filtered = factionFilter
     ? activePlanets.filter((c) => c.planet.currentOwner === factionFilter)
@@ -94,11 +96,11 @@ export default function CampaignTableClient({
             </TableHead>
             <TableHead>Liberation</TableHead>
             <TableHead className="hidden lg:table-cell"></TableHead>
-            <TableHead className="hidden md:table-cell text-right">
+            <TableHead className="hidden text-right md:table-cell">
               Rate
             </TableHead>
             <TableHead className="hidden md:table-cell">Status</TableHead>
-            <TableHead className="hidden lg:table-cell text-right">
+            <TableHead className="hidden text-right lg:table-cell">
               ETA
             </TableHead>
           </TableRow>
@@ -132,9 +134,7 @@ export default function CampaignTableClient({
                     className="h-5"
                   />
                   {planet.name}
-                  {planet.event ? (
-                    <Badge variant="outline">Event</Badge>
-                  ) : null}
+                  {planet.event ? <Badge variant="outline">Event</Badge> : null}
                 </TableCell>
                 <TableCell className="text-right text-muted-foreground">
                   {millify(playerCount)} ({playerPercent}%)
@@ -149,7 +149,7 @@ export default function CampaignTableClient({
                     <span className="font-mono text-sm">{liberation}%</span>
                   </div>
                 </TableCell>
-                <TableCell className="hidden md:table-cell text-right">
+                <TableCell className="hidden text-right md:table-cell">
                   <span className="font-mono text-sm">
                     {rate >= 0 ? "+" : ""}
                     {rate.toFixed(2)}%/hr
@@ -160,7 +160,7 @@ export default function CampaignTableClient({
                     {status.text}
                   </Badge>
                 </TableCell>
-                <TableCell className="hidden lg:table-cell text-right">
+                <TableCell className="hidden text-right lg:table-cell">
                   <span className="font-mono text-sm text-muted-foreground">
                     {eta || "—"}
                   </span>
@@ -183,20 +183,16 @@ export default function CampaignTableClient({
                 <span className="font-mono text-sm">100%</span>
               </div>
             </TableCell>
-            <TableCell className="hidden md:table-cell text-right">
-              <span className="font-mono text-sm text-muted-foreground">
-                —
-              </span>
+            <TableCell className="hidden text-right md:table-cell">
+              <span className="font-mono text-sm text-muted-foreground">—</span>
             </TableCell>
             <TableCell className="hidden md:table-cell">
               <Badge variant="outline" className="text-green-500">
                 Liberated
               </Badge>
             </TableCell>
-            <TableCell className="hidden lg:table-cell text-right">
-              <span className="font-mono text-sm text-muted-foreground">
-                —
-              </span>
+            <TableCell className="hidden text-right lg:table-cell">
+              <span className="font-mono text-sm text-muted-foreground">—</span>
             </TableCell>
           </TableRow>
         </TableBody>

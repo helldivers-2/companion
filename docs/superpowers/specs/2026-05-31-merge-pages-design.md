@@ -24,12 +24,12 @@ The Status section stays inside the existing page-level `Container` (the current
 
 The header nav items change from page links to anchor links:
 
-| Before | After |
-|--------|-------|
-| Status → `/` | Status → `/` (top of page) |
-| News → `/news` | News → `#news` |
+| Before                     | After                      |
+| -------------------------- | -------------------------- |
+| Status → `/`               | Status → `/` (top of page) |
+| News → `/news`             | News → `#news`             |
 | Statistics → `/statistics` | Statistics → `#statistics` |
-| FAQ → `/faq` | FAQ → `#faq` |
+| FAQ → `/faq`               | FAQ → `#faq`               |
 
 - Each nav item uses a standard **plain `<a href="#id">` tag**, not Next.js `<Link>`. This prevents the client-side router from intercepting anchor navigation and ensures reliable hash-based scrolling.
 - The logo still links to `/` via Next.js `<Link>`.
@@ -80,6 +80,7 @@ No changes. Existing widget-level error handling (returning `null` on API failur
 ## Testing
 
 No test suite is configured in this project. Manual verification checklist:
+
 - [ ] Home page loads with all four sections visible
 - [ ] Navigation anchor links scroll smoothly to correct sections
 - [ ] `/news`, `/statistics`, `/faq` redirect to `/#news`, `/#statistics`, `/#faq`

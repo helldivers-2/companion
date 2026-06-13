@@ -54,6 +54,7 @@ types/
 ### Task 1: Set up Vitest
 
 **Files:**
+
 - Create: `vitest.config.ts`
 - Modify: `package.json`
 
@@ -65,6 +66,7 @@ Expected: Package installed successfully.
 - [ ] **Step 2: Add test scripts to package.json**
 
 Modify `package.json`:
+
 ```json
 {
   "scripts": {
@@ -105,6 +107,7 @@ git commit -m "chore: add vitest with node environment"
 ### Task 2: Create lib/api/client.ts and lib/api/endpoints.ts
 
 **Files:**
+
 - Create: `lib/api/client.ts`
 - Create: `lib/api/endpoints.ts`
 - Create: `tests/lib/api/client.test.ts`
@@ -112,6 +115,7 @@ git commit -m "chore: add vitest with node environment"
 - [ ] **Step 1: Write failing test for client**
 
 Create `tests/lib/api/client.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getAPI } from "@/lib/api/client";
@@ -154,7 +158,9 @@ describe("getAPI", () => {
     fetchMock
       .mockResolvedValueOnce({
         status: 429,
-        headers: { get: (name: string) => (name === "retry-after" ? "1" : null) },
+        headers: {
+          get: (name: string) => (name === "retry-after" ? "1" : null),
+        },
       } as unknown as Response)
       .mockResolvedValueOnce({
         ok: true,
@@ -189,6 +195,7 @@ Expected: FAIL with "getAPI is not defined" or "Cannot find module"
 - [ ] **Step 3: Create endpoints file**
 
 Create `lib/api/endpoints.ts`:
+
 ```typescript
 export const ENDPOINTS = {
   CAMPAIGNS: { url: "/v1/campaigns", revalidate: 3600 },
@@ -203,6 +210,7 @@ export const ENDPOINTS = {
 - [ ] **Step 4: Implement API client**
 
 Create `lib/api/client.ts`:
+
 ```typescript
 import { siteConfig } from "@/config/site";
 
@@ -245,7 +253,10 @@ export async function getAPI<T>({
       const retryController = new AbortController();
       const retryTimeoutId = setTimeout(() => retryController.abort(), timeout);
       try {
-        res = await fetch(apiUrl, { ...fetchOptions, signal: retryController.signal });
+        res = await fetch(apiUrl, {
+          ...fetchOptions,
+          signal: retryController.signal,
+        });
       } finally {
         clearTimeout(retryTimeoutId);
       }
@@ -286,6 +297,7 @@ git commit -m "feat: add api client with Result type and endpoints"
 ### Task 3: Create types/dispatches.ts
 
 **Files:**
+
 - Create: `types/dispatches.ts`
 
 - [ ] **Step 1: Create file**
@@ -316,12 +328,14 @@ git commit -m "types: add dispatches DTOs and app types"
 ### Task 4: Create lib/services/dispatches.ts + test
 
 **Files:**
+
 - Create: `lib/services/dispatches.ts`
 - Create: `tests/lib/services/dispatches.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/services/dispatches.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { fetchDispatches } from "@/lib/services/dispatches";
@@ -333,7 +347,9 @@ vi.mock("@/lib/api/client", () => ({
 
 describe("fetchDispatches", () => {
   it("returns DTOs on success", async () => {
-    const mock = [{ id: 1, published: "2024-01-01", type: 0, message: "Hello" }];
+    const mock = [
+      { id: 1, published: "2024-01-01", type: 0, message: "Hello" },
+    ];
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchDispatches();
@@ -345,11 +361,16 @@ describe("fetchDispatches", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchDispatches()).rejects.toThrow("Failed to fetch dispatches");
+    await expect(fetchDispatches()).rejects.toThrow(
+      "Failed to fetch dispatches",
+    );
   });
 
   it("throws on invalid shape", async () => {
-    vi.mocked(getAPI).mockResolvedValue({ success: true, data: { notAnArray: true } });
+    vi.mocked(getAPI).mockResolvedValue({
+      success: true,
+      data: { notAnArray: true },
+    });
     await expect(fetchDispatches()).rejects.toThrow("Invalid dispatches data");
   });
 });
@@ -363,6 +384,7 @@ Expected: FAIL with "fetchDispatches is not defined"
 - [ ] **Step 3: Implement service**
 
 Create `lib/services/dispatches.ts`:
+
 ```typescript
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
@@ -398,15 +420,21 @@ git commit -m "feat: add dispatches service with tests"
 ### Task 5: Create lib/transformers/dispatches.ts + test
 
 **Files:**
+
 - Create: `lib/transformers/dispatches.ts`
 - Create: `tests/lib/transformers/dispatches.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/transformers/dispatches.test.ts`:
+
 ```typescript
 import { describe, it, expect } from "vitest";
-import { mapDispatchDto, parseContent, getDispatchTypeInfo } from "@/lib/transformers/dispatches";
+import {
+  mapDispatchDto,
+  parseContent,
+  getDispatchTypeInfo,
+} from "@/lib/transformers/dispatches";
 
 describe("mapDispatchDto", () => {
   it("maps identical fields", () => {
@@ -455,6 +483,7 @@ Expected: FAIL with functions not defined
 - [ ] **Step 3: Implement transformers**
 
 Create `lib/transformers/dispatches.ts`:
+
 ```typescript
 import type { DispatchDto, Dispatch } from "@/types/dispatches";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
@@ -484,7 +513,8 @@ export function getDispatchTypeInfo(message: string): DispatchTypeInfo {
       type: "success",
       label: "Victory",
       icon: CheckCircle,
-      color: "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
+      color:
+        "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400",
     };
   } else if (upperMessage.includes("MAJOR ORDER FAILED")) {
     return {
@@ -498,7 +528,8 @@ export function getDispatchTypeInfo(message: string): DispatchTypeInfo {
       type: "urgent",
       label: "New Order",
       icon: AlertTriangle,
-      color: "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400",
+      color:
+        "bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400",
     };
   } else if (
     upperMessage.includes("SABOTAGED") ||
@@ -535,12 +566,14 @@ git commit -m "feat: add dispatches transformers with tests"
 ### Task 6: Create lib/data/dispatches.ts + test
 
 **Files:**
+
 - Create: `lib/data/dispatches.ts`
 - Create: `tests/lib/data/dispatches.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/dispatches.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getDispatches } from "@/lib/data/dispatches";
@@ -560,7 +593,9 @@ vi.mock("@/lib/services/dispatches", () => ({
 
 describe("getDispatches", () => {
   it("returns mapped dispatches", async () => {
-    const mock = [{ id: 1, published: "2024-01-01", type: 0, message: "Hello" }];
+    const mock = [
+      { id: 1, published: "2024-01-01", type: 0, message: "Hello" },
+    ];
     vi.mocked(fetchDispatches).mockResolvedValue(mock);
 
     const result = await getDispatches();
@@ -584,6 +619,7 @@ Expected: FAIL with "getDispatches is not defined"
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/dispatches.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchDispatches } from "@/lib/services/dispatches";
@@ -618,11 +654,13 @@ git commit -m "feat: add dispatches data layer with tests"
 ### Task 7: Update dispatches widget
 
 **Files:**
+
 - Modify: `components/widgets/root/dispatches.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getDispatches } from "@/lib/data/dispatches";
 import { parseContent, getDispatchTypeInfo } from "@/lib/transformers/dispatches";
@@ -702,6 +740,7 @@ git commit -m "refactor: migrate dispatches widget to new data layer"
 ### Task 8: Update types/assignments.ts with DTOs
 
 **Files:**
+
 - Modify: `types/assignments.ts`
 
 - [ ] **Step 1: Update file**
@@ -749,12 +788,14 @@ git commit -m "types: add assignment DTOs alongside app types"
 ### Task 9: Create lib/services/assignments.ts + test
 
 **Files:**
+
 - Create: `lib/services/assignments.ts`
 - Create: `tests/lib/services/assignments.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/services/assignments.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { fetchAssignments } from "@/lib/services/assignments";
@@ -766,7 +807,9 @@ vi.mock("@/lib/api/client", () => ({
 
 describe("fetchAssignments", () => {
   it("returns DTOs on success", async () => {
-    const mock = [{ id: 1, briefing: "Test", expiration: "2024-01-01", progress: [0] }];
+    const mock = [
+      { id: 1, briefing: "Test", expiration: "2024-01-01", progress: [0] },
+    ];
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchAssignments();
@@ -778,12 +821,16 @@ describe("fetchAssignments", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchAssignments()).rejects.toThrow("Failed to fetch assignments");
+    await expect(fetchAssignments()).rejects.toThrow(
+      "Failed to fetch assignments",
+    );
   });
 
   it("throws on invalid shape", async () => {
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: "not-array" });
-    await expect(fetchAssignments()).rejects.toThrow("Invalid assignments data");
+    await expect(fetchAssignments()).rejects.toThrow(
+      "Invalid assignments data",
+    );
   });
 });
 ```
@@ -796,6 +843,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement service**
 
 Create `lib/services/assignments.ts`:
+
 ```typescript
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
@@ -831,15 +879,21 @@ git commit -m "feat: add assignments service with tests"
 ### Task 10: Create lib/transformers/assignments.ts + test
 
 **Files:**
+
 - Create: `lib/transformers/assignments.ts`
 - Create: `tests/lib/transformers/assignments.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/transformers/assignments.test.ts`:
+
 ```typescript
 import { describe, it, expect } from "vitest";
-import { mapAssignmentDto, getRewardTypeLabel, getStatusInfo } from "@/lib/transformers/assignments";
+import {
+  mapAssignmentDto,
+  getRewardTypeLabel,
+  getStatusInfo,
+} from "@/lib/transformers/assignments";
 
 describe("mapAssignmentDto", () => {
   it("maps fields correctly", () => {
@@ -908,8 +962,13 @@ Expected: FAIL
 - [ ] **Step 3: Implement transformers**
 
 Create `lib/transformers/assignments.ts`:
+
 ```typescript
-import type { AssignmentDto, Assignment, StatusInfo } from "@/types/assignments";
+import type {
+  AssignmentDto,
+  Assignment,
+  StatusInfo,
+} from "@/types/assignments";
 
 export function mapAssignmentDto(dto: AssignmentDto): Assignment {
   return {
@@ -936,11 +995,16 @@ export function getRewardTypeLabel(type: number): string {
   return REWARD_TYPES[type as RewardType] || "Unknown Reward";
 }
 
-export function getStatusInfo(expiration: string, progressPercent: number): StatusInfo {
+export function getStatusInfo(
+  expiration: string,
+  progressPercent: number,
+): StatusInfo {
   const timeLeft = new Date(expiration).getTime() - new Date().getTime();
   if (timeLeft <= 0) return { text: "EXPIRED", color: "bg-red-500" };
-  if (progressPercent === 100) return { text: "COMPLETED", color: "bg-green-500" };
-  if (timeLeft < 24 * 60 * 60 * 1000) return { text: "URGENT", color: "bg-orange-500" };
+  if (progressPercent === 100)
+    return { text: "COMPLETED", color: "bg-green-500" };
+  if (timeLeft < 24 * 60 * 60 * 1000)
+    return { text: "URGENT", color: "bg-orange-500" };
   return { text: "ACTIVE", color: "bg-blue-500" };
 }
 ```
@@ -960,12 +1024,14 @@ git commit -m "feat: add assignments transformers with tests"
 ### Task 11: Create lib/data/assignments.ts + test
 
 **Files:**
+
 - Create: `lib/data/assignments.ts`
 - Create: `tests/lib/data/assignments.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/assignments.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getAssignments } from "@/lib/data/assignments";
@@ -985,7 +1051,9 @@ vi.mock("@/lib/services/assignments", () => ({
 
 describe("getAssignments", () => {
   it("returns mapped assignments", async () => {
-    const mock = [{ id: 1, briefing: "Test", expiration: "2024-01-01", progress: [0] }];
+    const mock = [
+      { id: 1, briefing: "Test", expiration: "2024-01-01", progress: [0] },
+    ];
     vi.mocked(fetchAssignments).mockResolvedValue(mock);
 
     const result = await getAssignments();
@@ -1009,6 +1077,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/assignments.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchAssignments } from "@/lib/services/assignments";
@@ -1043,11 +1112,13 @@ git commit -m "feat: add assignments data layer with tests"
 ### Task 12: Update major-order widget
 
 **Files:**
+
 - Modify: `components/widgets/root/major-order.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getAssignments } from "@/lib/data/assignments";
 import { getStatusInfo, getRewardTypeLabel } from "@/lib/transformers/assignments";
@@ -1170,6 +1241,7 @@ git commit -m "refactor: migrate major-order widget to new data layer"
 ### Task 13: Create types/war.ts
 
 **Files:**
+
 - Create: `types/war.ts`
 
 - [ ] **Step 1: Create file**
@@ -1216,6 +1288,7 @@ git commit -m "types: add war stats DTOs and app types"
 ### Task 14: Update types/campaigns.ts with DTOs
 
 **Files:**
+
 - Modify: `types/campaigns.ts`
 
 - [ ] **Step 1: Update file**
@@ -1324,6 +1397,7 @@ git commit -m "types: add campaign DTOs alongside app types"
 ### Task 15: Update types/space-station.ts with DTOs
 
 **Files:**
+
 - Modify: `types/space-station.ts`
 
 - [ ] **Step 1: Update file**
@@ -1392,12 +1466,14 @@ git commit -m "types: add space-station DTOs alongside app types"
 ### Task 16: Create lib/services/campaigns.ts + test
 
 **Files:**
+
 - Create: `lib/services/campaigns.ts`
 - Create: `tests/lib/services/campaigns.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/services/campaigns.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { fetchCampaigns, fetchWarStats } from "@/lib/services/campaigns";
@@ -1473,6 +1549,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement service**
 
 Create `lib/services/campaigns.ts`:
+
 ```typescript
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
@@ -1520,12 +1597,14 @@ git commit -m "feat: add campaigns and war service with tests"
 ### Task 17: Create lib/services/space-station.ts + test
 
 **Files:**
+
 - Create: `lib/services/space-station.ts`
 - Create: `tests/lib/services/space-station.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/services/space-station.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { fetchSpaceStations } from "@/lib/services/space-station";
@@ -1567,12 +1646,16 @@ describe("fetchSpaceStations", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchSpaceStations()).rejects.toThrow("Failed to fetch space stations");
+    await expect(fetchSpaceStations()).rejects.toThrow(
+      "Failed to fetch space stations",
+    );
   });
 
   it("throws on invalid shape", async () => {
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: "not-array" });
-    await expect(fetchSpaceStations()).rejects.toThrow("Invalid space station data");
+    await expect(fetchSpaceStations()).rejects.toThrow(
+      "Invalid space station data",
+    );
   });
 });
 ```
@@ -1585,6 +1668,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement service**
 
 Create `lib/services/space-station.ts`:
+
 ```typescript
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
@@ -1620,12 +1704,14 @@ git commit -m "feat: add space-station service with tests"
 ### Task 18: Create lib/transformers/campaigns.ts + test
 
 **Files:**
+
 - Create: `lib/transformers/campaigns.ts`
 - Create: `tests/lib/transformers/campaigns.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/transformers/campaigns.test.ts`:
+
 ```typescript
 import { describe, it, expect } from "vitest";
 import {
@@ -1810,6 +1896,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement transformers**
 
 Create `lib/transformers/campaigns.ts`:
+
 ```typescript
 import type {
   CampaignDto,
@@ -1857,9 +1944,10 @@ export function mapCampaignDto(dto: CampaignDto): Campaign {
   };
 }
 
-export function getEffectiveHealth(
-  planet: Planet,
-): { health: number; maxHealth: number } {
+export function getEffectiveHealth(planet: Planet): {
+  health: number;
+  maxHealth: number;
+} {
   return {
     health: planet.event?.health ?? planet.health,
     maxHealth: planet.event?.maxHealth ?? planet.maxHealth,
@@ -1887,9 +1975,7 @@ export function getLiberationRate(
   return -ratePercent;
 }
 
-export function getStatus(
-  rate: number,
-): { text: string; color: string } {
+export function getStatus(rate: number): { text: string; color: string } {
   if (rate > 0.5) return { text: "Gaining Ground", color: "text-green-500" };
   if (rate < -0.5) return { text: "Losing Ground", color: "text-red-500" };
   return { text: "Stalemate", color: "text-yellow-500" };
@@ -1931,13 +2017,11 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
       campaign.planet.event.health < campaign.planet.event.maxHealth,
   );
 
-  const activePlanets = [...campaignPlanets, ...eventPlanets].sort(
-    (a, b) => {
-      const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
-      const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
-      return bH / bMH - aH / aMH;
-    },
-  );
+  const activePlanets = [...campaignPlanets, ...eventPlanets].sort((a, b) => {
+    const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
+    const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
+    return bH / bMH - aH / aMH;
+  });
 
   const liberatedPlanets = campaigns.filter(
     (campaign) =>
@@ -1945,13 +2029,10 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
       campaign.planet.event === null,
   );
 
-  const liberatedPlayerCount = liberatedPlanets.reduce(
-    (sum, campaign) => {
-      const playerCount = campaign.planet.statistics?.playerCount || 0;
-      return sum + playerCount;
-    },
-    0,
-  );
+  const liberatedPlayerCount = liberatedPlanets.reduce((sum, campaign) => {
+    const playerCount = campaign.planet.statistics?.playerCount || 0;
+    return sum + playerCount;
+  }, 0);
 
   return { campaigns, activePlanets, liberatedPlanets, liberatedPlayerCount };
 }
@@ -1972,12 +2053,14 @@ git commit -m "feat: add campaign transformers with tests"
 ### Task 19: Create lib/transformers/war.ts + test
 
 **Files:**
+
 - Create: `lib/transformers/war.ts`
 - Create: `tests/lib/transformers/war.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/transformers/war.test.ts`:
+
 ```typescript
 import { describe, it, expect } from "vitest";
 import { mapWarStatsDto } from "@/lib/transformers/war";
@@ -2014,6 +2097,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement transformer**
 
 Create `lib/transformers/war.ts`:
+
 ```typescript
 import type { WarStatsDto, WarStats } from "@/types/war";
 
@@ -2037,12 +2121,14 @@ git commit -m "feat: add war stats transformer with tests"
 ### Task 20: Create lib/transformers/space-station.ts + test
 
 **Files:**
+
 - Create: `lib/transformers/space-station.ts`
 - Create: `tests/lib/transformers/space-station.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/transformers/space-station.test.ts`:
+
 ```typescript
 import { describe, it, expect } from "vitest";
 import { mapSpaceStationDto } from "@/lib/transformers/space-station";
@@ -2072,7 +2158,9 @@ describe("mapSpaceStationDto", () => {
           strategicDescription: "Strat",
           status: 1,
           statusExpire: "2024-01-01",
-          costs: [{ id: "c1", targetValue: 100, currentValue: 50, deltaPerSecond: 0 }],
+          costs: [
+            { id: "c1", targetValue: 100, currentValue: 50, deltaPerSecond: 0 },
+          ],
         },
       ],
     };
@@ -2094,6 +2182,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement transformer**
 
 Create `lib/transformers/space-station.ts`:
+
 ```typescript
 import type {
   SpaceStationDto,
@@ -2142,12 +2231,14 @@ git commit -m "feat: add space-station transformer with tests"
 ### Task 21: Create lib/data/campaigns.ts + test
 
 **Files:**
+
 - Create: `lib/data/campaigns.ts`
 - Create: `tests/lib/data/campaigns.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/campaigns.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getCampaignData } from "@/lib/data/campaigns";
@@ -2207,6 +2298,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/campaigns.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchCampaigns } from "@/lib/services/campaigns";
@@ -2247,12 +2339,14 @@ git commit -m "feat: add campaigns data layer with tests"
 ### Task 22: Create lib/data/war.ts + test
 
 **Files:**
+
 - Create: `lib/data/war.ts`
 - Create: `tests/lib/data/war.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/war.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getWarStats } from "@/lib/data/war";
@@ -2308,6 +2402,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/war.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchWarStats } from "@/lib/services/campaigns";
@@ -2354,12 +2449,14 @@ git commit -m "feat: add war stats data layer with tests"
 ### Task 23: Create lib/data/dashboard.ts + test
 
 **Files:**
+
 - Create: `lib/data/dashboard.ts`
 - Create: `tests/lib/data/dashboard.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/dashboard.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getDashboardStats } from "@/lib/data/dashboard";
@@ -2445,6 +2542,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/dashboard.ts`:
+
 ```typescript
 import { cache } from "react";
 import { getCampaignData } from "./campaigns";
@@ -2501,12 +2599,14 @@ git commit -m "feat: add dashboard data layer with tests"
 ### Task 24: Create lib/data/space-station.ts + test
 
 **Files:**
+
 - Create: `lib/data/space-station.ts`
 - Create: `tests/lib/data/space-station.test.ts`
 
 - [ ] **Step 1: Write failing test**
 
 Create `tests/lib/data/space-station.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getSpaceStations } from "@/lib/data/space-station";
@@ -2568,6 +2668,7 @@ Expected: FAIL
 - [ ] **Step 3: Implement data layer**
 
 Create `lib/data/space-station.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchSpaceStations } from "@/lib/services/space-station";
@@ -2602,11 +2703,13 @@ git commit -m "feat: add space-station data layer with tests"
 ### Task 25: Update campaign-table widget
 
 **Files:**
+
 - Modify: `components/widgets/root/campaign-table.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getCampaignData } from "@/lib/data/campaigns";
 import type { CampaignStats } from "@/types/campaigns";
@@ -2649,11 +2752,13 @@ git commit -m "refactor: migrate campaign-table widget to new data layer"
 ### Task 26: Update war-summary widget
 
 **Files:**
+
 - Modify: `components/widgets/root/war-summary.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getDashboardStats } from "@/lib/data/dashboard";
 import { millify } from "@/lib/utils";
@@ -2701,11 +2806,13 @@ git commit -m "refactor: migrate war-summary widget to new data layer"
 ### Task 27: Update campaign-map-server widget
 
 **Files:**
+
 - Modify: `components/widgets/root/campaign-map-server.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getCampaignData } from "@/lib/data/campaigns";
 import CampaignMap from "@/components/widgets/root/campaign-map-dynamic";
@@ -2747,11 +2854,13 @@ git commit -m "refactor: migrate campaign-map-server widget to new data layer"
 ### Task 28: Update space-station widget
 
 **Files:**
+
 - Modify: `components/widgets/root/space-station.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getSpaceStations } from "@/lib/data/space-station";
 import type { SpaceStation, TacticalAction, Cost } from "@/types/space-station";
@@ -2919,6 +3028,7 @@ git commit -m "refactor: migrate space-station widget to new data layer"
 ### Task 29: Update client component imports
 
 **Files:**
+
 - Modify: `components/widgets/root/campaign-table-client.tsx`
 - Modify: `components/widgets/root/campaign-map.tsx`
 - Modify: `components/planet-detail.tsx`
@@ -2926,6 +3036,7 @@ git commit -m "refactor: migrate space-station widget to new data layer"
 - [ ] **Step 1: Update campaign-table-client.tsx imports**
 
 Replace the import block (lines 1-10):
+
 ```typescript
 "use client";
 
@@ -2945,6 +3056,7 @@ The rest of the file remains unchanged.
 - [ ] **Step 2: Update campaign-map.tsx imports**
 
 Replace the import block (lines 1-11):
+
 ```typescript
 "use client";
 
@@ -2963,6 +3075,7 @@ The rest of the file remains unchanged.
 - [ ] **Step 3: Update planet-detail.tsx imports**
 
 Replace the import block (lines 1-15):
+
 ```typescript
 "use client";
 
@@ -3001,6 +3114,7 @@ git commit -m "refactor: update client components to import from transformers"
 ### Task 30: Create news domain (types, service, data, test)
 
 **Files:**
+
 - Create: `types/news.ts`
 - Create: `lib/services/news.ts`
 - Create: `lib/transformers/news.ts`
@@ -3011,6 +3125,7 @@ git commit -m "refactor: update client components to import from transformers"
 - [ ] **Step 1: Create types**
 
 Create `types/news.ts`:
+
 ```typescript
 export interface PatchNoteDto {
   id: string;
@@ -3034,6 +3149,7 @@ export interface PatchNote {
 - [ ] **Step 2: Create service and tests**
 
 Create `lib/services/news.ts`:
+
 ```typescript
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
@@ -3055,6 +3171,7 @@ export async function fetchPatchNotes(): Promise<PatchNoteDto[]> {
 ```
 
 Create `tests/lib/services/news.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { fetchPatchNotes } from "@/lib/services/news";
@@ -3066,7 +3183,16 @@ vi.mock("@/lib/api/client", () => ({
 
 describe("fetchPatchNotes", () => {
   it("returns DTOs on success", async () => {
-    const mock = [{ id: "1", title: "Patch", url: "http://example.com", author: "Dev", content: "Fixes", publishedAt: "2024-01-01" }];
+    const mock = [
+      {
+        id: "1",
+        title: "Patch",
+        url: "http://example.com",
+        author: "Dev",
+        content: "Fixes",
+        publishedAt: "2024-01-01",
+      },
+    ];
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchPatchNotes();
@@ -3078,7 +3204,9 @@ describe("fetchPatchNotes", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchPatchNotes()).rejects.toThrow("Failed to fetch patch notes");
+    await expect(fetchPatchNotes()).rejects.toThrow(
+      "Failed to fetch patch notes",
+    );
   });
 
   it("throws on invalid shape", async () => {
@@ -3091,6 +3219,7 @@ describe("fetchPatchNotes", () => {
 - [ ] **Step 3: Create transformer**
 
 Create `lib/transformers/news.ts`:
+
 ```typescript
 import type { PatchNoteDto, PatchNote } from "@/types/news";
 
@@ -3102,6 +3231,7 @@ export function mapPatchNoteDto(dto: PatchNoteDto): PatchNote {
 - [ ] **Step 4: Create data layer and test**
 
 Create `lib/data/news.ts`:
+
 ```typescript
 import { cache } from "react";
 import { fetchPatchNotes } from "@/lib/services/news";
@@ -3122,6 +3252,7 @@ export const getPatchNotes = cache(_getPatchNotes);
 ```
 
 Create `tests/lib/data/news.test.ts`:
+
 ```typescript
 import { describe, it, expect, vi } from "vitest";
 import { getPatchNotes } from "@/lib/data/news";
@@ -3141,7 +3272,16 @@ vi.mock("@/lib/services/news", () => ({
 
 describe("getPatchNotes", () => {
   it("returns mapped patch notes", async () => {
-    const mock = [{ id: "1", title: "Patch", url: "http://example.com", author: "Dev", content: "Fixes", publishedAt: "2024-01-01" }];
+    const mock = [
+      {
+        id: "1",
+        title: "Patch",
+        url: "http://example.com",
+        author: "Dev",
+        content: "Fixes",
+        publishedAt: "2024-01-01",
+      },
+    ];
     vi.mocked(fetchPatchNotes).mockResolvedValue(mock);
 
     const result = await getPatchNotes();
@@ -3172,11 +3312,13 @@ git commit -m "feat: add news domain layer with tests"
 ### Task 31: Update newsfeed widget
 
 **Files:**
+
 - Modify: `components/widgets/news/newsfeed.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getPatchNotes } from "@/lib/data/news";
 import PatchNotesList from "@/components/widgets/news/patch-notes-list";
@@ -3212,11 +3354,13 @@ git commit -m "refactor: migrate newsfeed widget to new data layer"
 ### Task 32: Update statistics widget
 
 **Files:**
+
 - Modify: `components/widgets/statistics/statistics.tsx`
 
 - [ ] **Step 1: Update widget**
 
 Replace the complete file:
+
 ```typescript
 import { getWarStats } from "@/lib/data/war";
 import { millify } from "@/lib/utils";
@@ -3306,6 +3450,7 @@ git commit -m "refactor: migrate statistics widget to new data layer"
 ### Task 33: Delete legacy files and verify build
 
 **Files:**
+
 - Delete: `lib/get.ts`
 - Delete: `lib/get-campaigns.tsx`
 

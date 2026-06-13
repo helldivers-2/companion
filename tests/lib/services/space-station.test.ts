@@ -38,11 +38,15 @@ describe("fetchSpaceStations", () => {
       success: false,
       error: new Error("fail"),
     });
-    await expect(fetchSpaceStations()).rejects.toThrow("Failed to fetch space stations");
+    await expect(fetchSpaceStations()).rejects.toThrow(
+      "Failed to fetch space stations",
+    );
   });
 
   it("throws on invalid shape", async () => {
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: "not-array" });
-    await expect(fetchSpaceStations()).rejects.toThrow("Invalid space station data");
+    await expect(fetchSpaceStations()).rejects.toThrow(
+      "Invalid space station data",
+    );
   });
 });
