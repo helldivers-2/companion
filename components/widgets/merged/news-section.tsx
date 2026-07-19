@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import Container from "@/components/container";
 import { DashboardCard } from "@/components/dashboard-card";
+import { WidgetSkeleton } from "@/components/widgets/widget-skeleton";
 import PatchNotes from "@/components/widgets/news/newsfeed";
 import WikipediaText from "@/components/widgets/news/wiki";
 
@@ -22,7 +24,9 @@ export default function NewsSection() {
       <Container title="News" lgSplit>
         {dashboardCards.map(({ title, component: Component, key }) => (
           <DashboardCard key={key} title={title}>
-            <Component />
+            <Suspense fallback={<WidgetSkeleton />}>
+              <Component />
+            </Suspense>
           </DashboardCard>
         ))}
       </Container>

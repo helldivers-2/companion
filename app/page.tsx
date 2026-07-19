@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Container from "@/components/container";
 import { DashboardCard } from "@/components/dashboard-card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Card, CardContent } from "@/components/ui/card";
+import { WidgetSkeleton } from "@/components/widgets/widget-skeleton";
 
 import MajorOrder from "@/components/widgets/root/major-order";
 import CampaignTable from "@/components/widgets/root/campaign-table";
@@ -27,37 +31,57 @@ export default function StatusPage() {
         <Container>
           <div className="grid gap-4 lg:grid-cols-3">
             <div className="lg:col-span-3">
-              <WarSummary />
+              <Suspense
+                fallback={
+                  <Card>
+                    <CardContent>
+                      <Skeleton className="h-5 w-full" />
+                    </CardContent>
+                  </Card>
+                }
+              >
+                <WarSummary />
+              </Suspense>
             </div>
 
             <div className="lg:col-span-2">
               <DashboardCard title="Major Order">
-                <MajorOrder />
+                <Suspense fallback={<WidgetSkeleton />}>
+                  <MajorOrder />
+                </Suspense>
               </DashboardCard>
             </div>
 
             <div className="lg:col-span-1">
               <DashboardCard title="Space Station">
-                <SpaceStation />
+                <Suspense fallback={<WidgetSkeleton />}>
+                  <SpaceStation />
+                </Suspense>
               </DashboardCard>
             </div>
 
             <div className="lg:col-span-3">
               <DashboardCard title="Campaigns">
-                <CampaignTable />
+                <Suspense fallback={<WidgetSkeleton rows={6} />}>
+                  <CampaignTable />
+                </Suspense>
               </DashboardCard>
             </div>
 
             <div className="self-start lg:col-span-2">
               <DashboardCard title="Map">
-                <CampaignMap />
+                <Suspense fallback={<Skeleton className="h-96 w-full" />}>
+                  <CampaignMap />
+                </Suspense>
               </DashboardCard>
             </div>
 
             <div className="self-start lg:col-span-1">
               <DashboardCard title="Dispatches">
                 <ScrollArea className="lg:h-[500px]">
-                  <Dispatches />
+                  <Suspense fallback={<WidgetSkeleton />}>
+                    <Dispatches />
+                  </Suspense>
                 </ScrollArea>
               </DashboardCard>
             </div>
