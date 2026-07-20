@@ -1,17 +1,16 @@
+import { z } from "zod";
 import { getAPI } from "@/lib/api/client";
 import { ENDPOINTS } from "@/lib/api/endpoints";
-import type { AssignmentDto } from "@/types/assignments";
+import { validate } from "@/lib/api/validate";
+import { AssignmentDtoSchema, type AssignmentDto } from "@/types/assignments";
 
 export async function fetchAssignments(): Promise<AssignmentDto[]> {
-  const result = await getAPI<AssignmentDto[]>({
+  const result = await getAPI<unknown>({
     url: ENDPOINTS.ASSIGNMENTS.url,
     revalidate: ENDPOINTS.ASSIGNMENTS.revalidate,
   });
   if (!result.success) {
     throw new Error(`Failed to fetch assignments: ${result.error.message}`);
   }
-  if (!Array.isArray(result.data)) {
-    throw new Error("Invalid assignments data: expected array");
-  }
-  return result.data;
+  return validate(z.array(AssignmentDtoSchema), result.data, "assignments");
 }

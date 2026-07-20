@@ -1,29 +1,22 @@
-export interface WarStatsDto {
-  statistics: {
-    playerCount: number;
-    missionSuccessRate: number;
-    missionsWon: number;
-    missionTime: number;
-    terminidKills: number;
-    automatonKills: number;
-    illuminateKills: number;
-    bulletsFired: number;
-    deaths: number;
-    friendlies: number;
-    missionsLost: number;
-  };
-}
+import { z } from "zod";
 
-export interface WarStats {
-  playerCount: number;
-  missionSuccessRate: number;
-  missionsWon: number;
-  missionTime: number;
-  terminidKills: number;
-  automatonKills: number;
-  illuminateKills: number;
-  bulletsFired: number;
-  deaths: number;
-  friendlies: number;
-  missionsLost: number;
-}
+export const WarStatisticsSchema = z.object({
+  playerCount: z.number(),
+  missionSuccessRate: z.number(),
+  missionsWon: z.number(),
+  missionTime: z.number(),
+  terminidKills: z.number(),
+  automatonKills: z.number(),
+  illuminateKills: z.number(),
+  bulletsFired: z.number(),
+  deaths: z.number(),
+  friendlies: z.number(),
+  missionsLost: z.number(),
+});
+
+export const WarStatsDtoSchema = z.object({
+  statistics: WarStatisticsSchema,
+});
+
+export type WarStatsDto = z.infer<typeof WarStatsDtoSchema>;
+export type WarStats = z.infer<typeof WarStatisticsSchema>;

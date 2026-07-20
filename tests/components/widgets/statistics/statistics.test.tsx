@@ -11,7 +11,7 @@ vi.mock("@/lib/data/war", () => ({
 function makeWarStats(): WarStats {
   return {
     playerCount: 100000,
-    missionSuccessRate: 75,
+    missionSuccessRate: 75.6,
     missionsWon: 5000,
     missionTime: 3600 * 24 * 365 * 100,
     terminidKills: 1000000,
@@ -40,5 +40,7 @@ describe("Statistics", () => {
 
     expect(html).toContain("Patriots in Game");
     expect(html).toContain("Pesty Bugs Killed");
+    // success rate is already a percentage — rendered rounded, not millified
+    expect(html).toContain("76%");
   });
 });

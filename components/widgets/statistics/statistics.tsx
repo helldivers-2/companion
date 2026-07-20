@@ -35,7 +35,7 @@ export default async function Statistics() {
               {millify(stats.playerCount)}
             </StatisticsCard>
             <StatisticsCard
-              title={`Lawful Victories - Ø ${millify(stats.missionSuccessRate)}%`}
+              title={`Lawful Victories - Ø ${Math.round(stats.missionSuccessRate)}%`}
             >
               {millify(stats.missionsWon)}
             </StatisticsCard>

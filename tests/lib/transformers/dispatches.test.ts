@@ -1,16 +1,8 @@
 import { describe, it, expect } from "vitest";
 import {
-  mapDispatchDto,
   parseContent,
   getDispatchTypeInfo,
 } from "@/lib/transformers/dispatches";
-
-describe("mapDispatchDto", () => {
-  it("maps identical fields", () => {
-    const dto = { id: 1, published: "2026-01-01", type: 0, message: "Test" };
-    expect(mapDispatchDto(dto)).toEqual(dto);
-  });
-});
 
 describe("parseContent", () => {
   it("strips i tags", () => {

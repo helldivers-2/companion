@@ -3,6 +3,7 @@ import type {
   Campaign,
   PlanetDto,
   Planet,
+  PlanetStatistics,
   Species,
   CampaignStats,
 } from "@/types/campaigns";
@@ -69,43 +70,60 @@ export function getLiberation(
   return Math.max(0, Math.min(100, result)).toFixed(2);
 }
 
-export function getLiberationRate(
+// Enemy health regeneration expressed as %/hr of the planet's own max health.
+// Positive means the enemy is clawing territory back; higher is harder to hold.
+// This is *not* a net liberation rate — a single API snapshot carries no player
+// push term, so there is no honest way to say a planet is "gaining ground" or to
+// project a time-to-liberation from it.
+export function getRegenRate(
   regenPerSecond: number,
   maxHealth: number,
 ): number {
   if (maxHealth === 0) return 0;
   const hourlyRegen = regenPerSecond * 3600;
-  const ratePercent = (hourlyRegen / maxHealth) * 100;
-  return -ratePercent;
+  return (hourlyRegen / maxHealth) * 100;
 }
 
-export function getStatus(rate: number): { text: string; color: string } {
-  if (rate > 0.5) return { text: "Gaining Ground", color: "text-green-500" };
-  if (rate < -0.5) return { text: "Losing Ground", color: "text-red-500" };
-  return { text: "Stalemate", color: "text-yellow-500" };
+export function getStatus(regenPercent: number): {
+  text: string;
+  color: string;
+} {
+  if (regenPercent > 0.5)
+    return { text: "Regenerating", color: "text-red-500" };
+  return { text: "Stable", color: "text-muted-foreground" };
 }
 
-export function getTimeToLiberation(
-  liberation: number,
-  ratePerHour: number,
-): string | null {
-  if (ratePerHour <= 0) return null;
-  const hoursRemaining = (100 - liberation) / ratePerHour;
-  const minutes = Math.round(hoursRemaining * 60);
-  if (minutes < 60) return `${minutes}m`;
-  const hours = Math.floor(minutes / 60);
-  const remainingMins = minutes % 60;
-  return `${hours}h ${remainingMins}m`;
+// Total enemy kills recorded on a planet, summed across factions. Returns null
+// when the payload carries no per-faction kill data at all (so callers can hide
+// the field rather than render a misleading zero).
+export function getEnemyKills(statistics: PlanetStatistics): number | null {
+  const { terminidKills, automatonKills, illuminateKills } = statistics;
+  if (
+    terminidKills == null &&
+    automatonKills == null &&
+    illuminateKills == null
+  ) {
+    return null;
+  }
+  return (
+    (terminidKills ?? 0) + (automatonKills ?? 0) + (illuminateKills ?? 0)
+  );
 }
 
 export function getPlanetStats(planet: Planet) {
+  const isEvent = planet.event != null;
   const { health, maxHealth } = getEffectiveHealth(planet);
-  const liberation = getLiberation(health, maxHealth);
-  const regenPerSecond = planet.regenPerSecond || 0;
-  const rate = getLiberationRate(regenPerSecond, maxHealth);
-  const status = getStatus(rate);
-  const eta = getTimeToLiberation(Number(liberation), rate);
-  return { liberation, rate, status, eta };
+  // Events are timed defenses: liberation reads as defense health remaining
+  // (inverse), matching how the campaign map renders the same planet.
+  const liberation = getLiberation(health, maxHealth, isEvent);
+  // Regen only applies to liberation campaigns and to the planet's own health.
+  const regen = isEvent
+    ? 0
+    : getRegenRate(planet.regenPerSecond || 0, planet.maxHealth);
+  const status = isEvent
+    ? { text: "Defending", color: "text-orange-500" }
+    : getStatus(regen);
+  return { liberation, regen, status };
 }
 
 export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
@@ -129,11 +147,13 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
       campaign.planet.event.health < campaign.planet.event.maxHealth,
   );
 
-  const activePlanets = [...campaignPlanets, ...eventPlanets].sort((a, b) => {
-    const { health: aH, maxHealth: aMH } = getEffectiveHealth(a.planet);
-    const { health: bH, maxHealth: bMH } = getEffectiveHealth(b.planet);
-    return bH / bMH - aH / aMH;
-  });
+  const healthFraction = (campaign: Campaign) => {
+    const { health, maxHealth } = getEffectiveHealth(campaign.planet);
+    return maxHealth === 0 ? 0 : health / maxHealth;
+  };
+  const activePlanets = [...campaignPlanets, ...eventPlanets].sort(
+    (a, b) => healthFraction(b) - healthFraction(a),
+  );
 
   const liberatedPlanets = campaigns.filter(
     (campaign) =>

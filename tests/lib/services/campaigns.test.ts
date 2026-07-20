@@ -46,8 +46,22 @@ describe("fetchCampaigns", () => {
 });
 
 describe("fetchWarStats", () => {
+  const validStats = {
+    playerCount: 1000,
+    missionSuccessRate: 50,
+    missionsWon: 100,
+    missionTime: 3600,
+    terminidKills: 1000,
+    automatonKills: 500,
+    illuminateKills: 100,
+    bulletsFired: 10000,
+    deaths: 50,
+    friendlies: 10,
+    missionsLost: 5,
+  };
+
   it("returns DTO on success", async () => {
-    const mock = { statistics: { playerCount: 1000 } };
+    const mock = { statistics: validStats };
     vi.mocked(getAPI).mockResolvedValue({ success: true, data: mock });
 
     const result = await fetchWarStats();
@@ -60,5 +74,18 @@ describe("fetchWarStats", () => {
       error: new Error("fail"),
     });
     await expect(fetchWarStats()).rejects.toThrow("Failed to fetch war stats");
+  });
+
+  it("throws when statistics object is absent", async () => {
+    vi.mocked(getAPI).mockResolvedValue({ success: true, data: {} });
+    await expect(fetchWarStats()).rejects.toThrow("Invalid war stats data");
+  });
+
+  it("throws when required statistics fields are missing", async () => {
+    vi.mocked(getAPI).mockResolvedValue({
+      success: true,
+      data: { statistics: { playerCount: 1000 } },
+    });
+    await expect(fetchWarStats()).rejects.toThrow("Invalid war stats data");
   });
 });

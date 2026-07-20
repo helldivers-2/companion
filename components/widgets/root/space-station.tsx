@@ -3,26 +3,7 @@ import type { SpaceStation, TacticalAction, Cost } from "@/types/space-station";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { stripHtmlTags } from "@/lib/utils";
-
-function formatTimeRemaining(endTime: string): string {
-  const end = new Date(endTime);
-  const now = new Date();
-  const diff = end.getTime() - now.getTime();
-
-  if (diff <= 0) return "Ended";
-
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-  if (hours >= 24) {
-    const days = Math.floor(hours / 24);
-    const remainingHours = hours % 24;
-    return `${days}d ${remainingHours}h`;
-  }
-
-  return `${hours}h ${minutes}m`;
-}
+import { stripHtmlTags, formatTimeRemaining } from "@/lib/utils";
 
 function CostProgress({ cost }: { cost: Cost }) {
   const progress =

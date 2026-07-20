@@ -1,28 +1,23 @@
-export interface RewardDto {
-  type: number;
-  amount: number;
-}
+import { z } from "zod";
 
-export interface AssignmentDto {
-  id: string | number;
-  briefing: string;
-  expiration: string;
-  progress: number[];
-  rewards?: RewardDto[];
-}
+export const RewardDtoSchema = z.object({
+  type: z.number(),
+  amount: z.number(),
+});
 
-export interface Reward {
-  type: number;
-  amount: number;
-}
+export const AssignmentDtoSchema = z.object({
+  id: z.union([z.string(), z.number()]),
+  briefing: z.string(),
+  expiration: z.string(),
+  progress: z.array(z.number()),
+  rewards: z.array(RewardDtoSchema).optional(),
+});
 
-export interface Assignment {
-  id: string | number;
-  briefing: string;
-  expiration: string;
-  progress: number[];
-  rewards?: Reward[];
-}
+export type RewardDto = z.infer<typeof RewardDtoSchema>;
+export type AssignmentDto = z.infer<typeof AssignmentDtoSchema>;
+
+export type Reward = RewardDto;
+export type Assignment = AssignmentDto;
 
 export interface StatusInfo {
   text: string;

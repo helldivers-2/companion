@@ -1,9 +1,4 @@
-import type { DispatchDto, Dispatch } from "@/types/dispatches";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
-
-export function mapDispatchDto(dto: DispatchDto): Dispatch {
-  return { ...dto };
-}
 
 export function parseContent(content: string): string {
   return content

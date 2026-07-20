@@ -8,7 +8,7 @@ import {
   species,
 } from "@/lib/transformers/campaigns";
 import Image from "next/image";
-import { millify } from "@/lib/utils";
+import { millify, formatTimeRemaining } from "@/lib/utils";
 
 import {
   Table,
@@ -97,11 +97,11 @@ export default function CampaignTableClient({
             <TableHead>Liberation</TableHead>
             <TableHead className="hidden lg:table-cell"></TableHead>
             <TableHead className="hidden text-right md:table-cell">
-              Rate
+              Regen
             </TableHead>
             <TableHead className="hidden md:table-cell">Status</TableHead>
             <TableHead className="hidden text-right lg:table-cell">
-              ETA
+              Ends
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -114,7 +114,7 @@ export default function CampaignTableClient({
                 ? Math.round((playerCount / filteredPlayerCount) * 100)
                 : 0;
 
-            const { liberation, rate, status, eta } = getPlanetStats(planet);
+            const { liberation, regen, status } = getPlanetStats(planet);
 
             return (
               <TableRow
@@ -150,9 +150,8 @@ export default function CampaignTableClient({
                   </div>
                 </TableCell>
                 <TableCell className="hidden text-right md:table-cell">
-                  <span className="font-mono text-sm">
-                    {rate >= 0 ? "+" : ""}
-                    {rate.toFixed(2)}%/hr
+                  <span className="font-mono text-sm text-muted-foreground">
+                    {planet.event ? "—" : `${regen.toFixed(2)}%/hr`}
                   </span>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
@@ -162,7 +161,9 @@ export default function CampaignTableClient({
                 </TableCell>
                 <TableCell className="hidden text-right lg:table-cell">
                   <span className="font-mono text-sm text-muted-foreground">
-                    {eta || "—"}
+                    {planet.event
+                      ? formatTimeRemaining(planet.event.endTime)
+                      : "—"}
                   </span>
                 </TableCell>
               </TableRow>

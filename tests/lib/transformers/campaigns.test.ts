@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import {
   getLiberation,
-  getLiberationRate,
+  getRegenRate,
   getStatus,
-  getTimeToLiberation,
   getPlanetStats,
   getCampaignStats,
+  getEnemyKills,
   mapPlanetDto,
   mapCampaignDto,
   species,
@@ -77,43 +77,31 @@ describe("getLiberation", () => {
   });
 });
 
-describe("getLiberationRate", () => {
-  it("calculates hourly rate", () => {
-    const rate = getLiberationRate(0.01, 100);
-    expect(rate).toBeCloseTo(-36, 1);
+describe("getRegenRate", () => {
+  it("calculates positive hourly regen percentage", () => {
+    // 0.01 hp/s * 3600 = 36 hp/hr against maxHealth 100 = 36 %/hr
+    expect(getRegenRate(0.01, 100)).toBeCloseTo(36, 1);
   });
   it("returns 0 for maxHealth 0", () => {
-    expect(getLiberationRate(0.01, 0)).toBe(0);
+    expect(getRegenRate(0.01, 0)).toBe(0);
+  });
+  it("returns 0 for no regen", () => {
+    expect(getRegenRate(0, 100)).toBe(0);
   });
 });
 
 describe("getStatus", () => {
-  it("returns Gaining Ground for positive rate", () => {
-    expect(getStatus(1).text).toBe("Gaining Ground");
+  it("returns Regenerating for meaningful regen", () => {
+    expect(getStatus(1).text).toBe("Regenerating");
   });
-  it("returns Losing Ground for negative rate", () => {
-    expect(getStatus(-1).text).toBe("Losing Ground");
-  });
-  it("returns Stalemate for neutral rate", () => {
-    expect(getStatus(0).text).toBe("Stalemate");
-  });
-});
-
-describe("getTimeToLiberation", () => {
-  it("returns null for non-positive rate", () => {
-    expect(getTimeToLiberation(50, 0)).toBeNull();
-    expect(getTimeToLiberation(50, -1)).toBeNull();
-  });
-  it("returns minutes for short time", () => {
-    expect(getTimeToLiberation(50, 50)).toBe("1h 0m");
-  });
-  it("returns hours and minutes for longer time", () => {
-    expect(getTimeToLiberation(50, 25)).toBe("2h 0m");
+  it("returns Stable for negligible regen", () => {
+    expect(getStatus(0).text).toBe("Stable");
+    expect(getStatus(0.5).text).toBe("Stable");
   });
 });
 
 describe("getPlanetStats", () => {
-  it("calculates stats for a planet", () => {
+  it("calculates stats for a liberation planet", () => {
     const planet = {
       name: "Test",
       sector: "S1",
@@ -127,7 +115,54 @@ describe("getPlanetStats", () => {
     };
     const stats = getPlanetStats(planet);
     expect(stats.liberation).toBe("50.00");
-    expect(stats.status.text).toBe("Stalemate");
+    expect(stats.regen).toBe(0);
+    expect(stats.status.text).toBe("Stable");
+  });
+
+  it("uses defense-remaining semantics for event planets (matches map)", () => {
+    const planet = {
+      name: "Defense",
+      sector: "S1",
+      position: { x: 0, y: 0 },
+      health: 100,
+      maxHealth: 100,
+      regenPerSecond: 5,
+      currentOwner: "Humans",
+      initialOwner: "Humans",
+      statistics: { playerCount: 0 },
+      event: {
+        id: 1,
+        eventType: 1,
+        faction: "Automaton",
+        health: 30,
+        maxHealth: 100,
+        startTime: "2026-01-01T00:00:00Z",
+        endTime: "2026-01-02T00:00:00Z",
+      },
+    };
+    const stats = getPlanetStats(planet);
+    // inverse of health -> 30% defense remaining, same as campaign-map
+    expect(stats.liberation).toBe("30.00");
+    expect(stats.status.text).toBe("Defending");
+  });
+});
+
+describe("getEnemyKills", () => {
+  it("returns null when no per-faction kill data is present", () => {
+    expect(getEnemyKills({ playerCount: 5 })).toBeNull();
+  });
+  it("sums all present faction kills", () => {
+    expect(
+      getEnemyKills({
+        playerCount: 5,
+        terminidKills: 10,
+        automatonKills: 20,
+        illuminateKills: 5,
+      }),
+    ).toBe(35);
+  });
+  it("treats missing factions as zero when at least one is present", () => {
+    expect(getEnemyKills({ playerCount: 5, terminidKills: 10 })).toBe(10);
   });
 });
 

@@ -5,9 +5,10 @@ import {
   getLiberation,
   getPlanetStats,
   getFactionIcon,
+  getEnemyKills,
 } from "@/lib/transformers/campaigns";
 import Image from "next/image";
-import { millify } from "@/lib/utils";
+import { millify, formatTimeRemaining } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -36,8 +37,28 @@ interface PlanetDetailProps {
 
 function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
   const { planet } = campaign;
-  const { liberation, rate, status, eta } = getPlanetStats(planet);
+  const { liberation, regen, status } = getPlanetStats(planet);
   const factionIcon = getFactionIcon(campaign.planet.currentOwner);
+  const stats = planet.statistics;
+  const enemyKills = getEnemyKills(stats);
+  const combatRows = [
+    stats.missionsWon != null && {
+      label: "Missions Won",
+      value: millify(stats.missionsWon),
+    },
+    stats.missionsLost != null && {
+      label: "Missions Lost",
+      value: millify(stats.missionsLost),
+    },
+    enemyKills != null && {
+      label: "Enemy Kills",
+      value: millify(enemyKills),
+    },
+    stats.deaths != null && {
+      label: "Deaths",
+      value: millify(stats.deaths),
+    },
+  ].filter(Boolean) as { label: string; value: string }[];
 
   return (
     <div className="space-y-4 p-4">
@@ -67,27 +88,18 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
           <span className="font-mono text-sm">{liberation}%</span>
         </div>
         <Progress value={Number(liberation)} />
-        <div className="flex items-center justify-between">
-          <span className="text-xs text-muted-foreground">Rate</span>
-          <span className="font-mono text-sm">
-            {rate >= 0 ? "+" : ""}
-            {rate.toFixed(2)}%/hr
-          </span>
-        </div>
+        {!planet.event && (
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-muted-foreground">Regen</span>
+            <span className="font-mono text-sm">{regen.toFixed(2)}%/hr</span>
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <span className="text-xs text-muted-foreground">Status</span>
           <Badge variant="outline" className={status.color}>
             {status.text}
           </Badge>
         </div>
-        {eta && (
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground">ETA</span>
-            <span className="font-mono text-sm text-muted-foreground">
-              {eta}
-            </span>
-          </div>
-        )}
       </div>
 
       <Separator />
@@ -102,6 +114,28 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
         <span className="text-xs text-muted-foreground">Owner</span>
         <span className="text-sm">{planet.currentOwner}</span>
       </div>
+
+      {combatRows.length > 0 && (
+        <>
+          <Separator />
+          <div>
+            <div className="mb-2 text-xs font-medium">Combat Record</div>
+            <div className="space-y-2">
+              {combatRows.map((row) => (
+                <div
+                  key={row.label}
+                  className="flex items-center justify-between"
+                >
+                  <span className="text-xs text-muted-foreground">
+                    {row.label}
+                  </span>
+                  <span className="font-mono text-sm">{row.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
 
       {planet.biome && (
         <>
@@ -172,7 +206,7 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-muted-foreground">Ends</span>
                   <span className="text-sm text-muted-foreground">
-                    {new Date(planet.event.endTime).toLocaleDateString()}
+                    {formatTimeRemaining(planet.event.endTime)}
                   </span>
                 </div>
               )}
