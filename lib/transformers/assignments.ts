@@ -34,10 +34,9 @@ export function getStatusInfo(
   progressPercent: number,
 ): StatusInfo {
   const timeLeft = new Date(expiration).getTime() - new Date().getTime();
-  if (timeLeft <= 0) return { text: "EXPIRED", color: "bg-red-500" };
-  if (progressPercent === 100)
-    return { text: "COMPLETED", color: "bg-green-500" };
+  if (timeLeft <= 0) return { text: "EXPIRED", color: "destructive" };
+  if (progressPercent === 100) return { text: "COMPLETED", color: "success" };
   if (timeLeft < 24 * 60 * 60 * 1000)
-    return { text: "URGENT", color: "bg-orange-500" };
-  return { text: "ACTIVE", color: "bg-blue-500" };
+    return { text: "URGENT", color: "warning" };
+  return { text: "ACTIVE", color: "primary" };
 }

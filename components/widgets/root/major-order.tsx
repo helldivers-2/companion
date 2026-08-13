@@ -9,6 +9,13 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
 
+const STATUS_BADGE_CLASS: Record<string, string> = {
+  primary: "bg-primary",
+  success: "bg-success text-white",
+  warning: "bg-warning text-white",
+  destructive: "bg-destructive text-white",
+};
+
 export default async function MajorOrder() {
   const assignments = await getAssignments();
 
@@ -65,7 +72,7 @@ export default async function MajorOrder() {
 
                     <div className="flex items-center gap-6 text-sm text-muted-foreground">
                       <Badge
-                        className={`${statusInfo.color} px-3 py-1 text-xs font-semibold tracking-wider uppercase`}
+                        className={`${STATUS_BADGE_CLASS[statusInfo.color]} px-3 py-1 text-xs font-semibold tracking-wider uppercase`}
                       >
                         {statusInfo.text}
                       </Badge>
@@ -107,7 +114,7 @@ export default async function MajorOrder() {
                         objectives completed
                       </span>
                       {progressPercent === 100 && (
-                        <span className="flex items-center gap-1 font-medium text-green-600">
+                        <span className="flex items-center gap-1 font-medium text-success">
                           <CheckCircle2 className="h-3 w-3" />
                           Mission Complete
                         </span>
