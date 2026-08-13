@@ -1,8 +1,7 @@
 import { siteConfig } from "@/config/site";
 
 export type Result<T> =
-  | { success: true; data: T }
-  | { success: false; error: Error };
+  { success: true; data: T } | { success: false; error: Error };
 
 export async function getAPI<T>({
   url,

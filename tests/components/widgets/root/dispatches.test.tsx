@@ -38,6 +38,8 @@ describe("Dispatches", () => {
 
     const html = renderToStaticMarkup(await Dispatches());
 
-    expect(html).toContain("Super Earth High Command has issued a new directive.");
+    expect(html).toContain(
+      "Super Earth High Command has issued a new directive.",
+    );
   });
 });

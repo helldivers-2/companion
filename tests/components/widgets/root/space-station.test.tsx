@@ -55,7 +55,12 @@ describe("SpaceStation", () => {
             status: 1,
             statusExpire: "",
             costs: [
-              { id: "c1", targetValue: 100, currentValue: 50, deltaPerSecond: 0 },
+              {
+                id: "c1",
+                targetValue: 100,
+                currentValue: 50,
+                deltaPerSecond: 0,
+              },
             ],
           },
         ],
