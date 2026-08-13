@@ -21,7 +21,7 @@ import FAQSection from "@/components/widgets/merged/faq-section";
 export const metadata: Metadata = {
   title: "War Status",
   description:
-    "Relevant Helldivers Data at a Glance. Orders, Campaigns and Map.",
+    "Live Galactic War status for Helldivers 2: the current major order, every active campaign, dispatches from High Command and the galactic map.",
 };
 
 export default function StatusPage() {
@@ -29,7 +29,7 @@ export default function StatusPage() {
     <div className="space-y-8">
       <section id="status">
         <Container>
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-4 lg:grid-cols-3 lg:items-start">
             <div className="lg:col-span-3">
               <Suspense
                 fallback={
@@ -52,7 +52,10 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-1">
+            {/* Spans the Major Order and Campaigns rows: the station card is far
+                taller than a single major order, so pairing it with only the
+                order leaves the order card stretched and mostly empty. */}
+            <div className="lg:col-span-1 lg:row-span-2">
               <DashboardCard title="Space Station">
                 <Suspense fallback={<WidgetSkeleton />}>
                   <SpaceStation />
@@ -60,7 +63,7 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="lg:col-span-3">
+            <div className="lg:col-span-2">
               <DashboardCard title="Campaigns">
                 <Suspense fallback={<WidgetSkeleton rows={6} />}>
                   <CampaignTable />
@@ -68,7 +71,7 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="self-start lg:col-span-2">
+            <div className="lg:col-span-2">
               <DashboardCard title="Map">
                 <Suspense fallback={<Skeleton className="h-96 w-full" />}>
                   <CampaignMap />
@@ -76,7 +79,7 @@ export default function StatusPage() {
               </DashboardCard>
             </div>
 
-            <div className="self-start lg:col-span-1">
+            <div className="lg:col-span-1">
               <DashboardCard title="Dispatches">
                 <ScrollArea className="lg:h-[500px]">
                   <Suspense fallback={<WidgetSkeleton />}>
