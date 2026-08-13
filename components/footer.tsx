@@ -148,8 +148,9 @@ const ProjectInfo = () => (
         className="underline transition-all hover:no-underline"
         href={siteConfig.links.github}
       >
-        michi.onl.
+        michi.onl
       </Link>
+      .
     </p>
   </div>
 );
@@ -157,8 +158,8 @@ const ProjectInfo = () => (
 const AboutSection = () => (
   <div className="space-y-4">
     <p className="leading-relaxed text-muted-foreground">
-      Welcome to the Helldivers Companion Fan Project, a source for real-time
-      API data for the game Helldivers 2!
+      A fan-built dashboard for the Helldivers 2 Galactic War, reading live data
+      from the community API. Built with:
     </p>
     <CreditsList credits={CREDITS} />
   </div>
@@ -166,8 +167,8 @@ const AboutSection = () => (
 
 const DisclaimerSection = () => (
   <p className="py-8 text-center text-sm text-muted-foreground">
-    This site is fan-made and not affiliated with Arrowhead Game Studios in any
-    way.
+    Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony
+    Interactive Entertainment.
   </p>
 );
 

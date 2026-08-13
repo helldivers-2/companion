@@ -39,7 +39,7 @@ describe("Statistics", () => {
     const html = renderToStaticMarkup(await Statistics());
 
     expect(html).toContain("Patriots in Game");
-    expect(html).toContain("Pesty Bugs Killed");
+    expect(html).toContain("Pesky Bugs Killed");
     // success rate is already a percentage — rendered rounded, not millified
     expect(html).toContain("76%");
   });

@@ -35,32 +35,32 @@ export default async function Statistics() {
               {millify(stats.playerCount)}
             </StatisticsCard>
             <StatisticsCard
-              title={`Lawful Victories - Ø ${Math.round(stats.missionSuccessRate)}%`}
+              title={`Lawful Victories (${Math.round(stats.missionSuccessRate)}% success)`}
             >
               {millify(stats.missionsWon)}
             </StatisticsCard>
-            <StatisticsCard title="Total Time Invested">
+            <StatisticsCard title="Time Served">
               {millify(stats.missionTime / 60 / 60 / 24 / 365 / 100)} centuries
             </StatisticsCard>
-            <StatisticsCard title="Pesty Bugs Killed">
+            <StatisticsCard title="Pesky Bugs Killed">
               {millify(stats.terminidKills)}
             </StatisticsCard>
             <StatisticsCard title="Robots Annihilated">
               {millify(stats.automatonKills)}
             </StatisticsCard>
-            <StatisticsCard title="Illuminates Killed">
+            <StatisticsCard title="Illuminate Purged">
               {millify(stats.illuminateKills)}
             </StatisticsCard>
-            <StatisticsCard title="Ammunition Shot">
+            <StatisticsCard title="Rounds Fired">
               {millify(stats.bulletsFired)}
             </StatisticsCard>
             <StatisticsCard title="Fallen Soldiers">
               {millify(stats.deaths)}
             </StatisticsCard>
-            <StatisticsCard title="Collateral Friend Kills">
+            <StatisticsCard title="Friendly Fire Kills">
               {millify(stats.friendlies)}
             </StatisticsCard>
-            <StatisticsCard title="Missions Lost :(">
+            <StatisticsCard title="Missions Lost">
               {millify(stats.missionsLost)}
             </StatisticsCard>
           </div>

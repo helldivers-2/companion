@@ -10,8 +10,7 @@ export default function NotFound() {
         <Globe className="mx-auto mb-4 h-16 w-16 text-icon" />
         <h1 className="mb-2 text-xl font-semibold">Page Not Found</h1>
         <p className="mb-6 text-muted-foreground">
-          This sector hasn&apos;t been charted. The page you&apos;re looking
-          for doesn&apos;t exist.
+          Super Earth Command has no record of this sector.
         </p>
         <Button asChild>
           <Link href="/">Return to War Status</Link>
