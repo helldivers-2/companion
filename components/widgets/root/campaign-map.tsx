@@ -1,6 +1,11 @@
 "use client";
 
-import { getFactionIcon, getLiberation } from "@/lib/transformers/campaigns";
+import {
+  getFactionIcon,
+  getLiberation,
+  getPlanetStats,
+  isLiberated,
+} from "@/lib/transformers/campaigns";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { millify } from "@/lib/utils";
 import Image from "next/image";
@@ -22,11 +27,13 @@ import { LatLngBounds } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const ANGLE_OFFSET_DEGREES = 90;
+// Same palette as the table's status badges (Tailwind 500s) so the map and the
+// table always agree on what a front is doing.
 const COLORS = {
-  green: "#34C759",
-  orange: "#FF9500",
-  yellow: "#FFCC00",
-  red: "#FF3B30",
+  green: "#22c55e",
+  orange: "#f97316",
+  red: "#ef4444",
+  muted: "#71717a",
   white: "#FFFFFF",
 } as const;
 
@@ -36,11 +43,13 @@ const MARKER_STATUS = {
   LIBERATED: "liberated",
 } as const;
 
-const getProgressColor = (percentage: number): string => {
-  if (percentage >= 80) return COLORS.green;
-  if (percentage >= 50) return COLORS.orange;
-  if (percentage >= 25) return COLORS.yellow;
-  return COLORS.red;
+// Keyed by the semantic token getStatus/getPlanetStats returns, not by the
+// label, so renaming a status cannot silently drop a marker back to grey.
+const STATUS_COLORS: Record<string, string> = {
+  warning: COLORS.orange,
+  success: COLORS.green,
+  destructive: COLORS.red,
+  muted: COLORS.muted,
 };
 
 const transformCoordinates = (
@@ -116,7 +125,7 @@ const PlanetPopup = ({
             height={20}
             width={20}
             alt={`${campaign.planet.currentOwner} Icon`}
-            className="size-4"
+            className="size-4 shrink-0 object-contain"
           />
         </div>
       </div>
@@ -173,29 +182,7 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
   }, [planet]);
 
   const markerProperties = useMemo((): MarkerProperties => {
-    if (planet.event !== null) {
-      return {
-        fillColor: COLORS.red,
-        fillOpacity: 0.9,
-        color: COLORS.white,
-        weight: 2,
-        radius: 8,
-        status: MARKER_STATUS.EVENT,
-        statusText: "Active Event",
-        priority: "high",
-      };
-    } else if (planet.health < planet.maxHealth) {
-      return {
-        fillColor: COLORS.orange,
-        fillOpacity: 0.8,
-        color: COLORS.white,
-        weight: 2,
-        radius: 7,
-        status: MARKER_STATUS.CAMPAIGN,
-        statusText: `${markerData.liberation}% Liberation`,
-        priority: "medium",
-      };
-    } else {
+    if (isLiberated(campaign)) {
       return {
         fillColor: COLORS.green,
         fillOpacity: 0.7,
@@ -207,7 +194,21 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
         priority: "low",
       };
     }
-  }, [planet.event, planet.health, planet.maxHealth, markerData.liberation]);
+
+    const { status } = getPlanetStats(planet);
+    const isEvent = planet.event !== null;
+
+    return {
+      fillColor: STATUS_COLORS[status.color] ?? COLORS.muted,
+      fillOpacity: isEvent ? 0.9 : 0.8,
+      color: COLORS.white,
+      weight: 2,
+      radius: isEvent ? 8 : 7,
+      status: isEvent ? MARKER_STATUS.EVENT : MARKER_STATUS.CAMPAIGN,
+      statusText: status.text,
+      priority: isEvent ? "high" : "medium",
+    };
+  }, [campaign, planet]);
 
   const progressRadius = markerProperties.radius + 3;
   const circumference = 2 * Math.PI * progressRadius;
@@ -241,7 +242,7 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
           radius={progressRadius}
           fillColor="transparent"
           fillOpacity={0}
-          color={getProgressColor(liberationPercentage)}
+          color={COLORS.white}
           weight={3}
           interactive={false}
           dashArray={dashArray}
@@ -278,13 +279,15 @@ const PlanetLayer = ({
 );
 
 export interface CampaignMapProps {
-  activePlanets: Campaign[];
+  movingPlanets: Campaign[];
+  parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
   error?: string | null;
 }
 
 export default function CampaignMap({
-  activePlanets,
+  movingPlanets,
+  parkedPlanets,
   liberatedPlanets,
   error,
 }: CampaignMapProps) {
@@ -298,6 +301,17 @@ export default function CampaignMap({
     setSelectedCampaign(campaign);
     setDetailOpen(true);
   };
+
+  // Defenses are the only thing on a timer, so they get their own layer while
+  // the rest of the moving fronts share one. Parked fronts and liberated
+  // planets stay off by default — the map is for what is actually happening,
+  // not for the thirty untouched planets that are technically in the war.
+  const defenses = movingPlanets.filter(
+    (campaign) => campaign.planet.event !== null,
+  );
+  const activeCampaigns = movingPlanets.filter(
+    (campaign) => campaign.planet.event === null,
+  );
 
   if (!isClient) {
     return (
@@ -318,7 +332,11 @@ export default function CampaignMap({
     );
   }
 
-  if (activePlanets.length === 0 && liberatedPlanets.length === 0) {
+  if (
+    movingPlanets.length === 0 &&
+    parkedPlanets.length === 0 &&
+    liberatedPlanets.length === 0
+  ) {
     return (
       <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
         <div className="text-center">
@@ -356,11 +374,27 @@ export default function CampaignMap({
           opacity={0.5}
         />
         <LayersControl position="bottomleft">
-          {activePlanets.length > 0 && (
+          {defenses.length > 0 && (
             <PlanetLayer
-              planets={activePlanets}
+              planets={defenses}
+              name="Active Defenses"
+              checked={true}
+              onPlanetClick={handlePlanetClick}
+            />
+          )}
+          {activeCampaigns.length > 0 && (
+            <PlanetLayer
+              planets={activeCampaigns}
               name="Active Campaigns"
               checked={true}
+              onPlanetClick={handlePlanetClick}
+            />
+          )}
+          {parkedPlanets.length > 0 && (
+            <PlanetLayer
+              planets={parkedPlanets}
+              name="Parked Fronts"
+              checked={movingPlanets.length === 0}
               onPlanetClick={handlePlanetClick}
             />
           )}
@@ -368,7 +402,7 @@ export default function CampaignMap({
             <PlanetLayer
               planets={liberatedPlanets}
               name="Liberated Planets"
-              checked={activePlanets.length === 0}
+              checked={false}
               onPlanetClick={handlePlanetClick}
             />
           )}

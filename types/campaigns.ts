@@ -40,6 +40,20 @@ export const PlanetEventSchema = z.object({
 const BiomeSchema = z.object({ name: z.string(), description: z.string() });
 const HazardSchema = z.object({ name: z.string(), description: z.string() });
 
+// Planets are now taken region by region: a planet can sit at full health while
+// a city on it is a quarter liberated, so region health is where progress
+// actually shows up. `isAvailable` gates whether players can push a region at
+// all — locked regions stay pinned at full health regardless of the war effort.
+export const PlanetRegionSchema = z.object({
+  name: z.string(),
+  health: z.number(),
+  maxHealth: z.number(),
+  size: z.string().optional(),
+  regenPerSecond: z.number().optional(),
+  isAvailable: z.boolean().optional(),
+  players: z.number().optional(),
+});
+
 export const PlanetDtoSchema = z.object({
   name: z.string(),
   sector: z.string(),
@@ -53,6 +67,7 @@ export const PlanetDtoSchema = z.object({
   event: PlanetEventSchema.nullish(),
   biome: BiomeSchema.optional(),
   hazards: z.array(HazardSchema).optional(),
+  regions: z.array(PlanetRegionSchema).optional(),
 });
 
 export const CampaignDtoSchema = z.object({
@@ -64,6 +79,7 @@ export const CampaignDtoSchema = z.object({
 export type PlanetPosition = z.infer<typeof PlanetPositionSchema>;
 export type PlanetStatistics = z.infer<typeof PlanetStatisticsSchema>;
 export type PlanetEvent = z.infer<typeof PlanetEventSchema>;
+export type PlanetRegion = z.infer<typeof PlanetRegionSchema>;
 export type PlanetDto = z.infer<typeof PlanetDtoSchema>;
 export type CampaignDto = z.infer<typeof CampaignDtoSchema>;
 
@@ -80,6 +96,7 @@ export interface Planet {
   event?: PlanetEvent | null;
   biome?: { name: string; description: string };
   hazards?: { name: string; description: string }[];
+  regions?: PlanetRegion[];
 }
 
 export interface Campaign {
@@ -90,7 +107,12 @@ export interface Campaign {
 
 export interface CampaignStats {
   campaigns: Campaign[];
+  // Everything still being fought over, ordered by attention. Split into the
+  // two buckets below: the map wants all of them, the table renders them
+  // differently depending on whether anything is actually happening.
   activePlanets: Campaign[];
+  movingPlanets: Campaign[];
+  parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
   liberatedPlayerCount: number;
 }

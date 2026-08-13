@@ -36,16 +36,20 @@ describe("CampaignMapServer", () => {
     expect(element.props.error).toBe(
       "Failed to load campaign data. Please try again later.",
     );
-    expect(element.props.activePlanets).toEqual([]);
+    expect(element.props.movingPlanets).toEqual([]);
+    expect(element.props.parkedPlanets).toEqual([]);
     expect(element.props.liberatedPlanets).toEqual([]);
   });
 
-  it("passes active and liberated planets to the map on success", async () => {
-    const activePlanets = [makeCampaign()];
+  it("passes moving, parked, and liberated planets to the map on success", async () => {
+    const movingPlanets = [makeCampaign()];
+    const parkedPlanets = [makeCampaign()];
     const liberatedPlanets = [makeCampaign()];
     vi.mocked(getCampaignData).mockResolvedValue({
-      campaigns: activePlanets,
-      activePlanets,
+      campaigns: [...movingPlanets, ...parkedPlanets, ...liberatedPlanets],
+      activePlanets: [...movingPlanets, ...parkedPlanets],
+      movingPlanets,
+      parkedPlanets,
       liberatedPlanets,
       liberatedPlayerCount: 0,
     });
@@ -53,7 +57,8 @@ describe("CampaignMapServer", () => {
     const element = await CampaignMapServer();
 
     expect(element.props.error).toBeNull();
-    expect(element.props.activePlanets).toEqual(activePlanets);
+    expect(element.props.movingPlanets).toEqual(movingPlanets);
+    expect(element.props.parkedPlanets).toEqual(parkedPlanets);
     expect(element.props.liberatedPlanets).toEqual(liberatedPlanets);
   });
 });

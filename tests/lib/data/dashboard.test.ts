@@ -41,6 +41,8 @@ describe("getDashboardStats", () => {
           faction: "Terminids",
         },
       ],
+      movingPlanets: [],
+      parkedPlanets: [],
       liberatedPlanets: [],
       liberatedPlayerCount: 0,
     });

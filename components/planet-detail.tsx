@@ -6,6 +6,7 @@ import {
   getPlanetStats,
   getFactionIcon,
   getEnemyKills,
+  STATUS_TEXT_CLASS,
 } from "@/lib/transformers/campaigns";
 import Image from "next/image";
 import { millify, formatTimeRemaining } from "@/lib/utils";
@@ -69,6 +70,7 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
             height={28}
             width={28}
             alt={`${campaign.planet.currentOwner} Icon`}
+            className="size-7 shrink-0 object-contain"
           />
         )}
         <div>
@@ -96,7 +98,7 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
         )}
         <div className="flex items-center justify-between">
           <span className="text-xs text-muted-foreground">Status</span>
-          <Badge variant="outline" className={status.color}>
+          <Badge variant="outline" className={STATUS_TEXT_CLASS[status.color]}>
             {status.text}
           </Badge>
         </div>

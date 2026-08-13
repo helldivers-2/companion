@@ -5,7 +5,9 @@ import CampaignTableClient from "@/components/widgets/root/campaign-table-client
 const ERROR_MESSAGE = "Failed to load campaign data. Please try again later.";
 
 export default async function CampaignTable() {
-  let activePlanets: CampaignStats["activePlanets"] = [];
+  let movingPlanets: CampaignStats["movingPlanets"] = [];
+  let parkedPlanets: CampaignStats["parkedPlanets"] = [];
+  let liberatedCount = 0;
   let liberatedPlayerCount = 0;
   let error: string | null = null;
 
@@ -15,7 +17,9 @@ export default async function CampaignTable() {
     if (data === null) {
       error = ERROR_MESSAGE;
     } else {
-      activePlanets = data.activePlanets;
+      movingPlanets = data.movingPlanets;
+      parkedPlanets = data.parkedPlanets;
+      liberatedCount = data.liberatedPlanets.length;
       liberatedPlayerCount = data.liberatedPlayerCount;
     }
   } catch (err) {
@@ -29,7 +33,9 @@ export default async function CampaignTable() {
 
   return (
     <CampaignTableClient
-      activePlanets={activePlanets}
+      movingPlanets={movingPlanets}
+      parkedPlanets={parkedPlanets}
+      liberatedCount={liberatedCount}
       liberatedPlayerCount={liberatedPlayerCount}
     />
   );

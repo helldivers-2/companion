@@ -5,7 +5,8 @@ import type { CampaignMapProps } from "@/components/widgets/root/campaign-map";
 const ERROR_MESSAGE = "Failed to load campaign data. Please try again later.";
 
 export default async function CampaignMapServer() {
-  let activePlanets: CampaignMapProps["activePlanets"] = [];
+  let movingPlanets: CampaignMapProps["movingPlanets"] = [];
+  let parkedPlanets: CampaignMapProps["parkedPlanets"] = [];
   let liberatedPlanets: CampaignMapProps["liberatedPlanets"] = [];
   let error: string | null = null;
 
@@ -15,7 +16,8 @@ export default async function CampaignMapServer() {
     if (data === null) {
       error = ERROR_MESSAGE;
     } else {
-      activePlanets = data.activePlanets;
+      movingPlanets = data.movingPlanets;
+      parkedPlanets = data.parkedPlanets;
       liberatedPlanets = data.liberatedPlanets;
     }
   } catch (err) {
@@ -25,7 +27,8 @@ export default async function CampaignMapServer() {
 
   return (
     <CampaignMap
-      activePlanets={activePlanets}
+      movingPlanets={movingPlanets}
+      parkedPlanets={parkedPlanets}
       liberatedPlanets={liberatedPlanets}
       error={error}
     />
