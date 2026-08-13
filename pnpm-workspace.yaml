@@ -1,3 +1,7 @@
+overrides:
+  # vitest/vite-tsconfig-paths pull vite <=8.0.15, which has a `server.fs.deny`
+  # bypass and an NTLMv2 hash disclosure (both Windows-only, dev-only).
+  vite: ">=8.0.16"
 allowBuilds:
   sharp: true
   unrs-resolver: true
