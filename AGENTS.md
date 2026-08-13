@@ -13,7 +13,7 @@ pnpm test           # Run tests in watch mode (vitest)
 pnpm test:run       # Run tests once (CI)
 ```
 
-**Linting:** `pnpm lint` runs `eslint .` directly. The previous Next.js 16.1.6 / eslint 10 incompatibility has been resolved by upgrading to Next.js 16.2.9 and eslint 9.x.
+**Linting:** `pnpm lint` runs `eslint .` directly. The previous Next.js 16.1.6 / eslint 10 incompatibility has been resolved by upgrading to Next.js 16.3.0 and eslint 9.x. eslint is deliberately held at 9.x — the 10.x major has not been verified against `eslint-config-next`.
 
 ## Architecture
 
@@ -44,14 +44,17 @@ Interactive client pieces are kept separate:
 
 ### Key Utilities (`lib/transformers/campaigns.ts`)
 
-- `getCampaignStats()` — categorizes campaigns into active/liberated/total
-- `getPlanetStats()` — combines `getEffectiveHealth`, `getLiberation`, `getLiberationRate`, `getStatus`, and `getTimeToLiberation`
+- `getCampaignStats()` — categorizes campaigns into active/liberated/total, and splits `activePlanets` into `movingPlanets` / `parkedPlanets`. Sorts by attention (defenses by soonest `endTime`, then progress, then player count), not by remaining health.
+- `getPlanetStats()` — combines `getEffectiveHealth`, `getLiberation`, `getRegenRate`, and `getStatus`
 - `getEffectiveHealth()` — resolves planet health vs. event health
+- `getCampaignProgress()` — the one percentage worth showing per row: event defense health, else planet health, else the leading region's progress (labelled with the region name). Planet health alone reads 0.00% on most fronts under the region system.
+- `getLeadingRegion()` — the unlocked region players are actually pushing; ignores locked regions, which stay pinned at full health
+- `isMoving()` — whether a front has an event or any planet/region progress; drives the moving/parked split
 - `getFactionIcon()` / `species` — maps faction name to icon path
 
 ### Types
 
-`types/campaigns.ts` defines `Planet`, `Campaign`, `CampaignStats`. `types/assignments.ts` covers major orders. `types/space-station.ts` covers space station data.
+`types/campaigns.ts` defines `Planet`, `Campaign`, `PlanetRegion`, `CampaignStats`. `types/assignments.ts` covers major orders. `types/space-station.ts` covers space station data.
 
 ### Styling
 
@@ -59,7 +62,7 @@ Tailwind CSS v4 with `tailwind-merge` + `clsx` via `cn()` in `lib/utils.ts`. The
 
 ## Testing
 
-Tests use **Vitest** with the `node` environment and `vite-tsconfig-paths` for alias resolution. The `tests/` tree mirrors `lib/`:
+Tests use **Vitest** with the `node` environment and Vite's native `resolve.tsconfigPaths` for alias resolution (see `vitest.config.mts`). The `tests/` tree mirrors `lib/`:
 
 - `tests/lib/api/client.test.ts` — mocks `global.fetch` with `vi`.
 - `tests/lib/services/*.test.ts` — mocks services and validates error handling.
