@@ -31,9 +31,9 @@ function CostProgress({ cost }: { cost: Cost }) {
 
 const STATUS_LABELS: Record<number, { text: string; color: string }> = {
   0: { text: "Inactive", color: "text-muted-foreground" },
-  1: { text: "Active", color: "text-green-500" },
-  2: { text: "Completed", color: "text-blue-500" },
-  3: { text: "Failed", color: "text-red-500" },
+  1: { text: "Active", color: "text-success" },
+  2: { text: "Completed", color: "text-foreground" },
+  3: { text: "Failed", color: "text-destructive" },
 };
 
 function TacticalActionCard({ action }: { action: TacticalAction }) {

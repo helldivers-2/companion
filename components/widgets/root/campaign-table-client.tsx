@@ -35,6 +35,11 @@ interface CampaignTableClientProps {
 
 const COLUMN_COUNT = 7;
 
+// The row keeps its mouse click handler; this button is the focusable target
+// for keyboard users, and its click bubbles up to that same handler.
+const ROW_TRIGGER_CLASS =
+  "text-left outline-none hover:underline focus-visible:ring-1 focus-visible:ring-ring";
+
 export default function CampaignTableClient({
   movingPlanets,
   parkedPlanets,
@@ -116,7 +121,13 @@ export default function CampaignTableClient({
               alt={`${planet.currentOwner} Icon`}
               className="h-5 w-5 shrink-0 object-contain"
             />
-            {planet.name}
+            <button
+              type="button"
+              aria-haspopup="dialog"
+              className={ROW_TRIGGER_CLASS}
+            >
+              {planet.name}
+            </button>
             {planet.event ? <Badge variant="outline">Event</Badge> : null}
           </div>
           {progress.label && (
@@ -135,7 +146,7 @@ export default function CampaignTableClient({
           {millify(count)} ({playerPercent}%)
         </TableCell>
         <TableCell className="hidden lg:table-cell">
-          <div className="flex items-center space-x-2">
+          <div className="w-32">
             <Progress value={Number(progress.value)} />
           </div>
         </TableCell>
@@ -170,6 +181,7 @@ export default function CampaignTableClient({
           <Button
             variant={factionFilter === null ? "default" : "outline"}
             size="sm"
+            aria-pressed={factionFilter === null}
             onClick={() => setFactionFilter(null)}
           >
             All
@@ -181,6 +193,7 @@ export default function CampaignTableClient({
                 key={faction}
                 variant={factionFilter === faction ? "default" : "outline"}
                 size="sm"
+                aria-pressed={factionFilter === faction}
                 onClick={() => setFactionFilter(faction)}
                 className="gap-1.5"
               >
@@ -203,13 +216,13 @@ export default function CampaignTableClient({
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Planet</TableHead>
+            <TableHead>Planet</TableHead>
             <TableHead className="text-right text-muted-foreground">
               Players
             </TableHead>
             {/* The bar is lg-only, the percentage is always rendered, so the
                 label belongs on the percentage or mobile loses it entirely. */}
-            <TableHead className="hidden lg:table-cell"></TableHead>
+            <TableHead className="hidden w-32 lg:table-cell"></TableHead>
             <TableHead>Progress</TableHead>
             <TableHead className="hidden text-right md:table-cell">
               Regen
@@ -252,31 +265,37 @@ export default function CampaignTableClient({
                   className="cursor-pointer"
                   onClick={() => toggleFaction(faction)}
                 >
-                  <TableCell className="flex gap-2 font-medium">
-                    {expanded ? (
-                      <ChevronDown className="h-5 w-4 shrink-0" />
-                    ) : (
-                      <ChevronRight className="h-5 w-4 shrink-0" />
-                    )}
-                    {icon && (
-                      <Image
-                        src={icon}
-                        height={20}
-                        width={20}
-                        alt={`${faction} Icon`}
-                        className="h-5 w-5 shrink-0 object-contain"
-                      />
-                    )}
-                    {faction}
-                    <span className="text-muted-foreground">
-                      ({campaigns.length})
-                    </span>
+                  <TableCell className="font-medium">
+                    <button
+                      type="button"
+                      aria-expanded={expanded}
+                      className={`flex gap-2 ${ROW_TRIGGER_CLASS}`}
+                    >
+                      {expanded ? (
+                        <ChevronDown className="h-5 w-4 shrink-0" />
+                      ) : (
+                        <ChevronRight className="h-5 w-4 shrink-0" />
+                      )}
+                      {icon && (
+                        <Image
+                          src={icon}
+                          height={20}
+                          width={20}
+                          alt={`${faction} Icon`}
+                          className="h-5 w-5 shrink-0 object-contain"
+                        />
+                      )}
+                      {faction}
+                      <span className="text-muted-foreground">
+                        ({campaigns.length})
+                      </span>
+                    </button>
                   </TableCell>
                   <TableCell className="text-right text-muted-foreground">
                     {millify(groupPlayers)} ({groupPercent}%)
                   </TableCell>
                   <TableCell className="hidden lg:table-cell">
-                    <div className="flex items-center space-x-2">
+                    <div className="w-32">
                       <Progress value={0} />
                     </div>
                   </TableCell>
@@ -319,7 +338,7 @@ export default function CampaignTableClient({
                 {millify(liberatedPlayerCount)}
               </TableCell>
               <TableCell className="hidden lg:table-cell">
-                <div className="flex items-center space-x-2">
+                <div className="w-32">
                   <Progress value={100} />
                 </div>
               </TableCell>

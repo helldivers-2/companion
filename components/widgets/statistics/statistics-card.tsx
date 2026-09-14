@@ -9,7 +9,9 @@ export function StatisticsCard({ title, children }: StatisticsCardProps) {
   return (
     <div className="rounded-none border p-4">
       <p className="text-xl">{children}</p>
-      <p className="text-sm text-primary">{title}</p>
+      <p className="text-sm text-primary-foreground dark:text-primary">
+        {title}
+      </p>
     </div>
   );
 }

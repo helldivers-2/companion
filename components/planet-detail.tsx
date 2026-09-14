@@ -159,7 +159,7 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
             <div className="space-y-2">
               {planet.hazards.map((hazard, i) => (
                 <div key={i}>
-                  <Badge variant="outline" className="text-yellow-500">
+                  <Badge variant="outline" className="text-warning">
                     {hazard.name}
                   </Badge>
                   <p className="mt-1 text-xs text-muted-foreground">

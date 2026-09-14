@@ -12,9 +12,9 @@ import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
 
 const STATUS_BADGE_CLASS: Record<string, string> = {
   primary: "bg-primary",
-  success: "bg-success text-white",
-  warning: "bg-warning text-white",
-  destructive: "bg-destructive text-white",
+  success: "bg-success text-white dark:text-background",
+  warning: "bg-warning text-white dark:text-background",
+  destructive: "bg-destructive text-white dark:text-background",
 };
 
 export default async function MajorOrder() {

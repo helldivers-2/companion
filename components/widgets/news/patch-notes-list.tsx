@@ -157,12 +157,14 @@ export default function PatchNotesList({
               </CardHeader>
 
               <CardContent>
-                <p className="mb-4 leading-relaxed text-muted-foreground">
-                  {extractSummary(parsedContent)}
-                </p>
+                {!defaultExpanded && (
+                  <p className="mb-4 leading-relaxed text-muted-foreground">
+                    {extractSummary(parsedContent)}
+                  </p>
+                )}
 
-                <details className="group/details">
-                  <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-blue-600 transition-colors hover:text-blue-700">
+                <details className="group/details" open={defaultExpanded}>
+                  <summary className="flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-primary-foreground transition-colors hover:underline dark:text-primary">
                     <ChevronRight className="h-4 w-4 transition-transform group-open/details:rotate-90" />
                     Read full patch notes
                   </summary>

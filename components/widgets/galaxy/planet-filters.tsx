@@ -12,16 +12,31 @@ interface PlanetFiltersProps {
   sectors: string[];
 }
 
-export function PlanetFilters({ planets, factions, sectors }: PlanetFiltersProps) {
+const PAGE_SIZE = 25;
+
+const FIELD_CLASS =
+  "h-8 rounded-none border border-border bg-background px-2.5 text-xs outline-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50";
+
+export function PlanetFilters({
+  planets,
+  factions,
+  sectors,
+}: PlanetFiltersProps) {
   const [faction, setFaction] = useState<string | null>(null);
   const [sector, setSector] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [eventsOnly, setEventsOnly] = useState(false);
+  const [limit, setLimit] = useState(PAGE_SIZE);
 
   const filtered = useMemo(
     () => filterPlanets(planets, { faction, sector, query, eventsOnly }),
     [planets, faction, sector, query, eventsOnly],
   );
+  const remaining = filtered.length - limit;
+
+  // Any filter change starts the list over at the first page, so a narrowed
+  // result never opens scrolled past rows the user has not seen.
+  const resetLimit = () => setLimit(PAGE_SIZE);
 
   return (
     <div className="space-y-3">
@@ -29,15 +44,40 @@ export function PlanetFilters({ planets, factions, sectors }: PlanetFiltersProps
         <input
           type="search"
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            resetLimit();
+          }}
           placeholder="Search planets or sectors"
           aria-label="Search planets"
-          className="h-8 w-full rounded-none border border-border bg-background px-2.5 text-xs outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 sm:max-w-xs"
+          className={`${FIELD_CLASS} w-full placeholder:text-muted-foreground sm:max-w-xs`}
         />
+        {sectors.length > 0 && (
+          <select
+            value={sector ?? ""}
+            onChange={(event) => {
+              setSector(event.target.value || null);
+              resetLimit();
+            }}
+            aria-label="Filter by sector"
+            className={FIELD_CLASS}
+          >
+            <option value="">All sectors</option>
+            {sectors.map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        )}
         <Button
           variant={eventsOnly ? "default" : "outline"}
           size="sm"
-          onClick={() => setEventsOnly((value) => !value)}
+          aria-pressed={eventsOnly}
+          onClick={() => {
+            setEventsOnly((value) => !value);
+            resetLimit();
+          }}
         >
           Under attack
         </Button>
@@ -47,7 +87,11 @@ export function PlanetFilters({ planets, factions, sectors }: PlanetFiltersProps
         <Button
           variant={faction === null ? "default" : "outline"}
           size="sm"
-          onClick={() => setFaction(null)}
+          aria-pressed={faction === null}
+          onClick={() => {
+            setFaction(null);
+            resetLimit();
+          }}
         >
           All
         </Button>
@@ -56,36 +100,30 @@ export function PlanetFilters({ planets, factions, sectors }: PlanetFiltersProps
             key={value}
             variant={faction === value ? "default" : "outline"}
             size="sm"
-            onClick={() => setFaction(value)}
+            aria-pressed={faction === value}
+            onClick={() => {
+              setFaction(value);
+              resetLimit();
+            }}
           >
             {value}
           </Button>
         ))}
       </div>
 
-      {sectors.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+      <GalaxyPlanetTable planets={filtered.slice(0, limit)} />
+
+      {remaining > 0 && (
+        <div className="text-center">
           <Button
-            variant={sector === null ? "secondary" : "outline"}
+            variant="outline"
             size="sm"
-            onClick={() => setSector(null)}
+            onClick={() => setLimit((current) => current + PAGE_SIZE)}
           >
-            All Sectors
+            Show {Math.min(PAGE_SIZE, remaining)} more ({remaining} remaining)
           </Button>
-          {sectors.map((value) => (
-            <Button
-              key={value}
-              variant={sector === value ? "secondary" : "outline"}
-              size="sm"
-              onClick={() => setSector(value)}
-            >
-              {value}
-            </Button>
-          ))}
         </div>
       )}
-
-      <GalaxyPlanetTable planets={filtered} />
     </div>
   );
 }

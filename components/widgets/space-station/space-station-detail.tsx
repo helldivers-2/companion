@@ -7,7 +7,7 @@ import { stripHtmlTags, formatTimeRemaining } from "@/lib/utils";
 const STATUS_LABELS: Record<number, { text: string; className: string }> = {
   0: { text: "Inactive", className: "text-muted-foreground" },
   1: { text: "Active", className: "text-success" },
-  2: { text: "Completed", className: "text-primary" },
+  2: { text: "Completed", className: "text-foreground" },
   3: { text: "Failed", className: "text-destructive" },
 };
 

@@ -26,7 +26,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   if (note === null) notFound();
 
   return (
-    <Container title={note.title}>
+    <Container>
       <div className="mx-auto max-w-3xl">
         <PatchNotesList notes={[note]} defaultExpanded />
       </div>

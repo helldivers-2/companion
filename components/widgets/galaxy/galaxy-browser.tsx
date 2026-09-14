@@ -112,7 +112,9 @@ export function GalaxyPlanetRow({ planet }: { planet: Planet }) {
         {millify(count)}
       </TableCell>
       <TableCell className="hidden lg:table-cell">
-        <Progress value={Number(progress.value)} />
+        <div className="w-32">
+          <Progress value={Number(progress.value)} />
+        </div>
       </TableCell>
       <TableCell>
         <span className="font-mono text-sm">{progress.value}%</span>
@@ -134,7 +136,7 @@ export function GalaxyPlanetTable({ planets }: { planets: Planet[] }) {
           <TableHead>Planet</TableHead>
           <TableHead className="hidden md:table-cell">Sector</TableHead>
           <TableHead className="text-right">Players</TableHead>
-          <TableHead className="hidden lg:table-cell"></TableHead>
+          <TableHead className="hidden w-32 lg:table-cell"></TableHead>
           <TableHead>Progress</TableHead>
           <TableHead className="hidden md:table-cell">Status</TableHead>
         </TableRow>
