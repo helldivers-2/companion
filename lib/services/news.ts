@@ -15,10 +15,17 @@ export async function fetchPatchNotes(): Promise<PatchNoteDto[]> {
   return validate(z.array(PatchNoteDtoSchema), result.data, "patch notes");
 }
 
-// The /v1/steam/{gid} endpoint returns an array even for a single item, and
-// responds 404 for an unknown gid; both are handled by the caller turning a
-// failure into null.
-export async function fetchPatchNote(gid: string): Promise<PatchNoteDto | null> {
+// The /v1/steam/{gid} endpoint now returns the item as a bare object; it used to
+// wrap it in an array, so both shapes are accepted. An unknown gid responds 404,
+// which becomes null here.
+const PatchNoteItemSchema = z.union([
+  PatchNoteDtoSchema,
+  z.array(PatchNoteDtoSchema),
+]);
+
+export async function fetchPatchNote(
+  gid: string,
+): Promise<PatchNoteDto | null> {
   const endpoint = ENDPOINTS.STEAM_ITEM(gid);
   const result = await getAPI<unknown>({
     url: endpoint.url,
@@ -27,5 +34,6 @@ export async function fetchPatchNote(gid: string): Promise<PatchNoteDto | null> 
   if (!result.success) {
     return null;
   }
-  return validate(z.array(PatchNoteDtoSchema), result.data, "patch note")[0] ?? null;
+  const data = validate(PatchNoteItemSchema, result.data, "patch note");
+  return Array.isArray(data) ? (data[0] ?? null) : data;
 }

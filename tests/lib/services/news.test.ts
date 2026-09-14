@@ -62,6 +62,11 @@ describe("fetchPatchNote", () => {
     });
   });
 
+  it("accepts the item as a bare object", async () => {
+    vi.mocked(getAPI).mockResolvedValue({ success: true, data: item });
+    expect(await fetchPatchNote("123")).toEqual(item);
+  });
+
   it("returns null when the API reports an unknown gid", async () => {
     vi.mocked(getAPI).mockResolvedValue({
       success: false,
