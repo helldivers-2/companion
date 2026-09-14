@@ -32,7 +32,7 @@ async function _getWarId(): Promise<number | null> {
 
 async function _getWarMetadata(): Promise<WarMetadata | null> {
   try {
-    const warId = await _getWarId();
+    const warId = await getWarId();
     if (warId === null) return null;
     const dto = await fetchWarInfo(warId);
     return mapWarInfoDto(dto);
@@ -44,7 +44,7 @@ async function _getWarMetadata(): Promise<WarMetadata | null> {
 
 async function _getWarStatus(): Promise<WarStatusView | null> {
   try {
-    const warId = await _getWarId();
+    const warId = await getWarId();
     if (warId === null) return null;
     const dto = await fetchWarStatus(warId);
     return mapWarStatusDto(dto);
@@ -56,7 +56,7 @@ async function _getWarStatus(): Promise<WarStatusView | null> {
 
 async function _getGalaxySummary(): Promise<GalaxySummary | null> {
   try {
-    const warId = await _getWarId();
+    const warId = await getWarId();
     if (warId === null) return null;
     const dto = await fetchWarSummary(warId);
     return mapWarSummaryDto(dto);
@@ -68,11 +68,11 @@ async function _getGalaxySummary(): Promise<GalaxySummary | null> {
 
 async function _getSuperEarthNews(): Promise<SuperEarthNewsItem[] | null> {
   try {
-    const warId = await _getWarId();
+    const warId = await getWarId();
     if (warId === null) return null;
     const [items, metadata] = await Promise.all([
       fetchNewsFeed(warId),
-      _getWarMetadata(),
+      getWarMetadata(),
     ]);
     return mapNewsFeedItems(items, metadata?.startDate ?? null);
   } catch (error) {
