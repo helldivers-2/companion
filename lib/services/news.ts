@@ -14,3 +14,18 @@ export async function fetchPatchNotes(): Promise<PatchNoteDto[]> {
   }
   return validate(z.array(PatchNoteDtoSchema), result.data, "patch notes");
 }
+
+// The /v1/steam/{gid} endpoint returns an array even for a single item, and
+// responds 404 for an unknown gid; both are handled by the caller turning a
+// failure into null.
+export async function fetchPatchNote(gid: string): Promise<PatchNoteDto | null> {
+  const endpoint = ENDPOINTS.STEAM_ITEM(gid);
+  const result = await getAPI<unknown>({
+    url: endpoint.url,
+    revalidate: endpoint.revalidate,
+  });
+  if (!result.success) {
+    return null;
+  }
+  return validate(z.array(PatchNoteDtoSchema), result.data, "patch note")[0] ?? null;
+}

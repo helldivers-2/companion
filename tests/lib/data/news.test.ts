@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { getPatchNotes } from "@/lib/data/news";
-import { fetchPatchNotes } from "@/lib/services/news";
+import { getPatchNotes, getPatchNote } from "@/lib/data/news";
+import { fetchPatchNotes, fetchPatchNote } from "@/lib/services/news";
 
 vi.mock("react", async () => {
   const actual = await vi.importActual<typeof import("react")>("react");
@@ -12,6 +12,7 @@ vi.mock("react", async () => {
 
 vi.mock("@/lib/services/news", () => ({
   fetchPatchNotes: vi.fn(),
+  fetchPatchNote: vi.fn(),
 }));
 
 describe("getPatchNotes", () => {
@@ -38,5 +39,28 @@ describe("getPatchNotes", () => {
     vi.mocked(fetchPatchNotes).mockRejectedValue(new Error("fail"));
     const result = await getPatchNotes();
     expect(result).toBeNull();
+  });
+});
+
+describe("getPatchNote", () => {
+  it("returns the single patch note", async () => {
+    vi.mocked(fetchPatchNote).mockResolvedValue({
+      id: "1",
+      title: "Patch",
+      url: "http://example.com",
+      author: "Dev",
+      content: "Fixes",
+      publishedAt: "2026-01-01",
+    });
+
+    const result = await getPatchNote("1");
+    if (result === null) throw new Error("Expected result to be defined");
+    expect(result.title).toBe("Patch");
+    expect(fetchPatchNote).toHaveBeenCalledWith("1");
+  });
+
+  it("returns null on failure", async () => {
+    vi.mocked(fetchPatchNote).mockRejectedValue(new Error("fail"));
+    expect(await getPatchNote("1")).toBeNull();
   });
 });
