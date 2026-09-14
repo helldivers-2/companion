@@ -29,6 +29,33 @@ describe("mapAssignmentDto", () => {
     const result = mapAssignmentDto(dto);
     expect(result.rewards).toBeUndefined();
   });
+
+  it("passes through title, description and tasks when present", () => {
+    const dto = {
+      id: 1,
+      briefing: "Test",
+      expiration: "2026-01-01",
+      progress: [0],
+      title: "MAJOR ORDER",
+      description: "Short summary",
+      tasks: [{ type: 3, values: [1, 2, 3], valueTypes: [1, 2, 3] }],
+    };
+    const result = mapAssignmentDto(dto);
+    expect(result.title).toBe("MAJOR ORDER");
+    expect(result.description).toBe("Short summary");
+    expect(result.tasks).toHaveLength(1);
+  });
+
+  it("normalises absent title and description to null", () => {
+    const result = mapAssignmentDto({
+      id: 1,
+      briefing: "Test",
+      expiration: "2026-01-01",
+      progress: [0],
+    });
+    expect(result.title).toBeNull();
+    expect(result.description).toBeNull();
+  });
 });
 
 describe("getRewardTypeLabel", () => {

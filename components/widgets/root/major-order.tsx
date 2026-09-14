@@ -5,6 +5,7 @@ import {
 } from "@/lib/transformers/assignments";
 import type { Assignment } from "@/types/assignments";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Trophy, Target, CheckCircle2, Calendar, Award } from "lucide-react";
@@ -68,7 +69,15 @@ export default async function MajorOrder() {
               <div key={assignment.id}>
                 <div className="space-y-3">
                   <div className="flex-1 space-y-3">
-                    <p className="text-lg leading-relaxed">{briefing}</p>
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="text-lg leading-relaxed">{briefing}</p>
+                      <Link
+                        href={`/assignment/${assignment.id}`}
+                        className="shrink-0 text-xs text-muted-foreground hover:text-foreground hover:underline"
+                      >
+                        Details
+                      </Link>
+                    </div>
 
                     <div className="flex items-center gap-6 text-sm text-muted-foreground">
                       <Badge

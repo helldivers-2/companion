@@ -1,10 +1,11 @@
 import type {
   AssignmentDto,
+  AssignmentDtoInput,
   Assignment,
   StatusInfo,
 } from "@/types/assignments";
 
-export function mapAssignmentDto(dto: AssignmentDto): Assignment {
+export function mapAssignmentDto(dto: AssignmentDtoInput): Assignment {
   return {
     id: dto.id,
     briefing: dto.briefing,
@@ -13,6 +14,9 @@ export function mapAssignmentDto(dto: AssignmentDto): Assignment {
     rewards: dto.rewards
       ? dto.rewards.map((r) => ({ type: r.type, amount: r.amount }))
       : undefined,
+    title: dto.title ?? null,
+    description: dto.description ?? null,
+    tasks: dto.tasks,
   };
 }
 
