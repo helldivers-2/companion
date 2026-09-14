@@ -26,3 +26,19 @@ export async function fetchWarStats(): Promise<WarStatsDto> {
   }
   return validate(WarStatsDtoSchema, result.data, "war stats");
 }
+
+export async function fetchCampaign(
+  index: number | string,
+): Promise<CampaignDto> {
+  const endpoint = ENDPOINTS.CAMPAIGN(index);
+  const result = await getAPI<unknown>({
+    url: endpoint.url,
+    revalidate: endpoint.revalidate,
+  });
+  if (!result.success) {
+    throw new Error(
+      `Failed to fetch campaign ${index}: ${result.error.message}`,
+    );
+  }
+  return validate(CampaignDtoSchema, result.data, "campaign");
+}

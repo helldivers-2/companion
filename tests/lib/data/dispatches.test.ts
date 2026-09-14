@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { getDispatches } from "@/lib/data/dispatches";
-import { fetchDispatches } from "@/lib/services/dispatches";
+import { getDispatches, getDispatch } from "@/lib/data/dispatches";
+import { fetchDispatches, fetchDispatch } from "@/lib/services/dispatches";
 
 vi.mock("react", async () => {
   const actual = await vi.importActual<typeof import("react")>("react");
@@ -12,6 +12,7 @@ vi.mock("react", async () => {
 
 vi.mock("@/lib/services/dispatches", () => ({
   fetchDispatches: vi.fn(),
+  fetchDispatch: vi.fn(),
 }));
 
 describe("getDispatches", () => {
@@ -31,5 +32,26 @@ describe("getDispatches", () => {
     vi.mocked(fetchDispatches).mockRejectedValue(new Error("fail"));
     const result = await getDispatches();
     expect(result).toBeNull();
+  });
+});
+
+describe("getDispatch", () => {
+  it("maps a single dispatch", async () => {
+    vi.mocked(fetchDispatch).mockResolvedValue({
+      id: 1,
+      published: "2026-01-01",
+      type: 0,
+      message: "Hello",
+    });
+
+    const result = await getDispatch(1);
+    if (result === null) throw new Error("Expected result");
+    expect(result.message).toBe("Hello");
+    expect(fetchDispatch).toHaveBeenCalledWith(1);
+  });
+
+  it("returns null on failure", async () => {
+    vi.mocked(fetchDispatch).mockRejectedValue(new Error("fail"));
+    expect(await getDispatch(1)).toBeNull();
   });
 });

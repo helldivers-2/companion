@@ -14,3 +14,19 @@ export async function fetchDispatches(): Promise<DispatchDto[]> {
   }
   return validate(z.array(DispatchDtoSchema), result.data, "dispatches");
 }
+
+export async function fetchDispatch(
+  index: number | string,
+): Promise<DispatchDto> {
+  const endpoint = ENDPOINTS.DISPATCH(index);
+  const result = await getAPI<unknown>({
+    url: endpoint.url,
+    revalidate: endpoint.revalidate,
+  });
+  if (!result.success) {
+    throw new Error(
+      `Failed to fetch dispatch ${index}: ${result.error.message}`,
+    );
+  }
+  return validate(DispatchDtoSchema, result.data, "dispatch");
+}

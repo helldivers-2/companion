@@ -1,6 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
-import { getAssignments } from "@/lib/data/assignments";
-import { fetchAssignments } from "@/lib/services/assignments";
+import { getAssignments, getAssignment } from "@/lib/data/assignments";
+import {
+  fetchAssignments,
+  fetchAssignment,
+} from "@/lib/services/assignments";
 
 vi.mock("react", async () => {
   const actual = await vi.importActual<typeof import("react")>("react");
@@ -12,6 +15,7 @@ vi.mock("react", async () => {
 
 vi.mock("@/lib/services/assignments", () => ({
   fetchAssignments: vi.fn(),
+  fetchAssignment: vi.fn(),
 }));
 
 describe("getAssignments", () => {
@@ -31,5 +35,26 @@ describe("getAssignments", () => {
     vi.mocked(fetchAssignments).mockRejectedValue(new Error("fail"));
     const result = await getAssignments();
     expect(result).toBeNull();
+  });
+});
+
+describe("getAssignment", () => {
+  it("maps a single assignment", async () => {
+    vi.mocked(fetchAssignment).mockResolvedValue({
+      id: 1,
+      briefing: "Test",
+      expiration: "2026-01-01",
+      progress: [0],
+    });
+
+    const result = await getAssignment(1);
+    if (result === null) throw new Error("Expected result");
+    expect(result.briefing).toBe("Test");
+    expect(fetchAssignment).toHaveBeenCalledWith(1);
+  });
+
+  it("returns null on failure", async () => {
+    vi.mocked(fetchAssignment).mockRejectedValue(new Error("fail"));
+    expect(await getAssignment(1)).toBeNull();
   });
 });

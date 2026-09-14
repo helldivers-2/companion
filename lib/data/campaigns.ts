@@ -1,7 +1,7 @@
 import { cache } from "react";
-import { fetchCampaigns } from "@/lib/services/campaigns";
+import { fetchCampaigns, fetchCampaign } from "@/lib/services/campaigns";
 import { mapCampaignDto, getCampaignStats } from "@/lib/transformers/campaigns";
-import type { CampaignStats } from "@/types/campaigns";
+import type { Campaign, CampaignStats } from "@/types/campaigns";
 
 async function _getCampaignData(): Promise<CampaignStats | null> {
   try {
@@ -14,4 +14,15 @@ async function _getCampaignData(): Promise<CampaignStats | null> {
   }
 }
 
+async function _getCampaign(index: number | string): Promise<Campaign | null> {
+  try {
+    const dto = await fetchCampaign(index);
+    return mapCampaignDto(dto);
+  } catch (error) {
+    console.error(`getCampaign(${index}) failed:`, error);
+    return null;
+  }
+}
+
 export const getCampaignData = cache(_getCampaignData);
+export const getCampaign = cache(_getCampaign);

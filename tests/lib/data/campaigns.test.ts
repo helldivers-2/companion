@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { getCampaignData } from "@/lib/data/campaigns";
-import { fetchCampaigns } from "@/lib/services/campaigns";
+import { getCampaignData, getCampaign } from "@/lib/data/campaigns";
+import { fetchCampaigns, fetchCampaign } from "@/lib/services/campaigns";
 
 vi.mock("react", async () => {
   const actual = await vi.importActual<typeof import("react")>("react");
@@ -12,6 +12,7 @@ vi.mock("react", async () => {
 
 vi.mock("@/lib/services/campaigns", () => ({
   fetchCampaigns: vi.fn(),
+  fetchCampaign: vi.fn(),
 }));
 
 describe("getCampaignData", () => {
@@ -44,5 +45,36 @@ describe("getCampaignData", () => {
     vi.mocked(fetchCampaigns).mockRejectedValue(new Error("fail"));
     const result = await getCampaignData();
     expect(result).toBeNull();
+  });
+});
+
+describe("getCampaign", () => {
+  const campaign = {
+    id: 1,
+    planet: {
+      name: "Test",
+      sector: "S1",
+      position: { x: 0, y: 0 },
+      health: 50,
+      maxHealth: 100,
+      regenPerSecond: 0,
+      currentOwner: "Humans",
+      initialOwner: "Humans",
+      statistics: { playerCount: 0 },
+    },
+    faction: "Terminids",
+  };
+
+  it("maps a single campaign", async () => {
+    vi.mocked(fetchCampaign).mockResolvedValue(campaign);
+    const result = await getCampaign(1);
+    if (result === null) throw new Error("Expected result");
+    expect(result.planet.name).toBe("Test");
+    expect(fetchCampaign).toHaveBeenCalledWith(1);
+  });
+
+  it("returns null on failure", async () => {
+    vi.mocked(fetchCampaign).mockRejectedValue(new Error("fail"));
+    expect(await getCampaign(1)).toBeNull();
   });
 });

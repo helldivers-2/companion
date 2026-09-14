@@ -1,6 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
-import { getSpaceStations } from "@/lib/data/space-station";
-import { fetchSpaceStations } from "@/lib/services/space-station";
+import {
+  getSpaceStations,
+  getSpaceStation,
+} from "@/lib/data/space-station";
+import {
+  fetchSpaceStations,
+  fetchSpaceStation,
+} from "@/lib/services/space-station";
 
 vi.mock("react", async () => {
   const actual = await vi.importActual<typeof import("react")>("react");
@@ -12,6 +18,7 @@ vi.mock("react", async () => {
 
 vi.mock("@/lib/services/space-station", () => ({
   fetchSpaceStations: vi.fn(),
+  fetchSpaceStation: vi.fn(),
 }));
 
 describe("getSpaceStations", () => {
@@ -47,5 +54,37 @@ describe("getSpaceStations", () => {
     vi.mocked(fetchSpaceStations).mockRejectedValue(new Error("fail"));
     const result = await getSpaceStations();
     expect(result).toBeNull();
+  });
+});
+
+describe("getSpaceStation", () => {
+  it("maps a single station", async () => {
+    vi.mocked(fetchSpaceStation).mockResolvedValue({
+      id32: 1,
+      planet: {
+        name: "Test",
+        sector: "S1",
+        position: { x: 0, y: 0 },
+        health: 100,
+        maxHealth: 100,
+        regenPerSecond: 0,
+        currentOwner: "Humans",
+        initialOwner: "Humans",
+        statistics: { playerCount: 0 },
+      },
+      electionEnd: "2026-01-01",
+      flags: 0,
+      tacticalActions: [],
+    });
+
+    const result = await getSpaceStation(1);
+    if (result === null) throw new Error("Expected result");
+    expect(result.id32).toBe(1);
+    expect(fetchSpaceStation).toHaveBeenCalledWith(1);
+  });
+
+  it("returns null on failure", async () => {
+    vi.mocked(fetchSpaceStation).mockRejectedValue(new Error("fail"));
+    expect(await getSpaceStation(1)).toBeNull();
   });
 });

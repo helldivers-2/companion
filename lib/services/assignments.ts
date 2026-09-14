@@ -14,3 +14,19 @@ export async function fetchAssignments(): Promise<AssignmentDto[]> {
   }
   return validate(z.array(AssignmentDtoSchema), result.data, "assignments");
 }
+
+export async function fetchAssignment(
+  index: number | string,
+): Promise<AssignmentDto> {
+  const endpoint = ENDPOINTS.ASSIGNMENT(index);
+  const result = await getAPI<unknown>({
+    url: endpoint.url,
+    revalidate: endpoint.revalidate,
+  });
+  if (!result.success) {
+    throw new Error(
+      `Failed to fetch assignment ${index}: ${result.error.message}`,
+    );
+  }
+  return validate(AssignmentDtoSchema, result.data, "assignment");
+}

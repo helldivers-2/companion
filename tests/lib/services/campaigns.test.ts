@@ -1,6 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
-import { fetchCampaigns, fetchWarStats } from "@/lib/services/campaigns";
+import {
+  fetchCampaigns,
+  fetchWarStats,
+  fetchCampaign,
+} from "@/lib/services/campaigns";
 import { getAPI } from "@/lib/api/client";
+import { ENDPOINTS } from "@/lib/api/endpoints";
 
 vi.mock("@/lib/api/client", () => ({
   getAPI: vi.fn(),
@@ -87,5 +92,48 @@ describe("fetchWarStats", () => {
       data: { statistics: { playerCount: 1000 } },
     });
     await expect(fetchWarStats()).rejects.toThrow("Invalid war stats data");
+  });
+});
+
+describe("fetchCampaign", () => {
+  const campaign = {
+    id: 1,
+    planet: {
+      name: "Test",
+      sector: "S1",
+      position: { x: 0, y: 0 },
+      health: 50,
+      maxHealth: 100,
+      regenPerSecond: 0,
+      currentOwner: "Humans",
+      initialOwner: "Humans",
+      statistics: { playerCount: 100 },
+    },
+    faction: "Terminids",
+  };
+
+  it("requests the per-index endpoint", async () => {
+    vi.mocked(getAPI).mockResolvedValue({ success: true, data: campaign });
+    const result = await fetchCampaign(1);
+    expect(result).toEqual(campaign);
+    expect(getAPI).toHaveBeenCalledWith({
+      url: ENDPOINTS.CAMPAIGN(1).url,
+      revalidate: ENDPOINTS.CAMPAIGN(1).revalidate,
+    });
+  });
+
+  it("throws on API failure with the index", async () => {
+    vi.mocked(getAPI).mockResolvedValue({
+      success: false,
+      error: new Error("fail"),
+    });
+    await expect(fetchCampaign(3)).rejects.toThrow(
+      "Failed to fetch campaign 3",
+    );
+  });
+
+  it("throws on invalid shape", async () => {
+    vi.mocked(getAPI).mockResolvedValue({ success: true, data: [] });
+    await expect(fetchCampaign(1)).rejects.toThrow("Invalid campaign data");
   });
 });
