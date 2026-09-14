@@ -11,6 +11,7 @@ const STATUS_LABELS: Record<number, { text: string; className: string }> = {
   3: { text: "Failed", className: "text-destructive" },
 };
 
+// cost.id is an opaque GUID, not a resource name, so the bar goes unlabelled.
 function CostProgress({ cost }: { cost: Cost }) {
   const progress =
     cost.targetValue === 0 ? 0 : (cost.currentValue / cost.targetValue) * 100;
@@ -18,8 +19,7 @@ function CostProgress({ cost }: { cost: Cost }) {
 
   return (
     <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="text-muted-foreground">{cost.id}</span>
+      <div className="flex justify-end text-sm">
         <span className="font-mono">
           {Math.round(cost.currentValue).toLocaleString()} /{" "}
           {cost.targetValue.toLocaleString()}
@@ -36,8 +36,13 @@ function CostProgress({ cost }: { cost: Cost }) {
   );
 }
 
-function ActionCard({ action }: { action: TacticalAction }) {
+// Shared by the dashboard widget and the station page.
+export function ActionCard({ action }: { action: TacticalAction }) {
   const status = STATUS_LABELS[action.status] ?? STATUS_LABELS[0];
+  // The API can still report an action as Active after its statusExpire has
+  // passed, and "Expired" under an "Active" badge contradicts itself, so the
+  // countdown only renders while the deadline is still ahead.
+  const expiresInFuture = new Date(action.statusExpire) > new Date();
 
   return (
     <div className="space-y-3 border p-4">
@@ -65,11 +70,9 @@ function ActionCard({ action }: { action: TacticalAction }) {
         </div>
       )}
 
-      {action.statusExpire && (
+      {expiresInFuture && (
         <div className="text-xs text-muted-foreground">
-          {new Date(action.statusExpire) <= new Date()
-            ? "Expired"
-            : `Expires in ${formatTimeRemaining(action.statusExpire)}`}
+          Expires in {formatTimeRemaining(action.statusExpire)}
         </div>
       )}
     </div>

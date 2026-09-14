@@ -12,6 +12,10 @@ describe("formatTimeRemaining", () => {
     expect(formatTimeRemaining("2026-01-01T02:30:00Z", now)).toBe("2h 30m");
   });
 
+  it("drops the zero hour when less than an hour remains", () => {
+    expect(formatTimeRemaining("2026-01-01T00:40:00Z", now)).toBe("40m");
+  });
+
   it("formats multi-day remaining as days and hours", () => {
     expect(formatTimeRemaining("2026-01-03T03:00:00Z", now)).toBe("2d 3h");
   });

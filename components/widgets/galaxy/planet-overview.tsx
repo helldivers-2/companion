@@ -34,11 +34,8 @@ export default function PlanetOverview({ planet }: { planet: Planet }) {
             className="size-10 shrink-0 object-contain"
           />
         )}
-        <div>
-          <div className="text-lg font-semibold">{planet.name}</div>
-          <div className="text-sm text-muted-foreground">
-            {planet.sector} Sector · {planet.currentOwner}
-          </div>
+        <div className="text-sm text-muted-foreground">
+          {planet.sector} Sector · {planet.currentOwner}
         </div>
         <Badge variant="outline" className={STATUS_TEXT_CLASS[status.color]}>
           {status.text}
@@ -73,7 +70,8 @@ export default function PlanetOverview({ planet }: { planet: Planet }) {
           {leadingRegion && (
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">
-                Leading region{leadingRegion.name ? ` · ${leadingRegion.name}` : ""}
+                Leading region
+                {leadingRegion.name ? ` · ${leadingRegion.name}` : ""}
               </span>
               <span className="font-mono">
                 {getLiberation(leadingRegion.health, leadingRegion.maxHealth)}%
@@ -132,7 +130,10 @@ export default function PlanetOverview({ planet }: { planet: Planet }) {
                   region.maxHealth,
                 );
                 return (
-                  <div key={`${region.name}-${index}`} className="space-y-2 border p-3">
+                  <div
+                    key={`${region.name}-${index}`}
+                    className="space-y-2 border p-3"
+                  >
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-medium">
                         {region.name ?? "Unnamed Region"}

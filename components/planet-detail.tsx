@@ -9,8 +9,10 @@ import {
   STATUS_TEXT_CLASS,
 } from "@/lib/transformers/campaigns";
 import Image from "next/image";
+import Link from "next/link";
 import { millify, formatTimeRemaining } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
@@ -213,6 +215,24 @@ function PlanetDetailContent({ campaign }: { campaign: Campaign }) {
                 </div>
               )}
             </div>
+          </div>
+        </>
+      )}
+
+      {(planet.index != null || campaign.id != null) && (
+        <>
+          <Separator />
+          <div className="flex flex-wrap gap-2">
+            {planet.index != null && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/planet/${planet.index}`}>Planet page</Link>
+              </Button>
+            )}
+            {campaign.id != null && (
+              <Button variant="outline" size="sm" asChild>
+                <Link href={`/campaign/${campaign.id}`}>Campaign page</Link>
+              </Button>
+            )}
           </div>
         </>
       )}

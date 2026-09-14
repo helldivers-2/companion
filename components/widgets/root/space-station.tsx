@@ -1,98 +1,25 @@
+import { Satellite } from "lucide-react";
 import { getSpaceStations } from "@/lib/data/space-station";
-import type { SpaceStation, TacticalAction, Cost } from "@/types/space-station";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Badge } from "@/components/ui/badge";
-import { stripHtmlTags, formatTimeRemaining } from "@/lib/utils";
-
-function CostProgress({ cost }: { cost: Cost }) {
-  const progress =
-    cost.targetValue === 0 ? 0 : (cost.currentValue / cost.targetValue) * 100;
-  const ratePerHour = cost.deltaPerSecond * 3600;
-
-  return (
-    <div className="space-y-1">
-      <div className="flex justify-end text-sm">
-        <span className="font-mono">
-          {Math.round(cost.currentValue).toLocaleString()} /{" "}
-          {cost.targetValue.toLocaleString()}
-        </span>
-      </div>
-      <Progress value={progress} />
-      {ratePerHour !== 0 && (
-        <div className="text-right text-xs text-muted-foreground">
-          {ratePerHour >= 0 ? "+" : ""}
-          {ratePerHour.toFixed(1)}/hr
-        </div>
-      )}
-    </div>
-  );
-}
-
-const STATUS_LABELS: Record<number, { text: string; color: string }> = {
-  0: { text: "Inactive", color: "text-muted-foreground" },
-  1: { text: "Active", color: "text-success" },
-  2: { text: "Completed", color: "text-foreground" },
-  3: { text: "Failed", color: "text-destructive" },
-};
-
-function TacticalActionCard({ action }: { action: TacticalAction }) {
-  const status = STATUS_LABELS[action.status] ?? STATUS_LABELS[0];
-
-  return (
-    <div className="space-y-3 border p-4">
-      <div className="flex items-start justify-between gap-2">
-        <div>
-          <h4 className="font-medium">{action.name}</h4>
-          <p className="text-sm text-muted-foreground">{action.description}</p>
-        </div>
-        <Badge variant="outline" className={status.color}>
-          {status.text}
-        </Badge>
-      </div>
-
-      {action.strategicDescription && (
-        <p className="text-sm text-muted-foreground italic">
-          {stripHtmlTags(action.strategicDescription)}
-        </p>
-      )}
-
-      {action.costs.length > 0 && (
-        <div className="space-y-2">
-          {action.costs.map((cost) => (
-            <CostProgress key={cost.id} cost={cost} />
-          ))}
-        </div>
-      )}
-
-      {action.statusExpire && (
-        <div className="text-xs text-muted-foreground">
-          {new Date(action.statusExpire) <= new Date()
-            ? "Expired"
-            : `Expires in ${formatTimeRemaining(action.statusExpire)}`}
-        </div>
-      )}
-    </div>
-  );
-}
+import { formatTimeRemaining } from "@/lib/utils";
+import { DetailsLink } from "@/components/details-link";
+import { ActionCard } from "@/components/widgets/space-station/space-station-detail";
+import { WidgetState } from "@/components/widgets/widget-state";
 
 export default async function SpaceStation() {
   const stations = await getSpaceStations();
 
   if (stations === null) {
     return (
-      <div className="p-4 text-center text-sm text-muted-foreground">
-        Unable to load space station data. Please try again later.
-      </div>
+      <WidgetState
+        icon={Satellite}
+        title="Unable to load space stations"
+        description="Please try again later."
+      />
     );
   }
 
   if (stations.length === 0) {
-    return (
-      <div className="p-4 text-center text-sm text-muted-foreground">
-        No active space stations
-      </div>
-    );
+    return <WidgetState icon={Satellite} title="No active space stations" />;
   }
 
   return (
@@ -111,7 +38,7 @@ export default async function SpaceStation() {
 
         return (
           <div key={station.id32} className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between gap-3">
               <div>
                 <h3 className="font-semibold">{station.planet.name}</h3>
                 <div className="text-sm text-muted-foreground">
@@ -123,15 +50,14 @@ export default async function SpaceStation() {
                   </div>
                 )}
               </div>
+              <DetailsLink
+                href={`/station/${station.id32}`}
+                context={`the ${station.planet.name} space station`}
+              />
             </div>
 
             {mostRelevantAction ? (
-              <div className="space-y-3">
-                <TacticalActionCard
-                  key={mostRelevantAction.id32}
-                  action={mostRelevantAction}
-                />
-              </div>
+              <ActionCard action={mostRelevantAction} />
             ) : (
               <div className="text-sm text-muted-foreground">
                 No active tactical actions

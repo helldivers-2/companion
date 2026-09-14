@@ -6,6 +6,7 @@ import { getDispatch } from "@/lib/data/dispatches";
 import {
   getDispatchTypeInfo,
   parseContent,
+  stripDispatchHeadline,
 } from "@/lib/transformers/dispatches";
 import { formatDistanceToNow } from "date-fns";
 
@@ -17,6 +18,7 @@ export async function generateMetadata({
   params,
 }: DispatchPageProps): Promise<Metadata> {
   const { id } = await params;
+  if (!/^\d+$/.test(id)) return { title: "Dispatch not found" };
   const dispatch = await getDispatch(id);
   if (dispatch === null) return { title: "Dispatch not found" };
   return {
@@ -36,13 +38,10 @@ export default async function DispatchPage({ params }: DispatchPageProps) {
   const Icon = typeInfo.icon;
 
   return (
-    <Container title={`Dispatch #${dispatch.id}`}>
+    <Container title={`Dispatch #${dispatch.id}`} as="h1">
       <div className="mx-auto max-w-3xl space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <Badge
-            variant="secondary"
-            className={`${typeInfo.color} border-0 font-medium`}
-          >
+          <Badge variant="outline" className={`${typeInfo.color} font-medium`}>
             <Icon className="mr-1.5 h-3 w-3" />
             {typeInfo.label}
           </Badge>
@@ -56,7 +55,7 @@ export default async function DispatchPage({ params }: DispatchPageProps) {
           </time>
         </div>
         <p className="text-lg leading-relaxed">
-          {parseContent(dispatch.message)}
+          {stripDispatchHeadline(parseContent(dispatch.message))}
         </p>
       </div>
     </Container>

@@ -2,9 +2,11 @@ import { getDispatches } from "@/lib/data/dispatches";
 import {
   parseContent,
   getDispatchTypeInfo,
+  stripDispatchHeadline,
 } from "@/lib/transformers/dispatches";
 import { Badge } from "@/components/ui/badge";
-import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
+import { WidgetState } from "@/components/widgets/widget-state";
+import { Clock } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
 
@@ -13,15 +15,21 @@ export default async function Dispatches() {
 
   if (dispatches === null) {
     return (
-      <div className="py-8 text-center">
-        <Clock className="mx-auto mb-3 h-10 w-10" />
-        <h3 className="mb-1 text-base font-medium">
-          Unable to Load Dispatches
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Failed to retrieve updates from High Command. Please try again later.
-        </p>
-      </div>
+      <WidgetState
+        icon={Clock}
+        title="Unable to load dispatches"
+        description="Failed to retrieve updates from High Command. Please try again later."
+      />
+    );
+  }
+
+  if (dispatches.length === 0) {
+    return (
+      <WidgetState
+        icon={Clock}
+        title="No dispatches yet"
+        description="Check back later for updates from High Command."
+      />
     );
   }
 
@@ -39,8 +47,8 @@ export default async function Dispatches() {
           >
             <div className="mb-1.5 flex items-center justify-between">
               <Badge
-                variant="secondary"
-                className={`${typeInfo.color} border-0 font-medium`}
+                variant="outline"
+                className={`${typeInfo.color} font-medium`}
               >
                 <Icon className="mr-1.5 h-3 w-3" />
                 {typeInfo.label}
@@ -57,7 +65,7 @@ export default async function Dispatches() {
             </div>
 
             <div className="text-sm leading-relaxed">
-              {parseContent(dispatch.message)}
+              {stripDispatchHeadline(parseContent(dispatch.message))}
             </div>
 
             <Link
@@ -69,18 +77,6 @@ export default async function Dispatches() {
           </div>
         );
       })}
-
-      {dispatches.length === 0 && (
-        <div className="py-8 text-center">
-          <Clock className="mx-auto mb-3 h-10 w-10" />
-          <h3 className="mb-1 text-base font-medium">
-            No dispatches available
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            Check back later for updates from High Command
-          </p>
-        </div>
-      )}
     </div>
   );
 }

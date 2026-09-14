@@ -4,16 +4,20 @@ import {
   getOwningFactions,
   getSectors,
 } from "@/lib/transformers/planets";
+import { Globe } from "lucide-react";
 import { GalaxyBrowser } from "@/components/widgets/galaxy/galaxy-browser";
+import { WidgetState } from "@/components/widgets/widget-state";
 
 export default async function GalaxyBrowserServer() {
   const planets = await getPlanets();
 
   if (planets === null) {
     return (
-      <div className="p-4 text-center text-sm text-muted-foreground">
-        Unable to load the galaxy. Please try again later.
-      </div>
+      <WidgetState
+        icon={Globe}
+        title="Unable to load the galaxy"
+        description="Please try again later."
+      />
     );
   }
 

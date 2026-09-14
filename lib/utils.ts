@@ -14,7 +14,7 @@ export function stripHtmlTags(html: string): string {
   return html.replace(/<[^>]*>/g, "");
 }
 
-// Coarse countdown to an ISO deadline (e.g. "2d 3h", "2h 30m"). `now` is
+// Coarse countdown to an ISO deadline (e.g. "2d 3h", "2h 30m", "40m"). `now` is
 // injectable for deterministic tests; server-rendered callers are accurate to
 // within the page's revalidation window.
 export function formatTimeRemaining(
@@ -32,6 +32,8 @@ export function formatTimeRemaining(
     const remainingHours = hours % 24;
     return `${days}d ${remainingHours}h`;
   }
+
+  if (hours === 0) return `${minutes}m`;
 
   return `${hours}h ${minutes}m`;
 }

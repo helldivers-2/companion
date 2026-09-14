@@ -12,21 +12,21 @@ export default function GalaxySection() {
       <Container title="Galaxy">
         <div className="grid gap-4 lg:grid-cols-3 lg:items-start">
           <div className="lg:col-span-2 lg:row-span-2">
-            <DashboardCard title="All Planets">
+            <DashboardCard title="All Planets" as="h3">
               <Suspense fallback={<WidgetSkeleton rows={8} />}>
                 <GalaxyBrowserServer />
               </Suspense>
             </DashboardCard>
           </div>
           <div className="lg:col-span-1">
-            <DashboardCard title="Active Defenses">
+            <DashboardCard title="Active Defenses" as="h3">
               <Suspense fallback={<WidgetSkeleton />}>
                 <PlanetEvents />
               </Suspense>
             </DashboardCard>
           </div>
           <div className="lg:col-span-1">
-            <DashboardCard title="Super Earth Broadcast">
+            <DashboardCard title="Super Earth Broadcast" as="h3">
               <Suspense fallback={<WidgetSkeleton />}>
                 <SuperEarthNews />
               </Suspense>

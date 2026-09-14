@@ -42,7 +42,7 @@ describe("PlanetEvents", () => {
     vi.mocked(getPlanetEvents).mockResolvedValue([]);
 
     const html = renderToStaticMarkup(await PlanetEvents());
-    expect(html).toContain("No Active Defenses");
+    expect(html).toContain("No active defenses");
   });
 
   it("renders each defense with its held percentage", async () => {

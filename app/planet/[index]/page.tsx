@@ -16,6 +16,7 @@ export async function generateMetadata({
   params,
 }: PlanetPageProps): Promise<Metadata> {
   const { index } = await params;
+  if (!/^\d+$/.test(index)) return { title: "Planet not found" };
   const planet = await getPlanet(index);
 
   if (planet === null) {
@@ -46,14 +47,16 @@ export default async function PlanetPage({ params }: PlanetPageProps) {
   return (
     <div className="space-y-8">
       <section>
-        <Container title={planet.name}>
-          <PlanetOverview planet={planet} />
+        <Container title={planet.name} as="h1">
+          <DashboardCard title="Overview">
+            <PlanetOverview planet={planet} />
+          </DashboardCard>
         </Container>
       </section>
 
       <section>
         <Container title="Battle Record">
-          <DashboardCard title={`${planet.name} Statistics`}>
+          <DashboardCard title={`${planet.name} Statistics`} as="h3">
             <Suspense fallback={<Skeleton className="h-24 w-full" />}>
               <PlanetBattleStats planetIndex={planet.index} />
             </Suspense>

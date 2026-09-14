@@ -25,7 +25,6 @@ interface NavigationItem {
   title: string;
   href: string;
   icon: LucideIcon;
-  roundedClass?: string;
 }
 
 const NAVIGATION_ITEMS: NavigationItem[] = [
@@ -33,31 +32,26 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "Status",
     href: "/",
     icon: Rocket,
-    roundedClass: "rounded-xl rounded-l-full",
   },
   {
     title: "News",
     href: "#news",
     icon: Newspaper,
-    roundedClass: "rounded-xl",
   },
   {
     title: "Galaxy",
     href: "#galaxy",
     icon: Globe,
-    roundedClass: "rounded-xl",
   },
   {
     title: "Statistics",
     href: "#statistics",
     icon: ChartColumnBig,
-    roundedClass: "rounded-xl",
   },
   {
     title: "FAQ",
     href: "#faq",
     icon: Info,
-    roundedClass: "rounded-xl rounded-r-full",
   },
 ] as const;
 
@@ -70,8 +64,10 @@ const LOGO_CONFIG = {
 } as const;
 
 const STYLES = {
+  // On phones the bar sits at the bottom; keep it clear of the home indicator
+  // when the app runs standalone (needs viewportFit: "cover" in the layout).
   header:
-    "fixed bottom-0 left-0 z-[1500] flex w-full justify-center p-6 sm:top-0 sm:bottom-auto",
+    "fixed bottom-0 left-0 z-[1500] flex w-full justify-center p-6 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:top-0 sm:bottom-auto sm:pb-6",
   navigationMenu: "glass-ui p-1",
   navigationLink: "bg-transparent hover:bg-transparent focus:bg-transparent",
   logoContainer: "hidden sm:inline-flex",
@@ -103,16 +99,12 @@ function LogoItem() {
 }
 
 function NavigationItem({ item }: { item: NavigationItem }) {
-  const { title, href, icon: Icon, roundedClass } = item;
+  const { title, href, icon: Icon } = item;
 
   return (
     <NavigationMenuItem key={href}>
       <NavigationMenuLink
-        className={cn(
-          navigationMenuTriggerStyle(),
-          STYLES.navigationLink,
-          roundedClass,
-        )}
+        className={cn(navigationMenuTriggerStyle(), STYLES.navigationLink)}
         href={href}
       >
         <div className={STYLES.navItemContainer}>

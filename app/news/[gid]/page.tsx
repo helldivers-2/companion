@@ -28,7 +28,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   return (
     <Container>
       <div className="mx-auto max-w-3xl">
-        <PatchNotesList notes={[note]} defaultExpanded />
+        <PatchNotesList notes={[note]} defaultExpanded titleAs="h1" />
       </div>
     </Container>
   );

@@ -23,7 +23,7 @@ export default function NewsSection() {
     <section id="news">
       <Container title="News" lgSplit>
         {dashboardCards.map(({ title, component: Component, key }) => (
-          <DashboardCard key={key} title={title}>
+          <DashboardCard key={key} title={title} as="h3">
             <Suspense fallback={<WidgetSkeleton />}>
               <Component />
             </Suspense>

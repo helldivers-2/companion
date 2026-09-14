@@ -28,7 +28,7 @@ describe("SpaceStation", () => {
 
     const html = renderToStaticMarkup(await SpaceStation());
 
-    expect(html).toContain("Unable to load space station data");
+    expect(html).toContain("Unable to load space stations");
   });
 
   it("renders an empty state when there are no stations", async () => {
@@ -72,5 +72,6 @@ describe("SpaceStation", () => {
 
     expect(html).toContain("Malevelon Creek");
     expect(html).toContain("Orbital Bombardment");
+    expect(html).toContain('href="/station/1"');
   });
 });

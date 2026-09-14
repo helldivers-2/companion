@@ -1,27 +1,28 @@
 import { getSuperEarthNews } from "@/lib/data/war-metadata";
 import { parseContent } from "@/lib/transformers/dispatches";
 import { Radio } from "lucide-react";
+import { WidgetState } from "@/components/widgets/widget-state";
 
 export default async function SuperEarthNews() {
   const news = await getSuperEarthNews();
 
   if (news === null) {
     return (
-      <div className="py-8 text-center text-sm text-muted-foreground">
-        Unable to load the Super Earth broadcast. Please try again later.
-      </div>
+      <WidgetState
+        icon={Radio}
+        title="Unable to load the Super Earth broadcast"
+        description="Please try again later."
+      />
     );
   }
 
   if (news.length === 0) {
     return (
-      <div className="py-8 text-center">
-        <Radio className="mx-auto mb-3 h-10 w-10 text-icon" />
-        <h3 className="mb-1 text-base font-medium">No Broadcasts</h3>
-        <p className="text-sm text-muted-foreground">
-          Super Earth has nothing to announce. Citizen.
-        </p>
-      </div>
+      <WidgetState
+        icon={Radio}
+        title="No broadcasts"
+        description="Super Earth has nothing to announce. Citizen."
+      />
     );
   }
 

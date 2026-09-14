@@ -14,7 +14,7 @@ describe("Dispatches", () => {
 
     const html = renderToStaticMarkup(await Dispatches());
 
-    expect(html).toContain("Unable to Load Dispatches");
+    expect(html).toContain("Unable to load dispatches");
   });
 
   it("renders an empty state when there are no dispatches", async () => {
@@ -22,7 +22,7 @@ describe("Dispatches", () => {
 
     const html = renderToStaticMarkup(await Dispatches());
 
-    expect(html).toContain("No dispatches available");
+    expect(html).toContain("No dispatches yet");
   });
 
   it("renders dispatch messages", async () => {

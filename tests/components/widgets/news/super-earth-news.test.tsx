@@ -19,7 +19,7 @@ describe("SuperEarthNews", () => {
     vi.mocked(getSuperEarthNews).mockResolvedValue([]);
 
     const html = renderToStaticMarkup(await SuperEarthNews());
-    expect(html).toContain("No Broadcasts");
+    expect(html).toContain("No broadcasts");
   });
 
   it("renders the newest broadcasts", async () => {

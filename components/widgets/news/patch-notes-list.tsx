@@ -5,14 +5,18 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { WidgetState } from "@/components/widgets/widget-state";
 import { ExternalLink, Calendar, User, ChevronRight } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import type { PatchNote } from "@/types/news";
+import { cn } from "@/lib/utils";
 
 interface PatchNotesListProps {
   notes: PatchNote[] | null;
   /** Render every note uncollapsed, for a single-article page. */
   defaultExpanded?: boolean;
+  /** h4 inside the dashboard's newsfeed card, h1 when the note is the page. */
+  titleAs?: "h1" | "h4";
 }
 
 function parseContent(content: string): string {
@@ -67,36 +71,39 @@ const INITIAL_COUNT = 3;
 export default function PatchNotesList({
   notes,
   defaultExpanded = false,
+  titleAs: Title = "h4",
 }: PatchNotesListProps) {
   const [showAll, setShowAll] = useState(defaultExpanded);
   const [now] = useState(() => Date.now());
 
   if (notes === null || notes.length === 0) {
     return (
-      <div className="py-12 text-center">
-        <div className="mb-2">
-          <Calendar className="mx-auto h-12 w-12 text-muted-foreground" />
-        </div>
-        <h3 className="mb-1 text-lg font-medium">
-          {notes === null
-            ? "Unable to Load Newsfeed"
-            : "No newsfeed items found"}
-        </h3>
-        <p className="text-muted-foreground">
-          {notes === null
+      <WidgetState
+        icon={Calendar}
+        title={
+          notes === null
+            ? "Unable to load the newsfeed"
+            : "No newsfeed items found"
+        }
+        description={
+          notes === null
             ? "Failed to retrieve patch notes. Please try again later."
-            : "Check back later for updates"}
-        </p>
-      </div>
+            : "Check back later for updates."
+        }
+      />
     );
   }
 
   return (
     <>
-      <div className="flex items-center justify-between pb-4">
-        <p className="text-muted-foreground">Latest updates and patch notes</p>
-        <Badge variant="secondary">{notes.length} total</Badge>
-      </div>
+      {!defaultExpanded && (
+        <div className="flex items-center justify-between pb-4">
+          <p className="text-muted-foreground">
+            Latest updates and patch notes
+          </p>
+          <Badge variant="secondary">{notes.length} total</Badge>
+        </div>
+      )}
       <div className="space-y-6">
         {notes.map((note, index) => {
           const publishedDate = new Date(note.publishedAt);
@@ -110,17 +117,19 @@ export default function PatchNotesList({
           return (
             <Card
               key={note.id}
-              className={`group transition-all duration-200 hover:-translate-y-1 hover:shadow-lg ${
-                index === 0 ? "ring-2 ring-yellow-500/20" : ""
-              }`}
+              className={cn(
+                index === 0 && !defaultExpanded && "ring-2 ring-primary/30",
+              )}
             >
               <CardHeader>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="mb-2 flex flex-wrap items-center gap-3">
-                      <h3 className="text-lg font-semibold">{note.title}</h3>
+                      <Title className="text-lg font-semibold">
+                        {note.title}
+                      </Title>
                       {isRecent && (
-                        <Badge className="border-green-200 bg-green-100 text-xs text-green-800">
+                        <Badge className="border-success/20 bg-success/10 text-xs text-success">
                           New
                         </Badge>
                       )}

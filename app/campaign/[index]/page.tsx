@@ -13,6 +13,7 @@ export async function generateMetadata({
   params,
 }: CampaignPageProps): Promise<Metadata> {
   const { index } = await params;
+  if (!/^\d+$/.test(index)) return { title: "Campaign not found" };
   const campaign = await getCampaign(index);
   if (campaign === null) return { title: "Campaign not found" };
   return {
@@ -29,7 +30,7 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
   if (campaign === null) notFound();
 
   return (
-    <Container title={campaign.planet.name}>
+    <Container title={campaign.planet.name} as="h1">
       <DashboardCard title={`${campaign.faction} Front`}>
         <PlanetOverview planet={campaign.planet} />
       </DashboardCard>

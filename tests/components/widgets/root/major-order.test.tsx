@@ -14,7 +14,7 @@ describe("MajorOrder", () => {
 
     const html = renderToStaticMarkup(await MajorOrder());
 
-    expect(html).toContain("Unable to Load Major Orders");
+    expect(html).toContain("Unable to load major orders");
   });
 
   it("renders an empty state when there are no active orders", async () => {
@@ -22,7 +22,7 @@ describe("MajorOrder", () => {
 
     const html = renderToStaticMarkup(await MajorOrder());
 
-    expect(html).toContain("No Major Orders Active");
+    expect(html).toContain("No major orders active");
   });
 
   it("renders assignment briefing and progress", async () => {

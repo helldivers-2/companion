@@ -19,6 +19,7 @@ export async function generateMetadata({
   params,
 }: AssignmentPageProps): Promise<Metadata> {
   const { index } = await params;
+  if (!/^\d+$/.test(index)) return { title: "Major order not found" };
   const assignment = await getAssignment(index);
   if (assignment === null) return { title: "Major order not found" };
   return {
@@ -27,9 +28,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function AssignmentPage({
-  params,
-}: AssignmentPageProps) {
+export default async function AssignmentPage({ params }: AssignmentPageProps) {
   const { index } = await params;
   if (!/^\d+$/.test(index)) notFound();
 
@@ -44,7 +43,7 @@ export default async function AssignmentPage({
   const statusInfo = getStatusInfo(assignment.expiration, progressPercent);
 
   return (
-    <Container title={assignment.title ?? "Major Order"}>
+    <Container title={assignment.title ?? "Major Order"} as="h1">
       <DashboardCard title="Directive">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-3 text-sm">

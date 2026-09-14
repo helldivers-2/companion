@@ -10,8 +10,11 @@ const Container = ({
   children,
   className,
   lgSplit = false,
+  as: Heading = "h2",
 }: {
   title?: string;
+  /** h1 when the title is the page title (detail routes), h2 for a dashboard section. */
+  as?: "h1" | "h2";
   discussion?: string;
   children: ReactNode;
   className?: string;
@@ -25,9 +28,9 @@ const Container = ({
         {title ? (
           <CardHeader>
             <CardTitle>
-              <h2 className="mt-4 text-center text-3xl font-semibold tracking-tight text-balance">
+              <Heading className="mt-4 text-center text-3xl font-semibold tracking-tight text-balance">
                 {title}
-              </h2>
+              </Heading>
             </CardTitle>
           </CardHeader>
         ) : null}

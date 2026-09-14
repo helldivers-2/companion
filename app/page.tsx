@@ -29,6 +29,7 @@ export default function StatusPage() {
   return (
     <div className="space-y-8">
       <section id="status">
+        <h1 className="sr-only">Galactic War Status</h1>
         <Container>
           <div className="grid gap-4 lg:grid-cols-3 lg:items-start">
             <div className="lg:col-span-3">

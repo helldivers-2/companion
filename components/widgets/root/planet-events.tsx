@@ -9,27 +9,28 @@ import { millify, formatTimeRemaining } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { ShieldAlert } from "lucide-react";
+import { WidgetState } from "@/components/widgets/widget-state";
 
 export default async function PlanetEvents() {
   const events = await getPlanetEvents();
 
   if (events === null) {
     return (
-      <div className="py-8 text-center text-sm text-muted-foreground">
-        Unable to load active defenses. Please try again later.
-      </div>
+      <WidgetState
+        icon={ShieldAlert}
+        title="Unable to load active defenses"
+        description="Please try again later."
+      />
     );
   }
 
   if (events.length === 0) {
     return (
-      <div className="py-8 text-center">
-        <ShieldAlert className="mx-auto mb-3 h-10 w-10 text-icon" />
-        <h3 className="mb-1 text-base font-medium">No Active Defenses</h3>
-        <p className="text-sm text-muted-foreground">
-          Every planet is holding. For now.
-        </p>
-      </div>
+      <WidgetState
+        icon={ShieldAlert}
+        title="No active defenses"
+        description="Every planet is holding. For now."
+      />
     );
   }
 
@@ -37,7 +38,9 @@ export default async function PlanetEvents() {
     <div className="space-y-3">
       {events.map((planet) => {
         const { liberation, status } = getPlanetStats(planet);
-        const icon = getFactionIcon(planet.event?.faction ?? planet.currentOwner);
+        const icon = getFactionIcon(
+          planet.event?.faction ?? planet.currentOwner,
+        );
         const defenseRemaining = Number(liberation);
 
         return (
@@ -72,8 +75,8 @@ export default async function PlanetEvents() {
             <div className="space-y-1">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-muted-foreground">
-                  {planet.sector} Sector · {millify(planet.statistics.playerCount)}{" "}
-                  defenders
+                  {planet.sector} Sector ·{" "}
+                  {millify(planet.statistics.playerCount)} defenders
                 </span>
                 <span className="font-mono">{liberation}% held</span>
               </div>

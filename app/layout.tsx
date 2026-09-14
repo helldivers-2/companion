@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
 import "@/app/globals.css";
 
@@ -21,6 +21,12 @@ export const metadata: Metadata = {
   description: siteConfig.description,
 };
 
+// Extends the page under the notch and home indicator so the layout can pad
+// itself with env(safe-area-inset-*) when installed as a standalone app.
+export const viewport: Viewport = {
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,11 +47,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          <main className="container mx-auto flex flex-col sm:px-4 sm:pt-12">
+          <main className="container mx-auto flex flex-col pt-[env(safe-area-inset-top)] sm:px-4 sm:pt-12">
             {children}
           </main>
           <Footer />
-          <div className="pb-24 sm:pb-0" />
+          <div className="pb-[calc(6rem+env(safe-area-inset-bottom))] sm:pb-0" />
         </ThemeProvider>
       </body>
     </html>

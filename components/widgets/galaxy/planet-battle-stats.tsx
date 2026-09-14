@@ -1,6 +1,8 @@
 import { getGalaxySummary } from "@/lib/data/war-metadata";
 import { millify } from "@/lib/utils";
+import { ChartColumnBig } from "lucide-react";
 import { StatisticsCard } from "@/components/widgets/statistics/statistics-card";
+import { WidgetState } from "@/components/widgets/widget-state";
 import type { PlanetStats } from "@/types/war-metadata";
 
 interface PlanetBattleStatsProps {
@@ -41,9 +43,11 @@ export default async function PlanetBattleStats({
 
   if (!stats) {
     return (
-      <div className="p-4 text-center text-sm text-muted-foreground">
-        No battle statistics recorded for this planet.
-      </div>
+      <WidgetState
+        icon={ChartColumnBig}
+        title="No battle statistics recorded"
+        description="Super Earth has no combat record for this planet yet."
+      />
     );
   }
 

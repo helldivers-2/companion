@@ -6,7 +6,9 @@ import {
   getPlanetStats,
   isLiberated,
 } from "@/lib/transformers/campaigns";
-import { useMemo, useState, useSyncExternalStore } from "react";
+import { useMemo, useState } from "react";
+import { useTheme } from "next-themes";
+import { Map as MapIcon } from "lucide-react";
 import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +16,7 @@ import type { Campaign } from "@/types/campaigns";
 import type { CampaignSupplyLine } from "@/lib/transformers/campaigns";
 import type { AttackLine } from "@/lib/transformers/war-metadata";
 import PlanetDetail from "@/components/planet-detail";
+import { WidgetState } from "@/components/widgets/widget-state";
 import { useMediaQuery } from "@/lib/use-media-query";
 
 import {
@@ -30,15 +33,35 @@ import { LatLngBounds } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 const ANGLE_OFFSET_DEGREES = 90;
-// Same palette as the table's status badges (Tailwind 500s) so the map and the
-// table always agree on what a front is doing.
-const COLORS = {
-  green: "#22c55e",
-  orange: "#f97316",
-  red: "#ef4444",
-  muted: "#71717a",
-  white: "#FFFFFF",
-} as const;
+const WHITE = "#FFFFFF";
+
+interface MapPalette {
+  success: string;
+  warning: string;
+  destructive: string;
+  muted: string;
+}
+
+// Leaflet writes colors into SVG attributes, where var() does not resolve, so
+// the theme tokens are read off the root element instead. They are the same
+// tokens the table's status badges use, so the map and the table always agree
+// on what a front is doing.
+const readPalette = (): MapPalette => {
+  const style = getComputedStyle(document.documentElement);
+  const token = (name: string, fallback: string) =>
+    style.getPropertyValue(name).trim() || fallback;
+  return {
+    success: token("--success", "#16a34a"),
+    warning: token("--warning", "#c2410c"),
+    destructive: token("--destructive", "#dc2626"),
+    muted: token("--muted-foreground", "#71717a"),
+  };
+};
+
+// Keyed by the semantic token getStatus/getPlanetStats returns, not by the
+// label, so renaming a status cannot silently drop a marker back to grey.
+const statusColor = (palette: MapPalette, token: string): string =>
+  palette[token as keyof MapPalette] ?? palette.muted;
 
 const MARKER_STATUS = {
   EVENT: "event",
@@ -46,14 +69,12 @@ const MARKER_STATUS = {
   LIBERATED: "liberated",
 } as const;
 
-// Keyed by the semantic token getStatus/getPlanetStats returns, not by the
-// label, so renaming a status cannot silently drop a marker back to grey.
-const STATUS_COLORS: Record<string, string> = {
-  warning: COLORS.orange,
-  success: COLORS.green,
-  destructive: COLORS.red,
-  muted: COLORS.muted,
-};
+const LEGEND_MARKERS = [
+  { label: "Defending", className: "bg-warning" },
+  { label: "Liberating", className: "bg-success" },
+  { label: "Counterattacking", className: "bg-destructive" },
+  { label: "Stable", className: "bg-muted-foreground" },
+] as const;
 
 const transformCoordinates = (
   x: number,
@@ -85,19 +106,14 @@ interface MarkerProperties {
 
 interface PlanetMarkerProps {
   campaign: Campaign;
+  palette: MapPalette;
   onPlanetClick?: (campaign: Campaign) => void;
 }
 
 const useResponsiveSettings = () => {
   const isMobile = useMediaQuery("(max-width: 767px)");
-  const isClient = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
 
   return {
-    isClient,
     zoom: isMobile ? 7 : 8,
     bounds: getMapBounds(isMobile),
   };
@@ -165,7 +181,11 @@ const PlanetPopup = ({
   );
 };
 
-const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
+const PlanetMarker = ({
+  campaign,
+  palette,
+  onPlanetClick,
+}: PlanetMarkerProps) => {
   const { planet } = campaign;
 
   const markerData = useMemo(() => {
@@ -187,9 +207,9 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
   const markerProperties = useMemo((): MarkerProperties => {
     if (isLiberated(campaign)) {
       return {
-        fillColor: COLORS.green,
+        fillColor: palette.success,
         fillOpacity: 0.7,
-        color: COLORS.white,
+        color: WHITE,
         weight: 1.5,
         radius: 6,
         status: MARKER_STATUS.LIBERATED,
@@ -202,16 +222,16 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
     const isEvent = planet.event !== null;
 
     return {
-      fillColor: STATUS_COLORS[status.color] ?? COLORS.muted,
+      fillColor: statusColor(palette, status.color),
       fillOpacity: isEvent ? 0.9 : 0.8,
-      color: COLORS.white,
+      color: WHITE,
       weight: 2,
       radius: isEvent ? 8 : 7,
       status: isEvent ? MARKER_STATUS.EVENT : MARKER_STATUS.CAMPAIGN,
       statusText: status.text,
       priority: isEvent ? "high" : "medium",
     };
-  }, [campaign, planet]);
+  }, [campaign, planet, palette]);
 
   const progressRadius = markerProperties.radius + 3;
   const circumference = 2 * Math.PI * progressRadius;
@@ -245,7 +265,7 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
           radius={progressRadius}
           fillColor="transparent"
           fillOpacity={0}
-          color={COLORS.white}
+          color={WHITE}
           weight={3}
           interactive={false}
           dashArray={dashArray}
@@ -260,11 +280,13 @@ const PlanetMarker = ({ campaign, onPlanetClick }: PlanetMarkerProps) => {
 const PlanetLayer = ({
   planets,
   name,
+  palette,
   checked = false,
   onPlanetClick,
 }: {
   planets: Campaign[];
   name: string;
+  palette: MapPalette;
   checked?: boolean;
   onPlanetClick?: (campaign: Campaign) => void;
 }) => (
@@ -274,11 +296,41 @@ const PlanetLayer = ({
         <PlanetMarker
           key={`${campaign.planet.name}-${index}`}
           campaign={campaign}
+          palette={palette}
           onPlanetClick={onPlanetClick}
         />
       ))}
     </FeatureGroup>
   </LayersControl.Overlay>
+);
+
+const MapLegend = () => (
+  <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+    {LEGEND_MARKERS.map(({ label, className }) => (
+      <li key={label} className="flex items-center gap-1.5">
+        <span aria-hidden className={`size-2.5 rounded-full ${className}`} />
+        {label}
+      </li>
+    ))}
+    <li className="flex items-center gap-1.5">
+      <span
+        aria-hidden
+        className="size-3 rounded-full border-2 border-foreground/60"
+      />
+      Outer ring: progress
+    </li>
+    <li className="flex items-center gap-1.5">
+      <span
+        aria-hidden
+        className="w-4 border-t border-dashed border-muted-foreground"
+      />
+      Supply line
+    </li>
+    <li className="flex items-center gap-1.5">
+      <span aria-hidden className="w-4 border-t-2 border-destructive" />
+      Enemy attack
+    </li>
+  </ul>
 );
 
 export interface CampaignMapProps {
@@ -298,7 +350,11 @@ export default function CampaignMap({
   attackLines = [],
   error,
 }: CampaignMapProps) {
-  const { zoom, bounds, isClient } = useResponsiveSettings();
+  const { zoom, bounds } = useResponsiveSettings();
+  // Subscribing to the theme re-renders the map when the .dark class flips,
+  // which is when readPalette picks up the other set of token values.
+  useTheme();
+  const palette = readPalette();
   const [selectedCampaign, setSelectedCampaign] = useState<Campaign | null>(
     null,
   );
@@ -320,21 +376,14 @@ export default function CampaignMap({
     (campaign) => campaign.planet.event === null,
   );
 
-  if (!isClient) {
-    return (
-      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
-        <div className="text-muted-foreground">Initializing map...</div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
-        <div className="text-center">
-          <div className="mb-2 text-red-500">Failed to load campaign data</div>
-          <div className="mb-4 text-sm text-muted-foreground">{error}</div>
-        </div>
+      <div className="flex aspect-square items-center justify-center border md:aspect-video">
+        <WidgetState
+          icon={MapIcon}
+          title="Unable to load the galactic map"
+          description={error}
+        />
       </div>
     );
   }
@@ -345,22 +394,20 @@ export default function CampaignMap({
     liberatedPlanets.length === 0
   ) {
     return (
-      <div className="flex aspect-square items-center justify-center rounded-none border md:aspect-video">
-        <div className="text-center">
-          <div className="mb-2 text-muted-foreground">
-            No campaign data available
-          </div>
-          <div className="text-sm text-muted-foreground">
-            There are currently no active campaigns or liberated planets to
-            display.
-          </div>
-        </div>
+      <div className="flex aspect-square items-center justify-center border md:aspect-video">
+        <WidgetState
+          icon={MapIcon}
+          title="No campaign data available"
+          description="There are currently no active campaigns or liberated planets to display."
+        />
       </div>
     );
   }
 
   return (
     <>
+      {/* Scroll-wheel zoom stays off so the page scrolls past the map; pinch
+          and keyboard zoom match the visible +/- controls. */}
       <MapContainer
         className="aspect-square rounded-none border md:aspect-video"
         center={[0, 0]}
@@ -370,9 +417,7 @@ export default function CampaignMap({
         maxBounds={bounds}
         boxZoom={false}
         doubleClickZoom={false}
-        keyboard={false}
         scrollWheelZoom={false}
-        touchZoom={false}
       >
         <TileLayer url="/tile.webp" />
         <ImageOverlay
@@ -400,7 +445,7 @@ export default function CampaignMap({
                       ),
                     ]}
                     pathOptions={{
-                      color: COLORS.muted,
+                      color: palette.muted,
                       weight: 1,
                       opacity: 0.4,
                       dashArray: "4 4",
@@ -430,7 +475,7 @@ export default function CampaignMap({
                       ),
                     ]}
                     pathOptions={{
-                      color: COLORS.red,
+                      color: palette.destructive,
                       weight: 2,
                       opacity: 0.6,
                     }}
@@ -444,6 +489,7 @@ export default function CampaignMap({
             <PlanetLayer
               planets={defenses}
               name="Active Defenses"
+              palette={palette}
               checked={true}
               onPlanetClick={handlePlanetClick}
             />
@@ -452,6 +498,7 @@ export default function CampaignMap({
             <PlanetLayer
               planets={activeCampaigns}
               name="Active Campaigns"
+              palette={palette}
               checked={true}
               onPlanetClick={handlePlanetClick}
             />
@@ -460,6 +507,7 @@ export default function CampaignMap({
             <PlanetLayer
               planets={parkedPlanets}
               name="Parked Fronts"
+              palette={palette}
               checked={movingPlanets.length === 0}
               onPlanetClick={handlePlanetClick}
             />
@@ -468,12 +516,15 @@ export default function CampaignMap({
             <PlanetLayer
               planets={liberatedPlanets}
               name="Liberated Planets"
+              palette={palette}
               checked={false}
               onPlanetClick={handlePlanetClick}
             />
           )}
         </LayersControl>
       </MapContainer>
+
+      <MapLegend />
 
       <PlanetDetail
         campaign={selectedCampaign}

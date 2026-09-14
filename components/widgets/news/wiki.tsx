@@ -15,7 +15,7 @@ export default async function WikipediaText() {
         Arrowhead passed 20 million copies sold in January 2026.
       </p>
 
-      <h3 className="pt-2 text-xl font-semibold">Gameplay</h3>
+      <h4 className="pt-2 text-xl font-semibold">Gameplay</h4>
 
       <p>
         Squads of up to four drop onto hostile planets held by the Terminids,
@@ -32,7 +32,7 @@ export default async function WikipediaText() {
         fights you can walk away from beats winning them.
       </p>
 
-      <h3 className="pt-2 text-xl font-semibold">The Galactic War</h3>
+      <h4 className="pt-2 text-xl font-semibold">The Galactic War</h4>
 
       <p>
         Everyone plays in one persistent war. Every mission you finish damages a

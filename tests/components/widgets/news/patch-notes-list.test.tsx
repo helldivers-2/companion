@@ -7,7 +7,7 @@ describe("PatchNotesList", () => {
   it("renders an error state when notes is null", () => {
     const html = renderToStaticMarkup(<PatchNotesList notes={null} />);
 
-    expect(html).toContain("Unable to Load Newsfeed");
+    expect(html).toContain("Unable to load the newsfeed");
   });
 
   it("renders an empty state when there are no notes", () => {

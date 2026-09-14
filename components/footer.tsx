@@ -102,6 +102,8 @@ const CreditsList = ({ credits }: { credits: CreditLink[] }) => (
         className="flex items-center gap-2 transition-all hover:underline"
         href={href}
         key={href}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         <Icon className="mt-0.5 size-4 text-icon" />
         {label}
@@ -118,7 +120,7 @@ const SocialNav = ({
   title: string;
 }) => (
   <div>
-    <h5 className="text-sm font-semibold tracking-wide uppercase">{title}</h5>
+    <h2 className="text-sm font-semibold tracking-wide uppercase">{title}</h2>
     <nav className="flex gap-4">
       {links.map(({ href, icon: Icon, label }) => (
         <a
@@ -139,9 +141,9 @@ const SocialNav = ({
 
 const ProjectInfo = () => (
   <div>
-    <h5 className="text-sm font-semibold tracking-wide uppercase">
+    <h2 className="text-sm font-semibold tracking-wide uppercase">
       Helldivers Companion
-    </h5>
+    </h2>
     <p className="mt-4 text-sm text-muted-foreground">
       A project by{" "}
       <Link

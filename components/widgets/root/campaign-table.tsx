@@ -1,6 +1,8 @@
 import { getCampaignData } from "@/lib/data/campaigns";
 import type { CampaignStats } from "@/types/campaigns";
+import { Swords } from "lucide-react";
 import CampaignTableClient from "@/components/widgets/root/campaign-table-client";
+import { WidgetState } from "@/components/widgets/widget-state";
 
 const ERROR_MESSAGE = "Failed to load campaign data. Please try again later.";
 
@@ -28,7 +30,13 @@ export default async function CampaignTable() {
   }
 
   if (error !== null) {
-    return <div className="p-4 text-center text-red-500">{error}</div>;
+    return (
+      <WidgetState
+        icon={Swords}
+        title="Unable to load campaigns"
+        description={error}
+      />
+    );
   }
 
   return (

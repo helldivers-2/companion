@@ -13,6 +13,7 @@ export async function generateMetadata({
   params,
 }: StationPageProps): Promise<Metadata> {
   const { index } = await params;
+  if (!/^\d+$/.test(index)) return { title: "Space station not found" };
   const station = await getSpaceStation(index);
   if (station === null) return { title: "Space station not found" };
   return {
@@ -29,7 +30,7 @@ export default async function StationPage({ params }: StationPageProps) {
   if (station === null) notFound();
 
   return (
-    <Container title={`${station.planet.name} Station`}>
+    <Container title={`${station.planet.name} Station`} as="h1">
       <DashboardCard title="Democracy Space Station">
         <SpaceStationDetail station={station} />
       </DashboardCard>
