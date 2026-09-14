@@ -1,5 +1,6 @@
-import type { Planet, PlanetDto } from "@/types/campaigns";
+import type { Planet, PlanetDto, PlanetRegion } from "@/types/campaigns";
 import type { GalaxyPlanetStats } from "@/types/planets";
+import type { PlanetStats } from "@/types/war-metadata";
 import { isLiberated, mapPlanetDto, species } from "@/lib/transformers/campaigns";
 
 const HUMAN_FACTION = "Humans";
@@ -67,8 +68,7 @@ export function getSectors(planets: Planet[]): string[] {
   );
 }
 
-export function filterPlanets(
-  planets: Planet[],
+export function filterPlanets(  planets: Planet[],
   {
     faction = null,
     sector = null,

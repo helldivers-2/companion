@@ -15,6 +15,7 @@ import SpaceStation from "@/components/widgets/root/space-station";
 import WarSummary from "@/components/widgets/root/war-summary";
 
 import NewsSection from "@/components/widgets/merged/news-section";
+import GalaxySection from "@/components/widgets/merged/galaxy-section";
 import StatisticsSection from "@/components/widgets/merged/statistics-section";
 import FAQSection from "@/components/widgets/merged/faq-section";
 
@@ -93,6 +94,7 @@ export default function StatusPage() {
       </section>
 
       <NewsSection />
+      <GalaxySection />
       <StatisticsSection />
       <FAQSection />
     </div>

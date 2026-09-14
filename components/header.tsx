@@ -8,6 +8,7 @@ import {
   Rocket,
   Newspaper,
   ChartColumnBig,
+  Globe,
 } from "lucide-react";
 
 import {
@@ -38,6 +39,12 @@ const NAVIGATION_ITEMS: NavigationItem[] = [
     title: "News",
     href: "#news",
     icon: Newspaper,
+    roundedClass: "rounded-xl",
+  },
+  {
+    title: "Galaxy",
+    href: "#galaxy",
+    icon: Globe,
     roundedClass: "rounded-xl",
   },
   {
