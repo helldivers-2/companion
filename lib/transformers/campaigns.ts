@@ -4,6 +4,7 @@ import type {
   PlanetDto,
   Planet,
   PlanetRegion,
+  PlanetRegionDto,
   PlanetStatistics,
   Species,
   CampaignStats,
@@ -21,8 +22,21 @@ export function getFactionIcon(faction: string): string | null {
   return factionData ? factionData.icon : null;
 }
 
+export function mapPlanetRegionDto(dto: PlanetRegionDto): PlanetRegion {
+  return {
+    name: dto.name ?? "Unnamed Region",
+    health: dto.health ?? 0,
+    maxHealth: dto.maxHealth,
+    size: dto.size,
+    regenPerSecond: dto.regenPerSecond ?? 0,
+    isAvailable: dto.isAvailable,
+    players: dto.players,
+  };
+}
+
 export function mapPlanetDto(dto: PlanetDto): Planet {
   return {
+    index: dto.index,
     name: dto.name,
     sector: dto.sector,
     position: dto.position,
@@ -35,7 +49,10 @@ export function mapPlanetDto(dto: PlanetDto): Planet {
     event: dto.event ?? null,
     biome: dto.biome,
     hazards: dto.hazards,
-    regions: dto.regions,
+    regions: dto.regions?.map(mapPlanetRegionDto),
+    waypoints: dto.waypoints,
+    attacking: dto.attacking,
+    disabled: dto.disabled,
   };
 }
 

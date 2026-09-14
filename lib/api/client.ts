@@ -1,8 +1,13 @@
 import { siteConfig } from "@/config/site";
+import { API_ORIGIN } from "@/lib/api/endpoints";
 
 export type Result<T> =
   { success: true; data: T } | { success: false; error: Error };
 
+// `url` is an absolute path on the API origin, including any /api or /raw
+// prefix (see ENDPOINTS). It is deliberately not joined with /api here: the raw
+// ArrowHead passthrough is not nested under /api, and guessing the prefix in two
+// places would send raw requests to a 404.
 export async function getAPI<T>({
   url,
   revalidate = 3600,
@@ -20,7 +25,7 @@ export async function getAPI<T>({
         "X-Super-Contact": siteConfig.x_super.contact,
       },
     };
-    const apiUrl = `https://api.helldivers2.dev/api${url}`;
+    const apiUrl = `${API_ORIGIN}${url}`;
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);

@@ -44,17 +44,22 @@ const HazardSchema = z.object({ name: z.string(), description: z.string() });
 // a city on it is a quarter liberated, so region health is where progress
 // actually shows up. `isAvailable` gates whether players can push a region at
 // all — locked regions stay pinned at full health regardless of the war effort.
+//
+// Inactive regions (on planets the war has moved past) report null health and
+// regen, and occasionally a null name/description, so those are nullable rather
+// than optional. The transformer and progress helpers normalise null to zero.
 export const PlanetRegionSchema = z.object({
-  name: z.string(),
-  health: z.number(),
+  name: z.string().nullish(),
+  health: z.number().nullish(),
   maxHealth: z.number(),
   size: z.string().optional(),
-  regenPerSecond: z.number().optional(),
+  regenPerSecond: z.number().nullish(),
   isAvailable: z.boolean().optional(),
   players: z.number().optional(),
 });
 
 export const PlanetDtoSchema = z.object({
+  index: z.number().optional(),
   name: z.string(),
   sector: z.string(),
   position: PlanetPositionSchema,
@@ -68,6 +73,9 @@ export const PlanetDtoSchema = z.object({
   biome: BiomeSchema.optional(),
   hazards: z.array(HazardSchema).optional(),
   regions: z.array(PlanetRegionSchema).optional(),
+  waypoints: z.array(z.number()).optional(),
+  attacking: z.array(z.number()).optional(),
+  disabled: z.boolean().optional(),
 });
 
 export const CampaignDtoSchema = z.object({
@@ -79,11 +87,24 @@ export const CampaignDtoSchema = z.object({
 export type PlanetPosition = z.infer<typeof PlanetPositionSchema>;
 export type PlanetStatistics = z.infer<typeof PlanetStatisticsSchema>;
 export type PlanetEvent = z.infer<typeof PlanetEventSchema>;
-export type PlanetRegion = z.infer<typeof PlanetRegionSchema>;
+export type PlanetRegionDto = z.infer<typeof PlanetRegionSchema>;
 export type PlanetDto = z.infer<typeof PlanetDtoSchema>;
 export type CampaignDto = z.infer<typeof CampaignDtoSchema>;
 
+// Domain regions carry concrete numbers even when the API reports null for an
+// inactive region, so the liberation/leading-region math never has to null-check.
+export interface PlanetRegion {
+  name: string;
+  health: number;
+  maxHealth: number;
+  size?: string;
+  regenPerSecond?: number;
+  isAvailable?: boolean;
+  players?: number;
+}
+
 export interface Planet {
+  index?: number;
   name: string;
   sector: string;
   position: PlanetPosition;
@@ -97,6 +118,9 @@ export interface Planet {
   biome?: { name: string; description: string };
   hazards?: { name: string; description: string }[];
   regions?: PlanetRegion[];
+  waypoints?: number[];
+  attacking?: number[];
+  disabled?: boolean;
 }
 
 export interface Campaign {
