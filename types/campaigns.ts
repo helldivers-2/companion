@@ -73,7 +73,6 @@ export const PlanetDtoSchema = z.object({
   biome: BiomeSchema.optional(),
   hazards: z.array(HazardSchema).optional(),
   regions: z.array(PlanetRegionSchema).optional(),
-  waypoints: z.array(z.number()).optional(),
   attacking: z.array(z.number()).optional(),
   disabled: z.boolean().optional(),
 });
@@ -118,7 +117,6 @@ export interface Planet {
   biome?: { name: string; description: string };
   hazards?: { name: string; description: string }[];
   regions?: PlanetRegion[];
-  waypoints?: number[];
   attacking?: number[];
   disabled?: boolean;
 }

@@ -10,7 +10,6 @@ export default async function CampaignMapServer() {
   let movingPlanets: CampaignMapProps["movingPlanets"] = [];
   let parkedPlanets: CampaignMapProps["parkedPlanets"] = [];
   let liberatedPlanets: CampaignMapProps["liberatedPlanets"] = [];
-  let supplyLines: CampaignMapProps["supplyLines"] = [];
   let attackLines: CampaignMapProps["attackLines"] = [];
   let error: string | null = null;
 
@@ -27,7 +26,6 @@ export default async function CampaignMapServer() {
       movingPlanets = data.movingPlanets;
       parkedPlanets = data.parkedPlanets;
       liberatedPlanets = data.liberatedPlanets;
-      supplyLines = data.supplyLines;
       attackLines =
         metadata && status
           ? getAttackLines(status.attacks, metadata.planetPositions)
@@ -43,7 +41,6 @@ export default async function CampaignMapServer() {
       movingPlanets={movingPlanets}
       parkedPlanets={parkedPlanets}
       liberatedPlanets={liberatedPlanets}
-      supplyLines={supplyLines}
       attackLines={attackLines}
       error={error}
     />

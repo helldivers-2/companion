@@ -13,7 +13,6 @@ import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import type { Campaign } from "@/types/campaigns";
-import type { CampaignSupplyLine } from "@/lib/transformers/campaigns";
 import type { AttackLine } from "@/lib/transformers/war-metadata";
 import PlanetDetail from "@/components/planet-detail";
 import { WidgetState } from "@/components/widgets/widget-state";
@@ -320,13 +319,6 @@ const MapLegend = () => (
       Outer ring: progress
     </li>
     <li className="flex items-center gap-1.5">
-      <span
-        aria-hidden
-        className="w-4 border-t border-dashed border-muted-foreground"
-      />
-      Supply line
-    </li>
-    <li className="flex items-center gap-1.5">
       <span aria-hidden className="w-4 border-t-2 border-destructive" />
       Enemy attack
     </li>
@@ -337,7 +329,6 @@ export interface CampaignMapProps {
   movingPlanets: Campaign[];
   parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
-  supplyLines?: CampaignSupplyLine[];
   attackLines?: AttackLine[];
   error?: string | null;
 }
@@ -346,7 +337,6 @@ export default function CampaignMap({
   movingPlanets,
   parkedPlanets,
   liberatedPlanets,
-  supplyLines = [],
   attackLines = [],
   error,
 }: CampaignMapProps) {
@@ -426,36 +416,6 @@ export default function CampaignMap({
           opacity={0.5}
         />
         <LayersControl position="bottomleft">
-          {supplyLines.length > 0 && (
-            <LayersControl.Overlay checked={true} name="Supply Lines">
-              <FeatureGroup>
-                {supplyLines.map((line, index) => (
-                  <Polyline
-                    key={`${line.from.index}-${line.to.index}-${index}`}
-                    positions={[
-                      transformCoordinates(
-                        line.from.position.x,
-                        line.from.position.y,
-                        ANGLE_OFFSET_DEGREES,
-                      ),
-                      transformCoordinates(
-                        line.to.position.x,
-                        line.to.position.y,
-                        ANGLE_OFFSET_DEGREES,
-                      ),
-                    ]}
-                    pathOptions={{
-                      color: palette.muted,
-                      weight: 1,
-                      opacity: 0.4,
-                      dashArray: "4 4",
-                    }}
-                    interactive={false}
-                  />
-                ))}
-              </FeatureGroup>
-            </LayersControl.Overlay>
-          )}
           {attackLines.length > 0 && (
             <LayersControl.Overlay checked={true} name="Enemy Attacks">
               <FeatureGroup>

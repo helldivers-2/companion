@@ -4,7 +4,6 @@ import {
   mapWarStatusDto,
   mapWarSummaryDto,
   mapNewsFeedItems,
-  getSupplyLines,
   getHomeWorlds,
   getAttackLines,
 } from "@/lib/transformers/war-metadata";
@@ -37,25 +36,6 @@ describe("getRegionSizeLabel", () => {
   });
 });
 
-describe("getSupplyLines", () => {
-  it("emits each undirected link once", () => {
-    const lines = getSupplyLines([
-      { index: 0, maxHealth: 1, waypoints: [1, 2] },
-      { index: 1, maxHealth: 1, waypoints: [0] },
-    ]);
-    expect(lines).toEqual([
-      { source: 0, target: 1 },
-      { source: 0, target: 2 },
-    ]);
-  });
-
-  it("drops self links", () => {
-    expect(
-      getSupplyLines([{ index: 5, maxHealth: 1, waypoints: [5] }]),
-    ).toEqual([]);
-  });
-});
-
 describe("getHomeWorlds", () => {
   it("expands homeworld indices with faction metadata", () => {
     const worlds = getHomeWorlds([{ race: 3, planetIndices: [260] }]);
@@ -71,7 +51,7 @@ describe("getHomeWorlds", () => {
 });
 
 describe("mapWarInfoDto", () => {
-  it("builds waypoints, supply lines, homeworlds and region info", () => {
+  it("builds homeworlds, positions and region info", () => {
     const metadata = mapWarInfoDto({
       warId: 801,
       startDate: 1706040313,
@@ -100,8 +80,6 @@ describe("mapWarInfoDto", () => {
 
     expect(metadata.warId).toBe(801);
     expect(metadata.startDate).toBe("2024-01-23T20:05:13.000Z");
-    expect(metadata.waypoints[0]).toEqual([260]);
-    expect(metadata.supplyLines).toEqual([{ source: 0, target: 260 }]);
     expect(metadata.homeWorlds[0].faction).toBe("Automaton");
     expect(metadata.planetPositions[0]).toEqual({ x: 0, y: 0 });
     expect(metadata.regionInfo["0:0"]).toEqual({
@@ -121,7 +99,7 @@ describe("mapWarInfoDto", () => {
     });
     expect(metadata.startDate).toBeNull();
     expect(metadata.minimumClientVersion).toBe("unknown");
-    expect(metadata.supplyLines).toEqual([]);
+    expect(metadata.homeWorlds).toEqual([]);
   });
 });
 

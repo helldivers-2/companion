@@ -1,24 +1,15 @@
 import { cache } from "react";
 import { fetchCampaigns, fetchCampaign } from "@/lib/services/campaigns";
-import {
-  mapCampaignDto,
-  getCampaignStats,
-  getCampaignSupplyLines,
-} from "@/lib/transformers/campaigns";
+import { mapCampaignDto, getCampaignStats } from "@/lib/transformers/campaigns";
 import type { Campaign, CampaignStats } from "@/types/campaigns";
 
-export interface CampaignData extends CampaignStats {
-  supplyLines: ReturnType<typeof getCampaignSupplyLines>;
-}
+export type CampaignData = CampaignStats;
 
 async function _getCampaignData(): Promise<CampaignData | null> {
   try {
     const dtos = await fetchCampaigns();
     const campaigns = dtos.map(mapCampaignDto);
-    return {
-      ...getCampaignStats(campaigns),
-      supplyLines: getCampaignSupplyLines(campaigns),
-    };
+    return getCampaignStats(campaigns);
   } catch (error) {
     console.error("getCampaignData failed:", error);
     return null;

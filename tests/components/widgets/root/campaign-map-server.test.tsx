@@ -63,7 +63,6 @@ describe("CampaignMapServer", () => {
       parkedPlanets,
       liberatedPlanets,
       liberatedPlayerCount: 0,
-      supplyLines: [],
     });
     vi.mocked(getWarMetadata).mockResolvedValue(null);
     vi.mocked(getWarStatus).mockResolvedValue(null);
@@ -84,15 +83,12 @@ describe("CampaignMapServer", () => {
       parkedPlanets: [],
       liberatedPlanets: [],
       liberatedPlayerCount: 0,
-      supplyLines: [],
     });
     vi.mocked(getWarMetadata).mockResolvedValue({
       warId: 801,
       startDate: null,
       endDate: null,
       minimumClientVersion: "0.3.0",
-      waypoints: {},
-      supplyLines: [],
       homeWorlds: [],
       homeWorldIndices: [],
       regionInfo: {},

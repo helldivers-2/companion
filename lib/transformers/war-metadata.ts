@@ -5,13 +5,13 @@ import type {
   GalaxyStats,
   PlanetStats,
   NewsFeedItemDtoInput,
-  PlanetInfo,
   HomeWorld,
 } from "@/types/war-metadata";
 import { getFactionFromRace } from "@/types/war-metadata";
 import { getFactionIcon } from "@/lib/transformers/campaigns";
 
-export interface SupplyLine {
+// A directed planet-to-planet link, used for live enemy attacks.
+export interface PlanetLink {
   source: number;
   target: number;
 }
@@ -28,10 +28,6 @@ export interface WarMetadata {
   startDate: string | null;
   endDate: string | null;
   minimumClientVersion: string;
-  /** Adjacency exactly as ArrowHead reports it (planet index -> neighbour indices). */
-  waypoints: Record<number, number[]>;
-  /** Undirected supply links derived from the raw waypoint lists. */
-  supplyLines: SupplyLine[];
   homeWorlds: HomeWorldInfo[];
   /** Region max health keyed by `${planetIndex}:${regionIndex}`. */
   regionInfo: Record<string, PlanetRegionInfoView>;
@@ -50,10 +46,8 @@ export interface PlanetRegionInfoView {
 }
 
 export function mapWarInfoDto(dto: WarInfoDtoInput): WarMetadata {
-  const waypoints: Record<number, number[]> = {};
   const planetPositions: Record<number, { x: number; y: number }> = {};
   for (const info of dto.planetInfos) {
-    waypoints[info.index] = info.waypoints ?? [];
     if (info.position) {
       planetPositions[info.index] = info.position;
     }
@@ -66,33 +60,11 @@ export function mapWarInfoDto(dto: WarInfoDtoInput): WarMetadata {
     startDate: toIso(dto.startDate),
     endDate: toIso(dto.endDate),
     minimumClientVersion: dto.minimumClientVersion ?? "unknown",
-    waypoints,
     planetPositions,
-    supplyLines: getSupplyLines(dto.planetInfos),
     homeWorlds,
     homeWorldIndices: homeWorlds.map((world) => world.index),
     regionInfo: getRegionInfo(dto),
   };
-}
-
-// Only one direction of a waypoint pair is usually reported, so an A -> B link
-// is emitted once and the reverse is skipped. Self-links and duplicates are
-// dropped so the map does not draw the same supply line twice.
-export function getSupplyLines(planetInfos: PlanetInfo[]): SupplyLine[] {
-  const seen = new Set<string>();
-  const lines: SupplyLine[] = [];
-
-  for (const info of planetInfos) {
-    for (const target of info.waypoints ?? []) {
-      if (target === info.index) continue;
-      const key = `${Math.min(info.index, target)}:${Math.max(info.index, target)}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      lines.push({ source: info.index, target });
-    }
-  }
-
-  return lines;
 }
 
 export function getHomeWorlds(homeWorlds: HomeWorld[]): HomeWorldInfo[] {
@@ -129,7 +101,7 @@ export interface WarStatusView {
   planetOwners: Record<number, string>;
   planetHealth: Record<number, number>;
   planetPlayers: Record<number, number>;
-  attacks: SupplyLine[];
+  attacks: PlanetLink[];
   eventPlanets: Set<number>;
 }
 
@@ -142,7 +114,7 @@ export interface AttackLine {
 // attack whose source or target is missing from WarInfo has nothing to draw, so
 // it is dropped rather than rendered at the origin.
 export function getAttackLines(
-  attacks: SupplyLine[],
+  attacks: PlanetLink[],
   positions: Record<number, { x: number; y: number } | undefined>,
 ): AttackLine[] {
   const lines: AttackLine[] = [];
