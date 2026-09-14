@@ -11,6 +11,8 @@ import type { PatchNote } from "@/types/news";
 
 interface PatchNotesListProps {
   notes: PatchNote[] | null;
+  /** Render every note uncollapsed, for a single-article page. */
+  defaultExpanded?: boolean;
 }
 
 function parseContent(content: string): string {
@@ -62,8 +64,11 @@ function extractSummary(
 
 const INITIAL_COUNT = 3;
 
-export default function PatchNotesList({ notes }: PatchNotesListProps) {
-  const [showAll, setShowAll] = useState(false);
+export default function PatchNotesList({
+  notes,
+  defaultExpanded = false,
+}: PatchNotesListProps) {
+  const [showAll, setShowAll] = useState(defaultExpanded);
   const [now] = useState(() => Date.now());
 
   if (notes === null || notes.length === 0) {

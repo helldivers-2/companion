@@ -6,6 +6,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Clock, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
 
 export default async function Dispatches() {
   const dispatches = await getDispatches();
@@ -58,6 +59,13 @@ export default async function Dispatches() {
             <div className="text-sm leading-relaxed">
               {parseContent(dispatch.message)}
             </div>
+
+            <Link
+              href={`/dispatch/${dispatch.id}`}
+              className="mt-1 inline-block text-xs text-muted-foreground hover:text-foreground hover:underline"
+            >
+              Permalink
+            </Link>
           </div>
         );
       })}
