@@ -11,6 +11,7 @@ import {
   STATUS_TEXT_CLASS,
   getEnemyKills,
   mapPlanetDto,
+  mapPlanetRegionDto,
   mapCampaignDto,
   species,
 } from "@/lib/transformers/campaigns";
@@ -40,6 +41,56 @@ describe("mapPlanetDto", () => {
     expect(planet.name).toBe("Test");
     expect(planet.position.x).toBe(1);
     expect(planet.event).toBeNull();
+  });
+
+  it("normalises null region fields reported for inactive planets", () => {
+    const dto = {
+      name: "Test",
+      sector: "S1",
+      position: { x: 0, y: 0 },
+      health: 100,
+      maxHealth: 100,
+      regenPerSecond: 0,
+      currentOwner: "Humans",
+      initialOwner: "Humans",
+      statistics: { playerCount: 0 },
+      regions: [
+        {
+          name: null,
+          health: null,
+          maxHealth: 600000,
+          regenPerSecond: null,
+          isAvailable: false,
+          players: 0,
+        },
+      ],
+    };
+    const planet = mapPlanetDto(dto);
+    expect(planet.regions?.[0]).toEqual({
+      name: "Unnamed Region",
+      health: 0,
+      maxHealth: 600000,
+      size: undefined,
+      regenPerSecond: 0,
+      isAvailable: false,
+      players: 0,
+    });
+  });
+});
+
+describe("mapPlanetRegionDto", () => {
+  it("defaults null name and health to safe values", () => {
+    expect(
+      mapPlanetRegionDto({ health: null, maxHealth: 100, name: null }),
+    ).toEqual({
+      name: "Unnamed Region",
+      health: 0,
+      maxHealth: 100,
+      size: undefined,
+      regenPerSecond: 0,
+      isAvailable: undefined,
+      players: undefined,
+    });
   });
 });
 
