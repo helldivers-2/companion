@@ -1,4 +1,6 @@
 import { getCampaignData } from "@/lib/data/campaigns";
+import { getWarMetadata, getWarStatus } from "@/lib/data/war-metadata";
+import { getAttackLines } from "@/lib/transformers/war-metadata";
 import CampaignMap from "@/components/widgets/root/campaign-map-dynamic";
 import type { CampaignMapProps } from "@/components/widgets/root/campaign-map";
 
@@ -9,10 +11,15 @@ export default async function CampaignMapServer() {
   let parkedPlanets: CampaignMapProps["parkedPlanets"] = [];
   let liberatedPlanets: CampaignMapProps["liberatedPlanets"] = [];
   let supplyLines: CampaignMapProps["supplyLines"] = [];
+  let attackLines: CampaignMapProps["attackLines"] = [];
   let error: string | null = null;
 
   try {
-    const data = await getCampaignData();
+    const [data, metadata, status] = await Promise.all([
+      getCampaignData(),
+      getWarMetadata(),
+      getWarStatus(),
+    ]);
 
     if (data === null) {
       error = ERROR_MESSAGE;
@@ -21,6 +28,10 @@ export default async function CampaignMapServer() {
       parkedPlanets = data.parkedPlanets;
       liberatedPlanets = data.liberatedPlanets;
       supplyLines = data.supplyLines;
+      attackLines =
+        metadata && status
+          ? getAttackLines(status.attacks, metadata.planetPositions)
+          : [];
     }
   } catch (err) {
     console.error("Failed to fetch campaign data for map:", err);
@@ -33,6 +44,7 @@ export default async function CampaignMapServer() {
       parkedPlanets={parkedPlanets}
       liberatedPlanets={liberatedPlanets}
       supplyLines={supplyLines}
+      attackLines={attackLines}
       error={error}
     />
   );

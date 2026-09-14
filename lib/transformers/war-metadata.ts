@@ -133,6 +133,27 @@ export interface WarStatusView {
   eventPlanets: Set<number>;
 }
 
+export interface AttackLine {
+  from: { x: number; y: number };
+  to: { x: number; y: number };
+}
+
+// Pairs each live attack with the galaxy-map coordinates of both endpoints. An
+// attack whose source or target is missing from WarInfo has nothing to draw, so
+// it is dropped rather than rendered at the origin.
+export function getAttackLines(
+  attacks: SupplyLine[],
+  positions: Record<number, { x: number; y: number } | undefined>,
+): AttackLine[] {
+  const lines: AttackLine[] = [];
+  for (const attack of attacks) {
+    const from = positions[attack.source];
+    const to = positions[attack.target];
+    if (from && to) lines.push({ from, to });
+  }
+  return lines;
+}
+
 export function mapWarStatusDto(dto: WarStatusDtoInput): WarStatusView {
   const planetOwners: Record<number, string> = {};
   const planetHealth: Record<number, number> = {};

@@ -6,6 +6,7 @@ import {
   mapNewsFeedItems,
   getSupplyLines,
   getHomeWorlds,
+  getAttackLines,
 } from "@/lib/transformers/war-metadata";
 import {
   getFactionFromRace,
@@ -77,7 +78,12 @@ describe("mapWarInfoDto", () => {
       endDate: 1833653095,
       minimumClientVersion: "0.3.0",
       planetInfos: [
-        { index: 0, maxHealth: 1000000, waypoints: [260] },
+        {
+          index: 0,
+          maxHealth: 1000000,
+          waypoints: [260],
+          position: { x: 0, y: 0 },
+        },
         { index: 260, maxHealth: 2000000, waypoints: [] },
       ],
       homeWorlds: [{ race: 3, planetIndices: [260] }],
@@ -97,6 +103,7 @@ describe("mapWarInfoDto", () => {
     expect(metadata.waypoints[0]).toEqual([260]);
     expect(metadata.supplyLines).toEqual([{ source: 0, target: 260 }]);
     expect(metadata.homeWorlds[0].faction).toBe("Automaton");
+    expect(metadata.planetPositions[0]).toEqual({ x: 0, y: 0 });
     expect(metadata.regionInfo["0:0"]).toEqual({
       planetIndex: 0,
       regionIndex: 0,
@@ -105,7 +112,6 @@ describe("mapWarInfoDto", () => {
       damageMultiplier: 1.5,
     });
   });
-
   it("tolerates missing optional arrays", () => {
     const metadata = mapWarInfoDto({
       warId: 1,
@@ -207,5 +213,22 @@ describe("mapNewsFeedItems", () => {
       null,
     );
     expect(items[0].published).toBe("1970-01-01T00:00:00.000Z");
+  });
+});
+
+describe("getAttackLines", () => {
+  it("pairs attacks with planet coordinates", () => {
+    const lines = getAttackLines([{ source: 1, target: 2 }], {
+      1: { x: 0, y: 0 },
+      2: { x: 1, y: 1 },
+    });
+    expect(lines).toEqual([{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }]);
+  });
+
+  it("drops attacks whose endpoints lack coordinates", () => {
+    const lines = getAttackLines([{ source: 1, target: 99 }], {
+      1: { x: 0, y: 0 },
+    });
+    expect(lines).toEqual([]);
   });
 });

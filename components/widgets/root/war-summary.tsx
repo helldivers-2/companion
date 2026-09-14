@@ -1,10 +1,14 @@
 import { getDashboardStats } from "@/lib/data/dashboard";
+import { getWarInfo } from "@/lib/data/war";
 import { millify } from "@/lib/utils";
-import { Users, Swords, ShieldAlert, Globe } from "lucide-react";
+import { Users, Swords, ShieldAlert, Globe, Percent } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default async function WarSummary() {
-  const stats = await getDashboardStats();
+  const [stats, warInfo] = await Promise.all([
+    getDashboardStats(),
+    getWarInfo(),
+  ]);
 
   if (stats === null) {
     return (
@@ -23,6 +27,15 @@ export default async function WarSummary() {
     { icon: Swords, label: "Active", value: String(stats.activeCount) },
     { icon: ShieldAlert, label: "Events", value: String(stats.eventCount) },
     { icon: Globe, label: "Liberated", value: String(stats.liberatedCount) },
+    ...(warInfo?.impactMultiplier != null
+      ? [
+          {
+            icon: Percent,
+            label: "Impact",
+            value: warInfo.impactMultiplier.toFixed(4),
+          },
+        ]
+      : []),
   ];
 
   return (

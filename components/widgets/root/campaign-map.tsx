@@ -12,6 +12,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import type { Campaign } from "@/types/campaigns";
 import type { CampaignSupplyLine } from "@/lib/transformers/campaigns";
+import type { AttackLine } from "@/lib/transformers/war-metadata";
 import PlanetDetail from "@/components/planet-detail";
 import { useMediaQuery } from "@/lib/use-media-query";
 
@@ -285,6 +286,7 @@ export interface CampaignMapProps {
   parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
   supplyLines?: CampaignSupplyLine[];
+  attackLines?: AttackLine[];
   error?: string | null;
 }
 
@@ -293,6 +295,7 @@ export default function CampaignMap({
   parkedPlanets,
   liberatedPlanets,
   supplyLines = [],
+  attackLines = [],
   error,
 }: CampaignMapProps) {
   const { zoom, bounds, isClient } = useResponsiveSettings();
@@ -401,6 +404,35 @@ export default function CampaignMap({
                       weight: 1,
                       opacity: 0.4,
                       dashArray: "4 4",
+                    }}
+                    interactive={false}
+                  />
+                ))}
+              </FeatureGroup>
+            </LayersControl.Overlay>
+          )}
+          {attackLines.length > 0 && (
+            <LayersControl.Overlay checked={true} name="Enemy Attacks">
+              <FeatureGroup>
+                {attackLines.map((line, index) => (
+                  <Polyline
+                    key={`attack-${index}`}
+                    positions={[
+                      transformCoordinates(
+                        line.from.x,
+                        line.from.y,
+                        ANGLE_OFFSET_DEGREES,
+                      ),
+                      transformCoordinates(
+                        line.to.x,
+                        line.to.y,
+                        ANGLE_OFFSET_DEGREES,
+                      ),
+                    ]}
+                    pathOptions={{
+                      color: COLORS.red,
+                      weight: 2,
+                      opacity: 0.6,
                     }}
                     interactive={false}
                   />
