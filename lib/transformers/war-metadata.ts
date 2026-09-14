@@ -35,6 +35,10 @@ export interface WarMetadata {
   homeWorlds: HomeWorldInfo[];
   /** Region max health keyed by `${planetIndex}:${regionIndex}`. */
   regionInfo: Record<string, PlanetRegionInfoView>;
+  /** Galaxy-map coordinates keyed by planet index. */
+  planetPositions: Record<number, { x: number; y: number }>;
+  /** Planet indices that are a faction's homeworld. */
+  homeWorldIndices: number[];
 }
 
 export interface PlanetRegionInfoView {
@@ -47,9 +51,15 @@ export interface PlanetRegionInfoView {
 
 export function mapWarInfoDto(dto: WarInfoDtoInput): WarMetadata {
   const waypoints: Record<number, number[]> = {};
+  const planetPositions: Record<number, { x: number; y: number }> = {};
   for (const info of dto.planetInfos) {
     waypoints[info.index] = info.waypoints ?? [];
+    if (info.position) {
+      planetPositions[info.index] = info.position;
+    }
   }
+
+  const homeWorlds = getHomeWorlds(dto.homeWorlds ?? []);
 
   return {
     warId: dto.warId,
@@ -57,8 +67,10 @@ export function mapWarInfoDto(dto: WarInfoDtoInput): WarMetadata {
     endDate: toIso(dto.endDate),
     minimumClientVersion: dto.minimumClientVersion ?? "unknown",
     waypoints,
+    planetPositions,
     supplyLines: getSupplyLines(dto.planetInfos),
-    homeWorlds: getHomeWorlds(dto.homeWorlds ?? []),
+    homeWorlds,
+    homeWorldIndices: homeWorlds.map((world) => world.index),
     regionInfo: getRegionInfo(dto),
   };
 }

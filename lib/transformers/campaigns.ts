@@ -293,8 +293,7 @@ function compareByAttention(a: Campaign, b: Campaign): number {
   return playerCount(b) - playerCount(a);
 }
 
-export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
-  const liberatedPlanets = campaigns.filter(isLiberated);
+export function getCampaignStats(campaigns: Campaign[]): CampaignStats {  const liberatedPlanets = campaigns.filter(isLiberated);
 
   // Everything the war is still being fought over. A campaign at exactly full
   // health (0% liberated) or a defense nobody has chipped yet (100% defense
@@ -320,4 +319,46 @@ export function getCampaignStats(campaigns: Campaign[]): CampaignStats {
     liberatedPlanets,
     liberatedPlayerCount,
   };
+}
+
+export interface CampaignSupplyLine {
+  from: Planet;
+  to: Planet;
+}
+
+// Supply lines drawn between the campaigns we already have. The API reports
+// waypoints per planet, but only planets inside the active campaign set carry
+// them and only one direction of a pair is usually present, so links are
+// de-duplicated and any waypoint to a planet we don't have is dropped (there is
+// nothing to draw a line to).
+export function getCampaignSupplyLines(
+  campaigns: Campaign[],
+): CampaignSupplyLine[] {
+  const byIndex = new Map<number, Planet>();
+  for (const campaign of campaigns) {
+    if (campaign.planet.index != null) {
+      byIndex.set(campaign.planet.index, campaign.planet);
+    }
+  }
+
+  const seen = new Set<string>();
+  const lines: CampaignSupplyLine[] = [];
+
+  for (const campaign of campaigns) {
+    const from = campaign.planet;
+    if (from.index == null) continue;
+
+    for (const target of from.waypoints ?? []) {
+      if (target === from.index) continue;
+      const to = byIndex.get(target);
+      if (!to) continue;
+
+      const key = `${Math.min(from.index, target)}:${Math.max(from.index, target)}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      lines.push({ from, to });
+    }
+  }
+
+  return lines;
 }

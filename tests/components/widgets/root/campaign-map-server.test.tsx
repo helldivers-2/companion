@@ -52,6 +52,7 @@ describe("CampaignMapServer", () => {
       parkedPlanets,
       liberatedPlanets,
       liberatedPlayerCount: 0,
+      supplyLines: [],
     });
 
     const element = await CampaignMapServer();

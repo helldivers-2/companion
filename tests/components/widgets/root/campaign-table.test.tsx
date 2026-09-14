@@ -45,6 +45,7 @@ describe("CampaignTable", () => {
       parkedPlanets,
       liberatedPlanets: [],
       liberatedPlayerCount: 42,
+      supplyLines: [],
     });
 
     const element = await CampaignTable();

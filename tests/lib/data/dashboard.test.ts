@@ -45,6 +45,7 @@ describe("getDashboardStats", () => {
       parkedPlanets: [],
       liberatedPlanets: [],
       liberatedPlayerCount: 0,
+      supplyLines: [],
     });
     vi.mocked(getWarStats).mockResolvedValue({
       playerCount: 1000,

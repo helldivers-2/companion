@@ -11,6 +11,7 @@ import { millify } from "@/lib/utils";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import type { Campaign } from "@/types/campaigns";
+import type { CampaignSupplyLine } from "@/lib/transformers/campaigns";
 import PlanetDetail from "@/components/planet-detail";
 import { useMediaQuery } from "@/lib/use-media-query";
 
@@ -19,6 +20,7 @@ import {
   ImageOverlay,
   TileLayer,
   CircleMarker,
+  Polyline,
   Popup,
   LayersControl,
   FeatureGroup,
@@ -282,6 +284,7 @@ export interface CampaignMapProps {
   movingPlanets: Campaign[];
   parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
+  supplyLines?: CampaignSupplyLine[];
   error?: string | null;
 }
 
@@ -289,6 +292,7 @@ export default function CampaignMap({
   movingPlanets,
   parkedPlanets,
   liberatedPlanets,
+  supplyLines = [],
   error,
 }: CampaignMapProps) {
   const { zoom, bounds, isClient } = useResponsiveSettings();
@@ -374,6 +378,36 @@ export default function CampaignMap({
           opacity={0.5}
         />
         <LayersControl position="bottomleft">
+          {supplyLines.length > 0 && (
+            <LayersControl.Overlay checked={true} name="Supply Lines">
+              <FeatureGroup>
+                {supplyLines.map((line, index) => (
+                  <Polyline
+                    key={`${line.from.index}-${line.to.index}-${index}`}
+                    positions={[
+                      transformCoordinates(
+                        line.from.position.x,
+                        line.from.position.y,
+                        ANGLE_OFFSET_DEGREES,
+                      ),
+                      transformCoordinates(
+                        line.to.position.x,
+                        line.to.position.y,
+                        ANGLE_OFFSET_DEGREES,
+                      ),
+                    ]}
+                    pathOptions={{
+                      color: COLORS.muted,
+                      weight: 1,
+                      opacity: 0.4,
+                      dashArray: "4 4",
+                    }}
+                    interactive={false}
+                  />
+                ))}
+              </FeatureGroup>
+            </LayersControl.Overlay>
+          )}
           {defenses.length > 0 && (
             <PlanetLayer
               planets={defenses}

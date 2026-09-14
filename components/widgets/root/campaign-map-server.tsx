@@ -8,6 +8,7 @@ export default async function CampaignMapServer() {
   let movingPlanets: CampaignMapProps["movingPlanets"] = [];
   let parkedPlanets: CampaignMapProps["parkedPlanets"] = [];
   let liberatedPlanets: CampaignMapProps["liberatedPlanets"] = [];
+  let supplyLines: CampaignMapProps["supplyLines"] = [];
   let error: string | null = null;
 
   try {
@@ -19,6 +20,7 @@ export default async function CampaignMapServer() {
       movingPlanets = data.movingPlanets;
       parkedPlanets = data.parkedPlanets;
       liberatedPlanets = data.liberatedPlanets;
+      supplyLines = data.supplyLines;
     }
   } catch (err) {
     console.error("Failed to fetch campaign data for map:", err);
@@ -30,6 +32,7 @@ export default async function CampaignMapServer() {
       movingPlanets={movingPlanets}
       parkedPlanets={parkedPlanets}
       liberatedPlanets={liberatedPlanets}
+      supplyLines={supplyLines}
       error={error}
     />
   );

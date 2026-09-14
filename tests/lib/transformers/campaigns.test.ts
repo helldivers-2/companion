@@ -10,6 +10,7 @@ import {
   isMoving,
   STATUS_TEXT_CLASS,
   getEnemyKills,
+  getCampaignSupplyLines,
   mapPlanetDto,
   mapPlanetRegionDto,
   mapCampaignDto,
@@ -539,5 +540,41 @@ describe("getCampaignStats", () => {
     expect(stats.movingPlanets.map((c) => c.planet.name)).toEqual(["Region"]);
     expect(stats.parkedPlanets.map((c) => c.planet.name)).toEqual(["Parked"]);
     expect(stats.activePlanets).toHaveLength(2);
+  });
+});
+
+describe("getCampaignSupplyLines", () => {
+  it("links planets that share a waypoint, once per pair", () => {
+    const campaigns = [
+      {
+        planet: makePlanet({ index: 1, name: "A", waypoints: [2] }),
+        faction: "Automaton",
+      },
+      {
+        planet: makePlanet({ index: 2, name: "B", waypoints: [1] }),
+        faction: "Automaton",
+      },
+    ];
+    const lines = getCampaignSupplyLines(campaigns);
+    expect(lines).toHaveLength(1);
+    expect(lines[0].from.name).toBe("A");
+    expect(lines[0].to.name).toBe("B");
+  });
+
+  it("drops waypoints to planets outside the campaign set", () => {
+    const campaigns = [
+      {
+        planet: makePlanet({ index: 1, name: "A", waypoints: [99] }),
+        faction: "Automaton",
+      },
+    ];
+    expect(getCampaignSupplyLines(campaigns)).toEqual([]);
+  });
+
+  it("ignores planets without an index", () => {
+    const campaigns = [
+      { planet: makePlanet({ name: "A" }), faction: "Automaton" },
+    ];
+    expect(getCampaignSupplyLines(campaigns)).toEqual([]);
   });
 });
