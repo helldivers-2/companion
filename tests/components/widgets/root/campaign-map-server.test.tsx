@@ -1,20 +1,11 @@
 import { describe, it, expect, vi } from "vitest";
 import { getCampaignData } from "@/lib/data/campaigns";
-import {
-  getWarMetadata,
-  getWarStatus,
-} from "@/lib/data/war-metadata";
 import CampaignMapServer from "@/components/widgets/root/campaign-map-server";
 import CampaignMap from "@/components/widgets/root/campaign-map-dynamic";
 import type { Campaign } from "@/types/campaigns";
 
 vi.mock("@/lib/data/campaigns", () => ({
   getCampaignData: vi.fn(),
-}));
-
-vi.mock("@/lib/data/war-metadata", () => ({
-  getWarMetadata: vi.fn(),
-  getWarStatus: vi.fn(),
 }));
 
 function makeCampaign(): Campaign {
@@ -38,8 +29,6 @@ function makeCampaign(): Campaign {
 describe("CampaignMapServer", () => {
   it("passes an error message to the map when campaign data fails to load", async () => {
     vi.mocked(getCampaignData).mockResolvedValue(null);
-    vi.mocked(getWarMetadata).mockResolvedValue(null);
-    vi.mocked(getWarStatus).mockResolvedValue(null);
 
     const element = await CampaignMapServer();
 
@@ -64,8 +53,6 @@ describe("CampaignMapServer", () => {
       liberatedPlanets,
       liberatedPlayerCount: 0,
     });
-    vi.mocked(getWarMetadata).mockResolvedValue(null);
-    vi.mocked(getWarStatus).mockResolvedValue(null);
 
     const element = await CampaignMapServer();
 
@@ -73,40 +60,5 @@ describe("CampaignMapServer", () => {
     expect(element.props.movingPlanets).toEqual(movingPlanets);
     expect(element.props.parkedPlanets).toEqual(parkedPlanets);
     expect(element.props.liberatedPlanets).toEqual(liberatedPlanets);
-  });
-
-  it("derives attack lines from war status and metadata", async () => {
-    vi.mocked(getCampaignData).mockResolvedValue({
-      campaigns: [],
-      activePlanets: [],
-      movingPlanets: [],
-      parkedPlanets: [],
-      liberatedPlanets: [],
-      liberatedPlayerCount: 0,
-    });
-    vi.mocked(getWarMetadata).mockResolvedValue({
-      warId: 801,
-      startDate: null,
-      endDate: null,
-      minimumClientVersion: "0.3.0",
-      homeWorlds: [],
-      homeWorldIndices: [],
-      regionInfo: {},
-      planetPositions: { 1: { x: 0, y: 0 }, 2: { x: 1, y: 1 } },
-    });
-    vi.mocked(getWarStatus).mockResolvedValue({
-      warId: 801,
-      planetOwners: {},
-      planetHealth: {},
-      planetPlayers: {},
-      attacks: [{ source: 1, target: 2 }],
-      eventPlanets: new Set(),
-    });
-
-    const element = await CampaignMapServer();
-
-    expect(element.props.attackLines).toEqual([
-      { from: { x: 0, y: 0 }, to: { x: 1, y: 1 } },
-    ]);
   });
 });

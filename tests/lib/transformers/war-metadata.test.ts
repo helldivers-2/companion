@@ -5,7 +5,6 @@ import {
   mapWarSummaryDto,
   mapNewsFeedItems,
   getHomeWorlds,
-  getAttackLines,
 } from "@/lib/transformers/war-metadata";
 import {
   getFactionFromRace,
@@ -191,22 +190,5 @@ describe("mapNewsFeedItems", () => {
       null,
     );
     expect(items[0].published).toBe("1970-01-01T00:00:00.000Z");
-  });
-});
-
-describe("getAttackLines", () => {
-  it("pairs attacks with planet coordinates", () => {
-    const lines = getAttackLines([{ source: 1, target: 2 }], {
-      1: { x: 0, y: 0 },
-      2: { x: 1, y: 1 },
-    });
-    expect(lines).toEqual([{ from: { x: 0, y: 0 }, to: { x: 1, y: 1 } }]);
-  });
-
-  it("drops attacks whose endpoints lack coordinates", () => {
-    const lines = getAttackLines([{ source: 1, target: 99 }], {
-      1: { x: 0, y: 0 },
-    });
-    expect(lines).toEqual([]);
   });
 });

@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  getFactionIcon,
   getLiberation,
   getPlanetStats,
   isLiberated,
@@ -9,11 +8,7 @@ import {
 import { useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import { Map as MapIcon } from "lucide-react";
-import { millify } from "@/lib/utils";
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import type { Campaign } from "@/types/campaigns";
-import type { AttackLine } from "@/lib/transformers/war-metadata";
 import PlanetDetail from "@/components/planet-detail";
 import { WidgetState } from "@/components/widgets/widget-state";
 import { useMediaQuery } from "@/lib/use-media-query";
@@ -23,8 +18,6 @@ import {
   ImageOverlay,
   TileLayer,
   CircleMarker,
-  Polyline,
-  Popup,
   LayersControl,
   FeatureGroup,
 } from "react-leaflet";
@@ -118,68 +111,6 @@ const useResponsiveSettings = () => {
   };
 };
 
-const PlanetPopup = ({
-  campaign,
-  liberation,
-}: {
-  campaign: Campaign;
-  liberation: string;
-}) => {
-  const { planet } = campaign;
-
-  return (
-    <Popup>
-      <div className="flex items-center justify-between gap-3">
-        <h3 className="flex items-center gap-2 text-lg leading-tight font-semibold">
-          {planet.name}
-          {planet.event && <Badge variant="outline">Event</Badge>}
-        </h3>
-        <div className="flex size-6 flex-shrink-0 items-center justify-center rounded-none bg-muted">
-          <Image
-            src={
-              getFactionIcon(campaign.planet.currentOwner) ||
-              "/web-app-manifest-192x192.png"
-            }
-            height={20}
-            width={20}
-            alt={`${campaign.planet.currentOwner} Icon`}
-            className="size-4 shrink-0 object-contain"
-          />
-        </div>
-      </div>
-
-      <div>
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-medium text-muted-foreground">
-            Patriots
-          </span>
-          <span className="text-sm font-semibold">
-            {millify(planet.statistics.playerCount)}
-          </span>
-        </div>
-
-        <div className="space-y-1">
-          <div className="flex items-center justify-between gap-4">
-            <span className="text-sm font-medium text-muted-foreground">
-              {planet.event ? "Event Health" : "Liberation"}
-            </span>
-            <span className="text-sm font-semibold text-icon">
-              {liberation}%
-            </span>
-          </div>
-
-          <div className="h-2 w-full rounded-full bg-muted">
-            <div
-              className="h-2 rounded-full bg-icon transition-all duration-300 ease-out"
-              style={{ width: `${liberation}%` }}
-            />
-          </div>
-        </div>
-      </div>
-    </Popup>
-  );
-};
-
 const PlanetMarker = ({
   campaign,
   palette,
@@ -251,12 +182,7 @@ const PlanetMarker = ({
         eventHandlers={{
           click: () => onPlanetClick?.(campaign),
         }}
-      >
-        <PlanetPopup
-          campaign={campaign}
-          liberation={markerData.liberation as string}
-        />
-      </CircleMarker>
+      />
 
       {markerProperties.status !== MARKER_STATUS.LIBERATED && (
         <CircleMarker
@@ -318,10 +244,6 @@ const MapLegend = () => (
       />
       Outer ring: progress
     </li>
-    <li className="flex items-center gap-1.5">
-      <span aria-hidden className="w-4 border-t-2 border-destructive" />
-      Enemy attack
-    </li>
   </ul>
 );
 
@@ -329,7 +251,6 @@ export interface CampaignMapProps {
   movingPlanets: Campaign[];
   parkedPlanets: Campaign[];
   liberatedPlanets: Campaign[];
-  attackLines?: AttackLine[];
   error?: string | null;
 }
 
@@ -337,7 +258,6 @@ export default function CampaignMap({
   movingPlanets,
   parkedPlanets,
   liberatedPlanets,
-  attackLines = [],
   error,
 }: CampaignMapProps) {
   const { zoom, bounds } = useResponsiveSettings();
@@ -416,35 +336,6 @@ export default function CampaignMap({
           opacity={0.5}
         />
         <LayersControl position="bottomleft">
-          {attackLines.length > 0 && (
-            <LayersControl.Overlay checked={true} name="Enemy Attacks">
-              <FeatureGroup>
-                {attackLines.map((line, index) => (
-                  <Polyline
-                    key={`attack-${index}`}
-                    positions={[
-                      transformCoordinates(
-                        line.from.x,
-                        line.from.y,
-                        ANGLE_OFFSET_DEGREES,
-                      ),
-                      transformCoordinates(
-                        line.to.x,
-                        line.to.y,
-                        ANGLE_OFFSET_DEGREES,
-                      ),
-                    ]}
-                    pathOptions={{
-                      color: palette.destructive,
-                      weight: 2,
-                      opacity: 0.6,
-                    }}
-                    interactive={false}
-                  />
-                ))}
-              </FeatureGroup>
-            </LayersControl.Overlay>
-          )}
           {defenses.length > 0 && (
             <PlanetLayer
               planets={defenses}
