@@ -11,5 +11,5 @@ export default async function dispatches() {
     .sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
     .slice(0, SHOWN)
     .map((d) => `<li class="dispatch"><time datetime="${esc(d.published)}">${dateFmt.format(new Date(d.published))}</time><p>${dispatchHtml(d.message)}</p></li>`)
-    .join("");
+    .join("") || `<li class="muted">No dispatches from Super Earth yet.</li>`;
 }

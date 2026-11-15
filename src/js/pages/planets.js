@@ -68,7 +68,7 @@ function render() {
       <td class="num">${num(p.statistics.playerCount)}</td>
       <td class="num">${held(p) ? "Held" : pct(liberation(p))}</td>
     </tr>`;
-  }).join("") || `<tr><td colspan="7" class="muted">No planets match.</td></tr>`;
+  }).join("") || `<tr><td colspan="7" class="muted">No planets match these filters.</td></tr>`;
 }
 
 export default async function planetsPage() {

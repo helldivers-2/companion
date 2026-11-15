@@ -33,10 +33,8 @@ export function duration(ms) {
   return `${m}m ${String(s).padStart(2, "0")}s`;
 }
 
-export function timeLeft(until, now = Date.now()) {
-  const ms = Date.parse(until) - now;
-  return ms > 0 ? duration(ms) : "ended";
-}
+// Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
+export const timeLeft = (until, now = Date.now()) => duration(Math.max(0, Date.parse(until) - now) || 0);
 
 export const countdown = (iso) => `<time data-until="${esc(iso)}" datetime="${esc(iso)}">${timeLeft(iso)}</time>`;
 

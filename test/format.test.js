@@ -12,7 +12,8 @@ test("timeLeft formats remaining time", () => {
   const now = Date.parse("2026-01-01T00:00:00Z");
   assert.equal(timeLeft("2026-01-02T03:04:00Z", now), "1d 3h 4m");
   assert.equal(timeLeft("2026-01-01T00:05:09Z", now), "5m 09s");
-  assert.equal(timeLeft("2025-12-31T00:00:00Z", now), "ended");
+  assert.equal(timeLeft("2025-12-31T00:00:00Z", now), "0m 00s");
+  assert.equal(timeLeft(undefined, now), "0m 00s");
 });
 
 test("dispatchHtml keeps highlights and escapes everything else", () => {
