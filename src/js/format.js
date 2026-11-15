@@ -3,7 +3,8 @@ import labels from "../_data/labels.json" with { type: "json" };
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 export const num = (n) => new Intl.NumberFormat("en").format(n ?? 0);
 export const pct = (x) => `${(x * 100).toFixed(2)}%`;
-export const slug = (s) => String(s).toLowerCase();
+// Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
+export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {

@@ -12,18 +12,21 @@ import dispatches from "./pages/dispatches.js";
 const page = { overview, planets, dispatches }[document.body.dataset.page];
 const status = document.getElementById("status");
 
+function say(text, announce) {
+  status.setAttribute("aria-live", announce ? "polite" : "off"); // don't announce the clock every minute
+  // Rewriting identical text re-announces it, so an outage would be read out on every refresh.
+  if (status.textContent !== text) status.textContent = text;
+}
+
 async function refresh() {
   if (!page || document.hidden) return;
   state.stale = false;
   try {
     await page();
-    status.setAttribute("aria-live", state.stale ? "polite" : "off"); // don't announce the clock every minute
-    status.textContent = state.stale
-      ? "API unreachable, showing cached data"
-      : `Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`;
+    if (state.stale) say("API unreachable, showing cached data", true);
+    else say(`Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`, false);
   } catch (err) {
-    status.setAttribute("aria-live", "polite");
-    status.textContent = `Could not load war data: ${err.message}`;
+    say(`Could not load war data: ${err.message}`, true);
   }
 }
 

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { describeTask, dispatchHtml, liberation, timeLeft } from "../src/js/format.js";
+import { describeTask, dispatchHtml, liberation, slug, timeLeft } from "../src/js/format.js";
 
 test("liberation uses event health during a defense", () => {
   assert.equal(liberation({ currentOwner: "Terminids", health: 250, maxHealth: 1000, event: null }), 0.75);
@@ -20,6 +20,11 @@ test("dispatchHtml keeps highlights and escapes everything else", () => {
     dispatchHtml('<span data-ah="3">NEW</span> <img src=x onerror=alert(1)>'),
     '<strong class="ah-3">NEW</strong> &#60;img src=x onerror=alert(1)&#62;',
   );
+});
+
+test("slug only emits attribute-safe characters", () => {
+  assert.equal(slug("Terminids"), "terminids");
+  assert.equal(slug('x" onmouseover="alert(1)'), "x-onmouseover-alert-1-");
 });
 
 test("describeTask reads planet and kill tasks", () => {

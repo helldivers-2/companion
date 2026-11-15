@@ -49,7 +49,10 @@ function render() {
     th.setAttribute("aria-sort", th.dataset.sort === sort.key ? (sort.dir > 0 ? "ascending" : "descending") : "none");
   }
 
-  document.getElementById("planet-count").textContent = `${rows.length} of ${planets.length} planets`;
+  const count = document.getElementById("planet-count");
+  const text = `${rows.length} of ${planets.length} planets`;
+  if (count.textContent !== text) count.textContent = text; // live region: the 60 s refresh must not re-announce it
+
   document.getElementById("planet-rows").innerHTML = rows.map((p) => {
     const owner = `<span class="tag ${slug(p.currentOwner)}">${esc(p.currentOwner)}</span>`;
     const hazards = p.hazards.filter((h) => h.name !== "None");

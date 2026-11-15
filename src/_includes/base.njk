@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {# 'unsafe-inline' styles: progress bars set their width through a style attribute #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{ site.api }}; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   <title>{{ title }} · {{ site.name }}</title>
   <meta name="description" content="{{ site.description }}">
   <meta name="theme-color" content="#0e151e">

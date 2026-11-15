@@ -31,7 +31,11 @@ export default async function overview() {
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
   const players = (list) => list.reduce((n, p) => n + p.statistics.playerCount, 0);
   const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + p.statistics.playerCount;
-  $("fronts").innerHTML = Object.entries(groups)
+  // Re-rendering every minute would otherwise collapse an opened "Show more" and drop focus from its summary.
+  const fronts = $("fronts");
+  const open = new Set([...fronts.querySelectorAll("details[open]")].map((d) => d.id));
+  const focused = document.activeElement?.closest("#fronts details")?.id;
+  fronts.innerHTML = Object.entries(groups)
     .sort(([, a], [, b]) => players(b) - players(a))
     .map(([faction, list]) => {
       const rows = list.sort((a, b) => rank(b) - rank(a)).map((p) => frontRow(p, rates[p.index], orderPlanets.has(p.index)));
@@ -39,9 +43,10 @@ export default async function overview() {
       return `<section class="front ${slug(faction)}" aria-labelledby="front-${slug(faction)}">
         <h3 id="front-${slug(faction)}">${esc(faction)} <span class="muted">${num(players(list))} Helldivers</span></h3>
         <ul class="rows">${rows.join("")}</ul>
-        ${rest.length ? `<details><summary>Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
+        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
     }).join("") || `<p class="muted">No active campaigns.</p>`;
+  if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {
@@ -107,7 +112,7 @@ const stationPanel = (st) => `<article class="panel">
   <ul class="actions">${(st.tacticalActions ?? []).map((a) => {
     const cost = a.costs?.[0];
     const status = labels.tacticalStatus[a.status] ?? "Unknown";
-    return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${status}</span>
+    return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>
       ${a.status !== 1 && a.statusExpire ? `<span class="muted">for ${countdown(a.statusExpire)}</span>` : ""}</p>
       ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, `${a.name} preparation`) : ""}
       <p class="muted">${esc(a.strategicDescription || a.description)}</p></li>`;
