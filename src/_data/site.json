@@ -1,0 +1,8 @@
+{
+  "name": "Helldivers Companion",
+  "description": "Live Galactic War status: Major Orders, active fronts, planets and dispatches.",
+  "api": "https://api.helldivers2.dev",
+  "client": "helldivers-companion",
+  "contact": "helldivers-companion",
+  "refreshSeconds": 60
+}
