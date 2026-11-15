@@ -87,7 +87,7 @@ function meter(p, rate) {
 const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
 
 function rateLine(p, lib, rate) {
-  if (rate === undefined) return "";
+  if (rate === undefined || lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
   if (Math.abs(rate) < STALLED) return lib > 0 && lib < 1 ? `<p class="rate stalled">No movement</p>` : "";
   const speed = `${rate > 0 ? "+" : "−"}${Math.abs(rate * 100).toFixed(2)}%/h`;
   const h = hoursToWin(lib, rate);
