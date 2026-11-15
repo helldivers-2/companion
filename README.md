@@ -2,7 +2,7 @@
 
 Unofficial live dashboard for the Galactic War: Major Orders with task progress and countdowns, the Democracy Space Station, active fronts grouped by enemy, a searchable planet table and the Super Earth dispatch feed.
 
-Eleventy renders the pages from `src/*.njk`, webpack bundles `src/js` and `src/scss` into `_site/assets`, and the browser pulls live data from the [community Helldivers 2 API](https://helldivers-2.github.io/api/).
+Eleventy renders the pages from `src/*.njk`, esbuild bundles `src/js` and Sass compiles `src/scss` into `_site/assets`, and the browser pulls live data from the [community Helldivers 2 API](https://helldivers-2.github.io/api/).
 
 ```sh
 npm install

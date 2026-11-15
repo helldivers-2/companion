@@ -1,7 +1,3 @@
-import "@fontsource/barlow/latin-400.css";
-import "@fontsource/barlow/latin-600.css";
-import "@fontsource/barlow-condensed/latin-600.css";
-import "@fontsource/barlow-condensed/latin-700.css";
 import site from "../_data/site.json" with { type: "json" };
 import { state } from "./api.js";
 import { timeLeft } from "./format.js";
