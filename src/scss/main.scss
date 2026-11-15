@@ -8,9 +8,11 @@ $text: #e8edf2;
 $muted: #93a1b0;
 $accent: #ffe711;
 
+// Checked with the dataviz validator (all pairs, plus $accent): humans vs illuminate clears deutan
+// CVD and terminids vs the Major Order yellow clears normal vision. Kept light for 4.5:1 text use.
 $factions: (
-  humans: #4cc3ff,
-  terminids: #ffb000,
+  humans: #46cbe8,
+  terminids: #ffa31a,
   automaton: #ff5a52,
   illuminate: #b38cff,
 );
@@ -232,18 +234,22 @@ footer {
 
 .meter {
   display: grid;
-  grid-template-columns: 1fr 4.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.75rem;
 }
 
 .pct {
+  min-width: 4.5rem;
   font-size: 0.875rem;
   text-align: right;
+  white-space: nowrap;
 }
 
 .bar {
-  height: 0.375rem;
+  height: 0.5rem;
+  overflow: hidden;
+  border-radius: 0.25rem;
   background: $line;
 
   span {
@@ -258,12 +264,25 @@ footer {
   color: map.get($factions, humans);
   font-size: 0.875rem;
 
+  // Direction glyphs so the trend never rests on colour alone; empty alt keeps them silent.
+  &::before {
+    content: "▲\00a0" / "";
+  }
+
   &.losing {
     color: map.get($factions, automaton);
+
+    &::before {
+      content: "⚠\fe0e\00a0" / ""; // also covers positive-but-too-slow defenses
+    }
   }
 
   &.stalled {
     color: $muted;
+
+    &::before {
+      content: none;
+    }
   }
 }
 
@@ -283,6 +302,11 @@ footer {
 
   &.defense {
     --faction: #{map.get($factions, automaton)};
+  }
+
+  // On a front the attacker is the column's enemy, so keep its colour rather than Automaton red.
+  .front &.defense {
+    --faction: inherit;
   }
 }
 
@@ -363,6 +387,13 @@ footer {
     margin-bottom: 0.25rem;
     font-weight: 600;
   }
+
+  // Room for "6,120,000 / 10,000,000" so every task bar in an order shares one length.
+  @media (width >= 40rem) {
+    .pct {
+      min-width: 9.5rem;
+    }
+  }
 }
 
 .reward {
@@ -372,10 +403,20 @@ footer {
 
 .actions {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
+
+  // Station state is Super Earth's, not the Major Order's yellow.
+  .tag {
+    --faction: #{map.get($factions, humans)};
+  }
+
+  .bar {
+    max-width: 40rem;
+    margin: 0.5rem 0;
+  }
 }
 
 // Fronts
@@ -409,6 +450,11 @@ footer {
       color: $text;
     }
   }
+}
+
+// The unfilled share is what the enemy still holds, so tint it with the front's colour.
+.front .bar {
+  background: color-mix(in srgb, var(--faction) 25%, $ground);
 }
 
 .rows {
