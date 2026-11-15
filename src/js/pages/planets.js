@@ -64,7 +64,7 @@ function render() {
       <td class="wide">${esc(p.sector)}</td>
       <td class="wide">${owner}</td>
       <td class="wide" title="${esc(p.biome?.description)}">${esc(p.biome?.name ?? "")}</td>
-      <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || "None"}</td>
+      <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">None</span>`}</td>
       <td class="num">${num(p.statistics.playerCount)}</td>
       <td class="num">${held(p) ? "Held" : pct(liberation(p))}</td>
     </tr>`;
