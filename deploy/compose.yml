@@ -1,0 +1,16 @@
+# Self-hosted community API (https://github.com/helldivers-2/api), built from upstream as-is.
+# Update: docker compose build --pull && docker compose up -d
+services:
+  api:
+    build:
+      context: https://github.com/helldivers-2/api.git#main
+      dockerfile: src/Helldivers-2-API/Dockerfile
+    image: helldivers-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      # Upstream enables JWT auth and expects a signing key we don't have; no endpoint needs it.
+      Helldivers__API__Authentication__Enabled: "false"
+      # Limit is per client IP; behind a reverse proxy every visitor may share one bucket.
+      Helldivers__API__RateLimit: "1000"

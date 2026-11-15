@@ -1,0 +1,32 @@
+---
+layout: base.njk
+title: Planets
+page_id: planets
+permalink: /planets/
+---
+<h1>Planets</h1>
+<form class="filters" id="planet-filters" role="search">
+  <label>Search <input type="search" name="q" placeholder="Planet, sector, biome, hazard…" autocomplete="off" spellcheck="false"></label>
+  <label>Owner
+    <select name="owner">
+      <option value="">All</option>
+      {%- for f in labels.factions %}
+      <option>{{ f }}</option>
+      {%- endfor %}
+    </select>
+  </label>
+  <label class="check"><input type="checkbox" name="active"> Only with Helldivers</label>
+</form>
+<p class="muted" id="planet-count" aria-live="polite"></p>
+<div class="table-wrap">
+  <table class="planets">
+    <thead>
+      <tr>
+        {%- for col in [["name", "Planet"], ["sector", "Sector"], ["owner", "Owner"], ["biome", "Biome"], [null, "Hazards"], ["players", "Helldivers"], ["liberation", "Liberation"]] %}
+        <th scope="col"{% if col[0] in ["players", "liberation"] %} class="num"{% elif col[0] != "name" %} class="wide"{% endif %}{% if col[0] %} data-sort="{{ col[0] }}" aria-sort="{{ 'descending' if col[0] == 'players' else 'none' }}"><button type="button">{{ col[1] }}</button>{% else %}>{{ col[1] }}{% endif %}</th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody id="planet-rows"><tr><td colspan="7" class="muted" data-loading>Loading planets…</td></tr></tbody>
+  </table>
+</div>

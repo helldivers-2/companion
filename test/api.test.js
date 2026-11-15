@@ -1,0 +1,68 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { get, state } from "../src/js/api.js";
+
+// Fake clock plus a fetch that answers after `latency` ms with the queued responses.
+function setup(t, responses, latency = 500) {
+  t.mock.timers.enable({ apis: ["setTimeout", "Date"] });
+  const m = {};
+  globalThis.localStorage = { getItem: (k) => m[k] ?? null, setItem: (k, v) => { m[k] = v; } };
+  const calls = [];
+  globalThis.fetch = (url) => {
+    calls.push(Date.now());
+    const r = responses.shift();
+    return new Promise((ok, fail) => setTimeout(() => (r instanceof Error ? fail(r) : ok(r)), latency));
+  };
+  const settle = async (p, ms) => { t.mock.timers.tick(ms); return p; };
+  return { calls, settle };
+}
+const json = (data, status = 200) => ({ ok: status < 400, status, json: async () => data });
+
+test("the refresh tick one TTL later fetches fresh data despite a slow response", async (t) => {
+  const { calls, settle } = setup(t, [json(1), json(2)]);
+  assert.equal(await settle(get("/x", 60), 500), 1);
+  t.mock.timers.tick(59_500); // main.js ticks every TTL, measured from when the first request started
+  assert.equal(await settle(get("/x", 60), 500), 2);
+  assert.equal(calls.length, 2);
+});
+
+test("a refresh tick that runs a few ms early relative to the last one still fetches", async (t) => {
+  const { calls, settle } = setup(t, [json(1), json(2)]);
+  t.mock.timers.tick(4); // the previous tick fired late
+  assert.equal(await settle(get("/x", 60), 500), 1);
+  t.mock.timers.tick(59_497); // this one fires on schedule
+  assert.equal(await settle(get("/x", 60), 500), 2);
+  assert.equal(calls.length, 2);
+});
+
+test("within the TTL the cache answers, after it a failed fetch falls back to stale data", async (t) => {
+  const { calls, settle } = setup(t, [json(1), new Error("offline")]);
+  state.stale = false;
+  await settle(get("/x", 60), 500);
+  t.mock.timers.tick(30_000);
+  assert.equal(await get("/x", 60), 1);
+  assert.equal(calls.length, 1);
+  t.mock.timers.tick(30_000);
+  assert.equal(await settle(get("/x", 60), 500), 1);
+  assert.equal(state.stale, true);
+});
+
+test("without a cache a failed fetch rejects", async (t) => {
+  const { settle } = setup(t, [json(null, 503)]);
+  await assert.rejects(settle(get("/x"), 500), /API answered 503/);
+});
+
+test("a 429 waits out the 10 s window and retries once", async (t) => {
+  const { calls, settle } = setup(t, [json(null, 429), json(1)]);
+  const flush = () => new Promise(setImmediate); // let get() reach its next timer
+  const p = get("/x");
+  t.mock.timers.tick(500);
+  await flush();
+  t.mock.timers.tick(9_999);
+  await flush();
+  assert.equal(calls.length, 1);
+  t.mock.timers.tick(1);
+  await flush();
+  assert.equal(await settle(p, 500), 1);
+  assert.deepEqual(calls, [0, 10_500]);
+});
