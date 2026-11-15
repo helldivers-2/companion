@@ -31,7 +31,8 @@ export const hoursToWin = (lib, rate) => (rate > 0 ? (1 - lib) / rate : null);
 
 // Coarse on purpose: rates come from minutes of data, so precise long ETAs would mislead.
 export function eta(hours) {
-  if (hours < 1) return `${Math.max(1, Math.round(hours * 60))}m`;
+  const minutes = Math.round(hours * 60); // round first, or 59.7 min would read "60m"
+  if (minutes < 60) return `${Math.max(1, minutes)}m`;
   if (hours < 48) return `${Math.round(hours)}h`;
   return `${Math.round(hours / 24)} days`;
 }

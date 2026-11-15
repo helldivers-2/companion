@@ -86,13 +86,13 @@ function meter(p, rate) {
 
 const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
 
-function rateLine(p, lib, rate) {
+export function rateLine(p, lib, rate, now = Date.now()) {
   if (rate === undefined || lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
-  if (Math.abs(rate) < STALLED) return lib > 0 && lib < 1 ? `<p class="rate stalled">No movement</p>` : "";
+  if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">No movement</p>` : "";
   const speed = `${rate > 0 ? "+" : "−"}${Math.abs(rate * 100).toFixed(2)}%/h`;
   const h = hoursToWin(lib, rate);
   if (h === null) return `<p class="rate losing">${speed}, losing ground</p>`;
-  const tooSlow = p.event && Date.now() + h * 3_600_000 > Date.parse(p.event.endTime);
+  const tooSlow = p.event && now + h * 3_600_000 > Date.parse(p.event.endTime);
   return `<p class="rate${tooSlow ? " losing" : ""}">${speed}, ${tooSlow ? `needs ~${eta(h)}, too slow to hold` : `won in ~${eta(h)}`}</p>`;
 }
 

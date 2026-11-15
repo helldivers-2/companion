@@ -36,6 +36,22 @@ test("hoursToWin", () => {
 
 test("eta rounds to a useful precision", () => {
   assert.equal(eta(0.25), "15m");
+  assert.equal(eta(0.999), "1h");
   assert.equal(eta(7.2), "7h");
   assert.equal(eta(185 * 24 + 3), "185 days");
+});
+
+test("rateLine covers finished, stalled, losing and too-slow planets", async () => {
+  const { rateLine } = await import("../src/js/pages/overview.js");
+  const now = Date.parse("2026-01-01T00:00:00Z");
+  const lib = { name: "X" };
+  const defense = { name: "Y", event: { endTime: "2026-01-01T02:00:00Z" } };
+  assert.equal(rateLine(lib, 1, 0.5, now), "");
+  assert.equal(rateLine(lib, 0.5, undefined, now), "");
+  assert.match(rateLine(lib, 0.5, 0.0001, now), /No movement/);
+  assert.equal(rateLine(lib, 0, 0.0001, now), "");
+  assert.match(rateLine(lib, 0.5, -0.01, now), /losing ground/);
+  assert.match(rateLine(lib, 0.5, 0.1, now), /won in ~5h/);
+  assert.match(rateLine(defense, 0.5, 0.1, now), /class="rate losing".*too slow to hold/);
+  assert.match(rateLine(defense, 0.9, 0.1, now), /won in ~1h/);
 });
