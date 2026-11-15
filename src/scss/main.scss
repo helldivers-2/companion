@@ -572,6 +572,11 @@ footer {
     &:hover {
       color: $text;
     }
+
+    // .table-wrap's overflow clips an outset ring along the top and left edges.
+    &:focus-visible {
+      outline-offset: -2px;
+    }
   }
 
   [aria-sort="ascending"] button,

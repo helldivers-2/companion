@@ -23,6 +23,8 @@ async function refresh() {
     else say(`Updated ${new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}`, false);
   } catch (err) {
     say(`Could not load war data: ${err.message}`, true);
+    // Without a cache a first-load failure would otherwise leave "Loading…" up forever.
+    for (const el of document.querySelectorAll("[data-loading]")) el.textContent = `No war data yet, retrying every ${site.refreshSeconds} s.`;
   }
 }
 
