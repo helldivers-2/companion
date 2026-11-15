@@ -15,7 +15,8 @@ export function track(planets, now = Date.now(), store = localStorage) {
   for (const p of planets) {
     const id = `${p.index}:${p.event?.id ?? "lib"}`; // a new defense event starts a fresh series
     const lib = liberation(p);
-    const h = (hist[id] ?? []).filter(([t]) => now - t < WINDOW);
+    // a bad stored entry would throw on every load and never get overwritten
+    const h = (Array.isArray(hist[id]) ? hist[id] : []).filter((s) => now - s?.[0] < WINDOW);
     if (!h.length || now - h.at(-1)[0] >= MIN_GAP) h.push([now, lib]);
     next[id] = h;
     const [t0, l0] = h[0];

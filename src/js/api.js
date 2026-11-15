@@ -8,7 +8,9 @@ export async function get(path, ttl = site.refreshSeconds) {
   const key = `hd:${path}`;
   let cached = null;
   try { cached = JSON.parse(localStorage.getItem(key)); } catch {}
-  if (cached && Date.now() - cached.t < ttl * 1000) return cached.data;
+  // main.js refreshes every ttl: stamp the request start and allow 1 s of timer jitter, or ticks get served the cache
+  const t = Date.now();
+  if (cached && t - cached.t < ttl * 1000 - 1000) return cached.data;
   try {
     let res = await fetch(site.api + path, { headers });
     if (res.status === 429) {
@@ -18,7 +20,7 @@ export async function get(path, ttl = site.refreshSeconds) {
     }
     if (!res.ok) throw new Error(res.status === 429 ? "rate limited by the API" : `API answered ${res.status}`);
     const data = await res.json();
-    try { localStorage.setItem(key, JSON.stringify({ t: Date.now(), data })); } catch {} // storage full: skip caching
+    try { localStorage.setItem(key, JSON.stringify({ t, data })); } catch {} // storage full: skip caching
     return data;
   } catch (err) {
     if (!cached) throw err;

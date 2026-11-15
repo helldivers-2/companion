@@ -20,6 +20,15 @@ test("track ignores repeated cached snapshots", () => {
   assert.equal(JSON.parse(store.getItem("hd:history"))["7:lib"].length, 1);
 });
 
+test("track starts over instead of throwing on malformed stored history", () => {
+  for (const bad of ['{"7:lib":5}', '{"7:lib":{"t":0}}', '{"7:lib":[null,5]}']) {
+    const store = memory();
+    store.setItem("hd:history", bad);
+    assert.deepEqual(track([planet(500)], 60_000, store), {});
+    assert.deepEqual(JSON.parse(store.getItem("hd:history"))["7:lib"], [[60_000, 0.5]]);
+  }
+});
+
 test("hoursToWin", () => {
   assert.equal(hoursToWin(0.5, 0.1), 5);
   assert.equal(hoursToWin(0.5, -0.1), null);
