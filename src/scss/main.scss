@@ -37,6 +37,7 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 @each $name, $color in $factions {
   .#{$name} {
     --faction: #{$color};
+    --emblem: url("/img/factions/#{$name}.webp");
   }
 }
 
@@ -439,6 +440,18 @@ footer {
     padding-bottom: 0.5rem;
     border-bottom: 2px solid var(--faction);
     color: var(--faction);
+
+    // The emblem works as a mask so it takes the palette colour instead of its own.
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 1.1em;
+      height: 1.1em;
+      margin-right: 0.4em;
+      vertical-align: -0.15em;
+      background: var(--faction);
+      mask: var(--emblem, linear-gradient(transparent 0 0)) center / contain no-repeat;
+    }
 
     .muted {
       font-family: Barlow, sans-serif;
