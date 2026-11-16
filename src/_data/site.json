@@ -6,6 +6,9 @@
   "contact": "helldivers-companion",
   "refreshSeconds": 60,
   "locales": [
-    "en"
+    "en",
+    "es",
+    "de",
+    "zh-TW"
   ]
 }
