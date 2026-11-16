@@ -6,7 +6,7 @@
     "planets": ["Helldivers 2: Planeten und Befreiung", "Alle Planeten im Galaktischen Krieg von Helldivers 2 mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und aktuellem Befreiungsfortschritt."],
     "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Spiel zum Galaktischen Krieg von Helldivers 2."],
     "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
-    "faq": ["So funktioniert der Krieg in Helldivers 2", "So funktioniert die Befreiung in Helldivers 2: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
+    "faq": ["Helldivers 2: Befreiung und Verteidigung erklärt", "Wie die Befreiung in Helldivers 2 abläuft: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
   "titles": {
@@ -14,7 +14,7 @@
     "planets": "Planeten",
     "dispatches": "Meldungen",
     "news": "Neuigkeiten",
-    "faq": "So funktioniert der Krieg",
+    "faq": "Befreiung und Verteidigung",
     "notfound": "Seite nicht gefunden"
   },
   "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ" },
@@ -36,7 +36,7 @@
   },
   "overview": {
     "h1": "Der Galaktische Krieg im Überblick",
-    "intro": "Ein Live-Tracker für den Galaktischen Krieg in Helldivers 2: der aktuelle Generalbefehl und seine Frist, die Raumstation, alle aktiven Fronten und die laufende Kriegsstatistik. Was die Zahlen bedeuten, steht unter <a href=\"{faq}\">So funktioniert der Krieg</a>.",
+    "intro": "Die Zahlen oben kommen live aus der Community-API zu Helldivers 2 und aktualisieren sich von selbst. Was sie bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
     "summary": "Kriegslage",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
@@ -47,7 +47,7 @@
     "war": "Galaktischer Krieg"
   },
   "planets": {
-    "intro": "Alle Planeten im Galaktischen Krieg mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und Befreiungsfortschritt. Durchsuche, filtere und sortiere sie oder öffne einen Planeten für Details.",
+    "intro": "Durchsuche, filtere und sortiere die Planeten des Galaktischen Kriegs oder öffne einen, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",
     "all": "Alle Planeten",
     "search": "Suche",
     "placeholder": "Planet, Sektor, Biom, Gefahr …",
@@ -58,27 +58,27 @@
     "loading": "Planeten werden geladen …"
   },
   "dispatches": { "h1": "Meldungen von Über-Erde", "intro": "Der Nachrichtenfeed von Über-Erde im Spiel: Kriegsberichte, Briefings zu Generalbefehlen und Propaganda, sobald sie erscheinen.", "loading": "Meldungen werden geladen …" },
-  "news": { "h1": "Neuigkeiten von Steam", "hint": "Patchnotes, Entwicklerblogs und Ankündigungen von Arrowheads Steam-Seite.", "loading": "Neuigkeiten werden geladen …" },
+  "news": { "h1": "Neuigkeiten von Steam", "hint": "Patchnotes, Entwicklerblogs und Ankündigungen von Arrowhead, die neuesten zuerst. Öffne einen Beitrag, um ihn ganz zu lesen.", "loading": "Neuigkeiten werden geladen …" },
   "faq": {
-    "h1": "So funktioniert der Galaktische Krieg",
-    "math": "Die Rechnung hinter der Befreiung",
-    "intro": "In Helldivers 2 führt Über-Erde einen gemeinsamen Krieg gegen die Terminiden, die Roboter und die Illuminierten. Du wählst, an welcher Front du abspringst, und ein Spielleiter bei Arrowhead wechselt die aktiven Feldzüge und formt den Krieg um, während du spielst. Dieser Companion liest dieselben Zahlen wie das Spiel.",
+    "h1": "Befreiung und Verteidigung erklärt",
+    "math": "Wie Planeten fallen",
+    "intro": "Alle Spieler kämpfen im selben Krieg. Du wählst die Front, und der Spielleiter bei Arrowhead entscheidet, welche Planeten umkämpft sind.",
     "points": [
-      "Jeder Planet hat einen Lebenspunkte-Pool. Befreiungsfeldzüge starten bei festen 1.000.000, Verteidigungsfeldzüge reichen von etwa 600.000 bis über 2 Millionen.",
-      "Der Pool füllt sich von selbst wieder auf, meist um 1,5 bis 4,5 % pro Stunde, und der Spielleiter kann die Rate auf über 20 % anheben, um einen Vorstoß abzubremsen. Verteidigungsfeldzüge laufen stattdessen auf Zeit und füllen sich nie auf.",
-      "Jede abgeschlossene Mission zieht Lebenspunkte vom Pool ab. Ein Planet fällt also im Verhältnis dazu, wie viele Trupps auf ihm kämpfen.",
-      "Manche Planeten sind in Regionen wie Dörfer und Städte aufgeteilt. Während eine Region erobert wird, kann der Balken des Planeten selbst bei 0 % stehen bleiben. Der Companion zeigt dann die am weitesten eroberte Region und nennt sie.",
-      "Auch der Feind schlägt zurück. Gegenangriffe zeigen sich als plötzliche Einbrüche um 1 bis 2 % und kommen oft in Serien von drei oder vier."
+      "Eine Befreiung startet bei 1.000.000 Lebenspunkten, eine Verteidigung bei etwa 600.000 bis über 2 Millionen.",
+      "Jede abgeschlossene Mission zieht Lebenspunkte ab. Je mehr Trupps kämpfen, desto schneller fällt der Planet.",
+      "Planeten regenerieren 1,5 bis 4,5 % pro Stunde, und der Spielleiter kann das auf über 20 % anheben, um einen Vorstoß zu bremsen. Verteidigungen regenerieren nicht, sie laufen auf Zeit.",
+      "Gegenangriffe des Feindes ziehen auf einen Schlag 1 bis 2 % ab, oft drei- oder viermal hintereinander.",
+      "Planeten mit Dörfern und Städten können bei 0 % stehen, während die Spieler eine Region erobern. Diese Seite zeigt dann den Fortschritt der Region."
     ],
-    "questions": "Fragen",
+    "questions": "Häufige Fragen",
     "qa": [
-      ["Schadet es der Befreiung, eine Operation abzubrechen?", "Nein. Nur abgeschlossene Missionen ziehen Lebenspunkte vom Planeten ab. Ein Abbruch kostet dich also die Belohnungen, sonst nichts."],
-      ["Warum verlieren Planeten über Nacht Fortschritt?", "Planeten regenerieren rund um die Uhr. Nachts, wenn weniger Helldivers abspringen, ist die Regeneration stärker als der Schaden der Spieler, und morgens steht ein niedrigerer Prozentwert da. Verteidigungen funktionieren anders: Sie laufen auf Zeit und regenerieren nie."],
-      ["Zählen Missionen außerhalb der Feldzugsliste?", "Du kannst auf jedem befreiten Planeten abspringen, aber diese Planeten gehören nicht zu den aktiven Feldzügen und regenerieren schneller, als ein paar Trupps Schaden anrichten können. Sie bleiben deshalb bei vollen Lebenspunkten. Der Spielleiter sieht diese Aktivität und kann den Krieg danach ausrichten."],
-      ["Woher kommen die Fortschrittsraten und Schätzungen?", "Die API meldet nur den aktuellen Stand, ohne Verlauf. Dein Browser hebt die Momentaufnahmen, die er gesehen hat, eine Stunde lang auf und misst, wie schnell sich jede Front bewegt. Raten und Schätzungen erscheinen deshalb etwa fünf Minuten nach dem Öffnen der Übersicht. Bis dahin zeigt eine Front die Regeneration des Feindes, also den Schaden, den Über-Erde pro Stunde mindestens anrichten muss."],
-      ["Warum zeigen die meisten Fronten keinen Balken?", "Zu jedem Zeitpunkt steht der Feind in den meisten aktiven Feldzügen bei vollen Lebenspunkten. Diese Fronten zeigen „Noch kein Boden gewonnen“ und stehen unter denen, die sich bewegen."]
+      ["Schadet es, eine Operation abzubrechen?", "Nein. Nur abgeschlossene Missionen zählen, ein Abbruch kostet dich also nur die Belohnungen."],
+      ["Warum ist über Nacht Fortschritt verloren gegangen?", "Nachts spielen weniger Leute, also regeneriert der Planet schneller, als er Schaden nimmt."],
+      ["Zählen Missionen auf anderen Planeten?", "Nicht für die Befreiung. Gegen die Regeneration von Planeten außerhalb der Feldzüge kommen ein paar Trupps nicht an. Der Spielleiter sieht aber, wo die Spieler kämpfen."],
+      ["Warum fehlen die Raten am Anfang?", "Die API kennt keinen Verlauf, also zeichnet dein Browser selbst einen auf. Nach etwa fünf Minuten kann er jede Front messen. Bis dahin siehst du, wie schnell der Feind regeneriert, und diesen Wert muss Über-Erde pro Stunde übertreffen."],
+      ["Warum haben die meisten Fronten keinen Balken?", "Dort haben die Spieler noch nichts ausgerichtet. Diese Fronten zeigen „Noch kein Boden gewonnen“ und stehen ganz unten."]
     ],
-    "source": "Antworten zusammengetragen aus dem <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> und Quellen aus der Community."
+    "source": "Quellen: das <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> und die Community."
   },
   "notfound": "Diese Seite ging im Galaktischen Krieg verloren. <a href=\"{home}\">Zurück zur Übersicht</a>.",
   "factions": { "Humans": "Menschen", "Terminids": "Terminiden", "Automaton": "Roboter", "Illuminate": "Illuminierte" },

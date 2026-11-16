@@ -6,7 +6,7 @@
     "planets": ["Helldivers 2 Planets & Liberation", "Every planet in the Helldivers 2 Galactic War with sector, biome, hazards, owner, Helldiver count and live liberation progress."],
     "dispatches": ["Helldivers 2 Dispatches from Super Earth", "The latest Super Earth dispatches from the Helldivers 2 Galactic War, from the in-game feed."],
     "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead's Steam page."],
-    "faq": ["How the Helldivers 2 Galactic War Works", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
+    "faq": ["Helldivers 2 Liberation & Defense Explained", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
   "titles": {
@@ -14,7 +14,7 @@
     "planets": "Planets",
     "dispatches": "Dispatches",
     "news": "News",
-    "faq": "How the war works",
+    "faq": "Liberation and defense",
     "notfound": "Page not found"
   },
   "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ" },
@@ -24,14 +24,14 @@
     "ogAlt": "A yellow skull next to the words {name}, on a dark background",
     "noscript": "This companion loads live war data in your browser. Turn on JavaScript to see it.",
     "by": "A project by {author}.",
-    "about": "A fan-built dashboard for the Helldivers 2 Galactic War, reading live data from the community API every {s} s. Built with:",
+    "about": "A fan-built dashboard for the Helldivers 2 Galactic War. It pulls fresh data from the community API every {s} s. Built with:",
     "language": "Language",
     "disclaimer": "Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.",
     "links": {}
   },
   "overview": {
     "h1": "Galactic War overview",
-    "intro": "A live tracker for the Helldivers 2 Galactic War: the current Major Order and its deadline, the Space Station, every active front and the war's running totals. The numbers are explained in <a href=\"{faq}\">how the war works</a>.",
+    "intro": "The figures above come live from the community Helldivers 2 API and update on their own. The <a href=\"{faq}\">guide to liberation and defense</a> explains what they mean.",
     "summary": "War summary",
     "order": "Major Order",
     "orderLoading": "Receiving orders from High Command…",
@@ -42,7 +42,7 @@
     "war": "Galactic War"
   },
   "planets": {
-    "intro": "Every planet in the Galactic War with its sector, biome, hazards, owner, Helldiver count and liberation progress. Search, filter and sort the list, or open a planet for its details.",
+    "intro": "Search, filter and sort the planets of the Galactic War, or open one to see its hazards, regions and battle record.",
     "all": "All planets",
     "search": "Search",
     "placeholder": "Planet, sector, biome, hazard…",
@@ -53,27 +53,27 @@
     "loading": "Loading planets…"
   },
   "dispatches": { "h1": "Dispatches from Super Earth", "intro": "Super Earth's in-game news feed: war updates, Major Order briefings and propaganda as they go out.", "loading": "Loading dispatches…" },
-  "news": { "h1": "News from Steam", "hint": "Patch notes, developer blogs and announcements from Arrowhead's Steam page.", "loading": "Loading news…" },
+  "news": { "h1": "News from Steam", "hint": "Arrowhead's patch notes, developer blogs and announcements, newest first. Open any post to read it in full.", "loading": "Loading news…" },
   "faq": {
-    "h1": "How the Galactic War works",
-    "math": "Liberation math",
-    "intro": "In Helldivers 2, Super Earth fights one war, shared by every player, against the Terminids, the Automatons and the Illuminate. You pick which front to drop into, and a game master at Arrowhead rotates the active campaigns and reshapes the war while you play. This companion reads the same numbers the game does.",
+    "h1": "Liberation and defense explained",
+    "math": "How planets fall",
+    "intro": "Every player fights in the same war. You pick the front, and Arrowhead's game master decides which planets are in play.",
     "points": [
-      "Every planet has a health pool. Liberation campaigns start at a fixed 1,000,000 health; defense campaigns range from roughly 600,000 to over 2 million.",
-      "The pool refills on its own, usually 1.5% to 4.5% per hour, and the game master can raise the rate past 20% to stall a push. Defense campaigns run on a timer instead and never refill.",
-      "Each mission you complete takes health off the pool, so a planet falls in proportion to how many squads fight on it.",
-      "Some planets are split into regions such as towns and cities. While a region is being taken, the planet's own bar can stay at 0%, so the companion shows the region furthest along instead and names it.",
-      "The enemy pushes back too. Counterattacks land as sudden dips of 1 to 2% and often come in runs of three or four."
+      "A liberation campaign starts at 1,000,000 health. Defense campaigns vary from about 600,000 to over 2 million.",
+      "Every mission you finish takes some health off, so the more squads fight on a planet, the faster it falls.",
+      "Planets heal 1.5 to 4.5% an hour, and the game master can raise that past 20% to stall a push. Defenses don't heal; they run on a timer.",
+      "Enemy counterattacks knock off 1 to 2% at a time, often three or four in a row.",
+      "Planets with towns and cities can sit at 0% while players take a region. This site then shows that region's progress."
     ],
-    "questions": "Questions",
+    "questions": "Common questions",
     "qa": [
-      ["Does abandoning an operation hurt liberation?", "No. Only completed missions damage a planet's health pool, so dropping an operation costs you the rewards and nothing else."],
-      ["Why do planets lose progress overnight?", "Planets regenerate around the clock. Overnight, when fewer Helldivers are dropping, that regeneration outruns the damage players deal and you wake up to a lower percentage. Defenses work differently: they run on a fixed timer and never regenerate."],
-      ["Do missions outside the campaign list count?", "You can drop on any liberated planet, but those planets sit outside the active campaigns. They regenerate faster than a handful of squads can damage them, so they stay at full health. The game master sees that traffic and can steer the war around it."],
-      ["Where do the progress rates and estimates come from?", "The API only reports the current state, with no history. Your browser keeps the snapshots it has seen for an hour and measures how fast each front moves, so rates and estimates appear about five minutes after you open the overview. Until then a front shows the enemy's regeneration, which is what Super Earth has to out-damage every hour."],
-      ["Why do most fronts show no bar?", "Most active campaigns sit at full enemy health at any given moment. Those fronts say “No ground taken yet” and sort below the ones that are moving."]
+      ["Does abandoning an operation hurt?", "No. Only finished missions count, so quitting only costs you the rewards."],
+      ["Why did we lose progress overnight?", "Fewer people play at night, so the planet heals faster than they can damage it."],
+      ["Do missions on other planets count?", "Not toward liberation. Planets outside the campaign list heal faster than a few squads can hurt them, though the game master sees where people play."],
+      ["Why don't rates show up right away?", "The API keeps no history, so your browser records its own. After about five minutes it can measure each front. Until then you see how fast the enemy heals, which is the hourly damage Super Earth has to beat."],
+      ["Why do most fronts have no bar?", "Players haven't made a dent in them yet. Those fronts say “No ground taken yet” and sit at the bottom of the list."]
     ],
-    "source": "Answers compiled from the <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> and community sources."
+    "source": "Sources: the <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> and the community."
   },
   "notfound": "This page was lost to the Galactic War. <a href=\"{home}\">Back to the overview</a>.",
   "factions": { "Humans": "Humans", "Terminids": "Terminids", "Automaton": "Automaton", "Illuminate": "Illuminate" },
