@@ -42,6 +42,15 @@ test("an origin error or Access redirect becomes a 502", async (t) => {
   }
 });
 
+test("a cache hit goes out with the 20 s TTL, not the one the cache returns", async (t) => {
+  const calls = upstream(t);
+  globalThis.caches = { default: { match: async () => new Response("{}", { headers: { "Cache-Control": "public, max-age=14400" } }) } };
+  t.after(() => delete globalThis.caches);
+  const res = await call("/api/v1/war?lang=en-US");
+  assert.equal(res.headers.get("Cache-Control"), "public, max-age=20");
+  assert.equal(calls.length, 0);
+});
+
 test("every site locale asks for a language the Worker allows", () => {
   for (const f of readdirSync("src/_data/i18n")) {
     assert.ok(LANGS.has(JSON.parse(readFileSync(`src/_data/i18n/${f}`)).api), f);

@@ -18,8 +18,10 @@ export default {
     if (request.method !== "GET" || !PATHS.has(url.pathname) || !LANGS.has(lang)) return new Response("Not found", { status: 404 });
     const key = new Request(`${url.origin}${url.pathname}?lang=${lang}`); // drops any extra query params
     const cache = globalThis.caches?.default; // absent under Node (dev server, tests)
+    const headers = { "Content-Type": "application/json; charset=utf-8", "Cache-Control": `public, max-age=${TTL}` };
+    // a cache hit comes back with the zone's 4 h Browser Cache TTL; reset it or browsers keep stale data
     const hit = await cache?.match(key);
-    if (hit) return hit;
+    if (hit) return new Response(hit.body, { headers });
     const res = await fetch(env.API_ORIGIN + url.pathname, {
       headers: {
         "Accept-Language": lang,
@@ -31,9 +33,7 @@ export default {
       redirect: "manual", // Access answers a bad token with a redirect to its login page; never pass that on as data
     });
     if (!res.ok) return new Response(null, { status: 502 });
-    const out = new Response(res.body, {
-      headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": `public, max-age=${TTL}` },
-    });
+    const out = new Response(res.body, { headers });
     if (cache) ctx.waitUntil(cache.put(key, out.clone()));
     return out;
   },
