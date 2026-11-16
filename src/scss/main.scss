@@ -269,6 +269,31 @@ html {
   text-align: right;
 }
 
+// Hold space while data loads, sized like the usual loaded content, so the page doesn't jump when it arrives.
+main:has([data-loading]) {
+  min-height: 100vh; // keeps the footer below the fold
+}
+
+#orders:has(> [data-loading]) {
+  min-height: 22rem;
+}
+
+#fronts:has(> [data-loading]) {
+  min-height: 28rem;
+}
+
+#dss:empty {
+  min-height: 1.5rem;
+}
+
+.summary:empty {
+  min-height: 3.5rem; // wraps to two lines on phones
+
+  @media (width >= 40rem) {
+    min-height: 1.5rem;
+  }
+}
+
 main {
   max-width: 76rem;
   margin: 0 auto;

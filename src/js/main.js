@@ -30,7 +30,13 @@ async function refresh() {
   }
 }
 
-refresh();
+// Paint the cached data first, however old, so a return visit shows the page at once instead of shifting when the API answers.
+// A cache hit resolves in microtasks, so no other refresh can run while cacheOnly is set.
+state.cacheOnly = true;
+(page?.() ?? Promise.resolve()).catch(() => {}).finally(() => {
+  state.cacheOnly = false;
+  refresh();
+});
 setInterval(refresh, site.refreshSeconds * 1000);
 document.addEventListener("visibilitychange", refresh);
 setInterval(() => {

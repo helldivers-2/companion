@@ -1,4 +1,4 @@
-import { get } from "../api.js";
+import { get, state } from "../api.js";
 import { bar, countdown, describeTask, enemyOf, esc, faction, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, lang, t } from "../i18n.js";
@@ -15,7 +15,9 @@ export default async function overview() {
     get("/api/v2/space-stations", 300),
   ]);
   const planets = Object.fromEntries(planetList.map((p) => [p.index, p]));
-  const rates = track(campaigns.map((c) => c.planet));
+  // An old cached snapshot must not enter the history as if it were measured now.
+  const store = state.cacheOnly ? { getItem: (k) => localStorage.getItem(k), setItem() {} } : localStorage;
+  const rates = track(campaigns.map((c) => c.planet), Date.now(), store);
   const orderPlanets = new Set();
 
   $("orders").innerHTML = orders.length

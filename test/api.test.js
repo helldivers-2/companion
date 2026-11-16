@@ -66,3 +66,17 @@ test("a 429 waits out the 10 s window and retries once", async (t) => {
   assert.equal(await settle(p, 500), 1);
   assert.deepEqual(calls, [0, 10_500]);
 });
+
+test("cacheOnly answers from a cache of any age and never fetches", async (t) => {
+  const { calls, settle } = setup(t, [json(1)]);
+  await settle(get("/x", 60), 500);
+  t.mock.timers.tick(3_600_000);
+  state.cacheOnly = true;
+  try {
+    assert.equal(await get("/x", 60), 1);
+    await assert.rejects(get("/y"), /not cached/);
+  } finally {
+    state.cacheOnly = false;
+  }
+  assert.equal(calls.length, 1);
+});
