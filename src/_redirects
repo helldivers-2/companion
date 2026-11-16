@@ -3,6 +3,10 @@
 /dispatches/         /en/dispatches/          301
 /news/               /en/news/                301
 /faq/                /en/faq/                 301
+/planets             /en/planets/             301
+/dispatches          /en/dispatches/          301
+/news                /en/news/                301
+/faq                 /en/faq/                 301
 
 # Routes of the earlier Next.js companion, so old links and bookmarks still land somewhere useful.
 /statistics          /en/#statistics          301

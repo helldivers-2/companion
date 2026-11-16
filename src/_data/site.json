@@ -3,7 +3,7 @@
   "url": "https://helldivers.michi.onl",
   "api": "https://api.helldivers2.dev",
   "client": "helldivers-companion",
-  "contact": "helldivers-companion",
+  "contact": "@.mixhi",
   "refreshSeconds": 60,
   "locales": [
     "en",
