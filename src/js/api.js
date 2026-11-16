@@ -1,12 +1,11 @@
 import site from "../_data/site.json" with { type: "json" };
 import { fill, t as strings } from "./i18n.js";
 
-// The API localizes orders, dispatches and some planet names by Accept-Language; ask for the page's language.
-const headers = { "X-Super-Client": site.client, "X-Super-Contact": site.contact, "Accept-Language": strings.api };
 // cacheOnly: answer from the cache however old, and throw on a miss instead of fetching.
 export const state = { stale: false, cacheOnly: false, onWait: null }; // onWait: called before the 10 s rate-limit back-off
 
-// Caches in localStorage so page switches and reloads stay under the API's 5 requests / 10 s limit.
+// Caches in localStorage so page switches and reloads don't refetch.
+// worker.js serves the API on this origin; ?lang picks the language for orders, dispatches and some planet names.
 export async function get(path, ttl = site.refreshSeconds) {
   const key = `hd:${path}`;
   let cached = null;
@@ -17,12 +16,12 @@ export async function get(path, ttl = site.refreshSeconds) {
   if (cached && (state.cacheOnly || t - cached.t < ttl * 1000 - 1000)) return cached.data;
   if (state.cacheOnly) throw new Error("not cached");
   try {
-    let res = await fetch(site.api + path, { headers });
+    let res = await fetch(`${path}?lang=${strings.api}`);
     if (res.status === 429) {
       state.onWait?.();
-      // Retry-After is not CORS-exposed, so wait out the whole 10 s window once
+      // only the /api rate-limiting rule answers 429, and it blocks for 10 s
       await new Promise((r) => setTimeout(r, 10_000));
-      res = await fetch(site.api + path, { headers });
+      res = await fetch(`${path}?lang=${strings.api}`);
     }
     if (!res.ok) throw new Error(res.status === 429 ? strings.js.rateLimited : fill(strings.js.apiStatus, { status: res.status }));
     const data = await res.json();

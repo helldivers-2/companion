@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{ site.api }}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   {%- set title = t.meta[page_id][0] %}
   {%- set description = t.meta[page_id][1] %}
   {%- set path = page.url | replace("/" + lang + "/", "/") %}
@@ -35,7 +35,6 @@
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-  <link rel="preconnect" href="{{ site.api }}" crossorigin>
   <link rel="stylesheet" href="/assets/main.css">
 </head>
 <body data-page="{{ page_id }}">

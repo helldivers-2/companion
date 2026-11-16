@@ -1,16 +1,19 @@
 # Self-hosted community API (https://github.com/helldivers-2/api), built from upstream as-is.
-# Update: docker compose build --pull && docker compose up -d
+# Only the Cloudflare Tunnel connector should reach port 8080; firewall everything else.
+# Update: docker compose -f deploy/compose.yml build --pull && docker compose -f deploy/compose.yml up -d
 services:
   api:
     build:
-      context: https://github.com/helldivers-2/api.git#main
+      context: https://github.com/helldivers-2/api.git#master
       dockerfile: src/Helldivers-2-API/Dockerfile
     image: helldivers-api
     restart: unless-stopped
+    logging: { driver: local } # rotates, unlike the default json-file
     ports:
       - "8080:8080"
     environment:
       # Upstream enables JWT auth and expects a signing key we don't have; no endpoint needs it.
       Helldivers__API__Authentication__Enabled: "false"
-      # Limit is per client IP; behind a reverse proxy every visitor may share one bucket.
+      # Every request arrives from the tunnel connector, so this is one bucket for the whole site.
+      # The Worker's 20 s edge cache keeps it far below this.
       Helldivers__API__RateLimit: "1000"
