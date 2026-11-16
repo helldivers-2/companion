@@ -16,12 +16,12 @@ export default async function news() {
   document.getElementById("news").innerHTML = list.map((n, i) => {
     const id = `news-${slug(n.id)}`;
     const open = target ? target === id : i === 0;
-    return `<li><details class="note" id="${id}"${open ? " open" : ""}>
+    return `<li class="card"><details class="note" id="${id}"${open ? " open" : ""}>
       <summary>${icon("caret-right")} <h2>${esc(n.title)}</h2>
         <p class="muted">${icon("clock")} <time datetime="${esc(n.publishedAt)}">${dateFmt.format(new Date(n.publishedAt))}</time>${n.author ? `, ${esc(n.author)}` : ""}</p></summary>
       <div class="steam">${steamHtml(n.content)}</div>
       ${/^https:\/\//.test(n.url) ? `<p><a href="${esc(n.url)}">${icon("arrow-square-out")} Read on Steam</a></p>` : ""}
     </details></li>`;
-  }).join("") || `<li class="muted">${icon("clock")} No news yet.</li>`;
+  }).join("") || `<li class="card muted">${icon("clock")} No news yet.</li>`;
   if (target) document.getElementById(target)?.scrollIntoView();
 }

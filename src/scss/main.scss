@@ -16,6 +16,8 @@ $muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
 // Text and focus accent. Dark uses the companion's chart-1 yellow because its amber primary is
 // indistinguishable from Terminids orange; light uses its primary-foreground for 4.5:1 on white.
 $accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
+// The companion's card ring: foreground at 10 %, drawn as a box-shadow so it adds no layout.
+$ring: light-dark(oklch(0.145 0 0 / 10%), oklch(0.985 0.001 106.423 / 10%));
 // The companion's amber icon colour, used for the nav icons as it does.
 $icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
 // Decorative fills only (hazard stripes, borders): the companion's yellow primary fails as text on white.
@@ -35,9 +37,10 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 
 // Phosphor icons, copied to /assets/icons by eleventy.config.js; keep the two lists in step.
 $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank, medal, circle, target, sword, clock, users,
-  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out, info,
+  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out, info, percent,
   stack, shapes, brackets-angle, building-office, discord-logo-fill, reddit-logo-fill, steam-logo-fill, flame-fill,
   github-logo-fill, instagram-logo-fill, youtube-logo-fill;
+
 
 *,
 *::before,
@@ -265,6 +268,7 @@ html {
 
 .status {
   min-height: 1.3125rem;
+  margin: 0 1rem 0.5rem;
   color: $muted;
   font-size: 0.875rem;
   text-align: right;
@@ -273,14 +277,99 @@ html {
 main {
   max-width: 76rem;
   margin: 0 auto;
-  padding: 1rem clamp(1rem, 4vw, 2rem) 3rem;
+  padding: 1rem 0 3rem; // phones: containers run edge to edge like the companion's
 
   @media (width >= 40rem) {
-    padding-top: 5.5rem;
+    padding: 5.5rem clamp(1rem, 4vw, 2rem) 3rem;
+  }
+}
+
+// The companion's nested cards: a grey container holding white cards, each with a hairline ring.
+
+.container {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: $panel;
+  box-shadow: 0 0 0 1px $ring;
+
+  + .container {
+    margin-top: 2rem;
   }
 
-  > section + section {
-    margin-top: 2.5rem;
+  > :is(h1, h2):first-child {
+    margin: 1rem 0 0;
+    font-size: 1.875rem;
+    text-align: center;
+  }
+
+  > .hint {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.card {
+  min-width: 0;
+  padding: 1rem;
+  background: $ground;
+  box-shadow: 0 0 0 1px $ring;
+
+  > :is(h2, h3):first-child {
+    margin: 0 0 1rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+// Overview grid as on the companion: summary across, Major Order beside the station, fronts across.
+@media (width >= 64rem) {
+  .dashboard {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .span-2 {
+    grid-column: span 2;
+  }
+
+  .span-3 {
+    grid-column: 1 / -1;
+  }
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .icon {
+    color: $muted;
+  }
+
+  .muted {
+    font-size: 0.875rem;
+  }
+}
+
+.faq-grid {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+
+  @media (width >= 48rem) {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -418,8 +507,6 @@ summary {
 }
 
 .prose {
-  max-width: 44rem;
-
   h2 {
     margin: 2rem 0 0.75rem;
   }
@@ -453,17 +540,14 @@ summary {
 
 // Shared pieces
 
-.panel {
-  padding: 1rem 1.25rem;
-  background: $panel;
-
+.station {
   header {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
     gap: 0.25rem 1rem;
-    margin: 0.5rem 0 0.75rem;
+    margin: 0 0 0.75rem;
   }
 }
 
@@ -552,17 +636,9 @@ summary {
 // Major Order: the one loud element on the page
 
 .order {
-  position: relative;
-  padding: 1.75rem clamp(1rem, 3vw, 2rem) 1.5rem;
-  border: 1px solid color-mix(in oklch, $accent-fill 50%, transparent);
-  background: $panel;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto;
-    height: 0.5rem;
-    background: repeating-linear-gradient(-45deg, $accent-fill 0 0.75rem, $ground 0.75rem 1.5rem);
+  + .order {
+    padding-top: 1rem;
+    border-top: 1px solid $line;
   }
 
   header {
@@ -576,7 +652,7 @@ summary {
 
   h3 {
     color: $accent;
-    font-size: 2.25rem;
+    font-size: 1.875rem;
   }
 
   .briefing {
@@ -938,10 +1014,7 @@ summary {
 // Dispatches
 
 .dispatch {
-  max-width: 48rem;
-  padding: 1rem 1.25rem;
   border-left: 3px solid $accent-fill;
-  background: $panel;
 
   time {
     color: $muted;
@@ -949,6 +1022,7 @@ summary {
   }
 
   p {
+    max-width: 70ch;
     margin-top: 0.25rem;
     white-space: pre-line;
   }
@@ -982,10 +1056,6 @@ summary {
 // News
 
 .note {
-  max-width: 48rem;
-  padding: 1rem 1.25rem;
-  background: $panel;
-
   summary {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -1004,6 +1074,7 @@ summary {
 }
 
 .steam {
+  max-width: 70ch;
   margin-top: 1rem;
   overflow-wrap: anywhere;
 

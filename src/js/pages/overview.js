@@ -22,17 +22,17 @@ export default async function overview() {
     ? orders.map((o) => orderPanel(o, planets, rates, orderPlanets)).join("")
     : `<article class="order"><p>${icon("target")} No Major Order right now. High Command will issue new orders soon.</p></article>`;
 
-  $("dss-section").hidden = !stations.length;
-  $("dss").innerHTML = stations.map(stationPanel).join("");
+  $("dss").innerHTML = stations.map(stationPanel).join("") || `<p class="muted">No Democracy Space Station in orbit right now.</p>`;
 
   $("record").innerHTML = record(war.statistics, true);
 
   const defenses = campaigns.filter((c) => c.planet.event).length;
   $("online").innerHTML = [
-    `${icon("users")} ${num(war.statistics.playerCount)} Helldivers online`,
-    `${num(campaigns.length)} fronts, ${num(defenses)} ${defenses === 1 ? "defense" : "defenses"}`,
-    war.impactMultiplier ? `mission impact ×${war.impactMultiplier.toFixed(4)}` : "",
-  ].filter(Boolean).join(" · ");
+    ["users", "Helldivers online", num(war.statistics.playerCount)],
+    ["sword", "Fronts", num(campaigns.length)],
+    ["shield-warning", "Defenses", num(defenses)],
+    war.impactMultiplier ? ["percent", "Mission impact", war.impactMultiplier.toFixed(4)] : null,
+  ].filter(Boolean).map(([i, label, value]) => `<li>${icon(i)} <span class="muted">${label}</span> <strong>${value}</strong></li>`).join("");
 
   const groups = {};
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
@@ -75,9 +75,11 @@ function orderPanel(o, planets, rates, orderPlanets) {
   }).join("");
   const rewards = (o.rewards ?? [o.reward]).filter(Boolean)
     .map((r) => `${num(r.amount)} ${labels.rewardTypes[r.type] ?? "reward"}`).join(", ");
+  // The card is already titled "Major Order", so only a different (named or localised) title is worth repeating.
+  const title = /^major order$/i.test(o.title ?? "") ? "" : titleCase(o.title ?? "");
   return `<article class="order">
     <header>
-      <h3>${icon("trophy")} ${esc(titleCase(o.title ?? "Major Order"))}</h3>
+      ${title ? `<h3>${icon("trophy")} ${esc(title)}</h3>` : ""}
       <p class="order-clock">${icon("calendar-blank")} <span class="big">${countdown(o.expiration)}</span> left</p>
     </header>
     ${o.briefing ? `<p class="briefing">${esc(o.briefing)}</p>` : ""}
@@ -126,7 +128,7 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
   ${idle(p) ? `<p class="rate stalled">No ground taken yet</p>` : meter(p, rate)}
 </li>`;
 
-const stationPanel = (st) => `<article class="panel">
+const stationPanel = (st) => `<article class="station">
   <header><h3>Orbiting ${esc(st.planet?.name ?? "unknown")}</h3><p class="muted">Next move vote ends in ${countdown(st.electionEnd)}</p></header>
   <ul class="actions">${(st.tacticalActions ?? []).map((a) => {
     const cost = a.costs?.[0];
