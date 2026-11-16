@@ -71,5 +71,5 @@ test("record sums kills per planet and splits them for the war", () => {
   const s = { terminidKills: 1000, automatonKills: 500, illuminateKills: 0, missionSuccessRate: 88, missionTime: 31_557_600 };
   assert.match(record(s), /Enemies killed<\/dt><dd><span title="1,500">1\.5K/);
   assert.match(record(s, true), /Automatons destroyed/);
-  assert.match(record(s), /88%.*1 years/);
+  assert.match(record(s), /88%.*1 year</);
 });

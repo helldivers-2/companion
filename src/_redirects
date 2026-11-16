@@ -1,9 +1,15 @@
+# Pages moved under a language prefix; / itself picks the browser's language.
+/planets/            /en/planets/             301
+/dispatches/         /en/dispatches/          301
+/news/               /en/news/                301
+/faq/                /en/faq/                 301
+
 # Routes of the earlier Next.js companion, so old links and bookmarks still land somewhere useful.
-/statistics          /#statistics             301
-/galaxy              /planets/                301
-/planet/:index       /planets/?open=:index    301
-/campaign/:index     /                        301
-/assignment/:index   /                        301
-/station/:index      /                        301
-/dispatch/:id        /dispatches/             301
-/news/:gid           /news/#news-:gid         301
+/statistics          /en/#statistics          301
+/galaxy              /en/planets/             301
+/planet/:index       /en/planets/?open=:index 301
+/campaign/:index     /en/                     301
+/assignment/:index   /en/                     301
+/station/:index      /en/                     301
+/dispatch/:id        /en/dispatches/          301
+/news/:gid           /en/news/#news-:gid      301

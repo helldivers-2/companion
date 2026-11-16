@@ -1,35 +1,40 @@
 ---
 layout: base.njk
-title: Overview
 page_id: overview
+pagination:
+  data: site.locales
+  size: 1
+  alias: lang
+  addAllPagesToCollections: true
+permalink: "/{{ lang }}/"
 ---
-<h1 class="visually-hidden">Galactic War overview</h1>
+<h1 class="visually-hidden">{{ t.overview.h1 }}</h1>
 
 <div class="container dashboard">
-  <section class="card span-3" aria-label="War summary">
+  <section class="card span-3" aria-label="{{ t.overview.summary }}">
     <ul id="online" class="summary"></ul>
   </section>
 
   <section class="card span-2" aria-labelledby="mo-h">
-    <h2 id="mo-h">Major Order</h2>
-    <div id="orders" class="stack"><p class="muted" data-loading>Receiving orders from High Command…</p></div>
+    <h2 id="mo-h">{{ t.overview.order }}</h2>
+    <div id="orders" class="stack"><p class="muted" data-loading>{{ t.overview.orderLoading }}</p></div>
   </section>
 
   <section class="card" aria-labelledby="dss-h">
-    <h2 id="dss-h">Space Station</h2>
+    <h2 id="dss-h">{{ t.overview.station }}</h2>
     <div id="dss"></div>
   </section>
 
   <section class="card span-3" aria-labelledby="fronts-h">
-    <h2 id="fronts-h">Active fronts</h2>
-    <div id="fronts" class="fronts"><p class="muted" data-loading>Loading campaigns…</p></div>
+    <h2 id="fronts-h">{{ t.overview.fronts }}</h2>
+    <div id="fronts" class="fronts"><p class="muted" data-loading>{{ t.overview.frontsLoading }}</p></div>
   </section>
 </div>
 
 <section class="container" aria-labelledby="statistics-h" id="statistics">
-  <h2 id="statistics-h">Statistics</h2>
+  <h2 id="statistics-h">{{ t.overview.statistics }}</h2>
   <div class="card">
-    <h3>Galactic War</h3>
+    <h3>{{ t.overview.war }}</h3>
     <div id="record"></div>
   </div>
 </section>

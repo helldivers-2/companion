@@ -1,0 +1,23 @@
+---
+permalink: /
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.name }}</title>
+  <meta name="description" content="{{ i18n.en.description }}">
+  {%- for l in site.locales %}
+  <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}/{{ l }}/">
+  {%- endfor %}
+  <script>
+    // Send visitors to the first browser language we have, matched on the primary subtag, so any Chinese gets zh-TW.
+    const have = {{ site.locales | dump | safe }};
+    const pick = navigator.languages.map((l) => have.find((h) => h.split("-")[0] === l.split("-")[0].toLowerCase())).find(Boolean) ?? "en";
+    location.replace(`/${pick}/${location.hash}`);
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/en/"></noscript>
+</head>
+<body></body>
+</html>

@@ -1,5 +1,6 @@
 import { get } from "../api.js";
-import { esc, icon, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
+import { esc, faction, icon, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
+import { fill, t } from "../i18n.js";
 
 let planets = [];
 const held = (p) => p.currentOwner === "Humans" && !p.event;
@@ -55,26 +56,26 @@ function render() {
   }
 
   const count = document.getElementById("planet-count");
-  const text = `${rows.length} of ${planets.length} planets`;
+  const text = fill(t.js.count, { n: rows.length, total: planets.length });
   if (count.textContent !== text) count.textContent = text; // live region: the 60 s refresh must not re-announce it
 
   const focused = document.activeElement?.dataset.planet; // the 60 s refresh rebuilds the rows
   document.getElementById("planet-rows").innerHTML = rows.map((p) => {
-    const owner = `<span class="tag ${slug(p.currentOwner)}">${esc(p.currentOwner)}</span>`;
+    const owner = `<span class="tag ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span>`;
     const hazards = p.hazards.filter((h) => h.name !== "None");
     return `<tr>
       <th scope="row">
-        <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="tag defense">Under attack</span>` : ""}
+        <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="tag defense">${t.js.underAttack}</span>` : ""}
         <span class="narrow sub">${owner} ${esc([p.sector, p.biome?.name, ...hazards.map((h) => h.name)].filter(Boolean).join(", "))}</span>
       </th>
       <td class="wide">${esc(p.sector)}</td>
       <td class="wide">${owner}</td>
       <td class="wide" title="${esc(p.biome?.description)}">${esc(p.biome?.name ?? "")}</td>
-      <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">None</span>`}</td>
+      <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">${t.js.none}</span>`}</td>
       <td class="num">${num(p.statistics.playerCount)}</td>
-      <td class="num">${held(p) ? "Held" : pct(liberation(p))}</td>
+      <td class="num">${held(p) ? t.js.held : pct(liberation(p))}</td>
     </tr>${open.has(p.index) ? details(p, hazards) : ""}`;
-  }).join("") || `<tr><td colspan="7" class="muted">No planets match these filters.</td></tr>`;
+  }).join("") || `<tr><td colspan="7" class="muted">${t.js.noMatch}</td></tr>`;
   if (focused) document.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
   if (scrollTo !== null) document.querySelector(`[data-planet="${scrollTo}"]`)?.scrollIntoView({ block: "center" });
   scrollTo = null;
@@ -83,15 +84,15 @@ function render() {
 function details(p, hazards) {
   const g = regen(p);
   const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(r.size.toLowerCase())}</span>` : ""}
-    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">Locked</span>` : ""} <span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}${r.players ? ` <span class="muted">${num(r.players)} Helldivers</span>` : ""}</li>`);
+    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">${t.js.locked}</span>` : ""} <span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
       ${p.biome ? `<h3>${esc(p.biome.name)}</h3><p>${esc(p.biome.description)}</p>` : ""}
-      ${hazards.length ? `<h3>Hazards</h3><ul>${hazards.map((h) => `<li><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
-      ${g >= 0.0005 && !held(p) ? `<p class="rate stalled">Enemy regains ${(g * 100).toFixed(2)}%/h</p>` : ""}
-      ${regions.length ? `<h3>Regions</h3><ul class="regions">${regions.join("")}</ul>` : ""}
+      ${hazards.length ? `<h3>${t.js.hazards}</h3><ul>${hazards.map((h) => `<li><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
+      ${g >= 0.0005 && !held(p) ? `<p class="rate stalled">${fill(t.js.regains, { rate: pct(g) })}</p>` : ""}
+      ${regions.length ? `<h3>${t.js.regions}</h3><ul class="regions">${regions.join("")}</ul>` : ""}
     </section>
-    <section><h3>Battle record</h3>${record(p.statistics)}</section>
+    <section><h3>${t.js.battleRecord}</h3>${record(p.statistics)}</section>
   </div></td></tr>`;
 }
 

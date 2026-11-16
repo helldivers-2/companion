@@ -450,6 +450,23 @@ footer {
   }
 }
 
+.langs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+
+  a {
+    display: block;
+    padding: 0.5rem 0;
+    color: $text;
+
+    &[aria-current] {
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
+}
+
 .disclaimer {
   padding: 2rem clamp(1rem, 4vw, 2rem) calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
   border-top: 1px solid $line;

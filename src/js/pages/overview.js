@@ -1,7 +1,7 @@
-import labels from "../../_data/labels.json" with { type: "json" };
 import { get } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, faction, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
+import { fill, lang, t } from "../i18n.js";
 
 const $ = (id) => document.getElementById(id);
 const SHOWN_PER_FRONT = 5;
@@ -20,18 +20,18 @@ export default async function overview() {
 
   $("orders").innerHTML = orders.length
     ? orders.map((o) => orderPanel(o, planets, rates, orderPlanets)).join("")
-    : `<article class="order"><p>${icon("target")} No Major Order right now. High Command will issue new orders soon.</p></article>`;
+    : `<article class="order"><p>${icon("target")} ${t.js.noOrder}</p></article>`;
 
-  $("dss").innerHTML = stations.map(stationPanel).join("") || `<p class="muted">No Democracy Space Station in orbit right now.</p>`;
+  $("dss").innerHTML = stations.map(stationPanel).join("") || `<p class="muted">${t.js.noStation}</p>`;
 
   $("record").innerHTML = record(war.statistics, true);
 
   const defenses = campaigns.filter((c) => c.planet.event).length;
   $("online").innerHTML = [
-    ["users", "Helldivers online", num(war.statistics.playerCount)],
-    ["sword", "Fronts", num(campaigns.length)],
-    ["shield-warning", "Defenses", num(defenses)],
-    war.impactMultiplier ? ["percent", "Mission impact", war.impactMultiplier.toFixed(4)] : null,
+    ["users", t.js.online, num(war.statistics.playerCount)],
+    ["sword", t.js.fronts, num(campaigns.length)],
+    ["shield-warning", t.js.defenses, num(defenses)],
+    war.impactMultiplier ? ["percent", t.js.impact, new Intl.NumberFormat(lang, { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(war.impactMultiplier)] : null,
   ].filter(Boolean).map(([i, label, value]) => `<li>${icon(i)} <span class="muted">${label}</span> <strong>${value}</strong></li>`).join("");
 
   const groups = {};
@@ -44,15 +44,16 @@ export default async function overview() {
   const focused = document.activeElement?.closest("#fronts details")?.id;
   fronts.innerHTML = Object.entries(groups)
     .sort(([, a], [, b]) => players(b) - players(a))
-    .map(([faction, list]) => {
+    .map(([enemy, list]) => {
       const rows = list.sort((a, b) => rank(b) - rank(a)).map((p) => frontRow(p, rates[p.index], orderPlanets.has(p.index)));
       const rest = rows.splice(SHOWN_PER_FRONT);
-      return `<section class="front ${slug(faction)}" aria-labelledby="front-${slug(faction)}">
-        <h3 id="front-${slug(faction)}">${esc(faction)} <span class="muted">${num(players(list))} Helldivers</span></h3>
+      const id = slug(enemy);
+      return `<section class="front ${id}" aria-labelledby="front-${id}">
+        <h3 id="front-${id}">${esc(faction(enemy))} <span class="muted">${fill(t.js.helldivers, { n: num(players(list)) })}</span></h3>
         <ul class="rows">${rows.join("")}</ul>
-        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>${icon("caret-right")} Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
+        ${rest.length ? `<details id="more-${id}"${open.has(`more-${id}`) ? " open" : ""}><summary>${icon("caret-right")} ${fill(t.js.showMore, { n: rest.length })}</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
-    }).join("") || `<p class="muted">${icon("sword")} No active campaigns.</p>`;
+    }).join("") || `<p class="muted">${icon("sword")} ${t.js.noCampaigns}</p>`;
   if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
@@ -66,26 +67,26 @@ function orderPanel(o, planets, rates, orderPlanets) {
     if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
     else if (p && (p.currentOwner !== "Humans" || p.event)) detail = meter(p, rates[p.index]);
     return `<li class="${d.done ? "done" : ""}">
-      <span class="check icon"><span class="visually-hidden">${d.done ? "Complete:" : "Open:"}</span></span>
+      <span class="check icon"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
-        <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? "Held" : esc(p.currentOwner)}</span>` : ""}</p>
+        <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
         ${detail}
       </div>
     </li>`;
   }).join("");
   const rewards = (o.rewards ?? [o.reward]).filter(Boolean)
-    .map((r) => `${num(r.amount)} ${labels.rewardTypes[r.type] ?? "reward"}`).join(", ");
-  // The card is already titled "Major Order", so only a different (named or localised) title is worth repeating.
-  const title = /^major order$/i.test(o.title ?? "") ? "" : titleCase(o.title ?? "");
+    .map((r) => `${num(r.amount)} ${t.rewardTypes[r.type] ?? t.js.reward}`).join(", ");
+  // The card is already titled "Major Order", so only a different (named) title is worth repeating.
+  const title = (o.title ?? "").toLowerCase() === t.overview.order.toLowerCase() ? "" : titleCase(o.title ?? "");
   return `<article class="order">
     <header>
       ${title ? `<h3>${icon("trophy")} ${esc(title)}</h3>` : ""}
-      <p class="order-clock">${icon("calendar-blank")} <span class="big">${countdown(o.expiration)}</span> left</p>
+      <p class="order-clock">${icon("calendar-blank")} ${fill(t.js.left, { time: `<span class="big">${countdown(o.expiration)}</span>` })}</p>
     </header>
     ${o.briefing ? `<p class="briefing">${esc(o.briefing)}</p>` : ""}
     ${tasks ? `<ul class="tasks">${tasks}</ul>` : ""}
-    ${described.length > 1 ? `<p class="muted">${done} of ${described.length} objectives complete</p>` : ""}
-    ${rewards ? `<p class="reward">${icon("medal")} Reward: ${esc(rewards)}</p>` : ""}
+    ${described.length > 1 ? `<p class="muted">${fill(t.js.objectives, { done, total: described.length })}</p>` : ""}
+    ${rewards ? `<p class="reward">${icon("medal")} ${fill(t.js.rewardLine, { rewards: esc(rewards) })}</p>` : ""}
   </article>`;
 }
 
@@ -96,7 +97,7 @@ function meter(p, rate) {
   const lib = liberation(p);
   const r = leadingRegion(p);
   const where = r ? `${titleCase(r.name)}${r.size ? ` (${r.size.toLowerCase()})` : ""}` : "";
-  const label = `${p.name} ${where ? `${where} ` : ""}${p.event ? "defense" : "liberation"}`;
+  const label = fill(p.event ? t.js.defense : t.js.liberation, { planet: where ? `${p.name} ${where}` : p.name });
   return `${where ? `<p class="region muted">${icon("map-pin")} ${esc(where)}</p>` : ""}<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
 }
 
@@ -107,35 +108,35 @@ export function rateLine(p, lib, rate, now = Date.now()) {
   if (rate === undefined) {
     // Until this browser has measured a rate, the API's own regeneration is the best hint.
     const g = regen(p);
-    return lib > 0 && g >= STALLED ? `<p class="rate stalled">Enemy regains ${(g * 100).toFixed(2)}%/h</p>` : "";
+    return lib > 0 && g >= STALLED ? `<p class="rate stalled">${fill(t.js.regains, { rate: pct(g) })}</p>` : "";
   }
-  if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">No movement</p>` : "";
-  const speed = `${rate > 0 ? "+" : "−"}${Math.abs(rate * 100).toFixed(2)}%/h`;
+  if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">${t.js.noMovement}</p>` : "";
+  const speed = `${rate > 0 ? "+" : "−"}${pct(Math.abs(rate))}/h`;
   const h = hoursToWin(lib, rate);
-  if (h === null) return `<p class="rate losing">${speed}, losing ground</p>`;
+  if (h === null) return `<p class="rate losing">${fill(t.js.losing, { speed })}</p>`;
   const tooSlow = p.event && now + h * 3_600_000 > Date.parse(p.event.endTime);
-  return `<p class="rate${tooSlow ? " losing" : ""}">${speed}, ${tooSlow ? `needs ~${eta(h)}, too slow to hold` : `won in ~${eta(h)}`}</p>`;
+  return `<p class="rate${tooSlow ? " losing" : ""}">${fill(tooSlow ? t.js.tooSlow : t.js.winIn, { speed, eta: eta(h) })}</p>`;
 }
 
 const frontRow = (p, rate, isOrder) => `<li class="row">
   <div class="row-head">
     <h4>${esc(p.name)}</h4>
     <span class="muted sector">${esc(p.sector)}</span>
-    ${isOrder ? `<span class="tag mo">Major Order</span>` : ""}
-    ${p.event ? `<span class="tag defense">Defend, ${countdown(p.event.endTime)} left</span>` : ""}
-    <span class="players" title="Helldivers on this planet"><span class="visually-hidden">Helldivers: </span>${num(p.statistics.playerCount)}</span>
+    ${isOrder ? `<span class="tag mo">${t.overview.order}</span>` : ""}
+    ${p.event ? `<span class="tag defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
+    <span class="players" title="${t.js.onPlanet}"><span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
   </div>
-  ${idle(p) ? `<p class="rate stalled">No ground taken yet</p>` : meter(p, rate)}
+  ${idle(p) ? `<p class="rate stalled">${t.js.idle}</p>` : meter(p, rate)}
 </li>`;
 
 const stationPanel = (st) => `<article class="station">
-  <header><h3>Orbiting ${esc(st.planet?.name ?? "unknown")}</h3><p class="muted">Next move vote ends in ${countdown(st.electionEnd)}</p></header>
+  <header><h3>${fill(t.js.orbiting, { planet: esc(st.planet?.name ?? t.js.unknown) })}</h3><p class="muted">${fill(t.js.vote, { time: countdown(st.electionEnd) })}</p></header>
   <ul class="actions">${(st.tacticalActions ?? []).map((a) => {
     const cost = a.costs?.[0];
-    const status = labels.tacticalStatus[a.status] ?? "Unknown";
+    const status = t.tacticalStatus[a.status] ?? t.js.statusUnknown;
     return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>
-      ${a.status !== 1 && a.statusExpire ? `<span class="muted">for ${countdown(a.statusExpire)}</span>` : ""}</p>
-      ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, `${a.name} preparation`) : ""}
+      ${a.status !== 1 && a.statusExpire ? `<span class="muted">${fill(t.js.for, { time: countdown(a.statusExpire) })}</span>` : ""}</p>
+      ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, fill(t.js.preparation, { name: a.name })) : ""}
       <p class="muted">${esc(a.strategicDescription || a.description)}</p></li>`;
   }).join("")}</ul>
 </article>`;

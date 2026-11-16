@@ -1,11 +1,16 @@
 import labels from "../_data/labels.json" with { type: "json" };
+import { fill, lang, t } from "./i18n.js";
 
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
-export const num = (n) => new Intl.NumberFormat("en").format(n ?? 0);
-export const pct = (x) => `${(x * 100).toFixed(2)}%`;
+const numFmt = new Intl.NumberFormat(lang);
+export const num = (n) => numFmt.format(n ?? 0);
+const pctFmt = new Intl.NumberFormat(lang, { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+export const pct = (x) => pctFmt.format(x);
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
+// Faction names arrive as API values; translate them only for display.
+export const faction = (f) => t.factions[f] ?? f;
 export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {
@@ -44,9 +49,10 @@ export function duration(ms) {
   let s = Math.floor(ms / 1000);
   const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
   s %= 60;
-  if (d) return `${d}d ${h}h ${m}m`;
-  if (h) return `${h}h ${m}m`;
-  return `${m}m ${String(s).padStart(2, "0")}s`;
+  const u = t.units;
+  if (d) return `${d}${u.d} ${h}${u.h} ${m}${u.m}`;
+  if (h) return `${h}${u.h} ${m}${u.m}`;
+  return `${m}${u.m} ${String(s).padStart(2, "0")}${u.s}`;
 }
 
 // Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
@@ -78,26 +84,28 @@ export function steamHtml(bb) {
     .replace(/<p>\s*<\/p>/g, "");
 }
 
-const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+const compact = new Intl.NumberFormat(lang, { notation: "compact", maximumFractionDigits: 1 });
+const years = new Intl.NumberFormat(lang, { notation: "compact", maximumFractionDigits: 1, style: "unit", unit: "year", unitDisplay: "long" });
 
 // Battle record for the whole war or one planet. Accuracy is left out: the API reports more hits than shots.
 export function record(s, byFaction = false) {
   const total = (s.terminidKills ?? 0) + (s.automatonKills ?? 0) + (s.illuminateKills ?? 0);
   const deaths = s.deaths ?? 0;
+  const r = t.record;
   const kills = byFaction
-    ? [["Terminids killed", s.terminidKills], ["Automatons destroyed", s.automatonKills], ["Illuminate purged", s.illuminateKills]]
-    : [["Enemies killed", total]];
+    ? [[r.terminids, s.terminidKills], [r.automatons, s.automatonKills], [r.illuminate, s.illuminateKills]]
+    : [[r.enemies, total]];
   const rows = [
-    ["Missions won", s.missionsWon],
-    ["Missions lost", s.missionsLost],
-    ["Success rate", `${s.missionSuccessRate ?? 0}%`],
+    [r.missionsWon, s.missionsWon],
+    [r.missionsLost, s.missionsLost],
+    [r.successRate, `${s.missionSuccessRate ?? 0}%`],
     ...kills,
-    ["Helldivers fallen", s.deaths],
-    ["Kills per death", deaths ? compact.format(total / deaths) : "–"],
-    ["Friendly fire kills", s.friendlies],
-    ["Friendly fire deaths", deaths ? `${Math.round(((s.friendlies ?? 0) / deaths) * 100)}%` : "–"],
-    ["Rounds fired", s.bulletsFired],
-    ["Time in combat", `${compact.format((s.missionTime ?? 0) / 31_557_600)} years`],
+    [r.deaths, s.deaths],
+    [r.kd, deaths ? compact.format(total / deaths) : "–"],
+    [r.friendlies, s.friendlies],
+    [r.friendlyShare, deaths ? `${Math.round(((s.friendlies ?? 0) / deaths) * 100)}%` : "–"],
+    [r.bullets, s.bulletsFired],
+    [r.time, years.format((s.missionTime ?? 0) / 31_557_600)],
   ];
   return `<dl class="record">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${typeof v === "string" ? v : `<span title="${num(v)}">${compact.format(v ?? 0)}</span>`}</dd></div>`).join("")}</dl>`;
 }
@@ -109,15 +117,15 @@ export function describeTask(task, progress = 0, planets = {}) {
     const i = task.valueTypes.indexOf(t);
     return i < 0 ? undefined : task.values[i];
   };
-  const verb = labels.taskTypes[task.type] ?? `Task type ${task.type}`;
+  const verb = t.taskTypes[task.type] ?? fill(t.js.taskType, { n: task.type });
   const planetIndex = val(vt.planet);
   const planet = planetIndex ? planets[planetIndex] : undefined; // 0 means "any planet"
   const goal = val(vt.goal) || 1;
-  const faction = labels.factions[val(vt.faction) - 1];
+  const enemy = labels.factions[val(vt.faction) - 1];
   const ratio = Math.min(1, progress / goal);
   if (planetIndex) {
-    return { text: `${verb} ${planet?.name ?? `planet #${planetIndex}`}`, planet, ratio, done: progress >= goal, counted: false };
+    return { text: `${verb} ${planet?.name ?? fill(t.js.planetN, { n: planetIndex })}`, planet, ratio, done: progress >= goal, counted: false };
   }
-  const unit = faction ?? ([11, 12, 13, 15].includes(task.type) ? "planets" : "");
+  const unit = enemy ? faction(enemy) : [11, 12, 13, 15].includes(task.type) ? t.js.planetsUnit : "";
   return { text: `${verb} ${num(goal)} ${unit}`.trim(), ratio, done: progress >= goal, counted: goal > 1, progress, goal };
 }
