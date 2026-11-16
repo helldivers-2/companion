@@ -33,7 +33,7 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 
 // Phosphor icons, copied to /assets/icons by eleventy.config.js; keep the two lists in step.
 $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank, medal, circle, target, sword, clock, users,
-  caret-right, shield-warning, map-pin;
+  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out;
 
 *,
 *::before,
@@ -177,6 +177,7 @@ h4 {
 
   nav {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.25rem;
   }
 
@@ -236,6 +237,68 @@ footer {
 .notice {
   padding: 1rem;
   border: 1px solid $accent;
+}
+
+// Four nav items with icons overflow a 360 px phone; the labels alone fit.
+@media (width < 30rem) {
+  .top nav .icon {
+    display: none;
+  }
+}
+
+// Disclosure pieces shared by fronts, planet rows and news posts: the caret icon replaces the native marker.
+summary {
+  cursor: pointer;
+  list-style: none;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+[open] > summary > .icon:first-child,
+[aria-expanded="true"] > .icon:first-child {
+  rotate: 90deg;
+}
+
+.record {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin: 0.75rem 0 0;
+
+  dt {
+    color: $muted;
+    font-size: 0.875rem;
+  }
+
+  dd {
+    margin: 0;
+    font-family: $display;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
+
+.prose {
+  max-width: 44rem;
+
+  h2 {
+    margin: 2rem 0 0.75rem;
+  }
+
+  h3 {
+    margin: 1.5rem 0 0.25rem;
+  }
+
+  p,
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
 }
 
 .section-head {
@@ -502,20 +565,10 @@ footer {
   summary {
     padding: 0.625rem 0;
     color: $muted;
-    cursor: pointer;
-    list-style: none; // the caret icon replaces the native marker
-
-    &::-webkit-details-marker {
-      display: none;
-    }
 
     &:hover {
       color: $text;
     }
-  }
-
-  [open] > summary .icon {
-    rotate: 90deg;
   }
 }
 
@@ -665,6 +718,51 @@ footer {
     text-align: right;
   }
 
+  .expand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.35rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    .icon {
+      color: $muted;
+    }
+
+    &:hover {
+      color: $accent;
+    }
+  }
+
+  .detail td {
+    padding: 0.75rem 0.5rem 1.25rem 1.85rem;
+    background: $panel;
+  }
+
+  .detail h3 {
+    margin: 0.75rem 0 0.25rem;
+    font-size: 1.125rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .detail ul {
+    margin: 0;
+    padding-left: 1.25rem;
+  }
+
+  .regions .pct {
+    min-width: 0;
+    margin-left: 0.25rem;
+  }
+
   .sub {
     margin-top: 0.25rem;
     color: $muted;
@@ -735,6 +833,62 @@ footer {
     color: $accent;
     font-family: $display;
     font-size: 1.3125rem;
+  }
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem 2rem;
+}
+
+// News
+
+.note {
+  max-width: 48rem;
+  padding: 1rem 1.25rem;
+  background: $panel;
+
+  summary {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 0.5rem;
+    align-items: baseline;
+
+    .muted {
+      grid-column: 2;
+      font-size: 0.875rem;
+    }
+
+    &:hover h2 {
+      color: $accent;
+    }
+  }
+}
+
+.steam {
+  margin-top: 1rem;
+  overflow-wrap: anywhere;
+
+  p,
+  ul,
+  ol,
+  h3,
+  h4 {
+    margin: 0 0 0.75rem;
+  }
+
+  h3 {
+    margin-top: 1.5rem;
+  }
+
+  ul,
+  ol {
+    padding-left: 1.25rem;
+  }
+
+  li > p {
+    margin: 0;
   }
 }
 

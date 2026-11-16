@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { describeTask, dispatchHtml, leadingRegion, liberation, regen, slug, timeLeft } from "../src/js/format.js";
+import { describeTask, dispatchHtml, leadingRegion, liberation, record, regen, slug, steamHtml, timeLeft } from "../src/js/format.js";
 
 test("liberation uses event health during a defense", () => {
   assert.equal(liberation({ currentOwner: "Terminids", health: 250, maxHealth: 1000, event: null }), 0.75);
@@ -54,4 +54,22 @@ test("describeTask reads planet and kill tasks", () => {
   const kill = describeTask({ type: 3, values: [2, 1000000, 0], valueTypes: [1, 3, 12] }, 250000);
   assert.equal(kill.text, "Eradicate 1,000,000 Terminids");
   assert.equal(kill.ratio, 0.25);
+});
+
+test("steamHtml keeps known BBCode and nothing executable", () => {
+  assert.equal(
+    steamHtml("[h2][b]Fixes[/b][/h2][list][*][p]\\[PC] Fixed a crash[/p][/*][/list][p]\n[/p]"),
+    "<h3><strong>Fixes</strong></h3><ul><li><p>&#91;PC] Fixed a crash</p></li></ul>",
+  );
+  assert.equal(steamHtml('[url="https://a.example/?x=1&y=2"]Store[/url]'), '<a href="https://a.example/?x=1&#38;y=2">Store</a>');
+  assert.equal(steamHtml("[url=javascript:alert(1)]x[/url]"), "x");
+  assert.equal(steamHtml('[url=https://a.example/" onclick="x]y[/url]'), '<a href="https://a.example/&#34; onclick=&#34;x">y</a>');
+  assert.equal(steamHtml("<script>x</script>[img src=x][/img][previewyoutube=abc;full][/previewyoutube][spoiler]s[/spoiler]"), "&#60;script&#62;x&#60;/script&#62;s");
+});
+
+test("record sums kills per planet and splits them for the war", () => {
+  const s = { terminidKills: 1000, automatonKills: 500, illuminateKills: 0, missionSuccessRate: 88, missionTime: 31_557_600 };
+  assert.match(record(s), /Enemies killed<\/dt><dd><span title="1,500">1\.5K/);
+  assert.match(record(s, true), /Automatons destroyed/);
+  assert.match(record(s), /88%.*1 years/);
 });

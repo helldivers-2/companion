@@ -61,6 +61,43 @@ export const dispatchHtml = (msg) =>
     .replace(/&#60;\/span&#62;/g, "</strong>")
     .replace(/&#60;\/?i(=\d)?&#62;/g, "");
 
+const STEAM_TAGS = { h1: "h3", h2: "h3", h3: "h4", b: "strong", i: "em", u: "u", strike: "s", p: "p", list: "ul", olist: "ol", "*": "li" };
+
+// Steam posts are BBCode: escape everything, then turn known tags back into HTML. Only http(s) links survive,
+// and images and videos are dropped because the CSP only allows this site's own images.
+export function steamHtml(bb) {
+  const link = (href, text) => (/^https?:\/\//i.test(href) ? `<a href="${href}">${text}</a>` : text);
+  return esc(bb)
+    .replace(/\\\[/g, "&#91;") // \[PC] is a literal bracket, not a tag
+    .replace(/\\\]/g, "&#93;")
+    .replace(/\[(img|previewyoutube)[^\]]*\][\s\S]*?\[\/\1\]/g, "")
+    .replace(/\[url=(?:&#34;)?(.*?)(?:&#34;)?\]([\s\S]*?)\[\/url\]/g, (_, href, text) => link(href, text))
+    .replace(/\[url\](.*?)\[\/url\]/g, (_, href) => link(href, href))
+    .replace(/\[(\/?)(h[123]|b|i|u|strike|p|list|olist|\*)\]/g, (_, close, tag) => `<${close}${STEAM_TAGS[tag]}>`)
+    .replace(/\[\/?[a-z0-9]+(=[^\]]*)?\]/g, "")
+    .replace(/<p>\s*<\/p>/g, "");
+}
+
+const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+
+// Battle record for the whole war or one planet. Accuracy is left out: the API reports more hits than shots.
+export function record(s, byFaction = false) {
+  const kills = byFaction
+    ? [["Terminids killed", s.terminidKills], ["Automatons destroyed", s.automatonKills], ["Illuminate purged", s.illuminateKills]]
+    : [["Enemies killed", (s.terminidKills ?? 0) + (s.automatonKills ?? 0) + (s.illuminateKills ?? 0)]];
+  const rows = [
+    ["Missions won", s.missionsWon],
+    ["Missions lost", s.missionsLost],
+    ["Success rate", `${s.missionSuccessRate ?? 0}%`],
+    ...kills,
+    ["Helldivers fallen", s.deaths],
+    ["Friendly fire kills", s.friendlies],
+    ["Rounds fired", s.bulletsFired],
+    ["Time in combat", `${compact.format((s.missionTime ?? 0) / 31_557_600)} years`],
+  ];
+  return `<dl class="record">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${typeof v === "string" ? v : `<span title="${num(v)}">${compact.format(v ?? 0)}</span>`}</dd></div>`).join("")}</dl>`;
+}
+
 // Task semantics are reverse-engineered by the community; unknown types fall back to a raw label.
 export function describeTask(task, progress = 0, planets = {}) {
   const vt = labels.valueTypes;

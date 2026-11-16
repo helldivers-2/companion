@@ -30,7 +30,7 @@
   <header class="top">
     <a class="brand" href="/">{{ site.name }}</a>
     <nav aria-label="Main">
-      {%- for item in [["/", "Overview", "rocket-launch"], ["/planets/", "Planets", "globe-hemisphere-west"], ["/dispatches/", "Dispatches", "newspaper"]] %}
+      {%- for item in [["/", "Overview", "rocket-launch"], ["/planets/", "Planets", "globe-hemisphere-west"], ["/dispatches/", "Dispatches", "megaphone-simple"], ["/news/", "News", "newspaper"]] %}
       <a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span>{{ item[1] }}</a>
       {%- endfor %}
     </nav>
@@ -41,7 +41,7 @@
     {{ content | safe }}
   </main>
   <footer>
-    <p>Unofficial fan project, not affiliated with Arrowhead Game Studios. Data from the community <a href="https://helldivers-2.github.io/api/">Helldivers 2 API</a>, refreshed every {{ site.refreshSeconds }} s.</p>
+    <p>Unofficial fan project, not affiliated with Arrowhead Game Studios. Data from the community <a href="https://helldivers-2.github.io/api/">Helldivers 2 API</a>, refreshed every {{ site.refreshSeconds }} s. <a href="/faq/">How the war works</a></p>
   </footer>
 </body>
 </html>

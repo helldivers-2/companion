@@ -4,8 +4,9 @@ import { icon, timeLeft } from "./format.js";
 import overview from "./pages/overview.js";
 import planets from "./pages/planets.js";
 import dispatches from "./pages/dispatches.js";
+import news from "./pages/news.js";
 
-const page = { overview, planets, dispatches }[document.body.dataset.page];
+const page = { overview, planets, dispatches, news }[document.body.dataset.page];
 const status = document.getElementById("status");
 
 function say(text, announce) {

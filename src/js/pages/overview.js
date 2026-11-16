@@ -1,6 +1,6 @@
 import labels from "../../_data/labels.json" with { type: "json" };
 import { get } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, icon, leadingRegion, liberation, num, pct, regen, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 
 const $ = (id) => document.getElementById(id);
@@ -24,6 +24,8 @@ export default async function overview() {
 
   $("dss-section").hidden = !stations.length;
   $("dss").innerHTML = stations.map(stationPanel).join("");
+
+  $("record").innerHTML = record(war.statistics, true);
 
   const defenses = campaigns.filter((c) => c.planet.event).length;
   $("online").innerHTML = [

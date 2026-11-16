@@ -1,10 +1,12 @@
 import { get } from "../api.js";
-import { esc, liberation, num, pct, slug } from "../format.js";
+import { esc, icon, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
 
 let planets = [];
 const held = (p) => p.currentOwner === "Humans" && !p.event;
 const libRank = (p) => (held(p) ? -1 : liberation(p)); // held planets sink below active fights
 let sort = { key: "players", dir: -1 };
+const open = new Set(); // planet indexes with their detail row shown
+let scrollTo = null;
 const sorters = {
   name: (a, b) => a.name.localeCompare(b.name),
   sector: (a, b) => a.sector.localeCompare(b.sector),
@@ -24,6 +26,8 @@ function readUrl() {
   el.active.checked = u.has("active");
   const [key, dir] = (u.get("sort") ?? "").split(":");
   if (Object.hasOwn(sorters, key)) sort = { key, dir: dir === "asc" ? 1 : -1 };
+  for (const i of (u.get("open") ?? "").split(",").filter(Boolean)) open.add(Number(i));
+  scrollTo = open.size === 1 ? [...open][0] : null; // a shared planet link should land on that planet
 }
 
 function writeUrl(f) {
@@ -31,6 +35,7 @@ function writeUrl(f) {
   if (f.get("q")) u.set("q", f.get("q"));
   if (f.get("owner")) u.set("owner", f.get("owner"));
   if (f.get("active")) u.set("active", "");
+  if (open.size) u.set("open", [...open].join(","));
   if (sort.key !== "players" || sort.dir !== -1) u.set("sort", `${sort.key}:${sort.dir > 0 ? "asc" : "desc"}`);
   history.replaceState(null, "", u.size ? `?${u}` : location.pathname);
 }
@@ -53,12 +58,13 @@ function render() {
   const text = `${rows.length} of ${planets.length} planets`;
   if (count.textContent !== text) count.textContent = text; // live region: the 60 s refresh must not re-announce it
 
+  const focused = document.activeElement?.dataset.planet; // the 60 s refresh rebuilds the rows
   document.getElementById("planet-rows").innerHTML = rows.map((p) => {
     const owner = `<span class="tag ${slug(p.currentOwner)}">${esc(p.currentOwner)}</span>`;
     const hazards = p.hazards.filter((h) => h.name !== "None");
     return `<tr>
       <th scope="row">
-        <span translate="no">${esc(p.name)}</span>${p.event ? ` <span class="tag defense">Under attack</span>` : ""}
+        <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="tag defense">Under attack</span>` : ""}
         <span class="narrow sub">${owner} ${esc([p.sector, p.biome?.name, ...hazards.map((h) => h.name)].filter(Boolean).join(", "))}</span>
       </th>
       <td class="wide">${esc(p.sector)}</td>
@@ -67,8 +73,26 @@ function render() {
       <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">None</span>`}</td>
       <td class="num">${num(p.statistics.playerCount)}</td>
       <td class="num">${held(p) ? "Held" : pct(liberation(p))}</td>
-    </tr>`;
+    </tr>${open.has(p.index) ? details(p, hazards) : ""}`;
   }).join("") || `<tr><td colspan="7" class="muted">No planets match these filters.</td></tr>`;
+  if (focused) document.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
+  if (scrollTo !== null) document.querySelector(`[data-planet="${scrollTo}"]`)?.scrollIntoView({ block: "center" });
+  scrollTo = null;
+}
+
+function details(p, hazards) {
+  const g = regen(p);
+  const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(r.size.toLowerCase())}</span>` : ""}
+    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">Locked</span>` : ""} <span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}${r.players ? ` <span class="muted">${num(r.players)} Helldivers</span>` : ""}</li>`);
+  return `<tr class="detail"><td colspan="7"><div class="detail-grid">
+    <section>
+      ${p.biome ? `<h3>${esc(p.biome.name)}</h3><p>${esc(p.biome.description)}</p>` : ""}
+      ${hazards.length ? `<h3>Hazards</h3><ul>${hazards.map((h) => `<li><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
+      ${g >= 0.0005 && !held(p) ? `<p class="rate stalled">Enemy regains ${(g * 100).toFixed(2)}%/h</p>` : ""}
+      ${regions.length ? `<h3>Regions</h3><ul class="regions">${regions.join("")}</ul>` : ""}
+    </section>
+    <section><h3>Battle record</h3>${record(p.statistics)}</section>
+  </div></td></tr>`;
 }
 
 export default async function planetsPage() {
@@ -77,6 +101,12 @@ export default async function planetsPage() {
     readUrl();
     form().addEventListener("input", render);
     form().addEventListener("submit", (e) => e.preventDefault());
+    document.getElementById("planet-rows").addEventListener("click", (e) => {
+      const i = Number(e.target.closest("[data-planet]")?.dataset.planet ?? NaN);
+      if (Number.isNaN(i)) return;
+      if (!open.delete(i)) open.add(i);
+      render();
+    });
     document.querySelector("table.planets thead").addEventListener("click", (e) => {
       const key = e.target.closest("th[data-sort]")?.dataset.sort;
       if (!key) return;
