@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hash is the <script>0</script> below. #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   {%- set title = t.meta[page_id][0] %}
   {%- set description = t.meta[page_id][1] %}
   {%- set path = page.url | replace("/" + lang + "/", "/") %}
@@ -36,6 +36,8 @@
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/main.css">
+  {#- Firefox lays out the body before the stylesheet arrives if anything (often an extension) forces layout early, flashing raw HTML. A script here has to wait for the stylesheet, which holds the body back. #}
+  <script>0</script>
 </head>
 <body data-page="{{ page_id }}">
   <a class="skip" href="#main">{{ t.layout.skip }}</a>
