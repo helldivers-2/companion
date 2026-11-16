@@ -1,7 +1,8 @@
 import { get } from "../api.js";
-import { dispatchHtml, esc } from "../format.js";
+import { dispatchHtml, esc, icon } from "../format.js";
 
 const SHOWN = 50;
+const outcome = (msg) => (/MAJOR ORDER WON|DIRECTIVE COMPLETED/i.test(msg) ? " won" : /MAJOR ORDER FAILED/i.test(msg) ? " failed" : "");
 const dateFmt = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
 
 export default async function dispatches() {
@@ -10,6 +11,6 @@ export default async function dispatches() {
     .filter((d) => d.message && !Number.isNaN(Date.parse(d.published))) // one bad date would throw in dateFmt and blank the feed
     .sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
     .slice(0, SHOWN)
-    .map((d) => `<li class="dispatch"><time datetime="${esc(d.published)}">${dateFmt.format(new Date(d.published))}</time><p>${dispatchHtml(d.message)}</p></li>`)
-    .join("") || `<li class="muted">No dispatches from Super Earth yet.</li>`;
+    .map((d) => `<li class="card dispatch${outcome(d.message)}">${icon("clock")} <time datetime="${esc(d.published)}">${dateFmt.format(new Date(d.published))}</time><p>${dispatchHtml(d.message)}</p></li>`)
+    .join("") || `<li class="card muted">${icon("clock")} No dispatches from Super Earth yet.</li>`;
 }

@@ -5,6 +5,7 @@ export const num = (n) => new Intl.NumberFormat("en").format(n ?? 0);
 export const pct = (x) => `${(x * 100).toFixed(2)}%`;
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
 export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {
@@ -12,12 +13,27 @@ export function bar(ratio, label) {
   return `<div class="bar" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(v * 100).toFixed(1)}"><span style="width:${v * 100}%"></span></div>`;
 }
 
+// Region system: planet health stays full while a city is being taken, so the furthest-taken region is the progress.
+export function leadingRegion(planet) {
+  if (planet.event || planet.currentOwner === "Humans" || planet.health < planet.maxHealth) return null;
+  const share = (r) => r.health / r.maxHealth;
+  return (planet.regions ?? []).filter((r) => r.health < r.maxHealth).sort((a, b) => share(a) - share(b))[0] ?? null;
+}
+
 // Share of the planet Super Earth holds: defense progress during an event, liberation otherwise.
 export function liberation(planet) {
   const e = planet.event;
   if (e) return 1 - e.health / e.maxHealth;
   if (planet.currentOwner === "Humans") return 1;
-  return 1 - planet.health / planet.maxHealth;
+  const r = leadingRegion(planet) ?? planet;
+  return 1 - r.health / r.maxHealth;
+}
+
+// Enemy regeneration in share per hour of whatever liberation() measures; 0 during a defense.
+export function regen(planet) {
+  if (planet.event || planet.currentOwner === "Humans") return 0;
+  const r = leadingRegion(planet) ?? planet;
+  return r.maxHealth ? ((r.regenPerSecond ?? 0) * 3600) / r.maxHealth : 0;
 }
 
 export function enemyOf(planet) {
@@ -44,6 +60,47 @@ export const dispatchHtml = (msg) =>
     .replace(/&#60;span data-ah=&#34;(\d)&#34;&#62;/g, '<strong class="ah-$1">')
     .replace(/&#60;\/span&#62;/g, "</strong>")
     .replace(/&#60;\/?i(=\d)?&#62;/g, "");
+
+const STEAM_TAGS = { h1: "h3", h2: "h3", h3: "h4", b: "strong", i: "em", u: "u", strike: "s", p: "p", list: "ul", olist: "ol", "*": "li" };
+
+// Steam posts are BBCode: escape everything, then turn known tags back into HTML. Only http(s) links survive,
+// and images and videos are dropped because the CSP only allows this site's own images.
+export function steamHtml(bb) {
+  const link = (href, text) => (/^https?:\/\//i.test(href) ? `<a href="${href}">${text}</a>` : text);
+  return esc(bb)
+    .replace(/\\\[/g, "&#91;") // \[PC] is a literal bracket, not a tag
+    .replace(/\\\]/g, "&#93;")
+    .replace(/\[(img|previewyoutube)[^\]]*\][\s\S]*?\[\/\1\]/g, "")
+    .replace(/\[url=(?:&#34;)?(.*?)(?:&#34;)?\]([\s\S]*?)\[\/url\]/g, (_, href, text) => link(href, text))
+    .replace(/\[url\](.*?)\[\/url\]/g, (_, href) => link(href, href))
+    .replace(/\[(\/?)(h[123]|b|i|u|strike|p|list|olist|\*)\]/g, (_, close, tag) => `<${close}${STEAM_TAGS[tag]}>`)
+    .replace(/\[\/?[a-z0-9]+(=[^\]]*)?\]/g, "")
+    .replace(/<p>\s*<\/p>/g, "");
+}
+
+const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 1 });
+
+// Battle record for the whole war or one planet. Accuracy is left out: the API reports more hits than shots.
+export function record(s, byFaction = false) {
+  const total = (s.terminidKills ?? 0) + (s.automatonKills ?? 0) + (s.illuminateKills ?? 0);
+  const deaths = s.deaths ?? 0;
+  const kills = byFaction
+    ? [["Terminids killed", s.terminidKills], ["Automatons destroyed", s.automatonKills], ["Illuminate purged", s.illuminateKills]]
+    : [["Enemies killed", total]];
+  const rows = [
+    ["Missions won", s.missionsWon],
+    ["Missions lost", s.missionsLost],
+    ["Success rate", `${s.missionSuccessRate ?? 0}%`],
+    ...kills,
+    ["Helldivers fallen", s.deaths],
+    ["Kills per death", deaths ? compact.format(total / deaths) : "–"],
+    ["Friendly fire kills", s.friendlies],
+    ["Friendly fire deaths", deaths ? `${Math.round(((s.friendlies ?? 0) / deaths) * 100)}%` : "–"],
+    ["Rounds fired", s.bulletsFired],
+    ["Time in combat", `${compact.format((s.missionTime ?? 0) / 31_557_600)} years`],
+  ];
+  return `<dl class="record">${rows.map(([k, v]) => `<div><dt>${k}</dt><dd>${typeof v === "string" ? v : `<span title="${num(v)}">${compact.format(v ?? 0)}</span>`}</dd></div>`).join("")}</dl>`;
+}
 
 // Task semantics are reverse-engineered by the community; unknown types fall back to a raw label.
 export function describeTask(task, progress = 0, planets = {}) {

@@ -1,6 +1,6 @@
 import labels from "../../_data/labels.json" with { type: "json" };
 import { get } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, liberation, num, pct, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 
 const $ = (id) => document.getElementById(id);
@@ -20,17 +20,24 @@ export default async function overview() {
 
   $("orders").innerHTML = orders.length
     ? orders.map((o) => orderPanel(o, planets, rates, orderPlanets)).join("")
-    : `<article class="order"><p>No Major Order right now. High Command will issue new orders soon.</p></article>`;
+    : `<article class="order"><p>${icon("target")} No Major Order right now. High Command will issue new orders soon.</p></article>`;
 
-  $("dss-section").hidden = !stations.length;
-  $("dss").innerHTML = stations.map(stationPanel).join("");
+  $("dss").innerHTML = stations.map(stationPanel).join("") || `<p class="muted">No Democracy Space Station in orbit right now.</p>`;
 
-  $("online").textContent = `${num(war.statistics.playerCount)} Helldivers online`;
+  $("record").innerHTML = record(war.statistics, true);
+
+  const defenses = campaigns.filter((c) => c.planet.event).length;
+  $("online").innerHTML = [
+    ["users", "Helldivers online", num(war.statistics.playerCount)],
+    ["sword", "Fronts", num(campaigns.length)],
+    ["shield-warning", "Defenses", num(defenses)],
+    war.impactMultiplier ? ["percent", "Mission impact", war.impactMultiplier.toFixed(4)] : null,
+  ].filter(Boolean).map(([i, label, value]) => `<li>${icon(i)} <span class="muted">${label}</span> <strong>${value}</strong></li>`).join("");
 
   const groups = {};
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
   const players = (list) => list.reduce((n, p) => n + p.statistics.playerCount, 0);
-  const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + p.statistics.playerCount;
+  const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + (idle(p) ? 0 : 5e8) + p.statistics.playerCount;
   // Re-rendering every minute would otherwise collapse an opened "Show more" and drop focus from its summary.
   const fronts = $("fronts");
   const open = new Set([...fronts.querySelectorAll("details[open]")].map((d) => d.id));
@@ -43,22 +50,23 @@ export default async function overview() {
       return `<section class="front ${slug(faction)}" aria-labelledby="front-${slug(faction)}">
         <h3 id="front-${slug(faction)}">${esc(faction)} <span class="muted">${num(players(list))} Helldivers</span></h3>
         <ul class="rows">${rows.join("")}</ul>
-        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
+        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>${icon("caret-right")} Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
-    }).join("") || `<p class="muted">No active campaigns.</p>`;
+    }).join("") || `<p class="muted">${icon("sword")} No active campaigns.</p>`;
   if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {
-  const tasks = o.tasks.map((t, i) => {
-    const d = describeTask(t, o.progress[i], planets);
+  const described = o.tasks.map((t, i) => describeTask(t, o.progress[i], planets));
+  const done = described.filter((d) => d.done).length;
+  const tasks = described.map((d) => {
     const p = d.planet;
     if (p) orderPlanets.add(p.index);
     let detail = "";
     if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
     else if (p && (p.currentOwner !== "Humans" || p.event)) detail = meter(p, rates[p.index]);
     return `<li class="${d.done ? "done" : ""}">
-      <span class="check"><span class="visually-hidden">${d.done ? "Complete:" : "Open:"}</span></span>
+      <span class="check icon"><span class="visually-hidden">${d.done ? "Complete:" : "Open:"}</span></span>
       <div>
         <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? "Held" : esc(p.currentOwner)}</span>` : ""}</p>
         ${detail}
@@ -67,27 +75,40 @@ function orderPanel(o, planets, rates, orderPlanets) {
   }).join("");
   const rewards = (o.rewards ?? [o.reward]).filter(Boolean)
     .map((r) => `${num(r.amount)} ${labels.rewardTypes[r.type] ?? "reward"}`).join(", ");
+  // The card is already titled "Major Order", so only a different (named or localised) title is worth repeating.
+  const title = /^major order$/i.test(o.title ?? "") ? "" : titleCase(o.title ?? "");
   return `<article class="order">
     <header>
-      <h3>${esc(titleCase(o.title ?? "Major Order"))}</h3>
-      <p class="order-clock"><span class="big">${countdown(o.expiration)}</span> left</p>
+      ${title ? `<h3>${icon("trophy")} ${esc(title)}</h3>` : ""}
+      <p class="order-clock">${icon("calendar-blank")} <span class="big">${countdown(o.expiration)}</span> left</p>
     </header>
     ${o.briefing ? `<p class="briefing">${esc(o.briefing)}</p>` : ""}
     ${tasks ? `<ul class="tasks">${tasks}</ul>` : ""}
-    ${rewards ? `<p class="reward">Reward: ${esc(rewards)}</p>` : ""}
+    ${described.length > 1 ? `<p class="muted">${done} of ${described.length} objectives complete</p>` : ""}
+    ${rewards ? `<p class="reward">${icon("medal")} Reward: ${esc(rewards)}</p>` : ""}
   </article>`;
 }
 
+// Fronts nobody has taken ground on yet; 34 of 41 at a time is normal, so they get no bar.
+const idle = (p) => !p.event && liberation(p) === 0;
+
 function meter(p, rate) {
   const lib = liberation(p);
-  const label = `${p.name} ${p.event ? "defense" : "liberation"}`;
-  return `<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
+  const r = leadingRegion(p);
+  const where = r ? `${titleCase(r.name)}${r.size ? ` (${r.size.toLowerCase()})` : ""}` : "";
+  const label = `${p.name} ${where ? `${where} ` : ""}${p.event ? "defense" : "liberation"}`;
+  return `${where ? `<p class="region muted">${icon("map-pin")} ${esc(where)}</p>` : ""}<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
 }
 
 const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
 
 export function rateLine(p, lib, rate, now = Date.now()) {
-  if (rate === undefined || lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
+  if (lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
+  if (rate === undefined) {
+    // Until this browser has measured a rate, the API's own regeneration is the best hint.
+    const g = regen(p);
+    return lib > 0 && g >= STALLED ? `<p class="rate stalled">Enemy regains ${(g * 100).toFixed(2)}%/h</p>` : "";
+  }
   if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">No movement</p>` : "";
   const speed = `${rate > 0 ? "+" : "−"}${Math.abs(rate * 100).toFixed(2)}%/h`;
   const h = hoursToWin(lib, rate);
@@ -104,10 +125,10 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
     ${p.event ? `<span class="tag defense">Defend, ${countdown(p.event.endTime)} left</span>` : ""}
     <span class="players" title="Helldivers on this planet"><span class="visually-hidden">Helldivers: </span>${num(p.statistics.playerCount)}</span>
   </div>
-  ${meter(p, rate)}
+  ${idle(p) ? `<p class="rate stalled">No ground taken yet</p>` : meter(p, rate)}
 </li>`;
 
-const stationPanel = (st) => `<article class="panel">
+const stationPanel = (st) => `<article class="station">
   <header><h3>Orbiting ${esc(st.planet?.name ?? "unknown")}</h3><p class="muted">Next move vote ends in ${countdown(st.electionEnd)}</p></header>
   <ul class="actions">${(st.tacticalActions ?? []).map((a) => {
     const cost = a.costs?.[0];

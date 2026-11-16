@@ -1,5 +1,6 @@
 {
   "name": "Helldivers Companion",
+  "url": "https://helldivers.michi.onl",
   "description": "Live Galactic War status: Major Orders, active fronts, planets and dispatches.",
   "api": "https://api.helldivers2.dev",
   "client": "helldivers-companion",

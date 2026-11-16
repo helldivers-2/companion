@@ -29,6 +29,13 @@ test("track starts over instead of throwing on malformed stored history", () => 
   }
 });
 
+test("track starts a new series when progress moves into a region", () => {
+  const store = memory();
+  const regions = [{ id: 3, health: 50, maxHealth: 100 }];
+  track([{ ...planet(1000), regions }], 0, store);
+  assert.deepEqual(Object.keys(JSON.parse(store.getItem("hd:history"))), ["7:r3"]);
+});
+
 test("hoursToWin", () => {
   assert.equal(hoursToWin(0.5, 0.1), 5);
   assert.equal(hoursToWin(0.5, -0.1), null);
@@ -48,6 +55,9 @@ test("rateLine covers finished, stalled, losing and too-slow planets", async () 
   const defense = { name: "Y", event: { endTime: "2026-01-01T02:00:00Z" } };
   assert.equal(rateLine(lib, 1, 0.5, now), "");
   assert.equal(rateLine(lib, 0.5, undefined, now), "");
+  const regenerating = { name: "Z", currentOwner: "Terminids", health: 500, maxHealth: 1000, regenPerSecond: 0.1 };
+  assert.match(rateLine(regenerating, 0.5, undefined, now), /Enemy regains 36.00%\/h/);
+  assert.equal(rateLine(regenerating, 0, undefined, now), "");
   assert.match(rateLine(lib, 0.5, 0.0001, now), /No movement/);
   assert.equal(rateLine(lib, 0, 0.0001, now), "");
   assert.match(rateLine(lib, 0.5, -0.01, now), /losing ground/);

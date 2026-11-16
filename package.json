@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/icons.js",
     "build": "esbuild src/js/main.js --bundle --minify --outfile=_site/assets/main.js && sass --style=compressed --no-source-map --load-path=node_modules src/scss/main.scss _site/assets/main.css && eleventy",
+    "predev": "node scripts/icons.js",
     "dev": "esbuild src/js/main.js --bundle --outfile=_site/assets/main.js --watch=forever & sass --watch --no-source-map --load-path=node_modules src/scss/main.scss _site/assets/main.css & eleventy --serve",
     "test": "node --test"
   },
@@ -11,6 +13,7 @@
     "@11ty/eleventy": "^3.1.8",
     "@fontsource/barlow": "^5.3.0",
     "@fontsource/barlow-condensed": "^5.3.0",
+    "@phosphor-icons/core": "^2.1.1",
     "esbuild": "^0.28.2",
     "sass": "^1.108.2"
   }

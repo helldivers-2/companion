@@ -1,6 +1,7 @@
 import site from "../_data/site.json" with { type: "json" };
 
-const headers = { "X-Super-Client": site.client, "X-Super-Contact": site.contact };
+// The API localizes orders and dispatches by Accept-Language; pin English so they match the lang="en" page.
+const headers = { "X-Super-Client": site.client, "X-Super-Contact": site.contact, "Accept-Language": "en-US" };
 export const state = { stale: false };
 
 // Caches in localStorage so page switches and reloads stay under the API's 5 requests / 10 s limit.

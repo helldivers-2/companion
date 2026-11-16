@@ -4,7 +4,10 @@ title: Planets
 page_id: planets
 permalink: /planets/
 ---
+<div class="container">
 <h1>Planets</h1>
+<section class="card" aria-labelledby="all-h">
+<h2 id="all-h">All planets</h2>
 <form class="filters" id="planet-filters" role="search">
   <label>Search <input type="search" name="q" placeholder="Planet, sector, biome, hazard…" autocomplete="off" spellcheck="false"></label>
   <label>Owner
@@ -29,4 +32,6 @@ permalink: /planets/
     </thead>
     <tbody id="planet-rows"><tr><td colspan="7" class="muted" data-loading>Loading planets…</td></tr></tbody>
   </table>
+</div>
+</section>
 </div>

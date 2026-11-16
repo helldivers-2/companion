@@ -1,0 +1,22 @@
+{
+  "author": { "name": "michi.onl", "href": "https://github.com/michi-onl" },
+  "credits": [
+    ["https://www.11ty.dev/", "stack", "Eleventy"],
+    ["https://phosphoricons.com/", "shapes", "Phosphor Icons"],
+    ["https://github.com/helldivers-2/api", "brackets-angle", "Helldivers 2 API"]
+  ],
+  "social": [
+    ["Fan communities", [
+      ["https://discord.gg/helldivers", "discord-logo-fill", "Discord"],
+      ["https://www.reddit.com/r/Helldivers/", "reddit-logo-fill", "Reddit"],
+      ["https://steamcommunity.com/app/553850", "steam-logo-fill", "Steam"],
+      ["https://helldivers.fandom.com/", "flame-fill", "Fandom"],
+      ["https://github.com/helldivers-2", "github-logo-fill", "Helldivers 2 GitHub organisation"]
+    ]],
+    ["Arrowhead accounts", [
+      ["https://instagram.com/arrowheadgamestudios/", "instagram-logo-fill", "Instagram"],
+      ["https://www.youtube.com/user/ArrowheadGameStudios", "youtube-logo-fill", "YouTube"],
+      ["https://www.arrowheadgamestudios.com/", "building-office", "Arrowhead Game Studios website"]
+    ]]
+  ]
+}
