@@ -7,6 +7,16 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{ site.api }}; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   <title>{{ title }} · {{ site.name }}</title>
   <meta name="description" content="{{ site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title }} · {{ site.name }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}/img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A yellow skull next to the words {{ site.name }}, on a dark background">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
