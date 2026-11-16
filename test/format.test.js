@@ -22,6 +22,7 @@ test("liberation falls back to the furthest-taken region while planet health is 
   assert.equal(leadingRegion({ ...p, health: 750 }), null);
   assert.equal(liberation({ ...p, health: 750 }), 0.25);
   assert.equal(liberation({ ...p, regions: [regions[0]] }), 0);
+  assert.equal(liberation({ ...p, regions: [{ id: 3, health: null, maxHealth: 100, isAvailable: false }] }), 0); // locked region
   assert.equal(regen({ ...p, regions: [] }), 3.6);
   assert.equal(regen({ ...p, event: { health: 1, maxHealth: 2 } }), 0);
 });

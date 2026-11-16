@@ -4,7 +4,7 @@ import { fill, t as strings } from "./i18n.js";
 // The API localizes orders, dispatches and some planet names by Accept-Language; ask for the page's language.
 const headers = { "X-Super-Client": site.client, "X-Super-Contact": site.contact, "Accept-Language": strings.api };
 // cacheOnly: answer from the cache however old, and throw on a miss instead of fetching.
-export const state = { stale: false, cacheOnly: false };
+export const state = { stale: false, cacheOnly: false, onWait: null }; // onWait: called before the 10 s rate-limit back-off
 
 // Caches in localStorage so page switches and reloads stay under the API's 5 requests / 10 s limit.
 export async function get(path, ttl = site.refreshSeconds) {
@@ -19,6 +19,7 @@ export async function get(path, ttl = site.refreshSeconds) {
   try {
     let res = await fetch(site.api + path, { headers });
     if (res.status === 429) {
+      state.onWait?.();
       // Retry-After is not CORS-exposed, so wait out the whole 10 s window once
       await new Promise((r) => setTimeout(r, 10_000));
       res = await fetch(site.api + path, { headers });

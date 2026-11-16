@@ -29,7 +29,6 @@
   "overview": {
     "h1": "Resumen de la Guerra Galáctica",
     "intro": "Las cifras de arriba llegan en directo de la API de la comunidad de Helldivers 2 y se actualizan solas. La <a href=\"{faq}\">guía de liberación y defensa</a> explica qué significan.",
-    "summary": "Estado de la guerra",
     "order": "Orden suprema",
     "orderLoading": "Recibiendo órdenes del alto mando…",
     "station": "Estación espacial",
@@ -87,6 +86,7 @@
   },
   "rewardTypes": { "1": "medallas" },
   "tacticalStatus": { "1": "En preparación", "2": "Activa", "3": "Recarga" },
+  "regionSizes": { "Settlement": "asentamiento", "Town": "pueblo", "City": "ciudad", "MegaCity": "megaciudad" },
   "units": { "d": " d", "h": " h", "m": " min", "s": " s", "days": "{n} días" },
   "record": {
     "missionsWon": "Misiones ganadas",
@@ -109,6 +109,7 @@
     "failed": "No se pudieron cargar los datos de la guerra: {error}",
     "retrying": "Aún no hay datos de la guerra, reintentando cada {s} s.",
     "rateLimited": "demasiadas peticiones a la API",
+    "waiting": "La API está saturada, se reintentará en 10 s…",
     "apiStatus": "la API respondió {status}",
     "noDispatches": "Todavía no hay comunicados de Supertierra.",
     "won": "ORDEN SUPREMA CUMPLIDA|DIRECTRIZ ESTRATÉGICA COMPLETADA",
@@ -118,9 +119,6 @@
     "noOrder": "Ahora mismo no hay orden suprema. El alto mando emitirá nuevas órdenes pronto.",
     "noStation": "Ahora mismo no hay ninguna Estación Espacial de la Democracia en órbita.",
     "online": "Helldivers en línea",
-    "fronts": "Frentes",
-    "defenses": "Defensas",
-    "impact": "Impacto de misión",
     "helldivers": "{n} Helldivers",
     "showMore": "Mostrar {n} más",
     "noCampaigns": "No hay frentes activos.",

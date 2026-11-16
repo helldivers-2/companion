@@ -52,7 +52,10 @@
     </nav>
   </header>
   <main id="main">
-    <p class="status" id="status" aria-live="off"></p>
+    <div class="status-row">
+      {%- if page_id == "overview" %}<p id="online"></p>{% endif %}
+      <p class="status" id="status" aria-live="off"></p>
+    </div>
     <noscript><p class="notice">{{ t.layout.noscript }}</p></noscript>
     {{ content | safe }}
   </main>

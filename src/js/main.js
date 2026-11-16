@@ -16,6 +16,8 @@ function say(text, announce) {
   if (status.textContent !== text) status.textContent = text;
 }
 
+state.onWait = () => say(t.js.waiting, true);
+
 async function refresh() {
   if (!page || document.hidden) return;
   state.stale = false;

@@ -1,7 +1,7 @@
 import { get, state } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, slug, STALLED, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
-import { fill, lang, t } from "../i18n.js";
+import { fill, t } from "../i18n.js";
 
 const $ = (id) => document.getElementById(id);
 const SHOWN_PER_FRONT = 5;
@@ -28,13 +28,7 @@ export default async function overview() {
 
   $("record").innerHTML = record(war.statistics, true);
 
-  const defenses = campaigns.filter((c) => c.planet.event).length;
-  $("online").innerHTML = [
-    ["users", t.js.online, num(war.statistics.playerCount)],
-    ["sword", t.js.fronts, num(campaigns.length)],
-    ["shield-warning", t.js.defenses, num(defenses)],
-    war.impactMultiplier ? ["percent", t.js.impact, new Intl.NumberFormat(lang, { minimumFractionDigits: 4, maximumFractionDigits: 4 }).format(war.impactMultiplier)] : null,
-  ].filter(Boolean).map(([i, label, value]) => `<li>${icon(i)} <span class="muted">${label}</span> <strong>${value}</strong></li>`).join("");
+  $("online").innerHTML = `${icon("users")} ${t.js.online} <strong>${num(war.statistics.playerCount)}</strong>`;
 
   const groups = {};
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
@@ -98,7 +92,7 @@ const idle = (p) => !p.event && liberation(p) === 0;
 function meter(p, rate) {
   const lib = liberation(p);
   const r = leadingRegion(p);
-  const where = r ? `${titleCase(r.name)}${r.size ? ` (${r.size.toLowerCase()})` : ""}` : "";
+  const where = r ? `${titleCase(r.name)}${r.size ? ` (${regionSize(r.size)})` : ""}` : "";
   const label = fill(p.event ? t.js.defense : t.js.liberation, { planet: where ? `${p.name} ${where}` : p.name });
   return `${where ? `<p class="region muted">${icon("map-pin")} ${esc(where)}</p>` : ""}<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
 }

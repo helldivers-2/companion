@@ -1,5 +1,5 @@
 import { get } from "../api.js";
-import { esc, faction, held, icon, liberation, num, pct, record, regainsLine, slug, titleCase } from "../format.js";
+import { esc, faction, held, icon, liberation, num, pct, record, regainsLine, regionSize, slug, titleCase } from "../format.js";
 import { fill, t } from "../i18n.js";
 
 let planets = [];
@@ -69,8 +69,8 @@ function render() {
       </th>
       <td class="wide">${esc(p.sector)}</td>
       <td class="wide">${owner}</td>
-      <td class="wide" title="${esc(p.biome?.description)}">${esc(p.biome?.name ?? "")}</td>
-      <td class="wide">${hazards.map((h) => `<span title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">${t.js.none}</span>`}</td>
+      <td class="wide" lang="en" title="${esc(p.biome?.description)}">${esc(p.biome?.name ?? "")}</td>
+      <td class="wide">${hazards.map((h) => `<span lang="en" title="${esc(h.description)}">${esc(h.name)}</span>`).join(", ") || `<span class="muted">${t.js.none}</span>`}</td>
       <td class="num">${num(p.statistics.playerCount)}</td>
       <td class="num">${held(p) ? t.js.held : pct(liberation(p))}</td>
     </tr>${open.has(p.index) ? details(p, hazards) : ""}`;
@@ -81,12 +81,12 @@ function render() {
 }
 
 function details(p, hazards) {
-  const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(r.size.toLowerCase())}</span>` : ""}
-    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">${t.js.locked}</span>` : ""} <span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
+  const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
+    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
-      ${p.biome ? `<h3>${esc(p.biome.name)}</h3><p>${esc(p.biome.description)}</p>` : ""}
-      ${hazards.length ? `<h3>${t.js.hazards}</h3><ul>${hazards.map((h) => `<li><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
+      ${p.biome ? `<h3 lang="en">${esc(p.biome.name)}</h3><p lang="en">${esc(p.biome.description)}</p>` : ""}
+      ${hazards.length ? `<h3>${t.js.hazards}</h3><ul>${hazards.map((h) => `<li lang="en"><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
       ${regainsLine(p)}
       ${regions.length ? `<h3>${t.js.regions}</h3><ul class="regions">${regions.join("")}</ul>` : ""}
     </section>

@@ -5,7 +5,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 const ICONS = [
   "rocket-launch", "globe-hemisphere-west", "newspaper", "trophy", "calendar-blank", "medal", "circle", "target",
   "sword", "clock", "users", "caret-right", "shield-warning", "map-pin", "megaphone-simple", "arrow-square-out",
-  "info", "percent", "stack", "shapes", "brackets-angle", "building-office",
+  "info", "stack", "shapes", "brackets-angle", "building-office",
   "check-circle-fill", "discord-logo-fill", "reddit-logo-fill", "steam-logo-fill", "flame-fill", "github-logo-fill",
   "instagram-logo-fill", "youtube-logo-fill",
 ];

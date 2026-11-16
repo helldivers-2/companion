@@ -236,6 +236,7 @@ html {
     top: 0;
     bottom: auto;
     padding-bottom: 1.5rem;
+    background: linear-gradient($ground 60%, transparent); // keeps scrolled text from showing around the pills
   }
 
   .logo {
@@ -254,12 +255,27 @@ html {
   }
 }
 
-.status {
+// Player count on the left (overview only), refresh time on the right.
+.status-row {
+  display: flex;
+  gap: 1rem;
   min-height: 1.3125rem;
   margin: 0 1rem 0.5rem;
   color: $muted;
   font-size: 0.875rem;
-  text-align: right;
+
+  p {
+    margin: 0;
+  }
+
+  strong {
+    color: $text;
+  }
+
+  .status {
+    margin-left: auto; // stays right even when the player count is absent
+    text-align: right;
+  }
 }
 
 // Hold space while data loads, sized like the usual loaded content, so the page doesn't jump when it arrives.
@@ -277,14 +293,6 @@ main:has([data-loading]) {
 
 #dss:empty {
   min-height: 1.5rem;
-}
-
-.summary:empty {
-  min-height: 3.5rem; // wraps to two lines on phones
-
-  @media (width >= 40rem) {
-    min-height: 1.5rem;
-  }
 }
 
 main {
@@ -330,7 +338,7 @@ main {
   }
 }
 
-// Overview grid as on the companion: summary across, Major Order beside the station, fronts across.
+// Overview grid as on the companion: Major Order beside the station, fronts across.
 @media (width >= 64rem) {
   .dashboard {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -343,30 +351,6 @@ main {
 
   .span-3 {
     grid-column: 1 / -1;
-  }
-}
-
-.summary {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .icon {
-    color: $muted;
-  }
-
-  .muted {
-    font-size: 0.875rem;
   }
 }
 
@@ -517,13 +501,18 @@ summary {
   gap: 0.75rem 1.5rem;
   margin: 0.75rem 0 0;
 
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+
   dt {
     color: $muted;
     font-size: 0.875rem;
   }
 
   dd {
-    margin: 0;
+    margin: auto 0 0; // a label that wraps pushes its value down, so all values sit on the row's bottom line
     font-family: $display;
     font-size: 1.5rem;
     font-weight: 700;

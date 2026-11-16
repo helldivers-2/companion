@@ -24,7 +24,6 @@
   "overview": {
     "h1": "Galactic War overview",
     "intro": "The figures above come live from the community Helldivers 2 API and update on their own. The <a href=\"{faq}\">guide to liberation and defense</a> explains what they mean.",
-    "summary": "War summary",
     "order": "Major Order",
     "orderLoading": "Receiving orders from High Command…",
     "station": "Space Station",
@@ -82,6 +81,7 @@
   },
   "rewardTypes": { "1": "Medals" },
   "tacticalStatus": { "1": "Preparing", "2": "Active", "3": "Cooldown" },
+  "regionSizes": { "Settlement": "settlement", "Town": "town", "City": "city", "MegaCity": "megacity" },
   "units": { "d": "d", "h": "h", "m": "m", "s": "s", "days": "{n} days" },
   "record": {
     "missionsWon": "Missions won",
@@ -104,6 +104,7 @@
     "failed": "Could not load war data: {error}",
     "retrying": "No war data yet, retrying every {s} s.",
     "rateLimited": "too many requests to the API",
+    "waiting": "The API is busy, trying again in 10 s…",
     "apiStatus": "API returned {status}",
     "noDispatches": "No dispatches from Super Earth yet.",
     "won": "MAJOR ORDER WON|DIRECTIVE COMPLETED",
@@ -113,9 +114,6 @@
     "noOrder": "No Major Order right now. High Command will issue new orders soon.",
     "noStation": "No Democracy Space Station in orbit right now.",
     "online": "Helldivers online",
-    "fronts": "Fronts",
-    "defenses": "Defenses",
-    "impact": "Mission impact",
     "helldivers": "{n} Helldivers",
     "showMore": "Show {n} more",
     "noCampaigns": "No active fronts.",

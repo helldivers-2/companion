@@ -6,11 +6,13 @@ const numFmt = new Intl.NumberFormat(lang);
 export const num = (n) => numFmt.format(n ?? 0);
 const pctFmt = new Intl.NumberFormat(lang, { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 export const pct = (x) => pctFmt.format(x);
+const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
 // Faction names arrive as API values; translate them only for display.
 export const faction = (f) => t.factions[f] ?? f;
+export const regionSize = (s) => t.regionSizes[s] ?? s.toLowerCase();
 export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {
@@ -22,7 +24,8 @@ export function bar(ratio, label) {
 export function leadingRegion(planet) {
   if (planet.event || planet.currentOwner === "Humans" || planet.health < planet.maxHealth) return null;
   const share = (r) => r.health / r.maxHealth;
-  return (planet.regions ?? []).filter((r) => r.health < r.maxHealth).sort((a, b) => share(a) - share(b))[0] ?? null;
+  // locked regions arrive with health: null, which `<` would read as 0 and show as fully taken
+  return (planet.regions ?? []).filter((r) => r.health != null && r.health < r.maxHealth).sort((a, b) => share(a) - share(b))[0] ?? null;
 }
 
 // Share of the planet Super Earth holds: defense progress during an event, liberation otherwise.
@@ -106,12 +109,12 @@ export function record(s, byFaction = false) {
   const rows = [
     [r.missionsWon, s.missionsWon],
     [r.missionsLost, s.missionsLost],
-    [r.successRate, `${s.missionSuccessRate ?? 0}%`],
+    [r.successRate, pct0.format((s.missionSuccessRate ?? 0) / 100)],
     ...kills,
     [r.deaths, s.deaths],
     [r.kd, deaths ? compact.format(total / deaths) : "–"],
     [r.friendlies, s.friendlies],
-    [r.friendlyShare, deaths ? `${Math.round(((s.friendlies ?? 0) / deaths) * 100)}%` : "–"],
+    [r.friendlyShare, deaths ? pct0.format((s.friendlies ?? 0) / deaths) : "–"],
     [r.bullets, s.bulletsFired],
     [r.time, years.format((s.missionTime ?? 0) / 31_557_600)],
   ];

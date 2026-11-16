@@ -29,7 +29,6 @@
   "overview": {
     "h1": "Der Galaktische Krieg im Überblick",
     "intro": "Die Zahlen oben kommen live aus der Community-API zu Helldivers 2 und aktualisieren sich von selbst. Was sie bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
-    "summary": "Kriegslage",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
     "station": "Raumstation",
@@ -87,6 +86,7 @@
   },
   "rewardTypes": { "1": "Medaillen" },
   "tacticalStatus": { "1": "In Vorbereitung", "2": "Aktiv", "3": "Abklingzeit" },
+  "regionSizes": { "Settlement": "Siedlung", "Town": "Kleinstadt", "City": "Stadt", "MegaCity": "Megastadt" },
   "units": { "d": " Tg.", "h": " Std.", "m": " Min.", "s": " Sek.", "days": "{n} Tage" },
   "record": {
     "missionsWon": "Missionen gewonnen",
@@ -109,6 +109,7 @@
     "failed": "Kriegsdaten konnten nicht geladen werden: {error}",
     "retrying": "Noch keine Kriegsdaten, neuer Versuch alle {s} s.",
     "rateLimited": "zu viele Anfragen an die API",
+    "waiting": "Die API ist ausgelastet, neuer Versuch in 10 s …",
     "apiStatus": "API antwortete mit {status}",
     "noDispatches": "Noch keine Meldungen von Über-Erde.",
     "won": "GENERALBEFEHL (ERFOLGREICH|GEWONNEN|ABGESCHLOSSEN)|STRATEGISCHE ANWEISUNG ERFÜLLT",
@@ -118,9 +119,6 @@
     "noOrder": "Gerade gibt es keinen Generalbefehl. Das Oberkommando erteilt bald neue Befehle.",
     "noStation": "Gerade ist keine Demokratie-Raumstation im Orbit.",
     "online": "Helldivers online",
-    "fronts": "Fronten",
-    "defenses": "Verteidigungen",
-    "impact": "Missionswirkung",
     "helldivers": "{n} Helldivers",
     "showMore": "{n} weitere anzeigen",
     "noCampaigns": "Keine aktiven Fronten.",

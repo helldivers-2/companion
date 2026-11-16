@@ -29,7 +29,6 @@
   "overview": {
     "h1": "銀河戰爭總覽",
     "intro": "以上數據即時取自《絕地戰兵 2》社群 API，並會自動更新。這些數字的意義請見<a href=\"{faq}\">解放與防禦說明</a>。",
-    "summary": "戰況摘要",
     "order": "主要指令",
     "orderLoading": "正在接收最高司令部的指令…",
     "station": "太空站",
@@ -87,6 +86,7 @@
   },
   "rewardTypes": { "1": "勳章" },
   "tacticalStatus": { "1": "準備中", "2": "啟用中", "3": "冷卻中" },
+  "regionSizes": { "Settlement": "聚落", "Town": "城鎮", "City": "城市", "MegaCity": "巨型城市" },
   "units": { "d": " 天", "h": " 小時", "m": " 分鐘", "s": " 秒", "days": "{n} 天" },
   "record": {
     "missionsWon": "任務勝利",
@@ -109,6 +109,7 @@
     "failed": "無法載入戰爭資料：{error}",
     "retrying": "尚無戰爭資料，每 {s} 秒重試一次。",
     "rateLimited": "對 API 的請求過多",
+    "waiting": "API 忙碌中，10 秒後重試…",
     "apiStatus": "API 回應 {status}",
     "noDispatches": "目前還沒有來自超級地球的戰報。",
     "won": "主要指令(達成|完成)|戰略指示完成",
@@ -118,9 +119,6 @@
     "noOrder": "目前沒有主要指令。最高司令部很快就會下達新指令。",
     "noStation": "目前沒有民主太空站在軌道上。",
     "online": "線上絕地戰兵",
-    "fronts": "戰線",
-    "defenses": "防禦戰",
-    "impact": "任務影響力",
     "helldivers": "{n} 名絕地戰兵",
     "showMore": "再顯示 {n} 個",
     "noCampaigns": "目前沒有活躍戰線。",
