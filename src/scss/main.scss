@@ -35,7 +35,9 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 
 // Phosphor icons, copied to /assets/icons by eleventy.config.js; keep the two lists in step.
 $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank, medal, circle, target, sword, clock, users,
-  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out, info;
+  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out, info,
+  stack, shapes, brackets-angle, building-office, discord-logo-fill, reddit-logo-fill, steam-logo-fill, flame-fill,
+  github-logo-fill, instagram-logo-fill, youtube-logo-fill;
 
 *,
 *::before,
@@ -283,16 +285,97 @@ main {
 }
 
 footer {
-  padding: 1.5rem clamp(1rem, 4vw, 2rem) calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
+  border-top: 1px solid $line;
 
-  @media (width >= 40rem) {
-    padding-bottom: 1.5rem;
+  h2 {
+    margin-bottom: 0.25rem;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
   }
 
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .icon {
+    color: $icon;
+  }
+}
+
+.footer-main {
+  display: grid;
+  gap: 2rem;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 2rem clamp(1rem, 4vw, 2rem);
+
+  .muted a {
+    color: inherit;
+  }
+
+  > :first-child p {
+    margin-top: 1rem;
+  }
+}
+
+.footer-cols {
+  display: grid;
+  gap: 2rem 3rem;
+
+  @media (width >= 48rem) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.credits {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 1rem;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  a {
+    display: block;
+    padding: 0.5rem 0;
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.disclaimer {
+  padding: 2rem clamp(1rem, 4vw, 2rem) calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
   border-top: 1px solid $line;
   color: $muted;
   font-size: 0.875rem;
   text-align: center;
+
+  @media (width >= 40rem) {
+    padding-bottom: 2rem;
+  }
 }
 
 .notice {

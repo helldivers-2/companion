@@ -41,8 +41,35 @@
     <noscript><p class="notice">This companion loads live war data in your browser, so JavaScript is required.</p></noscript>
     {{ content | safe }}
   </main>
+  {# The companion's footer: project line, about and credits beside community links, then the disclaimer. #}
   <footer>
-    <p>Unofficial fan project, not affiliated with Arrowhead Game Studios. Data from the community <a href="https://helldivers-2.github.io/api/">Helldivers 2 API</a>, refreshed every {{ site.refreshSeconds }} s.</p>
+    <div class="footer-main">
+      <div>
+        <h2>{{ site.name }}</h2>
+        <p class="muted">A project by <a href="{{ footer.author.href }}">{{ footer.author.name }}</a>.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <p class="muted">A fan-built dashboard for the Helldivers 2 Galactic War, reading live data from the community API every {{ site.refreshSeconds }} s. Built with:</p>
+          <ul class="credits">
+            {%- for c in footer.credits %}
+            <li><a href="{{ c[0] }}"><span class="icon i-{{ c[1] }}" aria-hidden="true"></span>{{ c[2] }}</a></li>
+            {%- endfor %}
+          </ul>
+        </div>
+        <div>
+          {%- for group in footer.social %}
+          <h2 id="footer-{{ loop.index }}">{{ group[0] }}</h2>
+          <ul class="social" aria-labelledby="footer-{{ loop.index }}">
+            {%- for l in group[1] %}
+            <li><a href="{{ l[0] }}" aria-label="{{ l[2] }}"><span class="icon i-{{ l[1] }}" aria-hidden="true"></span></a></li>
+            {%- endfor %}
+          </ul>
+          {%- endfor %}
+        </div>
+      </div>
+    </div>
+    <p class="disclaimer">Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.</p>
   </footer>
 </body>
 </html>
