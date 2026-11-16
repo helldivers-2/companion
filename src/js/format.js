@@ -82,16 +82,20 @@ const compact = new Intl.NumberFormat("en", { notation: "compact", maximumFracti
 
 // Battle record for the whole war or one planet. Accuracy is left out: the API reports more hits than shots.
 export function record(s, byFaction = false) {
+  const total = (s.terminidKills ?? 0) + (s.automatonKills ?? 0) + (s.illuminateKills ?? 0);
+  const deaths = s.deaths ?? 0;
   const kills = byFaction
     ? [["Terminids killed", s.terminidKills], ["Automatons destroyed", s.automatonKills], ["Illuminate purged", s.illuminateKills]]
-    : [["Enemies killed", (s.terminidKills ?? 0) + (s.automatonKills ?? 0) + (s.illuminateKills ?? 0)]];
+    : [["Enemies killed", total]];
   const rows = [
     ["Missions won", s.missionsWon],
     ["Missions lost", s.missionsLost],
     ["Success rate", `${s.missionSuccessRate ?? 0}%`],
     ...kills,
     ["Helldivers fallen", s.deaths],
+    ["Kills per death", deaths ? compact.format(total / deaths) : "–"],
     ["Friendly fire kills", s.friendlies],
+    ["Friendly fire deaths", deaths ? `${Math.round(((s.friendlies ?? 0) / deaths) * 100)}%` : "–"],
     ["Rounds fired", s.bulletsFired],
     ["Time in combat", `${compact.format((s.missionTime ?? 0) / 31_557_600)} years`],
   ];
