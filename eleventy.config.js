@@ -4,8 +4,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/img": "img",
     "src/_redirects": "_redirects",
-    // Keep in step with $icons in main.scss.
-    "node_modules/@phosphor-icons/core/assets/{regular/{rocket-launch,globe-hemisphere-west,newspaper,trophy,calendar-blank,medal,circle,target,sword,clock,users,caret-right,shield-warning,map-pin,megaphone-simple,arrow-square-out,info,percent,stack,shapes,brackets-angle,building-office},fill/{check-circle-fill,discord-logo-fill,reddit-logo-fill,steam-logo-fill,flame-fill,github-logo-fill,instagram-logo-fill,youtube-logo-fill}}.svg": "assets/icons",
     "node_modules/@fontsource/barlow/files/barlow-latin-{400,600}-normal.woff*": "assets/files",
     "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-{600,700}-normal.woff*": "assets/files",
   });
