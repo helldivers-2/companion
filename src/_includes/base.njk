@@ -37,7 +37,6 @@
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="preconnect" href="{{ site.api }}" crossorigin>
   <link rel="stylesheet" href="/assets/main.css">
-  <script src="/assets/main.js" defer></script>
 </head>
 <body data-page="{{ page_id }}">
   <a class="skip" href="#main">{{ t.layout.skip }}</a>
@@ -95,5 +94,7 @@
     </div>
     <p class="disclaimer">{{ t.layout.disclaimer }}</p>
   </footer>
+  {#- Not deferred: it must run before the first paint, so cached data shows at once instead of the "Loading…" placeholder flashing first. #}
+  <script src="/assets/main.js"></script>
 </body>
 </html>
