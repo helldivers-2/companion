@@ -1,6 +1,6 @@
 import site from "../_data/site.json" with { type: "json" };
 import { state } from "./api.js";
-import { timeLeft } from "./format.js";
+import { icon, timeLeft } from "./format.js";
 import overview from "./pages/overview.js";
 import planets from "./pages/planets.js";
 import dispatches from "./pages/dispatches.js";
@@ -24,7 +24,7 @@ async function refresh() {
   } catch (err) {
     say(`Could not load war data: ${err.message}`, true);
     // Without a cache a first-load failure would otherwise leave "Loading…" up forever.
-    for (const el of document.querySelectorAll("[data-loading]")) el.textContent = `No war data yet, retrying every ${site.refreshSeconds} s.`;
+    for (const el of document.querySelectorAll("[data-loading]")) el.innerHTML = `${icon("shield-warning")} No war data yet, retrying every ${site.refreshSeconds} s.`;
   }
 }
 

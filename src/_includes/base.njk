@@ -19,8 +19,8 @@
   <header class="top">
     <a class="brand" href="/">{{ site.name }}</a>
     <nav aria-label="Main">
-      {%- for item in [["/", "Overview"], ["/planets/", "Planets"], ["/dispatches/", "Dispatches"]] %}
-      <a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}>{{ item[1] }}</a>
+      {%- for item in [["/", "Overview", "rocket-launch"], ["/planets/", "Planets", "globe-hemisphere-west"], ["/dispatches/", "Dispatches", "newspaper"]] %}
+      <a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span>{{ item[1] }}</a>
       {%- endfor %}
     </nav>
     <p class="status" id="status" aria-live="off"></p>

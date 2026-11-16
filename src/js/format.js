@@ -5,6 +5,7 @@ export const num = (n) => new Intl.NumberFormat("en").format(n ?? 0);
 export const pct = (x) => `${(x * 100).toFixed(2)}%`;
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
 export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {

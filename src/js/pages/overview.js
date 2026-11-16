@@ -1,6 +1,6 @@
 import labels from "../../_data/labels.json" with { type: "json" };
 import { get } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, liberation, num, pct, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, icon, liberation, num, pct, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 
 const $ = (id) => document.getElementById(id);
@@ -20,12 +20,12 @@ export default async function overview() {
 
   $("orders").innerHTML = orders.length
     ? orders.map((o) => orderPanel(o, planets, rates, orderPlanets)).join("")
-    : `<article class="order"><p>No Major Order right now. High Command will issue new orders soon.</p></article>`;
+    : `<article class="order"><p>${icon("target")} No Major Order right now. High Command will issue new orders soon.</p></article>`;
 
   $("dss-section").hidden = !stations.length;
   $("dss").innerHTML = stations.map(stationPanel).join("");
 
-  $("online").textContent = `${num(war.statistics.playerCount)} Helldivers online`;
+  $("online").innerHTML = `${icon("users")} ${num(war.statistics.playerCount)} Helldivers online`;
 
   const groups = {};
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
@@ -43,9 +43,9 @@ export default async function overview() {
       return `<section class="front ${slug(faction)}" aria-labelledby="front-${slug(faction)}">
         <h3 id="front-${slug(faction)}">${esc(faction)} <span class="muted">${num(players(list))} Helldivers</span></h3>
         <ul class="rows">${rows.join("")}</ul>
-        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
+        ${rest.length ? `<details id="more-${slug(faction)}"${open.has(`more-${slug(faction)}`) ? " open" : ""}><summary>${icon("caret-right")} Show ${rest.length} more</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
-    }).join("") || `<p class="muted">No active campaigns.</p>`;
+    }).join("") || `<p class="muted">${icon("sword")} No active campaigns.</p>`;
   if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
@@ -58,7 +58,7 @@ function orderPanel(o, planets, rates, orderPlanets) {
     if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
     else if (p && (p.currentOwner !== "Humans" || p.event)) detail = meter(p, rates[p.index]);
     return `<li class="${d.done ? "done" : ""}">
-      <span class="check"><span class="visually-hidden">${d.done ? "Complete:" : "Open:"}</span></span>
+      <span class="check icon"><span class="visually-hidden">${d.done ? "Complete:" : "Open:"}</span></span>
       <div>
         <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? "Held" : esc(p.currentOwner)}</span>` : ""}</p>
         ${detail}
@@ -69,12 +69,12 @@ function orderPanel(o, planets, rates, orderPlanets) {
     .map((r) => `${num(r.amount)} ${labels.rewardTypes[r.type] ?? "reward"}`).join(", ");
   return `<article class="order">
     <header>
-      <h3>${esc(titleCase(o.title ?? "Major Order"))}</h3>
-      <p class="order-clock"><span class="big">${countdown(o.expiration)}</span> left</p>
+      <h3>${icon("trophy")} ${esc(titleCase(o.title ?? "Major Order"))}</h3>
+      <p class="order-clock">${icon("calendar-blank")} <span class="big">${countdown(o.expiration)}</span> left</p>
     </header>
     ${o.briefing ? `<p class="briefing">${esc(o.briefing)}</p>` : ""}
     ${tasks ? `<ul class="tasks">${tasks}</ul>` : ""}
-    ${rewards ? `<p class="reward">Reward: ${esc(rewards)}</p>` : ""}
+    ${rewards ? `<p class="reward">${icon("medal")} Reward: ${esc(rewards)}</p>` : ""}
   </article>`;
 }
 
