@@ -1,9 +1,8 @@
 import { get } from "../api.js";
-import { esc, faction, icon, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
+import { esc, faction, held, icon, liberation, num, pct, record, regainsLine, slug, titleCase } from "../format.js";
 import { fill, t } from "../i18n.js";
 
 let planets = [];
-const held = (p) => p.currentOwner === "Humans" && !p.event;
 const libRank = (p) => (held(p) ? -1 : liberation(p)); // held planets sink below active fights
 let sort = { key: "players", dir: -1 };
 const open = new Set(); // planet indexes with their detail row shown
@@ -82,14 +81,13 @@ function render() {
 }
 
 function details(p, hazards) {
-  const g = regen(p);
   const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(r.size.toLowerCase())}</span>` : ""}
     ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">${t.js.locked}</span>` : ""} <span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
       ${p.biome ? `<h3>${esc(p.biome.name)}</h3><p>${esc(p.biome.description)}</p>` : ""}
       ${hazards.length ? `<h3>${t.js.hazards}</h3><ul>${hazards.map((h) => `<li><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
-      ${g >= 0.0005 && !held(p) ? `<p class="rate stalled">${fill(t.js.regains, { rate: pct(g) })}</p>` : ""}
+      ${regainsLine(p)}
       ${regions.length ? `<h3>${t.js.regions}</h3><ul class="regions">${regions.join("")}</ul>` : ""}
     </section>
     <section><h3>${t.js.battleRecord}</h3>${record(p.statistics)}</section>
@@ -103,7 +101,7 @@ export default async function planetsPage() {
     form().addEventListener("input", render);
     form().addEventListener("submit", (e) => e.preventDefault());
     document.getElementById("planet-rows").addEventListener("click", (e) => {
-      const i = Number(e.target.closest("[data-planet]")?.dataset.planet ?? NaN);
+      const i = Number(e.target.closest("[data-planet]")?.dataset.planet);
       if (Number.isNaN(i)) return;
       if (!open.delete(i)) open.add(i);
       render();

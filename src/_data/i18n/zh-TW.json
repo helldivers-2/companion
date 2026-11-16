@@ -9,14 +9,6 @@
     "faq": ["《絕地戰兵 2》解放與防禦說明", "《絕地戰兵 2》的解放如何運作：星球生命值、再生、防禦倒數、反攻，以及星球為何會在夜間失去進度。"],
     "notfound": ["找不到頁面", "即時銀河戰爭戰況：主要指令、活躍戰線、星球與戰報。"]
   },
-  "titles": {
-    "overview": "總覽",
-    "planets": "星球",
-    "dispatches": "戰報",
-    "news": "新聞",
-    "faq": "解放與防禦",
-    "notfound": "找不到頁面"
-  },
   "nav": { "label": "主選單", "overview": "總覽", "planets": "星球", "dispatches": "戰報", "news": "新聞", "faq": "常見問題" },
   "layout": {
     "skip": "跳至主要內容",
@@ -119,8 +111,8 @@
     "rateLimited": "對 API 的請求過多",
     "apiStatus": "API 回應 {status}",
     "noDispatches": "目前還沒有來自超級地球的戰報。",
-    "won": "主要指令(達成|完成)|戰略指示完成|MAJOR ORDER WON|DIRECTIVE COMPLETED",
-    "lost": "主要指令失敗|戰略指示失敗|MAJOR ORDER (FAILED|LOST)|DIRECTIVE FAILED",
+    "won": "主要指令(達成|完成)|戰略指示完成",
+    "lost": "主要指令失敗|戰略指示失敗",
     "readOnSteam": "在 Steam 上閱讀",
     "noNews": "目前還沒有新聞。",
     "noOrder": "目前沒有主要指令。最高司令部很快就會下達新指令。",

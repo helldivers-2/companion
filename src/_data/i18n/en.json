@@ -9,14 +9,6 @@
     "faq": ["Helldivers 2 Liberation & Defense Explained", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
-  "titles": {
-    "overview": "Overview",
-    "planets": "Planets",
-    "dispatches": "Dispatches",
-    "news": "News",
-    "faq": "Liberation and defense",
-    "notfound": "Page not found"
-  },
   "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ" },
   "layout": {
     "skip": "Skip to content",

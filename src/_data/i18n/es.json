@@ -9,14 +9,6 @@
     "faq": ["Helldivers 2: liberación y defensa explicadas", "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
-  "titles": {
-    "overview": "Resumen",
-    "planets": "Planetas",
-    "dispatches": "Comunicados",
-    "news": "Noticias",
-    "faq": "Liberación y defensa",
-    "notfound": "Página no encontrada"
-  },
   "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ" },
   "layout": {
     "skip": "Saltar al contenido",
@@ -119,8 +111,8 @@
     "rateLimited": "demasiadas peticiones a la API",
     "apiStatus": "la API respondió {status}",
     "noDispatches": "Todavía no hay comunicados de Supertierra.",
-    "won": "ORDEN SUPREMA CUMPLIDA|DIRECTRIZ ESTRATÉGICA COMPLETADA|MAJOR ORDER WON|DIRECTIVE COMPLETED",
-    "lost": "ORDEN SUPREMA NO CUMPLIDA|MAJOR ORDER (FAILED|LOST)|DIRECTIVE FAILED",
+    "won": "ORDEN SUPREMA CUMPLIDA|DIRECTRIZ ESTRATÉGICA COMPLETADA",
+    "lost": "ORDEN SUPREMA NO CUMPLIDA",
     "readOnSteam": "Leer en Steam",
     "noNews": "Todavía no hay noticias.",
     "noOrder": "Ahora mismo no hay orden suprema. El alto mando emitirá nuevas órdenes pronto.",

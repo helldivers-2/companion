@@ -9,14 +9,6 @@
     "faq": ["Helldivers 2: Befreiung und Verteidigung erklärt", "Wie die Befreiung in Helldivers 2 abläuft: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
-  "titles": {
-    "overview": "Übersicht",
-    "planets": "Planeten",
-    "dispatches": "Meldungen",
-    "news": "Neuigkeiten",
-    "faq": "Befreiung und Verteidigung",
-    "notfound": "Seite nicht gefunden"
-  },
   "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ" },
   "layout": {
     "skip": "Zum Inhalt springen",
@@ -119,8 +111,8 @@
     "rateLimited": "zu viele Anfragen an die API",
     "apiStatus": "API antwortete mit {status}",
     "noDispatches": "Noch keine Meldungen von Über-Erde.",
-    "won": "GENERALBEFEHL (ERFOLGREICH|GEWONNEN|ABGESCHLOSSEN)|STRATEGISCHE ANWEISUNG ERFÜLLT|MAJOR ORDER WON|DIRECTIVE COMPLETED",
-    "lost": "GENERALBEFEHL GESCHEITERT|STRATEGISCHE ANWEISUNG GESCHEITERT|MAJOR ORDER (FAILED|LOST)|DIRECTIVE FAILED",
+    "won": "GENERALBEFEHL (ERFOLGREICH|GEWONNEN|ABGESCHLOSSEN)|STRATEGISCHE ANWEISUNG ERFÜLLT",
+    "lost": "GENERALBEFEHL GESCHEITERT|STRATEGISCHE ANWEISUNG GESCHEITERT",
     "readOnSteam": "Auf Steam lesen",
     "noNews": "Noch keine Neuigkeiten.",
     "noOrder": "Gerade gibt es keinen Generalbefehl. Das Oberkommando erteilt bald neue Befehle.",

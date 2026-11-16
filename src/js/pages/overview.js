@@ -1,5 +1,5 @@
 import { get, state } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, faction, icon, leadingRegion, liberation, num, pct, record, regen, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, slug, STALLED, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, lang, t } from "../i18n.js";
 
@@ -67,7 +67,7 @@ function orderPanel(o, planets, rates, orderPlanets) {
     if (p) orderPlanets.add(p.index);
     let detail = "";
     if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
-    else if (p && (p.currentOwner !== "Humans" || p.event)) detail = meter(p, rates[p.index]);
+    else if (p && !held(p)) detail = meter(p, rates[p.index]);
     return `<li class="${d.done ? "done" : ""}">
       <span class="check icon"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
@@ -103,15 +103,9 @@ function meter(p, rate) {
   return `${where ? `<p class="region muted">${icon("map-pin")} ${esc(where)}</p>` : ""}<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
 }
 
-const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
-
 export function rateLine(p, lib, rate, now = Date.now()) {
   if (lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
-  if (rate === undefined) {
-    // Until this browser has measured a rate, the API's own regeneration is the best hint.
-    const g = regen(p);
-    return lib > 0 && g >= STALLED ? `<p class="rate stalled">${fill(t.js.regains, { rate: pct(g) })}</p>` : "";
-  }
+  if (rate === undefined) return lib > 0 ? regainsLine(p) : "";
   if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">${t.js.noMovement}</p>` : "";
   const speed = `${rate > 0 ? "+" : "−"}${pct(Math.abs(rate))}/h`;
   const h = hoursToWin(lib, rate);
@@ -133,7 +127,7 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
 
 const stationPanel = (st) => `<article class="station">
   <header><h3>${fill(t.js.orbiting, { planet: esc(st.planet?.name ?? t.js.unknown) })}</h3><p class="muted">${fill(t.js.vote, { time: countdown(st.electionEnd) })}</p></header>
-  <ul class="actions">${(st.tacticalActions ?? []).map((a) => {
+  <ul class="actions stack">${(st.tacticalActions ?? []).map((a) => {
     const cost = a.costs?.[0];
     const status = t.tacticalStatus[a.status] ?? t.js.statusUnknown;
     return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>

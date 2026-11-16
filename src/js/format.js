@@ -41,6 +41,14 @@ export function regen(planet) {
   return r.maxHealth ? ((r.regenPerSecond ?? 0) * 3600) / r.maxHealth : 0;
 }
 
+export const held = (p) => p.currentOwner === "Humans" && !p.event;
+export const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
+// The API's own regeneration, the best hint until this browser has measured a rate.
+export function regainsLine(p) {
+  const g = regen(p);
+  return g >= STALLED ? `<p class="rate stalled">${fill(t.js.regains, { rate: pct(g) })}</p>` : "";
+}
+
 export function enemyOf(planet) {
   return planet.event?.faction ?? planet.currentOwner;
 }

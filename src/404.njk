@@ -5,11 +5,10 @@ pagination:
   data: site.locales
   size: 1
   alias: lang
-  addAllPagesToCollections: true
 permalink: "{{ '' if lang == 'en' else '/' + lang }}/404.html"
 eleventyExcludeFromCollections: true
 ---
 <div class="container">
-<h1>{{ t.titles.notfound }}</h1>
+<h1>{{ t.meta.notfound[0] }}</h1>
 <div class="card"><p>{{ t.notfound | replace("{home}", "/" + lang + "/") | safe }}</p></div>
 </div>
