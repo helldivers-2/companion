@@ -1,9 +1,13 @@
 import { get } from "../api.js";
 import { dispatchHtml, esc, icon } from "../format.js";
+import en from "../../_data/i18n/en.json" with { type: "json" };
+import { lang, t } from "../i18n.js";
 
 const SHOWN = 50;
-const outcome = (msg) => (/MAJOR ORDER WON|DIRECTIVE COMPLETED/i.test(msg) ? " won" : /MAJOR ORDER FAILED/i.test(msg) ? " failed" : "");
-const dateFmt = new Intl.DateTimeFormat(undefined, { dateStyle: "medium", timeStyle: "short" });
+// Headlines come in the page language, with older English ones mixed in, so match both.
+const won = new RegExp(`${t.js.won}|${en.js.won}`, "i"), lost = new RegExp(`${t.js.lost}|${en.js.lost}`, "i");
+const outcome = (msg) => (lost.test(msg) ? " failed" : won.test(msg) ? " won" : "");
+const dateFmt = new Intl.DateTimeFormat(lang, { dateStyle: "medium", timeStyle: "short" });
 
 export default async function dispatches() {
   const list = await get("/api/v2/dispatches", 300);
@@ -12,5 +16,5 @@ export default async function dispatches() {
     .sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
     .slice(0, SHOWN)
     .map((d) => `<li class="card dispatch${outcome(d.message)}">${icon("clock")} <time datetime="${esc(d.published)}">${dateFmt.format(new Date(d.published))}</time><p>${dispatchHtml(d.message)}</p></li>`)
-    .join("") || `<li class="card muted">${icon("clock")} No dispatches from Super Earth yet.</li>`;
+    .join("") || `<li class="card muted">${icon("clock")} ${t.js.noDispatches}</li>`;
 }

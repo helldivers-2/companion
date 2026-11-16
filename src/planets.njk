@@ -1,36 +1,41 @@
 ---
 layout: base.njk
-title: Planets
 page_id: planets
-permalink: /planets/
+pagination:
+  data: site.locales
+  size: 1
+  alias: lang
+  addAllPagesToCollections: true
+permalink: "/{{ lang }}/planets/"
 ---
 <div class="container">
-<h1>Planets</h1>
+<h1>{{ t.nav.planets }}</h1>
+<p class="muted hint">{{ t.planets.intro }}</p>
 <section class="card" aria-labelledby="all-h">
-<h2 id="all-h">All planets</h2>
+<h2 id="all-h">{{ t.planets.all }}</h2>
 <form class="filters" id="planet-filters" role="search">
-  <label>Search <input type="search" name="q" placeholder="Planet, sector, biome, hazard…" autocomplete="off" spellcheck="false"></label>
-  <label>Owner
+  <label>{{ t.planets.search }} <input type="search" name="q" placeholder="{{ t.planets.placeholder }}" autocomplete="off" spellcheck="false"></label>
+  <label>{{ t.planets.owner }}
     <select name="owner">
-      <option value="">All</option>
+      <option value="">{{ t.planets.anyOwner }}</option>
       {%- for f in labels.factions %}
-      <option>{{ f }}</option>
+      <option value="{{ f }}">{{ t.factions[f] }}</option>
       {%- endfor %}
     </select>
   </label>
-  <label class="check"><input type="checkbox" name="active"> Only with Helldivers</label>
+  <label class="check"><input type="checkbox" name="active"> {{ t.planets.active }}</label>
 </form>
 <p class="muted" id="planet-count" aria-live="polite"></p>
 <div class="table-wrap">
   <table class="planets">
     <thead>
       <tr>
-        {%- for col in [["name", "Planet"], ["sector", "Sector"], ["owner", "Owner"], ["biome", "Biome"], [null, "Hazards"], ["players", "Helldivers"], ["liberation", "Liberation"]] %}
-        <th scope="col"{% if col[0] in ["players", "liberation"] %} class="num"{% elif col[0] != "name" %} class="wide"{% endif %}{% if col[0] %} data-sort="{{ col[0] }}" aria-sort="{{ 'descending' if col[0] == 'players' else 'none' }}"><button type="button">{{ col[1] }}</button>{% else %}>{{ col[1] }}{% endif %}</th>
+        {%- for col in [["name", "name"], ["sector", "sector"], ["owner", "owner"], ["biome", "biome"], [null, "hazards"], ["players", "players"], ["liberation", "liberation"]] %}
+        <th scope="col"{% if col[0] in ["players", "liberation"] %} class="num"{% elif col[0] != "name" %} class="wide"{% endif %}{% if col[0] %} data-sort="{{ col[0] }}" aria-sort="{{ 'descending' if col[0] == 'players' else 'none' }}"><button type="button">{{ t.planets.cols[col[1]] }}</button>{% else %}>{{ t.planets.cols[col[1]] }}{% endif %}</th>
         {%- endfor %}
       </tr>
     </thead>
-    <tbody id="planet-rows"><tr><td colspan="7" class="muted" data-loading>Loading planets…</td></tr></tbody>
+    <tbody id="planet-rows"><tr><td colspan="7" class="muted" data-loading>{{ t.planets.loading }}</td></tr></tbody>
   </table>
 </div>
 </section>

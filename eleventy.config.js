@@ -1,6 +1,14 @@
+import worker from "./worker.js";
+
 export default function (eleventyConfig) {
   // esbuild and sass write bundles straight into _site/assets; reload when they change
-  eleventyConfig.setServerOptions({ watch: ["_site/assets/**"] });
+  eleventyConfig.setServerOptions({
+    watch: ["_site/assets/**"],
+    // Run the production Worker against the public API, which needs no Access token.
+    onRequest: {
+      "/api/*": ({ url }) => worker.fetch(new Request(url), { API_ORIGIN: "https://api.helldivers2.dev", ACCESS_CLIENT_ID: "", ACCESS_CLIENT_SECRET: "" }),
+    },
+  });
   eleventyConfig.addPassthroughCopy({
     "src/img": "img",
     "src/_redirects": "_redirects",

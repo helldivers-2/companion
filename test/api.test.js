@@ -49,7 +49,7 @@ test("within the TTL the cache answers, after it a failed fetch falls back to st
 
 test("without a cache a failed fetch rejects", async (t) => {
   const { settle } = setup(t, [json(null, 503)]);
-  await assert.rejects(settle(get("/x"), 500), /API answered 503/);
+  await assert.rejects(settle(get("/x"), 500), /API returned 503/);
 });
 
 test("a 429 waits out the 10 s window and retries once", async (t) => {
@@ -65,4 +65,18 @@ test("a 429 waits out the 10 s window and retries once", async (t) => {
   await flush();
   assert.equal(await settle(p, 500), 1);
   assert.deepEqual(calls, [0, 10_500]);
+});
+
+test("cacheOnly answers from a cache of any age and never fetches", async (t) => {
+  const { calls, settle } = setup(t, [json(1)]);
+  await settle(get("/x", 60), 500);
+  t.mock.timers.tick(3_600_000);
+  state.cacheOnly = true;
+  try {
+    assert.equal(await get("/x", 60), 1);
+    await assert.rejects(get("/y"), /not cached/);
+  } finally {
+    state.cacheOnly = false;
+  }
+  assert.equal(calls.length, 1);
 });

@@ -1,44 +1,62 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{ site.api }}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hash is the <script>0</script> below. #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  {%- set title = t.meta[page_id][0] %}
+  {%- set description = t.meta[page_id][1] %}
+  {%- set path = page.url | replace("/" + lang + "/", "/") %}
   <title>{{ title }} · {{ site.name }}</title>
-  <meta name="description" content="{{ site.description }}">
+  <meta name="description" content="{{ description }}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:title" content="{{ title }} · {{ site.name }}">
-  <meta property="og:description" content="{{ site.description }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:locale" content="{{ lang | replace("-", "_") }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="A yellow skull next to the words {{ site.name }}, on a dark background">
+  <meta property="og:image:alt" content="{{ t.layout.ogAlt | replace("{name}", site.name) }}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
+  {#- The 404 pages are one per language but no translations of each other, so they get no canonical or hreflang. #}
+  {%- if page_id != "notfound" %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {%- for l in site.locales %}
+  <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}/{{ l }}{{ path }}">
+  {%- endfor %}
+  {#- / picks the browser's language, so it is x-default only for the overview; other pages default to English. #}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ '/' if path == '/' else '/en' + path }}">
+  {%- endif %}
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="stylesheet" href="/assets/main.css">
-  <script src="/assets/main.js" defer></script>
+  {#- Firefox lays out the body before the stylesheet arrives if anything (often an extension) forces layout early, flashing raw HTML. A script here has to wait for the stylesheet, which holds the body back. #}
+  <script>0</script>
 </head>
 <body data-page="{{ page_id }}">
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">{{ t.layout.skip }}</a>
   {# The companion's header: a logo pill and a nav pill on glass, at the top on wide screens and the bottom on phones. #}
   <header class="top">
-    <a class="glass logo" href="/"><img src="/img/icon.svg" alt="{{ site.name }} home" width="24" height="24"></a>
-    <nav class="glass" aria-label="Main">
-      {%- for item in [["/", "Overview", "rocket-launch"], ["/planets/", "Planets", "globe-hemisphere-west"], ["/dispatches/", "Dispatches", "megaphone-simple"], ["/news/", "News", "newspaper"], ["/faq/", "FAQ", "info"]] %}
-      <a href="{{ item[0] }}"{% if page.url == item[0] %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span><span>{{ item[1] }}</span></a>
+    <a class="glass logo" href="/{{ lang }}/"><img src="/img/icon.svg" alt="{{ t.layout.home | replace("{name}", site.name) }}" width="24" height="24"></a>
+    <nav class="glass" aria-label="{{ t.nav.label }}">
+      {%- for item in [["", "overview", "rocket-launch"], ["planets/", "planets", "globe-hemisphere-west"], ["dispatches/", "dispatches", "megaphone-simple"], ["news/", "news", "newspaper"], ["faq/", "faq", "info"]] %}
+      {%- set href = "/" + lang + "/" + item[0] %}
+      <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span><span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
     </nav>
   </header>
   <main id="main">
-    <p class="status" id="status" aria-live="off"></p>
-    <noscript><p class="notice">This companion loads live war data in your browser, so JavaScript is required.</p></noscript>
+    <div class="status-row">
+      {%- if page_id == "overview" %}<p id="online"></p>{% endif %}
+      <p class="status" id="status" aria-live="off"></p>
+    </div>
+    <noscript><p class="notice">{{ t.layout.noscript }}</p></noscript>
     {{ content | safe }}
   </main>
   {# The companion's footer: project line, about and credits beside community links, then the disclaimer. #}
@@ -46,11 +64,11 @@
     <div class="footer-main">
       <div>
         <h2>{{ site.name }}</h2>
-        <p class="muted">A project by <a href="{{ footer.author.href }}">{{ footer.author.name }}</a>.</p>
+        <p class="muted">{{ t.layout.by | replace("{author}", '<a href="' + footer.author.href + '">' + footer.author.name + "</a>") | safe }}</p>
       </div>
       <div class="footer-cols">
         <div>
-          <p class="muted">A fan-built dashboard for the Helldivers 2 Galactic War, reading live data from the community API every {{ site.refreshSeconds }} s. Built with:</p>
+          <p class="muted">{{ t.layout.about | replace("{s}", site.refreshSeconds) }}</p>
           <ul class="credits">
             {%- for c in footer.credits %}
             <li><a href="{{ c[0] }}"><span class="icon i-{{ c[1] }}" aria-hidden="true"></span>{{ c[2] }}</a></li>
@@ -59,17 +77,25 @@
         </div>
         <div>
           {%- for group in footer.social %}
-          <h2 id="footer-{{ loop.index }}">{{ group[0] }}</h2>
+          <h2 id="footer-{{ loop.index }}">{{ t.layout.links[group[0]] or group[0] }}</h2>
           <ul class="social" aria-labelledby="footer-{{ loop.index }}">
             {%- for l in group[1] %}
-            <li><a href="{{ l[0] }}" aria-label="{{ l[2] }}"><span class="icon i-{{ l[1] }}" aria-hidden="true"></span></a></li>
+            <li><a href="{{ l[0] }}" aria-label="{{ t.layout.links[l[2]] or l[2] }}"><span class="icon i-{{ l[1] }}" aria-hidden="true"></span></a></li>
             {%- endfor %}
           </ul>
           {%- endfor %}
+          <h2 id="footer-lang">{{ t.layout.language }}</h2>
+          <ul class="langs" aria-labelledby="footer-lang">
+            {%- for l in site.locales %}
+            <li><a href="/{{ l }}{{ '/' if page_id == 'notfound' else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
+            {%- endfor %}
+          </ul>
         </div>
       </div>
     </div>
-    <p class="disclaimer">Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.</p>
+    <p class="disclaimer">{{ t.layout.disclaimer }}</p>
   </footer>
+  {#- Not deferred: it must run before the first paint, so cached data shows at once instead of the "Loading…" placeholder flashing first. #}
+  <script src="/assets/main.js"></script>
 </body>
 </html>

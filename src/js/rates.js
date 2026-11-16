@@ -1,4 +1,5 @@
 import { leadingRegion, liberation } from "./format.js";
+import { fill, t } from "./i18n.js";
 
 const KEY = "hd:history";
 const WINDOW = 60 * 60_000;
@@ -34,7 +35,7 @@ export const hoursToWin = (lib, rate) => (rate > 0 ? (1 - lib) / rate : null);
 // Coarse on purpose: rates come from minutes of data, so precise long ETAs would mislead.
 export function eta(hours) {
   const minutes = Math.round(hours * 60); // round first, or 59.7 min would read "60m"
-  if (minutes < 60) return `${Math.max(1, minutes)}m`;
-  if (hours < 48) return `${Math.round(hours)}h`;
-  return `${Math.round(hours / 24)} days`;
+  if (minutes < 60) return `${Math.max(1, minutes)}${t.units.m}`;
+  if (hours < 48) return `${Math.round(hours)}${t.units.h}`;
+  return fill(t.units.days, { n: Math.round(hours / 24) });
 }

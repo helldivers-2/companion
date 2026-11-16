@@ -22,6 +22,7 @@ test("liberation falls back to the furthest-taken region while planet health is 
   assert.equal(leadingRegion({ ...p, health: 750 }), null);
   assert.equal(liberation({ ...p, health: 750 }), 0.25);
   assert.equal(liberation({ ...p, regions: [regions[0]] }), 0);
+  assert.equal(liberation({ ...p, regions: [{ id: 3, health: null, maxHealth: 100, isAvailable: false }] }), 0); // locked region
   assert.equal(regen({ ...p, regions: [] }), 3.6);
   assert.equal(regen({ ...p, event: { health: 1, maxHealth: 2 } }), 0);
 });
@@ -71,5 +72,5 @@ test("record sums kills per planet and splits them for the war", () => {
   const s = { terminidKills: 1000, automatonKills: 500, illuminateKills: 0, missionSuccessRate: 88, missionTime: 31_557_600 };
   assert.match(record(s), /Enemies killed<\/dt><dd><span title="1,500">1\.5K/);
   assert.match(record(s, true), /Automatons destroyed/);
-  assert.match(record(s), /88%.*1 years/);
+  assert.match(record(s), /88%.*1 year</);
 });

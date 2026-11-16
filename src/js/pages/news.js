@@ -1,7 +1,8 @@
 import { get } from "../api.js";
 import { esc, icon, slug, steamHtml } from "../format.js";
+import { lang, t } from "../i18n.js";
 
-const dateFmt = new Intl.DateTimeFormat(undefined, { dateStyle: "medium" });
+const dateFmt = new Intl.DateTimeFormat(lang, { dateStyle: "medium" });
 let shown = "";
 
 export default async function news() {
@@ -20,8 +21,8 @@ export default async function news() {
       <summary>${icon("caret-right")} <h2>${esc(n.title)}</h2>
         <p class="muted">${icon("clock")} <time datetime="${esc(n.publishedAt)}">${dateFmt.format(new Date(n.publishedAt))}</time>${n.author ? `, ${esc(n.author)}` : ""}</p></summary>
       <div class="steam">${steamHtml(n.content)}</div>
-      ${/^https:\/\//.test(n.url) ? `<p><a href="${esc(n.url)}">${icon("arrow-square-out")} Read on Steam</a></p>` : ""}
+      ${/^https:\/\//.test(n.url) ? `<p><a href="${esc(n.url)}">${icon("arrow-square-out")} ${t.js.readOnSteam}</a></p>` : ""}
     </details></li>`;
-  }).join("") || `<li class="card muted">${icon("clock")} No news yet.</li>`;
+  }).join("") || `<li class="card muted">${icon("clock")} ${t.js.noNews}</li>`;
   if (target) document.getElementById(target)?.scrollIntoView();
 }

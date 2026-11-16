@@ -5,28 +5,9 @@
     "Automaton",
     "Illuminate"
   ],
-  "taskTypes": {
-    "2": "Collect",
-    "3": "Eradicate",
-    "4": "Complete objectives",
-    "7": "Extract",
-    "9": "Complete operations",
-    "11": "Liberate",
-    "12": "Defend",
-    "13": "Hold",
-    "15": "Win net liberations"
-  },
   "valueTypes": {
     "faction": 1,
     "goal": 3,
     "planet": 12
-  },
-  "rewardTypes": {
-    "1": "Medals"
-  },
-  "tacticalStatus": {
-    "1": "Preparing",
-    "2": "Active",
-    "3": "Cooldown"
   }
 }

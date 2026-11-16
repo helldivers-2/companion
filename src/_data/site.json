@@ -1,9 +1,13 @@
 {
   "name": "Helldivers Companion",
   "url": "https://helldivers.michi.onl",
-  "description": "Live Galactic War status: Major Orders, active fronts, planets and dispatches.",
-  "api": "https://api.helldivers2.dev",
   "client": "helldivers-companion",
-  "contact": "helldivers-companion",
-  "refreshSeconds": 60
+  "contact": "@.mixhi",
+  "refreshSeconds": 60,
+  "locales": [
+    "en",
+    "es",
+    "de",
+    "zh-TW"
+  ]
 }
