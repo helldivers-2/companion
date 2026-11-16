@@ -51,7 +51,7 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 @each $name, $color in $factions {
   .#{$name} {
     --faction: #{$color};
-    --emblem: url("/img/factions/#{$name}.webp");
+    --emblem: #{map.get($emblems, $name)}; // inlined: a mask draws nothing until its file arrives
   }
 }
 
