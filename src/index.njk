@@ -38,3 +38,11 @@ permalink: "/{{ lang }}/"
     <div id="record"></div>
   </div>
 </section>
+
+<div class="container">
+  <p class="muted hint">{{ t.overview.intro | replace("{faq}", "/" + lang + "/faq/") | safe }}</p>
+</div>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebSite", "name": {{ site.name | dump | safe }}, "url": "{{ site.url }}/{{ lang }}/", "inLanguage": "{{ lang }}", "description": {{ t.meta.overview[1] | dump | safe }}}
+</script>

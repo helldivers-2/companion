@@ -1,7 +1,14 @@
 {
   "name": "Deutsch",
   "api": "de-DE",
-  "description": "Der Galaktische Krieg live: Generalbefehle, aktive Fronten, Planeten und Meldungen.",
+  "meta": {
+    "overview": ["Helldivers 2: Generalbefehl und Kriegslage live", "Der Galaktische Krieg in Helldivers 2 live: der aktuelle Generalbefehl mit Fortschritt und Frist, die Raumstation, aktive Fronten und Kriegsstatistik."],
+    "planets": ["Helldivers 2: Planeten und Befreiung", "Alle Planeten im Galaktischen Krieg von Helldivers 2 mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und Befreiung live. Durchsuchen, filtern, sortieren."],
+    "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Galaktischen Krieg von Helldivers 2, direkt aus dem Spiel."],
+    "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite, gesammelt an einem Ort."],
+    "faq": ["So funktioniert der Krieg in Helldivers 2", "So funktioniert die Befreiung in Helldivers 2: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
+    "notfound": ["Seite nicht gefunden", "Der Galaktische Krieg live: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
+  },
   "titles": {
     "overview": "Übersicht",
     "planets": "Planeten",
@@ -29,6 +36,7 @@
   },
   "overview": {
     "h1": "Übersicht über den Galaktischen Krieg",
+    "intro": "Ein Live-Tracker für den Galaktischen Krieg in Helldivers 2: der aktuelle Generalbefehl und seine Frist, die Raumstation, alle aktiven Fronten und die laufende Kriegsstatistik. Neu bei den Zahlen? Lies, <a href=\"{faq}\">wie der Krieg funktioniert</a>.",
     "summary": "Kriegslage",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
@@ -39,6 +47,7 @@
     "war": "Galaktischer Krieg"
   },
   "planets": {
+    "intro": "Alle Planeten im Galaktischen Krieg mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und Befreiungsfortschritt. Durchsuche, filtere und sortiere sie oder öffne einen Planeten für Details.",
     "all": "Alle Planeten",
     "search": "Suche",
     "placeholder": "Planet, Sektor, Biom, Gefahr …",
@@ -48,7 +57,7 @@
     "cols": { "name": "Planet", "sector": "Sektor", "owner": "Kontrolle", "biome": "Biom", "hazards": "Gefahren", "players": "Helldivers", "liberation": "Befreiung" },
     "loading": "Planeten werden geladen …"
   },
-  "dispatches": { "h1": "Meldungen von Über-Erde", "loading": "Meldungen werden geladen …" },
+  "dispatches": { "h1": "Meldungen von Über-Erde", "intro": "Der Nachrichtendienst von Über-Erde aus dem Spiel: Kriegsberichte, Einsatzbefehle zu Generalbefehlen und Propaganda, sobald sie erscheinen.", "loading": "Meldungen werden geladen …" },
   "news": { "h1": "Neuigkeiten von Steam", "hint": "Patchnotes, Entwicklerblogs und Ankündigungen von Arrowheads Steam-Seite.", "loading": "Neuigkeiten werden geladen …" },
   "faq": {
     "h1": "So funktioniert der Galaktische Krieg",

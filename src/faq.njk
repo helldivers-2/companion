@@ -33,3 +33,11 @@ permalink: "/{{ lang }}/faq/"
 </section>
 </div>
 </div>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": "{{ lang }}", "mainEntity": [
+{%- for qa in t.faq.qa %}
+  {"@type": "Question", "name": {{ qa[0] | dump | safe }}, "acceptedAnswer": {"@type": "Answer", "text": {{ qa[1] | dump | safe }}}}{{ "," if not loop.last }}
+{%- endfor %}
+]}
+</script>

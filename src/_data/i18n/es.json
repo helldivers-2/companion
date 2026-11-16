@@ -1,7 +1,14 @@
 {
   "name": "Español",
   "api": "es-ES",
-  "description": "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados.",
+  "meta": {
+    "overview": ["Helldivers 2: orden suprema y estado de la guerra", "La Guerra Galáctica de Helldivers 2 en directo: la orden suprema actual con progreso y plazo, la estación espacial, los frentes activos y las estadísticas."],
+    "planets": ["Helldivers 2: planetas y liberación", "Todos los planetas de la Guerra Galáctica de Helldivers 2 con sector, bioma, peligros, control, Helldivers y liberación en directo. Busca, filtra y ordena."],
+    "dispatches": ["Helldivers 2: comunicados de Supertierra", "Los últimos comunicados de Supertierra sobre la Guerra Galáctica de Helldivers 2, directamente desde el juego."],
+    "news": ["Helldivers 2: noticias y notas de parche", "Notas de parche, blogs de desarrollo y anuncios de Helldivers 2 desde la página de Arrowhead en Steam, reunidos en un solo lugar."],
+    "faq": ["Cómo funciona la guerra en Helldivers 2", "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."],
+    "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
+  },
   "titles": {
     "overview": "Resumen",
     "planets": "Planetas",
@@ -29,6 +36,7 @@
   },
   "overview": {
     "h1": "Resumen de la Guerra Galáctica",
+    "intro": "Un seguimiento en directo de la Guerra Galáctica de Helldivers 2: la orden suprema actual y su plazo, la estación espacial, todos los frentes activos y las cifras de la guerra. ¿Las cifras te suenan a chino? Lee <a href=\"{faq}\">cómo funciona la guerra</a>.",
     "summary": "Resumen de la guerra",
     "order": "Orden suprema",
     "orderLoading": "Recibiendo órdenes del alto mando…",
@@ -39,6 +47,7 @@
     "war": "Guerra Galáctica"
   },
   "planets": {
+    "intro": "Todos los planetas de la Guerra Galáctica con su sector, bioma, peligros, control, número de Helldivers y progreso de liberación. Busca, filtra, ordena y abre un planeta para ver sus detalles.",
     "all": "Todos los planetas",
     "search": "Buscar",
     "placeholder": "Planeta, sector, bioma, peligro…",
@@ -48,7 +57,7 @@
     "cols": { "name": "Planeta", "sector": "Sector", "owner": "Control", "biome": "Bioma", "hazards": "Peligros", "players": "Helldivers", "liberation": "Liberación" },
     "loading": "Cargando planetas…"
   },
-  "dispatches": { "h1": "Comunicados de Supertierra", "loading": "Cargando comunicados…" },
+  "dispatches": { "h1": "Comunicados de Supertierra", "intro": "El canal de noticias de Supertierra dentro del juego: partes de guerra, instrucciones de las órdenes supremas y propaganda, según se publican.", "loading": "Cargando comunicados…" },
   "news": { "h1": "Noticias de Steam", "hint": "Notas de parche, blogs de desarrollo y anuncios de la página de Arrowhead en Steam.", "loading": "Cargando noticias…" },
   "faq": {
     "h1": "Cómo funciona la Guerra Galáctica",

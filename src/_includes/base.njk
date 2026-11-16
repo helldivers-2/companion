@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. #}
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' {{ site.api }}; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
-  {%- set title = t.titles[page_id] %}
+  {%- set title = t.meta[page_id][0] %}
+  {%- set description = t.meta[page_id][1] %}
+  {%- set path = page.url | replace("/" + lang + "/", "/") %}
   <title>{{ title }} · {{ site.name }}</title>
-  <meta name="description" content="{{ t.description }}">
+  <meta name="description" content="{{ description }}">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.name }}">
   <meta property="og:title" content="{{ title }} · {{ site.name }}">
-  <meta property="og:description" content="{{ t.description }}">
+  <meta property="og:description" content="{{ description }}">
   <meta property="og:locale" content="{{ lang | replace("-", "_") }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:image" content="{{ site.url }}/img/og.jpg">
@@ -21,13 +23,19 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
+  {#- The 404 pages are one per language but no translations of each other, so they get no canonical or hreflang. #}
+  {%- if page_id != "notfound" %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {%- for l in site.locales %}
-  <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}{{ page.url | replace("/" + lang + "/", "/" + l + "/") }}">
+  <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}/{{ l }}{{ path }}">
   {%- endfor %}
-  <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+  {#- / picks the browser's language, so it is x-default only for the overview; other pages default to English. #}
+  <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ '/' if path == '/' else '/en' + path }}">
+  {%- endif %}
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  <link rel="preconnect" href="{{ site.api }}" crossorigin>
   <link rel="stylesheet" href="/assets/main.css">
   <script src="/assets/main.js" defer></script>
 </head>
@@ -76,7 +84,7 @@
           <h2 id="footer-lang">{{ t.layout.language }}</h2>
           <ul class="langs" aria-labelledby="footer-lang">
             {%- for l in site.locales %}
-            <li><a href="{{ page.url | replace("/" + lang + "/", "/" + l + "/") }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
+            <li><a href="/{{ l }}{{ '/' if page_id == 'notfound' else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
             {%- endfor %}
           </ul>
         </div>

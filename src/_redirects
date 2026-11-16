@@ -17,3 +17,9 @@
 /station/:index      /en/                     301
 /dispatch/:id        /en/dispatches/          301
 /news/:gid           /en/news/#news-:gid      301
+
+# Bare language roots; Cloudflare's own trailing-slash redirect is a 307.
+/en                  /en/                     301
+/es                  /es/                     301
+/de                  /de/                     301
+/zh-TW               /zh-TW/                  301
