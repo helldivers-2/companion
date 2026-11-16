@@ -2,12 +2,12 @@
   "name": "Deutsch",
   "api": "de-DE",
   "meta": {
-    "overview": ["Helldivers 2: Generalbefehl und Kriegslage live", "Der Galaktische Krieg in Helldivers 2 live: der aktuelle Generalbefehl mit Fortschritt und Frist, die Raumstation, aktive Fronten und Kriegsstatistik."],
-    "planets": ["Helldivers 2: Planeten und Befreiung", "Alle Planeten im Galaktischen Krieg von Helldivers 2 mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und Befreiung live. Durchsuchen, filtern, sortieren."],
-    "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Galaktischen Krieg von Helldivers 2, direkt aus dem Spiel."],
-    "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite, gesammelt an einem Ort."],
+    "overview": ["Helldivers 2: Generalbefehl und aktuelle Kriegslage", "Der Galaktische Krieg in Helldivers 2 live: der aktuelle Generalbefehl mit Fortschritt und Frist, die Raumstation, aktive Fronten und Kriegsstatistik."],
+    "planets": ["Helldivers 2: Planeten und Befreiung", "Alle Planeten im Galaktischen Krieg von Helldivers 2 mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und aktuellem Befreiungsfortschritt."],
+    "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Spiel zum Galaktischen Krieg von Helldivers 2."],
+    "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
     "faq": ["So funktioniert der Krieg in Helldivers 2", "So funktioniert die Befreiung in Helldivers 2: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
-    "notfound": ["Seite nicht gefunden", "Der Galaktische Krieg live: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
+    "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
   "titles": {
     "overview": "Übersicht",
@@ -17,16 +17,16 @@
     "faq": "So funktioniert der Krieg",
     "notfound": "Seite nicht gefunden"
   },
-  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "News", "faq": "FAQ" },
+  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ" },
   "layout": {
     "skip": "Zum Inhalt springen",
     "home": "{name}, Startseite",
     "ogAlt": "Ein gelber Totenkopf neben dem Schriftzug {name} auf dunklem Hintergrund",
-    "noscript": "Dieser Companion lädt die Kriegsdaten live im Browser und braucht daher JavaScript.",
+    "noscript": "Dieser Companion lädt die Kriegsdaten live im Browser. Aktiviere JavaScript, um sie zu sehen.",
     "by": "Ein Projekt von {author}.",
-    "about": "Ein von Fans gebautes Dashboard für den Galaktischen Krieg in Helldivers 2. Es liest alle {s} s Live-Daten aus der Community-API. Gebaut mit:",
+    "about": "Ein von Fans gebautes Dashboard für den Galaktischen Krieg in Helldivers 2. Es liest alle {s} s aktuelle Daten aus der Community-API. Gebaut mit:",
     "language": "Sprache",
-    "disclaimer": "Von Fans gemacht. Nicht mit Arrowhead Game Studios oder Sony Interactive Entertainment verbunden und nicht von ihnen unterstützt.",
+    "disclaimer": "Fanprojekt. Steht in keiner Verbindung zu Arrowhead Game Studios oder Sony Interactive Entertainment und wird von ihnen nicht unterstützt.",
     "links": {
       "Fan communities": "Fan-Communitys",
       "Arrowhead accounts": "Arrowhead-Kanäle",
@@ -35,14 +35,14 @@
     }
   },
   "overview": {
-    "h1": "Übersicht über den Galaktischen Krieg",
-    "intro": "Ein Live-Tracker für den Galaktischen Krieg in Helldivers 2: der aktuelle Generalbefehl und seine Frist, die Raumstation, alle aktiven Fronten und die laufende Kriegsstatistik. Neu bei den Zahlen? Lies, <a href=\"{faq}\">wie der Krieg funktioniert</a>.",
+    "h1": "Der Galaktische Krieg im Überblick",
+    "intro": "Ein Live-Tracker für den Galaktischen Krieg in Helldivers 2: der aktuelle Generalbefehl und seine Frist, die Raumstation, alle aktiven Fronten und die laufende Kriegsstatistik. Was die Zahlen bedeuten, steht unter <a href=\"{faq}\">So funktioniert der Krieg</a>.",
     "summary": "Kriegslage",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
     "station": "Raumstation",
     "fronts": "Aktive Fronten",
-    "frontsLoading": "Feldzüge werden geladen …",
+    "frontsLoading": "Fronten werden geladen …",
     "statistics": "Statistik",
     "war": "Galaktischer Krieg"
   },
@@ -57,7 +57,7 @@
     "cols": { "name": "Planet", "sector": "Sektor", "owner": "Kontrolle", "biome": "Biom", "hazards": "Gefahren", "players": "Helldivers", "liberation": "Befreiung" },
     "loading": "Planeten werden geladen …"
   },
-  "dispatches": { "h1": "Meldungen von Über-Erde", "intro": "Der Nachrichtendienst von Über-Erde aus dem Spiel: Kriegsberichte, Einsatzbefehle zu Generalbefehlen und Propaganda, sobald sie erscheinen.", "loading": "Meldungen werden geladen …" },
+  "dispatches": { "h1": "Meldungen von Über-Erde", "intro": "Der Nachrichtenfeed von Über-Erde im Spiel: Kriegsberichte, Briefings zu Generalbefehlen und Propaganda, sobald sie erscheinen.", "loading": "Meldungen werden geladen …" },
   "news": { "h1": "Neuigkeiten von Steam", "hint": "Patchnotes, Entwicklerblogs und Ankündigungen von Arrowheads Steam-Seite.", "loading": "Neuigkeiten werden geladen …" },
   "faq": {
     "h1": "So funktioniert der Galaktische Krieg",
@@ -65,8 +65,8 @@
     "intro": "In Helldivers 2 führt Über-Erde einen gemeinsamen Krieg gegen die Terminiden, die Roboter und die Illuminierten. Du wählst, an welcher Front du abspringst, und ein Spielleiter bei Arrowhead wechselt die aktiven Feldzüge und formt den Krieg um, während du spielst. Dieser Companion liest dieselben Zahlen wie das Spiel.",
     "points": [
       "Jeder Planet hat einen Lebenspunkte-Pool. Befreiungsfeldzüge starten bei festen 1.000.000, Verteidigungsfeldzüge reichen von etwa 600.000 bis über 2 Millionen.",
-      "Der Pool füllt sich von selbst wieder auf, meist um 1,5 bis 4,5 % pro Stunde, und der Spielleiter kann das auf über 20 % anheben, um einen Vorstoß abzubremsen. Verteidigungsfeldzüge laufen stattdessen auf Zeit und füllen sich nie auf.",
-      "Jede abgeschlossene Operation zieht Lebenspunkte vom Pool ab. Ein Planet fällt also im Verhältnis dazu, wie viele Trupps auf ihm kämpfen.",
+      "Der Pool füllt sich von selbst wieder auf, meist um 1,5 bis 4,5 % pro Stunde, und der Spielleiter kann die Rate auf über 20 % anheben, um einen Vorstoß abzubremsen. Verteidigungsfeldzüge laufen stattdessen auf Zeit und füllen sich nie auf.",
+      "Jede abgeschlossene Mission zieht Lebenspunkte vom Pool ab. Ein Planet fällt also im Verhältnis dazu, wie viele Trupps auf ihm kämpfen.",
       "Manche Planeten sind in Regionen wie Dörfer und Städte aufgeteilt. Während eine Region erobert wird, kann der Balken des Planeten selbst bei 0 % stehen bleiben. Der Companion zeigt dann die am weitesten eroberte Region und nennt sie.",
       "Auch der Feind schlägt zurück. Gegenangriffe zeigen sich als plötzliche Einbrüche um 1 bis 2 % und kommen oft in Serien von drei oder vier."
     ],
@@ -74,8 +74,8 @@
     "qa": [
       ["Schadet es der Befreiung, eine Operation abzubrechen?", "Nein. Nur abgeschlossene Missionen ziehen Lebenspunkte vom Planeten ab. Ein Abbruch kostet dich also die Belohnungen, sonst nichts."],
       ["Warum verlieren Planeten über Nacht Fortschritt?", "Planeten regenerieren rund um die Uhr. Nachts, wenn weniger Helldivers abspringen, ist die Regeneration stärker als der Schaden der Spieler, und morgens steht ein niedrigerer Prozentwert da. Verteidigungen funktionieren anders: Sie laufen auf Zeit und regenerieren nie."],
-      ["Zählen Missionen außerhalb der Feldzugsliste?", "Du kannst auf jedem befreiten Planeten abspringen, aber diese Planeten gehören nicht zu den aktiven Feldzügen und regenerieren schneller, als ein paar Trupps Schaden machen können. Sie bleiben deshalb bei vollen Lebenspunkten. Der Spielleiter sieht diesen Verkehr und kann den Krieg danach ausrichten."],
-      ["Woher kommen die Fortschrittsraten und Schätzungen?", "Die API meldet nur den aktuellen Stand, ohne Verlauf. Dein Browser hebt die Momentaufnahmen, die er gesehen hat, eine Stunde lang auf und misst, wie schnell sich jede Front bewegt. Raten und Schätzungen erscheinen deshalb etwa fünf Minuten nach dem Öffnen der Übersicht. Bis dahin zeigt eine Front die Regeneration des Feindes, also das, was Über-Erde jede Stunde an Schaden übertreffen muss."],
+      ["Zählen Missionen außerhalb der Feldzugsliste?", "Du kannst auf jedem befreiten Planeten abspringen, aber diese Planeten gehören nicht zu den aktiven Feldzügen und regenerieren schneller, als ein paar Trupps Schaden anrichten können. Sie bleiben deshalb bei vollen Lebenspunkten. Der Spielleiter sieht diese Aktivität und kann den Krieg danach ausrichten."],
+      ["Woher kommen die Fortschrittsraten und Schätzungen?", "Die API meldet nur den aktuellen Stand, ohne Verlauf. Dein Browser hebt die Momentaufnahmen, die er gesehen hat, eine Stunde lang auf und misst, wie schnell sich jede Front bewegt. Raten und Schätzungen erscheinen deshalb etwa fünf Minuten nach dem Öffnen der Übersicht. Bis dahin zeigt eine Front die Regeneration des Feindes, also den Schaden, den Über-Erde pro Stunde mindestens anrichten muss."],
       ["Warum zeigen die meisten Fronten keinen Balken?", "Zu jedem Zeitpunkt steht der Feind in den meisten aktiven Feldzügen bei vollen Lebenspunkten. Diese Fronten zeigen „Noch kein Boden gewonnen“ und stehen unter denen, die sich bewegen."]
     ],
     "source": "Antworten zusammengetragen aus dem <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> und Quellen aus der Community."
@@ -95,7 +95,7 @@
   },
   "rewardTypes": { "1": "Medaillen" },
   "tacticalStatus": { "1": "In Vorbereitung", "2": "Aktiv", "3": "Abklingzeit" },
-  "units": { "d": " T", "h": " Std.", "m": " Min.", "s": " Sek.", "days": "{n} Tage" },
+  "units": { "d": " Tg.", "h": " Std.", "m": " Min.", "s": " Sek.", "days": "{n} Tage" },
   "record": {
     "missionsWon": "Missionen gewonnen",
     "missionsLost": "Missionen verloren",
@@ -112,15 +112,15 @@
     "time": "Zeit im Kampf"
   },
   "js": {
-    "stale": "API nicht erreichbar, zeige zwischengespeicherte Daten",
+    "stale": "API nicht erreichbar, zwischengespeicherte Daten werden angezeigt",
     "updated": "Aktualisiert {time}",
     "failed": "Kriegsdaten konnten nicht geladen werden: {error}",
     "retrying": "Noch keine Kriegsdaten, neuer Versuch alle {s} s.",
-    "rateLimited": "von der API gedrosselt",
+    "rateLimited": "zu viele Anfragen an die API",
     "apiStatus": "API antwortete mit {status}",
     "noDispatches": "Noch keine Meldungen von Über-Erde.",
-    "won": "GENERALBEFEHL (ERFOLGREICH|GEWONNEN|ABGESCHLOSSEN)|MAJOR ORDER WON|DIRECTIVE COMPLETED",
-    "lost": "GENERALBEFEHL GESCHEITERT|MAJOR ORDER FAILED",
+    "won": "GENERALBEFEHL (ERFOLGREICH|GEWONNEN|ABGESCHLOSSEN)|STRATEGISCHE ANWEISUNG ERFÜLLT|MAJOR ORDER WON|DIRECTIVE COMPLETED",
+    "lost": "GENERALBEFEHL GESCHEITERT|STRATEGISCHE ANWEISUNG GESCHEITERT|MAJOR ORDER (FAILED|LOST)|DIRECTIVE FAILED",
     "readOnSteam": "Auf Steam lesen",
     "noNews": "Noch keine Neuigkeiten.",
     "noOrder": "Gerade gibt es keinen Generalbefehl. Das Oberkommando erteilt bald neue Befehle.",
@@ -130,8 +130,8 @@
     "defenses": "Verteidigungen",
     "impact": "Missionswirkung",
     "helldivers": "{n} Helldivers",
-    "showMore": "{n} weitere zeigen",
-    "noCampaigns": "Keine aktiven Feldzüge.",
+    "showMore": "{n} weitere anzeigen",
+    "noCampaigns": "Keine aktiven Fronten.",
     "complete": "Erledigt:",
     "open": "Offen:",
     "held": "Gehalten",
@@ -145,7 +145,7 @@
     "noMovement": "Keine Bewegung",
     "losing": "{speed}, verliert Boden",
     "tooSlow": "{speed}, braucht ~{eta}, zu langsam zum Halten",
-    "winIn": "{speed}, gewonnen in ~{eta}",
+    "winIn": "{speed}, Sieg in ~{eta}",
     "defend": "Verteidigen, noch {time}",
     "onPlanet": "Helldivers auf diesem Planeten",
     "playersLabel": "Helldivers:",
@@ -154,12 +154,12 @@
     "unknown": "unbekannt",
     "vote": "Abstimmung über das nächste Ziel endet in {time}",
     "statusUnknown": "Unbekannt",
-    "for": "für {time}",
+    "for": "noch {time}",
     "preparation": "Vorbereitung: {name}",
     "underAttack": "Wird angegriffen",
     "none": "Keine",
     "count": "{n} von {total} Planeten",
-    "noMatch": "Kein Planet passt zu diesen Filtern.",
+    "noMatch": "Kein Planet passt zu diesen Filtern. Probier eine andere Suche oder einen anderen Filter.",
     "hazards": "Gefahren",
     "locked": "Gesperrt",
     "regions": "Regionen",

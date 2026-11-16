@@ -49,7 +49,7 @@ test("within the TTL the cache answers, after it a failed fetch falls back to st
 
 test("without a cache a failed fetch rejects", async (t) => {
   const { settle } = setup(t, [json(null, 503)]);
-  await assert.rejects(settle(get("/x"), 500), /API answered 503/);
+  await assert.rejects(settle(get("/x"), 500), /API returned 503/);
 });
 
 test("a 429 waits out the 10 s window and retries once", async (t) => {
