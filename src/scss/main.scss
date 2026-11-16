@@ -16,6 +16,8 @@ $muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
 // Text and focus accent. Dark uses the companion's chart-1 yellow because its amber primary is
 // indistinguishable from Terminids orange; light uses its primary-foreground for 4.5:1 on white.
 $accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
+// The companion's amber icon colour, used for the nav icons as it does.
+$icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
 // Decorative fills only (hazard stripes, borders): the companion's yellow primary fails as text on white.
 $accent-fill: light-dark(oklch(0.852 0.199 91.936), oklch(0.905 0.182 98.111));
 
@@ -33,7 +35,7 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 
 // Phosphor icons, copied to /assets/icons by eleventy.config.js; keep the two lists in step.
 $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank, medal, circle, target, sword, clock, users,
-  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out;
+  caret-right, shield-warning, map-pin, megaphone-simple, arrow-square-out, info;
 
 *,
 *::before,
@@ -77,7 +79,7 @@ a {
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;
-  z-index: 1;
+  z-index: 11;
   padding: 0.5rem 0.75rem;
   background: $accent;
   color: $ground;
@@ -167,59 +169,113 @@ h4 {
 
 // Header
 
+html {
+  scroll-padding-top: 5.5rem; // anchors and scrollIntoView land below the fixed header
+}
+
 .top {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0 1.5rem;
-  padding: 0 clamp(1rem, 4vw, 2rem);
-  border-bottom: 1px solid $line;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  pointer-events: none; // only the pills take clicks, not the strip around them
+
+  > * {
+    pointer-events: auto;
+  }
 
   nav {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
+    padding: 0.25rem;
   }
 
   nav a {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    min-height: 2.75rem;
-    padding: 0 0.6rem;
+    padding: 0.375rem 0.625rem;
     color: $text;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
     text-decoration: none;
 
-    &:hover {
-      color: $accent;
+    .icon {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      margin: 0.5rem auto 0.25rem;
+      color: $icon;
     }
 
+    &:hover,
     &[aria-current="page"] {
       color: $accent;
-      box-shadow: inset 0 -2px $accent;
     }
   }
 }
 
-.brand {
-  padding: 0.75rem 0;
-  color: $accent;
-  font-family: $display;
-  font-size: 1.3125rem;
-  font-weight: 700;
-  text-decoration: none;
+.glass {
+  border: 1px solid light-dark(rgb(214 211 205 / 40%), rgb(255 255 255 / 10%));
+  background: light-dark(rgb(245 241 235 / 65%), rgb(28 24 20 / 65%));
+  backdrop-filter: blur(24px) saturate(1.8);
+}
+
+.logo {
+  display: none;
+  padding: 0.25rem;
+
+  img {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.375rem 0.625rem;
+  }
+}
+
+@media (width >= 40rem) {
+  .top {
+    top: 0;
+    bottom: auto;
+    padding-bottom: 1.5rem;
+  }
+
+  .logo {
+    display: block;
+  }
+
+  .top nav a {
+    display: flex;
+    align-items: center;
+    height: 2.25rem;
+    padding: 0 0.625rem;
+
+    .icon {
+      width: 1rem;
+      height: 1rem;
+      margin: 0 0.5rem 0 0;
+    }
+  }
 }
 
 .status {
-  margin-left: auto;
+  min-height: 1.3125rem;
   color: $muted;
   font-size: 0.875rem;
+  text-align: right;
 }
 
 main {
   max-width: 76rem;
   margin: 0 auto;
-  padding: 1.5rem clamp(1rem, 4vw, 2rem) 3rem;
+  padding: 1rem clamp(1rem, 4vw, 2rem) 3rem;
+
+  @media (width >= 40rem) {
+    padding-top: 5.5rem;
+  }
 
   > section + section {
     margin-top: 2.5rem;
@@ -227,7 +283,12 @@ main {
 }
 
 footer {
-  padding: 1.5rem clamp(1rem, 4vw, 2rem);
+  padding: 1.5rem clamp(1rem, 4vw, 2rem) calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
+
+  @media (width >= 40rem) {
+    padding-bottom: 1.5rem;
+  }
+
   border-top: 1px solid $line;
   color: $muted;
   font-size: 0.875rem;
@@ -237,13 +298,6 @@ footer {
 .notice {
   padding: 1rem;
   border: 1px solid $accent;
-}
-
-// Four nav items with icons overflow a 360 px phone; the labels alone fit.
-@media (width < 30rem) {
-  .top nav .icon {
-    display: none;
-  }
 }
 
 // Disclosure pieces shared by fronts, planet rows and news posts: the caret icon replaces the native marker.
