@@ -1,0 +1,8 @@
+{
+  // Static assets only; Cloudflare reads _site/_redirects and serves _site/404.html for unknown paths.
+  // The helldivers.michi.onl custom domain is attached in the dashboard, not here, because the CI token
+  // is scoped to this one Worker and per-Worker tokens can't manage custom domains.
+  "name": "helldivers-companion",
+  "compatibility_date": "2026-11-16",
+  "assets": { "directory": "_site", "not_found_handling": "404-page" }
+}

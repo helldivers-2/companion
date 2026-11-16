@@ -9,6 +9,7 @@ npm install
 npm run dev     # http://localhost:8080
 npm run build   # static site in _site/
 npm test
+npm run deploy  # build and publish to Cloudflare (wrangler.jsonc); pushes to main deploy via GitHub Actions
 ```
 
 The site is built once per language in `site.locales` (`/en/`, `/es/`, `/de/`, `/zh-TW/`), and `/` sends visitors to their browser's language. All text, for the templates and the browser script alike, lives in `src/_data/i18n/<locale>.json`. `npm test` fails if a locale is missing a key that English has. The API is asked for the same language, so Major Orders, dispatches and some planet names come back translated.
