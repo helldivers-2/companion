@@ -4,21 +4,29 @@
 @use "@fontsource/barlow-condensed/latin-600" as condensed-600;
 @use "@fontsource/barlow-condensed/latin-700";
 
-$ground: #0e151e;
-$panel: #16202b;
-$line: #2a3644;
-$control: #647487; // form borders need 3:1 against panel and ground (WCAG 1.4.11)
-$text: #e8edf2;
-$muted: #93a1b0;
-$accent: #ffe711;
+// The companion's palette (light, dark), following the system setting like the companion does.
+$ground: light-dark(oklch(1 0 0), oklch(0.216 0.006 56.043));
+$panel: light-dark(oklch(0.97 0 0), oklch(0.268 0.007 34.298));
+$line: light-dark(oklch(0.923 0.003 48.717), oklch(1 0 0 / 10%));
+// Form borders need 3:1 against panel and ground (WCAG 1.4.11), so these are darker than the companion's input token.
+$control: light-dark(oklch(0.62 0 0), oklch(0.553 0.013 58.071));
+$text: light-dark(oklch(0.145 0 0), oklch(0.985 0.001 106.423));
+// Light is a step darker than the companion's muted-foreground to reach 4.5:1 on the panel.
+$muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
+// Text and focus accent. Dark uses the companion's chart-1 yellow because its amber primary is
+// indistinguishable from Terminids orange; light uses its primary-foreground for 4.5:1 on white.
+$accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
+// Decorative fills only (hazard stripes, borders): the companion's yellow primary fails as text on white.
+$accent-fill: light-dark(oklch(0.852 0.199 91.936), oklch(0.905 0.182 98.111));
 
-// Checked with the dataviz validator (all pairs, plus $accent): humans vs illuminate clears deutan
-// CVD and terminids vs the Major Order yellow clears normal vision. Kept light for 4.5:1 text use.
+// Every pair (plus $accent) checked for 4.5:1 on ground and panel and for OKLab distance under
+// normal vision and deuteranopia. Light: accent vs automaton is the closest pair (deutan 0.06), but
+// tags that share a row also differ in text.
 $factions: (
-  humans: #46cbe8,
-  terminids: #ffa31a,
-  automaton: #ff5a52,
-  illuminate: #b38cff,
+  humans: light-dark(oklch(0.5 0.1 220), #46cbe8),
+  terminids: light-dark(oklch(0.555 0.15 58), #ffa31a),
+  automaton: light-dark(oklch(0.47 0.18 15), #ff5a52),
+  illuminate: light-dark(oklch(0.5 0.17 295), #b38cff),
 );
 
 $display: "Barlow Condensed", "Arial Narrow", sans-serif;
@@ -34,7 +42,7 @@ $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank,
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
   --faction: #{$accent};
 }
 
@@ -342,7 +350,7 @@ footer {
 .order {
   position: relative;
   padding: 1.75rem clamp(1rem, 3vw, 2rem) 1.5rem;
-  border: 1px solid rgba($accent, 0.5);
+  border: 1px solid color-mix(in oklch, $accent-fill 50%, transparent);
   background: $panel;
 
   &::before {
@@ -350,7 +358,7 @@ footer {
     position: absolute;
     inset: 0 0 auto;
     height: 0.5rem;
-    background: repeating-linear-gradient(-45deg, $accent 0 0.75rem, $ground 0.75rem 1.5rem);
+    background: repeating-linear-gradient(-45deg, $accent-fill 0 0.75rem, $ground 0.75rem 1.5rem);
   }
 
   header {
@@ -693,7 +701,7 @@ footer {
 .dispatch {
   max-width: 48rem;
   padding: 1rem 1.25rem;
-  border-left: 3px solid $accent;
+  border-left: 3px solid $accent-fill;
   background: $panel;
 
   time {
