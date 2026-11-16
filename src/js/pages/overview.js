@@ -1,6 +1,6 @@
 import labels from "../../_data/labels.json" with { type: "json" };
 import { get } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, icon, liberation, num, pct, slug, titleCase } from "../format.js";
+import { bar, countdown, describeTask, enemyOf, esc, icon, leadingRegion, liberation, num, pct, regen, slug, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 
 const $ = (id) => document.getElementById(id);
@@ -25,12 +25,17 @@ export default async function overview() {
   $("dss-section").hidden = !stations.length;
   $("dss").innerHTML = stations.map(stationPanel).join("");
 
-  $("online").innerHTML = `${icon("users")} ${num(war.statistics.playerCount)} Helldivers online`;
+  const defenses = campaigns.filter((c) => c.planet.event).length;
+  $("online").innerHTML = [
+    `${icon("users")} ${num(war.statistics.playerCount)} Helldivers online`,
+    `${num(campaigns.length)} fronts, ${num(defenses)} ${defenses === 1 ? "defense" : "defenses"}`,
+    war.impactMultiplier ? `mission impact ×${war.impactMultiplier.toFixed(4)}` : "",
+  ].filter(Boolean).join(" · ");
 
   const groups = {};
   for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
   const players = (list) => list.reduce((n, p) => n + p.statistics.playerCount, 0);
-  const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + p.statistics.playerCount;
+  const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + (idle(p) ? 0 : 5e8) + p.statistics.playerCount;
   // Re-rendering every minute would otherwise collapse an opened "Show more" and drop focus from its summary.
   const fronts = $("fronts");
   const open = new Set([...fronts.querySelectorAll("details[open]")].map((d) => d.id));
@@ -50,8 +55,9 @@ export default async function overview() {
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {
-  const tasks = o.tasks.map((t, i) => {
-    const d = describeTask(t, o.progress[i], planets);
+  const described = o.tasks.map((t, i) => describeTask(t, o.progress[i], planets));
+  const done = described.filter((d) => d.done).length;
+  const tasks = described.map((d) => {
     const p = d.planet;
     if (p) orderPlanets.add(p.index);
     let detail = "";
@@ -74,20 +80,31 @@ function orderPanel(o, planets, rates, orderPlanets) {
     </header>
     ${o.briefing ? `<p class="briefing">${esc(o.briefing)}</p>` : ""}
     ${tasks ? `<ul class="tasks">${tasks}</ul>` : ""}
+    ${described.length > 1 ? `<p class="muted">${done} of ${described.length} objectives complete</p>` : ""}
     ${rewards ? `<p class="reward">${icon("medal")} Reward: ${esc(rewards)}</p>` : ""}
   </article>`;
 }
 
+// Fronts nobody has taken ground on yet; 34 of 41 at a time is normal, so they get no bar.
+const idle = (p) => !p.event && liberation(p) === 0;
+
 function meter(p, rate) {
   const lib = liberation(p);
-  const label = `${p.name} ${p.event ? "defense" : "liberation"}`;
-  return `<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
+  const r = leadingRegion(p);
+  const where = r ? `${titleCase(r.name)}${r.size ? ` (${r.size.toLowerCase()})` : ""}` : "";
+  const label = `${p.name} ${where ? `${where} ` : ""}${p.event ? "defense" : "liberation"}`;
+  return `${where ? `<p class="region muted">${icon("map-pin")} ${esc(where)}</p>` : ""}<div class="meter">${bar(lib, label)}<span class="pct">${pct(lib)}</span></div>${rateLine(p, lib, rate)}`;
 }
 
 const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
 
 export function rateLine(p, lib, rate, now = Date.now()) {
-  if (rate === undefined || lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
+  if (lib >= 1) return ""; // a finished planet would otherwise read "won in ~1m"
+  if (rate === undefined) {
+    // Until this browser has measured a rate, the API's own regeneration is the best hint.
+    const g = regen(p);
+    return lib > 0 && g >= STALLED ? `<p class="rate stalled">Enemy regains ${(g * 100).toFixed(2)}%/h</p>` : "";
+  }
   if (Math.abs(rate) < STALLED) return lib > 0 ? `<p class="rate stalled">No movement</p>` : "";
   const speed = `${rate > 0 ? "+" : "−"}${Math.abs(rate * 100).toFixed(2)}%/h`;
   const h = hoursToWin(lib, rate);
@@ -104,7 +121,7 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
     ${p.event ? `<span class="tag defense">Defend, ${countdown(p.event.endTime)} left</span>` : ""}
     <span class="players" title="Helldivers on this planet"><span class="visually-hidden">Helldivers: </span>${num(p.statistics.playerCount)}</span>
   </div>
-  ${meter(p, rate)}
+  ${idle(p) ? `<p class="rate stalled">No ground taken yet</p>` : meter(p, rate)}
 </li>`;
 
 const stationPanel = (st) => `<article class="panel">

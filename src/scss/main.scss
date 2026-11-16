@@ -33,7 +33,7 @@ $display: "Barlow Condensed", "Arial Narrow", sans-serif;
 
 // Phosphor icons, copied to /assets/icons by eleventy.config.js; keep the two lists in step.
 $icons: rocket-launch, globe-hemisphere-west, newspaper, trophy, calendar-blank, medal, circle, target, sword, clock, users,
-  caret-right, shield-warning;
+  caret-right, shield-warning, map-pin;
 
 *,
 *::before,
@@ -293,6 +293,10 @@ footer {
     background: map.get($factions, humans);
     transition: width 0.4s;
   }
+}
+
+.region {
+  font-size: 0.875rem;
 }
 
 .rate {
@@ -712,6 +716,15 @@ footer {
   p {
     margin-top: 0.25rem;
     white-space: pre-line;
+  }
+
+  // The headline already names the outcome, so the edge colour marks it instead of a repeated tag.
+  &.won {
+    border-left-color: map.get($factions, humans);
+  }
+
+  &.failed {
+    border-left-color: map.get($factions, automaton);
   }
 
   .ah-1 {

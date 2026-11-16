@@ -1,4 +1,4 @@
-import { liberation } from "./format.js";
+import { leadingRegion, liberation } from "./format.js";
 
 const KEY = "hd:history";
 const WINDOW = 60 * 60_000;
@@ -13,7 +13,9 @@ export function track(planets, now = Date.now(), store = localStorage) {
   const next = {};
   const rates = {};
   for (const p of planets) {
-    const id = `${p.index}:${p.event?.id ?? "lib"}`; // a new defense event starts a fresh series
+    // a new defense event, or progress moving to another region, starts a fresh series
+    const r = leadingRegion(p);
+    const id = `${p.index}:${p.event?.id ?? (r ? `r${r.id}` : "lib")}`;
     const lib = liberation(p);
     // a bad stored entry would throw on every load and never get overwritten
     const h = (Array.isArray(hist[id]) ? hist[id] : []).filter((s) => now - s?.[0] < WINDOW);

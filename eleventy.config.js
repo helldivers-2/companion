@@ -4,7 +4,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "src/img": "img",
     // Keep in step with $icons in main.scss.
-    "node_modules/@phosphor-icons/core/assets/{regular/{rocket-launch,globe-hemisphere-west,newspaper,trophy,calendar-blank,medal,circle,target,sword,clock,users,caret-right,shield-warning},fill/check-circle-fill}.svg": "assets/icons",
+    "node_modules/@phosphor-icons/core/assets/{regular/{rocket-launch,globe-hemisphere-west,newspaper,trophy,calendar-blank,medal,circle,target,sword,clock,users,caret-right,shield-warning,map-pin},fill/check-circle-fill}.svg": "assets/icons",
     "node_modules/@fontsource/barlow/files/barlow-latin-{400,600}-normal.woff*": "assets/files",
     "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-{600,700}-normal.woff*": "assets/files",
   });

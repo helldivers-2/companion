@@ -13,12 +13,27 @@ export function bar(ratio, label) {
   return `<div class="bar" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(v * 100).toFixed(1)}"><span style="width:${v * 100}%"></span></div>`;
 }
 
+// Region system: planet health stays full while a city is being taken, so the furthest-taken region is the progress.
+export function leadingRegion(planet) {
+  if (planet.event || planet.currentOwner === "Humans" || planet.health < planet.maxHealth) return null;
+  const share = (r) => r.health / r.maxHealth;
+  return (planet.regions ?? []).filter((r) => r.health < r.maxHealth).sort((a, b) => share(a) - share(b))[0] ?? null;
+}
+
 // Share of the planet Super Earth holds: defense progress during an event, liberation otherwise.
 export function liberation(planet) {
   const e = planet.event;
   if (e) return 1 - e.health / e.maxHealth;
   if (planet.currentOwner === "Humans") return 1;
-  return 1 - planet.health / planet.maxHealth;
+  const r = leadingRegion(planet) ?? planet;
+  return 1 - r.health / r.maxHealth;
+}
+
+// Enemy regeneration in share per hour of whatever liberation() measures; 0 during a defense.
+export function regen(planet) {
+  if (planet.event || planet.currentOwner === "Humans") return 0;
+  const r = leadingRegion(planet) ?? planet;
+  return r.maxHealth ? ((r.regenPerSecond ?? 0) * 3600) / r.maxHealth : 0;
 }
 
 export function enemyOf(planet) {

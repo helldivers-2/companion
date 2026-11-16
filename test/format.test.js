@@ -1,11 +1,29 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { describeTask, dispatchHtml, liberation, slug, timeLeft } from "../src/js/format.js";
+import { describeTask, dispatchHtml, leadingRegion, liberation, regen, slug, timeLeft } from "../src/js/format.js";
 
 test("liberation uses event health during a defense", () => {
   assert.equal(liberation({ currentOwner: "Terminids", health: 250, maxHealth: 1000, event: null }), 0.75);
   assert.equal(liberation({ currentOwner: "Humans", health: 1000, maxHealth: 1000, event: null }), 1);
   assert.equal(liberation({ currentOwner: "Humans", event: { health: 600, maxHealth: 1000 } }), 0.4);
+});
+
+test("liberation falls back to the furthest-taken region while planet health is full", () => {
+  const regions = [
+    { id: 0, name: "A", health: 100, maxHealth: 100, regenPerSecond: 1 },
+    { id: 1, name: "B", health: 40, maxHealth: 100, regenPerSecond: 0.01 },
+    { id: 2, name: "C", health: 80, maxHealth: 100 },
+  ];
+  const p = { currentOwner: "Terminids", health: 1000, maxHealth: 1000, regenPerSecond: 1, event: null, regions };
+  assert.equal(leadingRegion(p).name, "B");
+  assert.equal(liberation(p), 0.6);
+  assert.equal(regen(p), 0.36); // 0.01/s * 3600 / 100
+  // planet-level progress wins, and untouched regions leave it at 0
+  assert.equal(leadingRegion({ ...p, health: 750 }), null);
+  assert.equal(liberation({ ...p, health: 750 }), 0.25);
+  assert.equal(liberation({ ...p, regions: [regions[0]] }), 0);
+  assert.equal(regen({ ...p, regions: [] }), 3.6);
+  assert.equal(regen({ ...p, event: { health: 1, maxHealth: 2 } }), 0);
 });
 
 test("timeLeft formats remaining time", () => {
