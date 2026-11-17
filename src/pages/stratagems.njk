@@ -1,0 +1,69 @@
+---
+page_id: stratagems
+permalink: "/{{ lang }}/stratagems/"
+---
+{%- set s = t.stratagems %}
+{#- The label is the spoken form of the arrows, which are decoration for sighted readers. #}
+{%- macro code(item, s) %}
+{%- set label %}{% for a in item.code %}{{ s.arrows[a] }}{{ ", " if not loop.last }}{% endfor %}{% endset -%}
+<span class="code" role="img" aria-label="{{ label }}">{% for a in item.code %}{% icon "arrow-" + a %}{% endfor %}</span>
+{%- endmacro %}
+{%- macro unlock(item, s) %}
+{%- if item.level %}<span>{{ s.level | replace("{n}", item.level) }}</span> {% endif %}
+{%- if item.cost %}<span>{{ s.free if item.cost.currency == "free" else s.cost[item.cost.currency] | replace("{n}", item.cost.amount) }}</span> {% endif %}
+{%- if item.source %}<span class="sub"><span lang="en" translate="no">{{ item.source.name }}</span>{% if item.source.page %} {{ s.page | replace("{n}", item.source.page) }}{% endif %}</span>{% endif %}
+{%- if not (item.level or item.cost or item.source) %}{{ dash(s) }}{% endif %}
+{%- endmacro %}
+{%- macro dash(s) %}<span class="muted" aria-hidden="true">–</span><span class="visually-hidden">{{ s.unknown }}</span>{% endmacro %}
+{%- macro seconds(item, s) %}{{ s.seconds | replace("{n}", item.cooldown) if item.cooldown is number else dash(s) }}{% endmacro %}
+{%- macro uses(item, s) %}{{ s.unlimited if item.uses == "unlimited" else (item.uses if item.uses is number else dash(s)) }}{% endmacro %}
+<div class="container">
+<h1>{{ t.nav.stratagems }}</h1>
+<p class="muted hint">{{ s.intro }}</p>
+<section class="card" aria-labelledby="all-h">
+<h2 id="all-h">{{ s.all }}</h2>
+<form class="filters" id="stratagem-filters" role="search">
+  <label>{{ s.search }} <input type="search" name="q" placeholder="{{ s.placeholder }}" autocomplete="off" spellcheck="false"></label>
+  <label>{{ s.category }}
+    <select name="category">
+      <option value="">{{ s.anyCategory }}</option>
+      {%- for c, label in s.categories %}
+      <option value="{{ c }}">{{ label }}</option>
+      {%- endfor %}
+    </select>
+  </label>
+</form>
+<p class="muted" id="stratagem-count" aria-live="polite" data-template="{{ s.count }}">{{ s.count | replace("{n}", stratagems.items.length) | replace("{total}", stratagems.items.length) }}</p>
+<div class="table-wrap">
+  <table class="stratagems">
+    <thead>
+      <tr>
+        {%- for col in ["name", "category", "code", "cooldown", "uses", "unlock"] %}
+        <th scope="col"{% if col in ["cooldown", "uses"] %} class="num"{% elif col != "name" %} class="wide"{% endif %}{% if col != "code" %} data-sort="{{ col }}" aria-sort="{{ 'ascending' if col == 'name' else 'none' }}"><button type="button">{{ s.cols[col] }}</button>{% else %}>{{ s.cols[col] }}{% endif %}</th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody id="stratagem-rows">
+      <tr hidden id="stratagem-none"><td colspan="6" class="muted">{{ s.noMatch }}</td></tr>
+      {%- for item in stratagems.items %}
+      {%- set category = s.categories[item.category] %}
+      {%- set kind = s.kinds[item.kind] if item.kind else "" %}
+      <tr data-name="{{ item.name }}" data-category="{{ item.category }}" data-cooldown="{{ item.cooldown }}" data-uses="{{ 1000 if item.uses == 'unlimited' else item.uses }}" data-unlock="{{ item.level }}" data-q="{{ [item.name, category, kind, item.source.name] | join(' ') | lower }}">
+        <th scope="row">
+          <span translate="no">{{ item.name }}</span>
+          <span class="narrow sub">{{ code(item, s) }}</span>
+          <span class="narrow sub"><span class="tag cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
+        </th>
+        <td class="wide"><span class="tag cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
+        <td class="wide">{{ code(item, s) }}</td>
+        <td class="num">{{ seconds(item, s) }}</td>
+        <td class="num">{{ uses(item, s) }}</td>
+        <td class="wide unlock">{{ unlock(item, s) }}</td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+<p class="muted credit">{{ s.credit | replace("{wiki}", '<a href="' + stratagems.source.url + '">' + stratagems.source.name + '</a>') | replace("{license}", '<a href="' + stratagems.source.licenseUrl + '">' + stratagems.source.license + '</a>') | replace("{date}", stratagems.source.fetched) | safe }}</p>
+</section>
+</div>

@@ -1,0 +1,136 @@
+@use "sass:map";
+
+// Called from main.scss with its palette, which a separate module cannot read.
+@mixin styles($line, $muted, $text, $accent, $factions, $wide) {
+  // Colours follow the game's permit colours; each also has the category name beside it.
+  .cat-offensive {
+    --faction: #{map.get($factions, automaton)};
+  }
+
+  .cat-supply {
+    --faction: #{map.get($factions, humans)};
+  }
+
+  .cat-defensive {
+    --faction: #{light-dark(oklch(0.46 0.12 150), #5fd38d)};
+  }
+
+  .cat-mission {
+    --faction: #{$accent};
+  }
+
+  .stratagems {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+
+    th,
+    td {
+      padding: 0.5rem;
+      border-bottom: 1px solid $line;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    tbody th {
+      font-weight: 600;
+    }
+
+    thead th {
+      color: $muted;
+      font-size: 0.875rem;
+      font-weight: 400;
+      vertical-align: bottom;
+    }
+
+    thead th[data-sort] {
+      padding: 0;
+    }
+
+    thead button {
+      width: 100%;
+      padding: 0.5rem;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      text-align: inherit;
+      white-space: nowrap;
+      cursor: pointer;
+
+      &:hover {
+        color: $text;
+      }
+
+      // .table-wrap's overflow clips an outset ring along the top and left edges.
+      &:focus-visible {
+        outline-offset: -2px;
+      }
+    }
+
+    [aria-sort="ascending"] button,
+    [aria-sort="descending"] button {
+      color: $accent;
+    }
+
+    [aria-sort="none"] button::after {
+      content: " ↕\fe0e" / "";
+      opacity: 0.5;
+    }
+
+    [aria-sort="ascending"] button::after {
+      content: " ↑\fe0e" / "";
+    }
+
+    [aria-sort="descending"] button::after {
+      content: " ↓\fe0e" / "";
+    }
+
+    .num {
+      text-align: right;
+    }
+
+    .sub {
+      color: $muted;
+      font-size: 0.875rem;
+      font-weight: 400;
+    }
+
+    .unlock > span {
+      display: block;
+    }
+
+    .code {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.125rem;
+
+      .icon {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+
+  .credit {
+    margin: 1rem 0 0;
+    font-size: 0.875rem;
+  }
+
+  // Phones get the name with its code and details folded underneath, like the planets table.
+  @media (width < $wide) {
+    // The sixth nav item no longer fits the bottom bar at the default padding.
+    .top {
+      padding-inline: 0.5rem;
+    }
+
+    .top nav a {
+      padding-inline: 0.3125rem;
+    }
+
+    .stratagems .sub {
+      display: block;
+      margin-top: 0.25rem;
+    }
+  }
+}
