@@ -19,8 +19,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      # uses the wrangler 4 from devDependencies (the action's own default is 3.x; _redirects on Workers assets needs 4)
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          # the action's default wrangler is 3.x; _redirects on Workers assets needs 4
-          wranglerVersion: "4"
