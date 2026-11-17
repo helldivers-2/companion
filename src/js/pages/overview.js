@@ -108,7 +108,7 @@ export function rateLine(p, lib, rate, now = Date.now()) {
 
 const frontRow = (p, rate, isOrder) => `<li class="row">
   <div class="row-head">
-    <h4>${esc(p.name)}</h4>
+    <h4 translate="no">${esc(p.name)}</h4>
     <span class="muted sector">${esc(p.sector)}</span>
     ${isOrder ? `<span class="tag mo">${t.overview.order}</span>` : ""}
     ${p.event ? `<span class="tag defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
