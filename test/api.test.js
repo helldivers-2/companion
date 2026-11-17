@@ -1,12 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { get, state } from "../src/js/api.js";
+import { memory } from "./helpers.js";
 
 // Fake clock plus a fetch that answers after `latency` ms with the queued responses.
 function setup(t, responses, latency = 500) {
   t.mock.timers.enable({ apis: ["setTimeout", "Date"] });
-  const m = {};
-  globalThis.localStorage = { getItem: (k) => m[k] ?? null, setItem: (k, v) => { m[k] = v; } };
+  globalThis.localStorage = memory();
   const calls = [];
   globalThis.fetch = (url) => {
     calls.push(Date.now());

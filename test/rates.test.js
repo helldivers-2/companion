@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { eta, hoursToWin, track } from "../src/js/rates.js";
 
-const memory = () => { const m = {}; return { getItem: (k) => m[k] ?? null, setItem: (k, v) => { m[k] = v; } }; };
+import { memory } from "./helpers.js";
 const planet = (health) => ({ index: 7, currentOwner: "Terminids", health, maxHealth: 1000, event: null });
 
 test("track reports %/h once enough time has passed", () => {
