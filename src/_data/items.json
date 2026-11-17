@@ -1,0 +1,4751 @@
+{
+ "source": {
+  "name": "Helldivers Wiki",
+  "url": "https://helldivers.wiki.gg/",
+  "licence": "CC BY-NC-SA 4.0",
+  "licenceUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+ },
+ "fetched": "2026-11-17",
+ "items": {
+  "primary": [
+   {
+    "name": "AR-11 Arbitrator",
+    "type": "Assault Rifles",
+    "damage": "70 Ballistic (4mm) / 450 Ballistic (10g)",
+    "rate": "1,200 rpm",
+    "magazine": "45 (4mm) / 4 (10g)",
+    "pen": "Light (4mm) / Medium (10g)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "AR-2 Coyote",
+    "type": "Assault Rifles",
+    "damage": "75 Ballistic",
+    "rate": "600 rpm",
+    "magazine": "45",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "AR-23 Liberator",
+    "type": "Assault Rifles",
+    "damage": "90 Ballistic",
+    "rate": "640 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Starter Equipment"
+    },
+    "cost": null
+   },
+   {
+    "name": "AR-23A Liberator Carbine",
+    "type": "Assault Rifles",
+    "damage": "90 Ballistic",
+    "rate": "920 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "AR-23C Liberator Concussive",
+    "type": "Assault Rifles",
+    "damage": "75 Ballistic",
+    "rate": "400 rpm",
+    "magazine": "60",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "AR-23L Liberator Legacy",
+    "type": "Assault Rifles",
+    "damage": "90 Ballistic",
+    "rate": "660 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Liberty Day 2186"
+    },
+    "cost": null
+   },
+   {
+    "name": "AR-23P Liberator Penetrator",
+    "type": "Assault Rifles",
+    "damage": "65 Ballistic",
+    "rate": "640 rpm",
+    "magazine": "45",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize",
+     "page": 6
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "AR-32 Pacifier",
+    "type": "Assault Rifles",
+    "damage": "55 Ballistic",
+    "rate": "700",
+    "magazine": "40",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "AR-59 Suppressor",
+    "type": "Assault Rifles",
+    "damage": "80 Ballistic",
+    "rate": "850 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "AR-61 Tenderizer",
+    "type": "Assault Rifles",
+    "damage": "105 Ballistic",
+    "rate": "600 rpm • 850 rpm",
+    "magazine": "35",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "AR/GL-21 One-Two",
+    "type": "Assault Rifles",
+    "damage": "95 Ballistic (8mm) / 250 Ballistic (40mm) / 400 Explosion",
+    "rate": "650 rpm",
+    "magazine": "40",
+    "pen": "Light (8mm) / Medium (40mm)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Python Commandos",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "ARC-12 Blitzer",
+    "type": "Energy-Based",
+    "damage": "250 Arc",
+    "rate": "45 rpm",
+    "magazine": "∞",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "BR-14 Adjudicator",
+    "type": "Assault Rifles",
+    "damage": "95 Ballistic",
+    "rate": "550 rpm",
+    "magazine": "30",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "CB-9 Exploding Crossbow",
+    "type": "Explosives",
+    "damage": "270 Projectile / 350 Explosion",
+    "rate": "50 rpm",
+    "magazine": "5",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "DBS-2 Double Freedom",
+    "type": "Shotguns",
+    "damage": "840 Ballistic",
+    "rate": "650 rpm",
+    "magazine": "2",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "FLAM-66 Torcher",
+    "type": "Special",
+    "damage": "150 DPS Fire",
+    "rate": "",
+    "magazine": "100",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "GL-15 Evictor",
+    "type": "Explosives",
+    "damage": "50 Ballistic (Projectile) / 440 Explosion",
+    "rate": "60 rpm",
+    "magazine": "4",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "JAR-5 Dominator",
+    "type": "Special",
+    "damage": "275 Ballistic",
+    "rate": "250 rpm",
+    "magazine": "15",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "LAS-12 Sai",
+    "type": "Energy-Based",
+    "damage": "80 Ballistic",
+    "rate": "800 rpm",
+    "magazine": "4s (53)",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "LAS-13 Trident",
+    "type": "Energy-Based",
+    "damage": "360 Laser",
+    "rate": "300 rpm",
+    "magazine": "2s (10)",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "LAS-16 Sickle",
+    "type": "Energy-Based",
+    "damage": "60 Ballistic",
+    "rate": "750 rpm",
+    "magazine": "8.4s (106)",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "LAS-17 Double-Edge Sickle",
+    "type": "Energy-Based",
+    "damage": "55-70 Projectile",
+    "rate": "700 rpm",
+    "magazine": "15s (175) (Fires Indefinitely)",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Servants of Freedom",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "LAS-5 Scythe",
+    "type": "Energy-Based",
+    "damage": "350 DPS Laser 100 DPS Fire",
+    "rate": "",
+    "magazine": "8s",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 5
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 30
+    }
+   },
+   {
+    "name": "M7S SMG",
+    "type": "Submachine Guns",
+    "damage": "90 Ballistic",
+    "rate": "872 rpm",
+    "magazine": "48",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "M90A Shotgun",
+    "type": "Shotguns",
+    "damage": "726 Ballistic",
+    "rate": "80 rpm",
+    "magazine": "6",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "MA5C Assault Rifle",
+    "type": "Assault Rifles",
+    "damage": "90 Ballistic",
+    "rate": "640 rpm",
+    "magazine": "32",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "MP-98 Knight",
+    "type": "Submachine Guns",
+    "damage": "90 Ballistic",
+    "rate": "1,380 rpm",
+    "magazine": "50",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Super Citizen Edition"
+    },
+    "cost": null
+   },
+   {
+    "name": "PLAS-1 Scorcher",
+    "type": "Energy-Based",
+    "damage": "100 Ballistic / 100 Explosion",
+    "rate": "350 rpm",
+    "magazine": "20",
+    "pen": "Light (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 10
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 75
+    }
+   },
+   {
+    "name": "PLAS-101 Purifier",
+    "type": "Energy-Based",
+    "damage": "100 Uncharged Bolt / 75 Uncharged Explosion / / 200 Charged Bolt / 300 Charged Explosion",
+    "rate": "1,000 rpm",
+    "magazine": "15",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "PLAS-39 Accelerator Rifle",
+    "type": "Energy-Based",
+    "damage": "250 Ballistic / 100 Explosion",
+    "rate": "550 rpm",
+    "magazine": "9",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Righteous Revenants",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "R-2 Amendment",
+    "type": "Marksman Rifles",
+    "damage": "200 Ballistic",
+    "rate": "480 rpm",
+    "magazine": "20",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "R-2124 Constitution",
+    "type": "Marksman Rifles",
+    "damage": "180 Ballistic",
+    "rate": "60 rpm",
+    "magazine": "5",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Liberty Day"
+    },
+    "cost": null
+   },
+   {
+    "name": "R-36 Eruptor",
+    "type": "Explosives",
+    "damage": "230 Impact / 225 Explosion / 110 Shrapnel (x30)",
+    "rate": "32 rpm",
+    "magazine": "5",
+    "pen": "Heavy (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "R-4 Hyena",
+    "type": "Marksman Rifles",
+    "damage": "220 Ballistic / 100 DPS Fire",
+    "rate": "190 rpm",
+    "magazine": "15",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Celestial Fence"
+    },
+    "cost": null
+   },
+   {
+    "name": "R-40 Sightliner",
+    "type": "Sniper Rifles",
+    "damage": "350 Ballistic",
+    "rate": "40 rpm",
+    "magazine": "10",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "R-6 Deadeye",
+    "type": "Marksman Rifles",
+    "damage": "300 Ballistic",
+    "rate": "100 rpm",
+    "magazine": "8",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "R-63 Diligence",
+    "type": "Marksman Rifles",
+    "damage": "165 Ballistic",
+    "rate": "350 rpm",
+    "magazine": "25",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 8
+    }
+   },
+   {
+    "name": "R-63CS Diligence Counter Sniper",
+    "type": "Marksman Rifles",
+    "damage": "200 Ballistic",
+    "rate": "350 rpm",
+    "magazine": "15",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 7
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "R-72 Censor",
+    "type": "Marksman Rifles",
+    "damage": "165 Ballistic",
+    "rate": "400 rpm",
+    "magazine": "20",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "R/40-K Hot-Shot Marksman Rifle",
+    "type": "Energy-Based",
+    "damage": "275 Ballistic",
+    "rate": "210 rpm",
+    "magazine": "12",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan’s Creed",
+     "page": null
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "SG-20 Halt",
+    "type": "Shotguns",
+    "damage": "385 Ballistic (Flechette) / 120 Ballistic (Stun)",
+    "rate": "80 rpm",
+    "magazine": "8 (x2)",
+    "pen": "Medium (Flechette) / Light (Stun)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "SG-225 Breaker",
+    "type": "Shotguns",
+    "damage": "396 Ballistic",
+    "rate": "300 rpm",
+    "magazine": "16",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 4
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "SG-225IE Breaker Incendiary",
+    "type": "Shotguns",
+    "damage": "240 Ballistic / 100 DPS Fire",
+    "rate": "300 rpm",
+    "magazine": "26",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SG-225SP Breaker Spray&Pray",
+    "type": "Shotguns",
+    "damage": "288 Ballistic",
+    "rate": "330 rpm",
+    "magazine": "26",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 9
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SG-451 Cookout",
+    "type": "Shotguns",
+    "damage": "320 Ballistic",
+    "rate": "80 rpm",
+    "magazine": "16",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "SG-8 Punisher",
+    "type": "Shotguns",
+    "damage": "486 Ballistic",
+    "rate": "80 rpm",
+    "magazine": "16",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 4
+    }
+   },
+   {
+    "name": "SG-8P Punisher Plasma",
+    "type": "Energy-Based",
+    "damage": "225 Explosion",
+    "rate": "80 rpm",
+    "magazine": "10",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SG-8S Slugger",
+    "type": "Shotguns",
+    "damage": "330 Ballistic",
+    "rate": "80 rpm",
+    "magazine": "16",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 8
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SG-97 Sweeper",
+    "type": "Shotguns",
+    "damage": "504 Ballistic",
+    "rate": "150 rpm",
+    "magazine": "7",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "SMG-203 Gallant",
+    "type": "Submachine Guns",
+    "damage": "65 Ballistic",
+    "rate": "1,380 rpm",
+    "magazine": "50",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Exo Experts",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "SMG-32 Reprimand",
+    "type": "Submachine Guns",
+    "damage": "140 Ballistic",
+    "rate": "490 rpm",
+    "magazine": "25",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "SMG-37 Defender",
+    "type": "Submachine Guns",
+    "damage": "110 Ballistic",
+    "rate": "520 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "SMG-72 Pummeler",
+    "type": "Submachine Guns",
+    "damage": "85 Ballistic",
+    "rate": "475 rpm",
+    "magazine": "45",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SMG/FLAM-34 Stoker",
+    "type": "Submachine Guns",
+    "damage": "130 Ballistic / 150 DPS Fire",
+    "rate": "420 rpm",
+    "magazine": "45",
+    "pen": "Light (12mm) / Heavy (Flamethrower)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "StA-11 SMG",
+    "type": "Submachine Guns",
+    "damage": "100 Ballistic",
+    "rate": "1,050 rpm",
+    "magazine": "48",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Righteous Revenants",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "StA-52 Assault Rifle",
+    "type": "Assault Rifles",
+    "damage": "90 Ballistic",
+    "rate": "790 rpm",
+    "magazine": "56",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Righteous Revenants",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "VG-70 Variable",
+    "type": "Special",
+    "damage": "85 Ballistic",
+    "rate": "300 rpm • 550 rpm • 750rpm",
+    "magazine": "49",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Control Group",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   }
+  ],
+  "secondary": [
+   {
+    "name": "CQC-19 Stun Lance",
+    "type": "Melee",
+    "damage": "165 Melee",
+    "rate": "",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Urban Legends",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 30
+    }
+   },
+   {
+    "name": "CQC-2 Saber",
+    "type": "Melee",
+    "damage": "188 Melee",
+    "rate": "150",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "CQC-30 Stun Baton",
+    "type": "Melee",
+    "damage": "120 Melee",
+    "rate": "N/A",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 200
+    }
+   },
+   {
+    "name": "CQC-42 Machete",
+    "type": "Melee",
+    "damage": "300 Melee",
+    "rate": "72",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 200
+    }
+   },
+   {
+    "name": "CQC-5 Combat Hatchet",
+    "type": "Melee",
+    "damage": "240 Melee",
+    "rate": "100",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 200
+    }
+   },
+   {
+    "name": "Entrenchment Tool",
+    "type": "Melee",
+    "damage": "165 Melee",
+    "rate": "150",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": null,
+    "cost": null
+   },
+   {
+    "name": "GP-20 Ultimatum",
+    "type": "Special",
+    "damage": "1,000 Projectile / 2,000 Explosion",
+    "rate": "900 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank II",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Servants of Freedom",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "GP-31 Grenade Pistol",
+    "type": "Special",
+    "damage": "250 Projectile / 400 Explosion",
+    "rate": "900 rpm",
+    "magazine": "1",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "LAS-58 Talon",
+    "type": "Special",
+    "damage": "200 Ballistic",
+    "rate": "750 rpm",
+    "magazine": "7",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "LAS-7 Dagger",
+    "type": "Special",
+    "damage": "250 DPS Laser 100 DPS Fire",
+    "rate": "",
+    "magazine": "6.67s",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "M6C/SOCOM Pistol",
+    "type": "Pistols",
+    "damage": "125 Ballistic",
+    "rate": "900 rpm",
+    "magazine": "12",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 75
+    }
+   },
+   {
+    "name": "P-11 Stim Pistol",
+    "type": "Special",
+    "damage": "0 Ballistic",
+    "rate": "70 rpm",
+    "magazine": "6",
+    "pen": "No Hitbox",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Chemical Agents",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "P-113 Verdict",
+    "type": "Pistols",
+    "damage": "140 Ballistic",
+    "rate": "450 rpm",
+    "magazine": "10",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "P-19 Redeemer",
+    "type": "Pistols",
+    "damage": "70 Ballistic",
+    "rate": "1,100 rpm",
+    "magazine": "31",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 5
+    }
+   },
+   {
+    "name": "P-2 Peacemaker",
+    "type": "Pistols",
+    "damage": "100 Ballistic",
+    "rate": "900 rpm",
+    "magazine": "15",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Starter Equipment"
+    },
+    "cost": null
+   },
+   {
+    "name": "P-33 Missile Pistol",
+    "type": "Special",
+    "damage": "1,000 Projectile / 300 Explosion",
+    "rate": "60 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank I (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Exo Experts",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "P-34 Breacher",
+    "type": "Special",
+    "damage": "60 Ballistic / 2,000 Explosion / 150/s over 4s Fire",
+    "rate": "20",
+    "magazine": "1",
+    "pen": "Anti-Tank III",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "P-35 Re-Educator",
+    "type": "Special",
+    "damage": "60 Gas",
+    "rate": "110 rpm",
+    "magazine": "6",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "P-4 Senator",
+    "type": "Pistols",
+    "damage": "225 Ballistic",
+    "rate": "200 rpm",
+    "magazine": "6",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "P-44 Mist",
+    "type": "Pistols",
+    "damage": "110 Ballistic",
+    "rate": "400 rpm",
+    "magazine": "25",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "P-69 Veto",
+    "type": "Pistols",
+    "damage": "105 Ballistic",
+    "rate": "750 rpm",
+    "magazine": "12",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "P-72 Crisper",
+    "type": "Special",
+    "damage": "150 DPS Fire",
+    "rate": "",
+    "magazine": "50",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "P-92 Warrant",
+    "type": "Pistols",
+    "damage": "80 Ballistic",
+    "rate": "450 rpm",
+    "magazine": "13",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "P/40-K Bolt Pistol",
+    "type": "Special",
+    "damage": "325 Ballistic / 175 Explosion",
+    "rate": "150 rpm",
+    "magazine": "6",
+    "pen": "Heavy (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan’s Creed",
+     "page": null
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "PLAS-15 Loyalist",
+    "type": "Special",
+    "damage": "75-150 Ballistic / 75-225 Explosion",
+    "rate": "1000 rpm",
+    "magazine": "8",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SG-22 Bushwhacker",
+    "type": "Special",
+    "damage": "486 Ballistic",
+    "rate": "650 rpm",
+    "magazine": "3",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   }
+  ],
+  "support": [
+   {
+    "name": "40-K Meltagun",
+    "type": null,
+    "damage": "2,600 DPS",
+    "rate": "50 rpm",
+    "magazine": "3",
+    "pen": "Anti-Tank III",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan’s Creed",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "AC-8 Autocannon",
+    "type": null,
+    "damage": "325 Projectile (APHET) / 150 Explosion / 110 Ballistic (Flak x30) / 190 Explosion",
+    "rate": "190 rpm",
+    "magazine": "10",
+    "pen": "Heavy (APHET) / Medium (Flak)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "AMW-20 Apex",
+    "type": null,
+    "damage": "1,550 Ballistic",
+    "rate": "50 rpm",
+    "magazine": "5",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "APW-1 Anti-Materiel Rifle",
+    "type": null,
+    "damage": "450 Ballistic",
+    "rate": "400 rpm",
+    "magazine": "7",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "ARC-3 Arc Thrower",
+    "type": null,
+    "damage": "250 Arc",
+    "rate": "60 rpm",
+    "magazine": "∞",
+    "pen": "Anti-Tank III",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Engineering Bay"
+    },
+    "cost": null
+   },
+   {
+    "name": "B/FLAM-80 Cremator",
+    "type": null,
+    "damage": "225 DPS Fire",
+    "rate": "",
+    "magazine": "500",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "B/MD C4 Pack",
+    "type": null,
+    "damage": "2000 Explosion",
+    "rate": "",
+    "magazine": "1",
+    "pen": "Anti-Tank III",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "CQC-1 One True Flag",
+    "type": null,
+    "damage": "200 Melee",
+    "rate": "117 rpm",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "CQC-20 Breaching Hammer",
+    "type": null,
+    "damage": "300 Melee / 2,200 Explosion",
+    "rate": "",
+    "magazine": "1",
+    "pen": "Medium (Melee) / Anti-Tank II (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 1
+    },
+    "cost": null
+   },
+   {
+    "name": "CQC-9 Defoliation Tool",
+    "type": null,
+    "damage": "450/s Melee",
+    "rate": "",
+    "magazine": "",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Python Commandos",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "EAT-17 Expendable Anti-Tank",
+    "type": null,
+    "damage": "2,000 Projectile / 150 Explosion",
+    "rate": "",
+    "magazine": "1",
+    "pen": "Anti-Tank II (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "EAT-411 Leveller",
+    "type": null,
+    "damage": "1,000 Ballistic / 2,500 Explosion",
+    "rate": "600 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank II",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "EAT-700 Expendable Napalm",
+    "type": null,
+    "damage": "500 Ballistic (Projectile) / 250 Explosion / 200 Ballistic (Bomblets / 50 Explosion x25)",
+    "rate": "600 rpm",
+    "magazine": "1",
+    "pen": "Medium (Bomblets)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "FAF-14 Spear",
+    "type": null,
+    "damage": "4,000 Projectile / 200 Explosion",
+    "rate": "240 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank III (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "FLAM-40 Flamethrower",
+    "type": null,
+    "damage": "150 DPS Fire",
+    "rate": "",
+    "magazine": "150",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "GL-21 Grenade Launcher",
+    "type": null,
+    "damage": "400 Explosion",
+    "rate": "160 RPM",
+    "magazine": "10",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Engineering Bay"
+    },
+    "cost": null
+   },
+   {
+    "name": "GL-28 Belt-Fed Grenade Launcher",
+    "type": null,
+    "damage": "150 Explosion",
+    "rate": "160rpm • 240rpm • 320rpm",
+    "magazine": "120 (Backpack)",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "GL-52 De-Escalator",
+    "type": null,
+    "damage": "100 Arc (x10)",
+    "rate": "200 RPM",
+    "magazine": "6",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "GR-8 Recoilless Rifle",
+    "type": null,
+    "damage": "3,200 Projectile (HEAT) / 150 Explosion / 750 Projectile (HE) / 800 Explosion",
+    "rate": "600 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank II (HEAT) / Medium / Anti-Tank I (HE) / Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "LAS-44 Nova",
+    "type": null,
+    "damage": "880 Ballistic",
+    "rate": "30 rpm",
+    "magazine": "∞",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "LAS-98 Laser Cannon",
+    "type": null,
+    "damage": "350 DPS Laser / 100 DPS Fire",
+    "rate": "",
+    "magazine": "12.5s",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Engineering Bay"
+    },
+    "cost": null
+   },
+   {
+    "name": "LAS-99 Quasar Cannon",
+    "type": null,
+    "damage": "2000 Projectile / 150 Explosion",
+    "rate": "~3.34 rpm",
+    "magazine": "∞",
+    "pen": "Anti-Tank II",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Engineering Bay"
+    },
+    "cost": null
+   },
+   {
+    "name": "M-1000 Maxigun",
+    "type": null,
+    "damage": "80 Ballistic",
+    "rate": "1,500 rpm",
+    "magazine": "1,000 (Backpack)",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Python Commandos",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "M-105 Stalwart",
+    "type": null,
+    "damage": "90 Ballistic",
+    "rate": "700rpm • 850rpm • 1150rpm",
+    "magazine": "250",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "MG-206 Heavy Machine Gun",
+    "type": null,
+    "damage": "150 Ballistic",
+    "rate": "450rpm • 600rpm • 750rpm",
+    "magazine": "100",
+    "pen": "Heavy",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": {
+     "currency": "slips",
+     "amount": 6000
+    }
+   },
+   {
+    "name": "MG-43 Machine Gun",
+    "type": null,
+    "damage": "90 Ballistic",
+    "rate": "630rpm • 760rpm • 900rpm",
+    "magazine": "175",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "MGX-42 Bullet Storm",
+    "type": null,
+    "damage": "100 Ballistic",
+    "rate": "1,300 rpm",
+    "magazine": "300",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Exo Experts",
+     "page": 1
+    },
+    "cost": null
+   },
+   {
+    "name": "MLS-4X Commando",
+    "type": null,
+    "damage": "1,100 Projectile / 150 Explosion",
+    "rate": "240 rpm",
+    "magazine": "4",
+    "pen": "Anti-Tank II",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "MS-11 Solo Silo",
+    "type": null,
+    "damage": "2,500 Explosion / (Main Explosion) / 1,500 Explosion / (Impact Explosion)",
+    "rate": "",
+    "magazine": "",
+    "pen": "Anti-Tank III / (Main Explosion) / Anti-Tank V / (Impact Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 3
+    },
+    "cost": null
+   },
+   {
+    "name": "PLAS-45 Epoch",
+    "type": null,
+    "damage": "400 Uncharged Bolt / 500 Uncharged Explosion Explosion / 800 Charged Bolt / 800 Charged Explosion Explosion",
+    "rate": "600 rpm",
+    "magazine": "3",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Control Group",
+     "page": 1
+    },
+    "cost": null
+   },
+   {
+    "name": "RL-77 Airburst Rocket Launcher",
+    "type": null,
+    "damage": "350 Ballistic (Rocket) / 150 Explosion / 150 Ballistic(Bomblets / 500 Explosion x25)",
+    "rate": "16 rpm",
+    "magazine": "1",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "RS-422 Railgun",
+    "type": null,
+    "damage": "600-1500 Ballistic",
+    "rate": "34 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "S-11 Speargun",
+    "type": null,
+    "damage": "650 Impact / 3 Gas (Explosion) / 25 DPS Gas",
+    "rate": "60 rpm",
+    "magazine": "1",
+    "pen": "Anti-Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 2
+    },
+    "cost": null
+   },
+   {
+    "name": "SG-88 Break-Action Shotgun",
+    "type": "Shotguns",
+    "damage": "585 Ballistic",
+    "rate": "600 rpm",
+    "magazine": "2",
+    "pen": "Light",
+    "radius": "",
+    "fuse": "",
+    "source": null,
+    "cost": null
+   },
+   {
+    "name": "StA-X3 W.A.S.P. Launcher",
+    "type": null,
+    "damage": "200 Projectile / 600 Explosion",
+    "rate": "500 rpm",
+    "magazine": "7",
+    "pen": "Anti-Tank II (Projectile) / Medium (Explosion)",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "other",
+     "name": "Patriotic Administration Center"
+    },
+    "cost": null
+   },
+   {
+    "name": "Trench Shovel",
+    "type": "Melee",
+    "damage": "165 Melee",
+    "rate": "150",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "",
+    "fuse": "",
+    "source": null,
+    "cost": null
+   },
+   {
+    "name": "TX-41 Sterilizer",
+    "type": null,
+    "damage": "30 DPS Gas",
+    "rate": "",
+    "magazine": "100",
+    "pen": "Tank I",
+    "radius": "",
+    "fuse": "",
+    "source": {
+     "kind": "warbond",
+     "name": "Chemical Agents",
+     "page": 2
+    },
+    "cost": null
+   }
+  ],
+  "throwable": [
+   {
+    "name": "G-10 Incendiary",
+    "type": "Standard",
+    "damage": "300 Explosion / 100 Fire DPS",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Medium",
+    "radius": "7m",
+    "fuse": "2.9s",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 25
+    }
+   },
+   {
+    "name": "G-109 Urchin",
+    "type": "Special",
+    "damage": "0",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Tank II",
+    "radius": "4m",
+    "fuse": "2.9s",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-11 Caltrops",
+    "type": "Special",
+    "damage": "50",
+    "rate": "",
+    "magazine": "",
+    "pen": "Medium",
+    "radius": "10m",
+    "fuse": "Proximity",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "G-12 High Explosive",
+    "type": "Standard",
+    "damage": "800 Explosion",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Heavy",
+    "radius": "7m",
+    "fuse": "3.5s",
+    "source": {
+     "kind": "other",
+     "name": "Starter Equipment"
+    },
+    "cost": null
+   },
+   {
+    "name": "G-123 Thermite",
+    "type": "Special",
+    "damage": "150/s over 6.5s Fire / 2000 Explosion",
+    "rate": "",
+    "magazine": "3",
+    "pen": "Tank III",
+    "radius": "2 m",
+    "fuse": "2.9s",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "G-13 Incendiary Impact",
+    "type": "Special",
+    "damage": "150 Explosion / 100 Fire DPS",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Medium",
+    "radius": "7m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 25
+    }
+   },
+   {
+    "name": "G-142 Pyrotech",
+    "type": "Special",
+    "damage": "20 DPS Fire / 50 Explosion",
+    "rate": "",
+    "magazine": "6",
+    "pen": "Anti-Tank III",
+    "radius": "5m",
+    "fuse": "2.9s",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-16 Impact",
+    "type": "Special",
+    "damage": "400 Explosion",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Heavy",
+    "radius": "7m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 5
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   },
+   {
+    "name": "G-23 Stun",
+    "type": "Special",
+    "damage": "0",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Tank II",
+    "radius": "10m",
+    "fuse": "1.8s",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 25
+    }
+   },
+   {
+    "name": "G-3 Smoke",
+    "type": "Special",
+    "damage": "0",
+    "rate": "",
+    "magazine": "5",
+    "pen": "No Hitbox",
+    "radius": "8m",
+    "fuse": "2.4s",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 8
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 25
+    }
+   },
+   {
+    "name": "G-31 Arc",
+    "type": "Special",
+    "damage": "100 Arc (x10)",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Heavy",
+    "radius": "10m",
+    "fuse": "3s",
+    "source": {
+     "kind": "warbond",
+     "name": "Control Group",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-4 Gas",
+    "type": "Special",
+    "damage": "3 Gas (Explosion) / 25 DPS Gas",
+    "rate": "",
+    "magazine": "4",
+    "pen": "Tank II",
+    "radius": "7m",
+    "fuse": "2.9s",
+    "source": {
+     "kind": "warbond",
+     "name": "Chemical Agents",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 30
+    }
+   },
+   {
+    "name": "G-48 Giga Grenade",
+    "type": "Special",
+    "damage": "2,000 Explosion",
+    "rate": "",
+    "magazine": "2",
+    "pen": "Anti-Tank I",
+    "radius": "12m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "G-50 Seeker",
+    "type": "Special",
+    "damage": "500 Explosion",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Heavy",
+    "radius": "7 m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Servants of Freedom",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-6 Frag",
+    "type": "Standard",
+    "damage": "500 Explosion / 110 Shrapnel (x35)",
+    "rate": "",
+    "magazine": "6",
+    "pen": "Medium",
+    "radius": "10 m",
+    "fuse": "2.4s",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 2
+    }
+   },
+   {
+    "name": "G-60 Anti-Tank Seeker",
+    "type": "Special",
+    "damage": "1,800 Explosion",
+    "rate": "",
+    "magazine": "3",
+    "pen": "Anti-Tank I",
+    "radius": "12m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-7 Pineapple",
+    "type": "Standard",
+    "damage": "300 Explosion (Grenade) / 300 Ballistic (Bomblets / 100 Explosion x18)",
+    "rate": "",
+    "magazine": "5",
+    "pen": "Medium",
+    "radius": "10m",
+    "fuse": "2.4s",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "G-8 Immolation",
+    "type": "Special",
+    "damage": "20",
+    "rate": "",
+    "magazine": "6",
+    "pen": "Unarmored",
+    "radius": "10m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "G-89 Smokescreen",
+    "type": "Special",
+    "damage": "0",
+    "rate": "",
+    "magazine": "5",
+    "pen": "No Hitbox",
+    "radius": "5m",
+    "fuse": "Impact",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "G/40-K Melta Mine",
+    "type": "Special",
+    "damage": "2,000 Explosion / 600 Flamewall (x2)",
+    "rate": "",
+    "magazine": "4",
+    "pen": "Anti-Tank III",
+    "radius": "6m",
+    "fuse": "Proximity",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan’s Creed",
+     "page": null
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "G/SH-39 Shield",
+    "type": "Special",
+    "damage": "0 Explosion",
+    "rate": "",
+    "magazine": "4",
+    "pen": "No Hitbox",
+    "radius": "1.8m",
+    "fuse": "0s",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "K-2 Throwing Knife",
+    "type": "Special",
+    "damage": "300 Ballistic",
+    "rate": "",
+    "magazine": "20",
+    "pen": "Medium",
+    "radius": "N/A",
+    "fuse": "N/A",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "TED-63 Dynamite",
+    "type": "Standard",
+    "damage": "1,000 Explosion",
+    "rate": "",
+    "magazine": "4",
+    "pen": "Heavy",
+    "radius": "12m",
+    "fuse": "5s / 15s / 60s",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "TM-1 Lure Mine",
+    "type": "Special",
+    "damage": "1,000 Explosion / 110 Shrapnel (x35)",
+    "rate": "",
+    "magazine": "4",
+    "pen": "Anti-Tank I (Explosion) / Medium (Shrapnel)",
+    "radius": "8m",
+    "fuse": "Proximity",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   }
+  ],
+  "armor": [
+   {
+    "name": "A-35 Recon",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Feet First",
+    "passiveText": "Wearer makes 50% less noise when moving. Increases point-of-interest identification range by 30%. Provides immunity to leg injuries.",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "A-9 Helljumper",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Feet First",
+    "passiveText": "Wearer makes 50% less noise when moving. Increases point-of-interest identification range by 30%. Provides immunity to leg injuries.",
+    "source": {
+     "kind": "warbond",
+     "name": "Halo: ODST",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "AC-1 Dutiful",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Acclimated",
+    "passiveText": "Provides 50% resistance to fire, gas, acid, and electrical damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Righteous Revenants",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "AC-2 Obedient",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Acclimated",
+    "passiveText": "Provides 50% resistance to fire, gas, acid, and electrical damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Righteous Revenants",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "AD-11 Livewire",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Adreno-Defibrillator",
+    "passiveText": "Provides one-time, short-lived resuscitation upon death, given that the Helldiver's body is still intact. Increases stim effect duration by 2.0s. Provides 50% resistance to arc damage.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "AD-26 Bleeding Edge",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Adreno-Defibrillator",
+    "passiveText": "Provides one-time, short-lived resuscitation upon death, given that the Helldiver's body is still intact. Increases stim effect duration by 2.0s. Provides 50% resistance to arc damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Control Group",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "AD-49 Apollonian",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Adreno-Defibrillator",
+    "passiveText": "Provides one-time, short-lived resuscitation upon death, given that the Helldiver's body is still intact. Increases stim effect duration by 2.0s. Provides 50% resistance to arc damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Control Group",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "AF-02 Haz-Master",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Advanced Filtration",
+    "passiveText": "Provides 80% resistance to gas damage and effects.",
+    "source": {
+     "kind": "warbond",
+     "name": "Chemical Agents",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "AF-50 Noxious Ranger",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Advanced Filtration",
+    "passiveText": "Provides 80% resistance to gas damage and effects.",
+    "source": {
+     "kind": "warbond",
+     "name": "Chemical Agents",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "AF-52 Lockdown",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Advanced Filtration",
+    "passiveText": "Provides 80% resistance to gas damage and effects.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "AF-91 Field Chemist",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Advanced Filtration",
+    "passiveText": "Provides 80% resistance to gas damage and effects.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "B-01 Tactical",
+    "class": "medium",
+    "rating": 150,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "other",
+     "name": "Starter Equipment"
+    },
+    "cost": null
+   },
+   {
+    "name": "B-08 Light Gunner",
+    "class": "light",
+    "rating": 100,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "B-22 Model Citizen",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "other",
+     "name": "Anniversary Gift"
+    },
+    "cost": null
+   },
+   {
+    "name": "B-24 Enforcer",
+    "class": "medium",
+    "rating": 129,
+    "speed": 471,
+    "stamina": 71,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "B-27 Fortified Commando",
+    "class": "heavy",
+    "rating": 200,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "BFM-16 Tanker",
+    "class": "light",
+    "rating": 75,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Blunt-Force Mitigation",
+    "passiveText": "Bearer is more resistant to being knocked prone. Reduces damage taken from impact and collisions by 30%. Provides a higher armor rating.",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "BFM-220 Ironclad",
+    "class": "heavy",
+    "rating": 175,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Blunt-Force Mitigation",
+    "passiveText": "Bearer is more resistant to being knocked prone. Reduces damage taken from impact and collisions by 30%. Provides a higher armor rating.",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "BFM-77 Reformer",
+    "class": "medium",
+    "rating": 125,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Blunt-Force Mitigation",
+    "passiveText": "Bearer is more resistant to being knocked prone. Reduces damage taken from impact and collisions by 30%. Provides a higher armor rating.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "BP-20 Correct Officer",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Ballistic Padding",
+    "passiveText": "Provides 25% resistance to chest damage. Provides 25% resistance to explosive damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "BP-32 Jackboot",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Ballistic Padding",
+    "passiveText": "Provides 25% resistance to chest damage. Provides 25% resistance to explosive damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "BP-77 Grand Juror",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Ballistic Padding",
+    "passiveText": "Provides 25% resistance to chest damage. Provides 25% resistance to explosive damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CE-07 Demolition Specialist",
+    "class": "light",
+    "rating": 64,
+    "speed": 536,
+    "stamina": 118,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "CE-101 Guerilla Gorilla",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CE-27 Ground Breaker",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "CE-35 Trench Engineer",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 10
+    }
+   },
+   {
+    "name": "CE-64 Grenadier",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "CE-67 Titan",
+    "class": "light",
+    "rating": 79,
+    "speed": 521,
+    "stamina": 111,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "CE-74 Breaker",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CE-81 Juggernaut",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CM-09 Bonesnapper",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 4
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "CM-10 Clinician",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CM-14 Physician",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 9
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 70
+    }
+   },
+   {
+    "name": "CM-17 Butcher",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CM-21 Trench Paramedic",
+    "class": "light",
+    "rating": 64,
+    "speed": 536,
+    "stamina": 118,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CPG-48 Sapper",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Concussive Padding, Grenadier",
+    "passiveText": "Provides 50% resistance to explosive damage. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "CPH-26 Commandant (Armor)",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Concussive Padding, Hazmat",
+    "passiveText": "Provides 50% resistance to explosive damage. Provides 25% resistance to gas damage and effects. Sidearm recoil reduced by 30%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Entrenched Division",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "CPR-80 Bulwark",
+    "class": "heavy",
+    "rating": 180,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Concussive Padding, Reinforced",
+    "passiveText": "Provides 50% resistance to explosive damage. Provides a higher armor rating.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "CW-22 Kodiak",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "CW-36 Winter Warrior",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "CW-4 Arctic Ranger",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Scout",
+    "passiveText": "Markers placed on the map will generate radar scans every 2.0s. Reduces range at which enemies can detect the wearer by 30%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 64
+    }
+   },
+   {
+    "name": "CW-9 White Wolf",
+    "class": "medium",
+    "rating": 150,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "DP-00 Tactical",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "other",
+     "name": "Liberty Day"
+    },
+    "cost": null
+   },
+   {
+    "name": "DP-11 Champion of the People",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 10
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 100
+    }
+   },
+   {
+    "name": "DP-40 Hero of the Federation",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 5
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 25
+    }
+   },
+   {
+    "name": "DP-53 Savior of the Free",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "other",
+     "name": "Super Citizen Edition"
+    },
+    "cost": null
+   },
+   {
+    "name": "DP-8 Mountain-Scaled",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Siege-Ready",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Increases ammo capacity of all weapons by 20%. Does not affect weapon backpacks.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "DS-10 Big Game Hunter",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Desert Stormer",
+    "passiveText": "Provides 40% resistance to fire, gas, acid, and electrical damage. Increases throwing range by 20%.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "DS-191 Scorpion",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Desert Stormer",
+    "passiveText": "Provides 40% resistance to fire, gas, acid, and electrical damage. Increases throwing range by 20%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "DS-42 Federation&#39;s Blade",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Desert Stormer",
+    "passiveText": "Provides 40% resistance to fire, gas, acid, and electrical damage. Increases throwing range by 20%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Dust Devils",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "EX-00 Prototype X",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Electrical Conduit",
+    "passiveText": "Provides 95% resistance to arc damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 64
+    }
+   },
+   {
+    "name": "EX-03 Prototype 3",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Electrical Conduit",
+    "passiveText": "Provides 95% resistance to arc damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "EX-16 Prototype 16",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Electrical Conduit",
+    "passiveText": "Provides 95% resistance to arc damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "FS-05 Marksman",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 6
+    }
+   },
+   {
+    "name": "FS-11 Executioner",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "FS-23 Battle Master",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 6
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "FS-34 Exterminator",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "FS-37 Ravager",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "FS-38 Eradicator",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "FS-55 Devastator",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Fortified",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Provides 50% resistance to explosive damage.",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 64
+    }
+   },
+   {
+    "name": "FS-61 Dreadnought",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "GS-11 Democracy&#39;s Deputy",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Gunslinger",
+    "passiveText": "Increases sidearms reload speed by 40%. Sidearm draw/holster speed increased by 50%. Sidearm recoil reduced by 70%.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "GS-17 Frontier Marshal",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Gunslinger",
+    "passiveText": "Increases sidearms reload speed by 40%. Sidearm draw/holster speed increased by 50%. Sidearm recoil reduced by 70%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "GS-66 Lawmaker",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Gunslinger",
+    "passiveText": "Increases sidearms reload speed by 40%. Sidearm draw/holster speed increased by 50%. Sidearm recoil reduced by 70%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "I-09 Heatseeker",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Inflammable",
+    "passiveText": "Provides 75% damage resistance to fire, allowing bearer to rest assured in their inflammability.",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "I-102 Draconaught",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Inflammable",
+    "passiveText": "Provides 75% damage resistance to fire, allowing bearer to rest assured in their inflammability.",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "I-44 Salamander",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Inflammable",
+    "passiveText": "Provides 75% damage resistance to fire, allowing bearer to rest assured in their inflammability.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "I-92 Fire Fighter",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Inflammable",
+    "passiveText": "Provides 75% damage resistance to fire, allowing bearer to rest assured in their inflammability.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "IE-12 Righteous",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Integrated Explosives",
+    "passiveText": "Armor explodes 1.5s after the wearer dies. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Servants of Freedom",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "IE-3 Martyr",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Integrated Explosives",
+    "passiveText": "Armor explodes 1.5s after the wearer dies. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "warbond",
+     "name": "Servants of Freedom",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "IE-57 Hell-Bent",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Integrated Explosives",
+    "passiveText": "Armor explodes 1.5s after the wearer dies. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "KDM-500 Outrider",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Kinetic Displacement Mitigation",
+    "passiveText": "Provides 50% damage resistance to fire, allowing bearer to rest assured in their inflammability. Gives the wearer a 50% chance to avoid grievous limb injury. Reduces damage taken from impact and collisions by 30%.",
+    "source": {
+     "kind": "other",
+     "name": "Permanent Enclosure"
+    },
+    "cost": null
+   },
+   {
+    "name": "O-2 Heavy Operator",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Oxygenator",
+    "passiveText": "Increases the wearer's walking speed and running speed. Increases the speed and duration of slides.",
+    "source": {
+     "kind": "warbond",
+     "name": "Exo Experts",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "O-3 Free Spirit",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Oxygenator",
+    "passiveText": "Increases the wearer's walking speed and running speed. Increases the speed and duration of slides.",
+    "source": {
+     "kind": "warbond",
+     "name": "Exo Experts",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "O-44 Bonded Pilot",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Oxygenator",
+    "passiveText": "Increases the wearer's walking speed and running speed. Increases the speed and duration of slides.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "PH-202 Twigsnapper",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Peak Physique",
+    "passiveText": "Increases melee damage by 40%. Improves weapons handling with less drag on weapon movement.",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "PH-56 Jaguar",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Peak Physique",
+    "passiveText": "Increases melee damage by 40%. Improves weapons handling with less drag on weapon movement.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "PH-9 Predator",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Peak Physique",
+    "passiveText": "Increases melee damage by 40%. Improves weapons handling with less drag on weapon movement.",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "RE-1861 Parade Commander",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Reinforced Epaulettes",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Gives wearer a 50% chance to avoid grievous limb injury. Increases melee damage by 20%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "RE-2310 Honorary Guard",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Reinforced Epaulettes",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Gives wearer a 50% chance to avoid grievous limb injury. Increases melee damage by 20%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "RE-824 Bearer of the Standard",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Reinforced Epaulettes",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Gives wearer a 50% chance to avoid grievous limb injury. Increases melee damage by 20%.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   },
+   {
+    "name": "RS-100 Sanctioner",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Reduced Signature",
+    "passiveText": "Wearer makes 50% less noise when moving. Reduces range at which enemies can detect the wearer by 40%.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "RS-20 Constrictor",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Rock Solid",
+    "passiveText": "Increases melee damage by 40%. Bearer is more resistant to being knocked prone.",
+    "source": {
+     "kind": "warbond",
+     "name": "Python Commandos",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "RS-40 Beast of Prey",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Rock Solid",
+    "passiveText": "Increases melee damage by 40%. Bearer is more resistant to being knocked prone.",
+    "source": {
+     "kind": "warbond",
+     "name": "Python Commandos",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "RS-6 Fiend Destroyer",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Rock Solid",
+    "passiveText": "Increases melee damage by 40%. Bearer is more resistant to being knocked prone.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 300
+    }
+   },
+   {
+    "name": "RS-67 Null Cipher",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Reduced Signature",
+    "passiveText": "Wearer makes 50% less noise when moving. Reduces range at which enemies can detect the wearer by 40%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "RS-89 Shadow Paragon",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Reduced Signature",
+    "passiveText": "Wearer makes 50% less noise when moving. Reduces range at which enemies can detect the wearer by 40%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SA-04 Combat Technician",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Scout",
+    "passiveText": "Markers placed on the map will generate radar scans every 2.0s. Reduces range at which enemies can detect the wearer by 30%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 8
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "SA-12 Servo Assisted",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SA-25 Steel Trooper",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "SA-32 Dynamo",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 64
+    }
+   },
+   {
+    "name": "SA-7 Headfirst",
+    "class": "medium",
+    "rating": 125,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Supplemental Adrenaline",
+    "passiveText": "When the wearer takes damage, they regain some stamina. Provides a higher armor rating.",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SA-8 Ram",
+    "class": "heavy",
+    "rating": 175,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Supplemental Adrenaline",
+    "passiveText": "When the wearer takes damage, they regain some stamina. Provides a higher armor rating.",
+    "source": {
+     "kind": "warbond",
+     "name": "Siege Breakers",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "SC-15 Drone Master",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Engineering Kit",
+    "passiveText": "Further reduces recoil when crouching or prone by 30%. Increases initial inventory and holding capacity of throwables by +2.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "SC-30 Trailblazer Scout",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Scout",
+    "passiveText": "Markers placed on the map will generate radar scans every 2.0s. Reduces range at which enemies can detect the wearer by 30%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 7
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 50
+    }
+   },
+   {
+    "name": "SC-34 Infiltrator",
+    "class": "light",
+    "rating": 70,
+    "speed": 530,
+    "stamina": 115,
+    "passive": "Scout",
+    "passiveText": "Markers placed on the map will generate radar scans every 2.0s. Reduces range at which enemies can detect the wearer by 30%.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 3
+    }
+   },
+   {
+    "name": "SC-37 Legionnaire",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 150
+    }
+   },
+   {
+    "name": "SR-18 Roadblock",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Siege-Ready",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Increases ammo capacity of all weapons by 20%. Does not affect weapon backpacks.",
+    "source": {
+     "kind": "warbond",
+     "name": "Urban Legends",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SR-24 Street Scout",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Siege-Ready",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Increases ammo capacity of all weapons by 20%. Does not affect weapon backpacks.",
+    "source": {
+     "kind": "warbond",
+     "name": "Urban Legends",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "SR-64 Cinderblock",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Siege-Ready",
+    "passiveText": "Increases reload speed of primary weapons by 30%. Increases ammo capacity of all weapons by 20%. Does not affect weapon backpacks.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "SS-15 Focal Point",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Stationary Shroud",
+    "passiveText": "Reduces weapon sway while aiming by 35%. Wearer makes 15% less noise when moving. Mimics foliage-level concealment, reducing enemy detection range while the wearer remains stationary and crouched or prone.",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "SS-33 Mimetic Marshal",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Stationary Shroud",
+    "passiveText": "Reduces weapon sway while aiming by 35%. Wearer makes 15% less noise when moving. Mimics foliage-level concealment, reducing enemy detection range while the wearer remains stationary and crouched or prone.",
+    "source": {
+     "kind": "warbond",
+     "name": "Scope of Authority",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "SS-500 Pale Prosecutor",
+    "class": "light",
+    "rating": 50,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Stationary Shroud",
+    "passiveText": "Reduces weapon sway while aiming by 35%. Wearer makes 15% less noise when moving. Mimics foliage-level concealment, reducing enemy detection range while the wearer remains stationary and crouched or prone.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 250
+    }
+   },
+   {
+    "name": "TG-122 Demo-Trooper",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "True Grit",
+    "passiveText": "Increases reload speed of support weapons by 30%. Slightly increases weapon ergonomics to reduce drag on weapon movement.",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan's Creed",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "TG-8 Sharpshooter",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "True Grit",
+    "passiveText": "Increases reload speed of support weapons by 30%. Slightly increases weapon ergonomics to reduce drag on weapon movement.",
+    "source": {
+     "kind": "warbond",
+     "name": "Castellan's Creed",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "TR-117 Alpha Commander",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Med-Kit",
+    "passiveText": "Increases initial inventory and holding capacity of stims by +2. Increases stim effect duration by 2.0s.",
+    "source": {
+     "kind": "other",
+     "name": "Downloadable Content"
+    },
+    "cost": null
+   },
+   {
+    "name": "TR-40 Gold Eagle",
+    "class": "medium",
+    "rating": 150,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "other",
+     "name": "Escalation of Freedom"
+    },
+    "cost": null
+   },
+   {
+    "name": "TR-62 Knight",
+    "class": "heavy",
+    "rating": 150,
+    "speed": 450,
+    "stamina": 50,
+    "passive": "Servo-Assisted",
+    "passiveText": "Increases throwing range by 30%. Provides +50% limb health.",
+    "source": {
+     "kind": "other",
+     "name": "Pre-Order Bonus"
+    },
+    "cost": null
+   },
+   {
+    "name": "TR-7 Ambassador of the Brand",
+    "class": "medium",
+    "rating": 150,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Extra Padding",
+    "passiveText": "Provides a higher armor rating.",
+    "source": {
+     "kind": "other",
+     "name": "Pre-Order Bonus"
+    },
+    "cost": null
+   },
+   {
+    "name": "TR-9 Cavalier of Democracy",
+    "class": "medium",
+    "rating": 100,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Democracy Protects",
+    "passiveText": "50% chance to not die when taking lethal damage. Prevents all damage from bleeding if chest hemorrhages.",
+    "source": {
+     "kind": "other",
+     "name": "Pre-Order Bonus"
+    },
+    "cost": null
+   },
+   {
+    "name": "UF-16 Inspector",
+    "class": "light",
+    "rating": 75,
+    "speed": 550,
+    "stamina": 125,
+    "passive": "Unflinching",
+    "passiveText": "Helps prevent Helldivers from flinching when hit. Provides a higher armor rating. Markers placed on the map will generate radar scans every 2.0s.",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "UF-50 Bloodhound",
+    "class": "medium",
+    "rating": 125,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Unflinching",
+    "passiveText": "Helps prevent Helldivers from flinching when hit. Provides a higher armor rating. Markers placed on the map will generate radar scans every 2.0s.",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 45
+    }
+   },
+   {
+    "name": "UF-84 Doubt Killer",
+    "class": "medium",
+    "rating": 125,
+    "speed": 500,
+    "stamina": 100,
+    "passive": "Unflinching",
+    "passiveText": "Helps prevent Helldivers from flinching when hit. Provides a higher armor rating. Markers placed on the map will generate radar scans every 2.0s.",
+    "source": {
+     "kind": "superstore"
+    },
+    "cost": {
+     "currency": "credits",
+     "amount": 400
+    }
+   }
+  ],
+  "booster": [
+   {
+    "name": "Armed Resupply Pods",
+    "text": "Mounts a modified AR-23 Liberator to all resupply pods, allowing them to double as automatic turrets.",
+    "source": {
+     "kind": "warbond",
+     "name": "Urban Legends",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "Concealed Insertion",
+    "text": "Equips Hellpods to deploy smokescreens on impact, obscuring Helldiver deployment.",
+    "source": {
+     "kind": "warbond",
+     "name": "Redacted Regiment",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "Dead Sprint",
+    "text": "Allows Helldivers to keep sprinting even when they are out of stamina, draining their health instead.",
+    "source": {
+     "kind": "warbond",
+     "name": "Truth Enforcers",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 35
+    }
+   },
+   {
+    "name": "Experimental Infusion",
+    "text": "In addition to restoring health, stims temporarily increase movement speed and damage reduction.",
+    "source": {
+     "kind": "warbond",
+     "name": "Viper Commandos",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 80
+    }
+   },
+   {
+    "name": "Expert Extraction Pilot",
+    "text": "Lowers the time it takes for the extraction shuttle to reach the extraction beacon.",
+    "source": {
+     "kind": "warbond",
+     "name": "Democratic Detonation",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "Firebomb Hellpods",
+    "text": "Lines all Hellpods with volatile incendiaries that detonate upon impact, igniting any units in vicinity of the drop site.",
+    "source": {
+     "kind": "warbond",
+     "name": "Freedom's Flame",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 60
+    }
+   },
+   {
+    "name": "Flexible Reinforcement Budget",
+    "text": "Reduce time until new reinforcements are granted once they've been depleted.",
+    "source": {
+     "kind": "warbond",
+     "name": "Steeled Veterans",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 75
+    }
+   },
+   {
+    "name": "Hellpod Space Optimization",
+    "text": "Helldivers come out of the Hellpod fully stocked on Ammo, Grenades, and Stims.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "Increased Reinforcement Budget",
+    "text": "Increases the number of available reinforcements.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 10
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 150
+    }
+   },
+   {
+    "name": "Integrated Extinguishers",
+    "text": "Equips Helldiver uniforms with form-fitting, automated, rapid-response fire suppression systems. Significantly reduces the time it takes to naturally extinguish flames without conducting ground-aided smothering manuevers.",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "Localization Confusion",
+    "text": "Increases the time between enemy encounters.",
+    "source": {
+     "kind": "warbond",
+     "name": "Cutting Edge",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 18
+    }
+   },
+   {
+    "name": "Motivational Shocks",
+    "text": "Allows all Helldivers to recover faster after being slowed by an attack, such as acid. Does not mitigate “area effects,” such as EMS strikes.",
+    "source": {
+     "kind": "warbond",
+     "name": "Polar Patriots",
+     "page": 1
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 15
+    }
+   },
+   {
+    "name": "Muscle Enhancement",
+    "text": "Allows Helldivers to traverse difficult terrain with ease.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 9
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 70
+    }
+   },
+   {
+    "name": "Sample Extricator",
+    "text": "Large enemies now have a chance of dropping Samples on death. Capped at 10 drops per mission.",
+    "source": {
+     "kind": "warbond",
+     "name": "Borderline Justice",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "Sample Scanner",
+    "text": "The Sample scanner gives you a 15% chance to receive twice the Samples on sample pick up.",
+    "source": {
+     "kind": "warbond",
+     "name": "Masters of Ceremony",
+     "page": 3
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 65
+    }
+   },
+   {
+    "name": "Stamina Enhancement",
+    "text": "Increases all Helldivers' stamina capacity and recovery.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 7
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 75
+    }
+   },
+   {
+    "name": "Stun Pods",
+    "text": "Exposes Hellpod wiring upon surface contact, stunning any units in the vicinity of the drop site.",
+    "source": {
+     "kind": "warbond",
+     "name": "Force of Law",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "Surplus EAT Allocation",
+    "text": "Grants two free uses of the Expendable Anti-Tank (EAT) Stratagem per mission; enough to grant a full squad one single-use rocket launcher each, provided squad members employ the proper equipment distribution protocol.",
+    "source": {
+     "kind": "warbond",
+     "name": "Ironclad Democracy",
+     "page": 2
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 55
+    }
+   },
+   {
+    "name": "UAV Recon Booster",
+    "text": "Increases all Helldivers' effective radar range.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 6
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 40
+    }
+   },
+   {
+    "name": "Vitality Enhancement",
+    "text": "Provides minor damage reduction from all sources for all Helldivers.",
+    "source": {
+     "kind": "warbond",
+     "name": "Helldivers Mobilize!",
+     "page": 4
+    },
+    "cost": {
+     "currency": "medals",
+     "amount": 20
+    }
+   }
+  ]
+ }
+}

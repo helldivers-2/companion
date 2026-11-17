@@ -9,6 +9,7 @@ import map from "./pages/map.js";
 import dispatches from "./pages/dispatches.js";
 import news from "./pages/news.js";
 import stratagems from "./pages/stratagems.js";
+import "./pages/items.js"; // static data: it binds itself, so the "Updated" status of the live pages stays off it
 
 const page = { overview, map, planets, dispatches, news, stratagems }[document.body.dataset.page];
 const status = document.getElementById("status");

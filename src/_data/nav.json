@@ -5,5 +5,7 @@
   ["dispatches/", "dispatches", "megaphone-simple"],
   ["news/", "news", "newspaper"],
   ["stratagems/", "stratagems", "crosshair"],
+  ["items/", "items", "backpack"],
+  ["shop/", "shop", "storefront"],
   ["faq/", "faq", "info"]
 ]

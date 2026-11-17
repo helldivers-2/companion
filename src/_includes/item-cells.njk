@@ -1,0 +1,14 @@
+{#- Cells shared by the item database and the shop. Macros see no template data, so lang and t come in as arguments. #}
+{% macro dash(t) %}<span class="muted" aria-hidden="true">–</span><span class="visually-hidden">{{ t.items.unlisted }}</span>{% endmacro %}
+
+{% macro unlock(s, t, lang) -%}
+{%- if not s %}{{ dash(t) }}
+{%- elif s.kind == "superstore" %}<a href="/{{ lang }}/shop/">{{ t.items.superstore }}</a>
+{%- elif s.kind == "warbond" %}<span lang="en">{{ s.name }}</span>{% if s.page %} <span class="muted">{{ t.items.page | replace("{n}", s.page) }}</span>{% endif %}
+{%- else %}<span lang="en">{{ s.name }}</span>
+{%- endif %}
+{%- endmacro %}
+
+{% macro price(c, t) -%}
+{%- if c %}{{ c.amount }} {{ t.items.currency[c.currency] }}{% else %}{{ dash(t) }}{% endif %}
+{%- endmacro %}

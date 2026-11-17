@@ -1186,4 +1186,5 @@ summary {
 }
 
 @include stratagems.styles($line, $muted, $text, $accent, $factions, $wide);
+@include meta.load-css("items", $with: ("ground": $ground, "line": $line));
 @include meta.load-css("map", $with: ("ground": $ground, "panel": $panel, "control": $control, "text": $text, "muted": $muted, "accent": $accent, "ring": $ring, "page-wide": $wide));

@@ -9,9 +9,11 @@
     "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead’s Steam page."],
     "faq": ["Helldivers 2 Liberation & Defense Explained", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
     "stratagems": ["Helldivers 2 Stratagem Database", "Every Helldivers 2 stratagem with its input code, category, cooldown, uses and unlock source, searchable and sortable."],
+    "items": ["Helldivers 2 Weapons, Armor & Boosters", "Database of every Helldivers 2 weapon, throwable, armor set and booster with damage, fire rate, armor rating, passives and how each one is unlocked."],
+    "shop": ["Helldivers 2 Superstore Items & Prices", "Every item that can appear in the Helldivers 2 Superstore, with its price in Super Credits."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
-  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ", "map": "Galaxy map", "stratagems": "Stratagems" },
+  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ", "map": "Galaxy map", "stratagems": "Stratagems", "items": "Items", "shop": "Shop" },
   "layout": {
     "skip": "Skip to content",
     "home": "{name} home",
@@ -70,6 +72,31 @@
     "count": "{n} of {total} stratagems",
     "noMatch": "No stratagems match these filters. Try a different search or filter.",
     "credit": "Data from the {wiki}, licensed {license}. A dash means the wiki has no value. Unlock details can lag behind the latest patches. Last refreshed {date}."
+  },
+  "items": {
+    "intro": "Every weapon, throwable, armor set and booster in Helldivers 2 with its key stats and how to unlock it. Search, filter and sort; select a column heading to sort by it.",
+    "search": "Search",
+    "placeholder": "Name, type, passive…",
+    "type": "Type",
+    "anyType": "All",
+    "unlockedBy": "Unlocked by",
+    "anyUnlock": "Anything",
+    "unlocks": {"warbond": "Warbond", "superstore": "Superstore", "other": "Other"},
+    "cats": {"primary": "Primary weapons", "secondary": "Secondary weapons", "support": "Support weapons", "throwable": "Throwables", "armor": "Armor", "booster": "Boosters"},
+    "classes": {"light": "Light", "medium": "Medium", "heavy": "Heavy"},
+    "cols": {"name": "Name", "type": "Type", "damage": "Damage", "rate": "Fire rate", "magazine": "Magazine", "pen": "Penetration", "radius": "Radius", "fuse": "Fuse", "class": "Class", "rating": "Armor rating", "speed": "Speed", "stamina": "Stamina regen", "passive": "Passive", "text": "Effect", "source": "Unlock", "cost": "Cost", "kind": "Type"},
+    "currency": {"credits": "Super Credits", "medals": "Medals", "slips": "Requisition Slips"},
+    "superstore": "Superstore",
+    "page": "page {n}",
+    "unlisted": "Not listed",
+    "count": "{n} of {total} items",
+    "noMatch": "No items match these filters. Try a different search or filter.",
+    "credit": "Item data from the {source}, licensed {licence}, collected on {date}. Stats change with patches; the game itself is the reference."
+  },
+  "shop": {
+    "intro": "Every item that can show up in the Superstore, with its price. Follow an item's name to see its full stats in the item database.",
+    "noLiveTitle": "The current rotation isn't available.",
+    "noLive": "The Superstore's current rotation is only sent to the game itself, after you log in. No public API publishes it, so this page can't show what is on sale today or when it changes. It lists everything the database knows to be sold there; open the Superstore in the game to see the current offers."
   },
   "dispatches": { "h1": "Dispatches from Super Earth", "intro": "Super Earth’s in-game news feed: war updates, Major Order briefings and propaganda as they go out.", "loading": "Loading dispatches…" },
   "news": { "h1": "News from Steam", "hint": "Arrowhead’s patch notes, developer blogs and announcements, newest first. Open any post to read it in full.", "loading": "Loading news…" },
