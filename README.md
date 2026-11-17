@@ -15,7 +15,7 @@ Every push to `main` deploys to Cloudflare through GitHub Actions. `npm run depl
 ## Where things live
 
 - Pages are Eleventy templates in `src/*.njk`, with scripts in `src/js` and styles in `src/scss`.
-- All text is in `src/_data/i18n/<locale>.json`, one file per language. `npm test` fails if a locale is missing a key that English has.
+- All text is in `src/_data/i18n/<locale>.json`, one file per language; each page embeds only the keys its script needs (`src/_data/eleventyComputed.js`). `npm test` fails if a locale is missing a key that English has.
 - The client headers and refresh interval are in `src/_data/site.json`. Set `contact` to your own before you deploy a copy.
 - The browser fetches `/api/*` from its own origin. In production `worker.js` answers those calls from the self-hosted API; under `npm run dev` the same code calls the public API.
 - `src/_redirects` sends old URLs to their new pages. Cloudflare and Netlify read it; other hosts need the rules in their own format.

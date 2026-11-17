@@ -95,6 +95,8 @@
     </div>
     <p class="disclaimer">{{ t.layout.disclaimer }}</p>
   </footer>
+  {#- \u003c keeps a "</script>" inside a string from closing the tag. #}
+  <script type="application/json" id="strings">{{ strings | dump | replace("<", "\\u003c") | safe }}</script>
   {#- Not deferred: it must run before the first paint, so cached data shows at once instead of the "Loading…" placeholder flashing first. #}
   <script src="/assets/main.js"></script>
 </body>
