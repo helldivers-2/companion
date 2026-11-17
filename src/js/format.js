@@ -71,11 +71,11 @@ export const timeLeft = (until, now = Date.now()) => duration(Math.max(0, Date.p
 
 export const countdown = (iso) => `<time data-until="${esc(iso)}" datetime="${esc(iso)}">${timeLeft(iso)}</time>`;
 
-// Dispatches use the game's <span data-ah="n"> highlight markup; keep only that, escape everything else.
+// Dispatches and station actions use the game's <span data-ah="n"> highlight markup; keep only that, escape everything else.
 export const dispatchHtml = (msg) =>
   esc(msg)
     .replace(/&#60;span data-ah=&#34;(\d)&#34;&#62;/g, '<strong class="ah-$1">')
-    .replace(/&#60;\/span&#62;/g, "</strong>")
+    .replace(/&#60;\/span&#62;(&#62;)?/g, "</strong>") // the game sometimes writes </span>>
     .replace(/&#60;\/?i(=\d)?&#62;/g, "");
 
 const STEAM_TAGS = { h1: "h3", h2: "h3", h3: "h4", b: "strong", i: "em", u: "u", strike: "s", p: "p", list: "ul", olist: "ol", "*": "li" };

@@ -1,5 +1,5 @@
 import { get, state } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
+import { bar, countdown, describeTask, dispatchHtml, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
@@ -127,6 +127,6 @@ const stationPanel = (st) => `<article class="station">
     return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>
       ${a.status !== 1 && a.statusExpire ? `<span class="muted">${fill(t.js.for, { time: countdown(a.statusExpire) })}</span>` : ""}</p>
       ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, fill(t.js.preparation, { name: a.name })) : ""}
-      <p class="muted">${esc(a.strategicDescription || a.description)}</p></li>`;
+      <p class="muted">${dispatchHtml(a.strategicDescription || a.description)}</p></li>`;
   }).join("")}</ul>
 </article>`;
