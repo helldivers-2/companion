@@ -34,8 +34,7 @@
     "station": "Estación espacial",
     "fronts": "Frentes activos",
     "frontsLoading": "Cargando frentes…",
-    "statistics": "Estadísticas",
-    "war": "Guerra Galáctica"
+    "statistics": "Estadísticas"
   },
   "planets": {
     "intro": "Busca, filtra y ordena los planetas de la Guerra Galáctica, o abre uno para ver sus peligros, regiones e historial de combate.",

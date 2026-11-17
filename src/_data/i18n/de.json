@@ -34,8 +34,7 @@
     "station": "Raumstation",
     "fronts": "Aktive Fronten",
     "frontsLoading": "Fronten werden geladen …",
-    "statistics": "Statistik",
-    "war": "Galaktischer Krieg"
+    "statistics": "Statistik"
   },
   "planets": {
     "intro": "Durchsuche, filtere und sortiere die Planeten des Galaktischen Kriegs oder öffne einen, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",

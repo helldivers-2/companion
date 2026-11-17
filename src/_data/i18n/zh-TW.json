@@ -34,8 +34,7 @@
     "station": "太空站",
     "fronts": "活躍戰線",
     "frontsLoading": "正在載入戰線…",
-    "statistics": "統計",
-    "war": "銀河戰爭"
+    "statistics": "統計"
   },
   "planets": {
     "intro": "搜尋、篩選、排序銀河戰爭中的星球，或開啟星球查看其危害、區域與戰鬥紀錄。",

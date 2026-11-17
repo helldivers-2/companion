@@ -34,8 +34,7 @@
     "station": "Space Station",
     "fronts": "Active fronts",
     "frontsLoading": "Loading fronts…",
-    "statistics": "Statistics",
-    "war": "Galactic War"
+    "statistics": "Statistics"
   },
   "planets": {
     "intro": "Search, filter and sort the planets of the Galactic War, or open one to see its hazards, regions and battle record.",

@@ -40,10 +40,10 @@
 </head>
 <body data-page="{{ page_id }}">
   <a class="skip" href="#main">{{ t.layout.skip }}</a>
-  {# The companion's header: a logo pill and a nav pill on glass, at the top on wide screens and the bottom on phones. #}
+  {# The companion's header: a bar at the top on wide screens, a tab bar at the bottom on phones. #}
   <header class="top">
-    <a class="glass logo" href="/{{ lang }}/"><img src="/img/icon.svg" alt="{{ t.layout.home | replace("{name}", site.name) }}" width="24" height="24"></a>
-    <nav class="glass" aria-label="{{ t.nav.label }}">
+    <a class="logo" href="/{{ lang }}/"><img src="/img/icon.svg" alt="{{ t.layout.home | replace("{name}", site.name) }}" width="24" height="24"></a>
+    <nav aria-label="{{ t.nav.label }}">
       {%- for item in nav %}
       {%- set href = "/" + lang + "/" + item[0] %}
       <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
