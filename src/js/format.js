@@ -69,6 +69,10 @@ function duration(ms) {
 // Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
 export const timeLeft = (until, now = Date.now()) => duration(Math.max(0, Date.parse(until) - now) || 0);
 
+// Feeds sorted newest first; one unparseable date would otherwise throw in the date formatter and blank the feed.
+export const newestFirst = (list, key) => list.filter((x) => !Number.isNaN(Date.parse(x[key]))).sort((a, b) => Date.parse(b[key]) - Date.parse(a[key]));
+export const date = (iso, fmt) => `<time datetime="${esc(iso)}">${fmt.format(new Date(iso))}</time>`;
+
 export const countdown = (iso) => `<time data-until="${esc(iso)}" datetime="${esc(iso)}">${timeLeft(iso)}</time>`;
 
 // Dispatches and station actions use the game's <span data-ah="n"> highlight markup; keep only that, escape everything else.

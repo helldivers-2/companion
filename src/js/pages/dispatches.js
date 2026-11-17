@@ -1,5 +1,5 @@
 import { get } from "../api.js";
-import { dispatchHtml, esc, icon } from "../format.js";
+import { date, dispatchHtml, icon, newestFirst } from "../format.js";
 import en from "../../_data/i18n/en.json" with { type: "json" };
 import { lang, t } from "../i18n.js";
 
@@ -11,10 +11,8 @@ const dateFmt = new Intl.DateTimeFormat(lang, { dateStyle: "medium", timeStyle: 
 
 export default async function dispatches() {
   const list = await get("/api/v2/dispatches", 300);
-  document.getElementById("dispatches").innerHTML = list
-    .filter((d) => d.message && !Number.isNaN(Date.parse(d.published))) // one bad date would throw in dateFmt and blank the feed
-    .sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
+  document.getElementById("dispatches").innerHTML = newestFirst(list.filter((d) => d.message), "published")
     .slice(0, SHOWN)
-    .map((d) => `<li class="card dispatch${outcome(d.message)}">${icon("clock")} <time datetime="${esc(d.published)}">${dateFmt.format(new Date(d.published))}</time><p>${dispatchHtml(d.message)}</p></li>`)
+    .map((d) => `<li class="card dispatch${outcome(d.message)}">${icon("clock")} ${date(d.published, dateFmt)}<p>${dispatchHtml(d.message)}</p></li>`)
     .join("") || `<li class="card muted">${icon("clock")} ${t.js.noDispatches}</li>`;
 }
