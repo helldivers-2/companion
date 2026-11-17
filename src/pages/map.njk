@@ -1,0 +1,40 @@
+---
+page_id: map
+permalink: "/{{ lang }}/map/"
+---
+<div class="container">
+<h1>{{ t.map.h1 }}</h1>
+<p class="muted hint">{{ t.map.intro }}</p>
+<div class="map-layout">
+<section class="card" aria-labelledby="map-h">
+<h2 class="visually-hidden" id="map-h">{{ t.map.label }}</h2>
+<div class="map-tools">
+  <button type="button" data-zoom="1.5">{% icon "magnifying-glass-plus" %}<span class="visually-hidden">{{ t.map.zoomIn }}</span></button>
+  <button type="button" data-zoom="0.6667">{% icon "magnifying-glass-minus" %}<span class="visually-hidden">{{ t.map.zoomOut }}</span></button>
+  <button type="button">{% icon "arrows-in" %}<span class="visually-hidden">{{ t.map.reset }}</span></button>
+</div>
+<p class="muted" id="map-loading" data-loading>{{ t.map.loading }}</p>
+<svg id="map" role="group" aria-label="{{ t.map.label }}" viewBox="0 0 1000 1000"><g id="map-layer"></g></svg>
+<p class="visually-hidden" id="map-announce" aria-live="polite"></p>
+</section>
+<div class="map-side">
+<section class="card" aria-labelledby="map-detail-h">
+<h2 id="map-detail-h">{{ t.map.details }}</h2>
+<div id="map-detail"><p class="muted">{{ t.map.hint }}</p></div>
+</section>
+<section class="card" aria-labelledby="map-legend-h">
+<h2 id="map-legend-h">{{ t.map.legend }}</h2>
+<ul class="legend">
+  {%- for f in labels.factions %}
+  <li class="{{ f | lower }}"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="planet" r="7"/></svg>{{ t.factions[f] }}</li>
+  {%- endfor %}
+  <li class="humans"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark" r="10"/></svg>{{ t.map.liberating }}</li>
+  <li class="terminids"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark defending" r="10"/></svg>{{ t.map.defending }}</li>
+  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><polygon class="mark order" points="0,-12 12,0 0,12 -12,0"/></svg>{{ t.map.order }}</li>
+  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><path class="lines" d="M-12 8L12 -8"/></svg>{{ t.map.supply }}</li>
+</ul>
+</section>
+<p class="muted hint">{{ t.map.note | replace("{link}", '<a href="/' + lang + '/planets/">' + t.nav.planets + '</a>') | safe }}</p>
+</div>
+</div>
+</div>

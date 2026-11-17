@@ -1,0 +1,2679 @@
+{
+  "source": {
+    "name": "Helldivers Wiki",
+    "url": "https://helldivers.wiki.gg/wiki/Stratagems",
+    "license": "CC BY-NC-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "fetched": "2026-11-17",
+    "usesRevision": "2026-11-11"
+  },
+  "items": [
+    {
+      "name": "40-K Meltagun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "left",
+        "left",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Castellan’s Creed",
+        "page": 3
+      }
+    },
+    {
+      "name": "A/AC-8 Autocannon Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "up",
+        "left",
+        "up"
+      ],
+      "cooldown": 150,
+      "uses": "unlimited",
+      "level": 13,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "A/ARC-3 Tesla Tower",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 8000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "A/FLAM-40 Flame Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 100,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Urban Legends",
+        "page": 2
+      }
+    },
+    {
+      "name": "A/G-16 Gatling Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "left"
+      ],
+      "cooldown": 150,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "A/GM-17 Gas Mortar Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "down",
+        "left"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Entrenched Division",
+        "page": 2
+      }
+    },
+    {
+      "name": "A/LAS-98 Laser Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "down",
+        "up",
+        "right"
+      ],
+      "cooldown": 150,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Control Group",
+        "page": 2
+      }
+    },
+    {
+      "name": "A/M-12 Mortar Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "right",
+        "down"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 7000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "A/M-23 EMS Mortar Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "down",
+        "right"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 8000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "A/MG-43 Machine Gun Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "right",
+        "up"
+      ],
+      "cooldown": 90,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 1500
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "A/MLS-4X Rocket Sentry",
+      "category": "defensive",
+      "kind": "sentry",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "right",
+        "left"
+      ],
+      "cooldown": 150,
+      "uses": null,
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "AC-8 Autocannon",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "up",
+        "up",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 7000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "Activate E-711 Extraction Drill",
+      "category": "supply",
+      "kind": "objective",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "left",
+        "down",
+        "down"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "AMW-20 Apex",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "left",
+        "up",
+        "down",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": null,
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 50
+      },
+      "source": {
+        "name": "Scope of Authority",
+        "page": 2
+      }
+    },
+    {
+      "name": "APW-1 Anti-Materiel Rifle",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "up",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 5000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "Aquifer Drill",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "left",
+        "left",
+        "left",
+        "up",
+        "down",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "ARC-3 Arc Thrower",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "right",
+        "down",
+        "up",
+        "left",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 7000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "AX/AR-23 Guard Dog",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "up",
+        "right",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "AX/ARC-3 K-9",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "up",
+        "right",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Force of Law",
+        "page": 3
+      }
+    },
+    {
+      "name": "AX/FLAM-75 Hot Dog",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "up",
+        "left",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 75
+      },
+      "source": {
+        "name": "Python Commandos",
+        "page": 1
+      }
+    },
+    {
+      "name": "AX/LAS-5 Rover",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "up",
+        "right",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "AX/TX-13 Dog Breath",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "up",
+        "right",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Chemical Agents",
+        "page": 3
+      }
+    },
+    {
+      "name": "B-1 Supply Pack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "up",
+        "up",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "B-100 Portable Hellbomb",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "right",
+        "up",
+        "up",
+        "up"
+      ],
+      "cooldown": 300,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Servants of Freedom",
+        "page": 3
+      }
+    },
+    {
+      "name": "B/FLAM-80 Cremator",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "right",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Entrenched Division",
+        "page": 3
+      }
+    },
+    {
+      "name": "B/MD C4 Pack",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "right",
+        "up",
+        "up",
+        "right",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Redacted Regiment",
+        "page": 3
+      }
+    },
+    {
+      "name": "Call In Super Destroyer",
+      "category": "mission",
+      "kind": "ship",
+      "code": [
+        "up",
+        "up",
+        "down",
+        "down",
+        "left",
+        "right",
+        "left",
+        "right"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Cargo Container",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "up",
+        "up",
+        "down",
+        "down",
+        "right",
+        "down"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "CQC-1 One True Flag",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "right",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Masters of Ceremony",
+        "page": 3
+      }
+    },
+    {
+      "name": "CQC-20 Breaching Hammer",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "left",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 75
+      },
+      "source": {
+        "name": "Siege Breakers",
+        "page": 1
+      }
+    },
+    {
+      "name": "CQC-9 Defoliation Tool",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "right",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Python Commandos",
+        "page": 2
+      }
+    },
+    {
+      "name": "Dark Fluid Vessel",
+      "category": "supply",
+      "kind": "objective",
+      "code": [
+        "up",
+        "left",
+        "right",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 30,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "E/AT-12 Anti-Tank Emplacement",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "right",
+        "right",
+        "right"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Urban Legends",
+        "page": 3
+      }
+    },
+    {
+      "name": "E/GL-21 Grenadier Battlement",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "right",
+        "down",
+        "left",
+        "right"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "E/MG-101 HMG Emplacement",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "right",
+        "right",
+        "left"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle 110mm Rocket Pods",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "up",
+        "left"
+      ],
+      "cooldown": 15,
+      "uses": 3,
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle 500kg Bomb",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "down",
+        "down",
+        "down"
+      ],
+      "cooldown": 15,
+      "uses": 1,
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Airstrike",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "down",
+        "right"
+      ],
+      "cooldown": 15,
+      "uses": 2,
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Cluster Bomb",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "down",
+        "down",
+        "right"
+      ],
+      "cooldown": 15,
+      "uses": 4,
+      "level": 3,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Fly By",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "down",
+        "down",
+        "up",
+        "up",
+        "down",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": {
+        "name": "Liberty Day 2026",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Gas Airstrike",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "left",
+        "right"
+      ],
+      "cooldown": 15,
+      "uses": 2,
+      "level": null,
+      "cost": null,
+      "source": {
+        "name": "Counterdissident Hammer",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Napalm Airstrike",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "down",
+        "up"
+      ],
+      "cooldown": 15,
+      "uses": 2,
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 5000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Rearm",
+      "category": "mission",
+      "kind": "ship",
+      "code": [
+        "up",
+        "up",
+        "left",
+        "up",
+        "right"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Eagle Smoke Strike",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "up",
+        "down"
+      ],
+      "cooldown": 15,
+      "uses": 2,
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Eagle Strafing Run",
+      "category": "offensive",
+      "kind": "eagle",
+      "code": [
+        "up",
+        "right",
+        "right"
+      ],
+      "cooldown": 15,
+      "uses": 4,
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 1500
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "EAT-17 Expendable Anti-Tank",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "up",
+        "right"
+      ],
+      "cooldown": 70,
+      "uses": "unlimited",
+      "level": 3,
+      "cost": {
+        "currency": "slips",
+        "amount": 3000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "EAT-411 Leveller",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "up",
+        "down"
+      ],
+      "cooldown": 140,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Siege Breakers",
+        "page": 2
+      }
+    },
+    {
+      "name": "EAT-700 Expendable Napalm",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "up",
+        "left"
+      ],
+      "cooldown": 140,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Dust Devils",
+        "page": 2
+      }
+    },
+    {
+      "name": "EXO-45 Patriot Exosuit",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "up",
+        "left",
+        "down",
+        "down"
+      ],
+      "cooldown": 420,
+      "uses": null,
+      "level": 25,
+      "cost": {
+        "currency": "slips",
+        "amount": 20000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "EXO-49 Emancipator Exosuit",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "up",
+        "left",
+        "down",
+        "up"
+      ],
+      "cooldown": 420,
+      "uses": 3,
+      "level": 25,
+      "cost": {
+        "currency": "slips",
+        "amount": 20000
+      },
+      "source": {
+        "name": "Robotics Workshop",
+        "page": null
+      }
+    },
+    {
+      "name": "EXO-51 Lumberer Exosuit",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "up",
+        "right",
+        "left",
+        "up"
+      ],
+      "cooldown": 420,
+      "uses": 3,
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 50
+      },
+      "source": {
+        "name": "Exo Experts",
+        "page": 2
+      }
+    },
+    {
+      "name": "EXO-55 Breakthrough Exosuit",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "left",
+        "right",
+        "down",
+        "up"
+      ],
+      "cooldown": 420,
+      "uses": 3,
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 50
+      },
+      "source": {
+        "name": "Exo Experts",
+        "page": 3
+      }
+    },
+    {
+      "name": "FAF-14 Spear",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "up",
+        "down",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 9000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "FLAM-40 Flamethrower",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "down",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "FX-12 Shield Generator Relay",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "right",
+        "left",
+        "right"
+      ],
+      "cooldown": 90,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 9000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "GL-21 Grenade Launcher",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "left",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "GL-28 Belt-Fed Grenade Launcher",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "left",
+        "up",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Siege Breakers",
+        "page": 3
+      }
+    },
+    {
+      "name": "GL-52 De-Escalator",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "right",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Force of Law",
+        "page": 2
+      }
+    },
+    {
+      "name": "GR-8 Recoilless Rifle",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "right",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "Hellbomb",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "down",
+        "up",
+        "right",
+        "down",
+        "up"
+      ],
+      "cooldown": 30,
+      "uses": "unlimited",
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Hive Breaker Drill",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "left",
+        "up",
+        "down",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 119,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Hover Pack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "up",
+        "down",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Borderline Justice",
+        "page": 3
+      }
+    },
+    {
+      "name": "LAS-44 Nova",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": null,
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Scope of Authority",
+        "page": 3
+      }
+    },
+    {
+      "name": "LAS-98 Laser Cannon",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "up",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "LAS-99 Quasar Cannon",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 18,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "LIFT-182 Warp Pack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "down",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Control Group",
+        "page": 3
+      }
+    },
+    {
+      "name": "LIFT-850 Jump Pack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "up",
+        "down",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Link Hellpods to Destroyer",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "left",
+        "right",
+        "up",
+        "up",
+        "up"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "M-1000 Maxigun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "right",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Python Commandos",
+        "page": 3
+      }
+    },
+    {
+      "name": "M-102 Gunner FRV",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "down",
+        "right",
+        "down",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 25,
+      "cost": {
+        "currency": "slips",
+        "amount": 25000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "M-103 Supply FRV",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "left",
+        "left",
+        "down",
+        "up",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 25000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "M-104 Incinerator FRV",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "left",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "M-105 Stalwart",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "up",
+        "up",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 3500
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "MD-17 Anti-Tank Mines",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "up"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 7000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "MD-6 Anti-Personnel Minefield",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "right"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 1500
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "MD-8 Gas Mines",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "left",
+        "left",
+        "right"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 12000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "MD-I4 Incendiary Mines",
+      "category": "defensive",
+      "kind": "emplacement",
+      "code": [
+        "down",
+        "left",
+        "left",
+        "down"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "MG-206 Heavy Machine Gun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "down",
+        "down"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 12,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "MG-43 Machine Gun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "up",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": null,
+      "level": 1,
+      "cost": {
+        "currency": "free",
+        "amount": 0
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "MGX-42 Bullet Storm",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "right",
+        "up",
+        "left"
+      ],
+      "cooldown": 70,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 75
+      },
+      "source": {
+        "name": "Exo Experts",
+        "page": 1
+      }
+    },
+    {
+      "name": "MLS-4X Commando",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "down",
+        "right"
+      ],
+      "cooldown": 120,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 8000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "MS-11 Solo Silo",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "up",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 110
+      },
+      "source": {
+        "name": "Dust Devils",
+        "page": 3
+      }
+    },
+    {
+      "name": "Orbital 120mm HE Barrage",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "down",
+        "left",
+        "right",
+        "down"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital 380mm HE Barrage",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "down",
+        "up",
+        "up",
+        "left",
+        "down",
+        "down"
+      ],
+      "cooldown": 240,
+      "uses": "unlimited",
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Airburst Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "right"
+      ],
+      "cooldown": 90,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Confetti",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "down",
+        "down",
+        "up",
+        "up",
+        "down",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 80,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": {
+        "name": "Liberty Day 2026",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital EMS Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "left",
+        "down"
+      ],
+      "cooldown": 75,
+      "uses": "unlimited",
+      "level": 5,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Gas Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "down",
+        "right"
+      ],
+      "cooldown": 75,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Gatling Barrage",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "down",
+        "left",
+        "up",
+        "up"
+      ],
+      "cooldown": 70,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "slips",
+        "amount": 1500
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Illumination Flare",
+      "category": "mission",
+      "kind": "other",
+      "code": [
+        "right",
+        "right",
+        "left",
+        "left"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Orbital Laser",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "down",
+        "up",
+        "right",
+        "down"
+      ],
+      "cooldown": 300,
+      "uses": 3,
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Napalm Barrage",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "down",
+        "left",
+        "right",
+        "up"
+      ],
+      "cooldown": 240,
+      "uses": "unlimited",
+      "level": 18,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Precision Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "up"
+      ],
+      "cooldown": 80,
+      "uses": "unlimited",
+      "level": 1,
+      "cost": {
+        "currency": "free",
+        "amount": 0
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Railcannon Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "up",
+        "down",
+        "down",
+        "right"
+      ],
+      "cooldown": 180,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Smoke Strike",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "right",
+        "down",
+        "up"
+      ],
+      "cooldown": 75,
+      "uses": "unlimited",
+      "level": 8,
+      "cost": {
+        "currency": "slips",
+        "amount": 4000
+      },
+      "source": {
+        "name": "Bridge",
+        "page": null
+      }
+    },
+    {
+      "name": "Orbital Walking Barrage",
+      "category": "offensive",
+      "kind": "orbital",
+      "code": [
+        "right",
+        "down",
+        "right",
+        "down",
+        "right",
+        "down"
+      ],
+      "cooldown": 240,
+      "uses": "unlimited",
+      "level": 10,
+      "cost": {
+        "currency": "slips",
+        "amount": 7500
+      },
+      "source": {
+        "name": "Orbital Cannons",
+        "page": null
+      }
+    },
+    {
+      "name": "PLAS-45 Epoch",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 75
+      },
+      "source": {
+        "name": "Control Group",
+        "page": 1
+      }
+    },
+    {
+      "name": "Portable Comms Relay",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "up",
+        "up",
+        "down",
+        "down",
+        "left",
+        "left",
+        "down"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Prospecting Drill",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "down",
+        "left",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Reinforce",
+      "category": "mission",
+      "kind": "ship",
+      "code": [
+        "up",
+        "down",
+        "right",
+        "left",
+        "up"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Resupply",
+      "category": "mission",
+      "kind": "ship",
+      "code": [
+        "down",
+        "down",
+        "up",
+        "right"
+      ],
+      "cooldown": 180,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "RL-77 Airburst Rocket Launcher",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "up",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 15,
+      "cost": {
+        "currency": "slips",
+        "amount": 8000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "RS-422 Railgun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "right",
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "S-11 Speargun",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "right",
+        "down",
+        "left",
+        "up",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Dust Devils",
+        "page": 2
+      }
+    },
+    {
+      "name": "SEAF Artillery",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "right",
+        "up",
+        "up",
+        "down"
+      ],
+      "cooldown": 14,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Seismic Probe",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "up",
+        "up",
+        "left",
+        "right",
+        "down",
+        "down"
+      ],
+      "cooldown": 27.5,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "SH-20 Ballistic Shield Backpack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "left",
+        "down",
+        "down",
+        "up",
+        "left"
+      ],
+      "cooldown": 240,
+      "uses": "unlimited",
+      "level": 12,
+      "cost": {
+        "currency": "slips",
+        "amount": 6000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "SH-32 Shield Generator Pack",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "right",
+        "left",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 10000
+      },
+      "source": {
+        "name": "Engineering Bay",
+        "page": null
+      }
+    },
+    {
+      "name": "SH-51 Directional Shield",
+      "category": "supply",
+      "kind": "backpack",
+      "code": [
+        "down",
+        "up",
+        "left",
+        "right",
+        "up",
+        "up"
+      ],
+      "cooldown": 300,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 75
+      },
+      "source": {
+        "name": "Urban Legends",
+        "page": 1
+      }
+    },
+    {
+      "name": "SoS Beacon",
+      "category": "supply",
+      "kind": "ship",
+      "code": [
+        "up",
+        "down",
+        "right",
+        "up"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "SSSD Delivery",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "down",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 8,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "SSSD Delivery",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "down",
+        "down",
+        "down",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 8,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "StA-X3 W.A.S.P. Launcher",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "down",
+        "up",
+        "down",
+        "right"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": 20,
+      "cost": {
+        "currency": "slips",
+        "amount": 12000
+      },
+      "source": {
+        "name": "Patriotic Administration Center",
+        "page": null
+      }
+    },
+    {
+      "name": "Super Earth Flag",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "up",
+        "down",
+        "up"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "Tactical Video Camera",
+      "category": "supply",
+      "kind": "objective",
+      "code": [
+        "right",
+        "down",
+        "down",
+        "up",
+        "left",
+        "left",
+        "up"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "TD-110 Maelstrom",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "down",
+        "left",
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "cooldown": 780,
+      "uses": "unlimited",
+      "level": null,
+      "cost": null,
+      "source": {
+        "name": "Armored Eagle",
+        "page": null
+      }
+    },
+    {
+      "name": "TD-220 Bastion MK XVI",
+      "category": "supply",
+      "kind": "vehicle",
+      "code": [
+        "left",
+        "down",
+        "right",
+        "down",
+        "left",
+        "down",
+        "up",
+        "down",
+        "up"
+      ],
+      "cooldown": 780,
+      "uses": "unlimited",
+      "level": 30,
+      "cost": {
+        "currency": "slips",
+        "amount": 35000
+      },
+      "source": {
+        "name": "Hangar",
+        "page": null
+      }
+    },
+    {
+      "name": "Tectonic Drill",
+      "category": "supply",
+      "kind": "objective",
+      "code": [
+        "up",
+        "down",
+        "up",
+        "down",
+        "up",
+        "down"
+      ],
+      "cooldown": 0,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    },
+    {
+      "name": "TX-41 Sterilizer",
+      "category": "supply",
+      "kind": "supportWeapon",
+      "code": [
+        "down",
+        "left",
+        "up",
+        "down",
+        "left"
+      ],
+      "cooldown": 480,
+      "uses": "unlimited",
+      "level": null,
+      "cost": {
+        "currency": "medals",
+        "amount": 85
+      },
+      "source": {
+        "name": "Chemical Agents",
+        "page": 2
+      }
+    },
+    {
+      "name": "Upload Data",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "left",
+        "right",
+        "up",
+        "up",
+        "up"
+      ],
+      "cooldown": null,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null
+    }
+  ]
+}

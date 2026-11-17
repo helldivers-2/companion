@@ -1,0 +1,73 @@
+---
+page_id: items
+permalink: "/{{ lang }}/items/"
+---
+{%- from "item-cells.njk" import dash, unlock, price %}
+{%- set cols = {
+  primary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
+  secondary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
+  support: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
+  throwable: ["damage", "radius", "fuse", "pen", "source", "cost"],
+  armor: ["class", "rating", "speed", "stamina", "passive", "source", "cost"],
+  booster: ["text", "source", "cost"]
+} %}
+{%- set numeric = ["damage", "rate", "magazine", "radius", "fuse", "rating", "speed", "stamina", "cost"] %}
+<div class="container">
+{% include "armory-tabs.njk" %}
+<h1>{{ t.nav.items }}</h1>
+<p class="muted hint">{{ t.items.intro }}</p>
+<form class="filters" id="item-filters" role="search">
+  <label>{{ t.items.search }} <input type="search" name="q" placeholder="{{ t.items.placeholder }}" autocomplete="off" spellcheck="false"></label>
+  <label>{{ t.items.type }}
+    <select name="type">
+      <option value="">{{ t.items.anyType }}</option>
+      {%- for cat, list in items.items %}
+      <option value="{{ cat }}">{{ t.items.cats[cat] }}</option>
+      {%- endfor %}
+    </select>
+  </label>
+  <label>{{ t.items.unlockedBy }}
+    <select name="unlock">
+      <option value="">{{ t.items.anyUnlock }}</option>
+      {%- for u in ["warbond", "superstore", "other"] %}
+      <option value="{{ u }}">{{ t.items.unlocks[u] }}</option>
+      {%- endfor %}
+    </select>
+  </label>
+</form>
+<p class="muted" id="item-count" aria-live="polite" data-fmt="{{ t.items.count }}"></p>
+<p class="muted" id="item-empty" hidden>{{ t.items.noMatch }}</p>
+{%- for cat, list in items.items %}
+<section class="card" aria-labelledby="items-{{ cat }}" data-cat="{{ cat }}">
+<h2 id="items-{{ cat }}">{{ t.items.cats[cat] }}</h2>
+<div class="table-wrap" role="region" aria-labelledby="items-{{ cat }}" tabindex="0">
+  <table class="planets items">
+    <thead>
+      <tr>
+        {%- for col in ["name"].concat(cols[cat]) %}
+        <th scope="col"{% if col in numeric %} class="num"{% endif %} data-sort="{{ col }}" aria-sort="{{ 'ascending' if col == 'name' else 'none' }}"><button type="button">{{ t.items.cols[col] }}</button></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for it in list %}
+      <tr data-unlock="{{ it.source.kind or 'none' }}">
+        <th scope="row"><span lang="en" translate="no">{{ it.name }}</span></th>
+        {%- for k in cols[cat] %}
+        <td{% if k in numeric %} class="num"{% endif %}{% if k not in ["source", "cost", "class"] %} lang="en"{% endif %}>
+          {%- if k == "source" %}{{ unlock(it.source, t, lang) }}
+          {%- elif k == "cost" %}{{ price(it.cost, t) }}
+          {%- elif k == "class" %}<span class="tag">{{ t.items.classes[it.class] }}</span>
+          {%- elif k == "passive" %}<strong>{{ it.passive }}</strong> <span class="sub">{{ it.passiveText }}</span>
+          {%- else %}{{ it[k] or dash(t) }}{% endif -%}
+        </td>
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+</section>
+{%- endfor %}
+<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+</div>

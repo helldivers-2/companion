@@ -1,13 +1,17 @@
+import "./theme.js";
 import site from "../_data/site.json" with { type: "json" };
 import { state } from "./api.js";
 import { icon, timeLeft } from "./format.js";
 import { fill, lang, t } from "./i18n.js";
 import overview from "./pages/overview.js";
 import planets from "./pages/planets.js";
+import map from "./pages/map.js";
 import dispatches from "./pages/dispatches.js";
 import news from "./pages/news.js";
+import stratagems from "./pages/stratagems.js";
+import "./pages/items.js"; // static data: it binds itself, so the "Updated" status of the live pages stays off it
 
-const page = { overview, planets, dispatches, news }[document.body.dataset.page];
+const page = { overview, map, planets, dispatches, news, stratagems }[document.body.dataset.page];
 const status = document.getElementById("status");
 
 function say(text, announce) {
