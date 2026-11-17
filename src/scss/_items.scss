@@ -1,0 +1,37 @@
+// Item database and shop. They reuse the planets table and filter styles; this only adds what long stat tables need.
+// main.scss passes the palette in through meta.load-css, since a partial can't see the variables of the file that loads it.
+$ground: null !default;
+$line: null !default;
+
+.items {
+  // The page scrolls sideways on a phone, so the item name stays put to say which row a figure belongs to.
+  tbody th {
+    position: sticky;
+    left: 0;
+    max-width: 14rem;
+    background: $ground;
+    box-shadow: 1px 0 0 $line;
+  }
+
+  td {
+    min-width: 5rem;
+  }
+
+  td.num {
+    white-space: nowrap;
+  }
+
+  .sub {
+    display: block;
+    max-width: 24rem;
+    font-weight: 400;
+  }
+
+  td a {
+    text-decoration-thickness: 1px;
+  }
+}
+
+.table-wrap:focus-visible {
+  outline-offset: -2px;
+}

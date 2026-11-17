@@ -1,0 +1,43 @@
+---
+page_id: shop
+permalink: "/{{ lang }}/shop/"
+---
+{%- from "item-cells.njk" import dash, price %}
+<div class="container">
+<h1>{{ t.nav.shop }}</h1>
+<p class="muted hint">{{ t.shop.intro }}</p>
+<div class="notice" role="note">
+  <p><strong>{{ t.shop.noLiveTitle }}</strong></p>
+  <p>{{ t.shop.noLive }}</p>
+</div>
+{%- for cat, list in items.items %}
+{%- set stock = [] %}
+{%- for it in list %}{% if it.source.kind == "superstore" %}{% set _ = stock.push(it) %}{% endif %}{% endfor %}
+{%- if stock.length %}
+<section class="card" aria-labelledby="shop-{{ cat }}">
+<h2 id="shop-{{ cat }}">{{ t.items.cats[cat] }} <span class="muted">({{ stock.length }})</span></h2>
+<div class="table-wrap" role="region" aria-labelledby="shop-{{ cat }}" tabindex="0">
+  <table class="planets items">
+    <thead>
+      <tr>
+        <th scope="col">{{ t.items.cols.name }}</th>
+        <th scope="col">{{ t.items.cols.kind }}</th>
+        <th scope="col" class="num">{{ t.items.cols.cost }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- for it in stock %}
+      <tr>
+        <th scope="row"><a href="/{{ lang }}/items/?q={{ it.name | urlencode }}" lang="en" translate="no">{{ it.name }}</a></th>
+        <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="tag">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
+        <td class="num">{{ price(it.cost, t) }}</td>
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+</section>
+{%- endif %}
+{%- endfor %}
+<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+</div>
