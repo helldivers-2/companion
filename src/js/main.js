@@ -8,6 +8,7 @@ import planets from "./pages/planets.js";
 import map from "./pages/map.js";
 import dispatches from "./pages/dispatches.js";
 import news from "./pages/news.js";
+import hellpods from "./drops.js";
 // static data: these bind themselves, so the "Updated" status of the live pages stays off them
 import "./pages/items.js";
 import "./pages/stratagems.js";
@@ -48,6 +49,7 @@ Promise.resolve(page?.()).catch(() => {}).finally(() => {
   state.cacheOnly = false;
   refresh();
 });
+hellpods();
 setInterval(refresh, site.refreshSeconds * 1000);
 document.addEventListener("visibilitychange", refresh);
 setInterval(() => {
