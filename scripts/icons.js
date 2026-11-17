@@ -6,6 +6,7 @@ const ICONS = [
   "rocket-launch", "globe-hemisphere-west", "newspaper", "trophy", "calendar-blank", "medal", "circle", "target",
   "sword", "clock", "users", "caret-right", "shield-warning", "map-pin", "megaphone-simple", "arrow-square-out",
   "info", "stack", "shapes", "brackets-angle", "building-office",
+  "map-trifold", "magnifying-glass-plus", "magnifying-glass-minus", "arrows-in",
   "check-circle-fill", "discord-logo-fill", "reddit-logo-fill", "steam-logo-fill", "flame-fill", "github-logo-fill",
   "instagram-logo-fill", "youtube-logo-fill",
 ];

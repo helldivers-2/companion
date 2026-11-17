@@ -4,12 +4,13 @@
   "meta": {
     "overview": ["Helldivers 2 Major Order & War Status", "Live Helldivers 2 Galactic War tracker: the current Major Order with progress and deadline, the Space Station, active fronts and war statistics."],
     "planets": ["Helldivers 2 Planets & Liberation", "Every planet in the Helldivers 2 Galactic War with sector, biome, hazards, owner, Helldiver count and live liberation progress."],
+    "map": ["Helldivers 2 Galaxy Map", "Interactive map of the Helldivers 2 Galactic War: every planet by owner, with active liberations, defenses and Major Order targets."],
     "dispatches": ["Helldivers 2 Dispatches from Super Earth", "The latest Super Earth dispatches from the Helldivers 2 Galactic War, from the in-game feed."],
     "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead’s Steam page."],
     "faq": ["Helldivers 2 Liberation & Defense Explained", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
-  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ" },
+  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ", "map": "Galaxy map" },
   "layout": {
     "skip": "Skip to content",
     "home": "{name} home",
@@ -102,6 +103,28 @@
     "friendlyShare": "Friendly fire deaths",
     "bullets": "Rounds fired",
     "time": "Time in combat"
+  },
+  "map": {
+    "intro": "Every planet of the Galactic War at its position, coloured by owner. Select a planet for details, drag to pan, pinch or use the buttons to zoom, and use the arrow keys to move between planets.",
+    "note": "The map is a visual overview. Every planet is also listed with the same details in the {link}.",
+    "label": "Galactic War map",
+    "loading": "Loading map…",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "reset": "Reset view",
+    "legend": "Legend",
+    "supply": "Supply line",
+    "liberating": "Liberating",
+    "defending": "Defending",
+    "order": "Major Order target",
+    "details": "Planet details",
+    "hint": "Select a planet to see its details.",
+    "sector": "Sector",
+    "owner": "Owner",
+    "liberation": "Liberation",
+    "players": "Helldivers",
+    "open": "Open in planets table",
+    "selected": "Selected: {name}"
   },
   "js": {
     "stale": "API unreachable, showing cached data",

@@ -4,12 +4,13 @@
   "meta": {
     "overview": ["Helldivers 2: Generalbefehl und aktuelle Kriegslage", "Der Galaktische Krieg in Helldivers 2 live: der aktuelle Generalbefehl mit Fortschritt und Frist, die Raumstation, aktive Fronten und Kriegsstatistik."],
     "planets": ["Helldivers 2: Planeten und Befreiung", "Alle Planeten im Galaktischen Krieg von Helldivers 2 mit Sektor, Biom, Gefahren, Kontrolle, Zahl der Helldivers und aktuellem Befreiungsfortschritt."],
+    "map": ["Helldivers 2 Galaxiekarte", "Interaktive Karte des Galaktischen Krieges in Helldivers 2: alle Planeten nach Besitzer, mit laufenden Befreiungen, Verteidigungen und Zielen des Großen Befehls."],
     "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Spiel zum Galaktischen Krieg von Helldivers 2."],
     "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
     "faq": ["Helldivers 2: Befreiung und Verteidigung erklärt", "Wie die Befreiung in Helldivers 2 abläuft: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
-  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ" },
+  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "map": "Galaxiekarte" },
   "layout": {
     "skip": "Zum Inhalt springen",
     "home": "{name}, Startseite",
@@ -102,6 +103,28 @@
     "friendlyShare": "Tode durch Eigenbeschuss",
     "bullets": "Abgefeuerte Schüsse",
     "time": "Zeit im Kampf"
+  },
+  "map": {
+    "intro": "Alle Planeten des Galaktischen Krieges an ihrer Position, eingefärbt nach Besitzer. Wähle einen Planeten für Details, ziehe zum Verschieben, zoome per Fingergeste oder mit den Schaltflächen und wechsle mit den Pfeiltasten zwischen Planeten.",
+    "note": "Die Karte ist ein visueller Überblick. Alle Planeten stehen mit denselben Details auch in der {link}.",
+    "label": "Karte des Galaktischen Krieges",
+    "loading": "Karte wird geladen …",
+    "zoomIn": "Vergrößern",
+    "zoomOut": "Verkleinern",
+    "reset": "Ansicht zurücksetzen",
+    "legend": "Legende",
+    "supply": "Versorgungslinie",
+    "liberating": "Wird befreit",
+    "defending": "Wird verteidigt",
+    "order": "Ziel des Großen Befehls",
+    "details": "Planetendetails",
+    "hint": "Wähle einen Planeten, um seine Details zu sehen.",
+    "sector": "Sektor",
+    "owner": "Besitzer",
+    "liberation": "Befreiung",
+    "players": "Helldivers",
+    "open": "In der Planetentabelle öffnen",
+    "selected": "Ausgewählt: {name}"
   },
   "js": {
     "stale": "API nicht erreichbar, zwischengespeicherte Daten werden angezeigt",

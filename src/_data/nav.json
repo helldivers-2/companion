@@ -1,5 +1,6 @@
 [
   ["", "overview", "rocket-launch"],
+  ["map/", "map", "map-trifold"],
   ["planets/", "planets", "globe-hemisphere-west"],
   ["dispatches/", "dispatches", "megaphone-simple"],
   ["news/", "news", "newspaper"],

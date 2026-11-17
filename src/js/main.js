@@ -5,10 +5,11 @@ import { icon, timeLeft } from "./format.js";
 import { fill, lang, t } from "./i18n.js";
 import overview from "./pages/overview.js";
 import planets from "./pages/planets.js";
+import map from "./pages/map.js";
 import dispatches from "./pages/dispatches.js";
 import news from "./pages/news.js";
 
-const page = { overview, planets, dispatches, news }[document.body.dataset.page];
+const page = { overview, map, planets, dispatches, news }[document.body.dataset.page];
 const status = document.getElementById("status");
 
 function say(text, announce) {

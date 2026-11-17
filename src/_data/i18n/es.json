@@ -4,12 +4,13 @@
   "meta": {
     "overview": ["Helldivers 2: orden suprema y estado de la guerra", "La Guerra Galáctica de Helldivers 2 en directo: la orden suprema actual con progreso y plazo, la estación espacial, los frentes activos y las estadísticas."],
     "planets": ["Helldivers 2: planetas y liberación", "Todos los planetas de la Guerra Galáctica de Helldivers 2 con sector, bioma, peligros, control, número de Helldivers y liberación en directo."],
+    "map": ["Mapa galáctico de Helldivers 2", "Mapa interactivo de la Guerra Galáctica de Helldivers 2: todos los planetas por propietario, con liberaciones, defensas y objetivos de la Gran Orden activos."],
     "dispatches": ["Helldivers 2: comunicados de Supertierra", "Los últimos comunicados de Supertierra en el juego sobre la Guerra Galáctica de Helldivers 2."],
     "news": ["Helldivers 2: noticias y notas de parche", "Notas de parche, blogs de desarrollo y anuncios de Helldivers 2 desde la página de Arrowhead en Steam."],
     "faq": ["Helldivers 2: liberación y defensa explicadas", "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
-  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ" },
+  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "map": "Mapa galáctico" },
   "layout": {
     "skip": "Saltar al contenido",
     "home": "Inicio de {name}",
@@ -102,6 +103,28 @@
     "friendlyShare": "Muertes por fuego amigo",
     "bullets": "Disparos realizados",
     "time": "Tiempo en combate"
+  },
+  "map": {
+    "intro": "Todos los planetas de la Guerra Galáctica en su posición, coloreados según su propietario. Selecciona un planeta para ver sus detalles, arrastra para desplazarte, pellizca o usa los botones para acercar y usa las flechas del teclado para moverte entre planetas.",
+    "note": "El mapa es una vista general visual. Todos los planetas aparecen también con los mismos detalles en la {link}.",
+    "label": "Mapa de la Guerra Galáctica",
+    "loading": "Cargando el mapa…",
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "reset": "Restablecer vista",
+    "legend": "Leyenda",
+    "supply": "Línea de suministro",
+    "liberating": "En liberación",
+    "defending": "En defensa",
+    "order": "Objetivo de la Gran Orden",
+    "details": "Detalles del planeta",
+    "hint": "Selecciona un planeta para ver sus detalles.",
+    "sector": "Sector",
+    "owner": "Propietario",
+    "liberation": "Liberación",
+    "players": "Helldivers",
+    "open": "Abrir en la tabla de planetas",
+    "selected": "Seleccionado: {name}"
   },
   "js": {
     "stale": "API inaccesible, mostrando datos en caché",
