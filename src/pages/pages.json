@@ -1,0 +1,9 @@
+{
+  "layout": "base.njk",
+  "pagination": {
+    "data": "site.locales",
+    "size": 1,
+    "alias": "lang",
+    "addAllPagesToCollections": true
+  }
+}

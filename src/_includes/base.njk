@@ -23,8 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
-  {#- The 404 pages are one per language but no translations of each other, so they get no canonical or hreflang. #}
-  {%- if page_id != "notfound" %}
+  {%- if not standalone %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {%- for l in site.locales %}
   <link rel="alternate" hreflang="{{ l }}" href="{{ site.url }}/{{ l }}{{ path }}">
@@ -45,7 +44,7 @@
   <header class="top">
     <a class="glass logo" href="/{{ lang }}/"><img src="/img/icon.svg" alt="{{ t.layout.home | replace("{name}", site.name) }}" width="24" height="24"></a>
     <nav class="glass" aria-label="{{ t.nav.label }}">
-      {%- for item in [["", "overview", "rocket-launch"], ["planets/", "planets", "globe-hemisphere-west"], ["dispatches/", "dispatches", "megaphone-simple"], ["news/", "news", "newspaper"], ["faq/", "faq", "info"]] %}
+      {%- for item in nav %}
       {%- set href = "/" + lang + "/" + item[0] %}
       <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span><span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
@@ -87,7 +86,7 @@
           <h2 id="footer-lang">{{ t.layout.language }}</h2>
           <ul class="langs" aria-labelledby="footer-lang">
             {%- for l in site.locales %}
-            <li><a href="/{{ l }}{{ '/' if page_id == 'notfound' else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
+            <li><a href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
             {%- endfor %}
           </ul>
         </div>

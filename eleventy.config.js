@@ -11,7 +11,6 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy({
     "src/img": "img",
-    "src/_redirects": "_redirects",
     "node_modules/@fontsource/barlow/files/barlow-latin-{400,600}-normal.woff*": "assets/files",
     "node_modules/@fontsource/barlow-condensed/files/barlow-condensed-latin-{600,700}-normal.woff*": "assets/files",
   });
