@@ -28,17 +28,16 @@
   },
   "overview": {
     "h1": "Der Galaktische Krieg im Überblick",
-    "intro": "Die Zahlen oben kommen live aus der Community-API zu Helldivers 2 und aktualisieren sich von selbst. Was sie bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
+    "intro": "Was die Zahlen bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
     "station": "Raumstation",
     "fronts": "Aktive Fronten",
     "frontsLoading": "Fronten werden geladen …",
-    "statistics": "Statistik",
-    "war": "Galaktischer Krieg"
+    "statistics": "Statistik"
   },
   "planets": {
-    "intro": "Durchsuche, filtere und sortiere die Planeten des Galaktischen Kriegs oder öffne einen, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",
+    "intro": "Öffne einen Planeten, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",
     "all": "Alle Planeten",
     "search": "Suche",
     "placeholder": "Planet, Sektor, Biom, Gefahr …",
@@ -85,7 +84,7 @@
     "15": "Netto-Befreiungen erzielen:"
   },
   "rewardTypes": { "1": "Medaillen" },
-  "tacticalStatus": { "1": "In Vorbereitung", "2": "Aktiv", "3": "Abklingzeit" },
+  "tacticalStatus": { "1": "In Vorbereitung", "2": "Jetzt aktiv", "3": "Abklingzeit" },
   "regionSizes": { "Settlement": "Siedlung", "Town": "Kleinstadt", "City": "Stadt", "MegaCity": "Megastadt" },
   "units": { "d": " Tg.", "h": " Std.", "m": " Min.", "s": " Sek." },
   "record": {
@@ -143,9 +142,11 @@
     "orbiting": "Im Orbit um {planet}",
     "unknown": "unbekannt",
     "vote": "Abstimmung über das nächste Ziel endet in {time}",
-    "statusUnknown": "Unbekannt",
-    "for": "noch {time}",
+    "statusUnknown": "Status unbekannt",
     "preparation": "Vorbereitung: {name}",
+    "ready": "{pct} bereit",
+    "readyIn": "{name}, wieder bereit in {time}",
+    "noActions": "Gerade keine taktischen Aktionen.",
     "underAttack": "Wird angegriffen",
     "none": "Keine",
     "count": "{n} von {total} Planeten",

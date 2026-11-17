@@ -28,17 +28,16 @@
   },
   "overview": {
     "h1": "銀河戰爭總覽",
-    "intro": "以上數據即時取自《絕地戰兵 2》社群 API，並會自動更新。這些數字的意義請見<a href=\"{faq}\">解放與防禦說明</a>。",
+    "intro": "這些數字的意義請見<a href=\"{faq}\">解放與防禦說明</a>。",
     "order": "主要指令",
     "orderLoading": "正在接收最高司令部的指令…",
     "station": "太空站",
     "fronts": "活躍戰線",
     "frontsLoading": "正在載入戰線…",
-    "statistics": "統計",
-    "war": "銀河戰爭"
+    "statistics": "統計"
   },
   "planets": {
-    "intro": "搜尋、篩選、排序銀河戰爭中的星球，或開啟星球查看其危害、區域與戰鬥紀錄。",
+    "intro": "開啟星球即可查看其危害、區域與戰鬥紀錄。",
     "all": "所有星球",
     "search": "搜尋",
     "placeholder": "星球、星區、生態系、危害…",
@@ -85,7 +84,7 @@
     "15": "取得淨解放次數"
   },
   "rewardTypes": { "1": "勳章" },
-  "tacticalStatus": { "1": "準備中", "2": "啟用中", "3": "冷卻中" },
+  "tacticalStatus": { "1": "準備中", "2": "目前啟用", "3": "冷卻中" },
   "regionSizes": { "Settlement": "聚落", "Town": "城鎮", "City": "城市", "MegaCity": "巨型城市" },
   "units": { "d": " 天", "h": " 小時", "m": " 分鐘", "s": " 秒" },
   "record": {
@@ -143,9 +142,11 @@
     "orbiting": "環繞 {planet}",
     "unknown": "未知",
     "vote": "下一個目的地投票將於 {time} 後結束",
-    "statusUnknown": "未知",
-    "for": "剩餘 {time}",
+    "statusUnknown": "狀態未知",
     "preparation": "{name} 準備進度",
+    "ready": "已準備 {pct}",
+    "readyIn": "{name}，{time} 後可再次使用",
+    "noActions": "目前沒有戰術行動。",
     "underAttack": "遭受攻擊",
     "none": "無",
     "count": "{total} 顆星球中的 {n} 顆",

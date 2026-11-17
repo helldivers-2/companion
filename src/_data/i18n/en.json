@@ -5,7 +5,7 @@
     "overview": ["Helldivers 2 Major Order & War Status", "Live Helldivers 2 Galactic War tracker: the current Major Order with progress and deadline, the Space Station, active fronts and war statistics."],
     "planets": ["Helldivers 2 Planets & Liberation", "Every planet in the Helldivers 2 Galactic War with sector, biome, hazards, owner, Helldiver count and live liberation progress."],
     "dispatches": ["Helldivers 2 Dispatches from Super Earth", "The latest Super Earth dispatches from the Helldivers 2 Galactic War, from the in-game feed."],
-    "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead's Steam page."],
+    "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead’s Steam page."],
     "faq": ["Helldivers 2 Liberation & Defense Explained", "How liberation works in Helldivers 2: planet health pools, regeneration, defense timers, counterattacks and why planets lose progress overnight."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
@@ -28,17 +28,16 @@
   },
   "overview": {
     "h1": "Galactic War overview",
-    "intro": "The figures above come live from the community Helldivers 2 API and update on their own. The <a href=\"{faq}\">guide to liberation and defense</a> explains what they mean.",
+    "intro": "The <a href=\"{faq}\">guide to liberation and defense</a> explains what these figures mean.",
     "order": "Major Order",
     "orderLoading": "Receiving orders from High Command…",
     "station": "Space Station",
     "fronts": "Active fronts",
     "frontsLoading": "Loading fronts…",
-    "statistics": "Statistics",
-    "war": "Galactic War"
+    "statistics": "Statistics"
   },
   "planets": {
-    "intro": "Search, filter and sort the planets of the Galactic War, or open one to see its hazards, regions and battle record.",
+    "intro": "Open a planet to see its hazards, regions and battle record.",
     "all": "All planets",
     "search": "Search",
     "placeholder": "Planet, sector, biome, hazard…",
@@ -48,26 +47,26 @@
     "cols": { "name": "Planet", "sector": "Sector", "owner": "Owner", "biome": "Biome", "hazards": "Hazards", "players": "Helldivers", "liberation": "Liberation" },
     "loading": "Loading planets…"
   },
-  "dispatches": { "h1": "Dispatches from Super Earth", "intro": "Super Earth's in-game news feed: war updates, Major Order briefings and propaganda as they go out.", "loading": "Loading dispatches…" },
-  "news": { "h1": "News from Steam", "hint": "Arrowhead's patch notes, developer blogs and announcements, newest first. Open any post to read it in full.", "loading": "Loading news…" },
+  "dispatches": { "h1": "Dispatches from Super Earth", "intro": "Super Earth’s in-game news feed: war updates, Major Order briefings and propaganda as they go out.", "loading": "Loading dispatches…" },
+  "news": { "h1": "News from Steam", "hint": "Arrowhead’s patch notes, developer blogs and announcements, newest first. Open any post to read it in full.", "loading": "Loading news…" },
   "faq": {
     "h1": "Liberation and defense explained",
     "math": "How planets fall",
-    "intro": "Every player fights in the same war. You pick the front, and Arrowhead's game master decides which planets are in play.",
+    "intro": "Every player fights in the same war. You pick the front, and Arrowhead’s game master decides which planets are in play.",
     "points": [
       "A liberation campaign starts at 1,000,000 health. Defense campaigns vary from about 600,000 to over 2 million.",
       "Every mission you finish takes some health off, so the more squads fight on a planet, the faster it falls.",
-      "Planets heal 1.5 to 4.5% an hour, and the game master can raise that past 20% to stall a push. Defenses don't heal; they run on a timer.",
+      "Planets heal 1.5 to 4.5% an hour, and the game master can raise that past 20% to stall a push. Defenses don’t heal; they run on a timer.",
       "Enemy counterattacks knock off 1 to 2% at a time, often three or four in a row.",
-      "Planets with towns and cities can sit at 0% while players take a region. This site then shows that region's progress."
+      "Planets with towns and cities can sit at 0% while players take a region. This site then shows that region’s progress."
     ],
     "questions": "Common questions",
     "qa": [
       ["Does abandoning an operation hurt?", "No. Only finished missions count, so quitting only costs you the rewards."],
       ["Why did we lose progress overnight?", "Fewer people play at night, so the planet heals faster than they can damage it."],
       ["Do missions on other planets count?", "Not toward liberation. Planets outside the campaign list heal faster than a few squads can hurt them, though the game master sees where people play."],
-      ["Why don't rates show up right away?", "The API keeps no history, so your browser records its own. After about five minutes it can measure each front. Until then you see how fast the enemy heals, which is the hourly damage Super Earth has to beat."],
-      ["Why do most fronts have no bar?", "Players haven't made a dent in them yet. Those fronts say “No ground taken yet” and sit at the bottom of the list."]
+      ["Why don’t rates show up right away?", "The API keeps no history, so your browser records its own. After about five minutes it can measure each front. Until then you see how fast the enemy heals, which is the hourly damage Super Earth has to beat."],
+      ["Why do most fronts have no bar?", "Players haven’t made a dent in them yet. Those fronts say “No ground taken yet” and sit at the bottom of the list."]
     ],
     "source": "Sources: the <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> and the community."
   },
@@ -85,7 +84,7 @@
     "15": "Win net liberations"
   },
   "rewardTypes": { "1": "Medals" },
-  "tacticalStatus": { "1": "Preparing", "2": "Active", "3": "Cooldown" },
+  "tacticalStatus": { "1": "Preparing", "2": "Active now", "3": "On cooldown" },
   "regionSizes": { "Settlement": "settlement", "Town": "town", "City": "city", "MegaCity": "megacity" },
   "units": { "d": "d", "h": "h", "m": "m", "s": "s" },
   "record": {
@@ -123,7 +122,7 @@
     "showMore": "Show {n} more",
     "noCampaigns": "No active fronts.",
     "complete": "Complete:",
-    "open": "Open:",
+    "open": "To do:",
     "held": "Held",
     "reward": "reward",
     "rewardLine": "Reward: {rewards}",
@@ -143,9 +142,11 @@
     "orbiting": "Orbiting {planet}",
     "unknown": "unknown",
     "vote": "Vote on the next destination ends in {time}",
-    "statusUnknown": "Unknown",
-    "for": "for {time}",
+    "statusUnknown": "Status unknown",
     "preparation": "{name} preparation",
+    "ready": "{pct} ready",
+    "readyIn": "{name}, ready in {time}",
+    "noActions": "No tactical actions right now.",
     "underAttack": "Under attack",
     "none": "None",
     "count": "{n} of {total} planets",

@@ -19,18 +19,13 @@ permalink: "/{{ lang }}/"
     <h2 id="fronts-h">{{ t.overview.fronts }}</h2>
     <div id="fronts" class="fronts"><p class="muted" data-loading>{{ t.overview.frontsLoading }}</p></div>
   </section>
-</div>
 
-<section class="container" aria-labelledby="statistics-h" id="statistics">
-  <h2 id="statistics-h">{{ t.overview.statistics }}</h2>
-  <div class="card">
-    <h3>{{ t.overview.war }}</h3>
+  <section class="card span-3" aria-labelledby="statistics-h" id="statistics">
+    <h2 id="statistics-h">{{ t.overview.statistics }}</h2>
     <div id="record"></div>
-  </div>
-</section>
+  </section>
 
-<div class="container">
-  <p class="muted hint">{{ t.overview.intro | replace("{faq}", "/" + lang + "/faq/") | safe }}</p>
+  <p class="muted hint span-3">{{ t.overview.intro | replace("{faq}", "/" + lang + "/faq/") | safe }}</p>
 </div>
 
 <script type="application/ld+json">
