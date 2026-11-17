@@ -1213,3 +1213,16 @@ summary {
 @include meta.load-css("stratagems");
 @include meta.load-css("items");
 @include meta.load-css("map");
+
+// Hellpods dropping into the side margins (drops.js), behind the page and out of the way of pointer and screen reader.
+// A 1px strip on the bottom edge (an SVG of height 0 draws nothing): its origin is the ground, and the pods fall into it from above.
+.hellpods {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 1px;
+  overflow: visible;
+  pointer-events: none;
+}
