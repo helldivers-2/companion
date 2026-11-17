@@ -161,7 +161,8 @@ h4 {
 .stack,
 footer ul,
 .tasks,
-.rows {
+.rows,
+.actions {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -562,7 +563,7 @@ summary {
     align-items: baseline;
     justify-content: space-between;
     gap: 0.25rem 1rem;
-    margin: 0 0 0.75rem;
+    margin: 0 0 1.25rem;
   }
 }
 
@@ -739,15 +740,60 @@ summary {
   font-weight: 600;
 }
 
+// Space Station actions, grouped by status under a quiet label; the active group leads in Super Earth's colour.
+.status {
+  + .status {
+    margin-top: 1.25rem;
+  }
+
+  h4 {
+    margin: 0 0 0.375rem;
+    color: $muted;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  &.active .name {
+    color: map.get($factions, humans);
+    font-family: $display;
+    font-size: 1.3125rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .time {
+    font-weight: 600;
+  }
+}
+
+.station time,
+.actions .ready {
+  white-space: nowrap;
+}
+
 .actions {
-  // Station state is Super Earth's, not the Major Order's yellow.
-  .tag {
-    --faction: #{map.get($factions, humans)};
+  display: grid;
+  gap: 0.75rem;
+
+  .ready {
+    font-size: 0.875rem;
   }
 
   .bar {
     max-width: 40rem;
-    margin: 0.5rem 0;
+    margin: 0.375rem 0 0.25rem;
+  }
+
+  p.muted {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+
+    // The game bolds every term in these descriptions; colour alone keeps them findable without the bold scatter.
+    strong {
+      color: $text;
+      font-weight: inherit;
+    }
   }
 }
 

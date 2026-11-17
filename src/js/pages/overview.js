@@ -1,5 +1,5 @@
 import { fetchedAt, get } from "../api.js";
-import { bar, countdown, describeTask, dispatchHtml, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
+import { bar, countdown, describeTask, dispatchHtml, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, pct0, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
@@ -117,14 +117,33 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
   ${idle(p) ? `<p class="rate stalled">${t.js.idle}</p>` : meter(p, rate)}
 </li>`;
 
-const stationPanel = (st) => `<article class="station">
+// Actions grouped by status, active first since it is what changes missions now. Only 1 to 3 are known (preparing,
+// active, cooldown); anything else, like the 0 every action had in January 2026, is listed by name under "Status unknown".
+const STATUS_ORDER = [2, 1, 3];
+// An expired or missing time (January 2026 sent dates from 2024) is left out instead of reading "0m 00s".
+const ahead = (iso) => Date.parse(iso) > Date.now();
+
+export function stationPanel(st) {
+  const actions = st.tacticalActions ?? [];
+  const groups = [...STATUS_ORDER.map((s) => [s, actions.filter((a) => a.status === s)]), [null, actions.filter((a) => !STATUS_ORDER.includes(a.status))]]
+    .filter(([, list]) => list.length);
+  return `<article class="station">
   <header><h3>${fill(t.js.orbiting, { planet: esc(st.planet?.name ?? t.js.unknown) })}</h3><p class="muted">${fill(t.js.vote, { time: countdown(st.electionEnd) })}</p></header>
-  <ul class="actions stack">${(st.tacticalActions ?? []).map((a) => {
-    const cost = a.costs?.[0];
-    const status = t.tacticalStatus[a.status] ?? t.js.statusUnknown;
-    return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>
-      ${a.status !== 1 && a.statusExpire ? `<span class="muted">${fill(t.js.for, { time: countdown(a.statusExpire) })}</span>` : ""}</p>
-      ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, fill(t.js.preparation, { name: a.name })) : ""}
-      <p class="muted">${dispatchHtml(a.strategicDescription || a.description)}</p></li>`;
-  }).join("")}</ul>
+  ${groups.map(([s, list]) => `<section class="status${s === 2 ? " active" : ""}"><h4>${t.tacticalStatus[s] ?? t.js.statusUnknown}</h4>
+    <ul class="actions">${list.map((a) => stationAction(a, s)).join("")}</ul></section>`).join("") || `<p class="muted">${t.js.noActions}</p>`}
 </article>`;
+}
+
+function stationAction(a, s) {
+  const name = `<strong>${esc(a.name)}</strong>`;
+  const time = ahead(a.statusExpire) ? countdown(a.statusExpire) : "";
+  if (s === 3) return `<li class="muted">${time ? fill(t.js.readyIn, { name, time }) : name}</li>`;
+  if (s === null) return `<li class="muted">${name}</li>`;
+  const about = `<p class="muted">${dispatchHtml(a.strategicDescription || a.description)}</p>`;
+  if (s === 2) return `<li><p class="name">${name}</p>${time ? `<p class="time">${fill(t.js.left, { time })}</p>` : ""}${about}</li>`;
+  // Preparing starts once every cost is met, so the furthest-behind cost is the progress.
+  const costs = a.costs ?? [];
+  const ratio = costs.length ? Math.min(1, ...costs.map((c) => c.currentValue / c.targetValue)) || 0 : null;
+  return `<li><p>${name}${ratio === null ? "" : ` <span class="muted ready">${fill(t.js.ready, { pct: pct0.format(ratio) })}</span>`}</p>
+    ${ratio === null ? "" : bar(ratio, fill(t.js.preparation, { name: a.name }))}${about}</li>`;
+}

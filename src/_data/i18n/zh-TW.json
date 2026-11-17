@@ -84,7 +84,7 @@
     "15": "取得淨解放次數"
   },
   "rewardTypes": { "1": "勳章" },
-  "tacticalStatus": { "1": "準備中", "2": "啟用中", "3": "冷卻中" },
+  "tacticalStatus": { "1": "準備中", "2": "目前啟用", "3": "冷卻中" },
   "regionSizes": { "Settlement": "聚落", "Town": "城鎮", "City": "城市", "MegaCity": "巨型城市" },
   "units": { "d": " 天", "h": " 小時", "m": " 分鐘", "s": " 秒" },
   "record": {
@@ -142,9 +142,11 @@
     "orbiting": "環繞 {planet}",
     "unknown": "未知",
     "vote": "下一個目的地投票將於 {time} 後結束",
-    "statusUnknown": "未知",
-    "for": "剩餘 {time}",
+    "statusUnknown": "狀態未知",
     "preparation": "{name} 準備進度",
+    "ready": "已準備 {pct}",
+    "readyIn": "{name}，{time} 後可再次使用",
+    "noActions": "目前沒有戰術行動。",
     "underAttack": "遭受攻擊",
     "none": "無",
     "count": "{total} 顆星球中的 {n} 顆",

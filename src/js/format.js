@@ -7,7 +7,7 @@ const numFmt = new Intl.NumberFormat(lang);
 export const num = (n) => numFmt.format(n ?? 0);
 const pctFmt = new Intl.NumberFormat(lang, { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 export const pct = (x) => pctFmt.format(x);
-const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
+export const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 // Faction names arrive as API values; translate them only for display.

@@ -84,7 +84,7 @@
     "15": "Win net liberations"
   },
   "rewardTypes": { "1": "Medals" },
-  "tacticalStatus": { "1": "Preparing", "2": "Active", "3": "Cooldown" },
+  "tacticalStatus": { "1": "Preparing", "2": "Active now", "3": "On cooldown" },
   "regionSizes": { "Settlement": "settlement", "Town": "town", "City": "city", "MegaCity": "megacity" },
   "units": { "d": "d", "h": "h", "m": "m", "s": "s" },
   "record": {
@@ -142,9 +142,11 @@
     "orbiting": "Orbiting {planet}",
     "unknown": "unknown",
     "vote": "Vote on the next destination ends in {time}",
-    "statusUnknown": "Unknown",
-    "for": "for {time}",
+    "statusUnknown": "Status unknown",
     "preparation": "{name} preparation",
+    "ready": "{pct} ready",
+    "readyIn": "{name}, ready in {time}",
+    "noActions": "No tactical actions right now.",
     "underAttack": "Under attack",
     "none": "None",
     "count": "{n} of {total} planets",
