@@ -1,5 +1,6 @@
 import labels from "../_data/labels.json" with { type: "json" };
 import { fill, lang, t } from "./i18n.js";
+export { icon } from "./icon.js";
 
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const numFmt = new Intl.NumberFormat(lang);
@@ -9,7 +10,6 @@ export const pct = (x) => pctFmt.format(x);
 const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
-export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
 // Faction names arrive as API values; translate them only for display.
 export const faction = (f) => t.factions[f] ?? f;
 export const regionSize = (s) => t.regionSizes[s] ?? s.toLowerCase();

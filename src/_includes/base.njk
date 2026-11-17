@@ -46,7 +46,7 @@
     <nav class="glass" aria-label="{{ t.nav.label }}">
       {%- for item in nav %}
       {%- set href = "/" + lang + "/" + item[0] %}
-      <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}><span class="icon i-{{ item[2] }}" aria-hidden="true"></span><span>{{ t.nav[item[1]] }}</span></a>
+      <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
     </nav>
   </header>
@@ -70,7 +70,7 @@
           <p class="muted">{{ t.layout.about | replace("{s}", site.refreshSeconds) }}</p>
           <ul class="credits">
             {%- for c in footer.credits %}
-            <li><a href="{{ c[0] }}"><span class="icon i-{{ c[1] }}" aria-hidden="true"></span>{{ c[2] }}</a></li>
+            <li><a href="{{ c[0] }}">{% icon c[1] %}{{ c[2] }}</a></li>
             {%- endfor %}
           </ul>
         </div>
@@ -80,7 +80,7 @@
           <h2 id="footer-{{ loop.index }}">{{ t.layout.links[group[0]] }}</h2>
           <ul class="social" aria-labelledby="footer-{{ loop.index }}">
             {%- for l in group[1] %}
-            <li><a href="{{ l[0] }}" aria-label="{{ t.layout.links[l[2]] or l[2] }}"><span class="icon i-{{ l[1] }}" aria-hidden="true"></span></a></li>
+            <li><a href="{{ l[0] }}" aria-label="{{ t.layout.links[l[2]] or l[2] }}">{% icon l[1] %}</a></li>
             {%- endfor %}
           </ul>
           {%- endfor %}

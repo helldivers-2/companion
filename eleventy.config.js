@@ -1,6 +1,8 @@
+import { icon } from "./src/js/icon.js";
 import worker from "./worker.js";
 
 export default function (eleventyConfig) {
+  eleventyConfig.addShortcode("icon", icon);
   // esbuild and sass write bundles straight into _site/assets; reload when they change
   eleventyConfig.setServerOptions({
     watch: ["_site/assets/**"],
