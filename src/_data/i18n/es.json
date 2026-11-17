@@ -10,10 +10,10 @@
     "faq": ["Helldivers 2: liberación y defensa explicadas", "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."],
     "stratagems": ["Base de datos de estratagemas de Helldivers 2", "Todas las estratagemas de Helldivers 2 con su código, categoría, enfriamiento, usos y forma de desbloqueo, con búsqueda y orden."],
     "items": ["Helldivers 2: armas, armaduras y potenciadores", "Base de datos de todas las armas, arrojadizos, armaduras y potenciadores de Helldivers 2, con daño, cadencia, valor de armadura, pasivas y cómo se desbloquea cada uno."],
-    "shop": ["Helldivers 2: objetos y precios del Superstore", "Todos los objetos que pueden aparecer en el Superstore de Helldivers 2, con su precio en Super Créditos."],
+    "shop": ["Helldivers 2: objetos y precios del Supertienda", "Todos los objetos que pueden aparecer en el Supertienda de Helldivers 2, con su precio en Supercréditos."],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
-  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "armory": "Arsenal", "map": "Mapa", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Superstore" },
+  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "armory": "Arsenal", "map": "Mapa", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Supertienda" },
   "layout": {
     "skip": "Saltar al contenido",
     "home": "Inicio de {name}",
@@ -81,12 +81,12 @@
     "anyType": "Todos",
     "unlockedBy": "Se desbloquea con",
     "anyUnlock": "Cualquiera",
-    "unlocks": {"warbond": "Warbond", "superstore": "Superstore", "other": "Otro"},
+    "unlocks": {"warbond": "Bono de guerra", "superstore": "Supertienda", "other": "Otro"},
     "cats": {"primary": "Armas principales", "secondary": "Armas secundarias", "support": "Armas de apoyo", "throwable": "Arrojadizos", "armor": "Armaduras", "booster": "Potenciadores"},
     "classes": {"light": "Ligera", "medium": "Media", "heavy": "Pesada"},
     "cols": {"name": "Nombre", "type": "Tipo", "damage": "Daño", "rate": "Cadencia", "magazine": "Cargador", "pen": "Penetración", "radius": "Radio", "fuse": "Mecha", "class": "Clase", "rating": "Armadura", "speed": "Velocidad", "stamina": "Regen. de aguante", "passive": "Pasiva", "text": "Efecto", "source": "Desbloqueo", "cost": "Precio", "kind": "Tipo"},
-    "currency": {"credits": "Super Créditos", "medals": "Medallas", "slips": "Vales de requisición"},
-    "superstore": "Superstore",
+    "currency": {"credits": "Supercréditos", "medals": "Medallas", "slips": "Vales de requisición"},
+    "superstore": "Supertienda",
     "page": "página {n}",
     "unlisted": "Sin datos",
     "count": "{n} de {total} objetos",
@@ -94,9 +94,9 @@
     "credit": "Datos de objetos de {source}, con licencia {licence}, obtenidos el {date}. Las cifras cambian con los parches; la referencia es el propio juego."
   },
   "shop": {
-    "intro": "Todos los objetos que pueden aparecer en el Superstore, con su precio. Abre el nombre de uno para ver todas sus estadísticas en la base de datos.",
+    "intro": "Todos los objetos que pueden aparecer en el Supertienda, con su precio. Abre el nombre de uno para ver todas sus estadísticas en la base de datos.",
     "noLiveTitle": "La rotación actual no está disponible.",
-    "noLive": "La rotación actual del Superstore solo se envía al propio juego, después de iniciar sesión. Ninguna API pública la publica, así que esta página no puede mostrar qué hay hoy a la venta ni cuándo cambia. Lista todo lo que la base de datos sabe que se vende allí; las ofertas actuales están en el Superstore del juego."
+    "noLive": "La rotación actual del Supertienda solo se envía al propio juego, después de iniciar sesión. Ninguna API pública la publica, así que esta página no puede mostrar qué hay hoy a la venta ni cuándo cambia. Lista todo lo que la base de datos sabe que se vende allí; las ofertas actuales están en el Supertienda del juego."
   },
   "dispatches": { "h1": "Comunicados de Supertierra", "intro": "El canal de noticias de Supertierra dentro del juego: partes de guerra, instrucciones de las órdenes supremas y propaganda, según se publican.", "loading": "Cargando comunicados…" },
   "news": { "h1": "Noticias de Steam", "hint": "Notas de parche, blogs de desarrollo y anuncios de Arrowhead, los más recientes primero. Abre una publicación para leerla entera.", "loading": "Cargando noticias…" },

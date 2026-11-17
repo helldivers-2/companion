@@ -8,12 +8,12 @@
     "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Spiel zum Galaktischen Krieg von Helldivers 2."],
     "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
     "faq": ["Helldivers 2: Befreiung und Verteidigung erklärt", "Wie die Befreiung in Helldivers 2 abläuft: Lebenspunkte der Planeten, Regeneration, Verteidigungstimer, Gegenangriffe und warum über Nacht Fortschritt verloren geht."],
-    "stratagems": ["Helldivers 2: Stratagem-Datenbank", "Alle Stratagems aus Helldivers 2 mit Eingabecode, Kategorie, Abklingzeit, Nutzungen und Freischaltung, durchsuch- und sortierbar."],
+    "stratagems": ["Helldivers 2: Taktikausrüstung (Stratagems)", "Jede Taktikausrüstung aus Helldivers 2 mit Eingabecode, Kategorie, Abklingzeit, Nutzungen und Freischaltung, durchsuch- und sortierbar."],
     "items": ["Helldivers 2: Waffen, Rüstungen und Booster", "Datenbank aller Waffen, Wurfwaffen, Rüstungen und Booster in Helldivers 2 mit Schaden, Feuerrate, Rüstungswert, Passiveffekten und der Art der Freischaltung."],
-    "shop": ["Helldivers 2: Superstore-Artikel und Preise", "Alle Gegenstände, die im Superstore von Helldivers 2 angeboten werden können, mit Preisen in Super Credits."],
+    "shop": ["Helldivers 2: Über-Store-Artikel und Preise", "Alle Gegenstände, die im Über-Store von Helldivers 2 angeboten werden können, mit Preisen in Über-Credits."],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
-  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "armory": "Arsenal", "map": "Karte", "stratagems": "Stratagems", "items": "Ausrüstung", "shop": "Superstore" },
+  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "armory": "Arsenal", "map": "Karte", "stratagems": "Taktikausrüstung", "items": "Ausrüstung", "shop": "Über-Store" },
   "layout": {
     "skip": "Zum Inhalt springen",
     "home": "{name}, Startseite",
@@ -52,15 +52,15 @@
     "loading": "Planeten werden geladen …"
   },
   "stratagems": {
-    "intro": "Durchsuche, filtere und sortiere alle Stratagems nach Kategorie, Abklingzeit, Nutzungen oder Freischaltung.",
-    "all": "Alle Stratagems",
+    "intro": "Durchsuche, filtere und sortiere jede Taktikausrüstung nach Kategorie, Abklingzeit, Nutzungen oder Freischaltung.",
+    "all": "Alle Taktikausrüstungen",
     "search": "Suche",
     "placeholder": "Name, Typ, Kriegsanleihe …",
     "category": "Kategorie",
     "anyCategory": "Alle",
     "categories": { "offensive": "Offensiv", "supply": "Versorgung", "defensive": "Defensiv", "mission": "Mission" },
     "kinds": { "orbital": "Orbital", "eagle": "Adler", "sentry": "Geschützturm", "supportWeapon": "Unterstützungswaffe", "backpack": "Rucksack", "vehicle": "Fahrzeug", "emplacement": "Stellung", "objective": "Missionsziel", "ship": "Schiff", "other": "Sonstiges" },
-    "cols": { "name": "Stratagem", "category": "Kategorie", "code": "Eingabe", "cooldown": "Abklingzeit", "uses": "Nutzungen", "unlock": "Freischaltung" },
+    "cols": { "name": "Taktikausrüstung", "category": "Kategorie", "code": "Eingabe", "cooldown": "Abklingzeit", "uses": "Nutzungen", "unlock": "Freischaltung" },
     "arrows": { "up": "Hoch", "down": "Runter", "left": "Links", "right": "Rechts" },
     "unlimited": "Unbegrenzt",
     "unknown": "Unbekannt",
@@ -68,9 +68,9 @@
     "free": "Kostenlos",
     "page": "Seite {n}",
     "seconds": "{n} s",
-    "cost": { "medals": "{n} Medaillen", "slips": "{n} Requisitionsscheine", "credits": "{n} Super-Credits" },
-    "count": "{n} von {total} Stratagems",
-    "noMatch": "Keine Stratagems passen zu diesen Filtern. Probiere eine andere Suche oder einen anderen Filter.",
+    "cost": { "medals": "{n} Medaillen", "slips": "{n} Anforderungsscheine", "credits": "{n} Über-Credits" },
+    "count": "{n} von {total} Taktikausrüstungen",
+    "noMatch": "Keine Taktikausrüstung passt zu diesen Filtern. Probiere eine andere Suche oder einen anderen Filter.",
     "credit": "Daten aus dem {wiki}, lizenziert unter {license}. Ein Strich bedeutet, dass das Wiki keinen Wert hat. Freischaltungen können den neuesten Patches hinterherhinken. Zuletzt aktualisiert am {date}."
   },
   "items": {
@@ -81,12 +81,12 @@
     "anyType": "Alle",
     "unlockedBy": "Freigeschaltet durch",
     "anyUnlock": "Alles",
-    "unlocks": {"warbond": "Warbond", "superstore": "Superstore", "other": "Sonstiges"},
+    "unlocks": {"warbond": "Kriegsanleihe", "superstore": "Über-Store", "other": "Sonstiges"},
     "cats": {"primary": "Primärwaffen", "secondary": "Sekundärwaffen", "support": "Unterstützungswaffen", "throwable": "Wurfwaffen", "armor": "Rüstungen", "booster": "Booster"},
     "classes": {"light": "Leicht", "medium": "Mittel", "heavy": "Schwer"},
     "cols": {"name": "Name", "type": "Typ", "damage": "Schaden", "rate": "Feuerrate", "magazine": "Magazin", "pen": "Durchschlag", "radius": "Radius", "fuse": "Zündzeit", "class": "Klasse", "rating": "Rüstungswert", "speed": "Tempo", "stamina": "Ausdauer-Erholung", "passive": "Passiveffekt", "text": "Wirkung", "source": "Freischaltung", "cost": "Preis", "kind": "Typ"},
-    "currency": {"credits": "Super Credits", "medals": "Medaillen", "slips": "Anforderungsscheine"},
-    "superstore": "Superstore",
+    "currency": {"credits": "Über-Credits", "medals": "Medaillen", "slips": "Anforderungsscheine"},
+    "superstore": "Über-Store",
     "page": "Seite {n}",
     "unlisted": "Nicht angegeben",
     "count": "{n} von {total} Gegenständen",
@@ -94,9 +94,9 @@
     "credit": "Gegenstandsdaten aus dem {source}, lizenziert unter {licence}, abgerufen am {date}. Werte ändern sich mit Patches; maßgeblich ist das Spiel selbst."
   },
   "shop": {
-    "intro": "Alle Gegenstände, die im Superstore auftauchen können, mit ihren Preisen. Ein Klick auf den Namen zeigt alle Werte in der Gegenstandsdatenbank.",
+    "intro": "Alle Gegenstände, die im Über-Store auftauchen können, mit ihren Preisen. Ein Klick auf den Namen zeigt alle Werte in der Gegenstandsdatenbank.",
     "noLiveTitle": "Die aktuelle Rotation ist nicht verfügbar.",
-    "noLive": "Die aktuelle Superstore-Rotation wird nur an das Spiel selbst gesendet, und zwar erst nach dem Login. Keine öffentliche API veröffentlicht sie, deshalb kann diese Seite weder zeigen, was heute im Angebot ist, noch wann es wechselt. Sie listet alles, was laut Datenbank dort verkauft wird; die aktuellen Angebote siehst du im Superstore im Spiel."
+    "noLive": "Die aktuelle Über-Store-Rotation wird nur an das Spiel selbst gesendet, und zwar erst nach dem Login. Keine öffentliche API veröffentlicht sie, deshalb kann diese Seite weder zeigen, was heute im Angebot ist, noch wann es wechselt. Sie listet alles, was laut Datenbank dort verkauft wird; die aktuellen Angebote siehst du im Über-Store im Spiel."
   },
   "dispatches": { "h1": "Meldungen von Über-Erde", "intro": "Der Nachrichtenfeed von Über-Erde im Spiel: Kriegsberichte, Briefings zu Generalbefehlen und Propaganda, sobald sie erscheinen.", "loading": "Meldungen werden geladen …" },
   "news": { "h1": "Neuigkeiten von Steam", "hint": "Patchnotes, Entwicklerblogs und Ankündigungen von Arrowhead, die neuesten zuerst. Öffne einen Beitrag, um ihn ganz zu lesen.", "loading": "Neuigkeiten werden geladen …" },
@@ -123,7 +123,7 @@
     "source": "Quellen: das <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> und die Community."
   },
   "notfound": "Diese Seite ging im Galaktischen Krieg verloren. <a href=\"{home}\">Zurück zur Übersicht</a>.",
-  "factions": { "Humans": "Menschen", "Terminids": "Terminiden", "Automaton": "Roboter", "Illuminate": "Illuminierte" },
+  "factions": { "Humans": "Menschen", "Terminids": "Terminiden", "Automaton": "Roboter", "Illuminate": "Illuminate" },
   "taskTypes": {
     "2": "Sammeln:",
     "3": "Vernichten:",
@@ -146,7 +146,7 @@
     "enemies": "Feinde getötet",
     "terminids": "Terminiden getötet",
     "automatons": "Roboter zerstört",
-    "illuminate": "Illuminierte ausgelöscht",
+    "illuminate": "Illuminate ausgelöscht",
     "deaths": "Gefallene Helldivers",
     "kd": "Kills pro Tod",
     "friendlies": "Kills durch Eigenbeschuss",
