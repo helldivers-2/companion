@@ -19,7 +19,12 @@
     "about": "A fan-built dashboard for the Helldivers 2 Galactic War. It pulls fresh data from the community API every {s} s. Built with:",
     "language": "Language",
     "disclaimer": "Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.",
-    "links": {}
+    "links": {
+      "fans": "Fan communities",
+      "arrowhead": "Arrowhead accounts",
+      "github": "Helldivers 2 GitHub organisation",
+      "website": "Arrowhead Game Studios website"
+    }
   },
   "overview": {
     "h1": "Galactic War overview",
@@ -82,7 +87,7 @@
   "rewardTypes": { "1": "Medals" },
   "tacticalStatus": { "1": "Preparing", "2": "Active", "3": "Cooldown" },
   "regionSizes": { "Settlement": "settlement", "Town": "town", "City": "city", "MegaCity": "megacity" },
-  "units": { "d": "d", "h": "h", "m": "m", "s": "s", "days": "{n} days" },
+  "units": { "d": "d", "h": "h", "m": "m", "s": "s" },
   "record": {
     "missionsWon": "Missions won",
     "missionsLost": "Missions lost",

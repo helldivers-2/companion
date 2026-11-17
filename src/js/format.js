@@ -1,5 +1,6 @@
 import labels from "../_data/labels.json" with { type: "json" };
 import { fill, lang, t } from "./i18n.js";
+export { icon } from "./icon.js";
 
 export const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const numFmt = new Intl.NumberFormat(lang);
@@ -9,7 +10,6 @@ export const pct = (x) => pctFmt.format(x);
 const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
-export const icon = (name) => `<span class="icon i-${name}" aria-hidden="true"></span>`;
 // Faction names arrive as API values; translate them only for display.
 export const faction = (f) => t.factions[f] ?? f;
 export const regionSize = (s) => t.regionSizes[s] ?? s.toLowerCase();
@@ -56,7 +56,7 @@ export function enemyOf(planet) {
   return planet.event?.faction ?? planet.currentOwner;
 }
 
-export function duration(ms) {
+function duration(ms) {
   let s = Math.floor(ms / 1000);
   const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
   s %= 60;
@@ -69,13 +69,17 @@ export function duration(ms) {
 // Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
 export const timeLeft = (until, now = Date.now()) => duration(Math.max(0, Date.parse(until) - now) || 0);
 
+// Feeds sorted newest first; one unparseable date would otherwise throw in the date formatter and blank the feed.
+export const newestFirst = (list, key) => list.filter((x) => !Number.isNaN(Date.parse(x[key]))).sort((a, b) => Date.parse(b[key]) - Date.parse(a[key]));
+export const date = (iso, fmt) => `<time datetime="${esc(iso)}">${fmt.format(new Date(iso))}</time>`;
+
 export const countdown = (iso) => `<time data-until="${esc(iso)}" datetime="${esc(iso)}">${timeLeft(iso)}</time>`;
 
-// Dispatches use the game's <span data-ah="n"> highlight markup; keep only that, escape everything else.
+// Dispatches and station actions use the game's <span data-ah="n"> highlight markup; keep only that, escape everything else.
 export const dispatchHtml = (msg) =>
   esc(msg)
     .replace(/&#60;span data-ah=&#34;(\d)&#34;&#62;/g, '<strong class="ah-$1">')
-    .replace(/&#60;\/span&#62;/g, "</strong>")
+    .replace(/&#60;\/span&#62;(&#62;)?/g, "</strong>") // the game sometimes writes </span>>
     .replace(/&#60;\/?i(=\d)?&#62;/g, "");
 
 const STEAM_TAGS = { h1: "h3", h2: "h3", h3: "h4", b: "strong", i: "em", u: "u", strike: "s", p: "p", list: "ul", olist: "ol", "*": "li" };

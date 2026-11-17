@@ -3,7 +3,7 @@ import site from "./src/_data/site.json" with { type: "json" };
 // Serves /api/* from the self-hosted API (deploy/compose.yml). Its hostname sits behind Cloudflare Access,
 // and only this Worker's service token gets through, so visitors never reach the homelab directly.
 // Exact paths and languages only, so nobody can get past the edge cache by changing the URL.
-export const PATHS = new Set([
+const PATHS = new Set([
   "/api/v1/war", "/api/v1/assignments", "/api/v1/campaigns", "/api/v1/planets", "/api/v1/steam",
   "/api/v2/dispatches", "/api/v2/space-stations",
 ]);

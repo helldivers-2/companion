@@ -1,5 +1,5 @@
-import { get, state } from "../api.js";
-import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
+import { fetchedAt, get } from "../api.js";
+import { bar, countdown, describeTask, dispatchHtml, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
@@ -11,13 +11,12 @@ export default async function overview() {
     get("/api/v1/war"),
     get("/api/v1/assignments"),
     get("/api/v1/campaigns"),
-    get("/api/v1/planets"),
+    get("/api/v1/planets", 3600), // 300 KB; campaign planets below overlay it every minute
     get("/api/v2/space-stations", 300),
   ]);
-  const planets = Object.fromEntries(planetList.map((p) => [p.index, p]));
-  // An old cached snapshot must not enter the history as if it were measured now.
-  const store = state.cacheOnly ? { getItem: (k) => localStorage.getItem(k), setItem() {} } : localStorage;
-  const rates = track(campaigns.map((c) => c.planet), Date.now(), store);
+  const campaignPlanets = campaigns.map((c) => c.planet);
+  const planets = Object.fromEntries([...planetList, ...campaignPlanets].map((p) => [p.index, p]));
+  const rates = track(campaignPlanets, fetchedAt["/api/v1/campaigns"]);
   const orderPlanets = new Set();
 
   $("orders").innerHTML = orders.length
@@ -30,8 +29,7 @@ export default async function overview() {
 
   $("online").innerHTML = `${icon("users")} ${t.js.online} <strong>${num(war.statistics.playerCount)}</strong>`;
 
-  const groups = {};
-  for (const c of campaigns) (groups[enemyOf(c.planet)] ??= []).push(c.planet);
+  const groups = Object.groupBy(campaignPlanets, enemyOf);
   const players = (list) => list.reduce((n, p) => n + p.statistics.playerCount, 0);
   const rank = (p) => (orderPlanets.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + (idle(p) ? 0 : 5e8) + p.statistics.playerCount;
   // Re-rendering every minute would otherwise collapse an opened "Show more" and drop focus from its summary.
@@ -50,7 +48,7 @@ export default async function overview() {
         ${rest.length ? `<details id="more-${id}"${open.has(`more-${id}`) ? " open" : ""}><summary>${icon("caret-right")} ${fill(t.js.showMore, { n: rest.length })}</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
     }).join("") || `<p class="muted">${icon("sword")} ${t.js.noCampaigns}</p>`;
-  if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
+  if (focused) $(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {
@@ -63,7 +61,7 @@ function orderPanel(o, planets, rates, orderPlanets) {
     if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
     else if (p && !held(p)) detail = meter(p, rates[p.index]);
     return `<li class="${d.done ? "done" : ""}">
-      <span class="check icon"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
+      <span class="check icon i-${d.done ? "check-circle-fill" : "circle"}"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
         <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
         ${detail}
@@ -127,6 +125,6 @@ const stationPanel = (st) => `<article class="station">
     return `<li><p><strong>${esc(a.name)}</strong> <span class="tag">${esc(status)}</span>
       ${a.status !== 1 && a.statusExpire ? `<span class="muted">${fill(t.js.for, { time: countdown(a.statusExpire) })}</span>` : ""}</p>
       ${a.status === 1 && cost ? bar(cost.currentValue / cost.targetValue, fill(t.js.preparation, { name: a.name })) : ""}
-      <p class="muted">${esc(a.strategicDescription || a.description)}</p></li>`;
+      <p class="muted">${dispatchHtml(a.strategicDescription || a.description)}</p></li>`;
   }).join("")}</ul>
 </article>`;

@@ -18,7 +18,7 @@ function say(text, announce) {
 
 state.onWait = () => say(t.js.waiting, true);
 
-async function refresh() {
+async function run() {
   if (!page || document.hidden) return;
   state.stale = false;
   try {
@@ -32,6 +32,10 @@ async function refresh() {
   }
 }
 
+// One refresh at a time: a tick during the 10 s rate-limit back-off would otherwise fetch everything again.
+let running = null;
+const refresh = () => (running ??= run().finally(() => { running = null; }));
+
 // Paint the cached data first, however old, so a return visit shows the page at once instead of shifting when the API answers.
 // A cache hit resolves in microtasks, so no other refresh can run while cacheOnly is set.
 state.cacheOnly = true;
@@ -42,5 +46,8 @@ Promise.resolve(page?.()).catch(() => {}).finally(() => {
 setInterval(refresh, site.refreshSeconds * 1000);
 document.addEventListener("visibilitychange", refresh);
 setInterval(() => {
-  for (const el of document.querySelectorAll("[data-until]")) el.textContent = timeLeft(el.dataset.until);
+  for (const el of document.querySelectorAll("[data-until]")) {
+    const s = timeLeft(el.dataset.until);
+    if (el.textContent !== s) el.textContent = s;
+  }
 }, 1000);

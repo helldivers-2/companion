@@ -1,22 +1,22 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { get, state } from "../src/js/api.js";
+import { fetchedAt, get, state } from "../src/js/api.js";
+import { memory } from "./helpers.js";
 
 // Fake clock plus a fetch that answers after `latency` ms with the queued responses.
 function setup(t, responses, latency = 500) {
   t.mock.timers.enable({ apis: ["setTimeout", "Date"] });
-  const m = {};
-  globalThis.localStorage = { getItem: (k) => m[k] ?? null, setItem: (k, v) => { m[k] = v; } };
+  globalThis.localStorage = memory();
   const calls = [];
-  globalThis.fetch = (url) => {
+  t.mock.method(globalThis, "fetch", () => {
     calls.push(Date.now());
     const r = responses.shift();
     return new Promise((ok, fail) => setTimeout(() => (r instanceof Error ? fail(r) : ok(r)), latency));
-  };
+  });
   const settle = async (p, ms) => { t.mock.timers.tick(ms); return p; };
   return { calls, settle };
 }
-const json = (data, status = 200) => ({ ok: status < 400, status, json: async () => data });
+const json = (data, status = 200) => new Response(JSON.stringify(data), { status });
 
 test("the refresh tick one TTL later fetches fresh data despite a slow response", async (t) => {
   const { calls, settle } = setup(t, [json(1), json(2)]);
@@ -45,6 +45,7 @@ test("within the TTL the cache answers, after it a failed fetch falls back to st
   t.mock.timers.tick(30_000);
   assert.equal(await settle(get("/x", 60), 500), 1);
   assert.equal(state.stale, true);
+  assert.equal(fetchedAt["/x"], 0); // the stale answer keeps its original fetch time
 });
 
 test("without a cache a failed fetch rejects", async (t) => {

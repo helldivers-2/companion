@@ -20,10 +20,10 @@
     "language": "Idioma",
     "disclaimer": "Proyecto de fans sin relación con Arrowhead Game Studios ni Sony Interactive Entertainment, que no lo respaldan.",
     "links": {
-      "Fan communities": "Comunidades de fans",
-      "Arrowhead accounts": "Cuentas de Arrowhead",
-      "Helldivers 2 GitHub organisation": "Organización de Helldivers 2 en GitHub",
-      "Arrowhead Game Studios website": "Web de Arrowhead Game Studios"
+      "fans": "Comunidades de fans",
+      "arrowhead": "Cuentas de Arrowhead",
+      "github": "Organización de Helldivers 2 en GitHub",
+      "website": "Web de Arrowhead Game Studios"
     }
   },
   "overview": {
@@ -87,7 +87,7 @@
   "rewardTypes": { "1": "medallas" },
   "tacticalStatus": { "1": "En preparación", "2": "Activa", "3": "Recarga" },
   "regionSizes": { "Settlement": "asentamiento", "Town": "pueblo", "City": "ciudad", "MegaCity": "megaciudad" },
-  "units": { "d": " d", "h": " h", "m": " min", "s": " s", "days": "{n} días" },
+  "units": { "d": " d", "h": " h", "m": " min", "s": " s" },
   "record": {
     "missionsWon": "Misiones ganadas",
     "missionsLost": "Misiones perdidas",

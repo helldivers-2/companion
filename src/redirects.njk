@@ -1,12 +1,12 @@
+---
+permalink: /_redirects
+eleventyExcludeFromCollections: true
+---
 # Pages moved under a language prefix; / itself picks the browser's language.
-/planets/            /en/planets/             301
-/dispatches/         /en/dispatches/          301
-/news/               /en/news/                301
-/faq/                /en/faq/                 301
-/planets             /en/planets/             301
-/dispatches          /en/dispatches/          301
-/news                /en/news/                301
-/faq                 /en/faq/                 301
+{%- for item in nav %}{% if item[0] %}
+/{{ item[0] }}  /en/{{ item[0] }}  301
+/{{ item[0] | replace("/", "") }}  /en/{{ item[0] }}  301
+{%- endif %}{% endfor %}
 
 # Routes of the earlier Next.js companion, so old links and bookmarks still land somewhere useful.
 /statistics          /en/#statistics          301
@@ -19,7 +19,6 @@
 /news/:gid           /en/news/#news-:gid      301
 
 # Bare language roots; Cloudflare's own trailing-slash redirect is a 307.
-/en                  /en/                     301
-/es                  /es/                     301
-/de                  /de/                     301
-/zh-TW               /zh-TW/                  301
+{%- for l in site.locales %}
+/{{ l }}  /{{ l }}/  301
+{%- endfor %}

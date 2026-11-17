@@ -1,0 +1,7 @@
+[
+  ["", "overview", "rocket-launch"],
+  ["planets/", "planets", "globe-hemisphere-west"],
+  ["dispatches/", "dispatches", "megaphone-simple"],
+  ["news/", "news", "newspaper"],
+  ["faq/", "faq", "info"]
+]

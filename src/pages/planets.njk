@@ -1,11 +1,5 @@
 ---
-layout: base.njk
 page_id: planets
-pagination:
-  data: site.locales
-  size: 1
-  alias: lang
-  addAllPagesToCollections: true
 permalink: "/{{ lang }}/planets/"
 ---
 <div class="container">
@@ -30,8 +24,8 @@ permalink: "/{{ lang }}/planets/"
   <table class="planets">
     <thead>
       <tr>
-        {%- for col in [["name", "name"], ["sector", "sector"], ["owner", "owner"], ["biome", "biome"], [null, "hazards"], ["players", "players"], ["liberation", "liberation"]] %}
-        <th scope="col"{% if col[0] in ["players", "liberation"] %} class="num"{% elif col[0] != "name" %} class="wide"{% endif %}{% if col[0] %} data-sort="{{ col[0] }}" aria-sort="{{ 'descending' if col[0] == 'players' else 'none' }}"><button type="button">{{ t.planets.cols[col[1]] }}</button>{% else %}>{{ t.planets.cols[col[1]] }}{% endif %}</th>
+        {%- for col in ["name", "sector", "owner", "biome", "hazards", "players", "liberation"] %}
+        <th scope="col"{% if col in ["players", "liberation"] %} class="num"{% elif col != "name" %} class="wide"{% endif %}{% if col != "hazards" %} data-sort="{{ col }}" aria-sort="{{ 'descending' if col == 'players' else 'none' }}"><button type="button">{{ t.planets.cols[col] }}</button>{% else %}>{{ t.planets.cols[col] }}{% endif %}</th>
         {%- endfor %}
       </tr>
     </thead>

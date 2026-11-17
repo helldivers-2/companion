@@ -20,10 +20,10 @@
     "language": "語言",
     "disclaimer": "玩家自製。與 Arrowhead Game Studios 及 Sony Interactive Entertainment 無關，亦未獲其認可。",
     "links": {
-      "Fan communities": "玩家社群",
-      "Arrowhead accounts": "Arrowhead 官方帳號",
-      "Helldivers 2 GitHub organisation": "Helldivers 2 GitHub 組織",
-      "Arrowhead Game Studios website": "Arrowhead Game Studios 官方網站"
+      "fans": "玩家社群",
+      "arrowhead": "Arrowhead 官方帳號",
+      "github": "Helldivers 2 GitHub 組織",
+      "website": "Arrowhead Game Studios 官方網站"
     }
   },
   "overview": {
@@ -87,7 +87,7 @@
   "rewardTypes": { "1": "勳章" },
   "tacticalStatus": { "1": "準備中", "2": "啟用中", "3": "冷卻中" },
   "regionSizes": { "Settlement": "聚落", "Town": "城鎮", "City": "城市", "MegaCity": "巨型城市" },
-  "units": { "d": " 天", "h": " 小時", "m": " 分鐘", "s": " 秒", "days": "{n} 天" },
+  "units": { "d": " 天", "h": " 小時", "m": " 分鐘", "s": " 秒" },
   "record": {
     "missionsWon": "任務勝利",
     "missionsLost": "任務失敗",

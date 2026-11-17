@@ -1,10 +1,7 @@
 ---
-layout: base.njk
 page_id: notfound
-pagination:
-  data: site.locales
-  size: 1
-  alias: lang
+# One per language but no translations of each other: no canonical or hreflang, and the language links go to each home page.
+standalone: true
 permalink: "{{ '' if lang == 'en' else '/' + lang }}/404.html"
 eleventyExcludeFromCollections: true
 ---

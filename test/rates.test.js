@@ -1,8 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { eta, hoursToWin, track } from "../src/js/rates.js";
-
-const memory = () => { const m = {}; return { getItem: (k) => m[k] ?? null, setItem: (k, v) => { m[k] = v; } }; };
+import { memory } from "./helpers.js";
 const planet = (health) => ({ index: 7, currentOwner: "Terminids", health, maxHealth: 1000, event: null });
 
 test("track reports %/h once enough time has passed", () => {
@@ -13,10 +12,10 @@ test("track reports %/h once enough time has passed", () => {
   assert.ok(Math.abs(rates[7] - 1) < 1e-9);
 });
 
-test("track ignores repeated cached snapshots", () => {
+test("track ignores a snapshot it has already recorded", () => {
   const store = memory();
   track([planet(1000)], 0, store);
-  track([planet(1000)], 10_000, store);
+  track([planet(1000)], 0, store); // the same cached answer, rendered again
   assert.equal(JSON.parse(store.getItem("hd:history"))["7:lib"].length, 1);
 });
 
