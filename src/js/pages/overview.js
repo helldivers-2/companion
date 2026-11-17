@@ -4,7 +4,7 @@ import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
 const $ = (id) => document.getElementById(id);
-const SHOWN_PER_FRONT = 5;
+const SHOWN_PER_FRONT = 2;
 
 export default async function overview() {
   const [war, orders, campaigns, planetList, stations] = await Promise.all([
