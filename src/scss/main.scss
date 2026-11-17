@@ -24,6 +24,11 @@ $icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
 // Decorative fills only (hazard stripes, borders): the companion's yellow primary fails as text on white.
 $accent-fill: light-dark(oklch(0.852 0.199 91.936), oklch(0.905 0.182 98.111));
 
+// Page column, its side gutter, and the phone/desktop breakpoint.
+$page: 76rem;
+$gutter: clamp(1rem, 4vw, 2rem);
+$wide: 40rem;
+
 // Every pair (plus $accent) checked for 4.5:1 on ground and panel and for OKLab distance under
 // normal vision and deuteranopia. Light: accent vs automaton is the closest pair (deutan 0.06), but
 // tags that share a row also differ in text.
@@ -238,7 +243,7 @@ html {
   }
 }
 
-@media (width >= 40rem) {
+@media (width >= $wide) {
   .top {
     top: 0;
     bottom: auto;
@@ -270,10 +275,6 @@ html {
   margin: 0 1rem 0.5rem;
   color: $muted;
   font-size: 0.875rem;
-
-  p {
-    margin: 0;
-  }
 
   strong {
     color: $text;
@@ -314,12 +315,12 @@ main:has([data-loading]) {
 }
 
 main {
-  max-width: 76rem;
+  max-width: $page;
   margin: 0 auto;
   padding: 1rem 0 3rem; // phones: containers run edge to edge like the companion's
 
-  @media (width >= 40rem) {
-    padding: 5.5rem clamp(1rem, 4vw, 2rem) 3rem;
+  @media (width >= $wide) {
+    padding: 5.5rem $gutter 3rem;
   }
 }
 
@@ -402,9 +403,9 @@ footer {
 .footer-main {
   display: grid;
   gap: 2rem;
-  max-width: 76rem;
+  max-width: $page;
   margin: 0 auto;
-  padding: 2rem clamp(1rem, 4vw, 2rem);
+  padding: 2rem $gutter;
 
   .muted a {
     color: inherit;
@@ -476,13 +477,13 @@ footer {
 }
 
 .disclaimer {
-  padding: 2rem clamp(1rem, 4vw, 2rem) calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
+  padding: 2rem $gutter calc(7rem + env(safe-area-inset-bottom)); // clear of the phone nav bar
   border-top: 1px solid $line;
   color: $muted;
   font-size: 0.875rem;
   text-align: center;
 
-  @media (width >= 40rem) {
+  @media (width >= $wide) {
     padding-bottom: 2rem;
   }
 }
@@ -568,10 +569,13 @@ summary {
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 0.75rem;
+
+  .pct {
+    min-width: 4.5rem;
+  }
 }
 
 .pct {
-  min-width: 4.5rem;
   font-size: 0.875rem;
   text-align: right;
   white-space: nowrap;
@@ -718,7 +722,7 @@ summary {
 
   // Room for "6,120,000 / 10,000,000" so every task bar in an order shares one length;
   // left-aligned so a short "71.60%" sits next to its bar instead of 9rem away.
-  @media (width >= 40rem) {
+  @media (width >= $wide) {
     .pct {
       min-width: 9.5rem;
       text-align: left;
@@ -882,16 +886,19 @@ summary {
     padding: 0;
   }
 
-  thead button {
-    width: 100%;
-    padding: 0.5rem;
+  :is(thead button, .expand) {
     border: 0;
     background: none;
     color: inherit;
     font: inherit;
+    cursor: pointer;
+  }
+
+  thead button {
+    width: 100%;
+    padding: 0.5rem;
     text-align: inherit;
     white-space: nowrap;
-    cursor: pointer;
 
     &:hover {
       color: $text;
@@ -930,12 +937,7 @@ summary {
     align-items: baseline;
     gap: 0.35rem;
     padding: 0;
-    border: 0;
-    background: none;
-    color: inherit;
-    font: inherit;
     text-align: left;
-    cursor: pointer;
 
     .icon {
       color: $muted;
@@ -966,7 +968,6 @@ summary {
   }
 
   .regions .pct {
-    min-width: 0;
     margin-left: 0.25rem;
   }
 
@@ -979,13 +980,13 @@ summary {
 }
 
 // Phones get name, players and liberation; the rest folds under the name.
-@media (width >= 40rem) {
+@media (width >= $wide) {
   .narrow {
     display: none;
   }
 }
 
-@media (width < 40rem) {
+@media (width < $wide) {
   .wide {
     display: none;
   }
