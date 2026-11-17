@@ -1,17 +1,19 @@
 import { get } from "../api.js";
 import { esc, faction, held, icon, liberation, num, pct, record, regainsLine, regionSize, slug, titleCase } from "../format.js";
-import { fill, t } from "../i18n.js";
+import { fill, lang, t } from "../i18n.js";
 
 let planets = [];
 const libRank = (p) => (held(p) ? -1 : liberation(p)); // held planets sink below active fights
 let sort = { key: "players", dir: -1 };
 const open = new Set(); // planet indexes with their detail row shown
 let scrollTo = null;
+let bound = false;
+const compare = new Intl.Collator(lang).compare;
 const sorters = {
-  name: (a, b) => a.name.localeCompare(b.name),
-  sector: (a, b) => a.sector.localeCompare(b.sector),
-  owner: (a, b) => a.currentOwner.localeCompare(b.currentOwner),
-  biome: (a, b) => (a.biome?.name ?? "").localeCompare(b.biome?.name ?? ""),
+  name: (a, b) => compare(a.name, b.name),
+  sector: (a, b) => compare(a.sector, b.sector),
+  owner: (a, b) => compare(a.currentOwner, b.currentOwner),
+  biome: (a, b) => compare(a.biome?.name ?? "", b.biome?.name ?? ""),
   players: (a, b) => a.statistics.playerCount - b.statistics.playerCount,
   liberation: (a, b) => libRank(a) - libRank(b),
 };
@@ -48,7 +50,7 @@ function render() {
     .filter((p) => !owner || p.currentOwner === owner)
     .filter((p) => !f.get("active") || p.statistics.playerCount > 0)
     .filter((p) => !q || [p.name, p.sector, p.biome?.name, ...p.hazards.map((h) => h.name)].join(" ").toLowerCase().includes(q))
-    .sort((a, b) => sort.dir * sorters[sort.key](a, b) || a.name.localeCompare(b.name));
+    .sort((a, b) => sort.dir * sorters[sort.key](a, b) || compare(a.name, b.name));
   writeUrl(f);
   for (const th of document.querySelectorAll("th[data-sort]")) {
     th.setAttribute("aria-sort", th.dataset.sort === sort.key ? (sort.dir > 0 ? "ascending" : "descending") : "none");
@@ -95,8 +97,8 @@ function details(p, hazards) {
 }
 
 export default async function planetsPage() {
-  if (!form().dataset.bound) {
-    form().dataset.bound = "1";
+  if (!bound) {
+    bound = true;
     readUrl();
     let typing;
     form().addEventListener("input", () => { clearTimeout(typing); typing = setTimeout(render, 150); });
