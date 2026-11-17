@@ -20,10 +20,10 @@
     "language": "Sprache",
     "disclaimer": "Fanprojekt. Steht in keiner Verbindung zu Arrowhead Game Studios oder Sony Interactive Entertainment und wird von ihnen nicht unterstützt.",
     "links": {
-      "Fan communities": "Fan-Communitys",
-      "Arrowhead accounts": "Arrowhead-Kanäle",
-      "Helldivers 2 GitHub organisation": "Helldivers-2-Organisation auf GitHub",
-      "Arrowhead Game Studios website": "Website von Arrowhead Game Studios"
+      "fans": "Fan-Communitys",
+      "arrowhead": "Arrowhead-Kanäle",
+      "github": "Helldivers-2-Organisation auf GitHub",
+      "website": "Website von Arrowhead Game Studios"
     }
   },
   "overview": {

@@ -75,8 +75,9 @@
           </ul>
         </div>
         <div>
+          {#- Brand names are not translated, so a link label is used as-is unless it is a key in layout.links. #}
           {%- for group in footer.social %}
-          <h2 id="footer-{{ loop.index }}">{{ t.layout.links[group[0]] or group[0] }}</h2>
+          <h2 id="footer-{{ loop.index }}">{{ t.layout.links[group[0]] }}</h2>
           <ul class="social" aria-labelledby="footer-{{ loop.index }}">
             {%- for l in group[1] %}
             <li><a href="{{ l[0] }}" aria-label="{{ t.layout.links[l[2]] or l[2] }}"><span class="icon i-{{ l[1] }}" aria-hidden="true"></span></a></li>

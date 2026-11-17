@@ -19,7 +19,12 @@
     "about": "A fan-built dashboard for the Helldivers 2 Galactic War. It pulls fresh data from the community API every {s} s. Built with:",
     "language": "Language",
     "disclaimer": "Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.",
-    "links": {}
+    "links": {
+      "fans": "Fan communities",
+      "arrowhead": "Arrowhead accounts",
+      "github": "Helldivers 2 GitHub organisation",
+      "website": "Arrowhead Game Studios website"
+    }
   },
   "overview": {
     "h1": "Galactic War overview",
