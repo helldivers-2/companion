@@ -11,10 +11,10 @@ export default async function overview() {
     get("/api/v1/war"),
     get("/api/v1/assignments"),
     get("/api/v1/campaigns"),
-    get("/api/v1/planets"),
+    get("/api/v1/planets", 3600), // 300 KB; campaign planets below overlay it every minute
     get("/api/v2/space-stations", 300),
   ]);
-  const planets = Object.fromEntries(planetList.map((p) => [p.index, p]));
+  const planets = Object.fromEntries([...planetList, ...campaigns.map((c) => c.planet)].map((p) => [p.index, p]));
   const rates = track(campaigns.map((c) => c.planet), fetchedAt["/api/v1/campaigns"]);
   const orderPlanets = new Set();
 
