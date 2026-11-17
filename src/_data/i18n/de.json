@@ -87,7 +87,7 @@
   "rewardTypes": { "1": "Medaillen" },
   "tacticalStatus": { "1": "In Vorbereitung", "2": "Aktiv", "3": "Abklingzeit" },
   "regionSizes": { "Settlement": "Siedlung", "Town": "Kleinstadt", "City": "Stadt", "MegaCity": "Megastadt" },
-  "units": { "d": " Tg.", "h": " Std.", "m": " Min.", "s": " Sek.", "days": "{n} Tage" },
+  "units": { "d": " Tg.", "h": " Std.", "m": " Min.", "s": " Sek." },
   "record": {
     "missionsWon": "Missionen gewonnen",
     "missionsLost": "Missionen verloren",

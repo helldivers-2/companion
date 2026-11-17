@@ -87,7 +87,7 @@
   "rewardTypes": { "1": "medallas" },
   "tacticalStatus": { "1": "En preparación", "2": "Activa", "3": "Recarga" },
   "regionSizes": { "Settlement": "asentamiento", "Town": "pueblo", "City": "ciudad", "MegaCity": "megaciudad" },
-  "units": { "d": " d", "h": " h", "m": " min", "s": " s", "days": "{n} días" },
+  "units": { "d": " d", "h": " h", "m": " min", "s": " s" },
   "record": {
     "missionsWon": "Misiones ganadas",
     "missionsLost": "Misiones perdidas",
