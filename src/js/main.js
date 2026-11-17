@@ -8,8 +8,9 @@ import planets from "./pages/planets.js";
 import map from "./pages/map.js";
 import dispatches from "./pages/dispatches.js";
 import news from "./pages/news.js";
+import stratagems from "./pages/stratagems.js";
 
-const page = { overview, map, planets, dispatches, news }[document.body.dataset.page];
+const page = { overview, map, planets, dispatches, news, stratagems }[document.body.dataset.page];
 const status = document.getElementById("status");
 
 function say(text, announce) {

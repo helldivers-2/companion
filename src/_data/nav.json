@@ -4,5 +4,6 @@
   ["planets/", "planets", "globe-hemisphere-west"],
   ["dispatches/", "dispatches", "megaphone-simple"],
   ["news/", "news", "newspaper"],
+  ["stratagems/", "stratagems", "crosshair"],
   ["faq/", "faq", "info"]
 ]
