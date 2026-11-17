@@ -1,11 +1,9 @@
 import { get } from "../api.js";
 import { date, dispatchHtml, icon, newestFirst } from "../format.js";
-import en from "../../_data/i18n/en.json" with { type: "json" };
 import { lang, t } from "../i18n.js";
 
 const SHOWN = 50;
-// Headlines come in the page language, with older English ones mixed in, so match both.
-const won = new RegExp(`${t.js.won}|${en.js.won}`, "i"), lost = new RegExp(`${t.js.lost}|${en.js.lost}`, "i");
+const won = new RegExp(t.js.won, "i"), lost = new RegExp(t.js.lost, "i"); // eleventyComputed.js adds the English patterns
 const outcome = (msg) => (lost.test(msg) ? " failed" : won.test(msg) ? " won" : "");
 const dateFmt = new Intl.DateTimeFormat(lang, { dateStyle: "medium", timeStyle: "short" });
 

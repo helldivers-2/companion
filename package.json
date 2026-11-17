@@ -7,7 +7,7 @@
     "build": "esbuild src/js/main.js --bundle --minify --outfile=_site/assets/main.js && sass --style=compressed --no-source-map --load-path=node_modules src/scss/main.scss _site/assets/main.css && eleventy",
     "predev": "node scripts/icons.js",
     "dev": "esbuild src/js/main.js --bundle --outfile=_site/assets/main.js --watch=forever & sass --watch --no-source-map --load-path=node_modules src/scss/main.scss _site/assets/main.css & eleventy --serve",
-    "test": "node --test test/*.test.js",
+    "test": "node --import ./test/setup.js --test test/*.test.js",
     "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
