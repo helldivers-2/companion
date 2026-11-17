@@ -72,6 +72,15 @@ $page-wide: null !default; // the phone/desktop breakpoint; the side column need
   vector-effect: non-scaling-stroke;
 }
 
+// A finger-sized tap area around each dot; dots sit above, so a direct hit still picks that planet.
+.hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 28;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+}
+
 .planet {
   fill: var(--faction);
   stroke: $panel;

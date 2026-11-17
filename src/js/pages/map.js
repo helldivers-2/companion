@@ -90,7 +90,7 @@ function bind() {
   svg.addEventListener("pointercancel", up);
 
   svg.addEventListener("click", (e) => {
-    const i = Number(e.target.closest("[data-planet]")?.dataset.planet);
+    const i = Number(e.target.closest("[data-planet]")?.dataset.planet ?? e.target.dataset.hit);
     if (!moved && !Number.isNaN(i)) select(i, true);
     moved = false;
   });
@@ -182,7 +182,7 @@ export default async function galaxyMap() {
   for (const p of planets) for (const w of p.waypoints ?? []) if (at[w]) lines.add(p.index < w ? `${p.index}-${w}` : `${w}-${p.index}`);
   const path = [...lines].map((k) => { const [a, b] = k.split("-").map((i) => at[i]); return `M${a.x} ${a.y}L${b.x} ${b.y}`; }).join("");
 
-  const marks = [], labels = [], dots = [];
+  const marks = [], labels = [], hits = [], dots = [];
   for (const p of planets) {
     const { x, y } = at[p.index];
     const active = campaign.has(p.index) || order.has(p.index);
@@ -203,12 +203,13 @@ export default async function galaxyMap() {
     }
     if (active) labels.push(`<text x="${x + r + 8}" y="${y + 4}">${esc(p.name)}</text>`);
     const name = [p.name, faction(p.currentOwner), ...states].join(", ");
+    hits.push(`<circle class="hit" data-hit="${p.index}" cx="${x}" cy="${y}" r="${r}"/>`);
     dots.push(`<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" cx="${x}" cy="${y}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>`);
   }
 
   const layer = $("map-layer");
   const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet; // the 60 s refresh rebuilds the planets
-  layer.innerHTML = `<path class="lines" d="${path}"/>${marks.join("")}${dots.join("")}<g class="labels" aria-hidden="true">${labels.join("")}</g>`;
+  layer.innerHTML = `<path class="lines" d="${path}"/>${marks.join("")}<g aria-hidden="true">${hits.join("")}</g>${dots.join("")}<g class="labels" aria-hidden="true">${labels.join("")}</g>`;
   if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
   $("map-loading").hidden = true;
   renderPanel();
