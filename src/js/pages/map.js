@@ -146,11 +146,11 @@ function renderPanel() {
   const html = p ? `<h3 translate="no">${esc(p.name)}</h3>
     <dl class="facts">
       <div><dt>${t.map.sector}</dt><dd>${esc(p.sector)}</dd></div>
-      <div><dt>${t.map.owner}</dt><dd><span class="tag ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span></dd></div>
+      <div><dt>${t.map.owner}</dt><dd><span class="badge ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span></dd></div>
       <div><dt>${t.map.liberation}</dt><dd>${held(p) ? t.js.held : pct(liberation(p))}</dd></div>
       <div><dt>${t.map.players}</dt><dd>${num(p.statistics.playerCount)}</dd></div>
     </dl>
-    ${p.event ? `<p><span class="tag ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span></p>` : ""}
+    ${p.event ? `<p><span class="badge ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span></p>` : ""}
     <a href="/${lang}/planets/?open=${p.index}">${icon("arrow-square-out")} ${t.map.open}</a>`
     : `<p class="muted">${t.map.hint}</p>`;
   if (html === lastPanel) return; // the clock ticks the countdown itself; rewriting would drop focus from the link

@@ -1,7 +1,6 @@
 // Galaxy map. Loaded from main.scss with the palette passed in, so the map follows the same tokens.
 $ground: null !default;
 $panel: null !default;
-$control: null !default;
 $text: null !default;
 $muted: null !default;
 $accent: null !default;
@@ -28,20 +27,11 @@ $page-wide: null !default; // the phone/desktop breakpoint; the side column need
   gap: 0.5rem;
   margin-bottom: 0.75rem;
 
+  // Oat's outline buttons (class="outline" in map.njk), square at touch-target size.
   button {
-    display: grid;
-    place-items: center;
     width: 2.75rem;
     height: 2.75rem;
-    border: 1px solid $control;
-    background: $ground;
-    color: $text;
-    font: inherit;
-    cursor: pointer;
-
-    &:hover {
-      background: $panel;
-    }
+    padding: 0;
   }
 }
 
@@ -50,7 +40,7 @@ $page-wide: null !default; // the phone/desktop breakpoint; the side column need
   width: 100%;
   max-height: 75vh;
   aspect-ratio: 1;
-  background: $panel;
+  background: $ground; // the card around it is $panel
   box-shadow: 0 0 0 1px $ring;
   cursor: grab;
   touch-action: none; // pan and pinch are ours; the buttons still work for anyone who wants to scroll past on a phone

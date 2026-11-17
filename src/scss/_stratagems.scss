@@ -1,7 +1,7 @@
 @use "sass:map";
 
 // Called from main.scss with its palette, which a separate module cannot read.
-@mixin styles($line, $muted, $text, $accent, $factions, $wide) {
+@mixin styles($muted, $text, $accent, $factions, $wide) {
   // Colours follow the game's permit colours; each also has the category name beside it.
   .cat-offensive {
     --faction: #{map.get($factions, automaton)};
@@ -20,26 +20,18 @@
   }
 
   .stratagems {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.9375rem;
-
+    // Oat draws the cells, rules and header colour.
     th,
     td {
-      padding: 0.5rem;
-      border-bottom: 1px solid $line;
-      text-align: left;
       vertical-align: top;
     }
 
     tbody th {
+      color: inherit;
       font-weight: 600;
     }
 
     thead th {
-      color: $muted;
-      font-size: 0.875rem;
-      font-weight: 400;
       vertical-align: bottom;
     }
 
@@ -48,8 +40,9 @@
     }
 
     thead button {
+      display: block; // Oat's inline-flex would centre the label
       width: 100%;
-      padding: 0.5rem;
+      padding: var(--space-3) var(--space-2);
       border: 0;
       background: none;
       color: inherit;

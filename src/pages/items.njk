@@ -57,7 +57,7 @@ permalink: "/{{ lang }}/items/"
         <td{% if k in numeric %} class="num"{% endif %}{% if k not in ["source", "cost", "class"] %} lang="en"{% endif %}>
           {%- if k == "source" %}{{ unlock(it.source, t, lang) }}
           {%- elif k == "cost" %}{{ price(it.cost, t) }}
-          {%- elif k == "class" %}<span class="tag">{{ t.items.classes[it.class] }}</span>
+          {%- elif k == "class" %}<span class="badge">{{ t.items.classes[it.class] }}</span>
           {%- elif k == "passive" %}<strong>{{ it.passive }}</strong> <span class="sub">{{ it.passiveText }}</span>
           {%- else %}{{ it[k] or dash(t) }}{% endif -%}
         </td>

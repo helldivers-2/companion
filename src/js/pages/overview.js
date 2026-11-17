@@ -63,7 +63,7 @@ function orderPanel(o, planets, rates, orderPlanets) {
     return `<li class="${d.done ? "done" : ""}">
       <span class="check icon i-${d.done ? "check-circle-fill" : "circle"}"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
-        <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
+        <p class="task-line">${esc(d.text)}${p ? ` <span class="badge ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
         ${detail}
       </div>
     </li>`;
@@ -110,8 +110,8 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
   <div class="row-head">
     <h4 translate="no">${esc(p.name)}</h4>
     <span class="muted sector">${esc(p.sector)}</span>
-    ${isOrder ? `<span class="tag mo">${t.overview.order}</span>` : ""}
-    ${p.event ? `<span class="tag defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
+    ${isOrder ? `<span class="badge mo">${t.overview.order}</span>` : ""}
+    ${p.event ? `<span class="badge defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
     <span class="players" title="${t.js.onPlanet}"><span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
   </div>
   ${idle(p) ? `<p class="rate stalled">${t.js.idle}</p>` : meter(p, rate)}

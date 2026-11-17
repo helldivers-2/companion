@@ -9,9 +9,9 @@ permalink: "/{{ lang }}/map/"
 <section class="card" aria-labelledby="map-h">
 <h2 class="visually-hidden" id="map-h">{{ t.map.label }}</h2>
 <div class="map-tools">
-  <button type="button" data-zoom="1.5">{% icon "magnifying-glass-plus" %}<span class="visually-hidden">{{ t.map.zoomIn }}</span></button>
-  <button type="button" data-zoom="0.6667">{% icon "magnifying-glass-minus" %}<span class="visually-hidden">{{ t.map.zoomOut }}</span></button>
-  <button type="button">{% icon "arrows-in" %}<span class="visually-hidden">{{ t.map.reset }}</span></button>
+  <button type="button" class="outline" data-zoom="1.5">{% icon "magnifying-glass-plus" %}<span class="visually-hidden">{{ t.map.zoomIn }}</span></button>
+  <button type="button" class="outline" data-zoom="0.6667">{% icon "magnifying-glass-minus" %}<span class="visually-hidden">{{ t.map.zoomOut }}</span></button>
+  <button type="button" class="outline">{% icon "arrows-in" %}<span class="visually-hidden">{{ t.map.reset }}</span></button>
 </div>
 <p class="muted" id="map-loading" data-loading>{{ t.map.loading }}</p>
 <svg id="map" role="group" aria-label="{{ t.map.label }}" viewBox="0 0 1000 1000"><g id="map-layer"></g></svg>

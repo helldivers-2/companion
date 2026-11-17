@@ -30,7 +30,7 @@ permalink: "/{{ lang }}/shop/"
       {%- for it in stock %}
       <tr>
         <th scope="row"><a href="/{{ lang }}/items/?q={{ it.name | urlencode }}" lang="en" translate="no">{{ it.name }}</a></th>
-        <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="tag">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
+        <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="badge">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
         <td class="num">{{ price(it.cost, t) }}</td>
       </tr>
       {%- endfor %}

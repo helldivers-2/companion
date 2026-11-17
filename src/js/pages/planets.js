@@ -62,11 +62,11 @@ function render() {
 
   const focused = document.activeElement?.dataset.planet; // the 60 s refresh rebuilds the rows
   document.getElementById("planet-rows").innerHTML = rows.map((p) => {
-    const owner = `<span class="tag ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span>`;
+    const owner = `<span class="badge ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span>`;
     const hazards = p.hazards.filter((h) => h.name !== "None");
     return `<tr>
       <th scope="row">
-        <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="tag defense">${t.js.underAttack}</span>` : ""}
+        <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="badge defense">${t.js.underAttack}</span>` : ""}
         <span class="narrow sub">${owner} ${esc([p.sector, p.biome?.name, ...hazards.map((h) => h.name)].filter(Boolean).join(", "))}</span>
       </th>
       <td class="wide">${esc(p.sector)}</td>
@@ -84,7 +84,7 @@ function render() {
 
 function details(p, hazards) {
   const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
-    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="tag">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
+    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="badge">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
       ${p.biome ? `<h3 lang="en">${esc(p.biome.name)}</h3><p lang="en">${esc(p.biome.description)}</p>` : ""}

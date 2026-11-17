@@ -53,9 +53,9 @@ permalink: "/{{ lang }}/stratagems/"
         <th scope="row">
           <span translate="no">{{ item.name }}</span>
           <span class="narrow sub">{{ code(item, s) }}</span>
-          <span class="narrow sub"><span class="tag cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
+          <span class="narrow sub"><span class="badge cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
         </th>
-        <td class="wide"><span class="tag cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
+        <td class="wide"><span class="badge cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
         <td class="wide">{{ code(item, s) }}</td>
         <td class="num">{{ seconds(item, s) }}</td>
         <td class="num">{{ uses(item, s) }}</td>
