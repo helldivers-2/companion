@@ -701,7 +701,6 @@ summary {
   }
 
   .check {
-    --icon: #{map.get($icons, circle)};
     width: 1.25rem;
     height: 1.25rem;
     margin-top: 0.1rem;
@@ -709,7 +708,6 @@ summary {
   }
 
   .done .check {
-    --icon: #{map.get($icons, check-circle-fill)};
     background: $accent;
   }
 
