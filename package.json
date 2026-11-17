@@ -18,5 +18,11 @@
     "esbuild": "^0.28.2",
     "sass": "^1.108.2",
     "wrangler": "^4.163.0"
+  },
+  "allowScripts": {
+    "@parcel/watcher@2.6.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true,
+    "workerd@1.20261116.1": true
   }
 }
