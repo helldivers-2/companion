@@ -4,6 +4,7 @@
 @use "@fontsource/barlow/latin-600";
 @use "@fontsource/barlow-condensed/latin-600" as condensed-600;
 @use "@fontsource/barlow-condensed/latin-700";
+@use "theme";
 
 // The companion's palette (light, dark), following the system setting like the companion does.
 $ground: light-dark(oklch(1 0 0), oklch(0.216 0.006 56.043));

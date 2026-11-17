@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hash is the <script>0</script> below. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hashes are the <script>0</script> below and the theme script. #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k=' 'sha256-a3/VjIsEE5NsukimsP5MlYhpl7Dot06LFsVFv2FT/qk='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   {%- set title = t.meta[page_id][0] %}
   {%- set description = t.meta[page_id][1] %}
   {%- set path = page.url | replace("/" + lang + "/", "/") %}
@@ -34,6 +34,8 @@
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+  {#- Sets the saved theme before first paint so a forced theme never flashes the other one; main.js wires the footer control to setTheme. #}
+  <script>{const r=document.documentElement;let m;window.setTheme=(t,save)=>{if(save)try{t=="system"?localStorage.removeItem("theme"):localStorage.setItem("theme",t)}catch{}r.dataset.theme=t;m?.remove();m=null;if(t!="system"){m=document.createElement("meta");m.name="theme-color";m.content=t=="dark"?"#1c1917":"#ffffff";document.head.prepend(m)}};let s;try{s=localStorage.getItem("theme")}catch{}setTheme(s=="light"||s=="dark"?s:"system")}</script>
   <link rel="stylesheet" href="/assets/main.css">
   {#- Firefox lays out the body before the stylesheet arrives if anything (often an extension) forces layout early, flashing raw HTML. A script here has to wait for the stylesheet, which holds the body back. #}
   <script>0</script>
@@ -90,6 +92,15 @@
             <li><a href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
             {%- endfor %}
           </ul>
+          {#- Hidden until main.js runs: without JavaScript the choice can't apply, so it isn't offered. #}
+          <div id="theme" hidden>
+            <h2 id="footer-theme">{{ t.theme.label }}</h2>
+            <div class="theme" role="radiogroup" aria-labelledby="footer-theme">
+              {%- for v in ["system", "light", "dark"] %}
+              <label><input type="radio" name="theme" value="{{ v }}"{% if v == "system" %} checked{% endif %}>{{ t.theme[v] }}</label>
+              {%- endfor %}
+            </div>
+          </div>
         </div>
       </div>
     </div>

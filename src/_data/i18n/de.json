@@ -67,7 +67,8 @@
       ["Warum ist über Nacht Fortschritt verloren gegangen?", "Nachts spielen weniger Leute, also regeneriert der Planet schneller, als er Schaden nimmt."],
       ["Zählen Missionen auf anderen Planeten?", "Nicht für die Befreiung. Gegen die Regeneration von Planeten außerhalb der Feldzüge kommen ein paar Trupps nicht an. Der Spielleiter sieht aber, wo die Spieler kämpfen."],
       ["Warum fehlen die Raten am Anfang?", "Die API kennt keinen Verlauf, also zeichnet dein Browser selbst einen auf. Nach etwa fünf Minuten kann er jede Front messen. Bis dahin siehst du, wie schnell der Feind regeneriert, und diesen Wert muss Über-Erde pro Stunde übertreffen."],
-      ["Warum haben die meisten Fronten keinen Balken?", "Dort haben die Spieler noch nichts ausgerichtet. Diese Fronten zeigen „Noch kein Boden gewonnen“ und stehen ganz unten."]
+      ["Warum haben die meisten Fronten keinen Balken?", "Dort haben die Spieler noch nichts ausgerichtet. Diese Fronten zeigen „Noch kein Boden gewonnen“ und stehen ganz unten."],
+      ["Was sind die besten PC-Spezifikationen für Helldivers 2?", "Auf Steam steht als Minimum Windows 10 (64 Bit), ein Intel Core i7-4790K oder AMD Ryzen 5 1500X, 8 GB RAM und eine GeForce GTX 1050 Ti oder Radeon RX 470. Empfohlen werden ein Intel Core i7-9700K oder AMD Ryzen 7 3700X, 16 GB RAM und eine GeForce RTX 2060 oder Radeon RX 6600 XT, dazu eine SSD. Steam nennt 135 GB freien Speicherplatz."]
     ],
     "source": "Quellen: das <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> und die Community."
   },
@@ -157,5 +158,6 @@
     "taskType": "Aufgabentyp {n}",
     "planetN": "Planet Nr. {n}",
     "planetsUnit": "Planeten"
-  }
+  },
+  "theme": {"label": "Farbschema", "system": "System", "light": "Hell", "dark": "Dunkel"}
 }
