@@ -852,6 +852,30 @@ summary {
     color: $text;
     font: inherit;
   }
+
+  // iOS Safari ignores border and background on a native select, so it drops its own look and gets this caret.
+  select {
+    padding-right: 2.25rem;
+    border-radius: 0;
+    appearance: none;
+  }
+
+  label:has(select) {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.875rem;
+      width: 1rem;
+      height: 1rem;
+      background: currentColor;
+      content: "";
+      mask: map.get($icons, caret-right) center / contain no-repeat;
+      pointer-events: none;
+      rotate: 90deg;
+    }
+  }
 }
 
 .table-wrap {
@@ -916,16 +940,16 @@ summary {
   }
 
   [aria-sort="none"] button::after {
-    content: " ↕";
+    content: " ↕\fe0e" / "";
     opacity: 0.5;
   }
 
   [aria-sort="ascending"] button::after {
-    content: " ↑";
+    content: " ↑\fe0e" / "";
   }
 
   [aria-sort="descending"] button::after {
-    content: " ↓";
+    content: " ↓\fe0e" / "";
   }
 
   .num {
