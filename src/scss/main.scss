@@ -154,12 +154,19 @@ h4 {
   color: $muted;
 }
 
-.stack {
-  display: grid;
-  gap: 1rem;
+// Lists used for layout, not as bulleted text.
+.stack,
+footer ul,
+.tasks,
+.rows {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.stack {
+  display: grid;
+  gap: 1rem;
 }
 
 // Header
@@ -385,12 +392,6 @@ footer {
     font-weight: 600;
     letter-spacing: 0.025em;
     text-transform: uppercase;
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
   }
 
   .icon {
@@ -692,8 +693,6 @@ summary {
   display: grid;
   gap: 0.875rem;
   margin: 1.25rem 0;
-  padding: 0;
-  list-style: none;
 
   > li {
     display: grid;
@@ -794,13 +793,6 @@ summary {
 .front .bar {
   background: color-mix(in srgb, var(--faction) 25%, $ground);
 }
-
-.rows {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
 .row {
   display: grid;
   gap: 0.25rem;
