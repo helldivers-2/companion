@@ -66,7 +66,8 @@
       ["Why did we lose progress overnight?", "Fewer people play at night, so the planet heals faster than they can damage it."],
       ["Do missions on other planets count?", "Not toward liberation. Planets outside the campaign list heal faster than a few squads can hurt them, though the game master sees where people play."],
       ["Why don’t rates show up right away?", "The API keeps no history, so your browser records its own. After about five minutes it can measure each front. Until then you see how fast the enemy heals, which is the hourly damage Super Earth has to beat."],
-      ["Why do most fronts have no bar?", "Players haven’t made a dent in them yet. Those fronts say “No ground taken yet” and sit at the bottom of the list."]
+      ["Why do most fronts have no bar?", "Players haven’t made a dent in them yet. Those fronts say “No ground taken yet” and sit at the bottom of the list."],
+      ["What are the best PC specs for Helldivers 2?", "On Steam, the minimum is Windows 10 (64-bit), an Intel Core i7-4790K or AMD Ryzen 5 1500X, 8 GB of RAM and a GeForce GTX 1050 Ti or Radeon RX 470. The recommended specs are an Intel Core i7-9700K or AMD Ryzen 7 3700X, 16 GB of RAM and a GeForce RTX 2060 or Radeon RX 6600 XT, with an SSD. Steam lists 135 GB of free space."]
     ],
     "source": "Sources: the <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> and the community."
   },
@@ -158,5 +159,6 @@
     "taskType": "Task type {n}",
     "planetN": "planet #{n}",
     "planetsUnit": "planets"
-  }
+  },
+  "theme": {"label": "Theme", "system": "System", "light": "Light", "dark": "Dark"}
 }

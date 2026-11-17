@@ -1,3 +1,4 @@
+import "./theme.js";
 import site from "../_data/site.json" with { type: "json" };
 import { state } from "./api.js";
 import { icon, timeLeft } from "./format.js";
