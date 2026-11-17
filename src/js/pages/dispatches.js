@@ -1,14 +1,18 @@
-import { get } from "../api.js";
+import { fetchedAt, get } from "../api.js";
 import { date, dispatchHtml, icon, newestFirst } from "../format.js";
 import { lang, t } from "../i18n.js";
 
 const SHOWN = 50;
+const PATH = "/api/v2/dispatches";
+let shownAt; // fetch time of the list on screen; most 60 s ticks hit the 300 s cache and would rebuild it, dropping the reader's selection
 const won = new RegExp(t.js.won, "i"), lost = new RegExp(t.js.lost, "i"); // eleventyComputed.js adds the English patterns
 const outcome = (msg) => (lost.test(msg) ? " failed" : won.test(msg) ? " won" : "");
 const dateFmt = new Intl.DateTimeFormat(lang, { dateStyle: "medium", timeStyle: "short" });
 
 export default async function dispatches() {
-  const list = await get("/api/v2/dispatches", 300);
+  const list = await get(PATH, 300);
+  if (fetchedAt[PATH] === shownAt) return;
+  shownAt = fetchedAt[PATH];
   document.getElementById("dispatches").innerHTML = newestFirst(list.filter((d) => d.message), "published")
     .slice(0, SHOWN)
     .map((d) => `<li class="card dispatch${outcome(d.message)}">${icon("clock")} ${date(d.published, dateFmt)}<p>${dispatchHtml(d.message)}</p></li>`)
