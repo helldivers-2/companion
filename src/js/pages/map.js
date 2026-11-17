@@ -176,7 +176,9 @@ export default async function galaxyMap() {
   const byIndex = Object.fromEntries([...list, ...campaignPlanets].map((p) => [p.index, p]));
   const campaign = new Set(campaignPlanets.map((p) => p.index));
   const order = new Set(orders.flatMap((o) => o.tasks.map((task, i) => describeTask(task, o.progress[i], byIndex).planet?.index)));
-  planets = Object.values(byIndex).filter((p) => !p.disabled && p.position);
+  // Planets not yet placed (sector "TBD", like WAYWARD) sit at 0,0 on top of Super Earth and would take its clicks.
+  const placed = (p) => p.position && (p.index === 0 || p.position.x || p.position.y);
+  planets = Object.values(byIndex).filter((p) => !p.disabled && placed(p));
   points = planets.map((p) => { const [x, y] = project(p.position); return { index: p.index, x, y }; });
   if (!planets.some((p) => p.index === rover)) rover = (planets.find((p) => campaign.has(p.index)) ?? planets[0])?.index;
 
