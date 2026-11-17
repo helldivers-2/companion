@@ -1,13 +1,12 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
+import { i18nDir as dir, loadLocale as load } from "./helpers.js";
 import site from "../src/_data/site.json" with { type: "json" };
 import computed from "../src/_data/eleventyComputed.js";
 
 // Every locale needs the same keys as English, or the page shows "undefined".
 const shape = (o) => (o && typeof o === "object" && !Array.isArray(o) ? Object.fromEntries(Object.keys(o).sort().map((k) => [k, shape(o[k])])) : Array.isArray(o) ? o.length : null);
-const dir = new URL("../src/_data/i18n/", import.meta.url);
-const load = (l) => JSON.parse(readFileSync(new URL(`${l}.json`, dir)));
 
 test("every locale file matches English and site.locales", () => {
   assert.deepEqual(readdirSync(dir).map((f) => f.replace(".json", "")).sort(), [...site.locales].sort());

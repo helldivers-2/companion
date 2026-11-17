@@ -8,15 +8,15 @@ function setup(t, responses, latency = 500) {
   t.mock.timers.enable({ apis: ["setTimeout", "Date"] });
   globalThis.localStorage = memory();
   const calls = [];
-  globalThis.fetch = (url) => {
+  t.mock.method(globalThis, "fetch", () => {
     calls.push(Date.now());
     const r = responses.shift();
     return new Promise((ok, fail) => setTimeout(() => (r instanceof Error ? fail(r) : ok(r)), latency));
-  };
+  });
   const settle = async (p, ms) => { t.mock.timers.tick(ms); return p; };
   return { calls, settle };
 }
-const json = (data, status = 200) => ({ ok: status < 400, status, json: async () => data });
+const json = (data, status = 200) => new Response(JSON.stringify(data), { status });
 
 test("the refresh tick one TTL later fetches fresh data despite a slow response", async (t) => {
   const { calls, settle } = setup(t, [json(1), json(2)]);

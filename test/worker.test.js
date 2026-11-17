@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
+import site from "../src/_data/site.json" with { type: "json" };
+import { loadLocale } from "./helpers.js";
 import worker, { LANGS } from "../worker.js";
 
 const env = { API_ORIGIN: "https://origin.test", ACCESS_CLIENT_ID: "id", ACCESS_CLIENT_SECRET: "secret" };
@@ -52,7 +53,5 @@ test("a cache hit goes out with the 20 s TTL, not the one the cache returns", as
 });
 
 test("every site locale asks for a language the Worker allows", () => {
-  for (const f of readdirSync("src/_data/i18n")) {
-    assert.ok(LANGS.has(JSON.parse(readFileSync(`src/_data/i18n/${f}`)).api), f);
-  }
+  for (const l of site.locales) assert.ok(LANGS.has(loadLocale(l).api), l);
 });
