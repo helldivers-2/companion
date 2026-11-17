@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { get, state } from "../src/js/api.js";
+import { fetchedAt, get, state } from "../src/js/api.js";
 import { memory } from "./helpers.js";
 
 // Fake clock plus a fetch that answers after `latency` ms with the queued responses.
@@ -45,6 +45,7 @@ test("within the TTL the cache answers, after it a failed fetch falls back to st
   t.mock.timers.tick(30_000);
   assert.equal(await settle(get("/x", 60), 500), 1);
   assert.equal(state.stale, true);
+  assert.equal(fetchedAt["/x"], 0); // the stale answer keeps its original fetch time
 });
 
 test("without a cache a failed fetch rejects", async (t) => {

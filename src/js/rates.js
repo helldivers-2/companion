@@ -4,12 +4,12 @@ import { lang, t } from "./i18n.js";
 const KEY = "hd:history";
 const WINDOW = 60 * 60_000;
 const MIN_SPAN = 5 * 60_000;
-const MIN_GAP = 50_000; // skip repeats of the same cached snapshot
 const days = new Intl.NumberFormat(lang, { style: "unit", unit: "day", unitDisplay: "long" });
 
 // Estimates progress per hour from snapshots this browser has seen; the API has no history endpoint.
 // shortcut: only measures while a tab is open, so rates appear ~5 min after first visit.
-export function track(planets, now = Date.now(), store = localStorage) {
+// `now` is when the snapshot was fetched, so a re-rendered cache or a stale fallback is not a new measurement.
+export function track(planets, now, store = localStorage) {
   let hist = {};
   try { hist = JSON.parse(store.getItem(KEY)) ?? {}; } catch {}
   const next = {};
@@ -21,7 +21,7 @@ export function track(planets, now = Date.now(), store = localStorage) {
     const lib = liberation(p);
     // a bad stored entry would throw on every load and never get overwritten
     const h = (Array.isArray(hist[id]) ? hist[id] : []).filter((s) => now - s?.[0] < WINDOW);
-    if (!h.length || now - h.at(-1)[0] >= MIN_GAP) h.push([now, lib]);
+    if (!h.length || now > h.at(-1)[0]) h.push([now, lib]);
     next[id] = h;
     const [t0, l0] = h[0];
     if (now - t0 >= MIN_SPAN) rates[p.index] = (lib - l0) / ((now - t0) / 3_600_000);
