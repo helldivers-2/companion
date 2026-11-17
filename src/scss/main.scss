@@ -589,11 +589,13 @@ summary {
   border-radius: 0.25rem;
   background: $line;
 
+  // Filled by scaleX (set inline), so a refresh animates on the compositor.
   span {
     display: block;
     height: 100%;
     background: map.get($factions, humans);
-    transition: width 0.4s;
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 }
 

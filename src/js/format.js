@@ -17,7 +17,7 @@ export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c)
 
 export function bar(ratio, label) {
   const v = Math.max(0, Math.min(1, ratio || 0));
-  return `<div class="bar" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(v * 100).toFixed(1)}"><span style="width:${v * 100}%"></span></div>`;
+  return `<div class="bar" role="progressbar" aria-label="${esc(label)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${(v * 100).toFixed(1)}"><span style="transform:scaleX(${v})"></span></div>`;
 }
 
 // Region system: planet health stays full while a city is being taken, so the furthest-taken region is the progress.
