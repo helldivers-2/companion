@@ -21,8 +21,6 @@ $accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
 $ring: light-dark(oklch(0.145 0 0 / 10%), oklch(0.985 0.001 106.423 / 10%));
 // The companion's amber icon colour, used for the nav icons as it does.
 $icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
-// Decorative fills only (hazard stripes, borders): the companion's yellow primary fails as text on white.
-$accent-fill: light-dark(oklch(0.852 0.199 91.936), oklch(0.905 0.182 98.111));
 
 // Page column, its side gutter, and the phone/desktop breakpoint.
 $page: 76rem;
@@ -1034,11 +1032,13 @@ summary {
   }
 }
 
-// Dispatches
+// Dispatches and news are read, not scanned: a column at reading width instead of the full page.
+.dispatches,
+.news {
+  max-width: 48rem;
+}
 
 .dispatch {
-  border-left: 3px solid $accent-fill;
-
   time {
     color: $muted;
     font-size: 0.875rem;
@@ -1050,15 +1050,6 @@ summary {
     white-space: pre-line;
   }
 
-  // The headline already names the outcome, so the edge colour marks it instead of a repeated tag.
-  &.won {
-    border-left-color: map.get($factions, humans);
-  }
-
-  &.failed {
-    border-left-color: map.get($factions, automaton);
-  }
-
   .ah-1 {
     color: $accent;
   }
@@ -1067,6 +1058,15 @@ summary {
     color: $accent;
     font-family: $display;
     font-size: 1.3125rem;
+  }
+
+  // The headline already names the outcome, so its colour marks it instead of a repeated tag.
+  &.won .ah-3 {
+    color: map.get($factions, humans);
+  }
+
+  &.failed .ah-3 {
+    color: map.get($factions, automaton);
   }
 }
 
