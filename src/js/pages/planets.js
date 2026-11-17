@@ -107,10 +107,10 @@ export default async function planetsPage() {
       render();
     });
     document.querySelector("table.planets thead").addEventListener("click", (e) => {
-      const key = e.target.closest("th[data-sort]")?.dataset.sort;
-      if (!key) return;
-      const numeric = key === "players" || key === "liberation";
-      sort = { key, dir: sort.key === key ? -sort.dir : numeric ? -1 : 1 };
+      const th = e.target.closest("th[data-sort]");
+      if (!th) return;
+      const key = th.dataset.sort;
+      sort = { key, dir: sort.key === key ? -sort.dir : th.classList.contains("num") ? -1 : 1 };
       render();
     });
   }

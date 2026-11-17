@@ -50,7 +50,7 @@ export default async function overview() {
         ${rest.length ? `<details id="more-${id}"${open.has(`more-${id}`) ? " open" : ""}><summary>${icon("caret-right")} ${fill(t.js.showMore, { n: rest.length })}</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
     }).join("") || `<p class="muted">${icon("sword")} ${t.js.noCampaigns}</p>`;
-  if (focused) document.getElementById(focused)?.querySelector("summary").focus({ preventScroll: true });
+  if (focused) $(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {

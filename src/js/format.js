@@ -56,7 +56,7 @@ export function enemyOf(planet) {
   return planet.event?.faction ?? planet.currentOwner;
 }
 
-export function duration(ms) {
+function duration(ms) {
   let s = Math.floor(ms / 1000);
   const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
   s %= 60;

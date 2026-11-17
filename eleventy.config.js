@@ -18,7 +18,6 @@ export default function (eleventyConfig) {
 
   return {
     dir: { input: "src", output: "_site" },
-    templateFormats: ["njk", "html"],
-    htmlTemplateEngine: "njk",
+    templateFormats: ["njk"],
   };
 }
