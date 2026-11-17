@@ -855,6 +855,11 @@ summary {
     font: inherit;
   }
 
+  input::placeholder {
+    color: $muted; // the browser default grey is 3.3:1 on the panel
+    opacity: 1;
+  }
+
   // iOS Safari ignores border and background on a native select, so it drops its own look and gets this caret.
   select {
     padding-right: 2.25rem;
