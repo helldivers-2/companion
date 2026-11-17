@@ -13,7 +13,7 @@
     "shop": ["Helldivers 2: Superstore-Artikel und Preise", "Alle Gegenstände, die im Superstore von Helldivers 2 angeboten werden können, mit Preisen in Super Credits."],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
-  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "map": "Galaxiekarte", "stratagems": "Stratagems", "items": "Ausrüstung", "shop": "Superstore" },
+  "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "armory": "Arsenal", "map": "Karte", "stratagems": "Stratagems", "items": "Ausrüstung", "shop": "Superstore" },
   "layout": {
     "skip": "Zum Inhalt springen",
     "home": "{name}, Startseite",
@@ -155,6 +155,7 @@
     "time": "Zeit im Kampf"
   },
   "map": {
+    "h1": "Galaxiekarte",
     "intro": "Alle Planeten des Galaktischen Krieges an ihrer Position, eingefärbt nach Besitzer. Wähle einen Planeten für Details, ziehe zum Verschieben, zoome per Fingergeste oder mit den Schaltflächen und wechsle mit den Pfeiltasten zwischen Planeten.",
     "note": "Die Karte ist ein visueller Überblick. Alle Planeten stehen mit denselben Details auch in der {link}.",
     "label": "Karte des Galaktischen Krieges",

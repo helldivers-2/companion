@@ -4,6 +4,7 @@ permalink: "/{{ lang }}/shop/"
 ---
 {%- from "item-cells.njk" import dash, price %}
 <div class="container">
+{% include "armory-tabs.njk" %}
 <h1>{{ t.nav.shop }}</h1>
 <p class="muted hint">{{ t.shop.intro }}</p>
 <div class="notice" role="note">

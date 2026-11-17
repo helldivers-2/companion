@@ -119,15 +119,6 @@
 
   // Phones get the name with its code and details folded underneath, like the planets table.
   @media (width < $wide) {
-    // The sixth nav item no longer fits the bottom bar at the default padding.
-    .top {
-      padding-inline: 0.5rem;
-    }
-
-    .top nav a {
-      padding-inline: 0.3125rem;
-    }
-
     .stratagems .sub {
       display: block;
       margin-top: 0.25rem;

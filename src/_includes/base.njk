@@ -48,7 +48,8 @@
     <nav aria-label="{{ t.nav.label }}">
       {%- for item in nav %}
       {%- set href = "/" + lang + "/" + item[0] %}
-      <a href="{{ href }}"{% if page.url == href %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
+      {#- item[3] lists sub-pages that light up the same entry; item[4] is a class, "wide" keeps it out of the phone tab bar #}
+      <a href="{{ href }}"{% if item[4] %} class="{{ item[4] }}"{% endif %}{% if page.url == href or (page.url | replace("/" + lang + "/", "")) in (item[3] or []) %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
     </nav>
   </header>
@@ -66,6 +67,7 @@
       <div>
         <h2>{{ site.name }}</h2>
         <p class="muted">{{ t.layout.by | replace("{author}", '<a href="' + footer.author.href + '">' + footer.author.name + "</a>") | safe }}</p>
+        <p><a href="/{{ lang }}/faq/">{% icon "info" %}{{ t.nav.faq }}</a></p>{# the phone tab bar has no room for it #}
       </div>
       <div class="footer-cols">
         <div>

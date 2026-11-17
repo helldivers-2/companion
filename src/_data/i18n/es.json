@@ -13,7 +13,7 @@
     "shop": ["Helldivers 2: objetos y precios del Superstore", "Todos los objetos que pueden aparecer en el Superstore de Helldivers 2, con su precio en Super Créditos."],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
-  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "map": "Mapa galáctico", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Superstore" },
+  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "armory": "Arsenal", "map": "Mapa", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Superstore" },
   "layout": {
     "skip": "Saltar al contenido",
     "home": "Inicio de {name}",
@@ -155,6 +155,7 @@
     "time": "Tiempo en combate"
   },
   "map": {
+    "h1": "Mapa galáctico",
     "intro": "Todos los planetas de la Guerra Galáctica en su posición, coloreados según su propietario. Selecciona un planeta para ver sus detalles, arrastra para desplazarte, pellizca o usa los botones para acercar y usa las flechas del teclado para moverte entre planetas.",
     "note": "El mapa es una vista general visual. Todos los planetas aparecen también con los mismos detalles en la {link}.",
     "label": "Mapa de la Guerra Galáctica",

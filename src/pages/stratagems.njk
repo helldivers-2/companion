@@ -18,6 +18,7 @@ permalink: "/{{ lang }}/stratagems/"
 {%- macro seconds(item, s) %}{{ s.seconds | replace("{n}", item.cooldown) if item.cooldown is number else dash(s) }}{% endmacro %}
 {%- macro uses(item, s) %}{{ s.unlimited if item.uses == "unlimited" else (item.uses if item.uses is number else dash(s)) }}{% endmacro %}
 <div class="container">
+{% include "armory-tabs.njk" %}
 <h1>{{ t.nav.stratagems }}</h1>
 <p class="muted hint">{{ s.intro }}</p>
 <section class="card" aria-labelledby="all-h">

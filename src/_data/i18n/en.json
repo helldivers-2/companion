@@ -13,7 +13,7 @@
     "shop": ["Helldivers 2 Superstore Items & Prices", "Every item that can appear in the Helldivers 2 Superstore, with its price in Super Credits."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
-  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ", "map": "Galaxy map", "stratagems": "Stratagems", "items": "Items", "shop": "Shop" },
+  "nav": { "label": "Main", "overview": "Overview", "planets": "Planets", "dispatches": "Dispatches", "news": "News", "faq": "FAQ", "armory": "Armory", "map": "Map", "stratagems": "Stratagems", "items": "Items", "shop": "Shop" },
   "layout": {
     "skip": "Skip to content",
     "home": "{name} home",
@@ -155,6 +155,7 @@
     "time": "Time in combat"
   },
   "map": {
+    "h1": "Galaxy map",
     "intro": "Every planet of the Galactic War at its position, coloured by owner. Select a planet for details, drag to pan, pinch or use the buttons to zoom, and use the arrow keys to move between planets.",
     "note": "The map is a visual overview. Every planet is also listed with the same details in the {link}.",
     "label": "Galactic War map",

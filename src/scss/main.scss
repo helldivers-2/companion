@@ -196,18 +196,20 @@ html {
   display: flex;
   justify-content: center;
   padding-bottom: env(safe-area-inset-bottom);
+  padding-inline: 0.25rem; // six entries share a 360 px phone
   border-top: 1px solid $line;
   background: $panel;
 
   nav {
     display: flex;
     flex: 1;
-    max-width: 32rem;
+    max-width: 36rem;
   }
 
   nav a {
-    flex: 1;
-    padding: 0.375rem 0.25rem 0.5rem;
+    flex: auto; // long German labels like "Neuigkeiten" get the width they need
+    min-width: 0;
+    padding: 0.375rem 0.125rem 0.5rem;
     color: $text;
     font-size: 0.75rem;
     font-weight: 600;
@@ -491,6 +493,33 @@ footer {
 
   @media (width >= $wide) {
     padding-bottom: 2rem;
+  }
+}
+
+// Tabs between the pages that share one main nav entry.
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid $line;
+
+  a {
+    padding: 0.5rem 0;
+    margin-bottom: -1px;
+    border-bottom: 2px solid transparent;
+    color: $muted;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      color: $text;
+    }
+
+    &[aria-current="page"] {
+      border-color: $accent;
+      color: $text;
+    }
   }
 }
 
@@ -937,6 +966,7 @@ summary {
 }
 
 .table-wrap {
+  position: relative; // visually hidden cell text is absolutely positioned and would otherwise widen the whole page
   overflow-x: auto;
 }
 

@@ -13,6 +13,7 @@ permalink: "/{{ lang }}/items/"
 } %}
 {%- set numeric = ["damage", "rate", "magazine", "radius", "fuse", "rating", "speed", "stamina", "cost"] %}
 <div class="container">
+{% include "armory-tabs.njk" %}
 <h1>{{ t.nav.items }}</h1>
 <p class="muted hint">{{ t.items.intro }}</p>
 <form class="filters" id="item-filters" role="search">
