@@ -42,5 +42,8 @@ Promise.resolve(page?.()).catch(() => {}).finally(() => {
 setInterval(refresh, site.refreshSeconds * 1000);
 document.addEventListener("visibilitychange", refresh);
 setInterval(() => {
-  for (const el of document.querySelectorAll("[data-until]")) el.textContent = timeLeft(el.dataset.until);
+  for (const el of document.querySelectorAll("[data-until]")) {
+    const s = timeLeft(el.dataset.until);
+    if (el.textContent !== s) el.textContent = s;
+  }
 }, 1000);

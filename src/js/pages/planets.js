@@ -98,7 +98,8 @@ export default async function planetsPage() {
   if (!form().dataset.bound) {
     form().dataset.bound = "1";
     readUrl();
-    form().addEventListener("input", render);
+    let typing;
+    form().addEventListener("input", () => { clearTimeout(typing); typing = setTimeout(render, 150); });
     form().addEventListener("submit", (e) => e.preventDefault());
     document.getElementById("planet-rows").addEventListener("click", (e) => {
       const i = Number(e.target.closest("[data-planet]")?.dataset.planet);
