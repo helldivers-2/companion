@@ -28,7 +28,7 @@
   },
   "overview": {
     "h1": "Der Galaktische Krieg im Überblick",
-    "intro": "Die Zahlen oben kommen live aus der Community-API zu Helldivers 2 und aktualisieren sich von selbst. Was sie bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
+    "intro": "Was die Zahlen bedeuten, erfährst du in der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a>.",
     "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
     "station": "Raumstation",
@@ -37,7 +37,7 @@
     "statistics": "Statistik"
   },
   "planets": {
-    "intro": "Durchsuche, filtere und sortiere die Planeten des Galaktischen Kriegs oder öffne einen, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",
+    "intro": "Öffne einen Planeten, um seine Gefahren, Regionen und Kampfbilanz zu sehen.",
     "all": "Alle Planeten",
     "search": "Suche",
     "placeholder": "Planet, Sektor, Biom, Gefahr …",

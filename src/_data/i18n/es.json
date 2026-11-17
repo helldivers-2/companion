@@ -28,7 +28,7 @@
   },
   "overview": {
     "h1": "Resumen de la Guerra Galáctica",
-    "intro": "Las cifras de arriba llegan en directo de la API de la comunidad de Helldivers 2 y se actualizan solas. La <a href=\"{faq}\">guía de liberación y defensa</a> explica qué significan.",
+    "intro": "La <a href=\"{faq}\">guía de liberación y defensa</a> explica qué significan estas cifras.",
     "order": "Orden suprema",
     "orderLoading": "Recibiendo órdenes del alto mando…",
     "station": "Estación espacial",
@@ -37,7 +37,7 @@
     "statistics": "Estadísticas"
   },
   "planets": {
-    "intro": "Busca, filtra y ordena los planetas de la Guerra Galáctica, o abre uno para ver sus peligros, regiones e historial de combate.",
+    "intro": "Abre un planeta para ver sus peligros, regiones e historial de combate.",
     "all": "Todos los planetas",
     "search": "Buscar",
     "placeholder": "Planeta, sector, bioma, peligro…",
