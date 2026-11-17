@@ -1,0 +1,176 @@
+// Galaxy map. Loaded from main.scss with the palette passed in, so the map follows the same tokens.
+$ground: null !default;
+$panel: null !default;
+$control: null !default;
+$text: null !default;
+$muted: null !default;
+$accent: null !default;
+$ring: null !default;
+$page-wide: null !default; // the phone/desktop breakpoint; the side column needs room beyond it
+
+.map-layout {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+
+  @media (min-width: $page-wide * 1.75) {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+  }
+}
+
+.map-side {
+  display: grid;
+  gap: 1rem;
+}
+
+.map-tools {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid $control;
+    background: $ground;
+    color: $text;
+    font: inherit;
+    cursor: pointer;
+
+    &:hover {
+      background: $panel;
+    }
+  }
+}
+
+#map {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  aspect-ratio: 1;
+  background: $panel;
+  box-shadow: 0 0 0 1px $ring;
+  cursor: grab;
+  touch-action: none; // pan and pinch are ours; the buttons still work for anyone who wants to scroll past on a phone
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+#map-loading[hidden] {
+  display: none;
+}
+
+.lines {
+  fill: none;
+  stroke: $muted;
+  stroke-opacity: 0.4;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.planet {
+  fill: var(--faction);
+  stroke: $panel;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+
+  #map & {
+    cursor: pointer;
+  }
+
+  &[aria-pressed="true"] {
+    stroke: $text;
+    stroke-width: 3;
+  }
+
+  &:focus-visible {
+    outline: none; // the stroke is the focus ring; an outline on an SVG shape is drawn inconsistently
+    stroke: $accent;
+    stroke-width: 4;
+  }
+}
+
+.mark {
+  fill: none;
+  stroke: var(--faction);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+  pointer-events: none;
+
+  &.defending {
+    stroke-dasharray: 4 3;
+  }
+
+  &.order {
+    stroke: $accent;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mark.defending {
+    animation: map-pulse 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes map-pulse {
+  50% {
+    stroke-opacity: 0.35;
+  }
+}
+
+.labels text {
+  fill: $text;
+  font-size: 12px;
+  paint-order: stroke;
+  stroke: $panel;
+  stroke-width: 3px;
+  pointer-events: none;
+}
+
+.facts {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  dt {
+    color: $muted;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+#map-detail > :not(:first-child) {
+  margin-top: 0.75rem;
+}
+
+.legend {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+}

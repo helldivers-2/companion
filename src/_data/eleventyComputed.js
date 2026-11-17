@@ -1,6 +1,6 @@
 // Pages paginate over site.locales into `lang`; templates read their strings from `t`.
 // The page script reads only these keys; base.njk embeds them so the bundle carries no locale files.
-const SCRIPT_KEYS = ["api", "js", "factions", "units", "record", "taskTypes", "rewardTypes", "tacticalStatus", "regionSizes"];
+const SCRIPT_KEYS = ["api", "js", "factions", "units", "record", "taskTypes", "rewardTypes", "tacticalStatus", "regionSizes", "map"];
 
 export default {
   t: (data) => data.i18n[data.lang ?? "en"],
