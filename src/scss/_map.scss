@@ -1,18 +1,13 @@
-// Galaxy map. Loaded from main.scss with the palette passed in, so the map follows the same tokens.
-$ground: null !default;
-$panel: null !default;
-$text: null !default;
-$muted: null !default;
-$accent: null !default;
-$ring: null !default;
-$page-wide: null !default; // the phone/desktop breakpoint; the side column needs room beyond it
+// Galaxy map.
+@use "palette" as *;
 
 .map-layout {
   display: grid;
   gap: 1rem;
   align-items: start;
 
-  @media (min-width: $page-wide * 1.75) {
+  // the side column needs room beyond the phone breakpoint
+  @media (min-width: $wide * 1.75) {
     grid-template-columns: minmax(0, 1fr) 20rem;
   }
 }

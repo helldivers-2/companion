@@ -144,6 +144,6 @@ function stationAction(a, s) {
   // Preparing starts once every cost is met, so the furthest-behind cost is the progress.
   const costs = a.costs ?? [];
   const ratio = costs.length ? Math.min(1, ...costs.map((c) => c.currentValue / c.targetValue)) || 0 : null;
-  return `<li><p>${name}${ratio === null ? "" : ` <span class="muted ready">${fill(t.js.ready, { pct: pct0.format(ratio) })}</span>`}</p>
+  return `<li><p>${name}${ratio === null ? "" : ` <span class="muted ready">${fill(t.js.ready, { pct: pct0(ratio) })}</span>`}</p>
     ${ratio === null ? "" : bar(ratio, fill(t.js.preparation, { name: a.name }))}${about}</li>`;
 }

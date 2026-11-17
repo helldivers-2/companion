@@ -8,7 +8,6 @@ const ICONS = [
   "info", "stack", "shapes", "brackets-angle", "building-office",
   "crosshair", "arrow-up", "arrow-down", "arrow-left", "arrow-right",
   "map-trifold", "magnifying-glass-plus", "magnifying-glass-minus", "arrows-in",
-  "backpack", "storefront",
   "check-circle-fill", "discord-logo-fill", "reddit-logo-fill", "steam-logo-fill", "flame-fill", "github-logo-fill",
   "instagram-logo-fill", "youtube-logo-fill",
 ];

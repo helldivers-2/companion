@@ -12,3 +12,7 @@
 {% macro price(c, t) -%}
 {%- if c %}{{ c.amount }} {{ t.items.currency[c.currency] }}{% else %}{{ dash(t) }}{% endif %}
 {%- endmacro %}
+
+{% macro credit(items, t) -%}
+<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+{%- endmacro %}

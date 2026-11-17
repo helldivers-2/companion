@@ -34,9 +34,9 @@ permalink: "/{{ lang }}/stratagems/"
     </select>
   </label>
 </form>
-<p class="muted" id="stratagem-count" aria-live="polite" data-template="{{ s.count }}">{{ s.count | replace("{n}", stratagems.items.length) | replace("{total}", stratagems.items.length) }}</p>
+<p class="muted" id="stratagem-count" aria-live="polite" data-fmt="{{ s.count }}">{{ s.count | replace("{n}", stratagems.items.length) | replace("{total}", stratagems.items.length) }}</p>
 <div class="table-wrap">
-  <table class="stratagems">
+  <table class="planets stratagems">
     <thead>
       <tr>
         {%- for col in ["name", "category", "code", "cooldown", "uses", "unlock"] %}

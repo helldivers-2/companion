@@ -2,7 +2,7 @@
 page_id: shop
 permalink: "/{{ lang }}/shop/"
 ---
-{%- from "item-cells.njk" import dash, price %}
+{%- from "item-cells.njk" import dash, price, credit %}
 <div class="container">
 {% include "armory-tabs.njk" %}
 <h1>{{ t.nav.shop }}</h1>
@@ -40,5 +40,5 @@ permalink: "/{{ lang }}/shop/"
 </section>
 {%- endif %}
 {%- endfor %}
-<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+{{ credit(items, t) }}
 </div>

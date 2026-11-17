@@ -1,7 +1,5 @@
 // Item database and shop. They reuse the planets table and filter styles; this only adds what long stat tables need.
-// main.scss passes the palette in through meta.load-css, since a partial can't see the variables of the file that loads it.
-$panel: null !default;
-$line: null !default;
+@use "palette" as *;
 
 .items {
   // The page scrolls sideways on a phone, so the item name stays put to say which row a figure belongs to.

@@ -2,7 +2,7 @@
 page_id: items
 permalink: "/{{ lang }}/items/"
 ---
-{%- from "item-cells.njk" import dash, unlock, price %}
+{%- from "item-cells.njk" import dash, unlock, price, credit %}
 {%- set cols = {
   primary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
   secondary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
@@ -69,5 +69,5 @@ permalink: "/{{ lang }}/items/"
 </div>
 </section>
 {%- endfor %}
-<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+{{ credit(items, t) }}
 </div>
