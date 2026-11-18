@@ -64,8 +64,11 @@ async function get(params) {
 }
 
 async function main() {
-  const cargo = await get({ action: "cargoquery", tables: "Stratagems", fields: FIELDS, limit: "500" });
-  const page = (await get({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE })).query.pages[0].revisions[0];
+  const [cargo, uses] = await Promise.all([
+    get({ action: "cargoquery", tables: "Stratagems", fields: FIELDS, limit: "500" }),
+    get({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE }),
+  ]);
+  const page = uses.query.pages[0].revisions[0];
   const items = normalise(cargo.cargoquery.map((r) => r.title), JSON.parse(page.slots.main.content).stratagems);
   if (items.length < 80) throw new Error(`Only ${items.length} stratagems, the wiki's table has probably changed`); // better to keep the committed file
   writeFileSync(new URL("../src/_data/stratagems.json", import.meta.url), `${JSON.stringify({

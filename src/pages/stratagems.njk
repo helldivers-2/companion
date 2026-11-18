@@ -34,9 +34,9 @@ permalink: "/{{ lang }}/stratagems/"
     </select>
   </label>
 </form>
-<p class="muted" id="stratagem-count" aria-live="polite" data-template="{{ s.count }}">{{ s.count | replace("{n}", stratagems.items.length) | replace("{total}", stratagems.items.length) }}</p>
+<p class="muted" id="stratagem-count" aria-live="polite" data-fmt="{{ s.count }}">{{ s.count | replace("{n}", stratagems.items.length) | replace("{total}", stratagems.items.length) }}</p>
 <div class="table-wrap">
-  <table class="stratagems">
+  <table class="planets stratagems">
     <thead>
       <tr>
         {%- for col in ["name", "category", "code", "cooldown", "uses", "unlock"] %}
@@ -53,9 +53,9 @@ permalink: "/{{ lang }}/stratagems/"
         <th scope="row">
           <span translate="no">{{ item.name }}</span>
           <span class="narrow sub">{{ code(item, s) }}</span>
-          <span class="narrow sub"><span class="tag cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
+          <span class="narrow sub"><span class="badge cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
         </th>
-        <td class="wide"><span class="tag cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
+        <td class="wide"><span class="badge cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
         <td class="wide">{{ code(item, s) }}</td>
         <td class="num">{{ seconds(item, s) }}</td>
         <td class="num">{{ uses(item, s) }}</td>

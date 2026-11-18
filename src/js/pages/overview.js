@@ -4,7 +4,7 @@ import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
 const $ = (id) => document.getElementById(id);
-const SHOWN_PER_FRONT = 5;
+const SHOWN_PER_FRONT = 2;
 
 export default async function overview() {
   const [war, orders, campaigns, planetList, stations] = await Promise.all([
@@ -63,7 +63,7 @@ function orderPanel(o, planets, rates, orderPlanets) {
     return `<li class="${d.done ? "done" : ""}">
       <span class="check icon i-${d.done ? "check-circle-fill" : "circle"}"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
-        <p class="task-line">${esc(d.text)}${p ? ` <span class="tag ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
+        <p class="task-line">${esc(d.text)}${p ? ` <span class="badge ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
         ${detail}
       </div>
     </li>`;
@@ -110,8 +110,8 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
   <div class="row-head">
     <h4 translate="no">${esc(p.name)}</h4>
     <span class="muted sector">${esc(p.sector)}</span>
-    ${isOrder ? `<span class="tag mo">${t.overview.order}</span>` : ""}
-    ${p.event ? `<span class="tag defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
+    ${isOrder ? `<span class="badge mo">${t.overview.order}</span>` : ""}
+    ${p.event ? `<span class="badge defense">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}
     <span class="players" title="${t.js.onPlanet}"><span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
   </div>
   ${idle(p) ? `<p class="rate stalled">${t.js.idle}</p>` : meter(p, rate)}
@@ -144,6 +144,6 @@ function stationAction(a, s) {
   // Preparing starts once every cost is met, so the furthest-behind cost is the progress.
   const costs = a.costs ?? [];
   const ratio = costs.length ? Math.min(1, ...costs.map((c) => c.currentValue / c.targetValue)) || 0 : null;
-  return `<li><p>${name}${ratio === null ? "" : ` <span class="muted ready">${fill(t.js.ready, { pct: pct0.format(ratio) })}</span>`}</p>
+  return `<li><p>${name}${ratio === null ? "" : ` <span class="muted ready">${fill(t.js.ready, { pct: pct0(ratio) })}</span>`}</p>
     ${ratio === null ? "" : bar(ratio, fill(t.js.preparation, { name: a.name }))}${about}</li>`;
 }

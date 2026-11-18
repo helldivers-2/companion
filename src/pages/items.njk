@@ -2,7 +2,7 @@
 page_id: items
 permalink: "/{{ lang }}/items/"
 ---
-{%- from "item-cells.njk" import dash, unlock, price %}
+{%- from "item-cells.njk" import dash, unlock, price, credit %}
 {%- set cols = {
   primary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
   secondary: ["type", "damage", "rate", "magazine", "pen", "source", "cost"],
@@ -57,7 +57,7 @@ permalink: "/{{ lang }}/items/"
         <td{% if k in numeric %} class="num"{% endif %}{% if k not in ["source", "cost", "class"] %} lang="en"{% endif %}>
           {%- if k == "source" %}{{ unlock(it.source, t, lang) }}
           {%- elif k == "cost" %}{{ price(it.cost, t) }}
-          {%- elif k == "class" %}<span class="tag">{{ t.items.classes[it.class] }}</span>
+          {%- elif k == "class" %}<span class="badge">{{ t.items.classes[it.class] }}</span>
           {%- elif k == "passive" %}<strong>{{ it.passive }}</strong> <span class="sub">{{ it.passiveText }}</span>
           {%- else %}{{ it[k] or dash(t) }}{% endif -%}
         </td>
@@ -69,5 +69,5 @@ permalink: "/{{ lang }}/items/"
 </div>
 </section>
 {%- endfor %}
-<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+{{ credit(items, t) }}
 </div>

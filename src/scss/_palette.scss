@@ -1,0 +1,32 @@
+// Shared by main.scss and its partials through @use.
+// The companion's palette (light, dark), following the system setting like the companion does.
+$ground: light-dark(oklch(1 0 0), oklch(0.216 0.006 56.043));
+$panel: light-dark(oklch(0.97 0 0), oklch(0.268 0.007 34.298));
+$line: light-dark(oklch(0.923 0.003 48.717), oklch(1 0 0 / 10%));
+// Form borders need 3:1 against panel and ground (WCAG 1.4.11), so these are darker than the companion's input token.
+$control: light-dark(oklch(0.62 0 0), oklch(0.553 0.013 58.071));
+$text: light-dark(oklch(0.145 0 0), oklch(0.985 0.001 106.423));
+// Light is a step darker than the companion's muted-foreground to reach 4.5:1 on the panel.
+$muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
+// Text and focus accent. Dark uses the companion's chart-1 yellow because its amber primary is
+// indistinguishable from Terminids orange; light uses its primary-foreground for 4.5:1 on white.
+$accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
+// The companion's card ring: foreground at 10 %, drawn as a box-shadow so it adds no layout.
+$ring: light-dark(oklch(0.145 0 0 / 10%), oklch(0.985 0.001 106.423 / 10%));
+// The companion's amber icon colour, used for the nav icons as it does.
+$icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
+
+// Page column, its side gutter, and the phone/desktop breakpoint.
+$page: 76rem;
+$gutter: clamp(1rem, 4vw, 2rem);
+$wide: 40rem;
+
+// Every pair (plus $accent) checked for 4.5:1 on ground and panel and for OKLab distance under
+// normal vision and deuteranopia. Light: accent vs automaton is the closest pair (deutan 0.06), but
+// tags that share a row also differ in text.
+$factions: (
+  humans: light-dark(oklch(0.5 0.1 220), #46cbe8),
+  terminids: light-dark(oklch(0.555 0.15 58), #ffa31a),
+  automaton: light-dark(oklch(0.47 0.18 15), #ff5a52),
+  illuminate: light-dark(oklch(0.5 0.17 295), #b38cff),
+);

@@ -7,7 +7,8 @@ const numFmt = new Intl.NumberFormat(lang);
 export const num = (n) => numFmt.format(n ?? 0);
 const pctFmt = new Intl.NumberFormat(lang, { style: "percent", minimumFractionDigits: 2, maximumFractionDigits: 2 });
 export const pct = (x) => pctFmt.format(x);
-export const pct0 = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
+const pct0Fmt = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
+export const pct0 = (x) => pct0Fmt.format(x);
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
 export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
 // Faction names arrive as API values; translate them only for display.
@@ -45,6 +46,8 @@ export function regen(planet) {
 }
 
 export const held = (p) => p.currentOwner === "Humans" && !p.event;
+export const liberationText = (p) => (held(p) ? t.js.held : pct(liberation(p)));
+export const ownerBadge = (p) => `<span class="badge ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span>`;
 export const STALLED = 0.0005; // under 0.05 %/h is measurement noise over a few minutes
 // The API's own regeneration, the best hint until this browser has measured a rate.
 export function regainsLine(p) {
@@ -100,7 +103,7 @@ export function steamHtml(bb) {
 }
 
 const compact = new Intl.NumberFormat(lang, { notation: "compact", maximumFractionDigits: 1 });
-const years = new Intl.NumberFormat(lang, { notation: "compact", maximumFractionDigits: 1, style: "unit", unit: "year", unitDisplay: "long" });
+const years = new Intl.NumberFormat(lang, { notation: "compact", style: "unit", unit: "year", unitDisplay: "long" });
 
 // Battle record for the whole war or one planet. Accuracy is left out: the API reports more hits than shots.
 export function record(s, byFaction = false) {
@@ -113,12 +116,12 @@ export function record(s, byFaction = false) {
   const rows = [
     [r.missionsWon, s.missionsWon],
     [r.missionsLost, s.missionsLost],
-    [r.successRate, pct0.format((s.missionSuccessRate ?? 0) / 100)],
+    [r.successRate, pct0((s.missionSuccessRate ?? 0) / 100)],
     ...kills,
     [r.deaths, s.deaths],
     [r.kd, deaths ? compact.format(total / deaths) : "–"],
     [r.friendlies, s.friendlies],
-    [r.friendlyShare, deaths ? pct0.format((s.friendlies ?? 0) / deaths) : "–"],
+    [r.friendlyShare, deaths ? pct0((s.friendlies ?? 0) / deaths) : "–"],
     [r.bullets, s.bulletsFired],
     [r.time, years.format((s.missionTime ?? 0) / 31_557_600)],
   ];

@@ -1,5 +1,5 @@
 import { get } from "../api.js";
-import { countdown, describeTask, esc, faction, held, icon, liberation, num, pct, slug } from "../format.js";
+import { countdown, describeTask, esc, faction, icon, liberationText, num, ownerBadge, slug } from "../format.js";
 import { fill, lang, t } from "../i18n.js";
 
 const SIZE = 1000; // the viewBox at zoom 1; planet positions span roughly -1..1
@@ -36,6 +36,7 @@ let selected = null; // planet index
 let rover = null; // the one planet in the tab order; arrow keys move it
 let bound = false;
 let lastPanel = "";
+let lastLayer = "";
 
 function apply() {
   view = clampView(view);
@@ -59,16 +60,18 @@ function bind() {
   };
   const pointers = new Map();
   let moved = false;
+  let box; // measured on pointerdown: reading it on every move would force a layout per event
   const spread = () => { const [a, b] = [...pointers.values()]; return Math.hypot(a.x - b.x, a.y - b.y); };
 
   svg.addEventListener("pointerdown", (e) => {
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY });
+    box = frame();
     if (pointers.size === 1) moved = false;
   });
   svg.addEventListener("pointermove", (e) => {
     const p = pointers.get(e.pointerId);
     if (!p) return;
-    const { r, s, ox, oy } = frame();
+    const { r, s, ox, oy } = box;
     const before = pointers.size === 2 ? spread() : 0;
     const [dx, dy] = [e.clientX - p.x, e.clientY - p.y];
     p.x = e.clientX;
@@ -146,11 +149,11 @@ function renderPanel() {
   const html = p ? `<h3 translate="no">${esc(p.name)}</h3>
     <dl class="facts">
       <div><dt>${t.map.sector}</dt><dd>${esc(p.sector)}</dd></div>
-      <div><dt>${t.map.owner}</dt><dd><span class="tag ${slug(p.currentOwner)}">${esc(faction(p.currentOwner))}</span></dd></div>
-      <div><dt>${t.map.liberation}</dt><dd>${held(p) ? t.js.held : pct(liberation(p))}</dd></div>
+      <div><dt>${t.map.owner}</dt><dd>${ownerBadge(p)}</dd></div>
+      <div><dt>${t.map.liberation}</dt><dd>${liberationText(p)}</dd></div>
       <div><dt>${t.map.players}</dt><dd>${num(p.statistics.playerCount)}</dd></div>
     </dl>
-    ${p.event ? `<p><span class="tag ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span></p>` : ""}
+    ${p.event ? `<p><span class="badge ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span></p>` : ""}
     <a href="/${lang}/planets/?open=${p.index}">${icon("arrow-square-out")} ${t.map.open}</a>`
     : `<p class="muted">${t.map.hint}</p>`;
   if (html === lastPanel) return; // the clock ticks the countdown itself; rewriting would drop focus from the link
@@ -173,7 +176,9 @@ export default async function galaxyMap() {
   const byIndex = Object.fromEntries([...list, ...campaignPlanets].map((p) => [p.index, p]));
   const campaign = new Set(campaignPlanets.map((p) => p.index));
   const order = new Set(orders.flatMap((o) => o.tasks.map((task, i) => describeTask(task, o.progress[i], byIndex).planet?.index)));
-  planets = Object.values(byIndex).filter((p) => !p.disabled && p.position);
+  // Planets not yet placed (sector "TBD", like WAYWARD) sit at 0,0 on top of Super Earth and would take its clicks.
+  const placed = (p) => p.position && (p.index === 0 || p.position.x || p.position.y);
+  planets = Object.values(byIndex).filter((p) => !p.disabled && placed(p));
   points = planets.map((p) => { const [x, y] = project(p.position); return { index: p.index, x, y }; });
   if (!planets.some((p) => p.index === rover)) rover = (planets.find((p) => campaign.has(p.index)) ?? planets[0])?.index;
 
@@ -208,9 +213,12 @@ export default async function galaxyMap() {
   }
 
   const layer = $("map-layer");
-  const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet; // the 60 s refresh rebuilds the planets
-  layer.innerHTML = `<path class="lines" d="${path}"/>${marks.join("")}<g aria-hidden="true">${hits.join("")}</g>${dots.join("")}<g class="labels" aria-hidden="true">${labels.join("")}</g>`;
-  if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
+  const html = `<path class="lines" d="${path}"/>${marks.join("")}<g aria-hidden="true">${hits.join("")}</g>${dots.join("")}<g class="labels" aria-hidden="true">${labels.join("")}</g>`;
+  if (html !== lastLayer) { // the planet list is cached for an hour, so most refreshes draw the same map
+    const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet;
+    layer.innerHTML = lastLayer = html;
+    if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
+  }
   $("map-loading").hidden = true;
   renderPanel();
 }

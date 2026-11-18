@@ -2,7 +2,7 @@
 page_id: shop
 permalink: "/{{ lang }}/shop/"
 ---
-{%- from "item-cells.njk" import dash, price %}
+{%- from "item-cells.njk" import dash, price, credit %}
 <div class="container">
 {% include "armory-tabs.njk" %}
 <h1>{{ t.nav.shop }}</h1>
@@ -30,7 +30,7 @@ permalink: "/{{ lang }}/shop/"
       {%- for it in stock %}
       <tr>
         <th scope="row"><a href="/{{ lang }}/items/?q={{ it.name | urlencode }}" lang="en" translate="no">{{ it.name }}</a></th>
-        <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="tag">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
+        <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="badge">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
         <td class="num">{{ price(it.cost, t) }}</td>
       </tr>
       {%- endfor %}
@@ -40,5 +40,5 @@ permalink: "/{{ lang }}/shop/"
 </section>
 {%- endif %}
 {%- endfor %}
-<p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
+{{ credit(items, t) }}
 </div>

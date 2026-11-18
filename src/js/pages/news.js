@@ -15,8 +15,8 @@ export default async function news() {
   document.getElementById("news").innerHTML = list.map((n, i) => {
     const id = `news-${slug(n.id)}`;
     const open = target ? target === id : i === 0;
-    return `<li class="card"><details class="note" id="${id}"${open ? " open" : ""}>
-      <summary>${icon("caret-right")} <h2>${esc(n.title)}</h2>
+    return `<li><details class="note" id="${id}"${open ? " open" : ""}>
+      <summary><h2>${esc(n.title)}</h2>
         <p class="muted">${icon("clock")} ${date(n.publishedAt, dateFmt)}${n.author ? `, ${esc(n.author)}` : ""}</p></summary>
       <div class="steam">${steamHtml(n.content)}</div>
       ${/^https:\/\//.test(n.url) ? `<p><a href="${esc(n.url)}">${icon("arrow-square-out")} ${t.js.readOnSteam}</a></p>` : ""}
