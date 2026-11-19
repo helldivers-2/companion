@@ -18,9 +18,32 @@ Every push to `main` deploys to Cloudflare through GitHub Actions. `npm run depl
 - The stratagem and item tables are built from `src/_data/stratagems.json` and `items.json`, which `npm run stratagems` and `npm run items` refresh from the [Helldivers Wiki](https://helldivers.wiki.gg/) (CC BY-NC-SA 4.0); commit the result. `npm run planets` does the same for the planet pictures (`planetImages.json`).
 - Those scripts also mirror the wiki's pictures into `src/img/{stratagems,items,planets}/`, where `sources.json` records each file's uploader and licence. Only files with a licence that allows reuse are taken, and only changed files are downloaded again. Thumbnails the wiki sends as PNG are converted with `cwebp` (`brew install webp`); without it they stay PNG. All wiki traffic goes through `scripts/wiki.js`, one request at a time with a pause in between; keep it that way.
 - All text is in `src/_data/i18n/<locale>.json`, one file per language; each page embeds only the keys its script needs (`src/_data/eleventyComputed.js`). `npm test` fails if a locale is missing a key that English has.
+- Game terms follow the glossary below. Change a term in every string of a locale at once, and update the table.
 - The client headers and refresh interval are in `src/_data/site.json`. Set `contact` to your own before you deploy a copy.
 - The browser fetches `/api/*` from its own origin. In production `worker.js` answers those calls from the self-hosted API; under `npm run dev` the same code calls the public API.
 - `src/redirects.njk` builds `_redirects`, which sends old URLs to their new pages. Cloudflare and Netlify read it; other hosts need the rules in their own format.
+
+## Glossary
+
+| English           | Deutsch             | Español                 | 繁體中文 |
+| ----------------- | ------------------- | ----------------------- | -------- |
+| Major Order       | Major Order         | Orden suprema           | 主要指令 |
+| Super Earth       | Über-Erde           | Supertierra             | 超級地球 |
+| Stratagem         | Stratagem           | Estratagema             | 戰略配備 |
+| Eagle             | Eagle               | Eagle                   | 飛鷹     |
+| Sentry            | Sentry              | Sentry                  | 砲塔     |
+| Super Credits     | Über-Credits        | Créditos de Supertierra | 超級點數 |
+| Medals            | Medaillen           | Medallas                | 勳章     |
+| Requisition Slips | Anforderungsscheine | Solicitudes             | 申購點   |
+| Warbond           | Kriegsanleihe       | Bono de guerra          | 戰爭債券 |
+| Superstore        | Über-Store          | Supertienda             | 超級商店 |
+| Terminids         | Terminiden          | Termínidos              | 蟲族     |
+| Automatons        | Automaten           | Autómatas               | 機器人   |
+| Illuminate        | Illuminate          | Iluminados              | 光能者   |
+
+The game's own text for a language is in its news feed: `curl -H 'Accept-Language: de-DE' 'https://api.live.prod.thehelldiversgame.com/api/NewsFeed/801?maxEntries=1024'` (use `zh-Hant` for Chinese). In November 2026 the German feed said Generalbefehl, Taktikausrüstung, Adler and Roboter, and the Spanish one said orden suprema and Águila. The table lists what the site uses now. The `js.won` and `js.lost` patterns are different: they must match the feed's wording, not the glossary.
+
+German status messages use the passive (“Karte wird geladen …”), and options use “können” (“Mit den Pfeiltasten kannst du …”), not the indicative (“… springst du …”).
 
 ## The self-hosted API
 

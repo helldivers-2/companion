@@ -2,26 +2,66 @@
   "name": "Español",
   "api": "es-ES",
   "meta": {
-    "overview": ["Helldivers 2: orden suprema y estado de la guerra", "La Guerra Galáctica de Helldivers 2 en directo: la orden suprema actual con progreso y plazo, la estación espacial, los frentes activos y las estadísticas."],
-    "planets": ["Helldivers 2: planetas y liberación", "Todos los planetas de la Guerra Galáctica de Helldivers 2 con sector, bioma, peligros, control, número de Helldivers y liberación en directo."],
-    "map": ["Mapa galáctico de Helldivers 2", "Mapa interactivo de la Guerra Galáctica de Helldivers 2: todos los planetas por propietario, con liberaciones, defensas y objetivos de la Gran Orden activos."],
+    "overview": [
+      "Helldivers 2: orden suprema y estado de la guerra",
+      "La Guerra Galáctica de Helldivers 2 en directo: la orden suprema actual con progreso y plazo, la estación espacial, los frentes activos y las estadísticas."
+    ],
+    "planets": [
+      "Helldivers 2: planetas y liberación",
+      "Todos los planetas de la Guerra Galáctica de Helldivers 2 con sector, bioma, peligros, control, número de Helldivers y liberación en directo."
+    ],
+    "map": [
+      "Mapa galáctico de Helldivers 2",
+      "Mapa de la Guerra Galáctica de Helldivers 2: todos los planetas por propietario, con liberaciones, defensas y objetivos de la orden suprema activos."
+    ],
     "dispatches": ["Helldivers 2: comunicados de Supertierra", "Los últimos comunicados de Supertierra en el juego sobre la Guerra Galáctica de Helldivers 2."],
-    "news": ["Helldivers 2: noticias y notas de parche", "Notas de parche, blogs de desarrollo y anuncios de Helldivers 2 desde la página de Arrowhead en Steam."],
-    "faq": ["Helldivers 2: liberación y defensa explicadas", "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."],
-    "stratagems": ["Base de datos de estratagemas de Helldivers 2", "Todas las estratagemas de Helldivers 2 con su código, categoría, enfriamiento, usos y forma de desbloqueo, con búsqueda y orden."],
-    "items": ["Helldivers 2: armas, armaduras y potenciadores", "Base de datos de todas las armas, arrojadizos, armaduras y potenciadores de Helldivers 2, con daño, cadencia, valor de armadura, pasivas y cómo se desbloquea cada uno."],
-    "shop": ["Helldivers 2: objetos y precios del Supertienda", "Todos los objetos que pueden aparecer en el Supertienda de Helldivers 2, con su precio en Supercréditos."],
+    "news": [
+      "Helldivers 2: noticias y notas de parche",
+      "Notas de parche, blogs de desarrollo y anuncios de Helldivers 2 desde la página de Arrowhead en Steam."
+    ],
+    "faq": [
+      "Helldivers 2: liberación y defensa explicadas",
+      "Cómo funciona la liberación en Helldivers 2: la salud de los planetas, la regeneración, las defensas con tiempo límite, los contraataques y por qué se pierde progreso de noche."
+    ],
+    "stratagems": [
+      "Base de datos de estratagemas de Helldivers 2",
+      "Todas las estratagemas de Helldivers 2 con su código, categoría, enfriamiento, usos y forma de desbloqueo."
+    ],
+    "items": [
+      "Helldivers 2: armas, armaduras y potenciadores",
+      "Todas las armas, arrojadizos, armaduras y potenciadores de Helldivers 2, con daño, cadencia, valor de armadura, pasivas y forma de desbloqueo."
+    ],
+    "shop": [
+      "Helldivers 2: objetos y precios de la Supertienda",
+      "Todos los objetos que pueden aparecer en la Supertienda de Helldivers 2, con su precio en Créditos de Supertierra."
+    ],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
-  "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "armory": "Arsenal", "map": "Mapa", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Supertienda" },
-  "images": { "credit": "Imágenes de la {wiki}, subidas por {artists}; la licencia de cada archivo está en {list}. El arte del juego pertenece a Arrowhead Game Studios.", "list": "esta lista", "missing": "Imagen no disponible" },
+  "nav": {
+    "label": "Principal",
+    "overview": "Resumen",
+    "planets": "Planetas",
+    "dispatches": "Comunicados",
+    "news": "Noticias",
+    "faq": "FAQ",
+    "armory": "Arsenal",
+    "map": "Mapa",
+    "stratagems": "Estratagemas",
+    "items": "Equipo",
+    "shop": "Supertienda"
+  },
+  "images": {
+    "credit": "Imágenes de la {wiki}, subidas por {artists}; la licencia de cada archivo está en {list}. El arte del juego pertenece a Arrowhead Game Studios.",
+    "list": "esta lista",
+    "missing": "Imagen no disponible"
+  },
   "layout": {
     "skip": "Saltar al contenido",
     "home": "Inicio de {name}",
     "ogAlt": "Una calavera amarilla junto a las palabras {name}, sobre fondo oscuro",
     "noscript": "Esta web carga los datos de la guerra en directo en tu navegador. Activa JavaScript para verlos.",
     "by": "Un proyecto de {author}.",
-    "about": "Un panel hecho por fans para la Guerra Galáctica de Helldivers 2. Carga datos nuevos de la API de la comunidad cada {s} s. Hecho con:",
+    "about": "Los datos llegan de la API de la comunidad cada {s} s. Hecho con:",
     "language": "Idioma",
     "disclaimer": "Proyecto de fans sin relación con Arrowhead Game Studios ni Sony Interactive Entertainment, que no lo respaldan.",
     "links": {
@@ -49,58 +89,134 @@
     "owner": "Control",
     "anyOwner": "Todos",
     "active": "Solo con Helldivers",
-    "cols": { "name": "Planeta", "sector": "Sector", "owner": "Control", "biome": "Bioma", "hazards": "Peligros", "players": "Helldivers", "liberation": "Liberación" },
+    "cols": {
+      "name": "Planeta",
+      "sector": "Sector",
+      "owner": "Control",
+      "biome": "Bioma",
+      "hazards": "Peligros",
+      "players": "Helldivers",
+      "liberation": "Liberación"
+    },
     "loading": "Cargando planetas…"
   },
   "stratagems": {
-    "intro": "Busca, filtra y ordena todas las estratagemas por categoría, enfriamiento, usos o desbloqueo.",
     "all": "Todas las estratagemas",
     "search": "Buscar",
     "placeholder": "Nombre, tipo, pase de guerra…",
     "category": "Categoría",
     "anyCategory": "Todas",
-    "categories": { "offensive": "Ofensiva", "supply": "Suministro", "defensive": "Defensiva", "mission": "Misión" },
-    "kinds": { "orbital": "Orbital", "eagle": "Águila", "sentry": "Torreta", "supportWeapon": "Arma de apoyo", "backpack": "Mochila", "vehicle": "Vehículo", "emplacement": "Emplazamiento", "objective": "Objetivo", "ship": "Nave", "other": "Otra" },
-    "cols": { "name": "Estratagema", "category": "Categoría", "code": "Código", "cooldown": "Enfriamiento", "uses": "Usos", "unlock": "Desbloqueo" },
-    "arrows": { "up": "Arriba", "down": "Abajo", "left": "Izquierda", "right": "Derecha" },
+    "categories": {
+      "offensive": "Ofensiva",
+      "supply": "Suministro",
+      "defensive": "Defensiva",
+      "mission": "Misión"
+    },
+    "kinds": {
+      "orbital": "Orbital",
+      "eagle": "Eagle",
+      "sentry": "Sentry",
+      "supportWeapon": "Arma de apoyo",
+      "backpack": "Mochila",
+      "vehicle": "Vehículo",
+      "emplacement": "Emplazamiento",
+      "objective": "Objetivo",
+      "ship": "Nave",
+      "other": "Otra"
+    },
+    "cols": {
+      "name": "Estratagema",
+      "category": "Categoría",
+      "code": "Código",
+      "cooldown": "Enfriamiento",
+      "uses": "Usos",
+      "unlock": "Desbloqueo"
+    },
+    "arrows": {
+      "up": "Arriba",
+      "down": "Abajo",
+      "left": "Izquierda",
+      "right": "Derecha"
+    },
     "unlimited": "Ilimitados",
     "unknown": "Desconocido",
     "level": "Nivel {n}",
     "free": "Gratis",
     "page": "página {n}",
     "seconds": "{n} s",
-    "cost": { "medals": "{n} medallas", "slips": "{n} vales de requisición", "credits": "{n} supercréditos" },
+    "cost": {
+      "medals": "{n} medallas",
+      "slips": "{n} solicitudes",
+      "credits": "{n} créditos de Supertierra"
+    },
     "count": "{n} de {total} estratagemas",
-    "noMatch": "Ninguna estratagema coincide con estos filtros. Prueba con otra búsqueda u otro filtro.",
-    "credit": "Datos de la {wiki}, con licencia {license}. Un guion significa que la wiki no tiene ese valor. Los desbloqueos pueden ir por detrás de los últimos parches. Última actualización: {date}."
+    "noMatch": "Ninguna estratagema coincide con estos filtros.",
+    "credit": "Datos de la {wiki}, con licencia {license}. Última actualización: {date}."
   },
   "items": {
-    "intro": "Todas las armas, arrojadizos, armaduras y potenciadores de Helldivers 2 con sus estadísticas clave y cómo desbloquearlos. Busca, filtra y ordena; pulsa el encabezado de una columna para ordenar por ella.",
     "search": "Buscar",
     "placeholder": "Nombre, tipo, pasiva…",
     "type": "Tipo",
     "anyType": "Todos",
     "unlockedBy": "Se desbloquea con",
     "anyUnlock": "Cualquiera",
-    "unlocks": {"warbond": "Bono de guerra", "superstore": "Supertienda", "other": "Otro"},
-    "cats": {"primary": "Armas principales", "secondary": "Armas secundarias", "support": "Armas de apoyo", "throwable": "Arrojadizos", "armor": "Armaduras", "booster": "Potenciadores"},
-    "classes": {"light": "Ligera", "medium": "Media", "heavy": "Pesada"},
-    "cols": {"name": "Nombre", "type": "Tipo", "damage": "Daño", "rate": "Cadencia", "magazine": "Cargador", "pen": "Penetración", "radius": "Radio", "fuse": "Mecha", "class": "Clase", "rating": "Armadura", "speed": "Velocidad", "stamina": "Regen. de aguante", "passive": "Pasiva", "text": "Efecto", "source": "Desbloqueo", "cost": "Precio", "kind": "Tipo"},
-    "currency": {"credits": "Supercréditos", "medals": "Medallas", "slips": "Vales de requisición"},
+    "unlocks": {
+      "warbond": "Bono de guerra",
+      "superstore": "Supertienda",
+      "other": "Otro"
+    },
+    "cats": {
+      "primary": "Armas principales",
+      "secondary": "Armas secundarias",
+      "support": "Armas de apoyo",
+      "throwable": "Arrojadizos",
+      "armor": "Armaduras",
+      "booster": "Potenciadores"
+    },
+    "classes": { "light": "Ligera", "medium": "Media", "heavy": "Pesada" },
+    "cols": {
+      "name": "Nombre",
+      "type": "Tipo",
+      "damage": "Daño",
+      "rate": "Cadencia",
+      "magazine": "Cargador",
+      "pen": "Penetración",
+      "radius": "Radio",
+      "fuse": "Mecha",
+      "class": "Clase",
+      "rating": "Armadura",
+      "speed": "Velocidad",
+      "stamina": "Regen. de aguante",
+      "passive": "Pasiva",
+      "text": "Efecto",
+      "source": "Desbloqueo",
+      "cost": "Precio",
+      "kind": "Tipo"
+    },
+    "currency": {
+      "credits": "Créditos de Supertierra",
+      "medals": "Medallas",
+      "slips": "Solicitudes"
+    },
     "superstore": "Supertienda",
     "page": "página {n}",
     "unlisted": "Sin datos",
     "count": "{n} de {total} objetos",
-    "noMatch": "Ningún objeto coincide con estos filtros. Prueba otra búsqueda u otro filtro.",
-    "credit": "Datos de objetos de {source}, con licencia {licence}, obtenidos el {date}. Las cifras cambian con los parches; la referencia es el propio juego."
+    "noMatch": "Ningún objeto coincide con estos filtros.",
+    "credit": "Datos de objetos de {source}, con licencia {licence}, obtenidos el {date}."
   },
   "shop": {
-    "intro": "Todos los objetos que pueden aparecer en el Supertienda, con su precio. Abre el nombre de uno para ver todas sus estadísticas en la base de datos.",
     "noLiveTitle": "La rotación actual no está disponible.",
-    "noLive": "La rotación actual del Supertienda solo se envía al propio juego, después de iniciar sesión. Ninguna API pública la publica, así que esta página no puede mostrar qué hay hoy a la venta ni cuándo cambia. Lista todo lo que la base de datos sabe que se vende allí; las ofertas actuales están en el Supertienda del juego."
+    "noLive": "Solo el juego recibe la rotación actual, después de iniciar sesión, así que esta página lista todo lo que la Supertienda puede vender."
   },
-  "dispatches": { "h1": "Comunicados de Supertierra", "intro": "El canal de noticias de Supertierra dentro del juego: partes de guerra, instrucciones de las órdenes supremas y propaganda, según se publican.", "loading": "Cargando comunicados…" },
-  "news": { "h1": "Noticias de Steam", "hint": "Notas de parche, blogs de desarrollo y anuncios de Arrowhead, los más recientes primero. Abre una publicación para leerla entera.", "loading": "Cargando noticias…" },
+  "dispatches": {
+    "h1": "Comunicados de Supertierra",
+    "loading": "Cargando comunicados…"
+  },
+  "news": {
+    "h1": "Noticias de Steam",
+    "loading": "Cargando noticias…"
+  },
   "faq": {
     "h1": "Liberación y defensa, explicadas",
     "math": "Cómo caen los planetas",
@@ -116,15 +232,28 @@
     "qa": [
       ["¿Abandonar una operación perjudica?", "No. Solo cuentan las misiones completadas, así que abandonar solo te cuesta las recompensas."],
       ["¿Por qué se pierde progreso por la noche?", "De noche juega menos gente, así que el planeta se recupera más rápido de lo que recibe daño."],
-      ["¿Cuentan las misiones en otros planetas?", "Para la liberación, no. Los planetas fuera de las campañas se recuperan más rápido de lo que unos pocos escuadrones los dañan. Eso sí, el director de juego ve dónde juega la gente."],
-      ["¿Por qué no aparecen los ritmos al principio?", "La API no guarda historial, así que tu navegador registra el suyo. Tras unos cinco minutos ya puede medir cada frente. Hasta entonces ves cuánto se recupera el enemigo por hora: el daño que Supertierra tiene que superar."],
-      ["¿Por qué la mayoría de los frentes no tienen barra?", "Los jugadores aún no les han hecho mella. Esos frentes indican «Sin terreno ganado» y van al final."],
-      ["¿Cuáles son los mejores requisitos de PC para Helldivers 2?", "En Steam, el mínimo es Windows 10 (64 bits), un Intel Core i7-4790K o AMD Ryzen 5 1500X, 8 GB de RAM y una GeForce GTX 1050 Ti o Radeon RX 470. Lo recomendado es un Intel Core i7-9700K o AMD Ryzen 7 3700X, 16 GB de RAM y una GeForce RTX 2060 o Radeon RX 6600 XT, con un SSD. Steam indica 135 GB de espacio libre."]
+      [
+        "¿Cuentan las misiones en otros planetas?",
+        "Para la liberación, no. Los planetas fuera de las campañas se recuperan más rápido de lo que unos pocos escuadrones los dañan. Eso sí, el director de juego ve dónde juega la gente."
+      ],
+      [
+        "¿Por qué no aparecen los ritmos al principio?",
+        "La API no guarda historial, así que tu navegador registra el suyo. Tras unos cinco minutos ya puede medir cada frente. Hasta entonces ves cuánto se recupera el enemigo por hora: el daño que Supertierra tiene que superar."
+      ],
+      [
+        "¿Por qué la mayoría de los frentes no tienen barra?",
+        "Los jugadores aún no les han hecho mella. Esos frentes indican «Sin terreno ganado» y van al final."
+      ]
     ],
     "source": "Fuentes: la <a href=\"https://helldivers.wiki.gg/\">Helldivers Wiki</a> y la comunidad."
   },
   "notfound": "Esta página se perdió en la Guerra Galáctica. <a href=\"{home}\">Volver al resumen</a>.",
-  "factions": { "Humans": "Humanos", "Terminids": "Termínidos", "Automaton": "Autómatas", "Illuminate": "Iluminados" },
+  "factions": {
+    "Humans": "Humanos",
+    "Terminids": "Termínidos",
+    "Automaton": "Autómatas",
+    "Illuminate": "Iluminados"
+  },
   "taskTypes": {
     "2": "Recolectar",
     "3": "Erradicar",
@@ -137,8 +266,17 @@
     "15": "Ganar liberaciones netas"
   },
   "rewardTypes": { "1": "medallas" },
-  "tacticalStatus": { "1": "En preparación", "2": "Activas ahora", "3": "En recarga" },
-  "regionSizes": { "Settlement": "asentamiento", "Town": "pueblo", "City": "ciudad", "MegaCity": "megaciudad" },
+  "tacticalStatus": {
+    "1": "En preparación",
+    "2": "Activas ahora",
+    "3": "En recarga"
+  },
+  "regionSizes": {
+    "Settlement": "asentamiento",
+    "Town": "pueblo",
+    "City": "ciudad",
+    "MegaCity": "megaciudad"
+  },
   "units": { "d": " d", "h": " h", "m": " min", "s": " s" },
   "record": {
     "missionsWon": "Misiones ganadas",
@@ -168,7 +306,7 @@
     "supply": "Línea de suministro",
     "liberating": "En liberación",
     "defending": "En defensa",
-    "order": "Objetivo de la Gran Orden",
+    "order": "Objetivo de la orden suprema",
     "details": "Detalles del planeta",
     "hint": "Selecciona un planeta para ver sus detalles.",
     "sector": "Sector",
@@ -191,7 +329,7 @@
     "lost": "ORDEN SUPREMA NO CUMPLIDA",
     "readOnSteam": "Leer en Steam",
     "noNews": "Todavía no hay noticias.",
-    "noOrder": "Ahora mismo no hay orden suprema. El alto mando emitirá nuevas órdenes pronto.",
+    "noOrder": "Ahora mismo no hay orden suprema.",
     "noStation": "Ahora mismo no hay ninguna Estación Espacial de la Democracia en órbita.",
     "online": "Helldivers en línea",
     "helldivers": "{n} Helldivers",
@@ -226,7 +364,7 @@
     "underAttack": "Bajo ataque",
     "none": "Ninguno",
     "count": "{n} de {total} planetas",
-    "noMatch": "Ningún planeta coincide con estos filtros. Prueba otra búsqueda u otro filtro.",
+    "noMatch": "Ningún planeta coincide con estos filtros.",
     "hazards": "Peligros",
     "locked": "Bloqueada",
     "regions": "Regiones",
@@ -235,5 +373,10 @@
     "planetN": "planeta n.º {n}",
     "planetsUnit": "planetas"
   },
-  "theme": {"label": "Tema", "system": "Sistema", "light": "Claro", "dark": "Oscuro"}
+  "theme": {
+    "label": "Tema",
+    "system": "Sistema",
+    "light": "Claro",
+    "dark": "Oscuro"
+  }
 }
