@@ -16,3 +16,12 @@
 {% macro credit(items, t) -%}
 <p class="muted hint">{{ t.items.credit | replace("{source}", '<a href="' + items.source.url + '">' + items.source.name + '</a>') | replace("{licence}", '<a href="' + items.source.licenceUrl + '">' + items.source.licence + '</a>') | replace("{date}", items.fetched) | safe }}</p>
 {%- endmacro %}
+
+{#- Names the uploaders of a folder of wiki images; src/img/<dir>/sources.json lists each file's licence. #}
+{% macro imageCredit(artists, dir, t) -%}
+{%- if artists.length %}<p class="muted hint">{{ t.images.credit | replace("{wiki}", '<a href="https://helldivers.wiki.gg/">Helldivers Wiki</a>') | replace("{artists}", artists | join(", ") | escape) | replace("{list}", '<a href="/img/' + dir + '/sources.json">' + t.images.list + '</a>') | safe }}</p>{% endif %}
+{%- endmacro %}
+
+{% macro thumb(it, t) -%}
+{%- if it.icon %}<img class="thumb" src="/img/items/{{ it.icon }}" alt="" width="56" height="56" loading="lazy" decoding="async">{% else %}<span class="thumb no-thumb" title="{{ t.images.missing }}" aria-hidden="true">{% icon "image-broken" %}</span>{% endif %}
+{%- endmacro %}

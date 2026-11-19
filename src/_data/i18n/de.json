@@ -14,6 +14,7 @@
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
   "nav": { "label": "Hauptmenü", "overview": "Übersicht", "planets": "Planeten", "dispatches": "Meldungen", "news": "Neuigkeiten", "faq": "FAQ", "armory": "Arsenal", "map": "Karte", "stratagems": "Taktikausrüstung", "items": "Ausrüstung", "shop": "Über-Store" },
+  "images": { "credit": "Bilder aus dem {wiki}, hochgeladen von {artists}; die Lizenz jeder Datei steht in {list}. Spielgrafiken gehören Arrowhead Game Studios.", "list": "dieser Liste", "missing": "Kein Bild verfügbar" },
   "layout": {
     "skip": "Zum Inhalt springen",
     "home": "{name}, Startseite",
@@ -156,7 +157,7 @@
   },
   "map": {
     "h1": "Galaxiekarte",
-    "intro": "Alle Planeten des Galaktischen Krieges an ihrer Position, eingefärbt nach Besitzer. Wähle einen Planeten für Details, ziehe zum Verschieben, zoome per Fingergeste oder mit den Schaltflächen und wechsle mit den Pfeiltasten zwischen Planeten.",
+    "intro": "Alle Planeten des Galaktischen Krieges an ihrer Position, eingefärbt nach Besitzer, mit einem Ring, der sich füllt, während Super-Erde ihn einnimmt. Wähle einen Planeten oder eine aktive Front für Details, ziehe zum Verschieben, zoome mit dem Mausrad, per Fingergeste oder mit den Schaltflächen und wechsle mit den Pfeiltasten zwischen Planeten.",
     "note": "Die Karte ist ein visueller Überblick. Alle Planeten stehen mit denselben Details auch in der {link}.",
     "label": "Karte des Galaktischen Krieges",
     "loading": "Karte wird geladen …",

@@ -1,0 +1,15 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2">
+  <desc>Traced by Dogo314</desc>
+  <g transform="translate(-276 -306)">
+    <path style="fill:none" d="M276 306h256v256H276z"/>
+    <clipPath id="a">
+      <path d="M276 306h256v256H276z"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+      <path style="fill:#011419" transform="translate(0 306)" d="M276 0h256v256H276z"/>
+      <path d="M1240 1915v6h66l21 7v13h-5l-23 25h-132l-23.852-28H1140l-6-4v-2h-13v-36h13l4 4 4-4h65l15.632 9H1243v-1h4v1h6v-1h4v1h19v-1h4v1h2v-1h4v1h1v4h-1v2h1v4h-1v1h-4v-1h-2v1h-4v-1h-19v1h-4v-1h-6v1h-4v-1zm-10.421-6 3.474 2H1243v-2zm23.421 0h-6v2h6zm23 0h-19v2h19zm6 0h-2v2h2zm31.805 35h-8.845l-11.96 13h-120l-11.074-13h-8.412l15.333 18h128.398z" style="fill:#55b9d2" transform="translate(-820 -1439)"/>
+      <path d="M3031 1800v17h-7v-17zm64 14-3 3h-55v-17h55l3 3h14l9 5.5-9 5.5zm-64 10v17h-7v-17zm64 14-3 3h-55v-17h55l3 3h14l9 5.5-9 5.5zm-64 10v17h-7v-17zm64 14-3 3h-55v-17h55l3 3h14l9 5.5-9 5.5zm-156-25h-27l19-19h12l18-18h15v15l-18 18v12l-19 19zm-8 4-8 8h-9l8-8zm4 4v9l-8 8v-9z" style="fill:#ffe" transform="translate(-2612 -1440)"/>
+      <path d="M276 15V0h256v15zM518 .82H290v13.36h228z" style="fill:#55b9d2" transform="matrix(1 0 0 17.06667 0 306)" affinity:id="Border Blue"/>
+    </g>
+  </g>
+</svg>

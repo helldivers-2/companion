@@ -1,0 +1,15 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2">
+  <desc>Traced by Dogo314</desc>
+  <g affinity:id="Nova Stratagem Icon" transform="translate(-276 -306)">
+    <path style="fill:none" d="M276 306h256v256H276z"/>
+    <clipPath id="a">
+      <path d="M276 306h256v256H276z"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+      <path style="fill:#011419" transform="translate(0 306)" d="M276 0h256v256H276z"/>
+      <path d="M4564 2736h6v2h28v3h8v-2h5v-1h2v-1h1v-1h13v-1l-2-1h-5v-6h5l2-1h16v8h-4v1h21v1h95v1h8v2h12l1-1h2l2 11h-6l-2 2h-8l-3 3h-54l-2 2h-3l-1 1h-2v2l-11 8h-40l-8-8h-5l-3 3h-3v-1h-12l-1.885 1.885a1 1 0 0 1-.26.188l-3.302 1.651a1 1 0 0 0-.553.894v1.661a1 1 0 0 1-.684.949l-1.876.625a1 1 0 0 0-.612.578l-1.325 3.312a2 2 0 0 1-1.857 1.257h-.04c-.395 0-.781-.117-1.11-.336l-4.768-3.179a1.63 1.63 0 0 1-.728-1.359v-.054c0-.046.016-.092.046-.128l9.722-11.666a1 1 0 0 0 .232-.64V2756a2 2 0 0 0-2-2h-3v-3h-4v2l-17 10h-18v-3c0-2 1-1 1-7s-1-5-1-7zm88 20v5l3 3h30l7-5-2-3zm-35 5h7c.796 0 1.559-.316 2.121-.879A3 3 0 0 0 4627 2758v-1c0-.796-.316-1.559-.879-2.121A3 3 0 0 0 4624 2754h-4s-1 1-1 3 1 3 1 3h-3z" style="fill:#55b9d2" transform="translate(-4268 -2268)"/>
+      <path d="M4284.473 2382.75H4201.5v-7.5h82.973c1.667-6.467 7.543-11.25 14.527-11.25 8.279 0 15 6.721 15 15s-6.721 15-15 15c-6.984 0-12.86-4.783-14.527-11.25m18.277-41.25v15h-7.5v-15zm25.418 13.635-10.606 10.607-5.304-5.304 10.607-10.606zm8.332 27.615h-15v-7.5h15zm-13.635 25.418-10.607-10.606 5.304-5.304 10.606 10.607zm-27.615 8.332v-15h7.5v15zm-25.418-13.635 10.606-10.607 5.304 5.304-10.607 10.606zm5.303-53.033 10.607 10.606-5.304 5.304-10.606-10.607z" style="fill:#ffe" transform="translate(-4149.6 -2151.6)scale(1.06667)"/>
+      <path d="M276 15V0h256v15zM518 .82H290v13.36h228z" style="fill:#55b9d2" transform="matrix(1 0 0 17.06667 0 306)" affinity:id="Border Blue"/>
+    </g>
+  </g>
+</svg>

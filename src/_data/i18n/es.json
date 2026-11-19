@@ -14,6 +14,7 @@
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
   "nav": { "label": "Principal", "overview": "Resumen", "planets": "Planetas", "dispatches": "Comunicados", "news": "Noticias", "faq": "FAQ", "armory": "Arsenal", "map": "Mapa", "stratagems": "Estratagemas", "items": "Equipo", "shop": "Supertienda" },
+  "images": { "credit": "Imágenes de la {wiki}, subidas por {artists}; la licencia de cada archivo está en {list}. El arte del juego pertenece a Arrowhead Game Studios.", "list": "esta lista", "missing": "Imagen no disponible" },
   "layout": {
     "skip": "Saltar al contenido",
     "home": "Inicio de {name}",
@@ -156,7 +157,7 @@
   },
   "map": {
     "h1": "Mapa galáctico",
-    "intro": "Todos los planetas de la Guerra Galáctica en su posición, coloreados según su propietario. Selecciona un planeta para ver sus detalles, arrastra para desplazarte, pellizca o usa los botones para acercar y usa las flechas del teclado para moverte entre planetas.",
+    "intro": "Todos los planetas de la Guerra Galáctica en su posición, coloreados según su propietario, con un anillo que se llena a medida que la Supertierra lo conquista. Selecciona un planeta o un frente activo para ver sus detalles, arrastra para desplazarte, usa la rueda del ratón, pellizca o usa los botones para hacer zoom y usa las flechas del teclado para moverte entre planetas.",
     "note": "El mapa es una vista general visual. Todos los planetas aparecen también con los mismos detalles en la {link}.",
     "label": "Mapa de la Guerra Galáctica",
     "loading": "Cargando el mapa…",

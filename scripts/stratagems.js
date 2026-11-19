@@ -3,9 +3,9 @@
 // the game-data module its editors extract from each patch, so it is joined by name.
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
+import { api, syncImages } from "./wiki.js";
 
-const API = "https://helldivers.wiki.gg/api.php";
-const FIELDS = "title,permit_type,unlock_level,unlock_cost,source,stratagem_code,stratagem_type,base_cooldown";
+const FIELDS = "title,image,permit_type,unlock_level,unlock_cost,source,stratagem_code,stratagem_type,base_cooldown";
 const USES_PAGE = "Module:Decodedata-Attacks/stratagems data.json";
 const UNLIMITED = 4294967295; // the game's "no limit" value
 
@@ -39,6 +39,7 @@ export function normalise(rows, uses = {}) {
     const count = game?.cooldown === cooldown ? game.uses : undefined;
     const item = {
       name: r.title,
+      image: r.image?.trim() || null,
       category: { offense: "offensive", "": "mission" }[r["permit type"].toLowerCase()] ?? r["permit type"].toLowerCase(), // objectives carry no permit
       kind: r["stratagem type"] ? camel(r["stratagem type"]) : null,
       code,
@@ -55,25 +56,18 @@ export function normalise(rows, uses = {}) {
   return [...out.values()].sort((a, b) => a.name.localeCompare(b.name, "en"));
 }
 
-async function get(params) {
-  const res = await fetch(`${API}?${new URLSearchParams({ format: "json", formatversion: "2", ...params })}`, { headers: { "User-Agent": "helldivers-companion data refresh" } });
-  if (!res.ok) throw new Error(`${res.status} from the wiki`);
-  const json = await res.json();
-  if (json.error) throw new Error(json.error.info);
-  return json;
-}
-
 async function main() {
   const [cargo, uses] = await Promise.all([
-    get({ action: "cargoquery", tables: "Stratagems", fields: FIELDS, limit: "500" }),
-    get({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE }),
+    api({ action: "cargoquery", tables: "Stratagems", fields: FIELDS, limit: "500" }),
+    api({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE }),
   ]);
   const page = uses.query.pages[0].revisions[0];
   const items = normalise(cargo.cargoquery.map((r) => r.title), JSON.parse(page.slots.main.content).stratagems);
   if (items.length < 80) throw new Error(`Only ${items.length} stratagems, the wiki's table has probably changed`); // better to keep the committed file
+  const icons = await syncImages(items.map((i) => i.image), "stratagems", 80);
   writeFileSync(new URL("../src/_data/stratagems.json", import.meta.url), `${JSON.stringify({
-    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/wiki/Stratagems", license: "CC BY-NC-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/", fetched: new Date().toISOString().slice(0, 10), usesRevision: page.timestamp.slice(0, 10) },
-    items,
+    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/wiki/Stratagems", license: "CC BY-NC-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/", fetched: new Date().toISOString().slice(0, 10), usesRevision: page.timestamp.slice(0, 10), imageArtists: icons.artists },
+    items: items.map(({ image, ...item }) => ({ ...item, icon: icons.get(image)?.file ?? null })),
   }, null, 2)}\n`);
   console.log(`${items.length} stratagems written`);
 }

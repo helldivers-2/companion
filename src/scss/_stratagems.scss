@@ -1,4 +1,4 @@
-// Stratagem table. The table itself uses the shared .planets styles; this only adds what stratagems need.
+// Stratagem and item tables. The tables use the shared .planets styles; this only adds what they need.
 @use "sass:map";
 @use "palette" as *;
 
@@ -20,6 +20,24 @@
 }
 
 .stratagems {
+  // The icon sits in the cell's start padding, so every line of the cell lines up beside it.
+  th[scope="row"] {
+    position: relative;
+    padding-inline-start: 3.75rem;
+  }
+
+  .stratagem-icon {
+    position: absolute;
+    margin-inline-start: -3.125rem;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .kind {
+    display: block;
+    margin-top: 0.125rem;
+  }
+
   .unlock > span {
     display: block;
   }
@@ -34,6 +52,31 @@
       height: 1.25rem;
     }
   }
+}
+
+// Item renders are wide (weapons) or square (armour); the box fits both.
+.with-thumb {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 16rem;
+}
+
+.items .thumb {
+  flex: none;
+  width: 6rem; // the renders are 256px wide, so this stays sharp on 2x screens
+  height: 3.75rem;
+  object-fit: contain;
+}
+
+// Stands in for images the wiki lacks or has no reusable licence for, and keeps the names in line.
+.no-thumb {
+  display: grid;
+  place-items: center;
+  border: 1px dashed $line;
+  border-radius: 0.375rem;
+  color: $muted;
+  font-size: 1.5rem;
 }
 
 .credit {

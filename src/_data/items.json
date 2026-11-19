@@ -3,9 +3,17 @@
   "name": "Helldivers Wiki",
   "url": "https://helldivers.wiki.gg/",
   "licence": "CC BY-NC-SA 4.0",
-  "licenceUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  "licenceUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "imageArtists": [
+   "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+   "Dogo314",
+   "PLord",
+   "Silevn Lizard",
+   "Undeadender",
+   "YourOnlyNavigator"
+  ]
  },
- "fetched": "2026-11-17",
+ "fetched": "2026-11-19",
  "items": {
   "primary": [
    {
@@ -25,7 +33,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "ar-11-arbitrator-primary-render.webp"
    },
    {
     "name": "AR-2 Coyote",
@@ -44,7 +53,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "ar-2-coyote-primary-render.webp"
    },
    {
     "name": "AR-23 Liberator",
@@ -59,7 +69,8 @@
      "kind": "other",
      "name": "Starter Equipment"
     },
-    "cost": null
+    "cost": null,
+    "icon": "ar-23-liberator-primary-render.webp"
    },
    {
     "name": "AR-23A Liberator Carbine",
@@ -78,7 +89,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "ar-23a-liberator-carbine-primary-render.webp"
    },
    {
     "name": "AR-23C Liberator Concussive",
@@ -97,7 +109,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "ar-23c-liberator-concussive-primary-render.webp"
    },
    {
     "name": "AR-23L Liberator Legacy",
@@ -112,7 +125,8 @@
      "kind": "other",
      "name": "Liberty Day 2186"
     },
-    "cost": null
+    "cost": null,
+    "icon": "ar-23l-liberator-primary-render.webp"
    },
    {
     "name": "AR-23P Liberator Penetrator",
@@ -131,7 +145,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "ar-23p-liberator-penetrator-primary-render.webp"
    },
    {
     "name": "AR-32 Pacifier",
@@ -150,7 +165,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "ar-32-pacifier-primary-render.webp"
    },
    {
     "name": "AR-59 Suppressor",
@@ -169,7 +185,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": null
    },
    {
     "name": "AR-61 Tenderizer",
@@ -188,7 +205,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "ar-61-tenderizer-primary-render.webp"
    },
    {
     "name": "AR/GL-21 One-Two",
@@ -207,7 +225,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "ar-gl-21-one-two-primary-render.webp"
    },
    {
     "name": "ARC-12 Blitzer",
@@ -226,7 +245,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "arc-12-blitzer-primary-render.webp"
    },
    {
     "name": "BR-14 Adjudicator",
@@ -245,7 +265,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "br-14-adjudicator-primary-render.webp"
    },
    {
     "name": "CB-9 Exploding Crossbow",
@@ -264,7 +285,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "cb-9-exploding-crossbow-primary-render.webp"
    },
    {
     "name": "DBS-2 Double Freedom",
@@ -281,7 +303,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "dbs-2-shotgun-primary-render.webp"
    },
    {
     "name": "FLAM-66 Torcher",
@@ -300,7 +323,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "flam-66-torcher-primary-render.webp"
    },
    {
     "name": "GL-15 Evictor",
@@ -319,7 +343,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "gl-15-evictor-primary-render.webp"
    },
    {
     "name": "JAR-5 Dominator",
@@ -338,7 +363,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "jar-5-dominator-primary-render.webp"
    },
    {
     "name": "LAS-12 Sai",
@@ -355,7 +381,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "las-12-sai-primary-render.webp"
    },
    {
     "name": "LAS-13 Trident",
@@ -374,7 +401,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "las-13-trident-primary-render.webp"
    },
    {
     "name": "LAS-16 Sickle",
@@ -393,7 +421,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "las-16-sickle-primary-render.webp"
    },
    {
     "name": "LAS-17 Double-Edge Sickle",
@@ -412,7 +441,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "las-17-double-edge-sickle-primary-render.webp"
    },
    {
     "name": "LAS-5 Scythe",
@@ -431,7 +461,8 @@
     "cost": {
      "currency": "medals",
      "amount": 30
-    }
+    },
+    "icon": "las-5-scythe-primary-render.webp"
    },
    {
     "name": "M7S SMG",
@@ -450,7 +481,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "m7s-smg-primary-render.webp"
    },
    {
     "name": "M90A Shotgun",
@@ -469,7 +501,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "m90a-shotgun-primary-render.webp"
    },
    {
     "name": "MA5C Assault Rifle",
@@ -488,7 +521,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "ma5c-assault-rifle-primary-render.webp"
    },
    {
     "name": "MP-98 Knight",
@@ -503,7 +537,8 @@
      "kind": "other",
      "name": "Super Citizen Edition"
     },
-    "cost": null
+    "cost": null,
+    "icon": "mp-98-knight-primary-render.webp"
    },
    {
     "name": "PLAS-1 Scorcher",
@@ -522,7 +557,8 @@
     "cost": {
      "currency": "medals",
      "amount": 75
-    }
+    },
+    "icon": "plas-1-scorcher-primary-render.webp"
    },
    {
     "name": "PLAS-101 Purifier",
@@ -541,7 +577,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "plas-101-purifier-primary-render.webp"
    },
    {
     "name": "PLAS-39 Accelerator Rifle",
@@ -560,7 +597,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "plas-39-accelerator-rifle-primary-render.webp"
    },
    {
     "name": "R-2 Amendment",
@@ -579,7 +617,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "r-2-amendment-primary-render.webp"
    },
    {
     "name": "R-2124 Constitution",
@@ -594,7 +633,8 @@
      "kind": "other",
      "name": "Liberty Day"
     },
-    "cost": null
+    "cost": null,
+    "icon": "r-2124-constitution-primary-render.webp"
    },
    {
     "name": "R-36 Eruptor",
@@ -613,7 +653,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "r-36-eruptor-primary-render.webp"
    },
    {
     "name": "R-4 Hyena",
@@ -628,7 +669,8 @@
      "kind": "other",
      "name": "Celestial Fence"
     },
-    "cost": null
+    "cost": null,
+    "icon": "r-4-hyena-primary-render.webp"
    },
    {
     "name": "R-40 Sightliner",
@@ -647,7 +689,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "r-40-sightliner-primary-render.webp"
    },
    {
     "name": "R-6 Deadeye",
@@ -666,7 +709,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "r-6-deadeye-primary-render.webp"
    },
    {
     "name": "R-63 Diligence",
@@ -685,7 +729,8 @@
     "cost": {
      "currency": "medals",
      "amount": 8
-    }
+    },
+    "icon": "r-63-diligence-primary-render.webp"
    },
    {
     "name": "R-63CS Diligence Counter Sniper",
@@ -704,7 +749,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "r-63cs-diligence-counter-sniper-primary-render.webp"
    },
    {
     "name": "R-72 Censor",
@@ -723,7 +769,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": null
    },
    {
     "name": "R/40-K Hot-Shot Marksman Rifle",
@@ -742,7 +789,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "r-40-k-hot-shot-primary-render.webp"
    },
    {
     "name": "SG-20 Halt",
@@ -761,7 +809,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "sg-20-halt-primary-render.webp"
    },
    {
     "name": "SG-225 Breaker",
@@ -780,7 +829,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "sg-225-breaker-primary-render.webp"
    },
    {
     "name": "SG-225IE Breaker Incendiary",
@@ -799,7 +849,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "sg-225ie-breaker-incendiary-primary-render.webp"
    },
    {
     "name": "SG-225SP Breaker Spray&Pray",
@@ -818,7 +869,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "sg-225sp-breaker-spray-pray-primary-render.webp"
    },
    {
     "name": "SG-451 Cookout",
@@ -837,7 +889,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "sg-451-cookout-primary-render.webp"
    },
    {
     "name": "SG-8 Punisher",
@@ -856,7 +909,8 @@
     "cost": {
      "currency": "medals",
      "amount": 4
-    }
+    },
+    "icon": "sg-8-punisher-primary-render.webp"
    },
    {
     "name": "SG-8P Punisher Plasma",
@@ -875,7 +929,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "sg-8p-punisher-plasma-primary-render.webp"
    },
    {
     "name": "SG-8S Slugger",
@@ -894,7 +949,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "sg-8s-slugger-primary-render.webp"
    },
    {
     "name": "SG-97 Sweeper",
@@ -911,7 +967,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "sg-97-shotgun-primary-render.webp"
    },
    {
     "name": "SMG-203 Gallant",
@@ -930,7 +987,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "smg-203-gallant-primary-render.webp"
    },
    {
     "name": "SMG-32 Reprimand",
@@ -949,7 +1007,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "smg-32-reprimand-primary-render.webp"
    },
    {
     "name": "SMG-37 Defender",
@@ -968,7 +1027,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "smg-37-defender-primary-render.webp"
    },
    {
     "name": "SMG-72 Pummeler",
@@ -987,7 +1047,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "smg-72-pummeler-primary-render.webp"
    },
    {
     "name": "SMG/FLAM-34 Stoker",
@@ -1006,7 +1067,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "smgflam-34-stoker-primary-icon.webp"
    },
    {
     "name": "StA-11 SMG",
@@ -1025,7 +1087,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "sta-11-smg-primary-render.webp"
    },
    {
     "name": "StA-52 Assault Rifle",
@@ -1044,7 +1107,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "sta-52-assault-rifle-primary-render.webp"
    },
    {
     "name": "VG-70 Variable",
@@ -1063,7 +1127,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "vg-70-variable-primary-render.webp"
    }
   ],
   "secondary": [
@@ -1084,7 +1149,8 @@
     "cost": {
      "currency": "medals",
      "amount": 30
-    }
+    },
+    "icon": "cqc-19-stun-lance-secondary-render.webp"
    },
    {
     "name": "CQC-2 Saber",
@@ -1103,7 +1169,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "cqc-2-saber-secondary-render.webp"
    },
    {
     "name": "CQC-30 Stun Baton",
@@ -1120,7 +1187,8 @@
     "cost": {
      "currency": "credits",
      "amount": 200
-    }
+    },
+    "icon": "cqc-30-stun-baton-secondary-render.webp"
    },
    {
     "name": "CQC-42 Machete",
@@ -1137,7 +1205,8 @@
     "cost": {
      "currency": "credits",
      "amount": 200
-    }
+    },
+    "icon": null
    },
    {
     "name": "CQC-5 Combat Hatchet",
@@ -1154,7 +1223,8 @@
     "cost": {
      "currency": "credits",
      "amount": 200
-    }
+    },
+    "icon": "cqc-5-combat-hatchet-secondary-render.webp"
    },
    {
     "name": "Entrenchment Tool",
@@ -1166,7 +1236,8 @@
     "radius": "",
     "fuse": "",
     "source": null,
-    "cost": null
+    "cost": null,
+    "icon": "cqc-73-entrenchment-tool-secondary-render.webp"
    },
    {
     "name": "GP-20 Ultimatum",
@@ -1185,7 +1256,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "gp-20-ultimatum-secondary-render.webp"
    },
    {
     "name": "GP-31 Grenade Pistol",
@@ -1204,7 +1276,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "gp-31-grenade-pistol-secondary-render.webp"
    },
    {
     "name": "LAS-58 Talon",
@@ -1223,7 +1296,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "las-58-talon-secondary-render.webp"
    },
    {
     "name": "LAS-7 Dagger",
@@ -1242,7 +1316,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "las-7-dagger-secondary-render.webp"
    },
    {
     "name": "M6C/SOCOM Pistol",
@@ -1261,7 +1336,8 @@
     "cost": {
      "currency": "medals",
      "amount": 75
-    }
+    },
+    "icon": "m6c-socom-pistol-secondary-render.webp"
    },
    {
     "name": "P-11 Stim Pistol",
@@ -1280,7 +1356,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "p-11-stim-pistol-secondary-render.webp"
    },
    {
     "name": "P-113 Verdict",
@@ -1299,7 +1376,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "p-113-verdict-secondary-render.webp"
    },
    {
     "name": "P-19 Redeemer",
@@ -1318,7 +1396,8 @@
     "cost": {
      "currency": "medals",
      "amount": 5
-    }
+    },
+    "icon": "p-19-redeemer-secondary-render.webp"
    },
    {
     "name": "P-2 Peacemaker",
@@ -1333,7 +1412,8 @@
      "kind": "other",
      "name": "Starter Equipment"
     },
-    "cost": null
+    "cost": null,
+    "icon": "p-2-peacemaker-secondary-render.webp"
    },
    {
     "name": "P-33 Missile Pistol",
@@ -1352,7 +1432,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "p-33-missile-pistol-secondary-render.webp"
    },
    {
     "name": "P-34 Breacher",
@@ -1371,7 +1452,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "p-34-breacher-secondary-render.webp"
    },
    {
     "name": "P-35 Re-Educator",
@@ -1390,7 +1472,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": null
    },
    {
     "name": "P-4 Senator",
@@ -1409,7 +1492,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "p-4-senator-secondary-render.webp"
    },
    {
     "name": "P-44 Mist",
@@ -1428,7 +1512,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "p-44-mist-secondary-render.webp"
    },
    {
     "name": "P-69 Veto",
@@ -1447,7 +1532,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "p-69-veto-secondary-icon.webp"
    },
    {
     "name": "P-72 Crisper",
@@ -1466,7 +1552,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "p-72-crisper-secondary-render.webp"
    },
    {
     "name": "P-92 Warrant",
@@ -1483,7 +1570,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "p-92-warrant-secondary-render.webp"
    },
    {
     "name": "P/40-K Bolt Pistol",
@@ -1502,7 +1590,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "p-40-k-bolt-pistol-secondary-render.webp"
    },
    {
     "name": "PLAS-15 Loyalist",
@@ -1521,7 +1610,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "plas-15-loyalist-secondary-render.webp"
    },
    {
     "name": "SG-22 Bushwhacker",
@@ -1540,7 +1630,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "sg-22-bushwhacker-secondary-render.webp"
    }
   ],
   "support": [
@@ -1558,7 +1649,8 @@
      "name": "Castellan’s Creed",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "40-k-meltagun-support-render.webp"
    },
    {
     "name": "AC-8 Autocannon",
@@ -1573,7 +1665,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "ac-8-autocannon-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "AMW-20 Apex",
@@ -1589,7 +1682,8 @@
      "name": "Scope of Authority",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "amw-20-apex-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "APW-1 Anti-Materiel Rifle",
@@ -1604,7 +1698,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "apw-1-anti-materiel-rifle-support-render.webp"
    },
    {
     "name": "ARC-3 Arc Thrower",
@@ -1619,7 +1714,8 @@
      "kind": "other",
      "name": "Engineering Bay"
     },
-    "cost": null
+    "cost": null,
+    "icon": "arc-3-arc-thrower-support-render.webp"
    },
    {
     "name": "B/FLAM-80 Cremator",
@@ -1635,7 +1731,8 @@
      "name": "Entrenched Division",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "b-flam-80-cremator-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "B/MD C4 Pack",
@@ -1651,7 +1748,8 @@
      "name": "Redacted Regiment",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "b-md-c4-pack-support-render.webp"
    },
    {
     "name": "CQC-1 One True Flag",
@@ -1667,7 +1765,8 @@
      "name": "Masters of Ceremony",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "cqc-1-one-true-flag-support-render.webp"
    },
    {
     "name": "CQC-20 Breaching Hammer",
@@ -1683,7 +1782,8 @@
      "name": "Siege Breakers",
      "page": 1
     },
-    "cost": null
+    "cost": null,
+    "icon": "cqc-20-breaching-hammer-render.webp"
    },
    {
     "name": "CQC-9 Defoliation Tool",
@@ -1699,7 +1799,8 @@
      "name": "Python Commandos",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "cqc-9-defoliation-tool-support-render.webp"
    },
    {
     "name": "EAT-17 Expendable Anti-Tank",
@@ -1714,7 +1815,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "eat-17-expendable-anti-tank-support-render.webp"
    },
    {
     "name": "EAT-411 Leveller",
@@ -1730,7 +1832,8 @@
      "name": "Siege Breakers",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "eat-411-leveller-support-render.webp"
    },
    {
     "name": "EAT-700 Expendable Napalm",
@@ -1746,7 +1849,8 @@
      "name": "Dust Devils",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "eat-700-expendable-napalm-support-render.webp"
    },
    {
     "name": "FAF-14 Spear",
@@ -1761,7 +1865,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "faf-14-spear-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "FLAM-40 Flamethrower",
@@ -1776,7 +1881,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "flam-40-flamethrower-support-render.webp"
    },
    {
     "name": "GL-21 Grenade Launcher",
@@ -1791,7 +1897,8 @@
      "kind": "other",
      "name": "Engineering Bay"
     },
-    "cost": null
+    "cost": null,
+    "icon": "gl-21-grenade-launcher-support-render.webp"
    },
    {
     "name": "GL-28 Belt-Fed Grenade Launcher",
@@ -1807,7 +1914,8 @@
      "name": "Siege Breakers",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "gl-28-belt-fed-grenade-launcher-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "GL-52 De-Escalator",
@@ -1823,7 +1931,8 @@
      "name": "Force of Law",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "gl-52-de-escalator-support-render.webp"
    },
    {
     "name": "GR-8 Recoilless Rifle",
@@ -1838,7 +1947,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "gr-8-recoilless-rifle-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "LAS-44 Nova",
@@ -1854,7 +1964,8 @@
      "name": "Scope of Authority",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "las-44-nova-support-render.webp"
    },
    {
     "name": "LAS-98 Laser Cannon",
@@ -1869,7 +1980,8 @@
      "kind": "other",
      "name": "Engineering Bay"
     },
-    "cost": null
+    "cost": null,
+    "icon": "las-98-laser-cannon-support-render.webp"
    },
    {
     "name": "LAS-99 Quasar Cannon",
@@ -1884,7 +1996,8 @@
      "kind": "other",
      "name": "Engineering Bay"
     },
-    "cost": null
+    "cost": null,
+    "icon": "las-99-quasar-cannon-support-render.webp"
    },
    {
     "name": "M-1000 Maxigun",
@@ -1900,7 +2013,8 @@
      "name": "Python Commandos",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": "m-1000-maxigun-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "M-105 Stalwart",
@@ -1915,7 +2029,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "m-105-stalwart-support-render.webp"
    },
    {
     "name": "MG-206 Heavy Machine Gun",
@@ -1933,7 +2048,8 @@
     "cost": {
      "currency": "slips",
      "amount": 6000
-    }
+    },
+    "icon": "mg-206-heavy-machine-gun-support-render.webp"
    },
    {
     "name": "MG-43 Machine Gun",
@@ -1948,7 +2064,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "mg-43-machine-gun-support-render.webp"
    },
    {
     "name": "MGX-42 Bullet Storm",
@@ -1964,7 +2081,8 @@
      "name": "Exo Experts",
      "page": 1
     },
-    "cost": null
+    "cost": null,
+    "icon": "mgx-42-bullet-storm-support-render.webp"
    },
    {
     "name": "MLS-4X Commando",
@@ -1979,7 +2097,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "mls-4x-commando-support-render.webp"
    },
    {
     "name": "MS-11 Solo Silo",
@@ -1995,7 +2114,8 @@
      "name": "Dust Devils",
      "page": 3
     },
-    "cost": null
+    "cost": null,
+    "icon": null
    },
    {
     "name": "PLAS-45 Epoch",
@@ -2011,7 +2131,8 @@
      "name": "Control Group",
      "page": 1
     },
-    "cost": null
+    "cost": null,
+    "icon": "plas-45-epoch-support-render.webp"
    },
    {
     "name": "RL-77 Airburst Rocket Launcher",
@@ -2026,7 +2147,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "rl-77-airburst-rocket-launcher-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "RS-422 Railgun",
@@ -2041,7 +2163,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "rs-422-railgun-support-render.webp"
    },
    {
     "name": "S-11 Speargun",
@@ -2057,7 +2180,8 @@
      "name": "Dust Devils",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "s-11-speargun-support-render.webp"
    },
    {
     "name": "SG-88 Break-Action Shotgun",
@@ -2069,7 +2193,8 @@
     "radius": "",
     "fuse": "",
     "source": null,
-    "cost": null
+    "cost": null,
+    "icon": "sg-88-break-action-shotgun-support-render.webp"
    },
    {
     "name": "StA-X3 W.A.S.P. Launcher",
@@ -2084,7 +2209,8 @@
      "kind": "other",
      "name": "Patriotic Administration Center"
     },
-    "cost": null
+    "cost": null,
+    "icon": "sta-x3-w-a-s-p-launcher-weapon-and-backpack-support-render.webp"
    },
    {
     "name": "Trench Shovel",
@@ -2096,7 +2222,8 @@
     "radius": "",
     "fuse": "",
     "source": null,
-    "cost": null
+    "cost": null,
+    "icon": null
    },
    {
     "name": "TX-41 Sterilizer",
@@ -2112,7 +2239,8 @@
      "name": "Chemical Agents",
      "page": 2
     },
-    "cost": null
+    "cost": null,
+    "icon": "tx-41-sterilizer-support-render.webp"
    }
   ],
   "throwable": [
@@ -2133,7 +2261,8 @@
     "cost": {
      "currency": "medals",
      "amount": 25
-    }
+    },
+    "icon": "g-10-incendiary-throwable-render.webp"
    },
    {
     "name": "G-109 Urchin",
@@ -2152,7 +2281,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-109-urchin-throwable-render.webp"
    },
    {
     "name": "G-11 Caltrops",
@@ -2171,7 +2301,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "g-11-caltrops-throwable-render.webp"
    },
    {
     "name": "G-12 High Explosive",
@@ -2186,7 +2317,8 @@
      "kind": "other",
      "name": "Starter Equipment"
     },
-    "cost": null
+    "cost": null,
+    "icon": "g-12-high-explosive-throwable-render.webp"
    },
    {
     "name": "G-123 Thermite",
@@ -2205,7 +2337,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "g-123-thermite-throwable-render.webp"
    },
    {
     "name": "G-13 Incendiary Impact",
@@ -2224,7 +2357,8 @@
     "cost": {
      "currency": "medals",
      "amount": 25
-    }
+    },
+    "icon": "g-13-incendiary-impact-throwable-render.webp"
    },
    {
     "name": "G-142 Pyrotech",
@@ -2243,7 +2377,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-142-pyrotech-throwable-render.webp"
    },
    {
     "name": "G-16 Impact",
@@ -2262,7 +2397,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "g-16-impact-throwable-render.webp"
    },
    {
     "name": "G-23 Stun",
@@ -2281,7 +2417,8 @@
     "cost": {
      "currency": "medals",
      "amount": 25
-    }
+    },
+    "icon": "g-23-stun-throwable-render.webp"
    },
    {
     "name": "G-3 Smoke",
@@ -2300,7 +2437,8 @@
     "cost": {
      "currency": "medals",
      "amount": 25
-    }
+    },
+    "icon": "g-3-smoke-throwable-render.webp"
    },
    {
     "name": "G-31 Arc",
@@ -2319,7 +2457,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-31-arc-throwable-render.webp"
    },
    {
     "name": "G-4 Gas",
@@ -2338,7 +2477,8 @@
     "cost": {
      "currency": "medals",
      "amount": 30
-    }
+    },
+    "icon": "g-4-gas-throwable-render.webp"
    },
    {
     "name": "G-48 Giga Grenade",
@@ -2357,7 +2497,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": null
    },
    {
     "name": "G-50 Seeker",
@@ -2376,7 +2517,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-50-seeker-throwable-render.webp"
    },
    {
     "name": "G-6 Frag",
@@ -2395,7 +2537,8 @@
     "cost": {
      "currency": "medals",
      "amount": 2
-    }
+    },
+    "icon": "g-6-frag-throwable-render.webp"
    },
    {
     "name": "G-60 Anti-Tank Seeker",
@@ -2414,7 +2557,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-60-anti-tank-seeker-throwable-render.webp"
    },
    {
     "name": "G-7 Pineapple",
@@ -2433,7 +2577,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": null
    },
    {
     "name": "G-8 Immolation",
@@ -2452,7 +2597,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "g-8-immolation-throwable-render.webp"
    },
    {
     "name": "G-89 Smokescreen",
@@ -2469,7 +2615,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": null
    },
    {
     "name": "G/40-K Melta Mine",
@@ -2488,7 +2635,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "g-40-k-melta-mine-throwable-render.webp"
    },
    {
     "name": "G/SH-39 Shield",
@@ -2507,7 +2655,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "g-sh-39-shield-throwable-render.webp"
    },
    {
     "name": "K-2 Throwing Knife",
@@ -2526,7 +2675,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "k-2-throwing-knife-throwable-render.webp"
    },
    {
     "name": "TED-63 Dynamite",
@@ -2545,7 +2695,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "ted-63-dynamite-throwable-render.webp"
    },
    {
     "name": "TM-1 Lure Mine",
@@ -2564,7 +2715,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": null
    }
   ],
   "armor": [
@@ -2584,7 +2736,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "a-35-recon-armor-render.webp"
    },
    {
     "name": "A-9 Helljumper",
@@ -2602,7 +2755,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "a-9-helljumper-armor-render.webp"
    },
    {
     "name": "AC-1 Dutiful",
@@ -2620,7 +2774,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ac-1-dutiful-armor-render.webp"
    },
    {
     "name": "AC-2 Obedient",
@@ -2638,7 +2793,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "ac-2-obedient-armor-render.webp"
    },
    {
     "name": "AD-11 Livewire",
@@ -2654,7 +2810,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "ad-11-livewire-armor-render.webp"
    },
    {
     "name": "AD-26 Bleeding Edge",
@@ -2672,7 +2829,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ad-26-bleeding-edge-armor-render.webp"
    },
    {
     "name": "AD-49 Apollonian",
@@ -2690,7 +2848,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "ad-49-apollonian-armor-render.webp"
    },
    {
     "name": "AF-02 Haz-Master",
@@ -2708,7 +2867,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "af-02-haz-master-armor-render.webp"
    },
    {
     "name": "AF-50 Noxious Ranger",
@@ -2726,7 +2886,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "af-50-noxious-ranger-armor-render.webp"
    },
    {
     "name": "AF-52 Lockdown",
@@ -2742,7 +2903,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "af-52-lockdown-armor-render.webp"
    },
    {
     "name": "AF-91 Field Chemist",
@@ -2758,7 +2920,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "af-91-field-chemist-armor-render.webp"
    },
    {
     "name": "B-01 Tactical",
@@ -2772,7 +2935,8 @@
      "kind": "other",
      "name": "Starter Equipment"
     },
-    "cost": null
+    "cost": null,
+    "icon": "b-01-tactical-v1-armor-render.webp"
    },
    {
     "name": "B-08 Light Gunner",
@@ -2788,7 +2952,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "b-08-light-gunner-armor-render.webp"
    },
    {
     "name": "B-22 Model Citizen",
@@ -2802,7 +2967,8 @@
      "kind": "other",
      "name": "Anniversary Gift"
     },
-    "cost": null
+    "cost": null,
+    "icon": "b-22-model-citizen-armor-render.webp"
    },
    {
     "name": "B-24 Enforcer",
@@ -2818,7 +2984,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "b-24-enforcer-body-icon.webp"
    },
    {
     "name": "B-27 Fortified Commando",
@@ -2834,7 +3001,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "b-27-fortified-commando-armor-render.webp"
    },
    {
     "name": "BFM-16 Tanker",
@@ -2852,7 +3020,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "bfm-16-tanker-armor-render.webp"
    },
    {
     "name": "BFM-220 Ironclad",
@@ -2870,7 +3039,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "bfm-220-ironclad-armor-render.webp"
    },
    {
     "name": "BFM-77 Reformer",
@@ -2886,7 +3056,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "bfm-77-reformer-armor-render.webp"
    },
    {
     "name": "BP-20 Correct Officer",
@@ -2904,7 +3075,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "bp-20-correct-officer-armor-render.webp"
    },
    {
     "name": "BP-32 Jackboot",
@@ -2922,7 +3094,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "bp-32-jackboot-armor-render.webp"
    },
    {
     "name": "BP-77 Grand Juror",
@@ -2938,7 +3111,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "bp-77-grand-juror-armor-render.webp"
    },
    {
     "name": "CE-07 Demolition Specialist",
@@ -2956,7 +3130,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ce-07-demolition-specialist-armor-render.webp"
    },
    {
     "name": "CE-101 Guerilla Gorilla",
@@ -2972,7 +3147,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "ce-101-guerilla-gorilla-armor-render.webp"
    },
    {
     "name": "CE-27 Ground Breaker",
@@ -2990,7 +3166,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "ce-27-ground-breaker-armor-render.webp"
    },
    {
     "name": "CE-35 Trench Engineer",
@@ -3008,7 +3185,8 @@
     "cost": {
      "currency": "medals",
      "amount": 10
-    }
+    },
+    "icon": "ce-35-trench-engineer-armor-render.webp"
    },
    {
     "name": "CE-64 Grenadier",
@@ -3024,7 +3202,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "ce-64-grenadier-armor-render.webp"
    },
    {
     "name": "CE-67 Titan",
@@ -3040,7 +3219,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "ce-67-titan-armor-render.webp"
    },
    {
     "name": "CE-74 Breaker",
@@ -3056,7 +3236,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "ce-74-breaker-armor-render.webp"
    },
    {
     "name": "CE-81 Juggernaut",
@@ -3072,7 +3253,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "ce-81-juggernaut-armor-render.webp"
    },
    {
     "name": "CM-09 Bonesnapper",
@@ -3090,7 +3272,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "cm-09-bonesnapper-armor-render.webp"
    },
    {
     "name": "CM-10 Clinician",
@@ -3106,7 +3289,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "cm-10-clinician-armor-render.webp"
    },
    {
     "name": "CM-14 Physician",
@@ -3124,7 +3308,8 @@
     "cost": {
      "currency": "medals",
      "amount": 70
-    }
+    },
+    "icon": "cm-14-physician-armor-render.webp"
    },
    {
     "name": "CM-17 Butcher",
@@ -3140,7 +3325,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "cm-17-butcher-body-icon.webp"
    },
    {
     "name": "CM-21 Trench Paramedic",
@@ -3156,7 +3342,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "cm-21-trench-paramedic-armor-render.webp"
    },
    {
     "name": "CPG-48 Sapper",
@@ -3174,7 +3361,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "cpg-48-sapper-armor-render.webp"
    },
    {
     "name": "CPH-26 Commandant (Armor)",
@@ -3192,7 +3380,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "cph-26-commandant-armor-render.webp"
    },
    {
     "name": "CPR-80 Bulwark",
@@ -3208,7 +3397,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "cpr-80-bulwark-armor-render.webp"
    },
    {
     "name": "CW-22 Kodiak",
@@ -3226,7 +3416,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "cw-22-kodiak-armor-render.webp"
    },
    {
     "name": "CW-36 Winter Warrior",
@@ -3244,7 +3435,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "cw-36-winter-warrior-armor-render.webp"
    },
    {
     "name": "CW-4 Arctic Ranger",
@@ -3262,7 +3454,8 @@
     "cost": {
      "currency": "medals",
      "amount": 64
-    }
+    },
+    "icon": "cw-4-arctic-ranger-armor-render.webp"
    },
    {
     "name": "CW-9 White Wolf",
@@ -3278,7 +3471,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "cw-9-white-wolf-armor-render.webp"
    },
    {
     "name": "DP-00 Tactical",
@@ -3292,7 +3486,8 @@
      "kind": "other",
      "name": "Liberty Day"
     },
-    "cost": null
+    "cost": null,
+    "icon": "dp-00-tactical-armor-render.webp"
    },
    {
     "name": "DP-11 Champion of the People",
@@ -3310,7 +3505,8 @@
     "cost": {
      "currency": "medals",
      "amount": 100
-    }
+    },
+    "icon": "dp-11-champion-of-the-people-armor-render.webp"
    },
    {
     "name": "DP-40 Hero of the Federation",
@@ -3328,7 +3524,8 @@
     "cost": {
      "currency": "medals",
      "amount": 25
-    }
+    },
+    "icon": "dp-40-hero-of-the-federation-armor-render.webp"
    },
    {
     "name": "DP-53 Savior of the Free",
@@ -3342,7 +3539,8 @@
      "kind": "other",
      "name": "Super Citizen Edition"
     },
-    "cost": null
+    "cost": null,
+    "icon": "dp-53-savior-of-the-free-armor-render.webp"
    },
    {
     "name": "DP-8 Mountain-Scaled",
@@ -3358,7 +3556,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "dp-8-mountain-scaled-armor-render.webp"
    },
    {
     "name": "DS-10 Big Game Hunter",
@@ -3374,7 +3573,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "ds-10-big-game-hunter-armor-render.webp"
    },
    {
     "name": "DS-191 Scorpion",
@@ -3392,7 +3592,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "ds-191-scorpion-armor-render.webp"
    },
    {
     "name": "DS-42 Federation&#39;s Blade",
@@ -3410,7 +3611,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ds-42-federation-s-blade-armor-render.webp"
    },
    {
     "name": "EX-00 Prototype X",
@@ -3428,7 +3630,8 @@
     "cost": {
      "currency": "medals",
      "amount": 64
-    }
+    },
+    "icon": "ex-00-prototype-x-armor-render.webp"
    },
    {
     "name": "EX-03 Prototype 3",
@@ -3446,7 +3649,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "ex-03-prototype-3-armor-render.webp"
    },
    {
     "name": "EX-16 Prototype 16",
@@ -3464,7 +3668,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ex-16-prototype-16-armor-render.webp"
    },
    {
     "name": "FS-05 Marksman",
@@ -3482,7 +3687,8 @@
     "cost": {
      "currency": "medals",
      "amount": 6
-    }
+    },
+    "icon": "fs-05-marksman-body-icon.webp"
    },
    {
     "name": "FS-11 Executioner",
@@ -3498,7 +3704,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "fs-11-executioner-armor-render.webp"
    },
    {
     "name": "FS-23 Battle Master",
@@ -3516,7 +3723,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "fs-23-battle-master-armor-render.webp"
    },
    {
     "name": "FS-34 Exterminator",
@@ -3532,7 +3740,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "fs-34-exterminator-armor-render.webp"
    },
    {
     "name": "FS-37 Ravager",
@@ -3548,7 +3757,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "fs-37-ravager-armor-render.webp"
    },
    {
     "name": "FS-38 Eradicator",
@@ -3564,7 +3774,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "fs-38-eradicator-armor-render.webp"
    },
    {
     "name": "FS-55 Devastator",
@@ -3582,7 +3793,8 @@
     "cost": {
      "currency": "medals",
      "amount": 64
-    }
+    },
+    "icon": "fs-55-devastator-armor-render.webp"
    },
    {
     "name": "FS-61 Dreadnought",
@@ -3598,7 +3810,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "fs-61-dreadnought-armor-render.webp"
    },
    {
     "name": "GS-11 Democracy&#39;s Deputy",
@@ -3614,7 +3827,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "gs-11-democracy-s-deputy-armor-render.webp"
    },
    {
     "name": "GS-17 Frontier Marshal",
@@ -3632,7 +3846,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "gs-17-frontier-marshal-armor-render.webp"
    },
    {
     "name": "GS-66 Lawmaker",
@@ -3650,7 +3865,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "gs-66-lawmaker-armor-render.webp"
    },
    {
     "name": "I-09 Heatseeker",
@@ -3668,7 +3884,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "i-09-heatseeker-armor-render.webp"
    },
    {
     "name": "I-102 Draconaught",
@@ -3686,7 +3903,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "i-102-draconaught-armor-render.webp"
    },
    {
     "name": "I-44 Salamander",
@@ -3702,7 +3920,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "i-44-salamander-armor-render.webp"
    },
    {
     "name": "I-92 Fire Fighter",
@@ -3718,7 +3937,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "i-92-fire-fighter-armor-render.webp"
    },
    {
     "name": "IE-12 Righteous",
@@ -3736,7 +3956,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "ie-12-righteous-armor-render.webp"
    },
    {
     "name": "IE-3 Martyr",
@@ -3754,7 +3975,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ie-3-martyr-armor-render.webp"
    },
    {
     "name": "IE-57 Hell-Bent",
@@ -3770,7 +3992,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "ie-57-hell-bent-armor-render.webp"
    },
    {
     "name": "KDM-500 Outrider",
@@ -3784,7 +4007,8 @@
      "kind": "other",
      "name": "Permanent Enclosure"
     },
-    "cost": null
+    "cost": null,
+    "icon": "kdm-500-outrider-armor-render.webp"
    },
    {
     "name": "O-2 Heavy Operator",
@@ -3802,7 +4026,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "o-2-heavy-operator-armor-render.webp"
    },
    {
     "name": "O-3 Free Spirit",
@@ -3820,7 +4045,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "o-3-free-spirit-armor-render.webp"
    },
    {
     "name": "O-44 Bonded Pilot",
@@ -3836,7 +4062,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "o-44-bonded-pilot-armor-render.webp"
    },
    {
     "name": "PH-202 Twigsnapper",
@@ -3854,7 +4081,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ph-202-twigsnapper-armor-render.webp"
    },
    {
     "name": "PH-56 Jaguar",
@@ -3870,7 +4098,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "ph-56-jaguar-armor-render.webp"
    },
    {
     "name": "PH-9 Predator",
@@ -3888,7 +4117,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "ph-9-predator-armor-render.webp"
    },
    {
     "name": "RE-1861 Parade Commander",
@@ -3906,7 +4136,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "re-1861-parade-commander-armor-render.webp"
    },
    {
     "name": "RE-2310 Honorary Guard",
@@ -3924,7 +4155,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "re-2310-honorary-guard-armor-render.webp"
    },
    {
     "name": "RE-824 Bearer of the Standard",
@@ -3940,7 +4172,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "re-824-bearer-of-the-standard-armor-render.webp"
    },
    {
     "name": "RS-100 Sanctioner",
@@ -3956,7 +4189,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "rs-100-sanctioner-armor-render.webp"
    },
    {
     "name": "RS-20 Constrictor",
@@ -3974,7 +4208,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "rs-20-constrictor-armor-render.webp"
    },
    {
     "name": "RS-40 Beast of Prey",
@@ -3992,7 +4227,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "rs-40-beast-of-prey-armor-render.webp"
    },
    {
     "name": "RS-6 Fiend Destroyer",
@@ -4008,7 +4244,8 @@
     "cost": {
      "currency": "credits",
      "amount": 300
-    }
+    },
+    "icon": "rs-6-fiend-destroyer-armor-render.webp"
    },
    {
     "name": "RS-67 Null Cipher",
@@ -4026,7 +4263,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "rs-67-null-cipher-armor-render.webp"
    },
    {
     "name": "RS-89 Shadow Paragon",
@@ -4044,7 +4282,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "rs-89-shadow-paragon-armor-render.webp"
    },
    {
     "name": "SA-04 Combat Technician",
@@ -4062,7 +4301,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "sa-04-combat-technician-armor-render.webp"
    },
    {
     "name": "SA-12 Servo Assisted",
@@ -4080,7 +4320,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "sa-12-servo-assisted-armor-render.webp"
    },
    {
     "name": "SA-25 Steel Trooper",
@@ -4098,7 +4339,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "sa-25-steel-trooper-armor-render.webp"
    },
    {
     "name": "SA-32 Dynamo",
@@ -4116,7 +4358,8 @@
     "cost": {
      "currency": "medals",
      "amount": 64
-    }
+    },
+    "icon": "sa-32-dynamo-armor-render.webp"
    },
    {
     "name": "SA-7 Headfirst",
@@ -4134,7 +4377,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "sa-7-headfirst-armor-render.webp"
    },
    {
     "name": "SA-8 Ram",
@@ -4152,7 +4396,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "sa-8-ram-armor-render.webp"
    },
    {
     "name": "SC-15 Drone Master",
@@ -4168,7 +4413,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "sc-15-drone-master-armor-render.webp"
    },
    {
     "name": "SC-30 Trailblazer Scout",
@@ -4186,7 +4432,8 @@
     "cost": {
      "currency": "medals",
      "amount": 50
-    }
+    },
+    "icon": "sc-30-trailblazer-scout-armor-render.webp"
    },
    {
     "name": "SC-34 Infiltrator",
@@ -4204,7 +4451,8 @@
     "cost": {
      "currency": "medals",
      "amount": 3
-    }
+    },
+    "icon": "sc-34-infiltrator-armor-render.webp"
    },
    {
     "name": "SC-37 Legionnaire",
@@ -4220,7 +4468,8 @@
     "cost": {
      "currency": "credits",
      "amount": 150
-    }
+    },
+    "icon": "sc-37-legionnaire-armor-render.webp"
    },
    {
     "name": "SR-18 Roadblock",
@@ -4238,7 +4487,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "sr-18-roadblock-armor-render.webp"
    },
    {
     "name": "SR-24 Street Scout",
@@ -4256,7 +4506,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "sr-24-street-scout-armor-render.webp"
    },
    {
     "name": "SR-64 Cinderblock",
@@ -4272,7 +4523,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "sr-64-cinderblock-armor-render.webp"
    },
    {
     "name": "SS-15 Focal Point",
@@ -4290,7 +4542,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "ss-15-focal-point-armor-render.webp"
    },
    {
     "name": "SS-33 Mimetic Marshal",
@@ -4308,7 +4561,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "ss-33-mimetic-marshal-armor-render.webp"
    },
    {
     "name": "SS-500 Pale Prosecutor",
@@ -4324,7 +4578,8 @@
     "cost": {
      "currency": "credits",
      "amount": 250
-    }
+    },
+    "icon": "ss-500-pale-prosecutor-armor-render.webp"
    },
    {
     "name": "TG-122 Demo-Trooper",
@@ -4342,7 +4597,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "tg-122-demo-trooper-armor-render.webp"
    },
    {
     "name": "TG-8 Sharpshooter",
@@ -4360,7 +4616,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "tg-8-sharpshooter-armor-render.webp"
    },
    {
     "name": "TR-117 Alpha Commander",
@@ -4374,7 +4631,8 @@
      "kind": "other",
      "name": "Downloadable Content"
     },
-    "cost": null
+    "cost": null,
+    "icon": "tr-117-alpha-commander-armor-render.webp"
    },
    {
     "name": "TR-40 Gold Eagle",
@@ -4388,7 +4646,8 @@
      "kind": "other",
      "name": "Escalation of Freedom"
     },
-    "cost": null
+    "cost": null,
+    "icon": "tr-40-gold-eagle-armor-render.webp"
    },
    {
     "name": "TR-62 Knight",
@@ -4402,7 +4661,8 @@
      "kind": "other",
      "name": "Pre-Order Bonus"
     },
-    "cost": null
+    "cost": null,
+    "icon": "tr-62-knight-armor-render.webp"
    },
    {
     "name": "TR-7 Ambassador of the Brand",
@@ -4416,7 +4676,8 @@
      "kind": "other",
      "name": "Pre-Order Bonus"
     },
-    "cost": null
+    "cost": null,
+    "icon": "tr-7-ambassador-of-the-brand-armor-render.webp"
    },
    {
     "name": "TR-9 Cavalier of Democracy",
@@ -4430,7 +4691,8 @@
      "kind": "other",
      "name": "Pre-Order Bonus"
     },
-    "cost": null
+    "cost": null,
+    "icon": "tr-9-cavalier-of-democracy-armor-render.webp"
    },
    {
     "name": "UF-16 Inspector",
@@ -4448,7 +4710,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "uf-16-inspector-armor-render.webp"
    },
    {
     "name": "UF-50 Bloodhound",
@@ -4466,7 +4729,8 @@
     "cost": {
      "currency": "medals",
      "amount": 45
-    }
+    },
+    "icon": "uf-50-bloodhound-armor-render.webp"
    },
    {
     "name": "UF-84 Doubt Killer",
@@ -4482,7 +4746,8 @@
     "cost": {
      "currency": "credits",
      "amount": 400
-    }
+    },
+    "icon": "uf-84-doubt-killer-armor-render.webp"
    }
   ],
   "booster": [
@@ -4497,7 +4762,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "armed-resupply-pods-booster-icon.svg"
    },
    {
     "name": "Concealed Insertion",
@@ -4510,7 +4776,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "concealed-insertion-booster-icon.svg"
    },
    {
     "name": "Dead Sprint",
@@ -4523,7 +4790,8 @@
     "cost": {
      "currency": "medals",
      "amount": 35
-    }
+    },
+    "icon": "dead-sprint-booster-icon.svg"
    },
    {
     "name": "Experimental Infusion",
@@ -4536,7 +4804,8 @@
     "cost": {
      "currency": "medals",
      "amount": 80
-    }
+    },
+    "icon": "experimental-infusion-booster-icon.svg"
    },
    {
     "name": "Expert Extraction Pilot",
@@ -4549,7 +4818,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "expert-extraction-pilot-booster-icon.svg"
    },
    {
     "name": "Firebomb Hellpods",
@@ -4562,7 +4832,8 @@
     "cost": {
      "currency": "medals",
      "amount": 60
-    }
+    },
+    "icon": "firebomb-hellpods-booster-icon.svg"
    },
    {
     "name": "Flexible Reinforcement Budget",
@@ -4575,7 +4846,8 @@
     "cost": {
      "currency": "medals",
      "amount": 75
-    }
+    },
+    "icon": "flexible-reinforcement-budget-booster-icon.svg"
    },
    {
     "name": "Hellpod Space Optimization",
@@ -4588,7 +4860,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "hellpod-space-optimization-booster-icon.svg"
    },
    {
     "name": "Increased Reinforcement Budget",
@@ -4601,7 +4874,8 @@
     "cost": {
      "currency": "medals",
      "amount": 150
-    }
+    },
+    "icon": "increased-reinforcement-budget-booster-icon.svg"
    },
    {
     "name": "Integrated Extinguishers",
@@ -4614,7 +4888,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "integrated-extinguishers-booster-icon.svg"
    },
    {
     "name": "Localization Confusion",
@@ -4627,7 +4902,8 @@
     "cost": {
      "currency": "medals",
      "amount": 18
-    }
+    },
+    "icon": "localization-confusion-booster-icon.svg"
    },
    {
     "name": "Motivational Shocks",
@@ -4640,7 +4916,8 @@
     "cost": {
      "currency": "medals",
      "amount": 15
-    }
+    },
+    "icon": "motivational-shocks-booster-icon.svg"
    },
    {
     "name": "Muscle Enhancement",
@@ -4653,7 +4930,8 @@
     "cost": {
      "currency": "medals",
      "amount": 70
-    }
+    },
+    "icon": "muscle-enhancement-booster-icon.svg"
    },
    {
     "name": "Sample Extricator",
@@ -4666,7 +4944,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "sample-extricator-booster-icon.svg"
    },
    {
     "name": "Sample Scanner",
@@ -4679,7 +4958,8 @@
     "cost": {
      "currency": "medals",
      "amount": 65
-    }
+    },
+    "icon": "sample-scanner-booster-icon.svg"
    },
    {
     "name": "Stamina Enhancement",
@@ -4692,7 +4972,8 @@
     "cost": {
      "currency": "medals",
      "amount": 75
-    }
+    },
+    "icon": "stamina-enhancement-booster-icon.svg"
    },
    {
     "name": "Stun Pods",
@@ -4705,7 +4986,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "stun-pods-booster-icon.svg"
    },
    {
     "name": "Surplus EAT Allocation",
@@ -4718,7 +5000,8 @@
     "cost": {
      "currency": "medals",
      "amount": 55
-    }
+    },
+    "icon": "surplus-eat-allocation-booster-icon.svg"
    },
    {
     "name": "UAV Recon Booster",
@@ -4731,7 +5014,8 @@
     "cost": {
      "currency": "medals",
      "amount": 40
-    }
+    },
+    "icon": "uav-recon-booster-booster-icon.svg"
    },
    {
     "name": "Vitality Enhancement",
@@ -4744,7 +5028,8 @@
     "cost": {
      "currency": "medals",
      "amount": 20
-    }
+    },
+    "icon": "vitality-enhancement-booster-icon.svg"
    }
   ]
  }

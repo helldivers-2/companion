@@ -21,6 +21,8 @@ const sorters = {
   liberation: (a, b) => libRank(a) - libRank(b),
 };
 const form = () => document.getElementById("planet-filters");
+// Same as `key` in scripts/wiki.js, which names the keys of the page's planet-images map.
+export const planetKey = (s) => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 function render() {
   const f = new FormData(form());
@@ -60,11 +62,16 @@ function render() {
   scrollTo = null;
 }
 
+let images;
+const imageOf = (p) => (images ??= JSON.parse(document.getElementById("planet-images")?.textContent || "{}"))[planetKey(p.name)];
+
 function details(p, hazards) {
+  const img = imageOf(p);
   const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
     ${held(p) ? "" : `${r.isAvailable === false ? `<span class="badge">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
+      ${img ? `<img class="planet-pic" src="/img/planets/${esc(img)}" alt="" width="64" height="64">` : ""}
       ${p.biome ? `<h3 lang="en">${esc(p.biome.name)}</h3><p lang="en">${esc(p.biome.description)}</p>` : ""}
       ${hazards.length ? `<h3>${t.js.hazards}</h3><ul>${hazards.map((h) => `<li lang="en"><strong>${esc(h.name)}</strong> ${esc(h.description)}</li>`).join("")}</ul>` : ""}
       ${regainsLine(p)}

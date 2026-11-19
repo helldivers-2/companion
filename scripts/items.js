@@ -3,9 +3,7 @@
 // Run with `npm run items`; the page templates only read the committed JSON.
 import { writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import site from "../src/_data/site.json" with { type: "json" };
-
-const API = "https://helldivers.wiki.gg/api.php";
+import { cargo, syncImages } from "./wiki.js";
 
 const ENTITIES = { "&nbsp;": " ", "&bull;": "•", "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"' };
 // Cargo hands back wikitext with HTML mixed in; keep only the words. `br` is where one cell holds several lines.
@@ -47,6 +45,7 @@ export function normalise({ weapons, armor, boosters, passives }) {
     if (!cat) continue;
     items[cat].push({
       name: w.title,
+      image: w.image?.trim() || null,
       type: w["weapon type"] || null,
       damage: plain(w.damage),
       rate: plain(w["fire rate"]),
@@ -64,6 +63,7 @@ export function normalise({ weapons, armor, boosters, passives }) {
     const name = plain(a.passive);
     items.armor.push({
       name: a.title,
+      image: a.image?.trim() || null,
       class: a.type.toLowerCase(),
       rating: Number(a.armor) || null,
       speed: Number(a.speed) || null,
@@ -74,32 +74,23 @@ export function normalise({ weapons, armor, boosters, passives }) {
       cost: cost(a.cost),
     });
   }
-  for (const b of boosters) items.booster.push({ name: b.title, text: plain(b.description, " "), source: source(b.source), cost: cost(b.cost) });
+  for (const b of boosters) items.booster.push({ name: b.title, image: b.image?.trim() || null, text: plain(b.description, " "), source: source(b.source), cost: cost(b.cost) });
   for (const list of Object.values(items)) list.sort(by);
   return items;
 }
 
-async function table(tables, fields) {
-  const url = new URL(API);
-  for (const [k, v] of Object.entries({ action: "cargoquery", format: "json", limit: "500", tables, fields })) url.searchParams.set(k, v);
-  const res = await fetch(url, { headers: { "User-Agent": `${site.client} (${site.contact})` } });
-  if (!res.ok) throw new Error(`${tables}: HTTP ${res.status}`);
-  const rows = (await res.json()).cargoquery;
-  if (!rows?.length) throw new Error(`${tables}: no rows`);
-  if (rows.length >= 500) throw new Error(`${tables}: hit the 500-row limit, paginate`);
-  return rows.map((r) => r.title);
-}
-
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const [weapons, armor, boosters, passives] = await Promise.all([
-    table("Weapons", "title,weapon_category,weapon_type,damage,capacity,fire_rate,penetration_direct,radius,fuse,source,cost"),
-    table("Armor", "title,type,armor,speed,stam_regen,passive,source,cost"),
-    table("Boosters", "title,description,source,cost"),
-    table("Armor_Passive", "title,description"),
+    cargo("Weapons", "title,image,weapon_category,weapon_type,damage,capacity,fire_rate,penetration_direct,radius,fuse,source,cost"),
+    cargo("Armor", "title,image,type,armor,speed,stam_regen,passive,source,cost"),
+    cargo("Boosters", "title,image,description,source,cost"),
+    cargo("Armor_Passive", "title,description"),
   ]);
   const items = normalise({ weapons, armor, boosters, passives });
+  const images = await syncImages(Object.values(items).flat().map((i) => i.image), "items", 256);
+  for (const list of Object.values(items)) for (const it of list) { it.icon = images.get(it.image)?.file ?? null; delete it.image; }
   const data = {
-    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/", licence: "CC BY-NC-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/" },
+    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/", licence: "CC BY-NC-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/", imageArtists: images.artists },
     fetched: new Date().toISOString().slice(0, 10),
     items,
   };

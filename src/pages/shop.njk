@@ -2,7 +2,7 @@
 page_id: shop
 permalink: "/{{ lang }}/shop/"
 ---
-{%- from "item-cells.njk" import dash, price, credit %}
+{%- from "item-cells.njk" import dash, price, credit, thumb, imageCredit %}
 <div class="container">
 {% include "armory-tabs.njk" %}
 <h1>{{ t.nav.shop }}</h1>
@@ -29,7 +29,7 @@ permalink: "/{{ lang }}/shop/"
     <tbody>
       {%- for it in stock %}
       <tr>
-        <th scope="row"><a href="/{{ lang }}/items/?q={{ it.name | urlencode }}" lang="en" translate="no">{{ it.name }}</a></th>
+        <th scope="row"><span class="with-thumb">{{ thumb(it, t) }}<a href="/{{ lang }}/items/?q={{ it.name | urlencode }}" lang="en" translate="no">{{ it.name }}</a></span></th>
         <td{% if not it.class %} lang="en"{% endif %}>{% if it.class %}<span class="badge">{{ t.items.classes[it.class] }}</span>{% else %}{{ it.type or dash(t) }}{% endif %}</td>
         <td class="num">{{ price(it.cost, t) }}</td>
       </tr>
@@ -41,4 +41,5 @@ permalink: "/{{ lang }}/shop/"
 {%- endif %}
 {%- endfor %}
 {{ credit(items, t) }}
+{{ imageCredit(items.source.imageArtists, "items", t) }}
 </div>

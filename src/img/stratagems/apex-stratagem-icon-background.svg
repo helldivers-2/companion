@@ -1,0 +1,15 @@
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" xmlns:affinity="https://www.affinity.studio/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2">
+  <desc>Traced by Dogo314</desc>
+  <g affinity:id="Apex Stratagem Icon" transform="translate(-276 -306)">
+    <path style="fill:none" d="M276 306h256v256H276z"/>
+    <clipPath id="a">
+      <path d="M276 306h256v256H276z"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+      <path style="fill:#011419" transform="translate(0 306)" d="M276 0h256v256H276z"/>
+      <path d="M644.22 2394H636v-8h8.22c1.847-16.676 15.104-29.933 31.78-31.78V2342h8v12.22c16.676 1.847 29.933 15.104 31.78 31.78H724v8h-8.22c-1.847 16.676-15.104 29.933-31.78 31.78v8.22h-8v-8.22c-16.676-1.847-29.933-15.104-31.78-31.78m31.78-31.716c-12.255 1.756-21.96 11.461-23.716 23.716H676zM707.716 2386c-1.756-12.255-11.461-21.96-23.716-23.716V2386zM684 2417.716c12.255-1.756 21.96-11.461 23.716-23.716H684zM652.284 2394c1.756 12.255 11.461 21.96 23.716 23.716V2394z" style="fill:#ffe" transform="translate(-276 -1992)"/>
+      <path d="m4364 2732-3-5h1l3 5h2v4h1.284l1.716-2h7l2 2h17v1h8v-1h4v3h-1v2h3l1-1h2v-2h4l4 4h56v-2h9v2h19v6h-19v2h-9v-2h-56l-4 4h-4v-2h-2l-1-1h-3v2h1v2h-8v3h-1v3h-1v4h1v1h1v9l3 1v1h-12v-1l3-1v-9h1v-1h1v-4h-1v-3h-1v-1h-3v-2h-13l-2 3h-21l-4 4h-11l-1 1h-5l-1-1-4 6 1 2v1h-2l-6-3v-1l6-10v-2h-4l-2-2h-3v-1h-2v3h1v2h-5v-2h1v-3h-8v3l-6 5h-4l-2 3h-3l-1-3v-5l2-4v-6l-4-4v-5h9l2 2h3l1-1h8v-1h23l1-2h4l1 1h3v-4h5v3h9v1h3v-1zm127 12v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0m5 0v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0m5 0v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0m-15 0v2a1 1 0 0 0 2 0v-2a1 1 0 0 0-2 0" style="fill:#55b9d2" transform="translate(-3992 -2268)"/>
+      <path d="M276 15V0h256v15zM518 .82H290v13.36h228z" style="fill:#55b9d2" transform="matrix(1 0 0 17.06667 0 306)" affinity:id="Border Blue"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,1871 @@
+{
+ "AR-23 Liberator Primary Render.png": {
+  "file": "ar-23-liberator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "97e7bbd5d702c066f12e309593f04885556e56e6",
+  "width": 256
+ },
+ "AR-23A Liberator Carbine Primary Render.png": {
+  "file": "ar-23a-liberator-carbine-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4b36e2daa23b055c389f6efdfae0365032042b00",
+  "width": 256
+ },
+ "AR-23C Liberator Concussive Primary Render.png": {
+  "file": "ar-23c-liberator-concussive-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "071f5733d63097ace120d6eaace981f2ceac3006",
+  "width": 256
+ },
+ "AR-23P Liberator Penetrator Primary Render.png": {
+  "file": "ar-23p-liberator-penetrator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "082edd5aecf8d58399d6528200ab41ff26a9e311",
+  "width": 256
+ },
+ "AR-32 Pacifier Primary Render.png": {
+  "file": "ar-32-pacifier-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "94e4a0f9e471084ac4525c3f974cab8694c92d9d",
+  "width": 256
+ },
+ "AR-61 Tenderizer Primary Render.png": {
+  "file": "ar-61-tenderizer-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7278b46c031c0bef5c08aa88454d857a9ea62047",
+  "width": 256
+ },
+ "BR-14 Adjudicator Primary Render.png": {
+  "file": "br-14-adjudicator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e74a3d14d4d2809ab68c975f0b21dead98e82c12",
+  "width": 256
+ },
+ "R-2 Amendment Primary Render.png": {
+  "file": "r-2-amendment-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "804c0c481109bee47d4ecb210b2522f72f28875c",
+  "width": 256
+ },
+ "R-6 Deadeye Primary Render.png": {
+  "file": "r-6-deadeye-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "85d99d48c223d0273c84dd8ecffee1a2852172f9",
+  "width": 256
+ },
+ "R-63 Diligence Primary Render.png": {
+  "file": "r-63-diligence-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "69ed5cfa5b5381a9a02eeed072724cdc8e08652c",
+  "width": 256
+ },
+ "R-63CS Diligence Counter Sniper Primary Render.png": {
+  "file": "r-63cs-diligence-counter-sniper-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3ff844e8659a7740faa65701ac079345c65ae018",
+  "width": 256
+ },
+ "R-2124 Constitution Primary Render.png": {
+  "file": "r-2124-constitution-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5afe2d62266dfff4fff390844b3c37801c1b8c4e",
+  "width": 256
+ },
+ "MP-98 Knight Primary Render.png": {
+  "file": "mp-98-knight-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4573f07ddfedb3ccc45f66c9b9ce6a89dff0e12a",
+  "width": 256
+ },
+ "CB-9 Exploding Crossbow Primary Render.png": {
+  "file": "cb-9-exploding-crossbow-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "01aa01fe987953196a4dd007431ba757ff7def2c",
+  "width": 256
+ },
+ "FLAM-66 Torcher Primary Render.png": {
+  "file": "flam-66-torcher-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e719cd56707c2fdf1af28b548bedd8adb7d7ff5c",
+  "width": 256
+ },
+ "JAR-5 Dominator Primary Render.png": {
+  "file": "jar-5-dominator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "81a672c8cf78c6f78a2767e2eed86db11ff794b8",
+  "width": 256
+ },
+ "R-36 Eruptor Primary Render.png": {
+  "file": "r-36-eruptor-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "2c6f6636edca4209ee6ec79424f3a7adf0121883",
+  "width": 256
+ },
+ "SG-8 Punisher Primary Render.png": {
+  "file": "sg-8-punisher-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c4306767d681a6bf862da81cd65924379472c948",
+  "width": 256
+ },
+ "SG-8S Slugger Primary Render.png": {
+  "file": "sg-8s-slugger-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6296bacaffe9bdcb4f7442637dc70651c0bd1420",
+  "width": 256
+ },
+ "SG-20 Halt Primary Render.png": {
+  "file": "sg-20-halt-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "baf7754d8c88a2a672cf8a76571d725d83402f48",
+  "width": 256
+ },
+ "SG-225 Breaker Primary Render.png": {
+  "file": "sg-225-breaker-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "2c7fc4d737a708532e65352e50bfdee900b93e16",
+  "width": 256
+ },
+ "SG-225IE Breaker Incendiary Primary Render.png": {
+  "file": "sg-225ie-breaker-incendiary-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "29206cf6cbeaf292703309ff09536b0976f5fc66",
+  "width": 256
+ },
+ "SG-225SP Breaker Spray&Pray Primary Render.png": {
+  "file": "sg-225sp-breaker-spray-pray-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e050a47daf646ae2e4a40bef79f8937345651407",
+  "width": 256
+ },
+ "SG-451 Cookout Primary Render.png": {
+  "file": "sg-451-cookout-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "a1febd9804c816186b38ed28562d793a303925a0",
+  "width": 256
+ },
+ "ARC-12 Blitzer Primary Render.png": {
+  "file": "arc-12-blitzer-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "acfea415423560bf600d65182b706e715d4992d8",
+  "width": 256
+ },
+ "LAS-5 Scythe Primary Render.png": {
+  "file": "las-5-scythe-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fd3c7d289ec47c85299aa80b8c2fa2fbbca84f8a",
+  "width": 256
+ },
+ "LAS-16 Sickle Primary Render.png": {
+  "file": "las-16-sickle-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "43d245220de6fce35216e7a8eabca4d7fb7d9bb5",
+  "width": 256
+ },
+ "LAS-17 Double-Edge Sickle Primary Render.png": {
+  "file": "las-17-double-edge-sickle-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c64fae9be1f71e81348ac986803da4b3b130ccc4",
+  "width": 256
+ },
+ "PLAS-1 Scorcher Primary Render.png": {
+  "file": "plas-1-scorcher-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7327083e7322d8fc3d8685e1243ce7e60e8c1984",
+  "width": 256
+ },
+ "PLAS-39 Accelerator Rifle Primary Render.png": {
+  "file": "plas-39-accelerator-rifle-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "a8ff98632a1d511193aa49123021d18c548fcc98",
+  "width": 256
+ },
+ "PLAS-101 Purifier Primary Render.png": {
+  "file": "plas-101-purifier-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c0889604217994f474181bed36ee9a0b25c574d0",
+  "width": 256
+ },
+ "SG-8P Punisher Plasma Primary Render.png": {
+  "file": "sg-8p-punisher-plasma-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1c38be9599363d5c49ad295a4e236c66e0454f06",
+  "width": 256
+ },
+ "MA5C Assault Rifle Primary Render.png": {
+  "file": "ma5c-assault-rifle-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ed9b791e28b0d94dc22753236e828ce1b22bf926",
+  "width": 256
+ },
+ "M7S SMG Primary Render.png": {
+  "file": "m7s-smg-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "80963e2eaf82704f9e3d04ecf4e094b28ec2262b",
+  "width": 256
+ },
+ "M90A Shotgun Primary Render.png": {
+  "file": "m90a-shotgun-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d8aadb4d7d3548af4fa7ffa4621594ff9b53d0b4",
+  "width": 256
+ },
+ "AR-2 Coyote Primary Render.png": {
+  "file": "ar-2-coyote-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5fee452b59aa806bd4c0eb3d13e4d25a419786ec",
+  "width": 256
+ },
+ "AR-GL-21 One Two Primary Render.png": {
+  "file": "ar-gl-21-one-two-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4bfb7d8559342891508423891f0570a90f7732dc",
+  "width": 256
+ },
+ "DBS-2 Shotgun Primary Render.png": {
+  "file": "dbs-2-shotgun-primary-render.webp",
+  "user": "Silevn Lizard",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fd2b05167e164f8bca95616cddffd242023430a4",
+  "width": 256
+ },
+ "LAS-13 Trident Primary Render.png": {
+  "file": "las-13-trident-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "615ace12b45e00d7349cba5aac73886d3c277330",
+  "width": 256
+ },
+ "SG-97 Shotgun Primary Render.png": {
+  "file": "sg-97-shotgun-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "255318354e890480b87eb5929a25feb68b3cd715",
+  "width": 256
+ },
+ "SMG-203 Gallant Primary Render.png": {
+  "file": "smg-203-gallant-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "2fac8612ae4597c152dbf220a088c897ead083ed",
+  "width": 256
+ },
+ "R-4 Hyena Primary Render.png": {
+  "file": "r-4-hyena-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "f84f0d8ee72216174856e722e9b49167aeafe5fb",
+  "width": 256
+ },
+ "R-40-K Hot-Shot Primary Render.png": {
+  "file": "r-40-k-hot-shot-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "b312a555f15999c46a8a23640ff34f0231d7e3df",
+  "width": 256
+ },
+ "GL-15 Evictor Primary Render.png": {
+  "file": "gl-15-evictor-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "e6b57306103c6db8360a9fd4849805eb7079b17f",
+  "width": 256
+ },
+ "AR-11 Arbitrator Primary Render.png": {
+  "file": "ar-11-arbitrator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "283658a302e50c64c4a38bede4e04d10234da85e",
+  "width": 256
+ },
+ "LAS-12 Sai Primary Render.png": {
+  "file": "las-12-sai-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "c4a072338e9a52aee413f9e8a40670d537f70fd4",
+  "width": 256
+ },
+ "R-40 Sightliner Primary Render.png": {
+  "file": "r-40-sightliner-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "96e299d00e90b3916e51386463a633b1d7ab0b8c",
+  "width": 256
+ },
+ "AR-23L Liberator Primary Render.png": {
+  "file": "ar-23l-liberator-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "8bbe6ce467a62029e9a0149a2457004ec3070370",
+  "width": 256
+ },
+ "APW-1 Anti-Materiel Rifle Support Render.png": {
+  "file": "apw-1-anti-materiel-rifle-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "63a3ca5cd4f98f7b96e8b78c07905733d69314d1",
+  "width": 256
+ },
+ "EAT-17 Expendable Anti-Tank Support Render.png": {
+  "file": "eat-17-expendable-anti-tank-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "964d4d649a6cb0ecb6992812fdbaffd2370bce33",
+  "width": 256
+ },
+ "FLAM-40 Flamethrower Support Render.png": {
+  "file": "flam-40-flamethrower-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "efbb2122ee4c62b6660281dd800a4fd92776e090",
+  "width": 256
+ },
+ "GL-21 Grenade Launcher Support Render.png": {
+  "file": "gl-21-grenade-launcher-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "952e8d36a69fb2519c4512fdff3ba32d329106c6",
+  "width": 256
+ },
+ "ARC-3 Arc Thrower Support Render.png": {
+  "file": "arc-3-arc-thrower-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "0390577d9b1f1a4827239a7ea909f3b71e6a2807",
+  "width": 256
+ },
+ "CQC-1 One True Flag Support Render.png": {
+  "file": "cqc-1-one-true-flag-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "a8ee96102f3d17fa7ddd5c952a56c1340fdef56c",
+  "width": 256
+ },
+ "StA-52 Assault Rifle Primary Render.png": {
+  "file": "sta-52-assault-rifle-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "94bd97571fdf5e78ef2b13334987bdf62b2cd812",
+  "width": 256
+ },
+ "SMG-32 Reprimand Primary Render.png": {
+  "file": "smg-32-reprimand-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "19d16db28e1bec27bb55e4c537a4cbd62198219a",
+  "width": 256
+ },
+ "SMG-37 Defender Primary Render.png": {
+  "file": "smg-37-defender-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "b3da923cc8d7c4d23c538d228dbb3b59d1e9cb87",
+  "width": 256
+ },
+ "SMG-72 Pummeler Primary Render.png": {
+  "file": "smg-72-pummeler-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "2acd0ee8922810f6c86468ddaaefdc9d2c1ed0f2",
+  "width": 256
+ },
+ "StA-11 SMG Primary Render.png": {
+  "file": "sta-11-smg-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "0bd19ee1a56106576df2b3cd0f2805ce6a0f4ece",
+  "width": 256
+ },
+ "CQC-2 Saber Secondary Render.png": {
+  "file": "cqc-2-saber-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "459c5b3b1bd2219abf4547e31bcd6ed454cfa58b",
+  "width": 256
+ },
+ "CQC-5 Combat Hatchet Secondary Render.png": {
+  "file": "cqc-5-combat-hatchet-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "eb83de88b50d345c0f8ec6dfdfc638918f5b9964",
+  "width": 256
+ },
+ "CQC-19 Stun Lance Secondary Render.png": {
+  "file": "cqc-19-stun-lance-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9a97090d07a9c39d48af7b20c9646ee2029aa9c4",
+  "width": 256
+ },
+ "CQC-30 Stun Baton Secondary Render.png": {
+  "file": "cqc-30-stun-baton-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5b701fb3ff1eff6b8e5380d54a7410f0c4a153dd",
+  "width": 256
+ },
+ "P-2 Peacemaker Secondary Render.png": {
+  "file": "p-2-peacemaker-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "946d179d0ef1712514e6872219ca76dcb77464f3",
+  "width": 256
+ },
+ "P-4 Senator Secondary Render.png": {
+  "file": "p-4-senator-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "34d42a61afa5b9bbc9e4fd54b40cd5784d754e56",
+  "width": 256
+ },
+ "P-19 Redeemer Secondary Render.png": {
+  "file": "p-19-redeemer-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "cf120533f16e3a62c8d56a4003d279398b13f046",
+  "width": 256
+ },
+ "P-92 Warrant Secondary Render.png": {
+  "file": "p-92-warrant-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ac350bd8848fa89c40f5a5179014042000d22aa5",
+  "width": 256
+ },
+ "P-113 Verdict Secondary Render.png": {
+  "file": "p-113-verdict-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "2bc2c604bf4ec37ed51fc422005ae3c74efbcdc6",
+  "width": 256
+ },
+ "GP-20 Ultimatum Secondary Render.png": {
+  "file": "gp-20-ultimatum-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3d51dc8d14a64fbea815ebcf52e6bacaf739a8ac",
+  "width": 256
+ },
+ "GP-31 Grenade Pistol Secondary Render.png": {
+  "file": "gp-31-grenade-pistol-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4f6aba84f5d346fef2c8c27aa859ac128bd5e719",
+  "width": 256
+ },
+ "LAS-7 Dagger Secondary Render.png": {
+  "file": "las-7-dagger-secondary-render.webp",
+  "user": "PLord",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "bcfb598a3b4345141ef0cf2ed96b63e8ba5cd850",
+  "width": 256
+ },
+ "LAS-58 Talon Secondary Render.png": {
+  "file": "las-58-talon-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8621df14b577f7e6b97b0edc2ae79bdffc4ebc48",
+  "width": 256
+ },
+ "P-11 Stim Pistol Secondary Render.png": {
+  "file": "p-11-stim-pistol-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9d252ecc735e35e984f883b03cb125db1ffc59a9",
+  "width": 256
+ },
+ "P-72 Crisper Secondary Render.png": {
+  "file": "p-72-crisper-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8490084dd6136cc64a22f685d6603400f6d9e96e",
+  "width": 256
+ },
+ "PLAS-15 Loyalist Secondary Render.png": {
+  "file": "plas-15-loyalist-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fd5d4ba45c7fa9a70422c8208cc165c3bdb914e8",
+  "width": 256
+ },
+ "SG-22 Bushwhacker Secondary Render.png": {
+  "file": "sg-22-bushwhacker-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "96bab5d6369b829d1ff8ce2e44a757a781361ff6",
+  "width": 256
+ },
+ "VG-70 Variable Primary Render.png": {
+  "file": "vg-70-variable-primary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8e909cbb9341df7ae0a8855e9b7b3a0071c1eaaf",
+  "width": 256
+ },
+ "M6C-SOCOM Pistol Secondary Render.png": {
+  "file": "m6c-socom-pistol-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "82f58b044d0ed93fb6dcf7bc8314cfe393b4a0ad",
+  "width": 256
+ },
+ "EAT-700 Expendable Napalm Support Render.png": {
+  "file": "eat-700-expendable-napalm-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1478728705c71e877d6422dd659bb6032a65434e",
+  "width": 256
+ },
+ "CQC-9 Defoliation Tool Support Render.png": {
+  "file": "cqc-9-defoliation-tool-support-render.webp",
+  "user": "PLord",
+  "licence": "Arrowhead",
+  "sha1": "3f7221494260760ce08cafc298fbdd41550683b6",
+  "width": 256
+ },
+ "B MD C4 Pack Support Render.png": {
+  "file": "b-md-c4-pack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e41cd7aac7681a76480039a07067cedaefcb1832",
+  "width": 256
+ },
+ "CQC-20 Breaching Hammer Render.png": {
+  "file": "cqc-20-breaching-hammer-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "2adf0454d0c538465935228d17bccaac75a085e5",
+  "width": 256
+ },
+ "EAT-411 Leveller Support Render.png": {
+  "file": "eat-411-leveller-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9b52ff04ca3218335335f94ad350947f2da4c55c",
+  "width": 256
+ },
+ "SMGFLAM-34 Stoker Primary Icon.png": {
+  "file": "smgflam-34-stoker-primary-icon.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fb6998c9a9a2c938d95b1b004f03c4ccfb8d0ac7",
+  "width": 256
+ },
+ "P-69 Veto Secondary Icon.png": {
+  "file": "p-69-veto-secondary-icon.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "e0246546cf14d63554d4340b8551c3a304d83bc3",
+  "width": 256
+ },
+ "CQC-73 Entrenchment Tool Secondary Render.png": {
+  "file": "cqc-73-entrenchment-tool-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "349204be8689902aa8df8bed9ad8cf0ad6b34ca5",
+  "width": 256
+ },
+ "P-33 Missile Pistol Secondary Render.png": {
+  "file": "p-33-missile-pistol-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "a1e58d53f9dba9e7e7d31a7ba18a0dfb267b79f3",
+  "width": 256
+ },
+ "AC-8 Autocannon Weapon and Backpack Support Render.png": {
+  "file": "ac-8-autocannon-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8098066f101aa80c7b2756bd791043d5d65fbacb",
+  "width": 256
+ },
+ "B FLAM-80 Cremator Weapon and Backpack Support Render.png": {
+  "file": "b-flam-80-cremator-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "93063a1d5b07fa84f197c41a9d9c39ec6f5231d6",
+  "width": 256
+ },
+ "FAF-14 Spear Weapon and Backpack Support Render.png": {
+  "file": "faf-14-spear-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "51a0d0a548b851814dd2f857b8fe1a596ab81fad",
+  "width": 256
+ },
+ "GL-28 Belt-Fed Grenade Launcher Weapon and Backpack Support Render.png": {
+  "file": "gl-28-belt-fed-grenade-launcher-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5fec5c602d2ba5cbec323f28859790c2481e673f",
+  "width": 256
+ },
+ "P-40-K Bolt Pistol Secondary Render.png": {
+  "file": "p-40-k-bolt-pistol-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "b09f63521849df8a91c8dc6364a2a2bed5573c7d",
+  "width": 256
+ },
+ "40-K Meltagun Support Render.png": {
+  "file": "40-k-meltagun-support-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "0054b248661bf2a297566d206670694ca7d71f27",
+  "width": 256
+ },
+ "P-34 Breacher Secondary Render.png": {
+  "file": "p-34-breacher-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "882b5b1f7fe0e2eed6bb351aeccd6961a36c16d5",
+  "width": 256
+ },
+ "P-44 Mist Secondary Render.png": {
+  "file": "p-44-mist-secondary-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "691bb403b2489b6dd021bdfab3e5d2f5ffb6f001",
+  "width": 256
+ },
+ "AMW-20 Apex Weapon and Backpack Support Render.png": {
+  "file": "amw-20-apex-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "2a70dd7c32c0aff0b166263c1f273ef271828183",
+  "width": 256
+ },
+ "MG-43 Machine Gun Support Render.png": {
+  "file": "mg-43-machine-gun-support-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "813c80496760c8f57383469016b7f6d69ef51e8b",
+  "width": 256
+ },
+ "M-105 Stalwart Support Render.png": {
+  "file": "m-105-stalwart-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "a9251bd9c4e7653c028df92668af88cbe1db7693",
+  "width": 256
+ },
+ "MG-206 Heavy Machine Gun Support Render.png": {
+  "file": "mg-206-heavy-machine-gun-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "5a5c8660e7ee84f2ca50210b231c5f10263afeff",
+  "width": 256
+ },
+ "MLS-4X Commando Support Render.png": {
+  "file": "mls-4x-commando-support-render.webp",
+  "user": "PLord",
+  "licence": "Arrowhead",
+  "sha1": "4ecc9d52a005c2bd9a7ebbcac7ef8922a4480fa4",
+  "width": 256
+ },
+ "RS-422 Railgun Support Render.png": {
+  "file": "rs-422-railgun-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "33e8a5f1796744ea8f8a240f7cf58a0f8d57b38d",
+  "width": 256
+ },
+ "LAS-99 Quasar Cannon Support Render.png": {
+  "file": "las-99-quasar-cannon-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "a1a5c6d4d1302cd242492fbd9b9ce233009d1a8e",
+  "width": 256
+ },
+ "TX-41 Sterilizer Support Render.png": {
+  "file": "tx-41-sterilizer-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "7f1981f62fd7d7769e31892cde49f7c4c1d3cc47",
+  "width": 256
+ },
+ "GL-52 De-Escalator Support Render.png": {
+  "file": "gl-52-de-escalator-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "b90ee959f1cef2472eb18f55aabcd6413f0c9c2a",
+  "width": 256
+ },
+ "LAS-98 Laser Cannon Support Render.png": {
+  "file": "las-98-laser-cannon-support-render.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "92de395c70ae4ca721aea8816e8ddfeff5b8d6e7",
+  "width": 256
+ },
+ "G-6 Frag Throwable Render.png": {
+  "file": "g-6-frag-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3a5ba5ed5fc618d245d60fe75e59eb61576577fe",
+  "width": 256
+ },
+ "G-10 Incendiary Throwable Render.png": {
+  "file": "g-10-incendiary-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fa03cb072e69e25cf8922774290a12a93dbe36f0",
+  "width": 256
+ },
+ "G-12 High Explosive Throwable Render.png": {
+  "file": "g-12-high-explosive-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5b30493a684d1430c49a26572c444f0daaa4b3a9",
+  "width": 256
+ },
+ "TED-63 Dynamite Throwable Render.png": {
+  "file": "ted-63-dynamite-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e607be06b4a1fe417c4a9a8570cafc91e5de8576",
+  "width": 256
+ },
+ "G-3 Smoke Throwable Render.png": {
+  "file": "g-3-smoke-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4ff7f7b4cb33f9bfdf7766d2f91f7ee92f821bed",
+  "width": 256
+ },
+ "G-4 Gas Throwable Render.png": {
+  "file": "g-4-gas-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5edf984269024402f6afa73d4db0948b9611e644",
+  "width": 256
+ },
+ "G-13 Incendiary Impact Throwable Render.png": {
+  "file": "g-13-incendiary-impact-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "103c4a4ca556f6ad031dd1ef7a852f9f28c6e718",
+  "width": 256
+ },
+ "G-16 Impact Throwable Render.png": {
+  "file": "g-16-impact-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6e6bc3febe39fd9d48275e35981e623d19ffe0bb",
+  "width": 256
+ },
+ "G-23 Stun Throwable Render.png": {
+  "file": "g-23-stun-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "674d411f6b6f50384f922d23ccd35932f07f8011",
+  "width": 256
+ },
+ "G-50 Seeker Throwable Render.png": {
+  "file": "g-50-seeker-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1eba1768ccaaf9133c2a16c487d1c895a2597628",
+  "width": 256
+ },
+ "G-109 Urchin Throwable Render.png": {
+  "file": "g-109-urchin-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6556aef78474d8e7ae4a0dd56af14bb16e89f233",
+  "width": 256
+ },
+ "G-123 Thermite Throwable Render.png": {
+  "file": "g-123-thermite-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1dc4e182a99875bc3402d955d5098f505db07e5a",
+  "width": 256
+ },
+ "G-142 Pyrotech Throwable Render.png": {
+  "file": "g-142-pyrotech-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d77fbb0ec8c063773f06fc2862c23cc2a054c3f4",
+  "width": 256
+ },
+ "K-2 Throwing Knife Throwable Render.png": {
+  "file": "k-2-throwing-knife-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4b7c6a7721fa342878571d36170a24b34a8c0bc4",
+  "width": 256
+ },
+ "G-31 ARC Throwable Render.png": {
+  "file": "g-31-arc-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "3ad7a29048ec26c775e41882ed601ec1995fe42e",
+  "width": 256
+ },
+ "PLAS-45 Epoch Support Render.png": {
+  "file": "plas-45-epoch-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f6741444bb3109667c5abbed2433a3cc32899f2d",
+  "width": 256
+ },
+ "A-9 Helljumper Armor Render.png": {
+  "file": "a-9-helljumper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "Arrowhead",
+  "sha1": "50aa129b6348d9b0b62fee86ec7fbfd1b2facb56",
+  "width": 256
+ },
+ "S-11 Speargun Support Render.png": {
+  "file": "s-11-speargun-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6e93fa0fbff085b7dabd8c06421404264738bc52",
+  "width": 256
+ },
+ "SG-88 Break-Action Shotgun Support Render.png": {
+  "file": "sg-88-break-action-shotgun-support-render.webp",
+  "user": "Silevn Lizard",
+  "licence": "Arrowhead",
+  "sha1": "9db67860be84e71dec72359e3c006777b65569f7",
+  "width": 256
+ },
+ "G-SH-39 Shield Throwable Render.png": {
+  "file": "g-sh-39-shield-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1535108e21053ae718c4749aaef97edc64fa4d25",
+  "width": 256
+ },
+ "AC-1 Dutiful Armor Render.png": {
+  "file": "ac-1-dutiful-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e857705520c9e1a26f592346f3104401dce81514",
+  "width": 256
+ },
+ "AC-2 Obedient Armor Render.png": {
+  "file": "ac-2-obedient-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "1a841538d8b76a051345bc24bfb0f647ebbfef6b",
+  "width": 256
+ },
+ "AD-26 Bleeding Edge Armor Render.png": {
+  "file": "ad-26-bleeding-edge-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "913a47eba1bd09dded425f4b6e7847a79f316193",
+  "width": 256
+ },
+ "MGX-42 Bullet Storm Support Render.png": {
+  "file": "mgx-42-bullet-storm-support-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "faf6f7200f29f461ce00047b683fa7d1bd34fb05",
+  "width": 256
+ },
+ "GR-8 Recoilless Rifle Weapon and Backpack Support Render.png": {
+  "file": "gr-8-recoilless-rifle-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "a51dd5311b63c28346c15f50b8c2eea3bac9fe3f",
+  "width": 256
+ },
+ "M-1000 Maxigun Weapon and Backpack Support Render.png": {
+  "file": "m-1000-maxigun-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "56293a4af32c116b0782c59168746d3de4e56d92",
+  "width": 256
+ },
+ "RL-77 Airburst Rocket Launcher Weapon and Backpack Support Render.png": {
+  "file": "rl-77-airburst-rocket-launcher-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "28635841e4eb5b2bea6fabda926564bb7a8581da",
+  "width": 256
+ },
+ "StA-X3 W.A.S.P. Launcher Weapon and Backpack Support Render.png": {
+  "file": "sta-x3-w-a-s-p-launcher-weapon-and-backpack-support-render.webp",
+  "user": "Undeadender",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e04dde6e7b5bfbce0ae87c1f27cf38b0c2c26130",
+  "width": 256
+ },
+ "G-40-K Melta Mine Throwable Render.png": {
+  "file": "g-40-k-melta-mine-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "6bdf5e06200e6a47b079bdb41bc9e65a3939115e",
+  "width": 256
+ },
+ "AD-11 Livewire Armor Render.png": {
+  "file": "ad-11-livewire-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f31fa8ec8b8d35812f6665916d202d215cd75485",
+  "width": 256
+ },
+ "A-35 Recon Armor Render.png": {
+  "file": "a-35-recon-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "63ac363c527d02be9a2d1c9c062c23c45d5a0f0d",
+  "width": 256
+ },
+ "G-8 Immolation Throwable Render.png": {
+  "file": "g-8-immolation-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "c464d5a25f9b55e0d4bbb15a53ebbe741c0f798a",
+  "width": 256
+ },
+ "G-60 Anti-Tank Seeker Throwable Render.png": {
+  "file": "g-60-anti-tank-seeker-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "9524425b8c44ce0ff871297c7d2c1fc429a7be15",
+  "width": 256
+ },
+ "G-11 Caltrops Throwable Render.png": {
+  "file": "g-11-caltrops-throwable-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "e4464da2af08f1c5a88f9bfdef3a08aaa73fef62",
+  "width": 256
+ },
+ "LAS-44 Nova Support Render.png": {
+  "file": "las-44-nova-support-render.webp",
+  "user": "Undeadender",
+  "licence": "Arrowhead",
+  "sha1": "81c53c1973e1eb9836c226aea2366de13a9a4a23",
+  "width": 256
+ },
+ "FS-05 Marksman Body Icon.png": {
+  "file": "fs-05-marksman-body-icon.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "2b8bcd2040d3c5d0dfb1b249d1990195864981f0",
+  "width": 256
+ },
+ "B-24 Enforcer Body Icon.png": {
+  "file": "b-24-enforcer-body-icon.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "5af29554f442c036015da7319f7e87d475987901",
+  "width": 256
+ },
+ "CM-17 Butcher Body Icon.png": {
+  "file": "cm-17-butcher-body-icon.webp",
+  "user": "Deleted user p8x4OGDni4oWqMKlSE8m5pfC",
+  "licence": "Arrowhead",
+  "sha1": "d7b007f5550947d6d928a3e53b305d4d3b0ec932",
+  "width": 256
+ },
+ "B-01 Tactical v1 Armor Render.png": {
+  "file": "b-01-tactical-v1-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "69cda35af29cdf3d4786801c9c80d7f94f4f5f8c",
+  "width": 256
+ },
+ "B-08 Light Gunner Armor Render.png": {
+  "file": "b-08-light-gunner-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5fda3db07d4cbb3521e8007ba5b9ef0c621a08f1",
+  "width": 256
+ },
+ "CE-74 Breaker Armor Render.png": {
+  "file": "ce-74-breaker-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ee85f2d38a2c6204898a3b6885084cb2fb928b3f",
+  "width": 256
+ },
+ "CE-101 Guerilla Gorilla Armor Render.png": {
+  "file": "ce-101-guerilla-gorilla-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "a78ae12a13fbd61bdca299f566d3714a48436f45",
+  "width": 256
+ },
+ "CM-21 Trench Paramedic Armor Render.png": {
+  "file": "cm-21-trench-paramedic-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "16ce46636098871050b570ad15e226597c25ea5a",
+  "width": 256
+ },
+ "DP-8 Mountain-Scaled Armor Render.png": {
+  "file": "dp-8-mountain-scaled-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6d8716c5442e54c78c35b4b3cb44c9c6a4c94667",
+  "width": 256
+ },
+ "DP-40 Hero of the Federation Armor Render.png": {
+  "file": "dp-40-hero-of-the-federation-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "00aaafd0e61f72993b07ca5bb967ac12fec03be6",
+  "width": 256
+ },
+ "DP-53 Savior of the Free Armor Render.png": {
+  "file": "dp-53-savior-of-the-free-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "24c2855ea3ff3ae4c375febb9d8d91b0aa485082",
+  "width": 256
+ },
+ "CE-07 Demolition Specialist Armor Render.png": {
+  "file": "ce-07-demolition-specialist-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f2b4fb1bba038f25eb10caf85bd27cbce9aeb17b",
+  "width": 256
+ },
+ "CE-67 Titan Armor Render.png": {
+  "file": "ce-67-titan-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "720e4f7efed9f35b21562b211041ba5548fb7d8d",
+  "width": 256
+ },
+ "EX-00 Prototype X Armor Render.png": {
+  "file": "ex-00-prototype-x-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3248434fab63e3dfd92df9d6354604f9cedc6f9d",
+  "width": 256
+ },
+ "B-22 Model Citizen Armor Render.png": {
+  "file": "b-22-model-citizen-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fd79946c94b42db8d13a8e7c1e962f4587d920cf",
+  "width": 256
+ },
+ "DP-00 Tactical Armor Render.png": {
+  "file": "dp-00-tactical-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4583f6144540623f5b4b126fa6bae68f29e2d090",
+  "width": 256
+ },
+ "DP-11 Champion of the People Armor Render.png": {
+  "file": "dp-11-champion-of-the-people-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c3ea469540227583ed29e302c860bf85250b9003",
+  "width": 256
+ },
+ "CE-81 Juggernaut Armor Render.png": {
+  "file": "ce-81-juggernaut-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "dcbb8ea1ac7e991844cec659d81a07c0e6353dbf",
+  "width": 256
+ },
+ "CE-35 Trench Engineer Armor Render.png": {
+  "file": "ce-35-trench-engineer-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4333712af24bdb6d40a507666bc3d6299e1039fc",
+  "width": 256
+ },
+ "CM-09 Bonesnapper Armor Render.png": {
+  "file": "cm-09-bonesnapper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "118ccf087461c2c6a115e92a35284e1f44a5c837",
+  "width": 256
+ },
+ "CM-14 Physician Armor Render.png": {
+  "file": "cm-14-physician-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "84d134aa3c1070f72f12c9423101f439d2230313",
+  "width": 256
+ },
+ "B-27 Fortified Commando Armor Render.png": {
+  "file": "b-27-fortified-commando-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8d38eab16bad9d7feafd488ec6c26c38874f39d9",
+  "width": 256
+ },
+ "FS-11 Executioner Armor Render.png": {
+  "file": "fs-11-executioner-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "40cfdaa0a863be3a162de8f85bf6a1044640f383",
+  "width": 256
+ },
+ "CM-10 Clinician Armor Render.png": {
+  "file": "cm-10-clinician-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4c5d518336519c031cb4e73b35b2cdf3be6d535b",
+  "width": 256
+ },
+ "CW-4 Arctic Ranger Armor Render.png": {
+  "file": "cw-4-arctic-ranger-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "244883b58b3178f83e7dafe7e0ff26356d904ac1",
+  "width": 256
+ },
+ "CW-9 White Wolf Armor Render.png": {
+  "file": "cw-9-white-wolf-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "747c528fef2145ae1bdddd15c0424f136dd44c50",
+  "width": 256
+ },
+ "CW-22 Kodiak Armor Render.png": {
+  "file": "cw-22-kodiak-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "43ff69851e6252aba6255bcd0df707dfd471e167",
+  "width": 256
+ },
+ "CW-36 Winter Warrior Armor Render.png": {
+  "file": "cw-36-winter-warrior-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "808eaf7dbd9f416c1f349f94b00b8078c4d45c62",
+  "width": 256
+ },
+ "CE-27 Ground Breaker Armor Render.png": {
+  "file": "ce-27-ground-breaker-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f31adb921ec45a9cda850da706a676e92c17f609",
+  "width": 256
+ },
+ "EX-03 Prototype 3 Armor Render.png": {
+  "file": "ex-03-prototype-3-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9955564a23cf0a8b09adb08a17cfe2a294dda947",
+  "width": 256
+ },
+ "EX-16 Prototype 16 Armor Render.png": {
+  "file": "ex-16-prototype-16-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ba784e0cc9bd6cc9e241c4efe1e82f608401c74c",
+  "width": 256
+ },
+ "AF-02 Haz-Master Armor Render.png": {
+  "file": "af-02-haz-master-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9839403a6b288d66308cb59e1c0544d3617cd2e0",
+  "width": 256
+ },
+ "AF-50 Noxious Ranger Armor Render.png": {
+  "file": "af-50-noxious-ranger-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f2489f5b4286dc531ed396efcb029e3042419cb1",
+  "width": 256
+ },
+ "AF-52 Lockdown Armor Render.png": {
+  "file": "af-52-lockdown-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "98493b14efa02a419e3f5fac6398b634f24ef26a",
+  "width": 256
+ },
+ "AF-91 Field Chemist Armor Render.png": {
+  "file": "af-91-field-chemist-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "caed5bc4baa497ea2b2b9f5e70e41b5bb3ad1810",
+  "width": 256
+ },
+ "BP-20 Correct Officer Armor Render.png": {
+  "file": "bp-20-correct-officer-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7acc68be63ace8904307627b18d2c4de8f0ac78e",
+  "width": 256
+ },
+ "BP-32 Jackboot Armor Render.png": {
+  "file": "bp-32-jackboot-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "150b9c3d880c40cd344c20a1fd4ffe264a514b86",
+  "width": 256
+ },
+ "BP-77 Grand Juror Armor Render.png": {
+  "file": "bp-77-grand-juror-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "8cfa23504b534c6214e969b986344cde991579da",
+  "width": 256
+ },
+ "DS-10 Big Game Hunter Armor Render.png": {
+  "file": "ds-10-big-game-hunter-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "36c8d421e59a7232c65c6138fb2a0423eec72285",
+  "width": 256
+ },
+ "DS-42 Federation's Blade Armor Render.png": {
+  "file": "ds-42-federation-s-blade-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "94c33299e25966d8d03397dccc130b2308569332",
+  "width": 256
+ },
+ "DS-191 Scorpion Armor Render.png": {
+  "file": "ds-191-scorpion-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "49c43d966db7ac49c8199bcc8ff22ee93703a193",
+  "width": 256
+ },
+ "FS-23 Battle Master Armor Render.png": {
+  "file": "fs-23-battle-master-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f7f3b785e6e6a84564ebee59bcb6e0961b1d0b0d",
+  "width": 256
+ },
+ "CPG-48 Sapper Armor Render.png": {
+  "file": "cpg-48-sapper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9f1fa9f0a9e9fad37b7fdce667ceecbdb935bff8",
+  "width": 256
+ },
+ "CPH-26 Commandant Armor Render.png": {
+  "file": "cph-26-commandant-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e35a2494a849d1c52ba87da98bf12981a964792d",
+  "width": 256
+ },
+ "CPR-80 Bulwark Armor Render.png": {
+  "file": "cpr-80-bulwark-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "dfef3c2a39a0c67df6b9f25e488fa749662aab6e",
+  "width": 256
+ },
+ "AD-49 Apollonian Armor Render.png": {
+  "file": "ad-49-apollonian-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "071eeace4ea97d7122a21fb1fcac831f9da41074",
+  "width": 256
+ },
+ "CE-64 Grenadier Armor Render.png": {
+  "file": "ce-64-grenadier-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "48cbf5446aaf275bef3410d012b996117fcc7a35",
+  "width": 256
+ },
+ "BFM-220 Ironclad Armor Render.png": {
+  "file": "bfm-220-ironclad-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fd09a768a4ce44545f21d59bebbe3b354b2942de",
+  "width": 256
+ },
+ "BFM-16 Tanker Armor Render.png": {
+  "file": "bfm-16-tanker-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f52846db4a2647b658c18a5b4bc9b796100cd820",
+  "width": 256
+ },
+ "BFM-77 Reformer Armor Render.png": {
+  "file": "bfm-77-reformer-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ff1252958b126c980b74d40befae65d6139a3a4f",
+  "width": 256
+ },
+ "GS-17 Frontier Marshal Armor Render.png": {
+  "file": "gs-17-frontier-marshal-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "afb377ce8af9dfe3e3863e838a2e9572b9c8a08a",
+  "width": 256
+ },
+ "RS-89 Shadow Paragon Armor Render.png": {
+  "file": "rs-89-shadow-paragon-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "b60c98a89085e19952818eebac403355a9c38b88",
+  "width": 256
+ },
+ "SA-7 Headfirst Armor Render.png": {
+  "file": "sa-7-headfirst-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "796aa6ee690de7f83d2906eeb53056cfdc4295e5",
+  "width": 256
+ },
+ "SA-8 Ram Armor Render.png": {
+  "file": "sa-8-ram-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f57664c7236e01cf02551100c29e5063f22bb74b",
+  "width": 256
+ },
+ "RS-67 Null Cipher Armor Render.png": {
+  "file": "rs-67-null-cipher-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "173cae6f9d031d0b63d1eb831fad8a1bef9c3fb4",
+  "width": 256
+ },
+ "RS-100 Sanctioner Armor Render.png": {
+  "file": "rs-100-sanctioner-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c989dc61b94152e353d7c72af723c7d78277146a",
+  "width": 256
+ },
+ "FS-38 Eradicator Armor Render.png": {
+  "file": "fs-38-eradicator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "5093e6971aa5a6faf2de1db1564d62691231bd83",
+  "width": 256
+ },
+ "IE-3 Martyr Armor Render.png": {
+  "file": "ie-3-martyr-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "80eaea1450f6edfd96ae5cbe3b1817efe1840051",
+  "width": 256
+ },
+ "IE-12 Righteous Armor Render.png": {
+  "file": "ie-12-righteous-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4ddc5593434cf1e06d0a30f41db004e3385b156a",
+  "width": 256
+ },
+ "IE-57 Hell-Bent Armor Render.png": {
+  "file": "ie-57-hell-bent-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "9f72eefb955f41cb9e5999d287c86dfc75116bdb",
+  "width": 256
+ },
+ "RE-824 Bearer of the Standard Armor Render.png": {
+  "file": "re-824-bearer-of-the-standard-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3f599365bb117d5a1da02e1258d2c38b0a0a8d16",
+  "width": 256
+ },
+ "RE-1861 Parade Commander Armor Render.png": {
+  "file": "re-1861-parade-commander-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "505fcb562f541dfe04d9d509c0e43d12a7322df1",
+  "width": 256
+ },
+ "RE-2310 Honorary Guard Armor Render.png": {
+  "file": "re-2310-honorary-guard-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6146a1b30b7e4b4c0d755ac7d091caa60a9ccc70",
+  "width": 256
+ },
+ "RS-6 Fiend Destroyer Armor Render.png": {
+  "file": "rs-6-fiend-destroyer-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "c9aac7ad6a66590fed0565730b84be2d4ae05148",
+  "width": 256
+ },
+ "RS-20 Constrictor Armor Render.png": {
+  "file": "rs-20-constrictor-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "90e610d005826192f4ea06986cc5cd8f7b4be293",
+  "width": 256
+ },
+ "RS-40 Beast of Prey Armor Render.png": {
+  "file": "rs-40-beast-of-prey-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f5be223a2d9fbb028e1937caa9f8ad0a8241d48a",
+  "width": 256
+ },
+ "SC-30 Trailblazer Scout Armor Render.png": {
+  "file": "sc-30-trailblazer-scout-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "0391b26dec3c0eb0dbfcb5ea1f1a691e564db850",
+  "width": 256
+ },
+ "SC-34 Infiltrator Armor Render.png": {
+  "file": "sc-34-infiltrator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "201f6ed4fc5da6f57a3e132e9b80d9578d2e1426",
+  "width": 256
+ },
+ "PH-56 Jaguar Armor Render.png": {
+  "file": "ph-56-jaguar-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "3a9fb7d6b9c03dd43b6371260b3bca36742278d1",
+  "width": 256
+ },
+ "SC-37 Legionnaire Armor Render.png": {
+  "file": "sc-37-legionnaire-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e35814c3ae84a8cd7190749198250d18b76d8f8f",
+  "width": 256
+ },
+ "TR-117 Alpha Commander Armor Render.png": {
+  "file": "tr-117-alpha-commander-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "bb4656a6217280e2e7d51e1b1e435d345be45f29",
+  "width": 256
+ },
+ "SR-24 Street Scout Armor Render.png": {
+  "file": "sr-24-street-scout-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "24d174006ce7af6f31f4ded129b25128c8500644",
+  "width": 256
+ },
+ "SR-64 Cinderblock Armor Render.png": {
+  "file": "sr-64-cinderblock-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d5352e34c38bfc4965dca205e5a0b02a3af022d5",
+  "width": 256
+ },
+ "PH-202 Twigsnapper Armor Render.png": {
+  "file": "ph-202-twigsnapper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d2a694ff216504254174c3ecfa971157d0d03e01",
+  "width": 256
+ },
+ "SR-18 Roadblock Armor Render.png": {
+  "file": "sr-18-roadblock-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "4314dc37c3fad070e5082d6a758516e07dfb6c3f",
+  "width": 256
+ },
+ "SA-04 Combat Technician Armor Render.png": {
+  "file": "sa-04-combat-technician-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "52bfe97e61df8e215746a24a933eb8964ebb64d8",
+  "width": 256
+ },
+ "SC-15 Drone Master Armor Render.png": {
+  "file": "sc-15-drone-master-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "825e5d9b7d1a39403d4b4f63d917df4de2beb0c1",
+  "width": 256
+ },
+ "FS-61 Dreadnought Armor Render.png": {
+  "file": "fs-61-dreadnought-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "693c273ef07d5755974bcfc50bd462187c1d2afd",
+  "width": 256
+ },
+ "FS-34 Exterminator Armor Render.png": {
+  "file": "fs-34-exterminator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7f80c938f3cfed96c188f778a507f02ecaab754d",
+  "width": 256
+ },
+ "FS-55 Devastator Armor Render.png": {
+  "file": "fs-55-devastator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d45cb64bd785d7745933d5ec6c9a4e7a90c5f554",
+  "width": 256
+ },
+ "I-09 Heatseeker Armor Render.png": {
+  "file": "i-09-heatseeker-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7577dfc65ca5fb67066303ac2abe4a7512133ab8",
+  "width": 256
+ },
+ "I-44 Salamander Armor Render.png": {
+  "file": "i-44-salamander-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "2a2d82aee130c0d69d8fc8019c603623183c0c12",
+  "width": 256
+ },
+ "I-92 Fire Fighter Armor Render.png": {
+  "file": "i-92-fire-fighter-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7235b83c2216b6816402a2c4b0e6e648394e36ac",
+  "width": 256
+ },
+ "I-102 Draconaught Armor Render.png": {
+  "file": "i-102-draconaught-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "be9733f1e06ff55ec677e830c056ecd3170dfe2e",
+  "width": 256
+ },
+ "SA-12 Servo Assisted Armor Render.png": {
+  "file": "sa-12-servo-assisted-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "dddc6327e5fab8b6d856b1426dff0654c7f02fd6",
+  "width": 256
+ },
+ "SA-25 Steel Trooper Armor Render.png": {
+  "file": "sa-25-steel-trooper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e5cc32d6614e370000fc798b3ba89ec38ce7e8e2",
+  "width": 256
+ },
+ "SA-32 Dynamo Armor Render.png": {
+  "file": "sa-32-dynamo-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d1a59f043c2aee964efb505a5113727d8c04381e",
+  "width": 256
+ },
+ "FS-37 Ravager Armor Render.png": {
+  "file": "fs-37-ravager-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "fe9808933075be414ed92bb678a109e258c5d987",
+  "width": 256
+ },
+ "GS-11 Democracy's Deputy Armor Render.png": {
+  "file": "gs-11-democracy-s-deputy-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "db8ccc9e06a9789379ff585967b721d2d84da38d",
+  "width": 256
+ },
+ "GS-66 Lawmaker Armor Render.png": {
+  "file": "gs-66-lawmaker-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "d367b5db11168295c3be79037f71452ba91f982e",
+  "width": 256
+ },
+ "O-2 Heavy Operator Armor Render.png": {
+  "file": "o-2-heavy-operator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "0f2395bbd747bfdb26bf3f6993e9f665d8b9c259",
+  "width": 256
+ },
+ "O-3 Free Spirit Armor Render.png": {
+  "file": "o-3-free-spirit-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "e873a25995b659991288f5ebb061b4a5b91f07e6",
+  "width": 256
+ },
+ "O-44 Bonded Pilot Armor Render.png": {
+  "file": "o-44-bonded-pilot-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ed5289cddc134a57d7bc51b040b0e0bde5ac7ffc",
+  "width": 256
+ },
+ "KDM-500 Outrider Armor Render.png": {
+  "file": "kdm-500-outrider-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "66afec70652b17dca80233f1e0d7f92a411a9596",
+  "width": 256
+ },
+ "TG-8 Sharpshooter Armor Render.png": {
+  "file": "tg-8-sharpshooter-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "49c6cb2114d20570a6ab92818f9e6a7bbcc2d460",
+  "width": 256
+ },
+ "TG-122 Demo-Trooper Armor Render.png": {
+  "file": "tg-122-demo-trooper-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "95857caa962bc21d7270c36d83d0bc9c3060db1a",
+  "width": 256
+ },
+ "PH-9 Predator Armor Render.png": {
+  "file": "ph-9-predator-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6517edff84c5cd508b369f135bf1053f39e0698c",
+  "width": 256
+ },
+ "SS-500 Pale Prosecutor Armor Render.png": {
+  "file": "ss-500-pale-prosecutor-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "38846c40c48b019a5a717b62c217419a6859695d",
+  "width": 256
+ },
+ "SS-15 Focal Point Armor Render.png": {
+  "file": "ss-15-focal-point-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "0e6f84547f3fa6537a85ba3dc3cc5b464ec42073",
+  "width": 256
+ },
+ "SS-33 Mimetic Marshal Armor Render.png": {
+  "file": "ss-33-mimetic-marshal-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "aed4243c7f98253945d6c4b9284cd34f4a3710da",
+  "width": 256
+ },
+ "Stamina Enhancement Booster Icon.svg": {
+  "file": "stamina-enhancement-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "0f12c0f4d87f2da6fbea015ecade6dde6e59b7b6",
+  "width": null
+ },
+ "Localization Confusion Booster Icon.svg": {
+  "file": "localization-confusion-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "3b4fcb63ae97737858ff4e7aa0aad55f3718879b",
+  "width": null
+ },
+ "UAV Recon Booster Booster Icon.svg": {
+  "file": "uav-recon-booster-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ce1f67a3e065f4528165afd1e6ee6230a1fc7cf1",
+  "width": null
+ },
+ "Hellpod Space Optimization Booster Icon.svg": {
+  "file": "hellpod-space-optimization-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7aa15a19b534d4da7d4c510a302ccd32be213ade",
+  "width": null
+ },
+ "Muscle Enhancement Booster Icon.svg": {
+  "file": "muscle-enhancement-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "4a47f5a30356131df20530676c9c93d728fccbfd",
+  "width": null
+ },
+ "Vitality Enhancement Booster Icon.svg": {
+  "file": "vitality-enhancement-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "16b4400c5a3d13440550f3ef5ca449ad0c01fe78",
+  "width": null
+ },
+ "Flexible Reinforcement Budget Booster Icon.svg": {
+  "file": "flexible-reinforcement-budget-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "32cacfd7272e3da0b9f8248098330c6c993166bb",
+  "width": null
+ },
+ "Increased Reinforcement Budget Booster Icon.svg": {
+  "file": "increased-reinforcement-budget-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "cb9eafe7d128b33634e6b28f40a919ea71c5eb57",
+  "width": null
+ },
+ "Firebomb Hellpods Booster Icon.svg": {
+  "file": "firebomb-hellpods-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "98993c5afea2681562e675cce18b55e232116af6",
+  "width": null
+ },
+ "Armed Resupply Pods Booster Icon.svg": {
+  "file": "armed-resupply-pods-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "34d6c9b236c1454130e7c53bcf234c4d9f500ead",
+  "width": null
+ },
+ "Experimental Infusion Booster Icon.svg": {
+  "file": "experimental-infusion-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "0b953d85c9a4d3c6f82652a2269c585998665a96",
+  "width": null
+ },
+ "Dead Sprint Booster Icon.svg": {
+  "file": "dead-sprint-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7fe9b8d11d2614180c7639101700d2220ffc1338",
+  "width": null
+ },
+ "Motivational Shocks Booster Icon.svg": {
+  "file": "motivational-shocks-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "2bde361fb1244e39143eb255bdfcfce6ffc63b24",
+  "width": null
+ },
+ "Expert Extraction Pilot Booster Icon.svg": {
+  "file": "expert-extraction-pilot-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "cd8ab76c42b9a0345b5d04d8098a727fe2722c83",
+  "width": null
+ },
+ "Sample Extricator Booster Icon.svg": {
+  "file": "sample-extricator-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "39ba8b812573315db686047a0ee4fd59105f80da",
+  "width": null
+ },
+ "Sample Scanner Booster Icon.svg": {
+  "file": "sample-scanner-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "71d8c8ccea91ef02f278ade76d6da9fc8330381c",
+  "width": null
+ },
+ "Stun Pods Booster Icon.svg": {
+  "file": "stun-pods-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "60fda52cabffff2d95319df16a7885aee59946bb",
+  "width": null
+ },
+ "Concealed Insertion Booster Icon.svg": {
+  "file": "concealed-insertion-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "06274da619f63b52db5b1976293d93a820950423",
+  "width": null
+ },
+ "TR-7 Ambassador of the Brand Armor Render.png": {
+  "file": "tr-7-ambassador-of-the-brand-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6dc397544121aff84cb960537b73400fdf4b16c9",
+  "width": 256
+ },
+ "TR-62 Knight Armor Render.png": {
+  "file": "tr-62-knight-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "7b41f400c925852550f5afd53e148e39d3ebfc48",
+  "width": 256
+ },
+ "UF-84 Doubt Killer Armor Render.png": {
+  "file": "uf-84-doubt-killer-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "f3347bdc50451180a1a4ed170de396d542d874e9",
+  "width": 256
+ },
+ "TR-40 Gold Eagle Armor Render.png": {
+  "file": "tr-40-gold-eagle-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "6c1bea004d1a55c111849ac88f4ba9a1c14d49cd",
+  "width": 256
+ },
+ "UF-16 Inspector Armor Render.png": {
+  "file": "uf-16-inspector-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "ea246d0b4e6f394f2c5968655045f373b066b75d",
+  "width": 256
+ },
+ "UF-50 Bloodhound Armor Render.png": {
+  "file": "uf-50-bloodhound-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "823c98f4c2e87b05df663f66555f7e1dcb58ee99",
+  "width": 256
+ },
+ "TR-9 Cavalier of Democracy Armor Render.png": {
+  "file": "tr-9-cavalier-of-democracy-armor-render.webp",
+  "user": "YourOnlyNavigator",
+  "licence": "CC-BY-NC-SA",
+  "sha1": "767174f221262d31409075d74fc7d8f17f53a19d",
+  "width": 256
+ },
+ "Integrated Extinguishers Booster Icon.svg": {
+  "file": "integrated-extinguishers-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "391451bead6938a7cc9b948f1c6ed0e6f2a0cfe2",
+  "width": null
+ },
+ "Surplus EAT Allocation Booster Icon.svg": {
+  "file": "surplus-eat-allocation-booster-icon.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "3b9771237a8e16c4903748d1485afec8bc9a5494",
+  "width": null
+ }
+}

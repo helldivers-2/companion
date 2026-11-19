@@ -2,6 +2,7 @@
 page_id: stratagems
 permalink: "/{{ lang }}/stratagems/"
 ---
+{%- from "item-cells.njk" import imageCredit %}
 {%- set s = t.stratagems %}
 {#- The label is the spoken form of the arrows, which are decoration for sighted readers. #}
 {%- macro code(item, s) %}
@@ -51,11 +52,13 @@ permalink: "/{{ lang }}/stratagems/"
       {%- set kind = s.kinds[item.kind] if item.kind else "" %}
       <tr data-name="{{ item.name }}" data-category="{{ item.category }}" data-cooldown="{{ item.cooldown }}" data-uses="{{ 1000 if item.uses == 'unlimited' else item.uses }}" data-unlock="{{ item.level }}" data-q="{{ [item.name, category, kind, item.source.name] | join(' ') | lower }}">
         <th scope="row">
+          {%- if item.icon %}<img class="stratagem-icon" src="/img/stratagems/{{ item.icon }}" alt="" width="40" height="40" loading="lazy" decoding="async">{% else %}<span class="stratagem-icon no-thumb" title="{{ t.images.missing }}" aria-hidden="true">{% icon "image-broken" %}</span>{% endif %}
           <span translate="no">{{ item.name }}</span>
+          {%- if kind %}<span class="sub kind">{{ kind }}</span>{% endif %}
           <span class="narrow sub">{{ code(item, s) }}</span>
-          <span class="narrow sub"><span class="badge cat-{{ item.category }}">{{ category }}</span> {{ kind }}</span>
+          <span class="narrow sub"><span class="badge cat-{{ item.category }}">{{ category }}</span></span>
         </th>
-        <td class="wide"><span class="badge cat-{{ item.category }}">{{ category }}</span>{% if kind %} <span class="sub">{{ kind }}</span>{% endif %}</td>
+        <td class="wide"><span class="badge cat-{{ item.category }}">{{ category }}</span></td>
         <td class="wide">{{ code(item, s) }}</td>
         <td class="num">{{ seconds(item, s) }}</td>
         <td class="num">{{ uses(item, s) }}</td>
@@ -66,5 +69,6 @@ permalink: "/{{ lang }}/stratagems/"
   </table>
 </div>
 <p class="muted credit">{{ s.credit | replace("{wiki}", '<a href="' + stratagems.source.url + '">' + stratagems.source.name + '</a>') | replace("{license}", '<a href="' + stratagems.source.licenseUrl + '">' + stratagems.source.license + '</a>') | replace("{date}", stratagems.source.fetched) | safe }}</p>
+{{ imageCredit(stratagems.source.imageArtists, "stratagems", t) }}
 </section>
 </div>

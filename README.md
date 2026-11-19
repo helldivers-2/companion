@@ -15,7 +15,8 @@ Every push to `main` deploys to Cloudflare through GitHub Actions. `npm run depl
 ## Where things live
 
 - Pages are Eleventy templates in `src/pages/*.njk`, with scripts in `src/js` and styles in `src/scss`.
-- The stratagem table is built from `src/_data/stratagems.json`, which `npm run stratagems` refreshes from the [Helldivers Wiki](https://helldivers.wiki.gg/wiki/Stratagems) (CC BY-NC-SA 4.0); commit the result.
+- The stratagem and item tables are built from `src/_data/stratagems.json` and `items.json`, which `npm run stratagems` and `npm run items` refresh from the [Helldivers Wiki](https://helldivers.wiki.gg/) (CC BY-NC-SA 4.0); commit the result. `npm run planets` does the same for the planet pictures (`planetImages.json`).
+- Those scripts also mirror the wiki's pictures into `src/img/{stratagems,items,planets}/`, where `sources.json` records each file's uploader and licence. Only files with a licence that allows reuse are taken, and only changed files are downloaded again. Thumbnails the wiki sends as PNG are converted with `cwebp` (`brew install webp`); without it they stay PNG. All wiki traffic goes through `scripts/wiki.js`, one request at a time with a pause in between; keep it that way.
 - All text is in `src/_data/i18n/<locale>.json`, one file per language; each page embeds only the keys its script needs (`src/_data/eleventyComputed.js`). `npm test` fails if a locale is missing a key that English has.
 - The client headers and refresh interval are in `src/_data/site.json`. Set `contact` to your own before you deploy a copy.
 - The browser fetches `/api/*` from its own origin. In production `worker.js` answers those calls from the self-hosted API; under `npm run dev` the same code calls the public API.

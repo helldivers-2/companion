@@ -1,0 +1,779 @@
+{
+ "Gas Mortar Sentry Stratagem Icon Background.svg": {
+  "file": "gas-mortar-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "8948b9a6962663d95cb4e4b3e1de9f59fadabc58",
+  "width": null
+ },
+ "Gatling Sentry Stratagem Icon Background.svg": {
+  "file": "gatling-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7ee8f33fb724f3ee33c987dc8fbe9c9c42f71c7f",
+  "width": null
+ },
+ "Grenadier Battlement Stratagem Icon Background.svg": {
+  "file": "grenadier-battlement-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "80ed1c476f1c3ce697ab4cfc3ce903572a1c7e38",
+  "width": null
+ },
+ "Guard Dog Stratagem Icon Background.svg": {
+  "file": "guard-dog-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "eb2b15f56c7f5a1479e66d11ba6dfc850e7f23c0",
+  "width": null
+ },
+ "Anti-Materiel Rifle Stratagem Icon Background.svg": {
+  "file": "anti-materiel-rifle-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "37652d5a137eeb692e343ee62178110117f0e211",
+  "width": null
+ },
+ "Anti-Tank Emplacement Stratagem Icon Background.svg": {
+  "file": "anti-tank-emplacement-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "d8adfcd23cbcb5d30a4f81d292d274f9d1ecec3a",
+  "width": null
+ },
+ "Arc Thrower Stratagem Icon Background.svg": {
+  "file": "arc-thrower-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "5909af2930078db52f9f18b5c53e322856f838ad",
+  "width": null
+ },
+ "Autocannon Sentry Stratagem Icon Background.svg": {
+  "file": "autocannon-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "428b6979dd647b7a2a52272d46ac48091a36c3eb",
+  "width": null
+ },
+ "Autocannon Stratagem Icon Background.svg": {
+  "file": "autocannon-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "556cf5f98741db623def761c34801a9d727ea493",
+  "width": null
+ },
+ "Breaching Hammer Stratagem Icon Background.svg": {
+  "file": "breaching-hammer-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "65dd9b51d118410a1a896311edfe35f0c9816ccc",
+  "width": null
+ },
+ "C4 Pack Stratagem Icon Background.svg": {
+  "file": "c4-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "bfb8f2d9d71455038168f66ff5b775e9024d57f9",
+  "width": null
+ },
+ "Call In Super Destroyer Stratagem Icon Background.svg": {
+  "file": "call-in-super-destroyer-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "f8ee42e30755d3d70b0373a56ac45370a3a9e310",
+  "width": null
+ },
+ "Cargo Container Stratagem Icon Background.svg": {
+  "file": "cargo-container-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "60d35bd6cd8a79e48e3a8f94f60f5261afd1ede9",
+  "width": null
+ },
+ "Cremator Stratagem Icon Background.svg": {
+  "file": "cremator-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ce54a78379be2b6a0760200571122dbfae2975eb",
+  "width": null
+ },
+ "Dark Fluid Vessel Stratagem Icon Background.svg": {
+  "file": "dark-fluid-vessel-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ce7771a5d08fc6c12fcdcb6d336a43707af70af3",
+  "width": null
+ },
+ "Defoliation Tool Stratagem Icon Background.svg": {
+  "file": "defoliation-tool-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "418556695e5b1004f857589cc19e4c99a24835a4",
+  "width": null
+ },
+ "Dog Breath Stratagem Icon Background.svg": {
+  "file": "dog-breath-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "0b93a24840688caf37b2ed2049cba377c081d88d",
+  "width": null
+ },
+ "Drill Stratagem Icon Background.svg": {
+  "file": "drill-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "4379f7e241bd2d0e07d461eefe2c7231bda15ccb",
+  "width": null
+ },
+ "Eagle 110mm Rocket Pods Stratagem Icon Background.svg": {
+  "file": "eagle-110mm-rocket-pods-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "002e218af5b2522c835f82694187918f8233602f",
+  "width": null
+ },
+ "Eagle 500kg Bomb Stratagem Icon Background.svg": {
+  "file": "eagle-500kg-bomb-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "48a0f3f522e8c1f74269caea93264d5899cd3522",
+  "width": null
+ },
+ "Eagle Airstrike Stratagem Icon Background.svg": {
+  "file": "eagle-airstrike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "b497fe4aec93027fcfa1c77c386a6c72eb5288b4",
+  "width": null
+ },
+ "Eagle Cluster Bomb Stratagem Icon Background.svg": {
+  "file": "eagle-cluster-bomb-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "b730d47faad8c59f9759f400b1166c402cf285a8",
+  "width": null
+ },
+ "Eagle Napalm Airstrike Stratagem Icon Background.svg": {
+  "file": "eagle-napalm-airstrike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "735c8b5c76ce35c1f0f7dfe4aedffa05893209bf",
+  "width": null
+ },
+ "Eagle Rearm Stratagem Icon Background.svg": {
+  "file": "eagle-rearm-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ddcd30d0a4c40263be4103b86c6dc4b3f606ea7e",
+  "width": null
+ },
+ "Eagle Smoke Strike Stratagem Icon Background.svg": {
+  "file": "eagle-smoke-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "159f1fa465e79aadd26a2e2a74dc13bf93edafbe",
+  "width": null
+ },
+ "Eagle Strafing Run Stratagem Icon Background.svg": {
+  "file": "eagle-strafing-run-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "fe286e1ec078371ac066a186716e3522b4bbf029",
+  "width": null
+ },
+ "Eagle Stratagem Fallback Icon Background.svg": {
+  "file": "eagle-stratagem-fallback-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "906dd791395d056f5cfcdac9fc0f0d57daf65b77",
+  "width": null
+ },
+ "Emancipator Exosuit Stratagem Icon Background.svg": {
+  "file": "emancipator-exosuit-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "33641953d37ff69444d062f1c1b89f02e7b3eaa1",
+  "width": null
+ },
+ "EMS Mortar Sentry Stratagem Icon Background.svg": {
+  "file": "ems-mortar-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "202fdc628cf1a4eb60b069b479fadf2958e12feb",
+  "width": null
+ },
+ "Expendable Anti-Tank Stratagem Icon Background.svg": {
+  "file": "expendable-anti-tank-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "d52ad89ac2c636a0c8b647b21db88f10d9b4a92c",
+  "width": null
+ },
+ "Expendable Napalm Stratagem Icon Background.svg": {
+  "file": "expendable-napalm-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "1177782e88094e486ff0a64d139042b26c3183d7",
+  "width": null
+ },
+ "Flame Sentry Stratagem Icon Background.svg": {
+  "file": "flame-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "9214db2e7fdaa288f8cfedaaf427379d775e9ad5",
+  "width": null
+ },
+ "HMG Emplacement Stratagem Icon Background.svg": {
+  "file": "hmg-emplacement-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "204f0f78125321f4f17d903100a9b78304b85dd1",
+  "width": null
+ },
+ "Hot Dog Stratagem Icon Background.svg": {
+  "file": "hot-dog-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "c8e42d7fb3412788e7ea3d609d2b6bc4453b18eb",
+  "width": null
+ },
+ "K-9 Stratagem Icon Background.svg": {
+  "file": "k-9-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "3ed7fe012648c721fc914e80c3f4e8ad2138e3fc",
+  "width": null
+ },
+ "Laser Sentry Stratagem Icon Background.svg": {
+  "file": "laser-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "090ea4adca874d86bae5db0f2ba2c25de7fea707",
+  "width": null
+ },
+ "Leveller Stratagem Icon Background.svg": {
+  "file": "leveller-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "8f0c64504af62e4a602699ac647e07b331e6ffd6",
+  "width": null
+ },
+ "Lumberer Exosuit Stratagem Icon Background.svg": {
+  "file": "lumberer-exosuit-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "c3895feee9cb0675c9cda242fdd9e1b8cf4384bd",
+  "width": null
+ },
+ "Machine Gun Sentry Stratagem Icon Background.svg": {
+  "file": "machine-gun-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "331c9d645e84b1de4cd158a32c6e535ffce18973",
+  "width": null
+ },
+ "Mortar Sentry Stratagem Icon Background.svg": {
+  "file": "mortar-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "30dea2f4aa9525de1528f4791896a49b87538462",
+  "width": null
+ },
+ "One True Flag Stratagem Icon Background.svg": {
+  "file": "one-true-flag-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "e919beb969325bcec21df7b9bbc87b11b5bcc747",
+  "width": null
+ },
+ "Patriot Exosuit Stratagem Icon Background.svg": {
+  "file": "patriot-exosuit-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "3fa7def5493199b818a8997d5f27896bbd61c01e",
+  "width": null
+ },
+ "Portable Hellbomb Stratagem Icon Background.svg": {
+  "file": "portable-hellbomb-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "e8bd763184b8b8e943a5b1c59dfbd2e1fe87e16b",
+  "width": null
+ },
+ "Rocket Sentry Stratagem Icon Background.svg": {
+  "file": "rocket-sentry-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "1af08ce8afb50b4d9f970f0db9dbd5a1a56dd723",
+  "width": null
+ },
+ "Rover Stratagem Icon Background.svg": {
+  "file": "rover-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "12ad26598513f79074919aae4c9adb78cda35d8d",
+  "width": null
+ },
+ "Supply Pack Stratagem Icon Background.svg": {
+  "file": "supply-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "6f6c53fe731ab7597aa68870693c6c8127116cb3",
+  "width": null
+ },
+ "Tesla Tower Stratagem Icon Background.svg": {
+  "file": "tesla-tower-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "a40a2e987b00846d7ec41f8ab5b62b44fb951806",
+  "width": null
+ },
+ "Eagle Gas Airstrike Stratagem Icon Background.svg": {
+  "file": "eagle-gas-airstrike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "e47dc1a5525beae1cb8d1c06fc795f1cb507d798",
+  "width": null
+ },
+ "Apex Stratagem Icon Background.svg": {
+  "file": "apex-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ff81dc43f7d3754ab70abcc2c5f2d0b33ae4d6b5",
+  "width": null
+ },
+ "Gas Mines Stratagem Icon Background.svg": {
+  "file": "gas-mines-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "b10ef84f5c38b9a09ffc136dfb5ff9f9fc609ae0",
+  "width": null
+ },
+ "Grenade Launcher Stratagem Icon Background.svg": {
+  "file": "grenade-launcher-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "168a6049eb1137754d4112fc3ad0c6047385dad5",
+  "width": null
+ },
+ "Heavy Machine Gun Stratagem Icon Background.svg": {
+  "file": "heavy-machine-gun-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7f60eb69cd8ac6a62783f3e7ddaab082ef6b058b",
+  "width": null
+ },
+ "Airburst Rocket Launcher Stratagem Icon Background.svg": {
+  "file": "airburst-rocket-launcher-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "6755a737c16f92a9fdbbc69139f50d8d99b1d2b6",
+  "width": null
+ },
+ "Anti-Personnel Minefield Stratagem Icon Background.svg": {
+  "file": "anti-personnel-minefield-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ac79b451273c0a02ba737c79123317b4ed276370",
+  "width": null
+ },
+ "Anti-Tank Mines Stratagem Icon Background.svg": {
+  "file": "anti-tank-mines-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "04573f23c7fff48778bd2ec9d141ea7640ee9098",
+  "width": null
+ },
+ "Belt-Fed Grenade Launcher Stratagem Icon Background.svg": {
+  "file": "belt-fed-grenade-launcher-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "4c99f199de4ad82163d18b9a7561ad380ad3e2e1",
+  "width": null
+ },
+ "Breakthrough Exosuit Stratagem Icon Background.svg": {
+  "file": "breakthrough-exosuit-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "d9bc7c2a210e72b1b2e9217dbb01351267c60dc6",
+  "width": null
+ },
+ "Bullet Storm Stratagem Icon Background.svg": {
+  "file": "bullet-storm-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "097328f0102ba5a6fcf42257133c19dae73c9397",
+  "width": null
+ },
+ "Commando Stratagem Icon Background.svg": {
+  "file": "commando-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "6ea89693883e3e9cc448996260ddf69cb4e6db83",
+  "width": null
+ },
+ "De-Escalator Stratagem Icon Background.svg": {
+  "file": "de-escalator-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7a9dca4b60ed6f9e126aeaa3dc391441fec43c30",
+  "width": null
+ },
+ "Epoch Stratagem Icon Background.svg": {
+  "file": "epoch-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "bfe6b15ea844b615369c4fd391445fd6f6f2cc34",
+  "width": null
+ },
+ "Fast Recon Vehicle Stratagem Icon Background.svg": {
+  "file": "fast-recon-vehicle-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "d9bba162803f70728f8e40d38d4b1879672d95b8",
+  "width": null
+ },
+ "Flamethrower Stratagem Icon Background.svg": {
+  "file": "flamethrower-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "648ed8966ce9b68beb8560188217d1584cb1c0d7",
+  "width": null
+ },
+ "Hellbomb Stratagem Icon Background.svg": {
+  "file": "hellbomb-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "4be6bb3bfde5b33aab54fd4c3562d3d9e41a82db",
+  "width": null
+ },
+ "Hover Pack Stratagem Icon Background.svg": {
+  "file": "hover-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "63fe63001ab286866523fa74604a8f72e58e3c56",
+  "width": null
+ },
+ "Incendiary Mines Stratagem Icon Background.svg": {
+  "file": "incendiary-mines-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "6c612fbc7359344976a0e7ad562a1b1dc96df584",
+  "width": null
+ },
+ "Incinerator FRV Stratagem Icon Background.svg": {
+  "file": "incinerator-frv-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "f5764f9b8bbd2d69ff37b8ecfcdc75685cab7807",
+  "width": null
+ },
+ "Jump Pack Stratagem Icon Background.svg": {
+  "file": "jump-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "464278137e25dbaf418c17bbdc5de5cd81b117f9",
+  "width": null
+ },
+ "Laser Cannon Stratagem Icon Background.svg": {
+  "file": "laser-cannon-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "21b5f695ad9552a1581f765320060ec9f3379c22",
+  "width": null
+ },
+ "Machine Gun Stratagem Icon Background.svg": {
+  "file": "machine-gun-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "35fc07a3a1cf8d955de9dc0799592ab89e75e380",
+  "width": null
+ },
+ "Maxigun Stratagem Icon Background.svg": {
+  "file": "maxigun-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "d08884af73a3dd0b303d3a0e6470ee6ca344cb66",
+  "width": null
+ },
+ "Orbital 120mm HE Barrage Stratagem Icon Background.svg": {
+  "file": "orbital-120mm-he-barrage-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "17de59ed955fa0646548678b850eb682502e54f1",
+  "width": null
+ },
+ "Orbital 380mm HE Barrage Stratagem Icon Background.svg": {
+  "file": "orbital-380mm-he-barrage-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "eb3f9544cb661d1ad4b2dfab7177ba84907a114a",
+  "width": null
+ },
+ "Orbital Airburst Strike Stratagem Icon Background.svg": {
+  "file": "orbital-airburst-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "c77894acb898465ea2d382db1ae4127aa842a352",
+  "width": null
+ },
+ "Orbital EMS Strike Stratagem Icon Background.svg": {
+  "file": "orbital-ems-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "5e3ef929b2676716ef97c072bddd5d1a1fbde5c3",
+  "width": null
+ },
+ "Orbital Gas Strike Stratagem Icon Background.svg": {
+  "file": "orbital-gas-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "668a1e5a60750691e2d473a6e1f9844ca8ead10a",
+  "width": null
+ },
+ "Orbital Gatling Barrage Stratagem Icon Background.svg": {
+  "file": "orbital-gatling-barrage-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "f73d5241ea69d8c2443127bd6a43c50e5d169b4c",
+  "width": null
+ },
+ "Orbital Illumination Flare Stratagem Icon Background.svg": {
+  "file": "orbital-illumination-flare-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "eb95f94cf0d431513678bf800501b6c7325fb786",
+  "width": null
+ },
+ "Orbital Laser Stratagem Icon Background.svg": {
+  "file": "orbital-laser-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "0ae2ad30482ed6be38372c64d0c7d34e61f9b1dd",
+  "width": null
+ },
+ "Orbital Napalm Barrage Stratagem Icon Background.svg": {
+  "file": "orbital-napalm-barrage-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "be78c4b2c51e401e6d0b339be5599d92ceefb618",
+  "width": null
+ },
+ "Orbital Precision Strike Stratagem Icon Background.svg": {
+  "file": "orbital-precision-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "e7855059dc6da36417b52c205e19d7957778b6b2",
+  "width": null
+ },
+ "Orbital Railcannon Strike Stratagem Icon Background.svg": {
+  "file": "orbital-railcannon-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "ee9232c048b0be01075b5be2c08251971b7d8826",
+  "width": null
+ },
+ "Orbital Smoke Strike Stratagem Icon Background.svg": {
+  "file": "orbital-smoke-strike-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "a054630bd2a5a96880cf733018b747283afb3e5d",
+  "width": null
+ },
+ "Orbital Strike Stratagem Fallback Icon Background.svg": {
+  "file": "orbital-strike-stratagem-fallback-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "5bcff4f4a2fce322bf1c8756992b7e495639daee",
+  "width": null
+ },
+ "Orbital Walking Barrage Stratagem Icon Background.svg": {
+  "file": "orbital-walking-barrage-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "cb3bf0ed92e69b0a2583530e49ee7ff68700f9a6",
+  "width": null
+ },
+ "Quasar Cannon Stratagem Icon Background.svg": {
+  "file": "quasar-cannon-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "559764fa593bbd74f65d8e3eda16b83ef44b839c",
+  "width": null
+ },
+ "Railgun Stratagem Icon Background.svg": {
+  "file": "railgun-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "7030a2a9b2a0bfc56b56d40f3e9a851aba5bed23",
+  "width": null
+ },
+ "Recoilless Rifle Stratagem Icon Background.svg": {
+  "file": "recoilless-rifle-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "aaa0b79ab962205faa4d042bce8ba02b08761870",
+  "width": null
+ },
+ "Reinforce Stratagem Icon Background.svg": {
+  "file": "reinforce-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "c9d622f21c0eeca870af76f1ee15d18d79877151",
+  "width": null
+ },
+ "Resupply Stratagem Icon Background.svg": {
+  "file": "resupply-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "e011d4b52529a66ee9d4eb581f2a2ed1914efce5",
+  "width": null
+ },
+ "Shield Generator Relay Stratagem Icon Background.svg": {
+  "file": "shield-generator-relay-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "8f5149eeacbaa6d0dd8608544ad68ce0d5ab2759",
+  "width": null
+ },
+ "Solo Silo Stratagem Icon Background.svg": {
+  "file": "solo-silo-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "69f9612f9ae99c079456a8b3766b72d9b031f2a6",
+  "width": null
+ },
+ "Spear Stratagem Icon Background.svg": {
+  "file": "spear-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "3f762303e3cf18323fd67dd383caaddfa1f5e6ff",
+  "width": null
+ },
+ "Speargun Stratagem Icon Background.svg": {
+  "file": "speargun-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "2f0be9d0e2ec0e4048db7be525ffe29c35dfb34f",
+  "width": null
+ },
+ "Stalwart Stratagem Icon Background.svg": {
+  "file": "stalwart-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "89f988e49ae38051549f280bf5afa966df09c4e0",
+  "width": null
+ },
+ "Supply FRV Stratagem Icon Background.svg": {
+  "file": "supply-frv-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "4154456cfcd89f591cd66e80970e659404468ec2",
+  "width": null
+ },
+ "Upload Data Stratagem Icon Background.svg": {
+  "file": "upload-data-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "a4a56523ed3b030a19db84b0f7e54ba7e8234ff6",
+  "width": null
+ },
+ "Warp Pack Stratagem Icon Background.svg": {
+  "file": "warp-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "b27510210a0bb7fcbabfb8e26f360c66050f21bd",
+  "width": null
+ },
+ "Nova Stratagem Icon Background.svg": {
+  "file": "nova-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "44e1ea50494f8e18e1713c3aa2818f190ca7fc7a",
+  "width": null
+ },
+ "Ballistic Shield Backpack Stratagem Icon Background.svg": {
+  "file": "ballistic-shield-backpack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "6697d4aa8470691fbf2ce8485cbbe725dadc3d12",
+  "width": null
+ },
+ "Bastion MK XVI Stratagem Icon Background.svg": {
+  "file": "bastion-mk-xvi-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "9de9524faa59cf825aad988b45b65b59516f7fb1",
+  "width": null
+ },
+ "Directional Shield Stratagem Icon Background.svg": {
+  "file": "directional-shield-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "a0bd68e0bfdae54f97b923e815383a23c57a2309",
+  "width": null
+ },
+ "SEAF Artillery Stratagem Icon Background.svg": {
+  "file": "seaf-artillery-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "f72d9543071524fd838d3260a894a59eaaa0e6ac",
+  "width": null
+ },
+ "Seismic Probe Stratagem Icon Background.svg": {
+  "file": "seismic-probe-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "9631faf90eb4b064b9416edd9ae303a00452598c",
+  "width": null
+ },
+ "Shield Generator Pack Stratagem Icon Background.svg": {
+  "file": "shield-generator-pack-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "2f4980292556f64a7d68d012e1c5abcc0974a504",
+  "width": null
+ },
+ "SOS Beacon Stratagem Icon Background.svg": {
+  "file": "sos-beacon-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "390b6531d871ebd90c1233ccf5e624bd2bdcfbcc",
+  "width": null
+ },
+ "Sterilizer Stratagem Icon Background.svg": {
+  "file": "sterilizer-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "0a42db75c76594bba142abe9e8d438c67bed69ce",
+  "width": null
+ },
+ "Super Earth Flag Stratagem Icon Background.svg": {
+  "file": "super-earth-flag-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "cb3975d86617ffce379309e45deca5fb8dd2c2d2",
+  "width": null
+ },
+ "W.A.S.P. Launcher Stratagem Icon Background.svg": {
+  "file": "w-a-s-p-launcher-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "a33ba85dda61f8e1e900584c97fab830a30268b0",
+  "width": null
+ },
+ "Maelstrom Stratagem Icon Background.svg": {
+  "file": "maelstrom-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "23094c43cdb02374dd5819c88286bf9498bb5099",
+  "width": null
+ },
+ "Tactical Video Camera Stratagem Icon Background.svg": {
+  "file": "tactical-video-camera-stratagem-icon-background.svg",
+  "user": "Dogo314",
+  "licence": "Arrowhead",
+  "sha1": "5dd24dab122ec4b22f5d3ff4c3d3d2d6ca8aa272",
+  "width": null
+ }
+}

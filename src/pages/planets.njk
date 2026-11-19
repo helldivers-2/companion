@@ -2,6 +2,7 @@
 page_id: planets
 permalink: "/{{ lang }}/planets/"
 ---
+{%- from "item-cells.njk" import imageCredit %}
 <div class="container">
 <h1>{{ t.nav.planets }}</h1>
 <p class="muted hint">{{ t.planets.intro }}</p>
@@ -32,5 +33,7 @@ permalink: "/{{ lang }}/planets/"
     <tbody id="planet-rows"><tr><td colspan="7" class="muted" data-loading>{{ t.planets.loading }}</td></tr></tbody>
   </table>
 </div>
+{{ imageCredit(planetImages.artists, "planets", t) }}
+<script type="application/json" id="planet-images">{{ planetImages.files | dump | replace("<", "\\u003c") | safe }}</script>
 </section>
 </div>

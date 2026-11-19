@@ -4,8 +4,11 @@
     "url": "https://helldivers.wiki.gg/wiki/Stratagems",
     "license": "CC BY-NC-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    "fetched": "2026-11-17",
-    "usesRevision": "2026-11-11"
+    "fetched": "2026-11-18",
+    "usesRevision": "2026-11-11",
+    "imageArtists": [
+      "Dogo314"
+    ]
   },
   "items": [
     {
@@ -30,7 +33,8 @@
       "source": {
         "name": "Castellan’s Creed",
         "page": 3
-      }
+      },
+      "icon": null
     },
     {
       "name": "A/AC-8 Autocannon Sentry",
@@ -54,7 +58,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "autocannon-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/ARC-3 Tesla Tower",
@@ -78,7 +83,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "tesla-tower-stratagem-icon-background.svg"
     },
     {
       "name": "A/FLAM-40 Flame Sentry",
@@ -102,7 +108,8 @@
       "source": {
         "name": "Urban Legends",
         "page": 2
-      }
+      },
+      "icon": "flame-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/G-16 Gatling Sentry",
@@ -124,7 +131,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "gatling-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/GM-17 Gas Mortar Sentry",
@@ -147,7 +155,8 @@
       "source": {
         "name": "Entrenched Division",
         "page": 2
-      }
+      },
+      "icon": "gas-mortar-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/LAS-98 Laser Sentry",
@@ -171,7 +180,8 @@
       "source": {
         "name": "Control Group",
         "page": 2
-      }
+      },
+      "icon": "laser-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/M-12 Mortar Sentry",
@@ -194,7 +204,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "mortar-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/M-23 EMS Mortar Sentry",
@@ -217,7 +228,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "ems-mortar-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/MG-43 Machine Gun Sentry",
@@ -240,7 +252,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "machine-gun-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "A/MLS-4X Rocket Sentry",
@@ -263,7 +276,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "rocket-sentry-stratagem-icon-background.svg"
     },
     {
       "name": "AC-8 Autocannon",
@@ -287,7 +301,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "autocannon-stratagem-icon-background.svg"
     },
     {
       "name": "Activate E-711 Extraction Drill",
@@ -305,7 +320,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "drill-stratagem-icon-background.svg"
     },
     {
       "name": "AMW-20 Apex",
@@ -329,7 +345,8 @@
       "source": {
         "name": "Scope of Authority",
         "page": 2
-      }
+      },
+      "icon": "apex-stratagem-icon-background.svg"
     },
     {
       "name": "APW-1 Anti-Materiel Rifle",
@@ -352,7 +369,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "anti-materiel-rifle-stratagem-icon-background.svg"
     },
     {
       "name": "Aquifer Drill",
@@ -372,7 +390,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "drill-stratagem-icon-background.svg"
     },
     {
       "name": "ARC-3 Arc Thrower",
@@ -396,7 +415,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "arc-thrower-stratagem-icon-background.svg"
     },
     {
       "name": "AX/AR-23 Guard Dog",
@@ -420,7 +440,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "guard-dog-stratagem-icon-background.svg"
     },
     {
       "name": "AX/ARC-3 K-9",
@@ -444,7 +465,8 @@
       "source": {
         "name": "Force of Law",
         "page": 3
-      }
+      },
+      "icon": "k-9-stratagem-icon-background.svg"
     },
     {
       "name": "AX/FLAM-75 Hot Dog",
@@ -468,7 +490,8 @@
       "source": {
         "name": "Python Commandos",
         "page": 1
-      }
+      },
+      "icon": "hot-dog-stratagem-icon-background.svg"
     },
     {
       "name": "AX/LAS-5 Rover",
@@ -492,7 +515,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "rover-stratagem-icon-background.svg"
     },
     {
       "name": "AX/TX-13 Dog Breath",
@@ -516,7 +540,8 @@
       "source": {
         "name": "Chemical Agents",
         "page": 3
-      }
+      },
+      "icon": "dog-breath-stratagem-icon-background.svg"
     },
     {
       "name": "B-1 Supply Pack",
@@ -540,7 +565,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "supply-pack-stratagem-icon-background.svg"
     },
     {
       "name": "B-100 Portable Hellbomb",
@@ -563,7 +589,8 @@
       "source": {
         "name": "Servants of Freedom",
         "page": 3
-      }
+      },
+      "icon": "portable-hellbomb-stratagem-icon-background.svg"
     },
     {
       "name": "B/FLAM-80 Cremator",
@@ -587,7 +614,8 @@
       "source": {
         "name": "Entrenched Division",
         "page": 3
-      }
+      },
+      "icon": "cremator-stratagem-icon-background.svg"
     },
     {
       "name": "B/MD C4 Pack",
@@ -611,7 +639,8 @@
       "source": {
         "name": "Redacted Regiment",
         "page": 3
-      }
+      },
+      "icon": "c4-pack-stratagem-icon-background.svg"
     },
     {
       "name": "Call In Super Destroyer",
@@ -631,7 +660,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "call-in-super-destroyer-stratagem-icon-background.svg"
     },
     {
       "name": "Cargo Container",
@@ -649,7 +679,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "cargo-container-stratagem-icon-background.svg"
     },
     {
       "name": "CQC-1 One True Flag",
@@ -672,7 +703,8 @@
       "source": {
         "name": "Masters of Ceremony",
         "page": 3
-      }
+      },
+      "icon": "one-true-flag-stratagem-icon-background.svg"
     },
     {
       "name": "CQC-20 Breaching Hammer",
@@ -695,7 +727,8 @@
       "source": {
         "name": "Siege Breakers",
         "page": 1
-      }
+      },
+      "icon": "breaching-hammer-stratagem-icon-background.svg"
     },
     {
       "name": "CQC-9 Defoliation Tool",
@@ -718,7 +751,8 @@
       "source": {
         "name": "Python Commandos",
         "page": 2
-      }
+      },
+      "icon": "defoliation-tool-stratagem-icon-background.svg"
     },
     {
       "name": "Dark Fluid Vessel",
@@ -736,7 +770,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "dark-fluid-vessel-stratagem-icon-background.svg"
     },
     {
       "name": "E/AT-12 Anti-Tank Emplacement",
@@ -760,7 +795,8 @@
       "source": {
         "name": "Urban Legends",
         "page": 3
-      }
+      },
+      "icon": "anti-tank-emplacement-stratagem-icon-background.svg"
     },
     {
       "name": "E/GL-21 Grenadier Battlement",
@@ -783,7 +819,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "grenadier-battlement-stratagem-icon-background.svg"
     },
     {
       "name": "E/MG-101 HMG Emplacement",
@@ -807,7 +844,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "hmg-emplacement-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle 110mm Rocket Pods",
@@ -829,7 +867,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-110mm-rocket-pods-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle 500kg Bomb",
@@ -852,7 +891,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-500kg-bomb-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Airstrike",
@@ -874,7 +914,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-airstrike-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Cluster Bomb",
@@ -897,7 +938,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-cluster-bomb-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Fly By",
@@ -921,7 +963,8 @@
       "source": {
         "name": "Liberty Day 2026",
         "page": null
-      }
+      },
+      "icon": "eagle-stratagem-fallback-icon-background.svg"
     },
     {
       "name": "Eagle Gas Airstrike",
@@ -940,7 +983,8 @@
       "source": {
         "name": "Counterdissident Hammer",
         "page": null
-      }
+      },
+      "icon": "eagle-gas-airstrike-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Napalm Airstrike",
@@ -962,7 +1006,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-napalm-airstrike-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Rearm",
@@ -979,7 +1024,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "eagle-rearm-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Smoke Strike",
@@ -1001,7 +1047,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-smoke-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Eagle Strafing Run",
@@ -1022,7 +1069,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "eagle-strafing-run-stratagem-icon-background.svg"
     },
     {
       "name": "EAT-17 Expendable Anti-Tank",
@@ -1045,7 +1093,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "expendable-anti-tank-stratagem-icon-background.svg"
     },
     {
       "name": "EAT-411 Leveller",
@@ -1068,7 +1117,8 @@
       "source": {
         "name": "Siege Breakers",
         "page": 2
-      }
+      },
+      "icon": "leveller-stratagem-icon-background.svg"
     },
     {
       "name": "EAT-700 Expendable Napalm",
@@ -1091,7 +1141,8 @@
       "source": {
         "name": "Dust Devils",
         "page": 2
-      }
+      },
+      "icon": "expendable-napalm-stratagem-icon-background.svg"
     },
     {
       "name": "EXO-45 Patriot Exosuit",
@@ -1116,7 +1167,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "patriot-exosuit-stratagem-icon-background.svg"
     },
     {
       "name": "EXO-49 Emancipator Exosuit",
@@ -1141,7 +1193,8 @@
       "source": {
         "name": "Robotics Workshop",
         "page": null
-      }
+      },
+      "icon": "emancipator-exosuit-stratagem-icon-background.svg"
     },
     {
       "name": "EXO-51 Lumberer Exosuit",
@@ -1166,7 +1219,8 @@
       "source": {
         "name": "Exo Experts",
         "page": 2
-      }
+      },
+      "icon": "lumberer-exosuit-stratagem-icon-background.svg"
     },
     {
       "name": "EXO-55 Breakthrough Exosuit",
@@ -1191,7 +1245,8 @@
       "source": {
         "name": "Exo Experts",
         "page": 3
-      }
+      },
+      "icon": "breakthrough-exosuit-stratagem-icon-background.svg"
     },
     {
       "name": "FAF-14 Spear",
@@ -1214,7 +1269,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "spear-stratagem-icon-background.svg"
     },
     {
       "name": "FLAM-40 Flamethrower",
@@ -1237,7 +1293,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "flamethrower-stratagem-icon-background.svg"
     },
     {
       "name": "FX-12 Shield Generator Relay",
@@ -1261,7 +1318,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "shield-generator-relay-stratagem-icon-background.svg"
     },
     {
       "name": "GL-21 Grenade Launcher",
@@ -1284,7 +1342,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "grenade-launcher-stratagem-icon-background.svg"
     },
     {
       "name": "GL-28 Belt-Fed Grenade Launcher",
@@ -1308,7 +1367,8 @@
       "source": {
         "name": "Siege Breakers",
         "page": 3
-      }
+      },
+      "icon": "belt-fed-grenade-launcher-stratagem-icon-background.svg"
     },
     {
       "name": "GL-52 De-Escalator",
@@ -1331,7 +1391,8 @@
       "source": {
         "name": "Force of Law",
         "page": 2
-      }
+      },
+      "icon": "de-escalator-stratagem-icon-background.svg"
     },
     {
       "name": "GR-8 Recoilless Rifle",
@@ -1354,7 +1415,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "recoilless-rifle-stratagem-icon-background.svg"
     },
     {
       "name": "Hellbomb",
@@ -1374,7 +1436,8 @@
       "uses": "unlimited",
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "hellbomb-stratagem-icon-background.svg"
     },
     {
       "name": "Hive Breaker Drill",
@@ -1392,7 +1455,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "drill-stratagem-icon-background.svg"
     },
     {
       "name": "Hover Pack",
@@ -1416,7 +1480,8 @@
       "source": {
         "name": "Borderline Justice",
         "page": 3
-      }
+      },
+      "icon": "hover-pack-stratagem-icon-background.svg"
     },
     {
       "name": "LAS-44 Nova",
@@ -1439,7 +1504,8 @@
       "source": {
         "name": "Scope of Authority",
         "page": 3
-      }
+      },
+      "icon": "nova-stratagem-icon-background.svg"
     },
     {
       "name": "LAS-98 Laser Cannon",
@@ -1462,7 +1528,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "laser-cannon-stratagem-icon-background.svg"
     },
     {
       "name": "LAS-99 Quasar Cannon",
@@ -1485,7 +1552,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "quasar-cannon-stratagem-icon-background.svg"
     },
     {
       "name": "LIFT-182 Warp Pack",
@@ -1509,7 +1577,8 @@
       "source": {
         "name": "Control Group",
         "page": 3
-      }
+      },
+      "icon": "warp-pack-stratagem-icon-background.svg"
     },
     {
       "name": "LIFT-850 Jump Pack",
@@ -1532,7 +1601,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "jump-pack-stratagem-icon-background.svg"
     },
     {
       "name": "Link Hellpods to Destroyer",
@@ -1549,7 +1619,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "upload-data-stratagem-icon-background.svg"
     },
     {
       "name": "M-1000 Maxigun",
@@ -1573,7 +1644,8 @@
       "source": {
         "name": "Python Commandos",
         "page": 3
-      }
+      },
+      "icon": "maxigun-stratagem-icon-background.svg"
     },
     {
       "name": "M-102 Gunner FRV",
@@ -1598,7 +1670,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "fast-recon-vehicle-stratagem-icon-background.svg"
     },
     {
       "name": "M-103 Supply FRV",
@@ -1623,7 +1696,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "supply-frv-stratagem-icon-background.svg"
     },
     {
       "name": "M-104 Incinerator FRV",
@@ -1642,7 +1716,8 @@
       "uses": "unlimited",
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "incinerator-frv-stratagem-icon-background.svg"
     },
     {
       "name": "M-105 Stalwart",
@@ -1666,7 +1741,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "stalwart-stratagem-icon-background.svg"
     },
     {
       "name": "MD-17 Anti-Tank Mines",
@@ -1688,7 +1764,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "anti-tank-mines-stratagem-icon-background.svg"
     },
     {
       "name": "MD-6 Anti-Personnel Minefield",
@@ -1710,7 +1787,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "anti-personnel-minefield-stratagem-icon-background.svg"
     },
     {
       "name": "MD-8 Gas Mines",
@@ -1732,7 +1810,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "gas-mines-stratagem-icon-background.svg"
     },
     {
       "name": "MD-I4 Incendiary Mines",
@@ -1754,7 +1833,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "incendiary-mines-stratagem-icon-background.svg"
     },
     {
       "name": "MG-206 Heavy Machine Gun",
@@ -1777,7 +1857,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "heavy-machine-gun-stratagem-icon-background.svg"
     },
     {
       "name": "MG-43 Machine Gun",
@@ -1800,7 +1881,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "machine-gun-stratagem-icon-background.svg"
     },
     {
       "name": "MGX-42 Bullet Storm",
@@ -1824,7 +1906,8 @@
       "source": {
         "name": "Exo Experts",
         "page": 1
-      }
+      },
+      "icon": "bullet-storm-stratagem-icon-background.svg"
     },
     {
       "name": "MLS-4X Commando",
@@ -1847,7 +1930,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "commando-stratagem-icon-background.svg"
     },
     {
       "name": "MS-11 Solo Silo",
@@ -1870,7 +1954,8 @@
       "source": {
         "name": "Dust Devils",
         "page": 3
-      }
+      },
+      "icon": "solo-silo-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital 120mm HE Barrage",
@@ -1894,7 +1979,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-120mm-he-barrage-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital 380mm HE Barrage",
@@ -1919,7 +2005,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-380mm-he-barrage-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Airburst Strike",
@@ -1940,7 +2027,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-airburst-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Confetti",
@@ -1964,7 +2052,8 @@
       "source": {
         "name": "Liberty Day 2026",
         "page": null
-      }
+      },
+      "icon": "orbital-strike-stratagem-fallback-icon-background.svg"
     },
     {
       "name": "Orbital EMS Strike",
@@ -1986,7 +2075,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "orbital-ems-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Gas Strike",
@@ -2008,7 +2098,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "orbital-gas-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Gatling Barrage",
@@ -2031,7 +2122,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-gatling-barrage-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Illumination Flare",
@@ -2047,7 +2139,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "orbital-illumination-flare-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Laser",
@@ -2070,7 +2163,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-laser-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Napalm Barrage",
@@ -2094,7 +2188,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-napalm-barrage-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Precision Strike",
@@ -2115,7 +2210,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "orbital-precision-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Railcannon Strike",
@@ -2138,7 +2234,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-railcannon-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Smoke Strike",
@@ -2160,7 +2257,8 @@
       "source": {
         "name": "Bridge",
         "page": null
-      }
+      },
+      "icon": "orbital-smoke-strike-stratagem-icon-background.svg"
     },
     {
       "name": "Orbital Walking Barrage",
@@ -2184,7 +2282,8 @@
       "source": {
         "name": "Orbital Cannons",
         "page": null
-      }
+      },
+      "icon": "orbital-walking-barrage-stratagem-icon-background.svg"
     },
     {
       "name": "PLAS-45 Epoch",
@@ -2207,7 +2306,8 @@
       "source": {
         "name": "Control Group",
         "page": 1
-      }
+      },
+      "icon": "epoch-stratagem-icon-background.svg"
     },
     {
       "name": "Portable Comms Relay",
@@ -2226,7 +2326,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "cargo-container-stratagem-icon-background.svg"
     },
     {
       "name": "Prospecting Drill",
@@ -2244,7 +2345,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "drill-stratagem-icon-background.svg"
     },
     {
       "name": "Reinforce",
@@ -2261,7 +2363,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "reinforce-stratagem-icon-background.svg"
     },
     {
       "name": "Resupply",
@@ -2277,7 +2380,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "resupply-stratagem-icon-background.svg"
     },
     {
       "name": "RL-77 Airburst Rocket Launcher",
@@ -2300,7 +2404,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "airburst-rocket-launcher-stratagem-icon-background.svg"
     },
     {
       "name": "RS-422 Railgun",
@@ -2324,7 +2429,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "railgun-stratagem-icon-background.svg"
     },
     {
       "name": "S-11 Speargun",
@@ -2348,7 +2454,8 @@
       "source": {
         "name": "Dust Devils",
         "page": 2
-      }
+      },
+      "icon": "speargun-stratagem-icon-background.svg"
     },
     {
       "name": "SEAF Artillery",
@@ -2364,7 +2471,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "seaf-artillery-stratagem-icon-background.svg"
     },
     {
       "name": "Seismic Probe",
@@ -2382,7 +2490,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "seismic-probe-stratagem-icon-background.svg"
     },
     {
       "name": "SH-20 Ballistic Shield Backpack",
@@ -2406,7 +2515,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "ballistic-shield-backpack-stratagem-icon-background.svg"
     },
     {
       "name": "SH-32 Shield Generator Pack",
@@ -2430,7 +2540,8 @@
       "source": {
         "name": "Engineering Bay",
         "page": null
-      }
+      },
+      "icon": "shield-generator-pack-stratagem-icon-background.svg"
     },
     {
       "name": "SH-51 Directional Shield",
@@ -2454,7 +2565,8 @@
       "source": {
         "name": "Urban Legends",
         "page": 1
-      }
+      },
+      "icon": "directional-shield-stratagem-icon-background.svg"
     },
     {
       "name": "SoS Beacon",
@@ -2470,24 +2582,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
-    },
-    {
-      "name": "SSSD Delivery",
-      "category": "mission",
-      "kind": "objective",
-      "code": [
-        "down",
-        "down",
-        "down",
-        "up",
-        "up"
-      ],
-      "cooldown": 8,
-      "uses": null,
-      "level": null,
-      "cost": null,
-      "source": null
+      "source": null,
+      "icon": "sos-beacon-stratagem-icon-background.svg"
     },
     {
       "name": "SSSD Delivery",
@@ -2506,7 +2602,26 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "upload-data-stratagem-icon-background.svg"
+    },
+    {
+      "name": "SSSD Delivery",
+      "category": "mission",
+      "kind": "objective",
+      "code": [
+        "down",
+        "down",
+        "down",
+        "up",
+        "up"
+      ],
+      "cooldown": 8,
+      "uses": null,
+      "level": null,
+      "cost": null,
+      "source": null,
+      "icon": "upload-data-stratagem-icon-background.svg"
     },
     {
       "name": "StA-X3 W.A.S.P. Launcher",
@@ -2529,7 +2644,8 @@
       "source": {
         "name": "Patriotic Administration Center",
         "page": null
-      }
+      },
+      "icon": "w-a-s-p-launcher-stratagem-icon-background.svg"
     },
     {
       "name": "Super Earth Flag",
@@ -2545,7 +2661,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "super-earth-flag-stratagem-icon-background.svg"
     },
     {
       "name": "Tactical Video Camera",
@@ -2564,7 +2681,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "tactical-video-camera-stratagem-icon-background.svg"
     },
     {
       "name": "TD-110 Maelstrom",
@@ -2588,7 +2706,8 @@
       "source": {
         "name": "Armored Eagle",
         "page": null
-      }
+      },
+      "icon": "maelstrom-stratagem-icon-background.svg"
     },
     {
       "name": "TD-220 Bastion MK XVI",
@@ -2615,7 +2734,8 @@
       "source": {
         "name": "Hangar",
         "page": null
-      }
+      },
+      "icon": "bastion-mk-xvi-stratagem-icon-background.svg"
     },
     {
       "name": "Tectonic Drill",
@@ -2633,7 +2753,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "drill-stratagem-icon-background.svg"
     },
     {
       "name": "TX-41 Sterilizer",
@@ -2656,7 +2777,8 @@
       "source": {
         "name": "Chemical Agents",
         "page": 2
-      }
+      },
+      "icon": "sterilizer-stratagem-icon-background.svg"
     },
     {
       "name": "Upload Data",
@@ -2673,7 +2795,8 @@
       "uses": null,
       "level": null,
       "cost": null,
-      "source": null
+      "source": null,
+      "icon": "upload-data-stratagem-icon-background.svg"
     }
   ]
 }

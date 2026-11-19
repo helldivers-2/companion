@@ -1134,6 +1134,13 @@ summary {
   }
 }
 
+.planet-pic {
+  float: inline-end;
+  margin: 0 0 0.5rem 0.75rem;
+  width: 4rem;
+  height: 4rem;
+}
+
 .detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
