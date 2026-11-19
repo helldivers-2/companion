@@ -289,8 +289,7 @@
   },
   "map": {
     "h1": "Galaxiekarte",
-    "intro": "Alle Planeten des Galaktischen Krieges an ihrer Position, eingefärbt nach Besitzer, mit einem Ring, der sich füllt, während Super-Erde ihn einnimmt. Wähle einen Planeten oder eine aktive Front für Details, ziehe zum Verschieben, zoome mit dem Mausrad, per Fingergeste oder mit den Schaltflächen und wechsle mit den Pfeiltasten zwischen Planeten.",
-    "note": "Die Karte ist ein visueller Überblick. Alle Planeten stehen mit denselben Details auch in der {link}.",
+    "intro": "Mit den Pfeiltasten kannst du zwischen Planeten springen.",
     "label": "Karte des Galaktischen Krieges",
     "loading": "Karte wird geladen …",
     "zoomIn": "Vergrößern",

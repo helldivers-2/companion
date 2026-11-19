@@ -1,10 +1,13 @@
-import { get } from "../api.js";
-import { countdown, describeTask, esc, faction, icon, liberationText, num, ownerBadge, slug } from "../format.js";
+import { fetchedAt, get } from "../api.js";
+import { bar, countdown, describeTask, enemyOf, esc, faction, held, icon, liberation, liberationText, num, ownerBadge, pct0, slug } from "../format.js";
 import { fill, lang, t } from "../i18n.js";
+import { track } from "../rates.js";
+import { rateLine } from "./overview.js";
 
 const SIZE = 1000; // the viewBox at zoom 1; planet positions span roughly -1..1
 const PAD = 50;
 const MAX_ZOOM = 12;
+const NEAR = 2.5; // from this zoom on, every planet gets its name
 
 // y is flipped: the API's y grows upward, SVG's grows downward.
 export const project = ({ x, y }) => [PAD + ((x + 1) / 2) * (SIZE - 2 * PAD), PAD + ((1 - y) / 2) * (SIZE - 2 * PAD)];
@@ -28,6 +31,22 @@ export function nearest(points, from, dx, dy) {
   return best;
 }
 
+// Places each label right of its planet, else left, else nowhere (it then waits for zoom, like minor names). Items come
+// most important first; boxes are {index, x0, y0, x1, y1} to keep clear, apart from a planet's own marker. Labels shrink against the map as it zooms in (see apply),
+// so a layout without overlaps at zoom 1 has none at any zoom.
+export function placeLabels(items, boxes) {
+  const taken = [...boxes], sides = {};
+  const free = (b) => b.x0 >= 0 && b.x1 <= SIZE && !taken.some((o) => o.index !== b.index && b.x0 < o.x1 && o.x0 < b.x1 && b.y0 < o.y1 && o.y0 < b.y1);
+  for (const { index, x, y, w, h, gap } of items) {
+    for (const side of ["right", "left"]) {
+      const x0 = side === "right" ? x + gap : x - gap - w;
+      const b = { index, x0, x1: x0 + w, y0: y - h / 2, y1: y + h / 2 };
+      if (free(b)) { taken.push(b); sides[index] = side; break; }
+    }
+  }
+  return sides;
+}
+
 const $ = (id) => document.getElementById(id);
 const ARROWS = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] };
 let view = { cx: SIZE / 2, cy: SIZE / 2, k: 1 };
@@ -37,11 +56,34 @@ let rover = null; // the one planet in the tab order; arrow keys move it
 let bound = false;
 let lastPanel = "";
 let lastLayer = "";
+let lastFronts = "";
+let campaign = new Set();
+let order = new Set();
+let rates = {};
 
 function apply() {
   view = clampView(view);
-  const w = SIZE / view.k;
-  $("map").setAttribute("viewBox", `${view.cx - w / 2} ${view.cy - w / 2} ${w} ${w}`);
+  const w = SIZE / view.k, svg = $("map");
+  svg.setAttribute("viewBox", `${view.cx - w / 2} ${view.cy - w / 2} ${w} ${w}`);
+  // markers and labels grow far slower than the map, so zooming in spreads a cluster out instead of blowing it up
+  svg.style.setProperty("--s", view.k ** -0.85);
+  svg.toggleAttribute("data-near", view.k >= NEAR);
+}
+
+// Glides to a planet; jumps when the visitor prefers less motion.
+let flight = 0;
+function flyTo({ x, y }, k) {
+  const from = { ...view }, to = clampView({ cx: x, cy: y, k });
+  cancelAnimationFrame(flight);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { view = to; apply(); return; }
+  const start = performance.now();
+  const step = (now) => {
+    const f = Math.min(1, (now - start) / 400), e = 1 - (1 - f) ** 3;
+    view = { cx: from.cx + (to.cx - from.cx) * e, cy: from.cy + (to.cy - from.cy) * e, k: from.k + (to.k - from.k) * e };
+    apply();
+    if (f < 1) flight = requestAnimationFrame(step);
+  };
+  flight = requestAnimationFrame(step);
 }
 
 // fx, fy: the point (as a share of the map's width and height) that stays put while zooming.
@@ -88,6 +130,12 @@ function bind() {
       apply();
     }
   });
+  svg.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    cancelAnimationFrame(flight);
+    const { r, s, ox, oy } = frame();
+    zoomAt(view.k * Math.exp(-e.deltaY * (e.deltaMode ? 0.05 : 0.002)), (e.clientX - r.left - ox) / s, (e.clientY - r.top - oy) / s);
+  }, { passive: false });
   const up = (e) => pointers.delete(e.pointerId);
   svg.addEventListener("pointerup", up);
   svg.addEventListener("pointercancel", up);
@@ -114,7 +162,15 @@ function bind() {
     const b = e.target.closest("button");
     if (!b) return;
     if (b.dataset.zoom) zoomAt(view.k * Number(b.dataset.zoom));
-    else { view = { cx: SIZE / 2, cy: SIZE / 2, k: 1 }; apply(); }
+    else flyTo({ x: SIZE / 2, y: SIZE / 2 }, 1);
+  });
+  $("map-fronts").addEventListener("click", (e) => {
+    const i = Number(e.target.closest("[data-go]")?.dataset.go);
+    const p = points.find((q) => q.index === i);
+    if (!p) return;
+    select(i, true);
+    flyTo(p, Math.max(view.k, 3));
+    $("map").scrollIntoView({ block: "nearest", behavior: "smooth" });
   });
 }
 
@@ -140,7 +196,19 @@ function select(index, announce) {
   focusPlanet(index);
   const p = planets.find((q) => q.index === index);
   if (announce && p) $("map-announce").textContent = fill(t.map.selected, { name: p.name });
+  for (const el of document.querySelectorAll("#map-fronts [data-go]")) el.setAttribute("aria-pressed", Number(el.dataset.go) === index);
+  drawRoutes();
   renderPanel();
+}
+
+// The selected planet's supply lines, drawn bright: where its attacks can come from and go to.
+function drawRoutes() {
+  const route = $("map-route");
+  if (!route) return;
+  const at = (i) => points.find((q) => q.index === i);
+  const from = at(selected), p = planets.find((q) => q.index === selected);
+  const ends = from ? [...new Set([...(p.waypoints ?? []), ...planets.filter((q) => q.waypoints?.includes(selected)).map((q) => q.index)])].map(at).filter(Boolean) : [];
+  route.setAttribute("d", ends.map((b) => `M${from.x} ${from.y}L${b.x} ${b.y}`).join(""));
 }
 
 function renderPanel() {
@@ -153,7 +221,8 @@ function renderPanel() {
       <div><dt>${t.map.liberation}</dt><dd>${liberationText(p)}</dd></div>
       <div><dt>${t.map.players}</dt><dd>${num(p.statistics.playerCount)}</dd></div>
     </dl>
-    ${p.event ? `<p><span class="badge ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span></p>` : ""}
+    ${p.event || order.has(p.index) ? `<p class="badges">${order.has(p.index) ? `<span class="badge mo">${t.overview.order}</span> ` : ""}${p.event ? `<span class="badge ${slug(p.event.faction)}">${fill(t.js.defend, { time: countdown(p.event.endTime) })}</span>` : ""}</p>` : ""}
+    ${campaign.has(p.index) && !held(p) ? `<div class="meter">${bar(liberation(p), `${t.map.liberation} ${p.name}`)}</div>${rateLine(p, liberation(p), rates[p.index])}` : ""}
     <a href="/${lang}/planets/?open=${p.index}">${icon("arrow-square-out")} ${t.map.open}</a>`
     : `<p class="muted">${t.map.hint}</p>`;
   if (html === lastPanel) return; // the clock ticks the countdown itself; rewriting would drop focus from the link
@@ -162,10 +231,31 @@ function renderPanel() {
   if (focused) panel.querySelector("a")?.focus({ preventScroll: true });
 }
 
+const rank = (p) => (order.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + p.statistics.playerCount;
+
+// Every campaign as a button that flies the map there: Major Order first, then defenses, then by Helldivers.
+function renderFronts(list) {
+  const html = [...list].sort((a, b) => rank(b) - rank(a)).map((p) => {
+    const lib = liberation(p);
+    return `<li><button type="button" class="${slug(enemyOf(p))}" data-go="${p.index}" aria-pressed="${p.index === selected}">
+      <span class="name" translate="no">${esc(p.name)}</span>
+      <span class="pct">${held(p) ? t.js.held : pct0(lib)}</span>
+      <span class="players">${icon("users")}<span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
+      ${order.has(p.index) || p.event ? `<span class="tags">${order.has(p.index) ? `<span class="badge mo">${t.overview.order}</span>` : ""}${p.event ? `<span class="badge defense">${t.map.defending}</span>` : ""}</span>` : ""}
+      <span class="track" aria-hidden="true"><span style="transform:scaleX(${lib.toFixed(3)})"></span></span>
+    </button></li>`;
+  }).join("") || `<li class="muted">${t.js.noCampaigns}</li>`;
+  if (html === lastFronts) return;
+  const ul = $("map-fronts"), focused = document.activeElement?.closest("#map-fronts [data-go]")?.dataset.go;
+  ul.innerHTML = lastFronts = html;
+  if (focused) ul.querySelector(`[data-go="${focused}"]`)?.focus({ preventScroll: true });
+}
+
 export default async function galaxyMap() {
   if (!bound) {
     bound = true;
     bind();
+    apply();
   }
   const [list, campaigns, orders] = await Promise.all([
     get("/api/v1/planets", 3600), // 300 KB; campaign planets below overlay it every minute
@@ -174,8 +264,9 @@ export default async function galaxyMap() {
   ]);
   const campaignPlanets = campaigns.map((c) => c.planet);
   const byIndex = Object.fromEntries([...list, ...campaignPlanets].map((p) => [p.index, p]));
-  const campaign = new Set(campaignPlanets.map((p) => p.index));
-  const order = new Set(orders.flatMap((o) => o.tasks.map((task, i) => describeTask(task, o.progress[i], byIndex).planet?.index)));
+  campaign = new Set(campaignPlanets.map((p) => p.index));
+  rates = track(campaignPlanets, fetchedAt["/api/v1/campaigns"]);
+  order = new Set(orders.flatMap((o) => o.tasks.map((task, i) => describeTask(task, o.progress[i], byIndex).planet?.index)));
   // Planets not yet placed (sector "TBD", like WAYWARD) sit at 0,0 on top of Super Earth and would take its clicks.
   const placed = (p) => p.position && (p.index === 0 || p.position.x || p.position.y);
   planets = Object.values(byIndex).filter((p) => !p.disabled && placed(p));
@@ -187,38 +278,65 @@ export default async function galaxyMap() {
   for (const p of planets) for (const w of p.waypoints ?? []) if (at[w]) lines.add(p.index < w ? `${p.index}-${w}` : `${w}-${p.index}`);
   const path = [...lines].map((k) => { const [a, b] = k.split("-").map((i) => at[i]); return `M${a.x} ${a.y}L${b.x} ${b.y}`; }).join("");
 
-  const marks = [], labels = [], hits = [], dots = [];
+  // Each planet is a group at its position; .pin inside it carries the zoom-independent size (see apply).
+  // All tap areas sit under all dots so a direct hit picks that planet, and campaigns draw last so their labels stay on top.
+  const isActive = (p) => p.index === 0 || campaign.has(p.index) || order.has(p.index); // Super Earth (0) anchors the map, so it is always named
+  const radius = (p) => (p.index === 0 ? 24 : isActive(p) ? 7 : 4.5);
+  // Super Earth's globe sits on its dot in the middle of the map; credited from img/super-earth/sources.json (map.njk),
+  // outside img/planets/, whose sync deletes files it did not mirror
+  const emblem = `<image class="emblem" href="/img/super-earth/super-earth-planet-icon.webp" x="-22" y="-22" width="44" height="44"/>`;
+  const subText = (p) => `${held(p) ? t.js.held : pct0(liberation(p))} · ${num(p.statistics.playerCount)}`;
+  const actives = planets.filter(isActive).sort((a, b) => rank(b) - rank(a));
+  // shortcut: label widths are estimated from character counts at 11px and 10px Oxanium; measure with getBBox if they drift
+  const sides = placeLabels(
+    actives.map((p) => ({ ...at[p.index], w: Math.max(p.name.length * 7.2, campaign.has(p.index) ? subText(p).length * 5.5 : 0), h: campaign.has(p.index) ? 26 : 12, gap: radius(p) + 9 })),
+    actives.map((p) => { const { x, y } = at[p.index], d = radius(p) + (order.has(p.index) ? 12 : 5); return { index: p.index, x0: x - d, y0: y - d, x1: x + d, y1: y + d }; }),
+  );
+  const haze = [], hits = [], pins = [], top = [], sectors = {};
   for (const p of planets) {
     const { x, y } = at[p.index];
-    const active = campaign.has(p.index) || order.has(p.index);
-    const r = active ? 9 : 6;
+    (sectors[p.sector] ??= []).push(at[p.index]);
+    if (p.currentOwner !== "Humans" || p.index === 0) haze.push(`<circle fill="url(#haze-${slug(p.currentOwner)})" cx="${x}" cy="${y}" r="${p.index ? 42 : 80}"/>`);
+    const active = isActive(p);
+    const r = radius(p);
+    const lib = liberation(p);
     const states = [];
-    if (campaign.has(p.index) && !p.event) {
-      states.push(t.map.liberating);
-      marks.push(`<circle class="mark humans" cx="${x}" cy="${y}" r="${r + 5}"/>`);
-    }
-    if (p.event) {
-      states.push(t.map.defending);
-      marks.push(`<circle class="mark defending ${slug(p.event.faction)}" cx="${x}" cy="${y}" r="${r + 5}"/>`);
+    let marks = "";
+    if (campaign.has(p.index)) {
+      states.push(p.event ? t.map.defending : t.map.liberating);
+      // ring in the enemy's colour, filled clockwise in Super Earth blue as the planet is taken
+      marks += `<circle class="mark ${p.event ? "defending " : ""}${slug(enemyOf(p))}" r="${r + 5}"/>`;
+      if (lib > 0) marks += `<circle class="progress" r="${r + 5}" pathLength="100" stroke-dasharray="${(lib * 100).toFixed(1)} 100" transform="rotate(-90)"/>`;
     }
     if (order.has(p.index)) {
       states.push(t.map.order);
       const d = r + 12;
-      marks.push(`<polygon class="mark order" points="${x},${y - d} ${x + d},${y} ${x},${y + d} ${x - d},${y}"/>`);
+      marks += `<polygon class="mark order" points="0,${-d} ${d},0 0,${d} ${-d},0"/>`;
     }
-    if (active) labels.push(`<text x="${x + r + 8}" y="${y + 4}">${esc(p.name)}</text>`);
+    const left = sides[p.index] === "left", lx = left ? -(r + 9) : r + 9;
+    const sub = campaign.has(p.index) ? `<tspan x="${lx}" dy="1.25em" class="sub">${subText(p)}</tspan>` : "";
+    const cls = !active ? "minor" : sides[p.index] ? "" : "crowded";
+    const label = `<text class="${cls}"${left ? ' text-anchor="end"' : ""} x="${lx}" y="${sub ? -2 : 4}" aria-hidden="true">${esc(p.name)}${sub}</text>`;
     const name = [p.name, faction(p.currentOwner), ...states].join(", ");
-    hits.push(`<circle class="hit" data-hit="${p.index}" cx="${x}" cy="${y}" r="${r}"/>`);
-    dots.push(`<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" cx="${x}" cy="${y}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>`);
+    const g = `<g transform="translate(${x} ${y})">`;
+    hits.push(`${g}<circle class="hit pin" data-hit="${p.index}" r="${r}"/></g>`);
+    (active ? top : pins).push(`${g}<g class="pin">${marks}<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>${p.index === 0 ? emblem : ""}${label}</g></g>`);
   }
+  // sector names at the middle of their planets, shown only when zoomed out
+  const sectorLabels = Object.entries(sectors).map(([name, ps]) => {
+    const x = ps.reduce((n, q) => n + q.x, 0) / ps.length, y = ps.reduce((n, q) => n + q.y, 0) / ps.length;
+    return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><text class="pin">${esc(name)}</text></g>`;
+  });
 
   const layer = $("map-layer");
-  const html = `<path class="lines" d="${path}"/>${marks.join("")}<g aria-hidden="true">${hits.join("")}</g>${dots.join("")}<g class="labels" aria-hidden="true">${labels.join("")}</g>`;
+  const html = `<g class="haze" aria-hidden="true">${haze.join("")}</g><path class="lines" d="${path}"/><path class="route" id="map-route"/><g class="sectors" aria-hidden="true">${sectorLabels.join("")}</g><g aria-hidden="true">${hits.join("")}</g>${pins.join("")}${top.join("")}`;
   if (html !== lastLayer) { // the planet list is cached for an hour, so most refreshes draw the same map
     const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet;
     layer.innerHTML = lastLayer = html;
     if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
+    drawRoutes();
   }
+  renderFronts(campaignPlanets);
   $("map-loading").hidden = true;
   renderPanel();
 }

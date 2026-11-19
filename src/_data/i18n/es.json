@@ -295,8 +295,7 @@
   },
   "map": {
     "h1": "Mapa galáctico",
-    "intro": "Todos los planetas de la Guerra Galáctica en su posición, coloreados según su propietario, con un anillo que se llena a medida que la Supertierra lo conquista. Selecciona un planeta o un frente activo para ver sus detalles, arrastra para desplazarte, usa la rueda del ratón, pellizca o usa los botones para hacer zoom y usa las flechas del teclado para moverte entre planetas.",
-    "note": "El mapa es una vista general visual. Todos los planetas aparecen también con los mismos detalles en la {link}.",
+    "intro": "Usa las flechas del teclado para saltar entre planetas.",
     "label": "Mapa de la Guerra Galáctica",
     "loading": "Cargando el mapa…",
     "zoomIn": "Acercar",
