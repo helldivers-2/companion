@@ -15,18 +15,25 @@ function render() {
   const q = f.get("q").trim().toLowerCase();
   const resort = sortedBy !== `${sort.key}:${sort.dir}`;
   sortedBy = `${sort.key}:${sort.dir}`;
-  let shown = 0, total = 0;
+  let shown = 0,
+    total = 0;
   for (const section of document.querySelectorAll("section[data-cat]")) {
     const tbody = section.querySelector("tbody");
     const th = section.querySelector(`th[data-sort="${CSS.escape(sort.key)}"]`);
     const rows = [...tbody.rows];
     // sort every table that has the column; the rest keep their by-name order
     if (th && resort) {
-      const i = th.cellIndex, numeric = th.classList.contains("num");
+      const i = th.cellIndex,
+        numeric = th.classList.contains("num");
       const value = (r) => (numeric ? figure(r.cells[i].textContent) : r.cells[i].textContent.trim());
-      rows.sort((a, b) => { // rows without a figure go last in either direction
-        const x = value(a), y = value(b);
-        if (numeric) return Number.isNaN(x) || Number.isNaN(y) ? Number.isNaN(x) - Number.isNaN(y) : sort.dir * (x - y) || compare(a.cells[0].textContent, b.cells[0].textContent);
+      rows.sort((a, b) => {
+        // rows without a figure go last in either direction
+        const x = value(a),
+          y = value(b);
+        if (numeric)
+          return Number.isNaN(x) || Number.isNaN(y)
+            ? Number.isNaN(x) - Number.isNaN(y)
+            : sort.dir * (x - y) || compare(a.cells[0].textContent, b.cells[0].textContent);
         return sort.dir * compare(x, y) || compare(a.cells[0].textContent, b.cells[0].textContent);
       });
       tbody.append(...rows);
@@ -37,7 +44,7 @@ function render() {
       r.hidden = !((!f.get("unlock") || r.dataset.unlock === f.get("unlock")) && (!q || r.textContent.toLowerCase().includes(q)));
       n += !r.hidden;
     }
-    section.hidden = !n || Boolean(f.get("type")) && section.dataset.cat !== f.get("type");
+    section.hidden = !n || (Boolean(f.get("type")) && section.dataset.cat !== f.get("type"));
     total += rows.length;
     if (!section.hidden) shown += n;
   }

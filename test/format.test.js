@@ -65,7 +65,10 @@ test("steamHtml keeps known BBCode and nothing executable", () => {
   assert.equal(steamHtml('[url="https://a.example/?x=1&y=2"]Store[/url]'), '<a href="https://a.example/?x=1&#38;y=2">Store</a>');
   assert.equal(steamHtml("[url=javascript:alert(1)]x[/url]"), "x");
   assert.equal(steamHtml('[url=https://a.example/" onclick="x]y[/url]'), '<a href="https://a.example/&#34; onclick=&#34;x">y</a>');
-  assert.equal(steamHtml("<script>x</script>[img src=x][/img][previewyoutube=abc;full][/previewyoutube][spoiler]s[/spoiler]"), "&#60;script&#62;x&#60;/script&#62;s");
+  assert.equal(
+    steamHtml("<script>x</script>[img src=x][/img][previewyoutube=abc;full][/previewyoutube][spoiler]s[/spoiler]"),
+    "&#60;script&#62;x&#60;/script&#62;s",
+  );
 });
 
 test("record sums kills per planet and splits them for the war", () => {

@@ -1,0 +1,7 @@
+# written by the wiki refresh scripts (npm run items/stratagems/planets)
+src/_data/items.json
+src/_data/stratagems.json
+src/_data/planetImages.json
+src/img/**/sources.json
+package-lock.json
+.impeccable/

@@ -10,11 +10,17 @@ export const pct = (x) => pctFmt.format(x);
 const pct0Fmt = new Intl.NumberFormat(lang, { style: "percent", maximumFractionDigits: 0 });
 export const pct0 = (x) => pct0Fmt.format(x);
 // Used raw in class and id attributes, so it must only ever emit [a-z0-9-].
-export const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+export const slug = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-");
 // Faction names arrive as API values; translate them only for display.
 export const faction = (f) => t.factions[f] ?? f;
 export const regionSize = (s) => t.regionSizes[s] ?? s.toLowerCase();
-export const titleCase = (s) => String(s).toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase());
+export const titleCase = (s) =>
+  String(s)
+    .toLowerCase()
+    .replace(/(^|\s)\S/g, (c) => c.toUpperCase());
 
 export function bar(ratio, label) {
   const v = Math.max(0, Math.min(1, ratio || 0));
@@ -61,7 +67,9 @@ export function enemyOf(planet) {
 
 function duration(ms) {
   let s = Math.floor(ms / 1000);
-  const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), m = Math.floor((s % 3600) / 60);
+  const d = Math.floor(s / 86400),
+    h = Math.floor((s % 86400) / 3600),
+    m = Math.floor((s % 3600) / 60);
   s %= 60;
   const u = t.units;
   if (d) return `${d}${u.d} ${h}${u.h} ${m}${u.m}`;
@@ -111,7 +119,11 @@ export function record(s, byFaction = false) {
   const deaths = s.deaths ?? 0;
   const r = t.record;
   const kills = byFaction
-    ? [[r.terminids, s.terminidKills], [r.automatons, s.automatonKills], [r.illuminate, s.illuminateKills]]
+    ? [
+        [r.terminids, s.terminidKills],
+        [r.automatons, s.automatonKills],
+        [r.illuminate, s.illuminateKills],
+      ]
     : [[r.enemies, total]];
   const rows = [
     [r.missionsWon, s.missionsWon],

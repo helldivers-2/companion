@@ -3,18 +3,52 @@
 import { readFileSync, writeFileSync } from "node:fs";
 
 const ICONS = [
-  "rocket-launch", "globe-hemisphere-west", "newspaper", "trophy", "calendar-blank", "medal", "circle", "target",
-  "sword", "clock", "users", "caret-right", "shield-warning", "map-pin", "megaphone-simple", "arrow-square-out",
-  "info", "image-broken", "stack", "shapes", "brackets-angle", "building-office",
-  "crosshair", "arrow-up", "arrow-down", "arrow-left", "arrow-right",
-  "map-trifold", "magnifying-glass-plus", "magnifying-glass-minus", "arrows-in",
-  "check-circle-fill", "discord-logo-fill", "reddit-logo-fill", "steam-logo-fill", "flame-fill", "github-logo-fill",
-  "instagram-logo-fill", "youtube-logo-fill",
+  "rocket-launch",
+  "globe-hemisphere-west",
+  "newspaper",
+  "trophy",
+  "calendar-blank",
+  "medal",
+  "circle",
+  "target",
+  "sword",
+  "clock",
+  "users",
+  "caret-right",
+  "shield-warning",
+  "map-pin",
+  "megaphone-simple",
+  "arrow-square-out",
+  "info",
+  "image-broken",
+  "stack",
+  "shapes",
+  "brackets-angle",
+  "building-office",
+  "crosshair",
+  "arrow-up",
+  "arrow-down",
+  "arrow-left",
+  "arrow-right",
+  "map-trifold",
+  "magnifying-glass-plus",
+  "magnifying-glass-minus",
+  "arrows-in",
+  "check-circle-fill",
+  "discord-logo-fill",
+  "reddit-logo-fill",
+  "steam-logo-fill",
+  "flame-fill",
+  "github-logo-fill",
+  "instagram-logo-fill",
+  "youtube-logo-fill",
 ];
 
 const dir = "node_modules/@phosphor-icons/core/assets";
 const entries = ICONS.map((name) => {
-  const svg = readFileSync(`${dir}/${name.endsWith("-fill") ? "fill" : "regular"}/${name}.svg`, "utf8").replace(/\s+/g, " ").trim();
+  const svg = readFileSync(`${dir}/${name.endsWith("-fill") ? "fill" : "regular"}/${name}.svg`, "utf8")
+    .replace(/\s+/g, " ")
+    .trim();
   return `  ${name}: url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
 });
 // The faction emblems are masks too, so they get the same treatment.

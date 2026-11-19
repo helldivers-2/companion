@@ -20,7 +20,10 @@ function wikiFetch(url, headers = {}) {
     for (let tries = 3; ; tries--) {
       const res = await fetch(url, { headers: { ...HEADERS, ...headers } });
       await sleep(PAUSE);
-      if ((res.status === 429 || res.status === 503) && tries > 1) { await sleep((Number(res.headers.get("retry-after")) || 30) * 1000); continue; }
+      if ((res.status === 429 || res.status === 503) && tries > 1) {
+        await sleep((Number(res.headers.get("retry-after")) || 30) * 1000);
+        continue;
+      }
       if (!res.ok) throw new Error(`${res.status} for ${url}`);
       return res;
     }
@@ -34,7 +37,10 @@ export async function api(params) {
   for (let tries = 3; ; tries--) {
     const res = await wikiFetch(url);
     const json = await res.json();
-    if (json.error?.code === "maxlag" && tries > 1) { await sleep((Number(res.headers.get("retry-after")) || 5) * 1000); continue; }
+    if (json.error?.code === "maxlag" && tries > 1) {
+      await sleep((Number(res.headers.get("retry-after")) || 5) * 1000);
+      continue;
+    }
     if (json.error) throw new Error(json.error.info);
     return json;
   }
@@ -66,7 +72,12 @@ export function imageType(buf) {
 function toWebp(root, entries) {
   const pngs = entries.filter((o) => o.file.endsWith(".png"));
   if (!pngs.length) return;
-  try { execFileSync("cwebp", ["-version"], { stdio: "ignore" }); } catch { console.warn(`  cwebp not found, ${pngs.length} PNGs kept`); return; }
+  try {
+    execFileSync("cwebp", ["-version"], { stdio: "ignore" });
+  } catch {
+    console.warn(`  cwebp not found, ${pngs.length} PNGs kept`);
+    return;
+  }
   for (const o of pngs) {
     const webp = o.file.replace(/\.png$/, ".webp");
     execFileSync("cwebp", ["-quiet", "-q", "85", fileURLToPath(new URL(o.file, root)), "-o", fileURLToPath(new URL(webp, root))]);
@@ -74,7 +85,12 @@ function toWebp(root, entries) {
   }
 }
 
-export const key = (s) => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const key = (s) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 const norm = (name) => name.trim().replace(/_/g, " ");
 
 // Mirrors wiki files into src/img/<dir>/: SVGs as they are, everything else as a WebP thumbnail `width` px wide.
@@ -86,16 +102,38 @@ export async function syncImages(names, dir, width) {
   const manifest = new URL("sources.json", root);
   const old = existsSync(manifest) ? JSON.parse(readFileSync(manifest, "utf8")) : {};
   const wanted = [...new Set(names.filter(Boolean).map(norm))];
-  const out = {}, todo = new Map();
-  for (let i = 0; i < wanted.length; i += 50) { // the API takes 50 titles per query
-    const json = await api({ action: "query", prop: "imageinfo|templates", iiprop: "url|sha1|user|mime", iiurlwidth: String(width), tlnamespace: "10", tllimit: "max", titles: wanted.slice(i, i + 50).map((n) => `File:${n}`).join("|") });
+  const out = {},
+    todo = new Map();
+  for (let i = 0; i < wanted.length; i += 50) {
+    // the API takes 50 titles per query
+    const json = await api({
+      action: "query",
+      prop: "imageinfo|templates",
+      iiprop: "url|sha1|user|mime",
+      iiurlwidth: String(width),
+      tlnamespace: "10",
+      tllimit: "max",
+      titles: wanted
+        .slice(i, i + 50)
+        .map((n) => `File:${n}`)
+        .join("|"),
+    });
     if (json.continue) throw new Error("The template list was cut off; lower the batch size"); // else licences would be missing
     for (const p of json.query.pages) {
-      const name = p.title.replace(/^File:/, ""), info = p.imageinfo?.[0];
-      if (!info) { console.warn(`  not on the wiki: ${p.title}`); continue; }
+      const name = p.title.replace(/^File:/, ""),
+        info = p.imageinfo?.[0];
+      if (!info) {
+        console.warn(`  not on the wiki: ${p.title}`);
+        continue;
+      }
       const licence = p.templates?.map((t) => t.title.replace("Template:License/", "")).find((l) => LICENCES.includes(l));
-      if (!licence) { console.warn(`  no reusable licence: ${p.title}`); continue; }
-      const svg = info.mime === "image/svg+xml", base = key(name.replace(/\.\w+$/, "")), prev = old[name];
+      if (!licence) {
+        console.warn(`  no reusable licence: ${p.title}`);
+        continue;
+      }
+      const svg = info.mime === "image/svg+xml",
+        base = key(name.replace(/\.\w+$/, "")),
+        prev = old[name];
       out[name] = { file: prev?.file, user: info.user, licence, sha1: info.sha1, width: svg ? null : width };
       const fresh = prev?.sha1 === info.sha1 && prev.width === out[name].width && prev.file?.startsWith(`${base}.`) && existsSync(new URL(prev.file, root));
       if (!fresh) todo.set(name, { url: svg ? info.url : info.thumburl, base });
@@ -106,8 +144,13 @@ export async function syncImages(names, dir, width) {
     const res = await wikiFetch(url, { Accept: "image/webp,image/png;q=0.9,image/svg+xml;q=0.8" }); // wiki.gg sends WebP only when its cache has one
     const buf = Buffer.from(await res.arrayBuffer());
     const ext = imageType(buf);
-    if (ext) { out[name].file = `${base}.${ext}`; files.set(name, buf); }
-    else { console.warn(`  unexpected content, skipped: ${name}`); delete out[name]; }
+    if (ext) {
+      out[name].file = `${base}.${ext}`;
+      files.set(name, buf);
+    } else {
+      console.warn(`  unexpected content, skipped: ${name}`);
+      delete out[name];
+    }
   }
   mkdirSync(root, { recursive: true });
   for (const [name, buf] of files) writeFileSync(new URL(out[name].file, root), buf);

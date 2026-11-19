@@ -33,7 +33,10 @@ export function setCount(el, text) {
 // A new column starts at `firstDir(th)`.
 export function bindTable(form, head, sort, render, firstDir) {
   let typing;
-  form.addEventListener("input", () => { clearTimeout(typing); typing = setTimeout(render, 150); });
+  form.addEventListener("input", () => {
+    clearTimeout(typing);
+    typing = setTimeout(render, 150);
+  });
   form.addEventListener("submit", (e) => e.preventDefault());
   head.addEventListener("click", (e) => {
     const th = e.target.closest("th[data-sort]");

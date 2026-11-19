@@ -1,5 +1,26 @@
 import { fetchedAt, get } from "../api.js";
-import { bar, countdown, describeTask, dispatchHtml, enemyOf, esc, faction, held, icon, leadingRegion, liberation, num, pct, pct0, record, regainsLine, regionSize, slug, STALLED, titleCase } from "../format.js";
+import {
+  bar,
+  countdown,
+  describeTask,
+  dispatchHtml,
+  enemyOf,
+  esc,
+  faction,
+  held,
+  icon,
+  leadingRegion,
+  liberation,
+  num,
+  pct,
+  pct0,
+  record,
+  regainsLine,
+  regionSize,
+  slug,
+  STALLED,
+  titleCase,
+} from "../format.js";
 import { eta, hoursToWin, track } from "../rates.js";
 import { fill, t } from "../i18n.js";
 
@@ -36,40 +57,46 @@ export default async function overview() {
   const fronts = $("fronts");
   const open = new Set([...fronts.querySelectorAll("details[open]")].map((d) => d.id));
   const focused = document.activeElement?.closest("#fronts details")?.id;
-  fronts.innerHTML = Object.entries(groups)
-    .sort(([, a], [, b]) => players(b) - players(a))
-    .map(([enemy, list]) => {
-      const rows = list.sort((a, b) => rank(b) - rank(a)).map((p) => frontRow(p, rates[p.index], orderPlanets.has(p.index)));
-      const rest = rows.splice(SHOWN_PER_FRONT);
-      const id = slug(enemy);
-      return `<section class="front ${id}" aria-labelledby="front-${id}">
+  fronts.innerHTML =
+    Object.entries(groups)
+      .sort(([, a], [, b]) => players(b) - players(a))
+      .map(([enemy, list]) => {
+        const rows = list.sort((a, b) => rank(b) - rank(a)).map((p) => frontRow(p, rates[p.index], orderPlanets.has(p.index)));
+        const rest = rows.splice(SHOWN_PER_FRONT);
+        const id = slug(enemy);
+        return `<section class="front ${id}" aria-labelledby="front-${id}">
         <h3 id="front-${id}">${esc(faction(enemy))} <span class="muted">${fill(t.js.helldivers, { n: num(players(list)) })}</span></h3>
         <ul class="rows">${rows.join("")}</ul>
         ${rest.length ? `<details id="more-${id}"${open.has(`more-${id}`) ? " open" : ""}><summary>${icon("caret-right")} ${fill(t.js.showMore, { n: rest.length })}</summary><ul class="rows">${rest.join("")}</ul></details>` : ""}
       </section>`;
-    }).join("") || `<p class="muted">${icon("sword")} ${t.js.noCampaigns}</p>`;
+      })
+      .join("") || `<p class="muted">${icon("sword")} ${t.js.noCampaigns}</p>`;
   if (focused) $(focused)?.querySelector("summary").focus({ preventScroll: true });
 }
 
 function orderPanel(o, planets, rates, orderPlanets) {
   const described = o.tasks.map((t, i) => describeTask(t, o.progress[i], planets));
   const done = described.filter((d) => d.done).length;
-  const tasks = described.map((d) => {
-    const p = d.planet;
-    if (p) orderPlanets.add(p.index);
-    let detail = "";
-    if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
-    else if (p && !held(p)) detail = meter(p, rates[p.index]);
-    return `<li class="${d.done ? "done" : ""}">
+  const tasks = described
+    .map((d) => {
+      const p = d.planet;
+      if (p) orderPlanets.add(p.index);
+      let detail = "";
+      if (d.counted) detail = `<div class="meter">${bar(d.ratio, d.text)}<span class="pct">${num(d.progress)} / ${num(d.goal)}</span></div>`;
+      else if (p && !held(p)) detail = meter(p, rates[p.index]);
+      return `<li class="${d.done ? "done" : ""}">
       <span class="check icon i-${d.done ? "check-circle-fill" : "circle"}"><span class="visually-hidden">${d.done ? t.js.complete : t.js.open}</span></span>
       <div>
         <p class="task-line">${esc(d.text)}${p ? ` <span class="badge ${slug(p.currentOwner)}">${p.currentOwner === "Humans" ? t.js.held : esc(faction(p.currentOwner))}</span>` : ""}</p>
         ${detail}
       </div>
     </li>`;
-  }).join("");
-  const rewards = (o.rewards ?? [o.reward]).filter(Boolean)
-    .map((r) => `${num(r.amount)} ${t.rewardTypes[r.type] ?? t.js.reward}`).join(", ");
+    })
+    .join("");
+  const rewards = (o.rewards ?? [o.reward])
+    .filter(Boolean)
+    .map((r) => `${num(r.amount)} ${t.rewardTypes[r.type] ?? t.js.reward}`)
+    .join(", ");
   // The card is already titled "Major Order", so only a different (named) title is worth repeating.
   const title = (o.title ?? "").toLowerCase() === t.overview.order.toLowerCase() ? "" : titleCase(o.title ?? "");
   return `<article class="order">
@@ -125,12 +152,20 @@ const ahead = (iso) => Date.parse(iso) > Date.now();
 
 export function stationPanel(st) {
   const actions = st.tacticalActions ?? [];
-  const groups = [...STATUS_ORDER.map((s) => [s, actions.filter((a) => a.status === s)]), [null, actions.filter((a) => !STATUS_ORDER.includes(a.status))]]
-    .filter(([, list]) => list.length);
+  const groups = [
+    ...STATUS_ORDER.map((s) => [s, actions.filter((a) => a.status === s)]),
+    [null, actions.filter((a) => !STATUS_ORDER.includes(a.status))],
+  ].filter(([, list]) => list.length);
   return `<article class="station">
   <header><h3>${fill(t.js.orbiting, { planet: esc(st.planet?.name ?? t.js.unknown) })}</h3><p class="muted">${fill(t.js.vote, { time: countdown(st.electionEnd) })}</p></header>
-  ${groups.map(([s, list]) => `<section class="status${s === 2 ? " active" : ""}"><h4>${t.tacticalStatus[s] ?? t.js.statusUnknown}</h4>
-    <ul class="actions">${list.map((a) => stationAction(a, s)).join("")}</ul></section>`).join("") || `<p class="muted">${t.js.noActions}</p>`}
+  ${
+    groups
+      .map(
+        ([s, list]) => `<section class="status${s === 2 ? " active" : ""}"><h4>${t.tacticalStatus[s] ?? t.js.statusUnknown}</h4>
+    <ul class="actions">${list.map((a) => stationAction(a, s)).join("")}</ul></section>`,
+      )
+      .join("") || `<p class="muted">${t.js.noActions}</p>`
+  }
 </article>`;
 }
 

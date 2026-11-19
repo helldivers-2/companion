@@ -9,7 +9,11 @@ const FIELDS = "title,image,permit_type,unlock_level,unlock_cost,source,stratage
 const USES_PAGE = "Module:Decodedata-Attacks/stratagems data.json";
 const UNLIMITED = 4294967295; // the game's "no limit" value
 
-const strip = (s) => s.replace(/<[^>]*>/g, "").replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1").trim();
+const strip = (s) =>
+  s
+    .replace(/<[^>]*>/g, "")
+    .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1")
+    .trim();
 const key = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const camel = (s) => s.toLowerCase().replace(/ (\w)/g, (_, c) => c.toUpperCase());
 const SOURCE_TYPOS = { Hanger: "Hangar" }; // as spelled on the wiki
@@ -27,14 +31,17 @@ function source(html) {
 
 // rows: Cargo rows of the Stratagems table; uses: the "stratagems" object of the game-data module.
 export function normalise(rows, uses = {}) {
-  const useKeys = Object.keys(uses).map((k) => [key(k), uses[k]]).sort((a, b) => b[0].length - a[0].length);
+  const useKeys = Object.keys(uses)
+    .map((k) => [key(k), uses[k]])
+    .sort((a, b) => b[0].length - a[0].length);
   const out = new Map();
   for (const r of rows) {
     const code = [...r["stratagem code"].matchAll(/Stratagem Arrow (\w+)\.svg/g)].map((m) => m[1].toLowerCase());
     if (!r.title || !code.length) continue;
     const cooldown = parseFloat(r["base cooldown"]);
     // Wiki names carry the designation ("EAT-17 Expendable Anti-Tank"), the game data does not, so match on the ending.
-    const n = key(r.title), game = useKeys.find(([k]) => n.endsWith(k))?.[1];
+    const n = key(r.title),
+      game = useKeys.find(([k]) => n.endsWith(k))?.[1];
     // Where the module and the wiki disagree on the cooldown, the module is from an older balance pass, so its use count is not trusted either.
     const count = game?.cooldown === cooldown ? game.uses : undefined;
     const item = {
@@ -62,13 +69,35 @@ async function main() {
     api({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE }),
   ]);
   const page = uses.query.pages[0].revisions[0];
-  const items = normalise(cargo.cargoquery.map((r) => r.title), JSON.parse(page.slots.main.content).stratagems);
+  const items = normalise(
+    cargo.cargoquery.map((r) => r.title),
+    JSON.parse(page.slots.main.content).stratagems,
+  );
   if (items.length < 80) throw new Error(`Only ${items.length} stratagems, the wiki's table has probably changed`); // better to keep the committed file
-  const icons = await syncImages(items.map((i) => i.image), "stratagems", 80);
-  writeFileSync(new URL("../src/_data/stratagems.json", import.meta.url), `${JSON.stringify({
-    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/wiki/Stratagems", license: "CC BY-NC-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/", fetched: new Date().toISOString().slice(0, 10), usesRevision: page.timestamp.slice(0, 10), imageArtists: icons.artists },
-    items: items.map(({ image, ...item }) => ({ ...item, icon: icons.get(image)?.file ?? null })),
-  }, null, 2)}\n`);
+  const icons = await syncImages(
+    items.map((i) => i.image),
+    "stratagems",
+    80,
+  );
+  writeFileSync(
+    new URL("../src/_data/stratagems.json", import.meta.url),
+    `${JSON.stringify(
+      {
+        source: {
+          name: "Helldivers Wiki",
+          url: "https://helldivers.wiki.gg/wiki/Stratagems",
+          license: "CC BY-NC-SA 4.0",
+          licenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          fetched: new Date().toISOString().slice(0, 10),
+          usesRevision: page.timestamp.slice(0, 10),
+          imageArtists: icons.artists,
+        },
+        items: items.map(({ image, ...item }) => ({ ...item, icon: icons.get(image)?.file ?? null })),
+      },
+      null,
+      2,
+    )}\n`,
+  );
   console.log(`${items.length} stratagems written`);
 }
 

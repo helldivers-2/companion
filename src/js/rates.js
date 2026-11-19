@@ -11,7 +11,9 @@ const days = new Intl.NumberFormat(lang, { style: "unit", unit: "day", unitDispl
 // `now` is when the snapshot was fetched, so a re-rendered cache or a stale fallback is not a new measurement.
 export function track(planets, now, store = localStorage) {
   let hist = {};
-  try { hist = JSON.parse(store.getItem(KEY)) ?? {}; } catch {}
+  try {
+    hist = JSON.parse(store.getItem(KEY)) ?? {};
+  } catch {}
   const next = {};
   const rates = {};
   for (const p of planets) {
@@ -26,7 +28,9 @@ export function track(planets, now, store = localStorage) {
     const [t0, l0] = h[0];
     if (now - t0 >= MIN_SPAN) rates[p.index] = (lib - l0) / ((now - t0) / 3_600_000);
   }
-  try { store.setItem(KEY, JSON.stringify(next)); } catch {}
+  try {
+    store.setItem(KEY, JSON.stringify(next));
+  } catch {}
   return rates;
 }
 

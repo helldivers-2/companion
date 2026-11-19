@@ -11,7 +11,9 @@ export const fetchedAt = {};
 export async function get(path, ttl = site.refreshSeconds) {
   const key = `hd:${path}`;
   let cached = null;
-  try { cached = JSON.parse(localStorage.getItem(key)); } catch {}
+  try {
+    cached = JSON.parse(localStorage.getItem(key));
+  } catch {}
   if (cached?.lang !== t.api) cached = null; // one slot per path, refilled after a language switch
   // main.js refreshes every ttl: stamp the request start and allow 1 s of timer jitter, or ticks get served the cache
   const start = Date.now();
@@ -31,7 +33,9 @@ export async function get(path, ttl = site.refreshSeconds) {
     }
     if (!res.ok) throw new Error(res.status === 429 ? t.js.rateLimited : fill(t.js.apiStatus, { status: res.status }));
     const data = await res.json();
-    try { localStorage.setItem(key, JSON.stringify({ t: start, lang: t.api, data })); } catch {} // storage full: skip caching
+    try {
+      localStorage.setItem(key, JSON.stringify({ t: start, lang: t.api, data }));
+    } catch {} // storage full: skip caching
     fetchedAt[path] = start;
     return data;
   } catch (err) {

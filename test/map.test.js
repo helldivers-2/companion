@@ -33,6 +33,12 @@ test("nearest moves to the closest planet in the arrow's direction", () => {
 test("placeLabels goes right, then left, then waits for zoom", () => {
   const label = (index, x, y) => ({ index, x, y, w: 60, h: 10, gap: 5 });
   // b's right side is taken by a's label and its left by a dot; c sits at the map's right edge; a's own marker does not block a
-  const sides = placeLabels([label(0, 100, 100), label(1, 80, 100), label(2, 990, 300)], [{ index: 9, x0: 0, y0: 90, x1: 20, y1: 110 }, { index: 0, x0: 90, y0: 90, x1: 110, y1: 110 }]);
+  const sides = placeLabels(
+    [label(0, 100, 100), label(1, 80, 100), label(2, 990, 300)],
+    [
+      { index: 9, x0: 0, y0: 90, x1: 20, y1: 110 },
+      { index: 0, x0: 90, y0: 90, x1: 110, y1: 110 },
+    ],
+  );
   assert.deepEqual(sides, { 0: "right", 2: "left" });
 });

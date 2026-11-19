@@ -21,7 +21,8 @@ export function clampView({ cx, cy, k }) {
 
 // Arrow-key neighbour: the closest point in that direction, counting sideways drift double so the move stays roughly on its row or column.
 export function nearest(points, from, dx, dy) {
-  let best = null, bestScore = Infinity;
+  let best = null,
+    bestScore = Infinity;
   for (const p of points) {
     const along = (p.x - from.x) * dx + (p.y - from.y) * dy;
     if (p === from || along <= 0) continue;
@@ -35,13 +36,18 @@ export function nearest(points, from, dx, dy) {
 // most important first; boxes are {index, x0, y0, x1, y1} to keep clear, apart from a planet's own marker. Labels shrink against the map as it zooms in (see apply),
 // so a layout without overlaps at zoom 1 has none at any zoom.
 export function placeLabels(items, boxes) {
-  const taken = [...boxes], sides = {};
+  const taken = [...boxes],
+    sides = {};
   const free = (b) => b.x0 >= 0 && b.x1 <= SIZE && !taken.some((o) => o.index !== b.index && b.x0 < o.x1 && o.x0 < b.x1 && b.y0 < o.y1 && o.y0 < b.y1);
   for (const { index, x, y, w, h, gap } of items) {
     for (const side of ["right", "left"]) {
       const x0 = side === "right" ? x + gap : x - gap - w;
       const b = { index, x0, x1: x0 + w, y0: y - h / 2, y1: y + h / 2 };
-      if (free(b)) { taken.push(b); sides[index] = side; break; }
+      if (free(b)) {
+        taken.push(b);
+        sides[index] = side;
+        break;
+      }
     }
   }
   return sides;
@@ -63,7 +69,8 @@ let rates = {};
 
 function apply() {
   view = clampView(view);
-  const w = SIZE / view.k, svg = $("map");
+  const w = SIZE / view.k,
+    svg = $("map");
   svg.setAttribute("viewBox", `${view.cx - w / 2} ${view.cy - w / 2} ${w} ${w}`);
   // markers and labels grow far slower than the map, so zooming in spreads a cluster out instead of blowing it up
   svg.style.setProperty("--s", view.k ** -0.85);
@@ -73,12 +80,18 @@ function apply() {
 // Glides to a planet; jumps when the visitor prefers less motion.
 let flight = 0;
 function flyTo({ x, y }, k) {
-  const from = { ...view }, to = clampView({ cx: x, cy: y, k });
+  const from = { ...view },
+    to = clampView({ cx: x, cy: y, k });
   cancelAnimationFrame(flight);
-  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { view = to; apply(); return; }
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    view = to;
+    apply();
+    return;
+  }
   const start = performance.now();
   const step = (now) => {
-    const f = Math.min(1, (now - start) / 400), e = 1 - (1 - f) ** 3;
+    const f = Math.min(1, (now - start) / 400),
+      e = 1 - (1 - f) ** 3;
     view = { cx: from.cx + (to.cx - from.cx) * e, cy: from.cy + (to.cy - from.cy) * e, k: from.k + (to.k - from.k) * e };
     apply();
     if (f < 1) flight = requestAnimationFrame(step);
@@ -88,7 +101,8 @@ function flyTo({ x, y }, k) {
 
 // fx, fy: the point (as a share of the map's width and height) that stays put while zooming.
 function zoomAt(k, fx = 0.5, fy = 0.5) {
-  const w = SIZE / view.k, w2 = SIZE / Math.min(MAX_ZOOM, Math.max(1, k));
+  const w = SIZE / view.k,
+    w2 = SIZE / Math.min(MAX_ZOOM, Math.max(1, k));
   view = { cx: view.cx - w / 2 + fx * w - fx * w2 + w2 / 2, cy: view.cy - w / 2 + fy * w - fy * w2 + w2 / 2, k };
   apply();
 }
@@ -97,13 +111,17 @@ function bind() {
   const svg = $("map");
   // The SVG is letterboxed to a square, so screen share maps through its shorter side.
   const frame = () => {
-    const r = svg.getBoundingClientRect(), s = Math.min(r.width, r.height);
+    const r = svg.getBoundingClientRect(),
+      s = Math.min(r.width, r.height);
     return { r, s, ox: (r.width - s) / 2, oy: (r.height - s) / 2 };
   };
   const pointers = new Map();
   let moved = false;
   let box; // measured on pointerdown: reading it on every move would force a layout per event
-  const spread = () => { const [a, b] = [...pointers.values()]; return Math.hypot(a.x - b.x, a.y - b.y); };
+  const spread = () => {
+    const [a, b] = [...pointers.values()];
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  };
 
   svg.addEventListener("pointerdown", (e) => {
     pointers.set(e.pointerId, { x: e.clientX, y: e.clientY, x0: e.clientX, y0: e.clientY });
@@ -130,12 +148,16 @@ function bind() {
       apply();
     }
   });
-  svg.addEventListener("wheel", (e) => {
-    e.preventDefault();
-    cancelAnimationFrame(flight);
-    const { r, s, ox, oy } = frame();
-    zoomAt(view.k * Math.exp(-e.deltaY * (e.deltaMode ? 0.05 : 0.002)), (e.clientX - r.left - ox) / s, (e.clientY - r.top - oy) / s);
-  }, { passive: false });
+  svg.addEventListener(
+    "wheel",
+    (e) => {
+      e.preventDefault();
+      cancelAnimationFrame(flight);
+      const { r, s, ox, oy } = frame();
+      zoomAt(view.k * Math.exp(-e.deltaY * (e.deltaMode ? 0.05 : 0.002)), (e.clientX - r.left - ox) / s, (e.clientY - r.top - oy) / s);
+    },
+    { passive: false },
+  );
   const up = (e) => pointers.delete(e.pointerId);
   svg.addEventListener("pointerup", up);
   svg.addEventListener("pointercancel", up);
@@ -206,15 +228,19 @@ function drawRoutes() {
   const route = $("map-route");
   if (!route) return;
   const at = (i) => points.find((q) => q.index === i);
-  const from = at(selected), p = planets.find((q) => q.index === selected);
-  const ends = from ? [...new Set([...(p.waypoints ?? []), ...planets.filter((q) => q.waypoints?.includes(selected)).map((q) => q.index)])].map(at).filter(Boolean) : [];
+  const from = at(selected),
+    p = planets.find((q) => q.index === selected);
+  const ends = from
+    ? [...new Set([...(p.waypoints ?? []), ...planets.filter((q) => q.waypoints?.includes(selected)).map((q) => q.index)])].map(at).filter(Boolean)
+    : [];
   route.setAttribute("d", ends.map((b) => `M${from.x} ${from.y}L${b.x} ${b.y}`).join(""));
 }
 
 function renderPanel() {
   const panel = $("map-detail");
   const p = planets.find((q) => q.index === selected);
-  const html = p ? `<h3 translate="no">${esc(p.name)}</h3>
+  const html = p
+    ? `<h3 translate="no">${esc(p.name)}</h3>
     <dl class="facts">
       <div><dt>${t.map.sector}</dt><dd>${esc(p.sector)}</dd></div>
       <div><dt>${t.map.owner}</dt><dd>${ownerBadge(p)}</dd></div>
@@ -235,18 +261,23 @@ const rank = (p) => (order.has(p.index) ? 2e9 : 0) + (p.event ? 1e9 : 0) + p.sta
 
 // Every campaign as a button that flies the map there: Major Order first, then defenses, then by Helldivers.
 function renderFronts(list) {
-  const html = [...list].sort((a, b) => rank(b) - rank(a)).map((p) => {
-    const lib = liberation(p);
-    return `<li><button type="button" class="${slug(enemyOf(p))}" data-go="${p.index}" aria-pressed="${p.index === selected}">
+  const html =
+    [...list]
+      .sort((a, b) => rank(b) - rank(a))
+      .map((p) => {
+        const lib = liberation(p);
+        return `<li><button type="button" class="${slug(enemyOf(p))}" data-go="${p.index}" aria-pressed="${p.index === selected}">
       <span class="name" translate="no">${esc(p.name)}</span>
       <span class="pct">${held(p) ? t.js.held : pct0(lib)}</span>
       <span class="players">${icon("users")}<span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
       ${order.has(p.index) || p.event ? `<span class="tags">${order.has(p.index) ? `<span class="badge mo">${t.overview.order}</span>` : ""}${p.event ? `<span class="badge defense">${t.map.defending}</span>` : ""}</span>` : ""}
       <span class="track" aria-hidden="true"><span style="transform:scaleX(${lib.toFixed(3)})"></span></span>
     </button></li>`;
-  }).join("") || `<li class="muted">${t.js.noCampaigns}</li>`;
+      })
+      .join("") || `<li class="muted">${t.js.noCampaigns}</li>`;
   if (html === lastFronts) return;
-  const ul = $("map-fronts"), focused = document.activeElement?.closest("#map-fronts [data-go]")?.dataset.go;
+  const ul = $("map-fronts"),
+    focused = document.activeElement?.closest("#map-fronts [data-go]")?.dataset.go;
   ul.innerHTML = lastFronts = html;
   if (focused) ul.querySelector(`[data-go="${focused}"]`)?.focus({ preventScroll: true });
 }
@@ -270,13 +301,21 @@ export default async function galaxyMap() {
   // Planets not yet placed (sector "TBD", like WAYWARD) sit at 0,0 on top of Super Earth and would take its clicks.
   const placed = (p) => p.position && (p.index === 0 || p.position.x || p.position.y);
   planets = Object.values(byIndex).filter((p) => !p.disabled && placed(p));
-  points = planets.map((p) => { const [x, y] = project(p.position); return { index: p.index, x, y }; });
+  points = planets.map((p) => {
+    const [x, y] = project(p.position);
+    return { index: p.index, x, y };
+  });
   if (!planets.some((p) => p.index === rover)) rover = (planets.find((p) => campaign.has(p.index)) ?? planets[0])?.index;
 
   const at = Object.fromEntries(points.map((q) => [q.index, q]));
   const lines = new Set();
   for (const p of planets) for (const w of p.waypoints ?? []) if (at[w]) lines.add(p.index < w ? `${p.index}-${w}` : `${w}-${p.index}`);
-  const path = [...lines].map((k) => { const [a, b] = k.split("-").map((i) => at[i]); return `M${a.x} ${a.y}L${b.x} ${b.y}`; }).join("");
+  const path = [...lines]
+    .map((k) => {
+      const [a, b] = k.split("-").map((i) => at[i]);
+      return `M${a.x} ${a.y}L${b.x} ${b.y}`;
+    })
+    .join("");
 
   // Each planet is a group at its position; .pin inside it carries the zoom-independent size (see apply).
   // All tap areas sit under all dots so a direct hit picks that planet, and campaigns draw last so their labels stay on top.
@@ -289,14 +328,28 @@ export default async function galaxyMap() {
   const actives = planets.filter(isActive).sort((a, b) => rank(b) - rank(a));
   // shortcut: label widths are estimated from character counts at 11px and 10px Oxanium; measure with getBBox if they drift
   const sides = placeLabels(
-    actives.map((p) => ({ ...at[p.index], w: Math.max(p.name.length * 7.2, campaign.has(p.index) ? subText(p).length * 5.5 : 0), h: campaign.has(p.index) ? 26 : 12, gap: radius(p) + 9 })),
-    actives.map((p) => { const { x, y } = at[p.index], d = radius(p) + (order.has(p.index) ? 12 : 5); return { index: p.index, x0: x - d, y0: y - d, x1: x + d, y1: y + d }; }),
+    actives.map((p) => ({
+      ...at[p.index],
+      w: Math.max(p.name.length * 7.2, campaign.has(p.index) ? subText(p).length * 5.5 : 0),
+      h: campaign.has(p.index) ? 26 : 12,
+      gap: radius(p) + 9,
+    })),
+    actives.map((p) => {
+      const { x, y } = at[p.index],
+        d = radius(p) + (order.has(p.index) ? 12 : 5);
+      return { index: p.index, x0: x - d, y0: y - d, x1: x + d, y1: y + d };
+    }),
   );
-  const haze = [], hits = [], pins = [], top = [], sectors = {};
+  const haze = [],
+    hits = [],
+    pins = [],
+    top = [],
+    sectors = {};
   for (const p of planets) {
     const { x, y } = at[p.index];
     (sectors[p.sector] ??= []).push(at[p.index]);
-    if (p.currentOwner !== "Humans" || p.index === 0) haze.push(`<circle fill="url(#haze-${slug(p.currentOwner)})" cx="${x}" cy="${y}" r="${p.index ? 42 : 80}"/>`);
+    if (p.currentOwner !== "Humans" || p.index === 0)
+      haze.push(`<circle fill="url(#haze-${slug(p.currentOwner)})" cx="${x}" cy="${y}" r="${p.index ? 42 : 80}"/>`);
     const active = isActive(p);
     const r = radius(p);
     const lib = liberation(p);
@@ -313,24 +366,29 @@ export default async function galaxyMap() {
       const d = r + 12;
       marks += `<polygon class="mark order" points="0,${-d} ${d},0 0,${d} ${-d},0"/>`;
     }
-    const left = sides[p.index] === "left", lx = left ? -(r + 9) : r + 9;
+    const left = sides[p.index] === "left",
+      lx = left ? -(r + 9) : r + 9;
     const sub = campaign.has(p.index) ? `<tspan x="${lx}" dy="1.25em" class="sub">${subText(p)}</tspan>` : "";
     const cls = !active ? "minor" : sides[p.index] ? "" : "crowded";
     const label = `<text class="${cls}"${left ? ' text-anchor="end"' : ""} x="${lx}" y="${sub ? -2 : 4}" aria-hidden="true">${esc(p.name)}${sub}</text>`;
     const name = [p.name, faction(p.currentOwner), ...states].join(", ");
     const g = `<g transform="translate(${x} ${y})">`;
     hits.push(`${g}<circle class="hit pin" data-hit="${p.index}" r="${r}"/></g>`);
-    (active ? top : pins).push(`${g}<g class="pin">${marks}<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>${p.index === 0 ? emblem : ""}${label}</g></g>`);
+    (active ? top : pins).push(
+      `${g}<g class="pin">${marks}<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>${p.index === 0 ? emblem : ""}${label}</g></g>`,
+    );
   }
   // sector names at the middle of their planets, shown only when zoomed out
   const sectorLabels = Object.entries(sectors).map(([name, ps]) => {
-    const x = ps.reduce((n, q) => n + q.x, 0) / ps.length, y = ps.reduce((n, q) => n + q.y, 0) / ps.length;
+    const x = ps.reduce((n, q) => n + q.x, 0) / ps.length,
+      y = ps.reduce((n, q) => n + q.y, 0) / ps.length;
     return `<g transform="translate(${x.toFixed(1)} ${y.toFixed(1)})"><text class="pin">${esc(name)}</text></g>`;
   });
 
   const layer = $("map-layer");
   const html = `<g class="haze" aria-hidden="true">${haze.join("")}</g><path class="lines" d="${path}"/><path class="route" id="map-route"/><g class="sectors" aria-hidden="true">${sectorLabels.join("")}</g><g aria-hidden="true">${hits.join("")}</g>${pins.join("")}${top.join("")}`;
-  if (html !== lastLayer) { // the planet list is cached for an hour, so most refreshes draw the same map
+  if (html !== lastLayer) {
+    // the planet list is cached for an hour, so most refreshes draw the same map
     const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet;
     layer.innerHTML = lastLayer = html;
     if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });

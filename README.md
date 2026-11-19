@@ -52,7 +52,7 @@ German status messages use the passive (“Karte wird geladen …”), and optio
 `deploy/compose.yml` runs the upstream API on port 8080. To set it up:
 
 1. Route the `API_ORIGIN` hostname through a Cloudflare Tunnel to port 8080 on the server, and firewall that port so only the tunnel connector can reach it.
-2. Create a service token, and an Access application for that hostname whose only policy is *Service Auth* with that token.
+2. Create a service token, and an Access application for that hostname whose only policy is _Service Auth_ with that token.
 3. Store the token in the Worker: `wrangler secret put ACCESS_CLIENT_ID` and `wrangler secret put ACCESS_CLIENT_SECRET`.
 4. Run `docker compose -f deploy/compose.yml up -d --build`.
 

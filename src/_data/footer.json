@@ -6,17 +6,23 @@
     ["https://github.com/helldivers-2/api", "brackets-angle", "Helldivers 2 API"]
   ],
   "social": [
-    ["fans", [
-      ["https://discord.gg/helldivers", "discord-logo-fill", "Discord"],
-      ["https://www.reddit.com/r/Helldivers/", "reddit-logo-fill", "Reddit"],
-      ["https://steamcommunity.com/app/553850", "steam-logo-fill", "Steam"],
-      ["https://helldivers.fandom.com/", "flame-fill", "Fandom"],
-      ["https://github.com/helldivers-2", "github-logo-fill", "github"]
-    ]],
-    ["arrowhead", [
-      ["https://instagram.com/arrowheadgamestudios/", "instagram-logo-fill", "Instagram"],
-      ["https://www.youtube.com/user/ArrowheadGameStudios", "youtube-logo-fill", "YouTube"],
-      ["https://www.arrowheadgamestudios.com/", "building-office", "website"]
-    ]]
+    [
+      "fans",
+      [
+        ["https://discord.gg/helldivers", "discord-logo-fill", "Discord"],
+        ["https://www.reddit.com/r/Helldivers/", "reddit-logo-fill", "Reddit"],
+        ["https://steamcommunity.com/app/553850", "steam-logo-fill", "Steam"],
+        ["https://helldivers.fandom.com/", "flame-fill", "Fandom"],
+        ["https://github.com/helldivers-2", "github-logo-fill", "github"]
+      ]
+    ],
+    [
+      "arrowhead",
+      [
+        ["https://instagram.com/arrowheadgamestudios/", "instagram-logo-fill", "Instagram"],
+        ["https://www.youtube.com/user/ArrowheadGameStudios", "youtube-logo-fill", "YouTube"],
+        ["https://www.arrowheadgamestudios.com/", "building-office", "website"]
+      ]
+    ]
   ]
 }

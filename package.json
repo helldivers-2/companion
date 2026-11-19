@@ -11,7 +11,8 @@
     "planets": "node scripts/planets.js",
     "dev": "esbuild src/js/main.js --bundle --outfile=_site/assets/main.js --watch=forever & sass --watch --no-source-map --load-path=node_modules src/scss/main.scss _site/assets/main.css & eleventy --serve",
     "test": "node --import ./test/setup.js --test test/*.test.js",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "format": "prettier --write ."
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.8",
@@ -20,6 +21,7 @@
     "@knadh/oat": "^1.1.0",
     "@phosphor-icons/core": "^2.1.1",
     "esbuild": "^0.28.2",
+    "prettier": "3.10.1",
     "sass": "^1.108.2",
     "wrangler": "^4.163.0"
   },

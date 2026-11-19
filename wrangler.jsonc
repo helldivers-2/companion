@@ -10,5 +10,5 @@
   "vars": { "API_ORIGIN": "https://helldivers-api.michi.onl" },
   // wrangler re-enables the workers.dev and preview URLs on every deploy unless these say otherwise
   "workers_dev": false,
-  "preview_urls": false
+  "preview_urls": false,
 }

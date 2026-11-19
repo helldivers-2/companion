@@ -29,7 +29,11 @@ export function source(raw) {
 
 export function cost(raw) {
   const currency = /Medal\.svg/.test(raw) ? "medals" : /Super Credit\.svg/.test(raw) ? "credits" : /Requisition Slip/.test(raw) ? "slips" : null;
-  const amount = Number(plain(raw).match(/\d[\d,]*/)?.[0].replace(/,/g, ""));
+  const amount = Number(
+    plain(raw)
+      .match(/\d[\d,]*/)?.[0]
+      .replace(/,/g, ""),
+  );
   return currency && amount ? { currency, amount } : null; // dollar prices and "exclusive" marks are not in-game costs
 }
 
@@ -74,7 +78,8 @@ export function normalise({ weapons, armor, boosters, passives }) {
       cost: cost(a.cost),
     });
   }
-  for (const b of boosters) items.booster.push({ name: b.title, image: b.image?.trim() || null, text: plain(b.description, " "), source: source(b.source), cost: cost(b.cost) });
+  for (const b of boosters)
+    items.booster.push({ name: b.title, image: b.image?.trim() || null, text: plain(b.description, " "), source: source(b.source), cost: cost(b.cost) });
   for (const list of Object.values(items)) list.sort(by);
   return items;
 }
@@ -87,13 +92,33 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     cargo("Armor_Passive", "title,description"),
   ]);
   const items = normalise({ weapons, armor, boosters, passives });
-  const images = await syncImages(Object.values(items).flat().map((i) => i.image), "items", 256);
-  for (const list of Object.values(items)) for (const it of list) { it.icon = images.get(it.image)?.file ?? null; delete it.image; }
+  const images = await syncImages(
+    Object.values(items)
+      .flat()
+      .map((i) => i.image),
+    "items",
+    256,
+  );
+  for (const list of Object.values(items))
+    for (const it of list) {
+      it.icon = images.get(it.image)?.file ?? null;
+      delete it.image;
+    }
   const data = {
-    source: { name: "Helldivers Wiki", url: "https://helldivers.wiki.gg/", licence: "CC BY-NC-SA 4.0", licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/", imageArtists: images.artists },
+    source: {
+      name: "Helldivers Wiki",
+      url: "https://helldivers.wiki.gg/",
+      licence: "CC BY-NC-SA 4.0",
+      licenceUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      imageArtists: images.artists,
+    },
     fetched: new Date().toISOString().slice(0, 10),
     items,
   };
   writeFileSync(new URL("../src/_data/items.json", import.meta.url), JSON.stringify(data, null, 1) + "\n");
-  console.log(Object.entries(items).map(([k, v]) => `${k} ${v.length}`).join(", "));
+  console.log(
+    Object.entries(items)
+      .map(([k, v]) => `${k} ${v.length}`)
+      .join(", "),
+  );
 }

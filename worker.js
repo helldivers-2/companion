@@ -4,8 +4,13 @@ import site from "./src/_data/site.json" with { type: "json" };
 // and only this Worker's service token gets through, so visitors never reach the homelab directly.
 // Exact paths and languages only, so nobody can get past the edge cache by changing the URL.
 const PATHS = new Set([
-  "/api/v1/war", "/api/v1/assignments", "/api/v1/campaigns", "/api/v1/planets", "/api/v1/steam",
-  "/api/v2/dispatches", "/api/v2/space-stations",
+  "/api/v1/war",
+  "/api/v1/assignments",
+  "/api/v1/campaigns",
+  "/api/v1/planets",
+  "/api/v1/steam",
+  "/api/v2/dispatches",
+  "/api/v2/space-stations",
 ]);
 // The languages the API syncs (Helldivers:Synchronization:Languages upstream).
 export const LANGS = new Set(["en-US", "de-DE", "es-ES", "ru-RU", "fr-FR", "it-IT", "pl-PL", "zh-Hans", "zh-Hant"]);

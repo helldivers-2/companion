@@ -20,7 +20,10 @@ function render() {
   if (sortedBy !== `${sort.key}:${sort.dir}`) {
     sortedBy = `${sort.key}:${sort.dir}`;
     // Rows without a value (a cooldown or unlock the wiki lacks) go last in either direction.
-    const val = (r) => { const v = r.dataset[sort.key]; return v === "" ? null : text(sort.key) ? v : Number(v); };
+    const val = (r) => {
+      const v = r.dataset[sort.key];
+      return v === "" ? null : text(sort.key) ? v : Number(v);
+    };
     rows.sort((a, b) => {
       const [x, y] = [val(a), val(b)];
       if (x === null || y === null) return (x === null) - (y === null) || compare(a.dataset.name, b.dataset.name);

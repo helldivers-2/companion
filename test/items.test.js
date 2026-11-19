@@ -12,7 +12,11 @@ test("plain strips wiki markup and keeps the line breaks of a cell", () => {
 });
 
 test("source tells warbonds, the Superstore and everything else apart", () => {
-  assert.deepEqual(source('[[Cutting Edge Premium Warbond#Page 3|Cutting Edge]] <small><span class="explain " title="Page 3">P3</span></small>'), { kind: "warbond", name: "Cutting Edge", page: 3 });
+  assert.deepEqual(source('[[Cutting Edge Premium Warbond#Page 3|Cutting Edge]] <small><span class="explain " title="Page 3">P3</span></small>'), {
+    kind: "warbond",
+    name: "Cutting Edge",
+    page: 3,
+  });
   assert.equal(source('[[Ironclad Democracy Premium Warbond|Ironclad Democracy]]<small><span title="Page 2">P2</span></small>').name, "Ironclad Democracy");
   assert.deepEqual(source("[[Superstore]]"), { kind: "superstore" });
   assert.deepEqual(source("Engineering Bay"), { kind: "other", name: "Engineering Bay" });
@@ -35,14 +39,41 @@ test("normalise sorts rows into categories and merges armour sets into their bod
     ],
     armor: [
       { title: "X", type: "Helmet", passive: "[[Standard_Issue]]" },
-      { title: "X", type: "Light", image: undefined, armor: "50", speed: "550", "stam regen": "125", passive: "Scout", source: "[[Superstore]]", cost: credits },
+      {
+        title: "X",
+        type: "Light",
+        image: undefined,
+        armor: "50",
+        speed: "550",
+        "stam regen": "125",
+        passive: "Scout",
+        source: "[[Superstore]]",
+        cost: credits,
+      },
     ],
     boosters: [{ title: "Y", description: "Does <b>y</b>.", source: "", cost: "" }],
     passives: [{ title: "Scout", description: "Sees.<br>Far." }],
   });
-  assert.deepEqual(items.throwable.map((w) => [w.name, w.radius]), [["A", "4m"], ["B", "7m"]]);
+  assert.deepEqual(
+    items.throwable.map((w) => [w.name, w.radius]),
+    [
+      ["A", "4m"],
+      ["B", "7m"],
+    ],
+  );
   assert.equal(items.armor.length, 1);
-  assert.deepEqual(items.armor[0], { name: "X", image: null, class: "light", rating: 50, speed: 550, stamina: 125, passive: "Scout", passiveText: "Sees. Far.", source: { kind: "superstore" }, cost: { currency: "credits", amount: 1250 } });
+  assert.deepEqual(items.armor[0], {
+    name: "X",
+    image: null,
+    class: "light",
+    rating: 50,
+    speed: 550,
+    stamina: 125,
+    passive: "Scout",
+    passiveText: "Sees. Far.",
+    source: { kind: "superstore" },
+    cost: { currency: "credits", amount: 1250 },
+  });
   assert.equal(items.booster[0].text, "Does y.");
 });
 

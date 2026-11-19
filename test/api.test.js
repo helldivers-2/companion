@@ -13,7 +13,10 @@ function setup(t, responses, latency = 500) {
     const r = responses.shift();
     return new Promise((ok, fail) => setTimeout(() => (r instanceof Error ? fail(r) : ok(r)), latency));
   });
-  const settle = async (p, ms) => { t.mock.timers.tick(ms); return p; };
+  const settle = async (p, ms) => {
+    t.mock.timers.tick(ms);
+    return p;
+  };
   return { calls, settle };
 }
 const json = (data, status = 200) => new Response(JSON.stringify(data), { status });

@@ -21,7 +21,6 @@
 
 $display: Oxanium, system-ui, sans-serif;
 
-
 *,
 *::before,
 *::after {
@@ -63,7 +62,10 @@ body {
   margin: 0;
   background: $ground;
   color: $text;
-  font: 1rem/1.5 Barlow, system-ui, sans-serif;
+  font:
+    1rem/1.5 Barlow,
+    system-ui,
+    sans-serif;
   font-variant-numeric: tabular-nums;
 }
 

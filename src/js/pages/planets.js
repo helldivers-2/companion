@@ -22,7 +22,12 @@ const sorters = {
 };
 const form = () => document.getElementById("planet-filters");
 // Same as `key` in scripts/wiki.js, which names the keys of the page's planet-images map.
-export const planetKey = (s) => s.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const planetKey = (s) =>
+  s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 
 function render() {
   const f = new FormData(form());
@@ -41,10 +46,12 @@ function render() {
   setCount(document.getElementById("planet-count"), fill(t.js.count, { n: rows.length, total: planets.length }));
 
   const focused = document.activeElement?.dataset.planet; // the 60 s refresh rebuilds the rows
-  document.getElementById("planet-rows").innerHTML = rows.map((p) => {
-    const owner = ownerBadge(p);
-    const hazards = p.hazards.filter((h) => h.name !== "None");
-    return `<tr>
+  document.getElementById("planet-rows").innerHTML =
+    rows
+      .map((p) => {
+        const owner = ownerBadge(p);
+        const hazards = p.hazards.filter((h) => h.name !== "None");
+        return `<tr>
       <th scope="row">
         <button type="button" class="expand" data-planet="${p.index}" aria-expanded="${open.has(p.index)}">${icon("caret-right")} <span translate="no">${esc(p.name)}</span></button>${p.event ? ` <span class="badge defense">${t.js.underAttack}</span>` : ""}
         <span class="narrow sub">${owner} ${esc([p.sector, p.biome?.name, ...hazards.map((h) => h.name)].filter(Boolean).join(", "))}</span>
@@ -56,7 +63,8 @@ function render() {
       <td class="num">${num(p.statistics.playerCount)}</td>
       <td class="num">${liberationText(p)}</td>
     </tr>${open.has(p.index) ? details(p, hazards) : ""}`;
-  }).join("") || `<tr><td colspan="7" class="muted">${t.js.noMatch}</td></tr>`;
+      })
+      .join("") || `<tr><td colspan="7" class="muted">${t.js.noMatch}</td></tr>`;
   if (focused) document.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
   if (scrollTo !== null) document.querySelector(`[data-planet="${scrollTo}"]`)?.scrollIntoView({ block: "center" });
   scrollTo = null;
@@ -67,8 +75,10 @@ const imageOf = (p) => (images ??= JSON.parse(document.getElementById("planet-im
 
 function details(p, hazards) {
   const img = imageOf(p);
-  const regions = (p.regions ?? []).map((r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
-    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="badge">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`);
+  const regions = (p.regions ?? []).map(
+    (r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
+    ${held(p) ? "" : `${r.isAvailable === false ? `<span class="badge">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`,
+  );
   return `<tr class="detail"><td colspan="7"><div class="detail-grid">
     <section>
       ${img ? `<img class="planet-pic" src="/img/planets/${esc(img)}" alt="" width="64" height="64">` : ""}
