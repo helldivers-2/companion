@@ -1,4 +1,4 @@
-// Item database and shop. They reuse the planets table and filter styles; this only adds what long stat tables need.
+// Item database. It reuses the planets table and filter styles; this only adds what long stat tables need.
 @use "palette" as *;
 
 .items {

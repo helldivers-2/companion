@@ -25,7 +25,6 @@
       "Helldivers 2 Weapons, Armor & Boosters",
       "Every Helldivers 2 weapon, throwable, armor set and booster, with damage, fire rate, armor rating, passives and unlock source."
     ],
-    "shop": ["Helldivers 2 Superstore Items & Prices", "Every item that can appear in the Helldivers 2 Superstore, with its price in Super Credits."],
     "notfound": ["Page not found", "Live Galactic War status: Major Orders, active fronts, planets and dispatches."]
   },
   "nav": {
@@ -38,8 +37,7 @@
     "armory": "Armory",
     "map": "Map",
     "stratagems": "Stratagems",
-    "items": "Items",
-    "shop": "Shop"
+    "items": "Items"
   },
   "images": {
     "credit": "Images from the {wiki}, uploaded by {artists}; the licence of each file is in {list}. Game artwork belongs to Arrowhead Game Studios.",
@@ -190,10 +188,6 @@
     "count": "{n} of {total} items",
     "noMatch": "No items match these filters.",
     "credit": "Item data from the {source}, licensed {licence}, collected on {date}."
-  },
-  "shop": {
-    "noLiveTitle": "The current rotation isn’t available.",
-    "noLive": "Only the game receives the current rotation, after you log in, so this page lists everything the Superstore can sell."
   },
   "dispatches": {
     "h1": "Dispatches from Super Earth",

@@ -31,10 +31,6 @@
       "Helldivers 2: armas, armaduras y potenciadores",
       "Todas las armas, arrojadizos, armaduras y potenciadores de Helldivers 2, con daño, cadencia, valor de armadura, pasivas y forma de desbloqueo."
     ],
-    "shop": [
-      "Helldivers 2: objetos y precios de la Supertienda",
-      "Todos los objetos que pueden aparecer en la Supertienda de Helldivers 2, con su precio en Créditos de Supertierra."
-    ],
     "notfound": ["Página no encontrada", "Estado de la Guerra Galáctica en directo: órdenes supremas, frentes activos, planetas y comunicados."]
   },
   "nav": {
@@ -47,8 +43,7 @@
     "armory": "Arsenal",
     "map": "Mapa",
     "stratagems": "Estratagemas",
-    "items": "Equipo",
-    "shop": "Supertienda"
+    "items": "Equipo"
   },
   "images": {
     "credit": "Imágenes de la {wiki}, subidas por {artists}; la licencia de cada archivo está en {list}. El arte del juego pertenece a Arrowhead Game Studios.",
@@ -204,10 +199,6 @@
     "count": "{n} de {total} objetos",
     "noMatch": "Ningún objeto coincide con estos filtros.",
     "credit": "Datos de objetos de {source}, con licencia {licence}, obtenidos el {date}."
-  },
-  "shop": {
-    "noLiveTitle": "La rotación actual no está disponible.",
-    "noLive": "Solo el juego recibe la rotación actual, después de iniciar sesión, así que esta página lista todo lo que la Supertienda puede vender."
   },
   "dispatches": {
     "h1": "Comunicados de Supertierra",

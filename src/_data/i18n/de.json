@@ -25,10 +25,6 @@
       "Helldivers 2: Waffen, Rüstungen und Booster",
       "Alle Waffen, Wurfwaffen, Rüstungen und Booster in Helldivers 2 mit Schaden, Feuerrate, Rüstungswert, Passiveffekten und Freischaltung."
     ],
-    "shop": [
-      "Helldivers 2: Über-Store-Artikel und Preise",
-      "Alle Gegenstände, die im Über-Store von Helldivers 2 angeboten werden können, mit Preisen in Über-Credits."
-    ],
     "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Major Orders, aktive Fronten, Planeten und Meldungen."]
   },
   "nav": {
@@ -41,8 +37,7 @@
     "armory": "Arsenal",
     "map": "Karte",
     "stratagems": "Stratagems",
-    "items": "Ausrüstung",
-    "shop": "Über-Store"
+    "items": "Ausrüstung"
   },
   "images": {
     "credit": "Bilder aus dem {wiki}, hochgeladen von {artists}; die Lizenz jeder Datei steht in {list}. Spielgrafiken gehören Arrowhead Game Studios.",
@@ -198,10 +193,6 @@
     "count": "{n} von {total} Gegenständen",
     "noMatch": "Kein Gegenstand passt zu diesen Filtern.",
     "credit": "Gegenstandsdaten aus dem {source}, lizenziert unter {licence}, abgerufen am {date}."
-  },
-  "shop": {
-    "noLiveTitle": "Die aktuelle Rotation ist nicht verfügbar.",
-    "noLive": "Nur das Spiel erhält die aktuelle Rotation, erst nach dem Login. Diese Seite listet daher alles, was der Über-Store verkaufen kann."
   },
   "dispatches": {
     "h1": "Meldungen von Über-Erde",

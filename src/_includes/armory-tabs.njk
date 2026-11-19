@@ -1,6 +1,6 @@
-{#- Stratagems, items and the Superstore share one main nav entry; these tabs move between them. #}
+{#- Stratagems and items share one main nav entry; these tabs move between them. #}
 <nav class="tabs" aria-label="{{ t.nav.armory }}">
-  {%- for id in ["stratagems", "items", "shop"] %}
+  {%- for id in ["stratagems", "items"] %}
   <a href="/{{ lang }}/{{ id }}/"{% if page_id == id %} aria-current="page"{% endif %}>{{ t.nav[id] }}</a>
   {%- endfor %}
 </nav>
