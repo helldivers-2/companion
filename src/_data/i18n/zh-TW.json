@@ -246,7 +246,7 @@
   },
   "map": {
     "h1": "銀河地圖",
-    "intro": "方向鍵可在星球間移動。",
+    "intro": "方向鍵在星球間移動，+ 和 − 縮放，/ 搜尋星球。",
     "label": "銀河戰爭地圖",
     "loading": "正在載入地圖…",
     "zoomIn": "放大",
@@ -254,6 +254,8 @@
     "reset": "重設檢視",
     "legend": "圖例",
     "supply": "補給線",
+    "border": "星區邊界",
+    "find": "搜尋星球",
     "liberating": "解放中",
     "defending": "防禦中",
     "order": "主要指令目標",
@@ -264,7 +266,8 @@
     "liberation": "解放進度",
     "players": "絕地戰兵",
     "open": "在星球表格中開啟",
-    "selected": "已選取：{name}"
+    "selected": "已選取：{name}",
+    "sectorsCredit": "星區輪廓取自 {wiki} 的星區地圖，作者 {author}，依 {licence} 授權。"
   },
   "js": {
     "stale": "無法連線至 API，顯示快取資料",

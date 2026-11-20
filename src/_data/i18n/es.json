@@ -286,7 +286,7 @@
   },
   "map": {
     "h1": "Mapa galáctico",
-    "intro": "Usa las flechas del teclado para saltar entre planetas.",
+    "intro": "Las flechas saltan entre planetas, + y − hacen zoom, / busca un planeta.",
     "label": "Mapa de la Guerra Galáctica",
     "loading": "Cargando el mapa…",
     "zoomIn": "Acercar",
@@ -294,6 +294,8 @@
     "reset": "Restablecer vista",
     "legend": "Leyenda",
     "supply": "Línea de suministro",
+    "border": "Límite de sector",
+    "find": "Buscar planeta",
     "liberating": "En liberación",
     "defending": "En defensa",
     "order": "Objetivo de la orden suprema",
@@ -304,7 +306,8 @@
     "liberation": "Liberación",
     "players": "Helldivers",
     "open": "Abrir en la tabla de planetas",
-    "selected": "Seleccionado: {name}"
+    "selected": "Seleccionado: {name}",
+    "sectorsCredit": "Contornos de sectores del mapa de sectores de la {wiki}, por {author}, bajo la {licence}."
   },
   "js": {
     "stale": "API inaccesible, mostrando datos en caché",

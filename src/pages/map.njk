@@ -15,21 +15,28 @@ permalink: "/{{ lang }}/map/"
   <button type="button" data-zoom="1.5">{% icon "magnifying-glass-plus" %}<span class="visually-hidden">{{ t.map.zoomIn }}</span></button>
   <button type="button" data-zoom="0.6667">{% icon "magnifying-glass-minus" %}<span class="visually-hidden">{{ t.map.zoomOut }}</span></button>
   <button type="button">{% icon "arrows-in" %}<span class="visually-hidden">{{ t.map.reset }}</span></button>
+  <input type="search" id="map-find" list="map-names" placeholder="{{ t.map.find }}" aria-label="{{ t.map.find }}" aria-keyshortcuts="/" autocomplete="off" spellcheck="false">
+  <datalist id="map-names"></datalist>
 </div>
 <svg id="map" role="group" aria-label="{{ t.map.label }}" viewBox="0 0 1000 1000">
-  <defs>
-    {%- for f in labels.factions %}
-    <radialGradient id="haze-{{ f | lower }}" class="{{ f | lower }}"><stop offset="0"/><stop offset="1"/></radialGradient>
-    {%- endfor %}
-  </defs>
-  {#- the game's range rings around Super Earth #}
-  <g class="grid" aria-hidden="true">
-    {%- for r in [90, 180, 270, 360, 450] %}<circle cx="500" cy="500" r="{{ r }}"/>{% endfor -%}
-    <path d="M500 40V960M40 500H960"/>
+  {#- the game's sectors, from the Helldivers Wiki (credited below); map.js tints them by owner #}
+  <g class="sector-shapes" aria-hidden="true">
+    {%- for name, d in sectors.paths %}<path data-sector="{{ name | lower }}" d="{{ d }}"/>{% endfor -%}
+    <path class="sector-edge" id="map-sector"/>
   </g>
   <g id="map-layer"></g>
 </svg>
 </div>
+<ul class="legend" aria-label="{{ t.map.legend }}">
+  {%- for f in labels.factions %}
+  <li class="{{ f | lower }}"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="planet" r="7"/></svg>{{ t.factions[f] }}</li>
+  {%- endfor %}
+  <li class="terminids"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark" r="10"/><circle class="progress" r="10" pathLength="100" stroke-dasharray="60 100" transform="rotate(-90)"/></svg>{{ t.map.liberating }}</li>
+  <li class="terminids"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark defending" r="10"/></svg>{{ t.map.defending }}</li>
+  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><polygon class="mark order" points="0,-12 12,0 0,12 -12,0"/></svg>{{ t.map.order }}</li>
+  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><path class="lines" d="M-12 8L12 -8"/></svg>{{ t.map.supply }}</li>
+  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><path class="border" d="M-4 -13L2 -2L-3 13"/></svg>{{ t.map.border }}</li>
+</ul>
 <p class="visually-hidden" id="map-announce" aria-live="polite"></p>
 </section>
 <div class="map-side">
@@ -41,19 +48,8 @@ permalink: "/{{ lang }}/map/"
 <h2 id="map-fronts-h">{{ t.overview.fronts }}</h2>
 <ul class="map-fronts" id="map-fronts"></ul>
 </section>
-<details class="card map-legend">
-<summary>{{ t.map.legend }}</summary>
-<ul class="legend">
-  {%- for f in labels.factions %}
-  <li class="{{ f | lower }}"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="planet" r="7"/></svg>{{ t.factions[f] }}</li>
-  {%- endfor %}
-  <li class="terminids"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark" r="10"/><circle class="progress" r="10" pathLength="100" stroke-dasharray="60 100" transform="rotate(-90)"/></svg>{{ t.map.liberating }}</li>
-  <li class="terminids"><svg viewBox="-14 -14 28 28" aria-hidden="true"><circle class="mark defending" r="10"/></svg>{{ t.map.defending }}</li>
-  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><polygon class="mark order" points="0,-12 12,0 0,12 -12,0"/></svg>{{ t.map.order }}</li>
-  <li><svg viewBox="-14 -14 28 28" aria-hidden="true"><path class="lines" d="M-12 8L12 -8"/></svg>{{ t.map.supply }}</li>
-</ul>
-</details>
 {{ imageCredit(["Betta7776"], "super-earth", t) }}
+<p class="muted hint">{{ t.map.sectorsCredit | replace("{wiki}", '<a href="' + sectors.source + '">Helldivers Wiki</a>') | replace("{author}", sectors.author) | replace("{licence}", '<a href="https://www.gnu.org/licenses/gpl.html">GNU GPL</a>') | safe }}</p>
 </div>
 </div>
 </div>

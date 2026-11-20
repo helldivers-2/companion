@@ -268,7 +268,7 @@
   },
   "map": {
     "h1": "Galaxy map",
-    "intro": "Use the arrow keys to step between planets.",
+    "intro": "Arrow keys step between planets, + and − zoom, / finds a planet.",
     "label": "Galactic War map",
     "loading": "Loading map…",
     "zoomIn": "Zoom in",
@@ -276,6 +276,8 @@
     "reset": "Reset view",
     "legend": "Legend",
     "supply": "Supply line",
+    "border": "Sector border",
+    "find": "Find a planet",
     "liberating": "Liberating",
     "defending": "Defending",
     "order": "Major Order target",
@@ -286,7 +288,8 @@
     "liberation": "Liberation",
     "players": "Helldivers",
     "open": "Open in planets table",
-    "selected": "Selected: {name}"
+    "selected": "Selected: {name}",
+    "sectorsCredit": "Sector outlines from the {wiki}’s sector map by {author}, under the {licence}."
   },
   "js": {
     "stale": "API unreachable, showing cached data",

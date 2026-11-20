@@ -280,7 +280,7 @@
   },
   "map": {
     "h1": "Galaxiekarte",
-    "intro": "Mit den Pfeiltasten kannst du zwischen Planeten springen.",
+    "intro": "Pfeiltasten springen zwischen Planeten, + und − zoomen, / sucht einen Planeten.",
     "label": "Karte des Galaktischen Krieges",
     "loading": "Karte wird geladen …",
     "zoomIn": "Vergrößern",
@@ -288,6 +288,8 @@
     "reset": "Ansicht zurücksetzen",
     "legend": "Legende",
     "supply": "Versorgungslinie",
+    "border": "Sektorgrenze",
+    "find": "Planet suchen",
     "liberating": "Wird befreit",
     "defending": "Wird verteidigt",
     "order": "Ziel der Major Order",
@@ -298,7 +300,8 @@
     "liberation": "Befreiung",
     "players": "Helldivers",
     "open": "In der Planetentabelle öffnen",
-    "selected": "Ausgewählt: {name}"
+    "selected": "Ausgewählt: {name}",
+    "sectorsCredit": "Sektorumrisse aus der Sektorkarte des {wiki} von {author}, unter der {licence}."
   },
   "js": {
     "stale": "API nicht erreichbar, zwischengespeicherte Daten",

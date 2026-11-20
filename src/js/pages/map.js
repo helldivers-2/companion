@@ -66,6 +66,8 @@ let lastFronts = "";
 let campaign = new Set();
 let order = new Set();
 let rates = {};
+let lastNames = "";
+let linked = null; // ?planet=<index>, taken once the planets load
 
 function apply() {
   view = clampView(view);
@@ -186,14 +188,38 @@ function bind() {
     if (b.dataset.zoom) zoomAt(view.k * Number(b.dataset.zoom));
     else flyTo({ x: SIZE / 2, y: SIZE / 2 }, 1);
   });
-  $("map-fronts").addEventListener("click", (e) => {
-    const i = Number(e.target.closest("[data-go]")?.dataset.go);
-    const p = points.find((q) => q.index === i);
-    if (!p) return;
-    select(i, true);
-    flyTo(p, Math.max(view.k, 3));
-    $("map").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  // picking a name from the list fills the field with it exactly; typing on stays a search
+  $("map-find").addEventListener("input", (e) => {
+    const name = e.target.value.trim().toLowerCase();
+    const p = planets.find((q) => q.name.toLowerCase() === name);
+    if (p) go(p.index);
   });
+  $("map-find").addEventListener("keydown", (e) => {
+    if (e.key === "Escape") e.target.blur();
+  });
+  // shortcuts: / finds a planet, + and - zoom, 0 resets
+  document.addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey || e.target.closest("input, select, textarea")) return;
+    const zoom = { "+": 1.5, "=": 1.5, "-": 0.6667 }[e.key];
+    if (e.key === "/") $("map-find").focus();
+    else if (zoom) zoomAt(view.k * zoom);
+    else if (e.key === "0") flyTo({ x: SIZE / 2, y: SIZE / 2 }, 1);
+    else return;
+    e.preventDefault();
+  });
+  $("map-fronts").addEventListener("click", (e) => {
+    const i = e.target.closest("[data-go]")?.dataset.go;
+    if (i) go(Number(i));
+  });
+}
+
+// Selects a planet and flies the map to it.
+function go(index) {
+  const p = points.find((q) => q.index === index);
+  if (!p) return;
+  select(index, true);
+  flyTo(p, Math.max(view.k, 3));
+  $("map").scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
 let points = []; // screen-space positions, for arrow-key navigation
@@ -217,7 +243,12 @@ function select(index, announce) {
   for (const el of document.querySelectorAll("#map-layer [data-planet]")) el.setAttribute("aria-pressed", Number(el.dataset.planet) === index);
   focusPlanet(index);
   const p = planets.find((q) => q.index === index);
-  if (announce && p) $("map-announce").textContent = fill(t.map.selected, { name: p.name });
+  if (announce && p) {
+    $("map-announce").textContent = fill(t.map.selected, { name: p.name });
+    const u = new URL(location.href);
+    u.searchParams.set("planet", index);
+    history.replaceState(null, "", u);
+  }
   for (const el of document.querySelectorAll("#map-fronts [data-go]")) el.setAttribute("aria-pressed", Number(el.dataset.go) === index);
   drawRoutes();
   renderPanel();
@@ -234,6 +265,9 @@ function drawRoutes() {
     ? [...new Set([...(p.waypoints ?? []), ...planets.filter((q) => q.waypoints?.includes(selected)).map((q) => q.index)])].map(at).filter(Boolean)
     : [];
   route.setAttribute("d", ends.map((b) => `M${from.x} ${from.y}L${b.x} ${b.y}`).join(""));
+  // outline the selected planet's sector, drawn above its neighbours' borders
+  const shape = p && document.querySelector(`#map [data-sector="${CSS.escape(p.sector.toLowerCase())}"]`);
+  $("map-sector").setAttribute("d", shape?.getAttribute("d") ?? "");
 }
 
 function renderPanel() {
@@ -270,7 +304,7 @@ function renderFronts(list) {
       <span class="name" translate="no">${esc(p.name)}</span>
       <span class="pct">${held(p) ? t.js.held : pct0(lib)}</span>
       <span class="players">${icon("users")}<span class="visually-hidden">${t.js.playersLabel} </span>${num(p.statistics.playerCount)}</span>
-      ${order.has(p.index) || p.event ? `<span class="tags">${order.has(p.index) ? `<span class="badge mo">${t.overview.order}</span>` : ""}${p.event ? `<span class="badge defense">${t.map.defending}</span>` : ""}</span>` : ""}
+      <span class="tags"><span class="sector" translate="no">${esc(p.sector)}</span>${order.has(p.index) ? `<span class="badge mo">${t.overview.order}</span>` : ""}${p.event ? `<span class="badge defense">${t.map.defending}</span>` : ""}</span>
       <span class="track" aria-hidden="true"><span style="transform:scaleX(${lib.toFixed(3)})"></span></span>
     </button></li>`;
       })
@@ -285,6 +319,7 @@ function renderFronts(list) {
 export default async function galaxyMap() {
   if (!bound) {
     bound = true;
+    linked = new URLSearchParams(location.search).get("planet");
     bind();
     apply();
   }
@@ -324,14 +359,15 @@ export default async function galaxyMap() {
   // Super Earth's globe sits on its dot in the middle of the map; credited from img/super-earth/sources.json (map.njk),
   // outside img/planets/, whose sync deletes files it did not mirror
   const emblem = `<image class="emblem" href="/img/super-earth/super-earth-planet-icon.webp" x="-22" y="-22" width="44" height="44"/>`;
-  const subText = (p) => `${held(p) ? t.js.held : pct0(liberation(p))} · ${num(p.statistics.playerCount)}`;
+  // a front's progress under its name, once there is any; untouched fronts read 0 % in the list beside the map
+  const subText = (p) => (!campaign.has(p.index) ? "" : held(p) ? t.js.held : liberation(p) >= 0.005 ? pct0(liberation(p)) : "");
   const actives = planets.filter(isActive).sort((a, b) => rank(b) - rank(a));
   // shortcut: label widths are estimated from character counts at 11px and 10px Oxanium; measure with getBBox if they drift
   const sides = placeLabels(
     actives.map((p) => ({
       ...at[p.index],
-      w: Math.max(p.name.length * 7.2, campaign.has(p.index) ? subText(p).length * 5.5 : 0),
-      h: campaign.has(p.index) ? 26 : 12,
+      w: Math.max(p.name.length * 7.2, subText(p).length * 5.5),
+      h: subText(p) ? 26 : 12,
       gap: radius(p) + 9,
     })),
     actives.map((p) => {
@@ -340,16 +376,13 @@ export default async function galaxyMap() {
       return { index: p.index, x0: x - d, y0: y - d, x1: x + d, y1: y + d };
     }),
   );
-  const haze = [],
-    hits = [],
+  const hits = [],
     pins = [],
     top = [],
     sectors = {};
   for (const p of planets) {
     const { x, y } = at[p.index];
     (sectors[p.sector] ??= []).push(at[p.index]);
-    if (p.currentOwner !== "Humans" || p.index === 0)
-      haze.push(`<circle fill="url(#haze-${slug(p.currentOwner)})" cx="${x}" cy="${y}" r="${p.index ? 42 : 80}"/>`);
     const active = isActive(p);
     const r = radius(p);
     const lib = liberation(p);
@@ -368,7 +401,7 @@ export default async function galaxyMap() {
     }
     const left = sides[p.index] === "left",
       lx = left ? -(r + 9) : r + 9;
-    const sub = campaign.has(p.index) ? `<tspan x="${lx}" dy="1.25em" class="sub">${subText(p)}</tspan>` : "";
+    const sub = subText(p) ? `<tspan x="${lx}" dy="1.25em" class="sub">${subText(p)}</tspan>` : "";
     const cls = !active ? "minor" : sides[p.index] ? "" : "crowded";
     const label = `<text class="${cls}"${left ? ' text-anchor="end"' : ""} x="${lx}" y="${sub ? -2 : 4}" aria-hidden="true">${esc(p.name)}${sub}</text>`;
     const name = [p.name, faction(p.currentOwner), ...states].join(", ");
@@ -386,7 +419,7 @@ export default async function galaxyMap() {
   });
 
   const layer = $("map-layer");
-  const html = `<g class="haze" aria-hidden="true">${haze.join("")}</g><path class="lines" d="${path}"/><path class="route" id="map-route"/><g class="sectors" aria-hidden="true">${sectorLabels.join("")}</g><g aria-hidden="true">${hits.join("")}</g>${pins.join("")}${top.join("")}`;
+  const html = `<path class="lines" d="${path}"/><path class="route" id="map-route"/><g class="sectors" aria-hidden="true">${sectorLabels.join("")}</g><g aria-hidden="true">${hits.join("")}</g>${pins.join("")}${top.join("")}`;
   if (html !== lastLayer) {
     // the planet list is cached for an hour, so most refreshes draw the same map
     const focused = document.activeElement?.closest("#map-layer [data-planet]")?.dataset.planet;
@@ -394,7 +427,26 @@ export default async function galaxyMap() {
     if (focused) layer.querySelector(`[data-planet="${focused}"]`)?.focus({ preventScroll: true });
     drawRoutes();
   }
+  // A sector takes the colour of the enemy holding most of its enemy-held planets; Super Earth's own stay clear.
+  const enemies = {};
+  for (const p of planets) if (p.currentOwner !== "Humans") (enemies[p.sector.toLowerCase()] ??= []).push(p.currentOwner);
+  for (const el of document.querySelectorAll("#map [data-sector]")) {
+    const owners = enemies[el.dataset.sector] ?? [];
+    const top = owners.sort((a, b) => owners.filter((o) => o === b).length - owners.filter((o) => o === a).length)[0];
+    if (top) el.setAttribute("class", slug(top));
+    else el.removeAttribute("class");
+  }
+  const names = planets
+    .map((p) => p.name)
+    .sort(new Intl.Collator(lang).compare)
+    .map((n) => `<option value="${esc(n)}">`)
+    .join("");
+  if (names !== lastNames) $("map-names").innerHTML = lastNames = names;
   renderFronts(campaignPlanets);
   $("map-loading").hidden = true;
+  if (linked != null) {
+    go(Number(linked));
+    linked = null;
+  }
   renderPanel();
 }
