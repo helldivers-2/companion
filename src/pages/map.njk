@@ -4,6 +4,7 @@ permalink: "/{{ lang }}/map/"
 ---
 {%- from "item-cells.njk" import imageCredit %}
 <div class="container">
+{% include "tabs.njk" %}
 <h1>{{ t.map.h1 }}</h1>
 <p class="muted hint">{{ t.map.intro }}</p>
 <div class="map-layout">

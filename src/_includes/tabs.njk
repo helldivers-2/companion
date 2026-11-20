@@ -1,0 +1,10 @@
+{#- Pages that share one main nav entry (see nav.json); these tabs move between them. #}
+{%- for group, ids in {galaxy: ["map", "planets"], intel: ["dispatches", "news"], armory: ["stratagems", "items"]} %}
+{%- if page_id in ids %}
+<nav class="tabs" aria-label="{{ t.nav[group] }}">
+  {%- for id in ids %}
+  <a href="/{{ lang }}/{{ id }}/"{% if page_id == id %} aria-current="page"{% endif %}>{{ t.nav[id] }}</a>
+  {%- endfor %}
+</nav>
+{%- endif %}
+{%- endfor %}

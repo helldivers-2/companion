@@ -1,9 +1,7 @@
 [
   ["", "overview", "rocket-launch"],
-  ["map/", "map", "map-trifold"],
-  ["planets/", "planets", "globe-hemisphere-west"],
-  ["dispatches/", "dispatches", "megaphone-simple"],
-  ["news/", "news", "newspaper"],
+  ["map/", "galaxy", "map-trifold", ["planets/"]],
+  ["dispatches/", "intel", "megaphone-simple", ["news/"]],
   ["stratagems/", "armory", "crosshair", ["items/"]],
   ["faq/", "faq", "info", [], "wide"]
 ]

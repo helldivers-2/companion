@@ -4,6 +4,7 @@ permalink: "/{{ lang }}/planets/"
 ---
 {%- from "item-cells.njk" import imageCredit %}
 <div class="container">
+{% include "tabs.njk" %}
 <h1>{{ t.nav.planets }}</h1>
 <p class="muted hint">{{ t.planets.intro }}</p>
 <section class="card" aria-labelledby="all-h">

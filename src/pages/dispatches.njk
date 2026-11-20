@@ -3,6 +3,7 @@ page_id: dispatches
 permalink: "/{{ lang }}/dispatches/"
 ---
 <div class="container">
+{% include "tabs.njk" %}
 <h1>{{ t.dispatches.h1 }}</h1>
 <ol class="dispatches stack" id="dispatches"><li class="card muted" data-loading>{{ t.dispatches.loading }}</li></ol>
 </div>

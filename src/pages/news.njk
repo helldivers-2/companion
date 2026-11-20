@@ -3,6 +3,7 @@ page_id: news
 permalink: "/{{ lang }}/news/"
 ---
 <div class="container">
+{% include "tabs.njk" %}
 <h1>{{ t.news.h1 }}</h1>
 <ol class="news stack" id="news"><li class="card muted" data-loading>{{ t.news.loading }}</li></ol>
 </div>
