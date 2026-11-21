@@ -12,7 +12,7 @@
 }
 
 .cat-defensive {
-  --faction: #{light-dark(oklch(0.46 0.12 150), #5fd38d)};
+  --faction: #{$defensive};
 }
 
 .cat-mission {

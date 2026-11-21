@@ -31,7 +31,6 @@ $se-blue: map.get($factions, humans);
   color-scheme: dark;
 
   #map-loading {
-    margin: 0;
     padding: 1rem;
   }
 }
@@ -96,10 +95,6 @@ $se-blue: map.get($factions, humans);
   &:active {
     cursor: grabbing;
   }
-}
-
-#map-loading[hidden] {
-  display: none;
 }
 
 // Scaled by apply() in map.js; the transform origin is the planet's own position.
@@ -302,9 +297,8 @@ $se-blue: map.get($factions, humans);
     gap: 0.25rem 0.75rem;
     width: 100%;
     padding: 0.5rem;
-    border: 0;
-    border-left: 3px solid var(--faction);
-    border-radius: 0 var(--radius-medium) var(--radius-medium) 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-medium);
     background: transparent;
     color: $text;
     font: inherit;
@@ -314,16 +308,21 @@ $se-blue: map.get($factions, humans);
     &[aria-pressed="true"] {
       background: color-mix(in srgb, var(--faction) 12%, transparent);
     }
-  }
 
-  .name {
-    font-weight: 600;
+    &[aria-pressed="true"] {
+      border-color: color-mix(in srgb, var(--faction) 45%, transparent);
+    }
   }
 
   .name {
     overflow: hidden;
+    font-weight: 600;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    &::before {
+      @include faction-emblem;
+    }
   }
 
   .tags {
@@ -342,16 +341,10 @@ $se-blue: map.get($factions, humans);
     grid-column: 1 / -1;
   }
 
-  .pct {
-    background: none;
-    font-variant-numeric: tabular-nums;
-  }
-
   .players {
     min-width: 4rem;
     color: $muted;
     font-size: 0.875rem;
-    font-variant-numeric: tabular-nums;
     text-align: right;
     white-space: nowrap;
   }
@@ -384,10 +377,6 @@ $se-blue: map.get($factions, humans);
 
   dt {
     color: $muted;
-  }
-
-  dd {
-    margin: 0;
   }
 }
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  {# 'unsafe-inline' styles: progress bars set their width through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hashes are the <script>0</script> below and the theme script. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k=' 'sha256-a3/VjIsEE5NsukimsP5MlYhpl7Dot06LFsVFv2FT/qk='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
+  {# 'unsafe-inline' styles: progress bars set their scale through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hashes are the <script>0</script> below and the theme script. #}
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k=' 'sha256-NZx1u9M3JYLtu2Q6RDMr/UzF7BRV/PCq7X0fVJ4CsjM='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   {%- set title = t.meta[page_id][0] %}
   {%- set description = t.meta[page_id][1] %}
   {%- set path = page.url | replace("/" + lang + "/", "/") %}
@@ -21,8 +21,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="{{ t.layout.ogAlt | replace("{name}", site.name) }}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#1c1917" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="{{ site.themeColor.light }}" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="{{ site.themeColor.dark }}" media="(prefers-color-scheme: dark)">
   {%- if not standalone %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {%- for l in site.locales %}
@@ -35,7 +35,7 @@
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   {#- Sets the saved theme before first paint so a forced theme never flashes the other one; main.js wires the footer control to setTheme. #}
-  <script>{const r=document.documentElement;let m;window.setTheme=(t,save)=>{if(save)try{t=="system"?localStorage.removeItem("theme"):localStorage.setItem("theme",t)}catch{}r.dataset.theme=t;m?.remove();m=null;if(t!="system"){m=document.createElement("meta");m.name="theme-color";m.content=t=="dark"?"#1c1917":"#ffffff";document.head.prepend(m)}};let s;try{s=localStorage.getItem("theme")}catch{}setTheme(s=="light"||s=="dark"?s:"system")}</script>
+  <script>{const r=document.documentElement;let m;window.setTheme=(t,save)=>{if(save)try{t=="system"?localStorage.removeItem("theme"):localStorage.setItem("theme",t)}catch{}r.dataset.theme=t;m?.remove();m=null;if(t!="system"){m=document.createElement("meta");m.name="theme-color";m.content=document.querySelector(`meta[name="theme-color"][media*="${t}"]`).content;document.head.prepend(m)}};let s;try{s=localStorage.getItem("theme")}catch{}setTheme(s=="light"||s=="dark"?s:"system")}</script>
   <link rel="stylesheet" href="/assets/main.css">
   {#- Firefox lays out the body before the stylesheet arrives if anything (often an extension) forces layout early, flashing raw HTML. A script here has to wait for the stylesheet, which holds the body back. #}
   <script>0</script>
@@ -58,7 +58,7 @@
       {%- if page_id == "overview" %}<p id="online"></p>{% endif %}
       <p class="status" id="status" aria-live="off"></p>
     </div>
-    <noscript><p class="notice">{{ t.layout.noscript }}</p></noscript>
+    <noscript><p class="notice">{% icon "info" %} {{ t.layout.noscript }}</p></noscript>
     {{ content | safe }}
   </main>
   {# The companion's footer: project line, about and credits beside community links, then the disclaimer. #}
@@ -67,14 +67,14 @@
       <div>
         <h2>{{ site.name }}</h2>
         <p class="muted">{{ t.layout.by | replace("{author}", '<a href="' + footer.author.href + '">' + footer.author.name + "</a>") | safe }}</p>
-        <p><a href="/{{ lang }}/faq/">{% icon "info" %}{{ t.nav.faq }}</a></p>{# the phone tab bar has no room for it #}
+        <p><a href="/{{ lang }}/faq/">{% icon "info" %} {{ t.nav.faq }}</a></p>{# the phone tab bar has no room for it #}
       </div>
       <div class="footer-cols">
         <div>
           <p class="muted">{{ t.layout.about | replace("{s}", site.refreshSeconds) }}</p>
           <ul class="credits">
             {%- for c in footer.credits %}
-            <li><a href="{{ c[0] }}">{% icon c[1] %}{{ c[2] }}</a></li>
+            <li><a href="{{ c[0] }}">{{ c[1] }}</a></li>
             {%- endfor %}
           </ul>
         </div>

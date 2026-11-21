@@ -1,5 +1,6 @@
 // Shared by main.scss and its partials through @use.
 // The companion's palette (light, dark), following the system setting like the companion does.
+// site.json's themeColor mirrors $ground in hex for <meta name="theme-color">.
 $ground: light-dark(oklch(1 0 0), oklch(0.216 0.006 56.043));
 $panel: light-dark(oklch(0.97 0 0), oklch(0.268 0.007 34.298));
 $line: light-dark(oklch(0.923 0.003 48.717), oklch(1 0 0 / 10%));
@@ -13,6 +14,8 @@ $muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
 $accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
 // The companion's amber icon colour, used for the nav icons as it does.
 $icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
+// Defensive stratagem permit green, checked for 4.5:1 on ground and panel.
+$defensive: light-dark(oklch(0.46 0.12 150), #5fd38d);
 
 // Page column, its side gutter, and the phone/desktop breakpoint.
 $page: 76rem;
@@ -28,3 +31,15 @@ $factions: (
   automaton: light-dark(oklch(0.47 0.18 15), #ff5a52),
   illuminate: light-dark(oklch(0.5 0.17 295), #b38cff),
 );
+
+// Masked faction emblem shared by overview front headings and the map fronts list.
+@mixin faction-emblem($size: 1em, $gap: 0.375rem) {
+  content: "";
+  display: inline-block;
+  width: $size;
+  height: $size;
+  margin-right: $gap;
+  vertical-align: -0.15em;
+  background: var(--faction);
+  mask: var(--emblem, linear-gradient(transparent 0 0)) center / contain no-repeat;
+}

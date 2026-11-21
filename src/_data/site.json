@@ -4,5 +4,6 @@
   "client": "helldivers-companion",
   "contact": "@.mixhi",
   "refreshSeconds": 60,
-  "locales": ["en", "es", "de", "zh-TW"]
+  "locales": ["en", "es", "de", "zh-TW"],
+  "themeColor": { "light": "#ffffff", "dark": "#1c1917" }
 }

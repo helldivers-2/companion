@@ -1,9 +1,9 @@
 {
   "author": { "name": "michi.onl", "href": "https://github.com/michi-onl" },
   "credits": [
-    ["https://www.11ty.dev/", "stack", "Eleventy"],
-    ["https://phosphoricons.com/", "shapes", "Phosphor Icons"],
-    ["https://github.com/helldivers-2/api", "brackets-angle", "Helldivers 2 API"]
+    ["https://www.11ty.dev/", "Eleventy"],
+    ["https://phosphoricons.com/", "Phosphor Icons"],
+    ["https://github.com/helldivers-2/api", "Helldivers 2 API"]
   ],
   "social": [
     [
