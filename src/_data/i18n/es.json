@@ -14,7 +14,7 @@
       "Mapa galáctico de Helldivers 2",
       "Mapa de la Guerra Galáctica de Helldivers 2: todos los planetas por propietario, con liberaciones, defensas y objetivos de la orden suprema activos."
     ],
-    "dispatches": ["Helldivers 2: comunicados de Supertierra", "Los últimos comunicados de Supertierra en el juego sobre la Guerra Galáctica de Helldivers 2."],
+    "dispatches": ["Helldivers 2: comunicados de Supertierra", "Últimos comunicados de Supertierra directamente desde Helldivers 2."],
     "news": [
       "Helldivers 2: noticias y notas de parche",
       "Notas de parche, blogs de desarrollo y anuncios de Helldivers 2 desde la página de Arrowhead en Steam."
@@ -58,7 +58,7 @@
     "ogAlt": "Una calavera amarilla junto a las palabras {name}, sobre fondo oscuro",
     "noscript": "Esta web carga los datos de la guerra en directo en tu navegador. Activa JavaScript para verlos.",
     "by": "Un proyecto de {author}.",
-    "about": "Los datos llegan de la API de la comunidad cada {s} s. Hecho con:",
+    "about": "Se actualiza desde la API de la comunidad cada {s} s. Hecho con:",
     "language": "Idioma",
     "disclaimer": "Proyecto de fans sin relación con Arrowhead Game Studios ni Sony Interactive Entertainment, que no lo respaldan.",
     "links": {
@@ -85,7 +85,7 @@
     "placeholder": "Planeta, sector, bioma, peligro…",
     "owner": "Control",
     "anyOwner": "Todos",
-    "active": "Solo con Helldivers",
+    "active": "Solo planetas con Helldivers",
     "cols": {
       "name": "Planeta",
       "sector": "Sector",
@@ -148,15 +148,15 @@
     },
     "count": "{n} de {total} estratagemas",
     "noMatch": "Ninguna estratagema coincide con estos filtros.",
-    "credit": "Datos de la {wiki}, con licencia {license}. Última actualización: {date}."
+    "credit": "Datos de la {wiki}, con licencia {license}. Actualizado: {date}."
   },
   "items": {
     "search": "Buscar",
     "placeholder": "Nombre, tipo, pasiva…",
     "type": "Tipo",
     "anyType": "Todos",
-    "unlockedBy": "Se desbloquea con",
-    "anyUnlock": "Cualquiera",
+    "unlockedBy": "Desbloqueo",
+    "anyUnlock": "Todos",
     "unlocks": {
       "warbond": "Bono de guerra",
       "superstore": "Supertienda",
@@ -200,7 +200,7 @@
     "unlisted": "Sin datos",
     "count": "{n} de {total} objetos",
     "noMatch": "Ningún objeto coincide con estos filtros.",
-    "credit": "Datos de objetos de {source}, con licencia {licence}, obtenidos el {date}."
+    "credit": "Datos de la {source}, con licencia {licence}. Actualizado: {date}."
   },
   "dispatches": {
     "h1": "Comunicados de Supertierra",
@@ -215,7 +215,7 @@
     "math": "Cómo caen los planetas",
     "intro": "Todos jugamos la misma guerra. Tú eliges el frente; el director de juego de Arrowhead decide qué planetas están en juego.",
     "points": [
-      "Las liberaciones empiezan con 1.000.000 de salud; las defensas, con entre unos 600.000 y más de 2 millones.",
+      "Las liberaciones empiezan con 1.000.000 de salud; las defensas, con entre unos 600.000 y más de 2.000.000.",
       "Cada misión completada resta salud. Cuantos más escuadrones, antes cae el planeta.",
       "Los planetas se recuperan entre un 1,5 % y un 4,5 % por hora, y el director puede subirlo por encima del 20 % para frenar un avance. Las defensas no se recuperan: van contrarreloj.",
       "Los contraataques restan de golpe un 1 o 2 %, a menudo tres o cuatro veces seguidas.",
@@ -256,7 +256,7 @@
     "11": "Liberar",
     "12": "Defender",
     "13": "Mantener",
-    "15": "Ganar liberaciones netas"
+    "15": "Ganancia neta de"
   },
   "rewardTypes": { "1": "medallas" },
   "tacticalStatus": {
@@ -325,7 +325,7 @@
     "readOnSteam": "Leer en Steam",
     "noNews": "Todavía no hay noticias.",
     "noOrder": "Ahora mismo no hay orden suprema.",
-    "noStation": "Ahora mismo no hay ninguna Estación Espacial de la Democracia en órbita.",
+    "noStation": "La Estación Espacial de la Democracia no está en órbita ahora mismo.",
     "online": "Helldivers en línea",
     "helldivers": "{n} Helldivers",
     "showMore": "Mostrar {n} más",

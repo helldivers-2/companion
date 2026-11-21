@@ -14,7 +14,7 @@
       "Helldivers 2 Galaxy Map",
       "Map of the Helldivers 2 Galactic War: every planet by owner, with active liberations, defenses and Major Order targets."
     ],
-    "dispatches": ["Helldivers 2 Dispatches from Super Earth", "The latest Super Earth dispatches from the in-game feed of the Helldivers 2 Galactic War."],
+    "dispatches": ["Helldivers 2 Dispatches from Super Earth", "Latest Super Earth dispatches from the Helldivers 2 in-game feed."],
     "news": ["Helldivers 2 News & Patch Notes", "Helldivers 2 patch notes, developer blogs and announcements from Arrowhead’s Steam page."],
     "faq": [
       "Helldivers 2 Liberation & Defense Explained",
@@ -42,7 +42,7 @@
     "items": "Items"
   },
   "images": {
-    "credit": "Images from the {wiki}, uploaded by {artists}; the licence of each file is in {list}. Game artwork belongs to Arrowhead Game Studios.",
+    "credit": "Images from the {wiki}, uploaded by {artists}; each file’s license is in {list}. Game artwork belongs to Arrowhead Game Studios.",
     "list": "this list",
     "missing": "No image available"
   },
@@ -52,19 +52,19 @@
     "ogAlt": "A yellow skull next to the words {name}, on a dark background",
     "noscript": "This companion loads live war data in your browser. Turn on JavaScript to see it.",
     "by": "A project by {author}.",
-    "about": "Data comes from the community API every {s} s. Built with:",
+    "about": "Updates from the community API every {s} s. Built with:",
     "language": "Language",
     "disclaimer": "Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.",
     "links": {
       "fans": "Fan communities",
       "arrowhead": "Arrowhead accounts",
-      "github": "Helldivers 2 GitHub organisation",
+      "github": "Helldivers 2 GitHub organization",
       "website": "Arrowhead Game Studios website"
     }
   },
   "overview": {
     "h1": "Galactic War overview",
-    "intro": "The <a href=\"{faq}\">guide to liberation and defense</a> explains what these figures mean.",
+    "intro": "See the <a href=\"{faq}\">liberation and defense guide</a> for how these numbers work.",
     "order": "Major Order",
     "orderLoading": "Receiving orders from High Command…",
     "station": "Space Station",
@@ -79,7 +79,7 @@
     "placeholder": "Planet, sector, biome, hazard…",
     "owner": "Owner",
     "anyOwner": "All",
-    "active": "Only with Helldivers",
+    "active": "Only planets with Helldivers",
     "cols": {
       "name": "Planet",
       "sector": "Sector",
@@ -137,15 +137,15 @@
     },
     "count": "{n} of {total} stratagems",
     "noMatch": "No stratagems match these filters.",
-    "credit": "Data from the {wiki}, licensed {license}. Last refreshed {date}."
+    "credit": "Data from the {wiki}, licensed {license}. Updated {date}."
   },
   "items": {
     "search": "Search",
     "placeholder": "Name, type, passive…",
     "type": "Type",
     "anyType": "All",
-    "unlockedBy": "Unlocked by",
-    "anyUnlock": "Anything",
+    "unlockedBy": "Unlock source",
+    "anyUnlock": "All",
     "unlocks": {
       "warbond": "Warbond",
       "superstore": "Superstore",
@@ -189,7 +189,7 @@
     "unlisted": "Not listed",
     "count": "{n} of {total} items",
     "noMatch": "No items match these filters.",
-    "credit": "Item data from the {source}, licensed {licence}, collected on {date}."
+    "credit": "Data from the {source}, licensed {licence}. Updated {date}."
   },
   "dispatches": {
     "h1": "Dispatches from Super Earth",
@@ -204,7 +204,7 @@
     "math": "How planets fall",
     "intro": "Every player fights in the same war. You pick the front, and Arrowhead’s game master decides which planets are in play.",
     "points": [
-      "A liberation campaign starts at 1,000,000 health. Defense campaigns vary from about 600,000 to over 2 million.",
+      "A liberation campaign starts at 1,000,000 health. Defense campaigns vary from about 600,000 to over 2,000,000.",
       "Every mission you finish takes some health off, so the more squads fight on a planet, the faster it falls.",
       "Planets heal 1.5 to 4.5% an hour, and the game master can raise that past 20% to stall a push. Defenses don’t heal; they run on a timer.",
       "Enemy counterattacks knock off 1 to 2% at a time, often three or four in a row.",
@@ -230,7 +230,7 @@
   "factions": {
     "Humans": "Humans",
     "Terminids": "Terminids",
-    "Automaton": "Automaton",
+    "Automaton": "Automatons",
     "Illuminate": "Illuminate"
   },
   "taskTypes": {
@@ -242,7 +242,7 @@
     "11": "Liberate",
     "12": "Defend",
     "13": "Hold",
-    "15": "Win net liberations"
+    "15": "Net gain of"
   },
   "rewardTypes": { "1": "Medals" },
   "tacticalStatus": { "1": "Preparing", "2": "Active now", "3": "On cooldown" },
@@ -307,7 +307,7 @@
     "readOnSteam": "Read on Steam",
     "noNews": "No news yet.",
     "noOrder": "No Major Order right now.",
-    "noStation": "No Democracy Space Station in orbit right now.",
+    "noStation": "The Democracy Space Station isn’t in orbit right now.",
     "online": "Helldivers online",
     "helldivers": "{n} Helldivers",
     "showMore": "Show {n} more",

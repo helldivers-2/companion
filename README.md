@@ -15,8 +15,8 @@ Every push to `main` deploys to Cloudflare through GitHub Actions. `npm run depl
 ## Where things live
 
 - Pages are Eleventy templates in `src/pages/*.njk`, with scripts in `src/js` and styles in `src/scss`.
-- The stratagem and item tables are built from `src/_data/stratagems.json` and `items.json`, which `npm run stratagems` and `npm run items` refresh from the [Helldivers Wiki](https://helldivers.wiki.gg/) (CC BY-NC-SA 4.0); commit the result. `npm run planets` does the same for the planet pictures (`planetImages.json`). `npm run sectors` copies the galaxy map's sector outlines (`sectors.json`) from the wiki's sector map gadget by TauCetiV, which is under the GNU GPL, not the wiki's CC licence; the map page credits it.
-- Those scripts also mirror the wiki's pictures into `src/img/{stratagems,items,planets}/`, where `sources.json` records each file's uploader and licence. Only files with a licence that allows reuse are taken, and only changed files are downloaded again. Thumbnails the wiki sends as PNG are converted with `cwebp` (`brew install webp`); without it they stay PNG. All wiki traffic goes through `scripts/wiki.js`, one request at a time with a pause in between; keep it that way.
+- The stratagem and item tables read `src/_data/stratagems.json` and `items.json`. Run `npm run stratagems` and `npm run items` to refresh them from the [Helldivers Wiki](https://helldivers.wiki.gg/) (CC BY-NC-SA 4.0), then commit the result. `npm run planets` refreshes `planetImages.json` the same way. `npm run sectors` pulls the galaxy map's sector outlines (`sectors.json`) from TauCetiV's wiki gadget (GNU GPL, not the wiki's CC licence; credited on the map page).
+- Those scripts also mirror wiki images into `src/img/{stratagems,items,planets}/` and record each file's uploader and licence in `sources.json`. They skip files without a reusable licence and unchanged files. If `cwebp` (`brew install webp`) is installed, they convert PNG thumbnails to WebP; otherwise they leave them as PNG. All wiki traffic goes through `scripts/wiki.js`, one request at a time with a pause between requests; keep it that way.
 - All text is in `src/_data/i18n/<locale>.json`, one file per language; each page embeds only the keys its script needs (`src/_data/eleventyComputed.js`). `npm test` fails if a locale is missing a key that English has.
 - Game terms follow the glossary below. Change a term in every string of a locale at once, and update the table.
 - The client headers and refresh interval are in `src/_data/site.json`. Set `contact` to your own before you deploy a copy.
@@ -47,7 +47,7 @@ German status messages use the passive (“Karte wird geladen …”), and optio
 
 ## The self-hosted API
 
-`worker.js` serves `/api/*` from a 20-second edge cache. On a miss it fetches from `API_ORIGIN` in `wrangler.jsonc`, which is a Cloudflare Tunnel hostname behind Cloudflare Access. Only the Worker's service token gets through Access, so visitors never reach the server directly, and however much traffic the site gets, the server sees at most one request per path and language every 20 seconds from each Cloudflare location.
+`worker.js` serves `/api/*` from a 20-second edge cache. On a miss it fetches from `API_ORIGIN` in `wrangler.jsonc`, which is a Cloudflare Tunnel hostname behind Cloudflare Access. Only the Worker's service token gets through Access, so visitors never reach the server directly. Regardless of traffic, the server sees at most one request per path and language every 20 seconds from each Cloudflare location.
 
 `deploy/compose.yml` runs the upstream API on port 8080. To set it up:
 

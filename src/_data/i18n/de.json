@@ -14,7 +14,7 @@
       "Helldivers 2 Galaxiekarte",
       "Karte des Galaktischen Krieges in Helldivers 2: alle Planeten nach Besitzer, mit laufenden Befreiungen, Verteidigungen und Zielen der Major Order."
     ],
-    "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Die neuesten Meldungen von Über-Erde aus dem Spiel zum Galaktischen Krieg."],
+    "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Neueste Meldungen von Über-Erde direkt aus Helldivers 2."],
     "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
     "faq": [
       "Helldivers 2: Befreiung und Verteidigung erklärt",
@@ -52,7 +52,7 @@
     "ogAlt": "Ein gelber Totenkopf neben dem Schriftzug {name} auf dunklem Hintergrund",
     "noscript": "Dieser Companion lädt die Kriegsdaten live im Browser. Aktiviere JavaScript, um sie zu sehen.",
     "by": "Ein Projekt von {author}.",
-    "about": "Die Daten kommen alle {s} s aus der Community-API. Gebaut mit:",
+    "about": "Daten werden alle {s} s über die Community-API aktualisiert. Gebaut mit:",
     "language": "Sprache",
     "disclaimer": "Fanprojekt. Steht in keiner Verbindung zu Arrowhead Game Studios oder Sony Interactive Entertainment und wird von ihnen nicht unterstützt.",
     "links": {
@@ -79,7 +79,7 @@
     "placeholder": "Planet, Sektor, Biom, Gefahr …",
     "owner": "Kontrolle",
     "anyOwner": "Alle",
-    "active": "Nur mit Helldivers",
+    "active": "Nur Planeten mit Helldivers",
     "cols": {
       "name": "Planet",
       "sector": "Sektor",
@@ -142,15 +142,15 @@
     },
     "count": "{n} von {total} Stratagems",
     "noMatch": "Kein Stratagem passt zu diesen Filtern.",
-    "credit": "Daten aus dem {wiki}, lizenziert unter {license}. Zuletzt aktualisiert am {date}."
+    "credit": "Daten aus dem {wiki}, lizenziert unter {license}. Aktualisiert am {date}."
   },
   "items": {
     "search": "Suche",
     "placeholder": "Name, Typ, Passiveffekt…",
     "type": "Typ",
     "anyType": "Alle",
-    "unlockedBy": "Freigeschaltet durch",
-    "anyUnlock": "Alles",
+    "unlockedBy": "Freischaltung",
+    "anyUnlock": "Alle",
     "unlocks": {
       "warbond": "Kriegsanleihe",
       "superstore": "Über-Store",
@@ -194,7 +194,7 @@
     "unlisted": "Nicht angegeben",
     "count": "{n} von {total} Gegenständen",
     "noMatch": "Kein Gegenstand passt zu diesen Filtern.",
-    "credit": "Gegenstandsdaten aus dem {source}, lizenziert unter {licence}, abgerufen am {date}."
+    "credit": "Daten aus dem {source}, lizenziert unter {licence}. Aktualisiert am {date}."
   },
   "dispatches": {
     "h1": "Meldungen von Über-Erde",
@@ -209,7 +209,7 @@
     "math": "Wie Planeten fallen",
     "intro": "Alle Spieler kämpfen im selben Krieg. Du wählst die Front, und der Spielleiter bei Arrowhead entscheidet, welche Planeten umkämpft sind.",
     "points": [
-      "Eine Befreiung startet bei 1.000.000 Lebenspunkten, eine Verteidigung bei etwa 600.000 bis über 2 Millionen.",
+      "Eine Befreiung startet bei 1.000.000 Lebenspunkten, eine Verteidigung bei etwa 600.000 bis über 2.000.000.",
       "Jede abgeschlossene Mission zieht Lebenspunkte ab. Je mehr Trupps kämpfen, desto schneller fällt der Planet.",
       "Planeten regenerieren 1,5 bis 4,5 % pro Stunde, und der Spielleiter kann das auf über 20 % anheben, um einen Vorstoß zu bremsen. Verteidigungen regenerieren nicht, sie laufen auf Zeit.",
       "Gegenangriffe des Feindes ziehen auf einen Schlag 1 bis 2 % ab, oft drei- oder viermal hintereinander.",
@@ -250,7 +250,7 @@
     "11": "Befreien:",
     "12": "Verteidigen:",
     "13": "Halten:",
-    "15": "Netto-Befreiungen erzielen:"
+    "15": "Netto-Zugewinn:"
   },
   "rewardTypes": { "1": "Medaillen" },
   "tacticalStatus": {
@@ -319,7 +319,7 @@
     "readOnSteam": "Auf Steam lesen",
     "noNews": "Noch keine Neuigkeiten.",
     "noOrder": "Gerade gibt es keine Major Order.",
-    "noStation": "Gerade ist keine Demokratie-Raumstation im Orbit.",
+    "noStation": "Die Demokratie-Raumstation ist gerade nicht im Orbit.",
     "online": "Helldivers online",
     "helldivers": "{n} Helldivers",
     "showMore": "{n} weitere anzeigen",
