@@ -11,8 +11,6 @@ $muted: light-dark(oklch(0.53 0 0), oklch(0.709 0.01 56.259));
 // Text and focus accent. Dark uses the companion's chart-1 yellow because its amber primary is
 // indistinguishable from Terminids orange; light uses its primary-foreground for 4.5:1 on white.
 $accent: light-dark(oklch(0.421 0.095 57.708), oklch(0.905 0.182 98.111));
-// The companion's card ring: foreground at 10 %, drawn as a box-shadow so it adds no layout.
-$ring: light-dark(oklch(0.145 0 0 / 10%), oklch(0.985 0.001 106.423 / 10%));
 // The companion's amber icon colour, used for the nav icons as it does.
 $icon: light-dark(oklch(0.554 0.135 66.442), oklch(0.681 0.162 75.834));
 

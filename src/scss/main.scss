@@ -351,10 +351,6 @@ main {
   display: grid;
   gap: 1rem;
 
-  + .container {
-    margin-top: 2rem;
-  }
-
   > h1:first-child {
     margin: 1rem 0 0;
     font-size: 1.875rem;
