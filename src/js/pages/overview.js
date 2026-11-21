@@ -147,8 +147,6 @@ const frontRow = (p, rate, isOrder) => `<li class="row">
 // Actions grouped by status, active first since it is what changes missions now. Only 1 to 3 are known (preparing,
 // active, cooldown); anything else, like the 0 every action had in January 2026, is listed by name under "Status unknown".
 const STATUS_ORDER = [2, 1, 3];
-// An expired or missing time (January 2026 sent dates from 2024) is left out instead of reading "0m 00s".
-const ahead = (iso) => Date.parse(iso) > Date.now();
 
 export function stationPanel(st) {
   const actions = st.tacticalActions ?? [];
@@ -171,7 +169,8 @@ export function stationPanel(st) {
 
 function stationAction(a, s) {
   const name = `<strong>${esc(a.name)}</strong>`;
-  const time = ahead(a.statusExpire) ? countdown(a.statusExpire) : "";
+  // An expired or missing time (January 2026 sent dates from 2024) is left out instead of reading "0m 00s".
+  const time = Date.parse(a.statusExpire) > Date.now() ? countdown(a.statusExpire) : "";
   if (s === 3) return `<li class="muted">${time ? fill(t.js.readyIn, { name, time }) : name}</li>`;
   if (s === null) return `<li class="muted">${name}</li>`;
   const about = `<p class="muted">${dispatchHtml(a.strategicDescription || a.description)}</p>`;

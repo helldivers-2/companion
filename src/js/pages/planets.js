@@ -71,10 +71,9 @@ function render() {
 }
 
 let images;
-const imageOf = (p) => (images ??= JSON.parse(document.getElementById("planet-images")?.textContent || "{}"))[planetKey(p.name)];
 
 function details(p, hazards) {
-  const img = imageOf(p);
+  const img = (images ??= JSON.parse(document.getElementById("planet-images")?.textContent || "{}"))[planetKey(p.name)];
   const regions = (p.regions ?? []).map(
     (r) => `<li>${esc(titleCase(r.name))}${r.size ? ` <span class="muted">${esc(regionSize(r.size))}</span>` : ""}
     ${held(p) ? "" : `${r.isAvailable === false ? `<span class="badge">${t.js.locked}</span>` : ""} ${r.health == null ? "" : `<span class="pct">${pct(1 - r.health / r.maxHealth)}</span>`}`}${r.players ? ` <span class="muted">${fill(t.js.helldivers, { n: num(r.players) })}</span>` : ""}</li>`,

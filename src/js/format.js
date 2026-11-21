@@ -65,8 +65,9 @@ export function enemyOf(planet) {
   return planet.event?.faction ?? planet.currentOwner;
 }
 
-function duration(ms) {
-  let s = Math.floor(ms / 1000);
+// Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
+export function timeLeft(until, now = Date.now()) {
+  let s = Math.floor((Math.max(0, Date.parse(until) - now) || 0) / 1000);
   const d = Math.floor(s / 86400),
     h = Math.floor((s % 86400) / 3600),
     m = Math.floor((s % 3600) / 60);
@@ -76,9 +77,6 @@ function duration(ms) {
   if (h) return `${h}${u.h} ${m}${u.m}`;
   return `${m}${u.m} ${String(s).padStart(2, "0")}${u.s}`;
 }
-
-// Every caller wraps this in a sentence ("… left", "ends in …"), so it stops at zero instead of saying "ended".
-export const timeLeft = (until, now = Date.now()) => duration(Math.max(0, Date.parse(until) - now) || 0);
 
 // Feeds sorted newest first; one unparseable date would otherwise throw in the date formatter and blank the feed.
 export const newestFirst = (list, key) => list.filter((x) => !Number.isNaN(Date.parse(x[key]))).sort((a, b) => Date.parse(b[key]) - Date.parse(a[key]));
