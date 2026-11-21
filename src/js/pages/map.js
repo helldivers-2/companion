@@ -12,7 +12,6 @@ const NEAR = 2.5; // from this zoom on, every planet gets its name
 // y is flipped: the API's y grows upward, SVG's grows downward.
 export const project = ({ x, y }) => [PAD + ((x + 1) / 2) * (SIZE - 2 * PAD), PAD + ((1 - y) / 2) * (SIZE - 2 * PAD)];
 
-// Keeps the view inside the map and the zoom inside its limits.
 export function clampView({ cx, cy, k }) {
   k = Math.min(MAX_ZOOM, Math.max(1, k));
   const half = SIZE / k / 2;
@@ -79,7 +78,6 @@ function apply() {
   svg.toggleAttribute("data-near", view.k >= NEAR);
 }
 
-// Glides to a planet; jumps when the visitor prefers less motion.
 let flight = 0;
 function flyTo({ x, y }, k) {
   const from = { ...view },
@@ -166,7 +164,7 @@ function bind() {
 
   svg.addEventListener("click", (e) => {
     const i = Number(e.target.closest("[data-planet]")?.dataset.planet ?? e.target.dataset.hit);
-    if (!moved && !Number.isNaN(i)) select(i, true);
+    if (!moved && !Number.isNaN(i)) select(i);
     moved = false;
   });
   svg.addEventListener("keydown", (e) => {
@@ -174,7 +172,7 @@ function bind() {
     if (!el) return;
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      select(Number(el.dataset.planet), true);
+      select(Number(el.dataset.planet));
     } else if (ARROWS[e.key]) {
       e.preventDefault();
       const from = points.find((p) => p.index === Number(el.dataset.planet));
@@ -197,7 +195,6 @@ function bind() {
   $("map-find").addEventListener("keydown", (e) => {
     if (e.key === "Escape") e.target.blur();
   });
-  // shortcuts: / finds a planet, + and - zoom, 0 resets
   document.addEventListener("keydown", (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey || e.target.closest("input, select, textarea")) return;
     const zoom = { "+": 1.5, "=": 1.5, "-": 0.6667 }[e.key];
@@ -213,11 +210,10 @@ function bind() {
   });
 }
 
-// Selects a planet and flies the map to it.
 function go(index) {
   const p = points.find((q) => q.index === index);
   if (!p) return;
-  select(index, true);
+  select(index);
   flyTo(p, Math.max(view.k, 3));
   $("map").scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
@@ -238,12 +234,12 @@ function focusPlanet(index, reveal) {
   }
 }
 
-function select(index, announce) {
+function select(index) {
   selected = index;
   for (const el of document.querySelectorAll("#map-layer [data-planet]")) el.setAttribute("aria-pressed", Number(el.dataset.planet) === index);
   focusPlanet(index);
   const p = planets.find((q) => q.index === index);
-  if (announce && p) {
+  if (p) {
     $("map-announce").textContent = fill(t.map.selected, { name: p.name });
     const u = new URL(location.href);
     u.searchParams.set("planet", index);
@@ -334,8 +330,7 @@ export default async function galaxyMap() {
   rates = track(campaignPlanets, fetchedAt["/api/v1/campaigns"]);
   order = new Set(orders.flatMap((o) => o.tasks.map((task, i) => describeTask(task, o.progress[i], byIndex).planet?.index)));
   // Planets not yet placed (sector "TBD", like WAYWARD) sit at 0,0 on top of Super Earth and would take its clicks.
-  const placed = (p) => p.position && (p.index === 0 || p.position.x || p.position.y);
-  planets = Object.values(byIndex).filter((p) => !p.disabled && placed(p));
+  planets = Object.values(byIndex).filter((p) => !p.disabled && p.position && (p.index === 0 || p.position.x || p.position.y));
   points = planets.map((p) => {
     const [x, y] = project(p.position);
     return { index: p.index, x, y };
@@ -411,7 +406,6 @@ export default async function galaxyMap() {
       `${g}<g class="pin">${marks}<circle class="planet ${slug(p.currentOwner)}" data-planet="${p.index}" r="${r}" role="button" tabindex="${p.index === rover ? 0 : -1}" aria-pressed="${p.index === selected}" aria-label="${esc(name)}"/>${p.index === 0 ? emblem : ""}${label}</g></g>`,
     );
   }
-  // sector names at the middle of their planets, shown only when zoomed out
   const sectorLabels = Object.entries(sectors).map(([name, ps]) => {
     const x = ps.reduce((n, q) => n + q.x, 0) / ps.length,
       y = ps.reduce((n, q) => n + q.y, 0) / ps.length;
