@@ -38,8 +38,6 @@ export function cost(raw) {
 }
 
 const CATEGORIES = { "Primary Weapons": "primary", "Secondary Weapons": "secondary", "Support Weapons": "support", Throwables: "throwable" };
-const metres = (s) => (/^[\d.]+$/.test(s) ? `${s}m` : s);
-const by = (a, b) => a.name.localeCompare(b.name, "en");
 
 // Each argument is the array of Cargo rows from the table of that name.
 export function normalise({ weapons, armor, boosters, passives }) {
@@ -55,7 +53,7 @@ export function normalise({ weapons, armor, boosters, passives }) {
       rate: plain(w["fire rate"]),
       magazine: plain(w.capacity).replace(/^N\/A$/, ""),
       pen: plain(w["penetration direct"]),
-      radius: metres(plain(w.radius)),
+      radius: plain(w.radius).replace(/^([\d.]+)$/, "$1m"),
       fuse: plain(w.fuse),
       source: source(w.source),
       cost: cost(w.cost),
@@ -80,7 +78,7 @@ export function normalise({ weapons, armor, boosters, passives }) {
   }
   for (const b of boosters)
     items.booster.push({ name: b.title, image: b.image?.trim() || null, text: plain(b.description, " "), source: source(b.source), cost: cost(b.cost) });
-  for (const list of Object.values(items)) list.sort(by);
+  for (const list of Object.values(items)) list.sort((a, b) => a.name.localeCompare(b.name, "en"));
   return items;
 }
 

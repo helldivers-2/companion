@@ -3,19 +3,13 @@
 // the game-data module its editors extract from each patch, so it is joined by name.
 import { writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
-import { api, syncImages } from "./wiki.js";
+import { api, cargo, syncImages } from "./wiki.js";
 
 const FIELDS = "title,image,permit_type,unlock_level,unlock_cost,source,stratagem_code,stratagem_type,base_cooldown";
 const USES_PAGE = "Module:Decodedata-Attacks/stratagems data.json";
 const UNLIMITED = 4294967295; // the game's "no limit" value
 
-const strip = (s) =>
-  s
-    .replace(/<[^>]*>/g, "")
-    .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1")
-    .trim();
 const key = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
-const camel = (s) => s.toLowerCase().replace(/ (\w)/g, (_, c) => c.toUpperCase());
 const SOURCE_TYPOS = { Hanger: "Hangar" }; // as spelled on the wiki
 
 function cost(html) {
@@ -25,7 +19,12 @@ function cost(html) {
 }
 
 function source(html) {
-  const name = strip(html.replace(/<small>.*?<\/small>/g, "")).replace(/^N\/A$/, "");
+  const name = html
+    .replace(/<small>.*?<\/small>/g, "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, "$1")
+    .trim()
+    .replace(/^N\/A$/, "");
   return name ? { name: SOURCE_TYPOS[name] ?? name, page: Number(/title="Page (\d+)"/.exec(html)?.[1]) || null } : null;
 }
 
@@ -48,7 +47,7 @@ export function normalise(rows, uses = {}) {
       name: r.title,
       image: r.image?.trim() || null,
       category: { offense: "offensive", "": "mission" }[r["permit type"].toLowerCase()] ?? r["permit type"].toLowerCase(), // objectives carry no permit
-      kind: r["stratagem type"] ? camel(r["stratagem type"]) : null,
+      kind: r["stratagem type"] ? r["stratagem type"].toLowerCase().replace(/ (\w)/g, (_, c) => c.toUpperCase()) : null,
       code,
       cooldown: Number.isNaN(cooldown) ? null : cooldown,
       uses: count === undefined ? null : count === UNLIMITED ? "unlimited" : count,
@@ -63,16 +62,13 @@ export function normalise(rows, uses = {}) {
   return [...out.values()].sort((a, b) => a.name.localeCompare(b.name, "en"));
 }
 
-async function main() {
-  const [cargo, uses] = await Promise.all([
-    api({ action: "cargoquery", tables: "Stratagems", fields: FIELDS, limit: "500" }),
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  const [rows, uses] = await Promise.all([
+    cargo("Stratagems", FIELDS),
     api({ action: "query", prop: "revisions", rvprop: "content|timestamp", rvslots: "main", titles: USES_PAGE }),
   ]);
   const page = uses.query.pages[0].revisions[0];
-  const items = normalise(
-    cargo.cargoquery.map((r) => r.title),
-    JSON.parse(page.slots.main.content).stratagems,
-  );
+  const items = normalise(rows, JSON.parse(page.slots.main.content).stratagems);
   if (items.length < 80) throw new Error(`Only ${items.length} stratagems, the wiki's table has probably changed`); // better to keep the committed file
   const icons = await syncImages(
     items.map((i) => i.image),
@@ -100,5 +96,3 @@ async function main() {
   );
   console.log(`${items.length} stratagems written`);
 }
-
-if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
