@@ -54,7 +54,7 @@ permalink: "/{{ lang }}/items/"
         <th scope="row"><span class="with-thumb">{{ thumb(it, t) }}<span lang="en" translate="no">{{ it.name }}</span></span></th>
         {%- for k in cols[cat] %}
         <td{% if k in numeric %} class="num"{% endif %}{% if k not in ["source", "cost", "class"] %} lang="en"{% endif %}>
-          {%- if k == "source" %}{{ unlock(it.source, t, lang) }}
+          {%- if k == "source" %}{{ unlock(it.source, t) }}
           {%- elif k == "cost" %}{{ price(it.cost, t) }}
           {%- elif k == "class" %}<span class="badge">{{ t.items.classes[it.class] }}</span>
           {%- elif k == "passive" %}<strong>{{ it.passive }}</strong> <span class="sub">{{ it.passiveText }}</span>
