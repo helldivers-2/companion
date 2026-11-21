@@ -4,8 +4,6 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const ICONS = [
   "rocket-launch",
-  "globe-hemisphere-west",
-  "newspaper",
   "trophy",
   "calendar-blank",
   "medal",
