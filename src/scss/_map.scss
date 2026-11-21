@@ -307,11 +307,27 @@ $se-blue: map.get($factions, humans);
     &:hover,
     &[aria-pressed="true"] {
       background: color-mix(in srgb, var(--faction) 12%, transparent);
+
+      // Keep secondary text >= 4.5:1 on the tinted light-mode background.
+      .sector,
+      .players {
+        color: $text;
+      }
     }
 
     &[aria-pressed="true"] {
-      border-color: color-mix(in srgb, var(--faction) 45%, transparent);
+      border-color: var(--faction);
     }
+
+    // .map-fronts scrolls on wide screens, which clips an outset focus ring.
+    &:focus-visible {
+      outline-offset: -2px;
+    }
+  }
+
+  // Mix against the card fill rather than transparent so badges don't double-tint inside pressed buttons.
+  .badge {
+    background: light-dark(color-mix(in srgb, var(--faction) 12%, var(--card)), color-mix(in srgb, var(--faction) 18%, var(--card)));
   }
 
   .name {

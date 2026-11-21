@@ -78,6 +78,12 @@ input::placeholder {
   opacity: 1;
 }
 
+// Oat's form.css clears outline on :focus for text inputs and selects, leaving a 25% shadow (< 3:1 contrast).
+:is(input, select, textarea):focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 2px;
+}
+
 .skip {
   position: absolute;
   top: 0.5rem;
@@ -1164,6 +1170,11 @@ footer {
 
     &:hover h2 {
       color: $accent;
+    }
+
+    // Oat's details { overflow: hidden } clips an outset focus ring.
+    &:focus-visible {
+      outline-offset: -2px;
     }
 
     h2 {
