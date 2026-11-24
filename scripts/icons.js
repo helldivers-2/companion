@@ -37,6 +37,8 @@ const ICONS = [
   "github-logo-fill",
   "instagram-logo-fill",
   "youtube-logo-fill",
+  "translate",
+  "circle-half",
 ];
 
 const dir = "node_modules/@phosphor-icons/core/assets";

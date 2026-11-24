@@ -6,20 +6,3 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 }
-
-#theme {
-  margin-top: 1rem;
-}
-
-.theme {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 1rem;
-
-  label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 2.75rem; // touch target
-  }
-}

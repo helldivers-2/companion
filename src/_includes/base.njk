@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  {# 'unsafe-inline' styles: progress bars set their scale through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hashes are the <script>0</script> below and the theme script. #}
+  {# 'unsafe-inline' styles: the map's planet track sets its scale through a style attribute. data: images: the icons are inlined in the stylesheet so they don't flash in. The script hashes are the <script>0</script> below and the theme script. #}
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-X+zrZv/IbzjZUnhsbWlsecLbwjndTpG0ZynXOif7V+k=' 'sha256-NZx1u9M3JYLtu2Q6RDMr/UzF7BRV/PCq7X0fVJ4CsjM='; connect-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'self'">
   {%- set title = t.meta[page_id][0] %}
   {%- set description = t.meta[page_id][1] %}
@@ -34,7 +34,7 @@
   <link rel="icon" href="/img/favicon.ico" sizes="48x48">
   <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
-  {#- Sets the saved theme before first paint so a forced theme never flashes the other one; main.js wires the footer control to setTheme. #}
+  {#- Sets the saved theme before first paint so a forced theme never flashes the other one; main.js wires the header menu to setTheme. #}
   <script>{const r=document.documentElement;let m;window.setTheme=(t,save)=>{if(save)try{t=="system"?localStorage.removeItem("theme"):localStorage.setItem("theme",t)}catch{}r.dataset.theme=t;m?.remove();m=null;if(t!="system"){m=document.createElement("meta");m.name="theme-color";m.content=document.querySelector(`meta[name="theme-color"][media*="${t}"]`).content;document.head.prepend(m)}};let s;try{s=localStorage.getItem("theme")}catch{}setTheme(s=="light"||s=="dark"?s:"system")}</script>
   <link rel="stylesheet" href="/assets/main.css">
   {#- Firefox lays out the body before the stylesheet arrives if anything (often an extension) forces layout early, flashing raw HTML. A script here has to wait for the stylesheet, which holds the body back. #}
@@ -52,13 +52,31 @@
       <a href="{{ href }}"{% if item[4] %} class="{{ item[4] }}"{% endif %}{% if page.url == href or (page.url | replace("/" + lang + "/", "")) in (item[3] or []) %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
     </nav>
+    {#- Oat dropdowns; icon-only so they fit beside the four phone tabs. #}
+    <ot-dropdown>
+      <button type="button" class="ghost" popovertarget="lang-menu" aria-label="{{ t.layout.language }}" aria-expanded="false">{% icon "translate" %}</button>
+      <div popover id="lang-menu" role="menu" aria-label="{{ t.layout.language }}">
+        {%- for l in site.locales %}
+        <a role="menuitem" href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a>
+        {%- endfor %}
+      </div>
+    </ot-dropdown>
+    {#- Hidden until main.js runs: without JavaScript the choice can't apply, so it isn't offered. #}
+    <ot-dropdown id="theme" hidden>
+      <button type="button" class="ghost" popovertarget="theme-menu" aria-label="{{ t.theme.label }}" aria-expanded="false">{% icon "circle-half" %}</button>
+      <div popover id="theme-menu" role="menu" aria-label="{{ t.theme.label }}">
+        {%- for v in ["system", "light", "dark"] %}
+        <button type="button" class="ghost" role="menuitem" value="{{ v }}"{% if v == "system" %} aria-current="true"{% endif %}>{{ t.theme[v] }}</button>
+        {%- endfor %}
+      </div>
+    </ot-dropdown>
   </header>
   <main id="main">
     <div class="status-row">
       {%- if page_id == "overview" %}<p id="online"></p>{% endif %}
       <p class="status" id="status" aria-live="off"></p>
     </div>
-    <noscript><p class="notice">{% icon "info" %} {{ t.layout.noscript }}</p></noscript>
+    <noscript><p role="alert">{% icon "info" %} {{ t.layout.noscript }}</p></noscript>
     {{ content | safe }}
   </main>
   {# The companion's footer: project line, about and credits beside community links, then the disclaimer. #}
@@ -88,21 +106,6 @@
             {%- endfor %}
           </ul>
           {%- endfor %}
-          <h2 id="footer-lang">{{ t.layout.language }}</h2>
-          <ul class="langs" aria-labelledby="footer-lang">
-            {%- for l in site.locales %}
-            <li><a href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a></li>
-            {%- endfor %}
-          </ul>
-          {#- Hidden until main.js runs: without JavaScript the choice can't apply, so it isn't offered. #}
-          <div id="theme" hidden>
-            <h2 id="footer-theme">{{ t.theme.label }}</h2>
-            <div class="theme" role="radiogroup" aria-labelledby="footer-theme">
-              {%- for v in ["system", "light", "dark"] %}
-              <label><input type="radio" name="theme" value="{{ v }}"{% if v == "system" %} checked{% endif %}>{{ t.theme[v] }}</label>
-              {%- endfor %}
-            </div>
-          </div>
         </div>
       </div>
     </div>
