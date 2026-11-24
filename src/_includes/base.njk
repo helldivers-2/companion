@@ -52,22 +52,40 @@
       <a href="{{ href }}"{% if item[4] %} class="{{ item[4] }}"{% endif %}{% if page.url == href or (page.url | replace("/" + lang + "/", "")) in (item[3] or []) %} aria-current="page"{% endif %}>{% icon item[2] %}<span>{{ t.nav[item[1]] }}</span></a>
       {%- endfor %}
     </nav>
-    {#- Oat dropdowns; icon-only so they fit beside the four phone tabs. #}
-    <ot-dropdown>
+    {#- The choices are written once and shown twice: as two dropdowns on wide screens, inside the phone's "More" menu otherwise. #}
+    {%- set langItems %}
+          {%- for l in site.locales %}
+          <a role="menuitem" href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a>
+          {%- endfor %}
+    {%- endset %}
+    {%- set themeItems %}
+          {%- for v in ["system", "light", "dark"] %}
+          <button type="button" class="ghost" role="menuitem" value="{{ v }}"{% if v == "system" %} aria-current="true"{% endif %}>{{ t.theme[v] }}</button>
+          {%- endfor %}
+    {%- endset %}
+    {#- Theme choices stay hidden until main.js runs: without JavaScript the choice can't apply, so it isn't offered. #}
+    <ot-dropdown class="wide">
       <button type="button" class="ghost" popovertarget="lang-menu" aria-label="{{ t.layout.language }}" aria-expanded="false">{% icon "translate" %}</button>
-      <div popover id="lang-menu" role="menu" aria-label="{{ t.layout.language }}">
-        {%- for l in site.locales %}
-        <a role="menuitem" href="/{{ l }}{{ '/' if standalone else path }}" hreflang="{{ l }}" lang="{{ l }}"{% if l == lang %} aria-current="page"{% endif %}>{{ i18n[l].name }}</a>
-        {%- endfor %}
+      <div popover id="lang-menu" role="menu" aria-label="{{ t.layout.language }}">{{ langItems | safe }}
       </div>
     </ot-dropdown>
-    {#- Hidden until main.js runs: without JavaScript the choice can't apply, so it isn't offered. #}
-    <ot-dropdown id="theme" hidden>
+    <ot-dropdown class="wide theme-choice" hidden>
       <button type="button" class="ghost" popovertarget="theme-menu" aria-label="{{ t.theme.label }}" aria-expanded="false">{% icon "circle-half" %}</button>
-      <div popover id="theme-menu" role="menu" aria-label="{{ t.theme.label }}">
-        {%- for v in ["system", "light", "dark"] %}
-        <button type="button" class="ghost" role="menuitem" value="{{ v }}"{% if v == "system" %} aria-current="true"{% endif %}>{{ t.theme[v] }}</button>
-        {%- endfor %}
+      <div popover id="theme-menu" role="menu" aria-label="{{ t.theme.label }}">{{ themeItems | safe }}
+      </div>
+    </ot-dropdown>
+    <ot-dropdown class="narrow">
+      <button type="button" class="ghost" popovertarget="menu" aria-label="{{ t.layout.more }}" aria-expanded="false">{% icon "dots-three-vertical" %}</button>
+      <div popover id="menu" role="menu" aria-label="{{ t.layout.more }}">
+        <a role="menuitem" href="/{{ lang }}/faq/"{% if page_id == "faq" %} aria-current="page"{% endif %}>{% icon "info" %} {{ t.nav.faq }}</a>
+        <div role="group" aria-labelledby="menu-lang">
+          <hr>
+          <p class="menu-label" id="menu-lang">{{ t.layout.language }}</p>{{ langItems | safe }}
+        </div>
+        <div role="group" class="theme-choice" aria-labelledby="menu-theme" hidden>
+          <hr>
+          <p class="menu-label" id="menu-theme">{{ t.theme.label }}</p>{{ themeItems | safe }}
+        </div>
       </div>
     </ot-dropdown>
   </header>
@@ -85,7 +103,6 @@
       <div>
         <h2>{{ site.name }}</h2>
         <p class="muted">{{ t.layout.by | replace("{author}", '<a href="' + footer.author.href + '">' + footer.author.name + "</a>") | safe }}</p>
-        <p><a href="/{{ lang }}/faq/">{% icon "info" %} {{ t.nav.faq }}</a></p>{# the phone tab bar has no room for it #}
       </div>
       <div class="footer-cols">
         <div>

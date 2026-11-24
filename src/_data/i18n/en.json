@@ -53,6 +53,7 @@
     "noscript": "This companion loads live war data in your browser. Turn on JavaScript to see it.",
     "by": "A project by {author}.",
     "about": "Updates from the community API every {s} s. Built with:",
+    "more": "More",
     "language": "Language",
     "disclaimer": "Fan-made. Not affiliated with or endorsed by Arrowhead Game Studios or Sony Interactive Entertainment.",
     "links": {

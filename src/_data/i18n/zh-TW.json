@@ -38,6 +38,7 @@
     "noscript": "本站在瀏覽器中載入即時戰爭資料，請啟用 JavaScript 以檢視。",
     "by": "由 {author} 製作。",
     "about": "每 {s} 秒從社群 API 讀取資料。使用以下工具製作：",
+    "more": "更多",
     "language": "語言",
     "disclaimer": "玩家自製。與 Arrowhead Game Studios 及 Sony Interactive Entertainment 無關，亦未獲其認可。",
     "links": {

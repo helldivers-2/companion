@@ -27,7 +27,7 @@ Every push to `main` deploys to Cloudflare through GitHub Actions. `npm run depl
 
 | English           | Deutsch             | Español                 | 繁體中文 |
 | ----------------- | ------------------- | ----------------------- | -------- |
-| Major Order       | Major Order         | Orden suprema           | 主要指令 |
+| Major Order       | Generalbefehl       | Orden suprema           | 主要指令 |
 | Super Earth       | Über-Erde           | Supertierra             | 超級地球 |
 | Stratagem         | Stratagem           | Estratagema             | 戰略配備 |
 | Eagle             | Eagle               | Eagle                   | 飛鷹     |

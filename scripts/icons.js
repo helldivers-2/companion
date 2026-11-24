@@ -39,6 +39,7 @@ const ICONS = [
   "youtube-logo-fill",
   "translate",
   "circle-half",
+  "dots-three-vertical",
 ];
 
 const dir = "node_modules/@phosphor-icons/core/assets";

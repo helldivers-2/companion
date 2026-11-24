@@ -275,8 +275,19 @@ html {
   }
 }
 
+// Section headings inside the header menu.
+.menu-label {
+  margin: 0;
+  padding: var(--space-2) var(--space-3) var(--space-1);
+  color: $muted;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
 // Links and buttons alike, at Oat's button size.
 ot-dropdown [role="menuitem"] {
+  align-items: center;
+  gap: var(--space-2);
   border: 0;
   border-radius: 0;
   color: $text;

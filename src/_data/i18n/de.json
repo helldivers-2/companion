@@ -3,8 +3,8 @@
   "api": "de-DE",
   "meta": {
     "overview": [
-      "Helldivers 2: Major Order und aktuelle Kriegslage",
-      "Live-Stand des Galaktischen Krieges in Helldivers 2: Major Order mit Fortschritt und Frist, Raumstation, aktive Fronten und Kriegsstatistik."
+      "Helldivers 2: Generalbefehl und aktuelle Kriegslage",
+      "Live-Stand des Galaktischen Krieges in Helldivers 2: Generalbefehl mit Fortschritt und Frist, Raumstation, aktive Fronten und Kriegsstatistik."
     ],
     "planets": [
       "Helldivers 2: Planeten und Befreiung",
@@ -12,7 +12,7 @@
     ],
     "map": [
       "Helldivers 2 Galaxiekarte",
-      "Karte des Galaktischen Krieges in Helldivers 2: alle Planeten nach Besitzer, mit laufenden Befreiungen, Verteidigungen und Zielen der Major Order."
+      "Karte des Galaktischen Krieges in Helldivers 2: alle Planeten nach Besitzer, mit laufenden Befreiungen, Verteidigungen und Zielen des Generalbefehls."
     ],
     "dispatches": ["Helldivers 2: Meldungen von Über-Erde", "Neueste Meldungen von Über-Erde direkt aus Helldivers 2."],
     "news": ["Helldivers 2: Neuigkeiten und Patchnotes", "Patchnotes, Entwicklerblogs und Ankündigungen zu Helldivers 2 von Arrowheads Steam-Seite."],
@@ -25,7 +25,7 @@
       "Helldivers 2: Waffen, Rüstungen und Booster",
       "Alle Waffen, Wurfwaffen, Rüstungen und Booster in Helldivers 2 mit Schaden, Feuerrate, Rüstungswert, Passiveffekten und Freischaltung."
     ],
-    "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Major Orders, aktive Fronten, Planeten und Meldungen."]
+    "notfound": ["Seite nicht gefunden", "Aktuelle Lage im Galaktischen Krieg: Generalbefehle, aktive Fronten, Planeten und Meldungen."]
   },
   "nav": {
     "label": "Hauptmenü",
@@ -53,6 +53,7 @@
     "noscript": "Dieser Companion lädt die Kriegsdaten live im Browser. Aktiviere JavaScript, um sie zu sehen.",
     "by": "Ein Projekt von {author}.",
     "about": "Daten werden alle {s} s über die Community-API aktualisiert. Gebaut mit:",
+    "more": "Mehr",
     "language": "Sprache",
     "disclaimer": "Fanprojekt. Steht in keiner Verbindung zu Arrowhead Game Studios oder Sony Interactive Entertainment und wird von ihnen nicht unterstützt.",
     "links": {
@@ -65,7 +66,7 @@
   "overview": {
     "h1": "Der Galaktische Krieg im Überblick",
     "intro": "In der <a href=\"{faq}\">Erklärung zu Befreiung und Verteidigung</a> erfährst du, was die Zahlen bedeuten.",
-    "order": "Major Order",
+    "order": "Generalbefehl",
     "orderLoading": "Befehle vom Oberkommando werden empfangen …",
     "station": "Raumstation",
     "fronts": "Aktive Fronten",
@@ -294,7 +295,7 @@
     "find": "Planet suchen",
     "liberating": "Wird befreit",
     "defending": "Wird verteidigt",
-    "order": "Ziel der Major Order",
+    "order": "Ziel des Generalbefehls",
     "details": "Planetendetails",
     "hint": "Wähle einen Planeten, um seine Details zu sehen.",
     "sector": "Sektor",
@@ -318,7 +319,7 @@
     "lost": "GENERALBEFEHL GESCHEITERT|STRATEGISCHE ANWEISUNG GESCHEITERT",
     "readOnSteam": "Auf Steam lesen",
     "noNews": "Noch keine Neuigkeiten.",
-    "noOrder": "Gerade gibt es keine Major Order.",
+    "noOrder": "Gerade gibt es keinen Generalbefehl.",
     "noStation": "Die Demokratie-Raumstation ist gerade nicht im Orbit.",
     "online": "Helldivers online",
     "helldivers": "{n} Helldivers",
